@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game System Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-primary: #0d1117;
+        --bg-secondary: #161b22;
+        --bg-tertiary: #21262d;
+        --accent: #58a6ff;
+        --accent-secondary: #f78166;
+        --accent-tertiary: #7ee787;
+        --text-primary: #e6edf3;
+        --text-secondary: #8b949e;
+        --border: #30363d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 3rem;
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary) 0%,
+          var(--bg-primary) 100%
+        );
+        border-radius: 16px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--accent-tertiary) 0%,
+          var(--accent) 50%,
+          #a371f7 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+      }
+
+      header p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .section {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+      }
+
+      .section-header {
+        background: var(--bg-tertiary);
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .zoom-badge {
+        background: var(--accent);
+        color: var(--bg-primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .zoom-badge.flow {
+        background: var(--accent-tertiary);
+      }
+
+      .section-content {
+        padding: 2rem;
+      }
+
+      .description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: var(--bg-tertiary);
+        border-radius: 8px;
+        border-left: 3px solid var(--accent);
+      }
+
+      .mermaid-container {
+        background: var(--bg-primary);
+        border-radius: 8px;
+        padding: 1.5rem;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+
+      th,
+      td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: var(--bg-tertiary);
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      tr:hover {
+        background: var(--bg-tertiary);
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎯 Number Guessing Game System</h1>
+        <p>A systems-thinking breakdown of a simple number guessing game</p>
+      </header>
+
+      <!-- Game Flow Overview -->
+      <section class="section">
+        <div class="section-header">
+          <span class="zoom-badge flow">FLOW</span>
+          <h2>🎮 Game Flow Overview</h2>
+        </div>
+        <div class="section-content">
+          <div class="description">
+            The complete flow of the game from start to finish
+          </div>
+          <div class="mermaid-container">
+            <div id="diagram"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Game Flow Summary -->
+      <section class="section">
+        <div class="section-header">
+          <span class="zoom-badge">📋</span>
+          <h2>Game Flow Summary</h2>
+        </div>
+        <div class="section-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Initialization</strong></td>
+                <td>Generate random number & set max chances</td>
+              </tr>
+              <tr>
+                <td><strong>Input</strong></td>
+                <td>User submits their guess</td>
+              </tr>
+              <tr>
+                <td><strong>Validation</strong></td>
+                <td>Check if guess matches the target</td>
+              </tr>
+              <tr>
+                <td><strong>Feedback</strong></td>
+                <td>Provide "too high" or "too low" hints</td>
+              </tr>
+              <tr>
+                <td><strong>Termination</strong></td>
+                <td>Win (correct guess) or Lose (out of chances)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <p>Created as part of Systems Thinking challenge • SWE Hackers 🏗️</p>
+      </footer>
+    </div>
+
+    <script>
+      const diagramDefinition = `flowchart TD
+    A[🎮 Start Game] --> B[🎲 Generate Random Number]
+    B --> C[Set Available Chances]
+    C --> D[👤 User Enters Guess]
+
+    D --> E{Is Guess Correct?}
+
+    E -->|✅ Yes| F[🎉 User Wins!]
+    F --> G[Display Victory Message]
+    G --> H[🔚 End Game]
+
+    E -->|❌ No| I{Chances Remaining?}
+
+    I -->|Yes| J{Guess Too High or Low?}
+    J -->|Too High| K[📉 Hint: Go Lower]
+    J -->|Too Low| L[📈 Hint: Go Higher]
+    K --> M[Decrement Chances]
+    L --> M
+    M --> D
+
+    I -->|No| N[😔 User Loses]
+    N --> O[Reveal Correct Number]
+    O --> H
+
+    style A fill:#4CAF50,color:#fff
+    style F fill:#FFD700,color:#000
+    style N fill:#f44336,color:#fff
+    style H fill:#9E9E9E,color:#fff`;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "dark",
+        themeVariables: {
+          primaryColor: "#58a6ff",
+          primaryTextColor: "#e6edf3",
+          primaryBorderColor: "#30363d",
+          lineColor: "#8b949e",
+          secondaryColor: "#21262d",
+          tertiaryColor: "#161b22",
+          background: "#0d1117",
+          mainBkg: "#21262d",
+          secondBkg: "#161b22",
+          nodeBorder: "#30363d",
+          clusterBkg: "#161b22",
+          clusterBorder: "#30363d",
+          titleColor: "#e6edf3",
+          edgeLabelBackground: "#21262d",
+        },
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: "basis",
+        },
+      });
+
+      mermaid.render("mermaid-diagram", diagramDefinition).then((result) => {
+        document.getElementById("diagram").innerHTML = result.svg;
+      });
+    </script>
+  </body>
+</html>
