@@ -557,7 +557,115 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+/* ===== Top Navigation Bar ===== */
+.auth-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-xl);
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.auth-navbar .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.auth-navbar .nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.auth-navbar .nav-links {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.auth-navbar .nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.auth-navbar .nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.auth-navbar .nav-link.active {
+  color: var(--accent-primary);
+}
+
+.auth-navbar .nav-btn {
+  padding: var(--space-sm) var(--space-lg);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-normal);
+}
+
+.auth-navbar .nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(121, 134, 203, 0.4);
+}
+
+/* Adjust page content when navbar is present */
+.auth-page.has-navbar {
+  padding-top: 70px;
+}
+
 /* ===== Responsive ===== */
+
+/* Wider card on larger screens */
+@media (min-width: 640px) {
+  .auth-card {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .auth-card {
+    max-width: 540px;
+  }
+  
+  .auth-form {
+    gap: var(--space-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-card {
+    max-width: 560px;
+    padding: var(--space-2xl) 3rem;
+  }
+}
+
 @media (max-width: 480px) {
   .auth-card {
     padding: var(--space-xl);
@@ -570,6 +678,14 @@ body {
   
   .btn {
     padding: 0.75rem 1.25rem;
+  }
+  
+  .auth-navbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .auth-navbar .nav-logo-text {
+    display: none;
   }
 }
 

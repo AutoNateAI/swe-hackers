@@ -18,7 +18,7 @@
 
     <!-- Mermaid for diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    
+
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
@@ -933,7 +933,7 @@ secret = encode_message(message)
         });
       });
     </script>
-    
+
     <!-- Lesson Integration (dashboard navigation, progress tracking) -->
     <script src="../../shared/js/firebase-config.js"></script>
     <script src="../../shared/js/auth.js"></script>
@@ -941,22 +941,25 @@ secret = encode_message(message)
     <script src="../../shared/js/lesson-integration.js"></script>
     <script>
       // Initialize lesson integration
-      document.addEventListener('DOMContentLoaded', () => {
-        window.LessonIntegration.init('apprentice', 'ch1');
+      document.addEventListener("DOMContentLoaded", () => {
+        window.LessonIntegration.init("apprentice", "ch1");
       });
-      
+
       // Mark lesson complete when user reaches the end
-      const lessonObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            window.LessonIntegration.finishLesson();
-            lessonObserver.disconnect();
-          }
-        });
-      }, { threshold: 0.8 });
-      
+      const lessonObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              window.LessonIntegration.finishLesson();
+              lessonObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.8 }
+      );
+
       // Observe the last section
-      const sections = document.querySelectorAll('.lesson-section');
+      const sections = document.querySelectorAll(".lesson-section");
       if (sections.length > 0) {
         lessonObserver.observe(sections[sections.length - 1]);
       }
