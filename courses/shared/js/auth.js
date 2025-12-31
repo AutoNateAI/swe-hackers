@@ -8,7 +8,8 @@ const AuthService = {
   currentUser: null,
   authStateListeners: [],
   redirectAfterLogin: null,
-  authStateResolved: false, // Track if we've received the first auth state
+  _authReadyPromise: null,
+  _authReadyResolve: null,
 
   /**
    * Initialize auth service and set up auth state listener
@@ -20,18 +21,47 @@ const AuthService = {
       return;
     }
 
+    // Create a promise that resolves when auth is truly ready
+    this._authReadyPromise = new Promise((resolve) => {
+      this._authReadyResolve = resolve;
+    });
+
     // Listen for auth state changes
+    // Firebase fires this immediately with null, then again with user if session exists
+    let firstCall = true;
     auth.onAuthStateChanged((user) => {
       this.currentUser = user;
-      this.authStateResolved = true;
-      this.notifyListeners(user);
       
       if (user) {
         console.log('👤 User signed in:', user.email);
         this.updateUserProfile(user);
+        // User is definitely signed in, resolve immediately
+        if (this._authReadyResolve) {
+          this._authReadyResolve(user);
+          this._authReadyResolve = null;
+        }
       } else {
         console.log('👤 User signed out');
+        // On first call with null, wait a moment for session restoration
+        if (firstCall) {
+          firstCall = false;
+          // Give Firebase time to restore session from storage
+          setTimeout(() => {
+            if (this._authReadyResolve) {
+              this._authReadyResolve(this.currentUser);
+              this._authReadyResolve = null;
+            }
+          }, 300);
+        } else {
+          // Subsequent calls mean user actually signed out
+          if (this._authReadyResolve) {
+            this._authReadyResolve(null);
+            this._authReadyResolve = null;
+          }
+        }
       }
+      
+      this.notifyListeners(user);
     });
   },
 
@@ -40,32 +70,11 @@ const AuthService = {
    * Returns a promise that resolves with the user (or null)
    */
   waitForAuthState() {
-    // If auth state is already resolved, return immediately
-    if (this.authStateResolved) {
-      return Promise.resolve(this.currentUser);
+    if (!this._authReadyPromise) {
+      // If init wasn't called yet, return null
+      return Promise.resolve(null);
     }
-    
-    // Otherwise wait for the first auth state change
-    return new Promise((resolve) => {
-      let resolved = false;
-      const checkAuth = (user) => {
-        if (!resolved) {
-          resolved = true;
-          resolve(user);
-        }
-      };
-      
-      // Add a one-time listener
-      this.authStateListeners.push(checkAuth);
-      
-      // Also set a timeout fallback
-      setTimeout(() => {
-        if (!resolved) {
-          resolved = true;
-          resolve(this.currentUser);
-        }
-      }, 2000);
-    });
+    return this._authReadyPromise;
   },
 
   /**
@@ -240,9 +249,14 @@ const AuthService = {
    */
   onAuthStateChanged(callback) {
     this.authStateListeners.push(callback);
-    // Immediately call with current state
-    if (this.currentUser !== null || this.currentUser === null) {
-      callback(this.currentUser);
+    // Only call immediately if auth has been resolved
+    if (this._authReadyPromise) {
+      this._authReadyPromise.then(() => {
+        // Only call if still subscribed
+        if (this.authStateListeners.includes(callback)) {
+          callback(this.currentUser);
+        }
+      });
     }
     return () => {
       this.authStateListeners = this.authStateListeners.filter(cb => cb !== callback);
