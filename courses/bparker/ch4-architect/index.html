@@ -1,853 +1,890 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 4: The Age of Architects | The Architect's Return</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--accent-architect);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(77, 182, 172, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(121, 134, 203, 0.15) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--accent-architect);
-    }
-    
-    .story-block::before {
-      color: var(--accent-architect);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 4: The Age of Architects | The Architect's Return</title>
 
-    /* Timeline styling */
-    .evolution-timeline {
-      position: relative;
-      padding: 2rem 0;
-    }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    .timeline-track {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../shared/css/lesson.css" />
 
-    @media (max-width: 768px) {
+    <!-- Mermaid for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <style>
+      :root {
+        --chapter-color: var(--accent-architect);
+      }
+
+      .hero::before {
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(77, 182, 172, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 70% 30%,
+            rgba(121, 134, 203, 0.15) 0%,
+            transparent 50%
+          );
+      }
+
+      .story-block {
+        border-left-color: var(--accent-architect);
+      }
+
+      .story-block::before {
+        color: var(--accent-architect);
+      }
+
+      /* Timeline styling */
+      .evolution-timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+
       .timeline-track {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
       }
-    }
 
-    .timeline-era {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-      border-top: 3px solid var(--accent-stone);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+      @media (max-width: 768px) {
+        .timeline-track {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    .timeline-era:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
+      .timeline-era {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        text-align: center;
+        border-top: 3px solid var(--accent-stone);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
 
-    .timeline-era.active {
-      border-top-color: var(--accent-architect);
-      background: rgba(77, 182, 172, 0.1);
-    }
+      .timeline-era:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
 
-    .era-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
+      .timeline-era.active {
+        border-top-color: var(--accent-architect);
+        background: rgba(77, 182, 172, 0.1);
+      }
 
-    .era-name {
-      font-family: var(--font-display);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.25rem;
-    }
+      .era-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
 
-    .era-years {
-      font-size: 0.75rem;
-      color: var(--accent-architect);
-    }
+      .era-name {
+        font-family: var(--font-display);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+      }
 
-    .era-desc {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
+      .era-years {
+        font-size: 0.75rem;
+        color: var(--accent-architect);
+      }
 
-    /* Skill comparison */
-    .skill-comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
+      .era-desc {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
+      }
 
-    @media (max-width: 768px) {
+      /* Skill comparison */
       .skill-comparison {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
       }
-    }
 
-    .skill-panel {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-    }
+      @media (max-width: 768px) {
+        .skill-comparison {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    .skill-panel.old {
-      border-top: 3px solid var(--accent-fire);
-    }
+      .skill-panel {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+      }
 
-    .skill-panel.new {
-      border-top: 3px solid var(--accent-architect);
-    }
+      .skill-panel.old {
+        border-top: 3px solid var(--accent-fire);
+      }
 
-    .skill-panel h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
+      .skill-panel.new {
+        border-top: 3px solid var(--accent-architect);
+      }
 
-    .skill-list {
-      list-style: none;
-    }
+      .skill-panel h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
 
-    .skill-list li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+      .skill-list {
+        list-style: none;
+      }
 
-    .skill-list li:last-child {
-      border-bottom: none;
-    }
+      .skill-list li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-    /* Diagram gallery */
-    .diagram-gallery {
-      display: grid;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
+      .skill-list li:last-child {
+        border-bottom: none;
+      }
 
-    .diagram-card {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
+      /* Diagram gallery */
+      .diagram-gallery {
+        display: grid;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
 
-    .diagram-header {
-      padding: 1rem 1.5rem;
-      background: var(--bg-tertiary);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      .diagram-card {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
 
-    .diagram-type {
-      font-family: var(--font-display);
-      font-weight: 600;
-      color: var(--text-primary);
-    }
+      .diagram-header {
+        padding: 1rem 1.5rem;
+        background: var(--bg-tertiary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    .diagram-use {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
+      .diagram-type {
+        font-family: var(--font-display);
+        font-weight: 600;
+        color: var(--text-primary);
+      }
 
-    .diagram-body {
-      padding: 1.5rem;
-    }
+      .diagram-use {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
 
-    /* Creed styling */
-    .creed {
-      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      margin: 3rem 0;
-      text-align: center;
-      border: 1px solid rgba(77, 182, 172, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
+      .diagram-body {
+        padding: 1.5rem;
+      }
 
-    .creed::before {
-      content: '🏛️';
-      position: absolute;
-      font-size: 8rem;
-      opacity: 0.05;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+      /* Creed styling */
+      .creed {
+        background: linear-gradient(
+          135deg,
+          var(--bg-tertiary) 0%,
+          var(--bg-secondary) 100%
+        );
+        border-radius: var(--radius-lg);
+        padding: 3rem;
+        margin: 3rem 0;
+        text-align: center;
+        border: 1px solid rgba(77, 182, 172, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
 
-    .creed h3 {
-      font-family: var(--font-display);
-      color: var(--accent-architect);
-      margin-bottom: 2rem;
-      position: relative;
-    }
+      .creed::before {
+        content: "🏛️";
+        position: absolute;
+        font-size: 8rem;
+        opacity: 0.05;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-    .creed-lines {
-      font-style: italic;
-      font-size: 1.125rem;
-      line-height: 2.2;
-      color: var(--text-primary);
-      position: relative;
-    }
+      .creed h3 {
+        font-family: var(--font-display);
+        color: var(--accent-architect);
+        margin-bottom: 2rem;
+        position: relative;
+      }
 
-    .creed-lines p {
-      margin-bottom: 0;
-    }
-  </style>
-</head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+      .creed-lines {
+        font-style: italic;
+        font-size: 1.125rem;
+        line-height: 2.2;
+        color: var(--text-primary);
+        position: relative;
+      }
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="story" title="The Story"></div>
-    <div class="progress-dot" data-section="evolution" title="Evolution"></div>
-    <div class="progress-dot" data-section="paradigm" title="Paradigm Shift"></div>
-    <div class="progress-dot" data-section="diagrams" title="Five Diagrams"></div>
-    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
-    <div class="progress-dot" data-section="project" title="Project"></div>
-    <div class="progress-dot" data-section="creed" title="The Creed"></div>
-  </nav>
+      .creed-lines p {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
 
-  <main class="lesson-container">
-    
-    <!-- ═══════════════════════════════════════════════════════════════════════
+    <!-- Progress Tracker (Side) -->
+    <nav class="progress-tracker">
+      <div class="progress-dot active" data-section="hero" title="Start"></div>
+      <div class="progress-dot" data-section="story" title="The Story"></div>
+      <div
+        class="progress-dot"
+        data-section="evolution"
+        title="Evolution"
+      ></div>
+      <div
+        class="progress-dot"
+        data-section="paradigm"
+        title="Paradigm Shift"
+      ></div>
+      <div
+        class="progress-dot"
+        data-section="diagrams"
+        title="Five Diagrams"
+      ></div>
+      <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+      <div class="progress-dot" data-section="project" title="Project"></div>
+      <div class="progress-dot" data-section="creed" title="The Creed"></div>
+    </nav>
+
+    <main class="lesson-container">
+      <!-- ═══════════════════════════════════════════════════════════════════════
          HERO SECTION
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Chapter 4 • Week 4</span>
-        <div class="hero-icon">🏛️</div>
-        <h1>The Age of Architects</h1>
-        <p class="hero-subtitle">
-          "The builders who only knew how to type are in trouble. 
-          The architects who know how to <em>think</em> are more powerful than ever."
-        </p>
-      </div>
-      
-      <div class="scroll-indicator">
-        <span>Enter the new age</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
+      <section class="hero section" data-section="hero">
+        <div class="hero-content">
+          <span class="hero-chapter">Chapter 4 • Week 4</span>
+          <div class="hero-icon">🏛️</div>
+          <h1>The Age of Architects</h1>
+          <p class="hero-subtitle">
+            "The builders who only knew how to type are in trouble. The
+            architects who know how to <em>think</em> are more powerful than
+            ever."
+          </p>
+        </div>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+        <div class="scroll-indicator">
+          <span>Enter the new age</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════
          THE STORY
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="story">
-      <div class="section-content">
-        <h2 class="fade-in">🌅 The Story</h2>
-        
-        <div class="story-block fade-in">
-          <p>
-            You've learned to wield the forces of Stone, Lightning, and Magnetism. 
-            You've built, you've connected, you've made things persist and flow. 
-            But the greatest shift in the digital realm has happened while you were away: 
-            the rise of the <strong>AI spirits</strong>.
+      <section class="section" data-section="story">
+        <div class="section-content">
+          <h2 class="fade-in">🌅 The Story</h2>
+
+          <div class="story-block fade-in">
+            <p>
+              You've learned to wield the forces of Stone, Lightning, and
+              Magnetism. You've built, you've connected, you've made things
+              persist and flow. But the greatest shift in the digital realm has
+              happened while you were away: the rise of the
+              <strong>AI spirits</strong>.
+            </p>
+          </div>
+
+          <p class="fade-in">
+            For centuries, coding was like building with raw stone. Every brick,
+            every arch, every beam had to be placed by hand. It was slow,
+            painstaking work. Then came tools, then machines, then entire
+            factories. But still, a human had to direct every single step.
           </p>
-        </div>
 
-        <p class="fade-in">
-          For centuries, coding was like building with raw stone. Every brick, every arch, 
-          every beam had to be placed by hand. It was slow, painstaking work. Then came tools, 
-          then machines, then entire factories. But still, a human had to direct every single step.
-        </p>
-
-        <p class="fade-in">
-          Now, the AI spirits can build entire structures from a blueprint. They can write the code, 
-          generate the tests, even explain the system. This doesn't make the architect obsolete; 
-          it makes them <em>more powerful</em>.
-        </p>
-
-        <div class="cta-box fade-in">
-          <h3>💡 The Core Insight</h3>
-          <p>
-            You are no longer just a builder; you are a <strong>master architect</strong> 
-            who designs, directs, and reviews. Your value isn't in typing speed — 
-            it's in <em>thinking speed</em>.
+          <p class="fade-in">
+            Now, the AI spirits can build entire structures from a blueprint.
+            They can write the code, generate the tests, even explain the
+            system. This doesn't make the architect obsolete; it makes them
+            <em>more powerful</em>.
           </p>
-        </div>
-      </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+          <div class="cta-box fade-in">
+            <h3>💡 The Core Insight</h3>
+            <p>
+              You are no longer just a builder; you are a
+              <strong>master architect</strong> who designs, directs, and
+              reviews. Your value isn't in typing speed — it's in
+              <em>thinking speed</em>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════
          EVOLUTION TIMELINE
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="evolution">
-      <div class="section-content">
-        <h2 class="fade-in">📜 The Evolution Timeline</h2>
+      <section class="section" data-section="evolution">
+        <div class="section-content">
+          <h2 class="fade-in">📜 The Evolution Timeline</h2>
 
-        <p class="fade-in">
-          Click each era to understand how software development has transformed:
-        </p>
+          <p class="fade-in">
+            Click each era to understand how software development has
+            transformed:
+          </p>
 
-        <div class="evolution-timeline">
-          <div class="timeline-track">
-            <div class="timeline-era" onclick="this.classList.toggle('active')">
-              <div class="era-icon">🪨</div>
-              <div class="era-name">Stone Age</div>
-              <div class="era-years">1950s - 1970s</div>
-              <div class="era-desc">Assembly & punch cards. Every instruction handcrafted.</div>
+          <div class="evolution-timeline">
+            <div class="timeline-track">
+              <div
+                class="timeline-era"
+                onclick="this.classList.toggle('active')"
+              >
+                <div class="era-icon">🪨</div>
+                <div class="era-name">Stone Age</div>
+                <div class="era-years">1950s - 1970s</div>
+                <div class="era-desc">
+                  Assembly & punch cards. Every instruction handcrafted.
+                </div>
+              </div>
+
+              <div
+                class="timeline-era"
+                onclick="this.classList.toggle('active')"
+              >
+                <div class="era-icon">⚒️</div>
+                <div class="era-name">Bronze Age</div>
+                <div class="era-years">1980s - 1990s</div>
+                <div class="era-desc">
+                  High-level languages. C, Java, Python emerge.
+                </div>
+              </div>
+
+              <div
+                class="timeline-era"
+                onclick="this.classList.toggle('active')"
+              >
+                <div class="era-icon">🔩</div>
+                <div class="era-name">Iron Age</div>
+                <div class="era-years">2000s - 2010s</div>
+                <div class="era-desc">
+                  Frameworks & libraries. Standing on giants' shoulders.
+                </div>
+              </div>
+
+              <div
+                class="timeline-era active"
+                onclick="this.classList.toggle('active')"
+              >
+                <div class="era-icon">🏛️</div>
+                <div class="era-name">Age of Architects</div>
+                <div class="era-years">2020s+</div>
+                <div class="era-desc">
+                  AI-augmented development. Design, direct, review.
+                </div>
+              </div>
             </div>
-            
-            <div class="timeline-era" onclick="this.classList.toggle('active')">
-              <div class="era-icon">⚒️</div>
-              <div class="era-name">Bronze Age</div>
-              <div class="era-years">1980s - 1990s</div>
-              <div class="era-desc">High-level languages. C, Java, Python emerge.</div>
-            </div>
-            
-            <div class="timeline-era" onclick="this.classList.toggle('active')">
-              <div class="era-icon">🔩</div>
-              <div class="era-name">Iron Age</div>
-              <div class="era-years">2000s - 2010s</div>
-              <div class="era-desc">Frameworks & libraries. Standing on giants' shoulders.</div>
-            </div>
-            
-            <div class="timeline-era active" onclick="this.classList.toggle('active')">
-              <div class="era-icon">🏛️</div>
-              <div class="era-name">Age of Architects</div>
-              <div class="era-years">2020s+</div>
-              <div class="era-desc">AI-augmented development. Design, direct, review.</div>
+          </div>
+
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">The Progression</div>
+            <div class="mermaid">
+              timeline title The Ages of Software Development section The Stone
+              Age 1950s-1970s : Assembly & punch cards : Every instruction
+              handcrafted : "Speaking directly to the machine" section The
+              Bronze Age 1980s-1990s : High-level languages : C, Java, Python :
+              "Abstractions emerge" section The Iron Age 2000s-2010s :
+              Frameworks & libraries : Don't reinvent the wheel : "Standing on
+              shoulders" section The Age of Architects 2020s+ : AI-augmented
+              development : Design, direct, review : "Thinking in systems,
+              building with AI"
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">The Progression</div>
-          <div class="mermaid">
-            timeline
-                title The Ages of Software Development
-
-                section The Stone Age
-                    1950s-1970s : Assembly & punch cards
-                                : Every instruction handcrafted
-                                : "Speaking directly to the machine"
-
-                section The Bronze Age
-                    1980s-1990s : High-level languages
-                                : C, Java, Python
-                                : "Abstractions emerge"
-
-                section The Iron Age
-                    2000s-2010s : Frameworks & libraries
-                                : Don't reinvent the wheel
-                                : "Standing on shoulders"
-
-                section The Age of Architects
-                    2020s+ : AI-augmented development
-                           : Design, direct, review
-                           : "Thinking in systems, building with AI"
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          PARADIGM SHIFT
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="paradigm">
-      <div class="section-content">
-        <h2 class="fade-in">🔄 The Paradigm Shift: Builder → Architect</h2>
+      <section class="section" data-section="paradigm">
+        <div class="section-content">
+          <h2 class="fade-in">🔄 The Paradigm Shift: Builder → Architect</h2>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">Two Ways of Working</div>
-          <div class="mermaid">
-            graph TD
-                subgraph OLD["❌ The Old Way (Builder)"]
-                    TYPE["Type code fast"] --> DEBUG["Debug line-by-line"]
-                    DEBUG --> THINK1["Think about syntax"]
-                end
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">Two Ways of Working</div>
+            <div class="mermaid">
+              graph TD subgraph OLD["❌ The Old Way (Builder)"] TYPE["Type code
+              fast"] --> DEBUG["Debug line-by-line"] DEBUG --> THINK1["Think
+              about syntax"] end subgraph NEW["✅ The Architect's Way"]
+              UNDERSTAND["Understand the system"] --> DIAGRAM["Diagram the
+              solution"] DIAGRAM --> AI_DIRECT["Direct AI to build"] AI_DIRECT
+              --> REVIEW["Review AI's work"] REVIEW --> UNDERSTAND end style OLD
+              fill:#2d1a1a,stroke:#ef5350 style NEW fill:#1a2d2a,stroke:#4db6ac
+            </div>
+          </div>
 
-                subgraph NEW["✅ The Architect's Way"]
-                    UNDERSTAND["Understand the system"] --> DIAGRAM["Diagram the solution"]
-                    DIAGRAM --> AI_DIRECT["Direct AI to build"]
-                    AI_DIRECT --> REVIEW["Review AI's work"]
-                    REVIEW --> UNDERSTAND
-                end
+          <div class="skill-comparison fade-in">
+            <div class="skill-panel old">
+              <h4>❌ Old Skills (Less Valuable)</h4>
+              <ul class="skill-list">
+                <li>📝 Memorizing syntax</li>
+                <li>⌨️ Typing fast</li>
+                <li>💻 Writing all code manually</li>
+                <li>🐛 Debugging line-by-line</li>
+                <li>🧱 Building individual components</li>
+              </ul>
+            </div>
 
-                style OLD fill:#2d1a1a,stroke:#ef5350
-                style NEW fill:#1a2d2a,stroke:#4db6ac
+            <div class="skill-panel new">
+              <h4>✅ New Skills (More Valuable)</h4>
+              <ul class="skill-list">
+                <li>🧠 Understanding concepts</li>
+                <li>💬 Communicating clearly to AI</li>
+                <li>👀 Reading & reviewing code</li>
+                <li>📊 Diagramming systems</li>
+                <li>🏗️ Designing architectures</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="story-block fade-in">
+            <p>
+              You're not becoming obsolete. You're being
+              <strong>promoted</strong>. The AI handles the tedious work. You do
+              the <em>thinking</em>.
+            </p>
           </div>
         </div>
+      </section>
 
-        <div class="skill-comparison fade-in">
-          <div class="skill-panel old">
-            <h4>❌ Old Skills (Less Valuable)</h4>
-            <ul class="skill-list">
-              <li>📝 Memorizing syntax</li>
-              <li>⌨️ Typing fast</li>
-              <li>💻 Writing all code manually</li>
-              <li>🐛 Debugging line-by-line</li>
-              <li>🧱 Building individual components</li>
-            </ul>
-          </div>
-          
-          <div class="skill-panel new">
-            <h4>✅ New Skills (More Valuable)</h4>
-            <ul class="skill-list">
-              <li>🧠 Understanding concepts</li>
-              <li>💬 Communicating clearly to AI</li>
-              <li>👀 Reading & reviewing code</li>
-              <li>📊 Diagramming systems</li>
-              <li>🏗️ Designing architectures</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="story-block fade-in">
-          <p>
-            You're not becoming obsolete. You're being <strong>promoted</strong>. 
-            The AI handles the tedious work. You do the <em>thinking</em>.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          THE FIVE ESSENTIAL DIAGRAMS
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="diagrams">
-      <div class="section-content">
-        <h2 class="fade-in">📊 The Five Essential Diagrams</h2>
+      <section class="section" data-section="diagrams">
+        <div class="section-content">
+          <h2 class="fade-in">📊 The Five Essential Diagrams</h2>
 
-        <p class="fade-in">
-          As an architect, your primary language isn't just code anymore. It's <strong>diagrams</strong>. 
-          Diagrams let you visualize, communicate, and plan before building.
-        </p>
+          <p class="fade-in">
+            As an architect, your primary language isn't just code anymore. It's
+            <strong>diagrams</strong>. Diagrams let you visualize, communicate,
+            and plan before building.
+          </p>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">Your Workflow</div>
-          <div class="mermaid">
-            graph TD
-                YOUR_BRAIN["🧠 Your Brain<br/><i>System Vision</i>"]
-                subgraph DIAGRAMS["📊 Diagrams"]
-                    FLOW["Flowcharts"]
-                    SEQUENCE["Sequence"]
-                    COMPONENT["Component"]
-                    ER["Data Models"]
-                    STATE["State"]
-                end
-                subgraph AI["🤖 AI Tools"]
-                    CURSOR["Cursor"]
-                    CLAUDE["Claude"]
-                end
-                subgraph CODE["💻 Working Code"]
-                    IMPL["Implementation"]
-                end
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">Your Workflow</div>
+            <div class="mermaid">
+              graph TD YOUR_BRAIN["🧠 Your Brain<br /><i>System Vision</i>"]
+              subgraph DIAGRAMS["📊 Diagrams"] FLOW["Flowcharts"]
+              SEQUENCE["Sequence"] COMPONENT["Component"] ER["Data Models"]
+              STATE["State"] end subgraph AI["🤖 AI Tools"] CURSOR["Cursor"]
+              CLAUDE["Claude"] end subgraph CODE["💻 Working Code"]
+              IMPL["Implementation"] end YOUR_BRAIN --> DIAGRAMS DIAGRAMS --> AI
+              AI --> CODE CODE --> |"Review"| YOUR_BRAIN style DIAGRAMS
+              fill:#1a3d3a,stroke:#4db6ac
+            </div>
+          </div>
 
-                YOUR_BRAIN --> DIAGRAMS
-                DIAGRAMS --> AI
-                AI --> CODE
-                CODE --> |"Review"| YOUR_BRAIN
+          <div class="diagram-gallery">
+            <!-- Flowchart -->
+            <div class="diagram-card fade-in">
+              <div class="diagram-header">
+                <span class="diagram-type">1. Flowchart</span>
+                <span class="diagram-use"
+                  >Decision logic, user flows, algorithms</span
+                >
+              </div>
+              <div class="diagram-body">
+                <div class="mermaid">
+                  flowchart TD START([Start]) --> INPUT{Get User Input?} INPUT
+                  -- Yes --> PROCESS[Process Data] PROCESS --> OUTPUT[Display
+                  Result] OUTPUT --> END([End]) INPUT -- No --> END style START
+                  fill:#4db6ac,color:#fff style END fill:#4db6ac,color:#fff
+                </div>
+              </div>
+            </div>
 
-                style DIAGRAMS fill:#1a3d3a,stroke:#4db6ac
+            <!-- Sequence Diagram -->
+            <div class="diagram-card fade-in">
+              <div class="diagram-header">
+                <span class="diagram-type">2. Sequence Diagram</span>
+                <span class="diagram-use"
+                  >API interactions, system communication</span
+                >
+              </div>
+              <div class="diagram-body">
+                <div class="mermaid">
+                  sequenceDiagram participant User participant App as
+                  Application participant API as External API participant DB as
+                  Database User->>App: Request data App->>API: Fetch external
+                  data API-->>App: Return data App->>DB: Store/Cache data
+                  DB-->>App: Confirmed App-->>User: Display data
+                </div>
+              </div>
+            </div>
+
+            <!-- Component Diagram -->
+            <div class="diagram-card fade-in">
+              <div class="diagram-header">
+                <span class="diagram-type">3. Component Diagram</span>
+                <span class="diagram-use"
+                  >System architecture, module boundaries</span
+                >
+              </div>
+              <div class="diagram-body">
+                <div class="mermaid">
+                  graph TD subgraph CLIENT["🌐 Client"] UI[User Interface]
+                  CLI[CLI Tool] end subgraph CORE["⚙️ Core Logic"] AUTH[Auth
+                  Service] DATA[Data Processor] end subgraph STORAGE["🗄️
+                  Storage"] DB[(Database)] CACHE[(Cache)] end UI --> CORE CLI
+                  --> CORE CORE --> STORAGE style CLIENT
+                  fill:#2d2d44,stroke:#7986cb style CORE
+                  fill:#2d2d44,stroke:#ffd54f style STORAGE
+                  fill:#2d2d44,stroke:#4db6ac
+                </div>
+              </div>
+            </div>
+
+            <!-- ER Diagram -->
+            <div class="diagram-card fade-in">
+              <div class="diagram-header">
+                <span class="diagram-type">4. Entity-Relationship Diagram</span>
+                <span class="diagram-use">Database design, data models</span>
+              </div>
+              <div class="diagram-body">
+                <div class="mermaid">
+                  erDiagram USER ||--o{ ORDER : places ORDER ||--|{ LINE_ITEM :
+                  contains PRODUCT }|--o{ LINE_ITEM : includes USER { int
+                  user_id PK string name string email } ORDER { int order_id PK
+                  int user_id FK date created_at } PRODUCT { int product_id PK
+                  string name float price }
+                </div>
+              </div>
+            </div>
+
+            <!-- State Diagram -->
+            <div class="diagram-card fade-in">
+              <div class="diagram-header">
+                <span class="diagram-type">5. State Diagram</span>
+                <span class="diagram-use">Workflows, lifecycle management</span>
+              </div>
+              <div class="diagram-body">
+                <div class="mermaid">
+                  stateDiagram-v2 [*] --> Idle Idle --> Authenticating: User
+                  logs in Authenticating --> Authenticated: Success
+                  Authenticating --> Idle: Failure Authenticated --> Editing:
+                  Start editing Editing --> Saving: Save Saving -->
+                  Authenticated: Success Saving --> Editing: Failure
+                  Authenticated --> [*]: Log out
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="diagram-gallery">
-          
-          <!-- Flowchart -->
-          <div class="diagram-card fade-in">
-            <div class="diagram-header">
-              <span class="diagram-type">1. Flowchart</span>
-              <span class="diagram-use">Decision logic, user flows, algorithms</span>
-            </div>
-            <div class="diagram-body">
-              <div class="mermaid">
-                flowchart TD
-                    START([Start]) --> INPUT{Get User Input?}
-                    INPUT -- Yes --> PROCESS[Process Data]
-                    PROCESS --> OUTPUT[Display Result]
-                    OUTPUT --> END([End])
-                    INPUT -- No --> END
-                    
-                    style START fill:#4db6ac,color:#fff
-                    style END fill:#4db6ac,color:#fff
-              </div>
-            </div>
-          </div>
-
-          <!-- Sequence Diagram -->
-          <div class="diagram-card fade-in">
-            <div class="diagram-header">
-              <span class="diagram-type">2. Sequence Diagram</span>
-              <span class="diagram-use">API interactions, system communication</span>
-            </div>
-            <div class="diagram-body">
-              <div class="mermaid">
-                sequenceDiagram
-                    participant User
-                    participant App as Application
-                    participant API as External API
-                    participant DB as Database
-
-                    User->>App: Request data
-                    App->>API: Fetch external data
-                    API-->>App: Return data
-                    App->>DB: Store/Cache data
-                    DB-->>App: Confirmed
-                    App-->>User: Display data
-              </div>
-            </div>
-          </div>
-
-          <!-- Component Diagram -->
-          <div class="diagram-card fade-in">
-            <div class="diagram-header">
-              <span class="diagram-type">3. Component Diagram</span>
-              <span class="diagram-use">System architecture, module boundaries</span>
-            </div>
-            <div class="diagram-body">
-              <div class="mermaid">
-                graph TD
-                    subgraph CLIENT["🌐 Client"]
-                        UI[User Interface]
-                        CLI[CLI Tool]
-                    end
-                    subgraph CORE["⚙️ Core Logic"]
-                        AUTH[Auth Service]
-                        DATA[Data Processor]
-                    end
-                    subgraph STORAGE["🗄️ Storage"]
-                        DB[(Database)]
-                        CACHE[(Cache)]
-                    end
-
-                    UI --> CORE
-                    CLI --> CORE
-                    CORE --> STORAGE
-                    
-                    style CLIENT fill:#2d2d44,stroke:#7986cb
-                    style CORE fill:#2d2d44,stroke:#ffd54f
-                    style STORAGE fill:#2d2d44,stroke:#4db6ac
-              </div>
-            </div>
-          </div>
-
-          <!-- ER Diagram -->
-          <div class="diagram-card fade-in">
-            <div class="diagram-header">
-              <span class="diagram-type">4. Entity-Relationship Diagram</span>
-              <span class="diagram-use">Database design, data models</span>
-            </div>
-            <div class="diagram-body">
-              <div class="mermaid">
-                erDiagram
-                    USER ||--o{ ORDER : places
-                    ORDER ||--|{ LINE_ITEM : contains
-                    PRODUCT }|--o{ LINE_ITEM : includes
-                    
-                    USER {
-                        int user_id PK
-                        string name
-                        string email
-                    }
-                    ORDER {
-                        int order_id PK
-                        int user_id FK
-                        date created_at
-                    }
-                    PRODUCT {
-                        int product_id PK
-                        string name
-                        float price
-                    }
-              </div>
-            </div>
-          </div>
-
-          <!-- State Diagram -->
-          <div class="diagram-card fade-in">
-            <div class="diagram-header">
-              <span class="diagram-type">5. State Diagram</span>
-              <span class="diagram-use">Workflows, lifecycle management</span>
-            </div>
-            <div class="diagram-body">
-              <div class="mermaid">
-                stateDiagram-v2
-                    [*] --> Idle
-                    Idle --> Authenticating: User logs in
-                    Authenticating --> Authenticated: Success
-                    Authenticating --> Idle: Failure
-                    Authenticated --> Editing: Start editing
-                    Editing --> Saving: Save
-                    Saving --> Authenticated: Success
-                    Saving --> Editing: Failure
-                    Authenticated --> [*]: Log out
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          QUIZ
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="quiz">
-      <div class="section-content">
-        <div class="quiz-container" data-answer="B">
-          <div class="quiz-header">
-            <span class="quiz-icon">🧠</span>
-            <h3 class="quiz-title">Knowledge Check</h3>
+      <section class="section" data-section="quiz">
+        <div class="section-content">
+          <div class="quiz-container" data-answer="B">
+            <div class="quiz-header">
+              <span class="quiz-icon">🧠</span>
+              <h3 class="quiz-title">Knowledge Check</h3>
+            </div>
+
+            <p class="quiz-question">
+              You want to show how a user's login request travels from the
+              frontend to the auth service to the database and back. Which
+              diagram is best?
+            </p>
+
+            <div class="quiz-options">
+              <div class="quiz-option" data-value="A">
+                <span class="quiz-option-letter">A</span>
+                <span>Flowchart — shows decision logic</span>
+              </div>
+              <div class="quiz-option" data-value="B">
+                <span class="quiz-option-letter">B</span>
+                <span
+                  >Sequence Diagram — shows communication between systems</span
+                >
+              </div>
+              <div class="quiz-option" data-value="C">
+                <span class="quiz-option-letter">C</span>
+                <span>ER Diagram — shows data relationships</span>
+              </div>
+              <div class="quiz-option" data-value="D">
+                <span class="quiz-option-letter">D</span>
+                <span>State Diagram — shows status changes</span>
+              </div>
+            </div>
+
+            <div
+              class="quiz-feedback"
+              data-correct-msg="Sequence diagrams are perfect for showing how different systems talk to each other in order!"
+              data-incorrect-msg="Think about what you're trying to show: the ORDER of communication between multiple systems."
+            ></div>
+
+            <button class="quiz-btn" disabled>Check Answer</button>
           </div>
-
-          <p class="quiz-question">
-            You want to show how a user's login request travels from the frontend 
-            to the auth service to the database and back. Which diagram is best?
-          </p>
-
-          <div class="quiz-options">
-            <div class="quiz-option" data-value="A">
-              <span class="quiz-option-letter">A</span>
-              <span>Flowchart — shows decision logic</span>
-            </div>
-            <div class="quiz-option" data-value="B">
-              <span class="quiz-option-letter">B</span>
-              <span>Sequence Diagram — shows communication between systems</span>
-            </div>
-            <div class="quiz-option" data-value="C">
-              <span class="quiz-option-letter">C</span>
-              <span>ER Diagram — shows data relationships</span>
-            </div>
-            <div class="quiz-option" data-value="D">
-              <span class="quiz-option-letter">D</span>
-              <span>State Diagram — shows status changes</span>
-            </div>
-          </div>
-
-          <div class="quiz-feedback" 
-               data-correct-msg="Sequence diagrams are perfect for showing how different systems talk to each other in order!" 
-               data-incorrect-msg="Think about what you're trying to show: the ORDER of communication between multiple systems.">
-          </div>
-
-          <button class="quiz-btn" disabled>Check Answer</button>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          MINI PROJECT
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🔨 Mini-Project: The System Canvas</h2>
+      <section class="section" data-section="project">
+        <div class="section-content">
+          <h2 class="fade-in">🔨 Mini-Project: The System Canvas</h2>
 
-        <div class="story-block fade-in">
-          <p>
-            Choose a real application you use daily — a social media app, banking app, 
-            game, or anything else. You're going to reverse-engineer its architecture 
-            using diagrams, then use AI to help you build one small piece.
+          <div class="story-block fade-in">
+            <p>
+              Choose a real application you use daily — a social media app,
+              banking app, game, or anything else. You're going to
+              reverse-engineer its architecture using diagrams, then use AI to
+              help you build one small piece.
+            </p>
+          </div>
+
+          <h3 class="fade-in">Part 1: Diagram the System</h3>
+
+          <p class="fade-in">
+            Create all five essential diagrams for your chosen app:
           </p>
-        </div>
 
-        <h3 class="fade-in">Part 1: Diagram the System</h3>
+          <div class="concept-grid fade-in">
+            <div
+              class="concept-card"
+              style="border-top: 3px solid var(--accent-architect)"
+            >
+              <div class="concept-card-icon">📊</div>
+              <h4>Flowchart</h4>
+              <p>A key user journey (e.g., "posting a photo")</p>
+            </div>
 
-        <p class="fade-in">Create all five essential diagrams for your chosen app:</p>
+            <div
+              class="concept-card"
+              style="border-top: 3px solid var(--accent-architect)"
+            >
+              <div class="concept-card-icon">🔄</div>
+              <h4>Sequence</h4>
+              <p>How your app talks to backend/APIs</p>
+            </div>
 
-        <div class="concept-grid fade-in">
-          <div class="concept-card" style="border-top: 3px solid var(--accent-architect);">
-            <div class="concept-card-icon">📊</div>
-            <h4>Flowchart</h4>
-            <p>A key user journey (e.g., "posting a photo")</p>
+            <div
+              class="concept-card"
+              style="border-top: 3px solid var(--accent-architect)"
+            >
+              <div class="concept-card-icon">🧩</div>
+              <h4>Component</h4>
+              <p>The main architectural pieces</p>
+            </div>
+
+            <div
+              class="concept-card"
+              style="border-top: 3px solid var(--accent-architect)"
+            >
+              <div class="concept-card-icon">🗄️</div>
+              <h4>ER Diagram</h4>
+              <p>Simplified data model for core entity</p>
+            </div>
+
+            <div
+              class="concept-card"
+              style="border-top: 3px solid var(--accent-architect)"
+            >
+              <div class="concept-card-icon">🔁</div>
+              <h4>State</h4>
+              <p>Lifecycle of a key entity (e.g., Post status)</p>
+            </div>
           </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-architect);">
-            <div class="concept-card-icon">🔄</div>
-            <h4>Sequence</h4>
-            <p>How your app talks to backend/APIs</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-architect);">
-            <div class="concept-card-icon">🧩</div>
-            <h4>Component</h4>
-            <p>The main architectural pieces</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-architect);">
-            <div class="concept-card-icon">🗄️</div>
-            <h4>ER Diagram</h4>
-            <p>Simplified data model for core entity</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-architect);">
-            <div class="concept-card-icon">🔁</div>
-            <h4>State</h4>
-            <p>Lifecycle of a key entity (e.g., Post status)</p>
-          </div>
-        </div>
 
-        <h3 class="fade-in">Part 2: Direct AI to Build</h3>
+          <h3 class="fade-in">Part 2: Direct AI to Build</h3>
 
-        <div class="try-it-box fade-in">
-          <div class="try-it-header">
-            <span class="try-it-icon">🤖</span>
-            <h3 class="try-it-title">Work with Cursor</h3>
+          <div class="try-it-box fade-in">
+            <div class="try-it-header">
+              <span class="try-it-icon">🤖</span>
+              <h3 class="try-it-title">Work with Cursor</h3>
+            </div>
+
+            <ol class="try-it-steps">
+              <li>
+                <strong>Choose one small feature</strong><br />
+                E.g., "a function to validate user input" or "a class for a Post
+                object"
+              </li>
+              <li>
+                <strong>Write a clear prompt</strong><br />
+                Describe what you want in plain English. Reference your
+                diagrams.
+              </li>
+              <li>
+                <strong>Press Cmd+K in Cursor</strong><br />
+                Give your prompt to the AI and let it generate code.
+              </li>
+              <li>
+                <strong>Review the output</strong><br />
+                Read every line. Understand it. Ask AI to explain anything
+                unclear.
+              </li>
+              <li>
+                <strong>Iterate if needed</strong><br />
+                "Change this to use a dict instead of a list" — refine until
+                it's right.
+              </li>
+            </ol>
           </div>
 
-          <ol class="try-it-steps">
-            <li>
-              <strong>Choose one small feature</strong><br>
-              E.g., "a function to validate user input" or "a class for a Post object"
-            </li>
-            <li>
-              <strong>Write a clear prompt</strong><br>
-              Describe what you want in plain English. Reference your diagrams.
-            </li>
-            <li>
-              <strong>Press Cmd+K in Cursor</strong><br>
-              Give your prompt to the AI and let it generate code.
-            </li>
-            <li>
-              <strong>Review the output</strong><br>
-              Read every line. Understand it. Ask AI to explain anything unclear.
-            </li>
-            <li>
-              <strong>Iterate if needed</strong><br>
-              "Change this to use a dict instead of a list" — refine until it's right.
-            </li>
-          </ol>
-        </div>
+          <h3 class="fade-in">Deliverables</h3>
 
-        <h3 class="fade-in">Deliverables</h3>
-
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Folder Structure</span>
-          </div>
-          <div class="code-content">
-            <pre><code>bparker/ch4-architect/
+          <div class="code-block scale-in">
+            <div class="code-header">
+              <span class="code-language">Folder Structure</span>
+            </div>
+            <div class="code-content">
+              <pre><code>bparker/ch4-architect/
 ├── diagrams.md           <span class="comment"># All 5 diagrams in Mermaid</span>
 ├── feature.py            <span class="comment"># The code you built with AI</span>
 └── reflection.md         <span class="comment"># What you learned (1 page)</span></code></pre>
+            </div>
+          </div>
+
+          <div class="cta-box fade-in">
+            <h3>📝 Reflection Questions</h3>
+            <p style="text-align: left">
+              1. What did you learn about the chosen application's design?<br />
+              2. How effective were the diagrams in clarifying your thoughts?<br />
+              3. What worked well when directing AI? What was challenging?<br />
+              4. How did you review and validate the AI's output?
+            </p>
           </div>
         </div>
+      </section>
 
-        <div class="cta-box fade-in">
-          <h3>📝 Reflection Questions</h3>
-          <p style="text-align: left;">
-            1. What did you learn about the chosen application's design?<br>
-            2. How effective were the diagrams in clarifying your thoughts?<br>
-            3. What worked well when directing AI? What was challenging?<br>
-            4. How did you review and validate the AI's output?
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          THE ARCHITECT'S CREED
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="creed">
-      <div class="section-content">
-        
-        <div class="creed fade-in">
-          <h3>The Architect's Creed</h3>
-          <div class="creed-lines">
-            <p>I am not a typist. I am not a bug-fixer. I am an architect.</p>
-            <p>I see systems, not just code.</p>
-            <p>I speak in diagrams, not just syntax.</p>
-            <p>I direct the AI spirits, I do not serve them.</p>
-            <p>My mind designs. My tools build.</p>
-            <p>I build the future, one well-designed system at a time.</p>
+      <section class="section" data-section="creed">
+        <div class="section-content">
+          <div class="creed fade-in">
+            <h3>The Architect's Creed</h3>
+            <div class="creed-lines">
+              <p>I am not a typist. I am not a bug-fixer. I am an architect.</p>
+              <p>I see systems, not just code.</p>
+              <p>I speak in diagrams, not just syntax.</p>
+              <p>I direct the AI spirits, I do not serve them.</p>
+              <p>My mind designs. My tools build.</p>
+              <p>I build the future, one well-designed system at a time.</p>
+            </div>
+          </div>
+
+          <div class="cta-box fade-in">
+            <h3>🎉 You've Leveled Up!</h3>
+            <p>
+              You now understand the paradigm shift from builder to architect.
+              Continue to the next chapter to apply these skills.
+            </p>
+            <a href="../ch5-capstone1/index.html" class="cta-btn">
+              <span>Continue to Capstone I</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="cta-box fade-in">
-          <h3>🎉 You've Leveled Up!</h3>
-          <p>
-            You now understand the paradigm shift from builder to architect. 
-            Continue to the next chapter to apply these skills.
-          </p>
-          <a href="../ch5-capstone1/index.html" class="cta-btn">
-            <span>Continue to Capstone I</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
+    <!-- Bottom Navigation -->
+    <nav class="lesson-nav">
+      <button
+        class="nav-btn"
+        onclick="location.href='../ch3-magnetism/index.html'"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        Chapter 3
+      </button>
+      <button
+        class="nav-btn primary"
+        onclick="location.href='../ch5-capstone1/index.html'"
+      >
+        Capstone I
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
+    </nav>
 
-  </main>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="../../shared/js/lesson.js"></script>
 
-  <!-- Bottom Navigation -->
-  <nav class="lesson-nav">
-    <button class="nav-btn" onclick="location.href='../ch3-magnetism/index.html'">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      Chapter 3
-    </button>
-    <button class="nav-btn primary" onclick="location.href='../ch5-capstone1/index.html'">
-      Capstone I
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </button>
-  </nav>
-
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="../../shared/js/lesson.js"></script>
-  
-  <script>
-    // Animate creed lines
-    const creedObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const lines = entry.target.querySelectorAll('.creed-lines p');
-          anime({
-            targets: lines,
-            opacity: [0, 1],
-            translateY: [20, 0],
-            delay: anime.stagger(300),
-            duration: 800,
-            easing: 'easeOutExpo'
+    <script>
+      // Animate creed lines
+      const creedObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const lines = entry.target.querySelectorAll(".creed-lines p");
+              anime({
+                targets: lines,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                delay: anime.stagger(300),
+                duration: 800,
+                easing: "easeOutExpo",
+              });
+              creedObserver.unobserve(entry.target);
+            }
           });
-          creedObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+        },
+        { threshold: 0.5 }
+      );
 
-    document.querySelectorAll('.creed').forEach(creed => creedObserver.observe(creed));
-  </script>
-</body>
+      document
+        .querySelectorAll(".creed")
+        .forEach((creed) => creedObserver.observe(creed));
+    </script>
+  </body>
 </html>
-

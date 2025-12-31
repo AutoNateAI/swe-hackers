@@ -441,10 +441,21 @@ strong {
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
-  margin: var(--space-xl) 0;
+  margin: var(--space-xl) calc(-1 * var(--space-lg));
   border: 1px solid rgba(255, 255, 255, 0.05);
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: visible;
+  width: calc(100% + var(--space-lg) * 2);
+}
+
+/* Full-width diagram variant */
+.diagram-container.full-width {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  padding: var(--space-xl) var(--space-2xl);
 }
 
 .diagram-title {
@@ -457,39 +468,59 @@ strong {
 .mermaid {
   display: flex;
   justify-content: center;
-  min-width: max-content;
+  align-items: center;
   width: 100%;
-  overflow: visible;
+  min-height: 200px;
+  overflow: visible !important;
 }
 
 /* Mermaid SVG overrides to prevent label cutoff */
 .mermaid svg {
   max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* Force all SVG elements to be visible */
+.mermaid svg * {
   overflow: visible !important;
 }
 
 .mermaid .node rect,
 .mermaid .node polygon,
 .mermaid .node circle,
-.mermaid .node ellipse {
+.mermaid .node ellipse,
+.mermaid .node path {
   stroke-width: 2px;
 }
 
+/* Node labels - ensure padding and visibility */
 .mermaid .nodeLabel,
+.mermaid .label,
 .mermaid .edgeLabel,
-.mermaid text {
+.mermaid text,
+.mermaid tspan {
   font-family: var(--font-body) !important;
   font-size: 14px !important;
+  overflow: visible !important;
 }
 
+/* Edge labels background */
 .mermaid .edgeLabel {
   background: var(--bg-secondary) !important;
-  padding: 4px 8px !important;
+  padding: 4px 12px !important;
 }
 
-/* Ensure flowchart nodes have adequate padding for labels */
-.mermaid .node .label {
-  padding: 8px 12px;
+/* Subgraph titles */
+.mermaid .cluster-label {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+/* Flowchart specific - ensure nodes have space */
+.mermaid .flowchart-link {
+  stroke-width: 2px;
 }
 
 /* Custom diagram SVG styles */
@@ -1000,6 +1031,8 @@ strong {
   
   .diagram-container {
     padding: var(--space-xl) var(--space-2xl);
+    margin: var(--space-xl) calc(-1 * var(--space-2xl));
+    width: calc(100% + var(--space-2xl) * 2);
   }
 }
 
@@ -1012,6 +1045,12 @@ strong {
   
   .section-content {
     padding: var(--space-xl) var(--space-lg);
+  }
+  
+  .diagram-container {
+    margin: var(--space-xl) calc(-1 * var(--space-lg));
+    width: calc(100% + var(--space-lg) * 2);
+    padding: var(--space-lg);
   }
 }
 
@@ -1043,17 +1082,21 @@ strong {
   }
   
   .diagram-container {
-    padding: var(--space-lg) var(--space-md);
-    margin: var(--space-lg) calc(-1 * var(--space-md));
+    padding: var(--space-lg) var(--space-sm);
+    margin: var(--space-lg) calc(-1 * var(--space-lg));
+    width: calc(100% + var(--space-lg) * 2);
     border-radius: 0;
     border-left: none;
     border-right: none;
+    overflow-x: auto;
   }
   
   .mermaid .nodeLabel,
   .mermaid .edgeLabel,
-  .mermaid text {
-    font-size: 12px !important;
+  .mermaid .label,
+  .mermaid text,
+  .mermaid tspan {
+    font-size: 11px !important;
   }
 }
 

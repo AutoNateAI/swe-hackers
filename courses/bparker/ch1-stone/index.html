@@ -1,418 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 1: The Stone Remembers | The Architect's Return</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--accent-stone);
-      --chapter-gradient: var(--gradient-stone);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(141, 110, 99, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(109, 76, 65, 0.15) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--accent-stone);
-    }
-    
-    .story-block::before {
-      color: var(--accent-stone);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 1: The Stone Remembers | The Architect's Return</title>
 
-    /* Memory visualization - advanced */
-    .memory-diagram {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    @media (max-width: 768px) {
-      .memory-diagram {
-        grid-template-columns: 1fr;
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../shared/css/lesson.css" />
+
+    <!-- Mermaid for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <style>
+      :root {
+        --chapter-color: var(--accent-stone);
+        --chapter-gradient: var(--gradient-stone);
       }
-    }
 
-    .memory-panel {
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+      .hero::before {
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(141, 110, 99, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 70% 30%,
+            rgba(109, 76, 65, 0.15) 0%,
+            transparent 50%
+          );
+      }
 
-    .memory-panel h4 {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
+      .story-block {
+        border-left-color: var(--accent-stone);
+      }
 
-    .stack-frame {
-      background: var(--bg-secondary);
-      border: 1px solid var(--accent-stone);
-      border-radius: var(--radius-sm);
-      margin-bottom: 0.5rem;
-      overflow: hidden;
-    }
+      .story-block::before {
+        color: var(--accent-stone);
+      }
 
-    .stack-frame-header {
-      background: rgba(141, 110, 99, 0.2);
-      padding: 0.5rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--accent-stone);
-    }
+      /* Memory visualization - advanced */
+      .memory-diagram {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
 
-    .stack-frame-body {
-      padding: 0.75rem 1rem;
-    }
+      @media (max-width: 768px) {
+        .memory-diagram {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    .memory-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.25rem 0;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-    }
+      .memory-panel {
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-    .memory-row:last-child {
-      border-bottom: none;
-    }
+      .memory-panel h4 {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
 
-    .memory-address {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+      .stack-frame {
+        background: var(--bg-secondary);
+        border: 1px solid var(--accent-stone);
+        border-radius: var(--radius-sm);
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+      }
 
-    .memory-name {
-      font-family: var(--font-mono);
-      color: var(--accent-magnetism);
-    }
+      .stack-frame-header {
+        background: rgba(141, 110, 99, 0.2);
+        padding: 0.5rem 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-stone);
+      }
 
-    .memory-value {
-      font-family: var(--font-mono);
-      color: var(--accent-lightning);
-    }
+      .stack-frame-body {
+        padding: 0.75rem 1rem;
+      }
 
-    /* Comparison table */
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 2rem 0;
-    }
+      .memory-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+      }
 
-    .comparison-table th,
-    .comparison-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+      .memory-row:last-child {
+        border-bottom: none;
+      }
 
-    .comparison-table th {
-      background: var(--bg-tertiary);
-      color: var(--text-primary);
-      font-weight: 600;
-    }
+      .memory-address {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
 
-    .comparison-table tr:hover {
-      background: rgba(121, 134, 203, 0.05);
-    }
+      .memory-name {
+        font-family: var(--font-mono);
+        color: var(--accent-magnetism);
+      }
 
-    .lang-badge {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
+      .memory-value {
+        font-family: var(--font-mono);
+        color: var(--accent-lightning);
+      }
 
-    .lang-badge.python { background: #3776ab; color: white; }
-    .lang-badge.csharp { background: #68217a; color: white; }
-    .lang-badge.js { background: #f7df1e; color: black; }
+      /* Comparison table */
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+      }
 
-    /* Timeline */
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-      margin: 2rem 0;
-    }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--accent-stone);
-    }
+      .comparison-table th {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        font-weight: 600;
+      }
 
-    .timeline-item {
-      position: relative;
-      padding-bottom: 2rem;
-    }
+      .comparison-table tr:hover {
+        background: rgba(121, 134, 203, 0.05);
+      }
 
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2rem;
-      top: 0.5rem;
-      width: 12px;
-      height: 12px;
-      background: var(--accent-stone);
-      border-radius: 50%;
-      transform: translateX(-5px);
-    }
+      .lang-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
 
-    .timeline-item h4 {
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-  </style>
-</head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+      .lang-badge.python {
+        background: #3776ab;
+        color: white;
+      }
+      .lang-badge.csharp {
+        background: #68217a;
+        color: white;
+      }
+      .lang-badge.js {
+        background: #f7df1e;
+        color: black;
+      }
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="welcome" title="Welcome Back"></div>
-    <div class="progress-dot" data-section="mental-models" title="Mental Models"></div>
-    <div class="progress-dot" data-section="python-refresh" title="Python Refresh"></div>
-    <div class="progress-dot" data-section="memory-deep" title="Memory Deep Dive"></div>
-    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
-    <div class="progress-dot" data-section="cursor" title="Cursor Setup"></div>
-    <div class="progress-dot" data-section="project" title="Project"></div>
-  </nav>
+      /* Timeline */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+        margin: 2rem 0;
+      }
 
-  <main class="lesson-container">
-    
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--accent-stone);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-bottom: 2rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2rem;
+        top: 0.5rem;
+        width: 12px;
+        height: 12px;
+        background: var(--accent-stone);
+        border-radius: 50%;
+        transform: translateX(-5px);
+      }
+
+      .timeline-item h4 {
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Progress Tracker (Side) -->
+    <nav class="progress-tracker">
+      <div class="progress-dot active" data-section="hero" title="Start"></div>
+      <div
+        class="progress-dot"
+        data-section="welcome"
+        title="Welcome Back"
+      ></div>
+      <div
+        class="progress-dot"
+        data-section="mental-models"
+        title="Mental Models"
+      ></div>
+      <div
+        class="progress-dot"
+        data-section="python-refresh"
+        title="Python Refresh"
+      ></div>
+      <div
+        class="progress-dot"
+        data-section="memory-deep"
+        title="Memory Deep Dive"
+      ></div>
+      <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+      <div
+        class="progress-dot"
+        data-section="cursor"
+        title="Cursor Setup"
+      ></div>
+      <div class="progress-dot" data-section="project" title="Project"></div>
+    </nav>
+
+    <main class="lesson-container">
+      <!-- ═══════════════════════════════════════════════════════════════════════
          HERO SECTION
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Chapter 1 • Week 1</span>
-        <div class="hero-icon">🪨</div>
-        <h1>The Stone Remembers</h1>
-        <p class="hero-subtitle">
-          You once knew these lands. The concepts of memory, data, and state haven't changed — 
-          only the tools have grown sharper. Let the stone remind you what you already know.
-        </p>
-      </div>
-      
-      <div class="scroll-indicator">
-        <span>Scroll to begin your return</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
+      <section class="hero section" data-section="hero">
+        <div class="hero-content">
+          <span class="hero-chapter">Chapter 1 • Week 1</span>
+          <div class="hero-icon">🪨</div>
+          <h1>The Stone Remembers</h1>
+          <p class="hero-subtitle">
+            You once knew these lands. The concepts of memory, data, and state
+            haven't changed — only the tools have grown sharper. Let the stone
+            remind you what you already know.
+          </p>
+        </div>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+        <div class="scroll-indicator">
+          <span>Scroll to begin your return</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════
          WELCOME BACK
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="welcome">
-      <div class="section-content">
-        <h2 class="fade-in">🌅 Welcome Back, Architect</h2>
-        
-        <div class="story-block fade-in">
-          <p>
-            You've been away from the code for a while. Maybe 3 years, maybe 5. 
-            But here's what most "refresher" courses get wrong: they treat you like a beginner. 
-            You're not. The fundamental patterns of computing are still inside you — 
-            they just need to be <em>reawakened</em>.
+      <section class="section" data-section="welcome">
+        <div class="section-content">
+          <h2 class="fade-in">🌅 Welcome Back, Architect</h2>
+
+          <div class="story-block fade-in">
+            <p>
+              You've been away from the code for a while. Maybe 3 years, maybe
+              5. But here's what most "refresher" courses get wrong: they treat
+              you like a beginner. You're not. The fundamental patterns of
+              computing are still inside you — they just need to be
+              <em>reawakened</em>.
+            </p>
+          </div>
+
+          <p class="fade-in">
+            This isn't about memorizing syntax again. It's about reconnecting
+            with the
+            <strong>mental models</strong> that make programming intuitive. Once
+            you see the patterns, the syntax is just a detail.
           </p>
-        </div>
 
-        <p class="fade-in">
-          This isn't about memorizing syntax again. It's about reconnecting with the 
-          <strong>mental models</strong> that make programming intuitive. Once you see 
-          the patterns, the syntax is just a detail.
-        </p>
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">
+              Your Journey: From C#/JS to Python + AI
+            </div>
+            <div class="mermaid">
+              flowchart LR subgraph PAST["🏛️ What You Knew"] CSHARP["C# / .NET"]
+              JS["JavaScript"] HTML["HTML/CSS"] end subgraph BRIDGE["🌉 The
+              Bridge"] PATTERNS["Universal Patterns"] CONCEPTS["Core Concepts"]
+              end subgraph FUTURE["🚀 Where You're Going"] PYTHON["Python"]
+              AI["AI-Augmented Dev"] ARCHITECT["Systems Architect"] end PAST -->
+              BRIDGE BRIDGE --> FUTURE style PAST fill:#2d2d44,stroke:#68217a
+              style BRIDGE fill:#2d2d44,stroke:#8d6e63 style FUTURE
+              fill:#2d2d44,stroke:#4db6ac
+            </div>
+          </div>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">Your Journey: From C#/JS to Python + AI</div>
-          <div class="mermaid">
-            flowchart LR
-              subgraph PAST["🏛️ What You Knew"]
-                CSHARP["C# / .NET"]
-                JS["JavaScript"]
-                HTML["HTML/CSS"]
-              end
-              
-              subgraph BRIDGE["🌉 The Bridge"]
-                PATTERNS["Universal Patterns"]
-                CONCEPTS["Core Concepts"]
-              end
-              
-              subgraph FUTURE["🚀 Where You're Going"]
-                PYTHON["Python"]
-                AI["AI-Augmented Dev"]
-                ARCHITECT["Systems Architect"]
-              end
-              
-              PAST --> BRIDGE
-              BRIDGE --> FUTURE
-              
-              style PAST fill:#2d2d44,stroke:#68217a
-              style BRIDGE fill:#2d2d44,stroke:#8d6e63
-              style FUTURE fill:#2d2d44,stroke:#4db6ac
+          <div class="cta-box fade-in">
+            <h3>🧠 Remember This</h3>
+            <p>
+              <strong>Stone</strong> represents <em>memory</em> — how data
+              persists and is stored.<br />
+              <strong>Lightning</strong> represents <em>flow</em> — how data
+              moves and transforms.<br />
+              <strong>Magnetism</strong> represents <em>connection</em> — how
+              systems link together.
+            </p>
           </div>
         </div>
+      </section>
 
-        <div class="cta-box fade-in">
-          <h3>🧠 Remember This</h3>
-          <p>
-            <strong>Stone</strong> represents <em>memory</em> — how data persists and is stored.<br>
-            <strong>Lightning</strong> represents <em>flow</em> — how data moves and transforms.<br>
-            <strong>Magnetism</strong> represents <em>connection</em> — how systems link together.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          MENTAL MODELS
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="mental-models">
-      <div class="section-content">
-        <h2 class="fade-in">🧠 Mental Models: Variables as Memory</h2>
+      <section class="section" data-section="mental-models">
+        <div class="section-content">
+          <h2 class="fade-in">🧠 Mental Models: Variables as Memory</h2>
 
-        <p class="fade-in">
-          You remember <code>int x = 5;</code> from C#. You remember <code>let x = 5;</code> 
-          from JavaScript. Now in Python, it's just <code>x = 5</code>. But beneath the 
-          syntax, the same thing is happening:
-        </p>
-
-        <div class="story-block fade-in">
-          <p>
-            A variable is a <strong>named location in memory</strong>. Think of your brain: 
-            when someone says "your childhood home," you immediately recall an address, 
-            an image, feelings. The word triggers the memory. Variables are the same — 
-            names that trigger memory retrieval.
+          <p class="fade-in">
+            You remember <code>int x = 5;</code> from C#. You remember
+            <code>let x = 5;</code> from JavaScript. Now in Python, it's just
+            <code>x = 5</code>. But beneath the syntax, the same thing is
+            happening:
           </p>
-        </div>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">The Universal Pattern: Name → Location → Value</div>
-          <div class="mermaid">
-            flowchart LR
-              subgraph ASSIGNMENT["x = 42"]
-                NAME["x<br/><small>The Name</small>"]
-                POINTS["→"]
-                LOC["0x7f3a<br/><small>Memory Location</small>"]
-                STORES["→"]
-                VALUE["42<br/><small>The Value</small>"]
-              end
-              
-              NAME --> LOC
-              LOC --> VALUE
-              
-              style NAME fill:#7986cb,color:#fff
-              style LOC fill:#6d4c41,color:#fff
-              style VALUE fill:#ffd54f,color:#000
+          <div class="story-block fade-in">
+            <p>
+              A variable is a <strong>named location in memory</strong>. Think
+              of your brain: when someone says "your childhood home," you
+              immediately recall an address, an image, feelings. The word
+              triggers the memory. Variables are the same — names that trigger
+              memory retrieval.
+            </p>
+          </div>
+
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">
+              The Universal Pattern: Name → Location → Value
+            </div>
+            <div class="mermaid">
+              flowchart LR subgraph ASSIGNMENT["x = 42"] NAME["x<br /><small
+                >The Name</small
+              >"] POINTS["→"] LOC["0x7f3a<br /><small>Memory Location</small>"]
+              STORES["→"] VALUE["42<br /><small>The Value</small>"] end NAME -->
+              LOC LOC --> VALUE style NAME fill:#7986cb,color:#fff style LOC
+              fill:#6d4c41,color:#fff style VALUE fill:#ffd54f,color:#000
+            </div>
+          </div>
+
+          <h3 class="fade-in">
+            Language Comparison: Same Concept, Different Syntax
+          </h3>
+
+          <table class="comparison-table fade-in">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th><span class="lang-badge csharp">C#</span></th>
+                <th><span class="lang-badge js">JavaScript</span></th>
+                <th><span class="lang-badge python">Python</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Variable declaration</td>
+                <td><code>int x = 5;</code></td>
+                <td><code>let x = 5;</code></td>
+                <td><code>x = 5</code></td>
+              </tr>
+              <tr>
+                <td>String</td>
+                <td><code>string s = "hi";</code></td>
+                <td><code>let s = "hi";</code></td>
+                <td><code>s = "hi"</code></td>
+              </tr>
+              <tr>
+                <td>List/Array</td>
+                <td><code>int[] arr = {1,2};</code></td>
+                <td><code>let arr = [1,2];</code></td>
+                <td><code>arr = [1, 2]</code></td>
+              </tr>
+              <tr>
+                <td>Dictionary/Object</td>
+                <td><code>Dictionary&lt;...&gt;</code></td>
+                <td><code>let obj = {}</code></td>
+                <td><code>obj = {}</code></td>
+              </tr>
+              <tr>
+                <td>Type checking</td>
+                <td>Compile-time (static)</td>
+                <td>Runtime (dynamic)</td>
+                <td>Runtime (dynamic)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div
+            class="cta-box fade-in"
+            style="border-color: var(--accent-lightning)"
+          >
+            <h3>💡 Key Insight</h3>
+            <p>
+              Python is <strong>dynamically typed</strong> like JavaScript, not
+              statically typed like C#. You don't declare types — Python figures
+              them out at runtime. This feels liberating, but you trade
+              compile-time error checking for runtime errors.
+              <em>Tools like Cursor's AI can help catch these issues.</em>
+            </p>
           </div>
         </div>
+      </section>
 
-        <h3 class="fade-in">Language Comparison: Same Concept, Different Syntax</h3>
-
-        <table class="comparison-table fade-in">
-          <thead>
-            <tr>
-              <th>Concept</th>
-              <th><span class="lang-badge csharp">C#</span></th>
-              <th><span class="lang-badge js">JavaScript</span></th>
-              <th><span class="lang-badge python">Python</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Variable declaration</td>
-              <td><code>int x = 5;</code></td>
-              <td><code>let x = 5;</code></td>
-              <td><code>x = 5</code></td>
-            </tr>
-            <tr>
-              <td>String</td>
-              <td><code>string s = "hi";</code></td>
-              <td><code>let s = "hi";</code></td>
-              <td><code>s = "hi"</code></td>
-            </tr>
-            <tr>
-              <td>List/Array</td>
-              <td><code>int[] arr = {1,2};</code></td>
-              <td><code>let arr = [1,2];</code></td>
-              <td><code>arr = [1, 2]</code></td>
-            </tr>
-            <tr>
-              <td>Dictionary/Object</td>
-              <td><code>Dictionary&lt;...&gt;</code></td>
-              <td><code>let obj = {}</code></td>
-              <td><code>obj = {}</code></td>
-            </tr>
-            <tr>
-              <td>Type checking</td>
-              <td>Compile-time (static)</td>
-              <td>Runtime (dynamic)</td>
-              <td>Runtime (dynamic)</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="cta-box fade-in" style="border-color: var(--accent-lightning);">
-          <h3>💡 Key Insight</h3>
-          <p>
-            Python is <strong>dynamically typed</strong> like JavaScript, not statically typed 
-            like C#. You don't declare types — Python figures them out at runtime. 
-            This feels liberating, but you trade compile-time error checking for runtime errors. 
-            <em>Tools like Cursor's AI can help catch these issues.</em>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          PYTHON REFRESH
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="python-refresh">
-      <div class="section-content">
-        <h2 class="fade-in">🐍 Python Syntax Refresh</h2>
+      <section class="section" data-section="python-refresh">
+        <div class="section-content">
+          <h2 class="fade-in">🐍 Python Syntax Refresh</h2>
 
-        <p class="fade-in">
-          Let's rapidly go through Python's core syntax. You'll recognize most concepts; 
-          we're just learning the Python way of expressing them.
-        </p>
+          <p class="fade-in">
+            Let's rapidly go through Python's core syntax. You'll recognize most
+            concepts; we're just learning the Python way of expressing them.
+          </p>
 
-        <h3 class="fade-in">Variables & Data Types</h3>
+          <h3 class="fade-in">Variables & Data Types</h3>
 
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="comment"># Variables - no type declaration needed</span>
+          <div class="code-block scale-in">
+            <div class="code-header">
+              <span class="code-language">Python</span>
+              <button class="code-copy">Copy</button>
+            </div>
+            <div class="code-content">
+              <pre><code><span class="comment"># Variables - no type declaration needed</span>
 <span class="variable">name</span> = <span class="string">"Brittany"</span>        <span class="comment"># str (string)</span>
 <span class="variable">age</span> = <span class="number">30</span>                  <span class="comment"># int (integer)</span>
 <span class="variable">score</span> = <span class="number">98.5</span>              <span class="comment"># float (decimal)</span>
@@ -426,26 +462,27 @@
 <span class="comment"># Type checking at runtime</span>
 <span class="function">print</span>(<span class="function">type</span>(name))     <span class="comment"># &lt;class 'str'&gt;</span>
 <span class="function">print</span>(<span class="function">type</span>(skills))   <span class="comment"># &lt;class 'list'&gt;</span></code></pre>
+            </div>
+            <div class="code-caption">
+              <p>
+                <span class="icon">💡</span>
+                <strong>From C#:</strong>
+                <code>List&lt;string&gt;</code> becomes <code>list</code>.
+                <code>Dictionary&lt;string, int&gt;</code> becomes
+                <code>dict</code>. No generics needed — Python infers types.
+              </p>
+            </div>
           </div>
-          <div class="code-caption">
-            <p>
-              <span class="icon">💡</span>
-              <strong>From C#:</strong> <code>List&lt;string&gt;</code> becomes <code>list</code>. 
-              <code>Dictionary&lt;string, int&gt;</code> becomes <code>dict</code>. 
-              No generics needed — Python infers types.
-            </p>
-          </div>
-        </div>
 
-        <h3 class="fade-in">Functions</h3>
+          <h3 class="fade-in">Functions</h3>
 
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="comment"># Function definition - def instead of function or void</span>
+          <div class="code-block scale-in">
+            <div class="code-header">
+              <span class="code-language">Python</span>
+              <button class="code-copy">Copy</button>
+            </div>
+            <div class="code-content">
+              <pre><code><span class="comment"># Function definition - def instead of function or void</span>
 <span class="keyword">def</span> <span class="function">greet</span>(name: <span class="variable">str</span>) -> <span class="variable">str</span>:
     <span class="string">"""Return a greeting message."""</span>
     <span class="keyword">return</span> <span class="string">f"Hello, </span>{name}<span class="string">!"</span>
@@ -462,25 +499,26 @@
 <span class="function">print</span>(greet(<span class="string">"Brittany"</span>))  <span class="comment"># Hello, Brittany!</span>
 <span class="function">print</span>(power(<span class="number">3</span>))           <span class="comment"># 9 (3^2)</span>
 <span class="function">print</span>(power(<span class="number">3</span>, <span class="number">3</span>))        <span class="comment"># 27 (3^3)</span></code></pre>
+            </div>
+            <div class="code-caption">
+              <p>
+                <span class="icon">💡</span>
+                <strong>Note:</strong> Python uses
+                <strong>indentation</strong> instead of braces <code>{}</code>.
+                This is the biggest adjustment from C#/JS. 4 spaces is standard.
+              </p>
+            </div>
           </div>
-          <div class="code-caption">
-            <p>
-              <span class="icon">💡</span>
-              <strong>Note:</strong> Python uses <strong>indentation</strong> instead of braces <code>{}</code>. 
-              This is the biggest adjustment from C#/JS. 4 spaces is standard.
-            </p>
-          </div>
-        </div>
 
-        <h3 class="fade-in">Control Flow</h3>
+          <h3 class="fade-in">Control Flow</h3>
 
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="comment"># if/elif/else - note: elif not else if</span>
+          <div class="code-block scale-in">
+            <div class="code-header">
+              <span class="code-language">Python</span>
+              <button class="code-copy">Copy</button>
+            </div>
+            <div class="code-content">
+              <pre><code><span class="comment"># if/elif/else - note: elif not else if</span>
 <span class="variable">score</span> = <span class="number">85</span>
 
 <span class="keyword">if</span> score >= <span class="number">90</span>:
@@ -505,103 +543,98 @@
 <span class="keyword">while</span> count < <span class="number">3</span>:
     <span class="function">print</span>(count)
     count += <span class="number">1</span></code></pre>
-          </div>
-          <div class="code-caption">
-            <p>
-              <span class="icon">💡</span>
-              <strong>From C#:</strong> <code>foreach (var item in list)</code> becomes 
-              <code>for item in list:</code>. Much cleaner!
-            </p>
+            </div>
+            <div class="code-caption">
+              <p>
+                <span class="icon">💡</span>
+                <strong>From C#:</strong>
+                <code>foreach (var item in list)</code> becomes
+                <code>for item in list:</code>. Much cleaner!
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          MEMORY DEEP DIVE
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="memory-deep">
-      <div class="section-content">
-        <h2 class="fade-in">🔬 Memory Deep Dive: How Python Sees Data</h2>
+      <section class="section" data-section="memory-deep">
+        <div class="section-content">
+          <h2 class="fade-in">🔬 Memory Deep Dive: How Python Sees Data</h2>
 
-        <p class="fade-in">
-          This is where your CS background becomes an advantage. Let's look at what's 
-          <em>actually</em> happening in memory when you write Python code.
-        </p>
+          <p class="fade-in">
+            This is where your CS background becomes an advantage. Let's look at
+            what's
+            <em>actually</em> happening in memory when you write Python code.
+          </p>
 
-        <div class="memory-diagram fade-in">
-          <div class="memory-panel">
-            <h4>📝 Your Code</h4>
-            <div class="code-block" style="margin: 0;">
-              <div class="code-content">
-                <pre><code>name = <span class="string">"Brittany"</span>
+          <div class="memory-diagram fade-in">
+            <div class="memory-panel">
+              <h4>📝 Your Code</h4>
+              <div class="code-block" style="margin: 0">
+                <div class="code-content">
+                  <pre><code>name = <span class="string">"Brittany"</span>
 age = <span class="number">30</span>
 skills = [<span class="string">"C#"</span>, <span class="string">"Python"</span>]</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="memory-panel">
+              <h4>💾 Python's Memory</h4>
+              <div class="stack-frame">
+                <div class="stack-frame-header">Local Namespace</div>
+                <div class="stack-frame-body">
+                  <div class="memory-row">
+                    <span class="memory-name">name</span>
+                    <span class="memory-value">→ str "Brittany"</span>
+                  </div>
+                  <div class="memory-row">
+                    <span class="memory-name">age</span>
+                    <span class="memory-value">→ int 30</span>
+                  </div>
+                  <div class="memory-row">
+                    <span class="memory-name">skills</span>
+                    <span class="memory-value">→ list [ref, ref]</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="memory-panel">
-            <h4>💾 Python's Memory</h4>
-            <div class="stack-frame">
-              <div class="stack-frame-header">Local Namespace</div>
-              <div class="stack-frame-body">
-                <div class="memory-row">
-                  <span class="memory-name">name</span>
-                  <span class="memory-value">→ str "Brittany"</span>
-                </div>
-                <div class="memory-row">
-                  <span class="memory-name">age</span>
-                  <span class="memory-value">→ int 30</span>
-                </div>
-                <div class="memory-row">
-                  <span class="memory-name">skills</span>
-                  <span class="memory-value">→ list [ref, ref]</span>
-                </div>
-              </div>
+          <div class="story-block fade-in">
+            <p>
+              In Python, <strong>everything is an object</strong>. When you
+              write <code>age = 30</code>, you're not putting the number 30 into
+              a variable. You're creating an integer object with value 30, and
+              making <code>age</code> point to it. This is why Python is called
+              a "reference-based" language.
+            </p>
+          </div>
+
+          <h3 class="fade-in">Mutable vs Immutable</h3>
+
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">The Critical Distinction</div>
+            <div class="mermaid">
+              flowchart TB subgraph IMMUTABLE["🔒 Immutable (Cannot Change)"]
+              INT["int<br />42"] STR["str<br />'hello'"] TUPLE["tuple<br />(1,
+              2, 3)"] end subgraph MUTABLE["🔓 Mutable (Can Change)"]
+              LIST["list<br />[1, 2, 3]"] DICT["dict<br />{'key': 'val'}"]
+              SET["set<br />{1, 2, 3}"] end style IMMUTABLE
+              fill:#2d2d44,stroke:#4caf50 style MUTABLE
+              fill:#2d2d44,stroke:#ff9800
             </div>
           </div>
-        </div>
 
-        <div class="story-block fade-in">
-          <p>
-            In Python, <strong>everything is an object</strong>. When you write <code>age = 30</code>, 
-            you're not putting the number 30 into a variable. You're creating an integer object 
-            with value 30, and making <code>age</code> point to it. This is why Python is called 
-            a "reference-based" language.
-          </p>
-        </div>
-
-        <h3 class="fade-in">Mutable vs Immutable</h3>
-
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">The Critical Distinction</div>
-          <div class="mermaid">
-            flowchart TB
-              subgraph IMMUTABLE["🔒 Immutable (Cannot Change)"]
-                INT["int<br/>42"]
-                STR["str<br/>'hello'"]
-                TUPLE["tuple<br/>(1, 2, 3)"]
-              end
-              
-              subgraph MUTABLE["🔓 Mutable (Can Change)"]
-                LIST["list<br/>[1, 2, 3]"]
-                DICT["dict<br/>{'key': 'val'}"]
-                SET["set<br/>{1, 2, 3}"]
-              end
-              
-              style IMMUTABLE fill:#2d2d44,stroke:#4caf50
-              style MUTABLE fill:#2d2d44,stroke:#ff9800
-          </div>
-        </div>
-
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="comment"># Immutable: Creates new object, doesn't modify</span>
+          <div class="code-block scale-in">
+            <div class="code-header">
+              <span class="code-language">Python</span>
+              <button class="code-copy">Copy</button>
+            </div>
+            <div class="code-content">
+              <pre><code><span class="comment"># Immutable: Creates new object, doesn't modify</span>
 <span class="variable">x</span> = <span class="number">5</span>
 <span class="variable">y</span> = x       <span class="comment"># y points to same object as x</span>
 <span class="variable">x</span> = x + <span class="number">1</span>   <span class="comment"># x now points to NEW object (6)</span>
@@ -615,238 +648,265 @@ a.<span class="function">append</span>(<span class="number">4</span>) <span clas
 
 <span class="comment"># To avoid this, make a copy</span>
 <span class="variable">c</span> = a.<span class="function">copy</span>()  <span class="comment"># or a[:] or list(a)</span></code></pre>
-          </div>
-          <div class="code-caption">
-            <p>
-              <span class="icon">⚠️</span>
-              <strong>Classic Bug:</strong> Accidentally modifying a shared mutable object. 
-              If you pass a list to a function and modify it, the caller sees those changes!
-            </p>
+            </div>
+            <div class="code-caption">
+              <p>
+                <span class="icon">⚠️</span>
+                <strong>Classic Bug:</strong> Accidentally modifying a shared
+                mutable object. If you pass a list to a function and modify it,
+                the caller sees those changes!
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          QUIZ
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="quiz">
-      <div class="section-content">
-        <div class="quiz-container" data-answer="C">
-          <div class="quiz-header">
-            <span class="quiz-icon">🧠</span>
-            <h3 class="quiz-title">Knowledge Check</h3>
-          </div>
-
-          <div class="quiz-progress">
-            <div class="quiz-progress-dot active"></div>
-            <div class="quiz-progress-dot"></div>
-          </div>
-
-          <p class="quiz-question">
-            What will be printed?
-            <br><br>
-            <code>
-              a = [1, 2, 3]<br>
-              b = a<br>
-              b.append(4)<br>
-              print(len(a))
-            </code>
-          </p>
-
-          <div class="quiz-options">
-            <div class="quiz-option" data-value="A">
-              <span class="quiz-option-letter">A</span>
-              <span><code>3</code> — a is unchanged, b is a separate copy</span>
+      <section class="section" data-section="quiz">
+        <div class="section-content">
+          <div class="quiz-container" data-answer="C">
+            <div class="quiz-header">
+              <span class="quiz-icon">🧠</span>
+              <h3 class="quiz-title">Knowledge Check</h3>
             </div>
-            <div class="quiz-option" data-value="B">
-              <span class="quiz-option-letter">B</span>
-              <span><code>Error</code> — you can't append to a referenced list</span>
-            </div>
-            <div class="quiz-option" data-value="C">
-              <span class="quiz-option-letter">C</span>
-              <span><code>4</code> — both a and b point to the same list</span>
-            </div>
-            <div class="quiz-option" data-value="D">
-              <span class="quiz-option-letter">D</span>
-              <span><code>None</code> — append returns nothing</span>
-            </div>
-          </div>
 
-          <div class="quiz-feedback" 
-               data-correct-msg="Lists are mutable and b = a makes them share the same object. This is a common gotcha!" 
-               data-incorrect-msg="Remember: lists are mutable. b = a doesn't copy the list; they both reference the same object.">
-          </div>
+            <div class="quiz-progress">
+              <div class="quiz-progress-dot active"></div>
+              <div class="quiz-progress-dot"></div>
+            </div>
 
-          <button class="quiz-btn" disabled>Check Answer</button>
+            <p class="quiz-question">
+              What will be printed?
+              <br /><br />
+              <code>
+                a = [1, 2, 3]<br />
+                b = a<br />
+                b.append(4)<br />
+                print(len(a))
+              </code>
+            </p>
+
+            <div class="quiz-options">
+              <div class="quiz-option" data-value="A">
+                <span class="quiz-option-letter">A</span>
+                <span
+                  ><code>3</code> — a is unchanged, b is a separate copy</span
+                >
+              </div>
+              <div class="quiz-option" data-value="B">
+                <span class="quiz-option-letter">B</span>
+                <span
+                  ><code>Error</code> — you can't append to a referenced
+                  list</span
+                >
+              </div>
+              <div class="quiz-option" data-value="C">
+                <span class="quiz-option-letter">C</span>
+                <span
+                  ><code>4</code> — both a and b point to the same list</span
+                >
+              </div>
+              <div class="quiz-option" data-value="D">
+                <span class="quiz-option-letter">D</span>
+                <span><code>None</code> — append returns nothing</span>
+              </div>
+            </div>
+
+            <div
+              class="quiz-feedback"
+              data-correct-msg="Lists are mutable and b = a makes them share the same object. This is a common gotcha!"
+              data-incorrect-msg="Remember: lists are mutable. b = a doesn't copy the list; they both reference the same object."
+            ></div>
+
+            <button class="quiz-btn" disabled>Check Answer</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          CURSOR SETUP
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="cursor">
-      <div class="section-content">
-        <h2 class="fade-in">🎯 Setting Up Cursor: Your AI Copilot</h2>
+      <section class="section" data-section="cursor">
+        <div class="section-content">
+          <h2 class="fade-in">🎯 Setting Up Cursor: Your AI Copilot</h2>
 
-        <p class="fade-in">
-          Cursor is an AI-enhanced code editor (fork of VS Code). It's the tool that will 
-          help you code 10x faster by leveraging AI for code generation, explanation, and review.
-        </p>
+          <p class="fade-in">
+            Cursor is an AI-enhanced code editor (fork of VS Code). It's the
+            tool that will help you code 10x faster by leveraging AI for code
+            generation, explanation, and review.
+          </p>
 
-        <div class="try-it-box fade-in">
-          <div class="try-it-header">
-            <span class="try-it-icon">🔧</span>
-            <h3 class="try-it-title">Setup Steps</h3>
-          </div>
+          <div class="try-it-box fade-in">
+            <div class="try-it-header">
+              <span class="try-it-icon">🔧</span>
+              <h3 class="try-it-title">Setup Steps</h3>
+            </div>
 
-          <ol class="try-it-steps">
-            <li>
-              <strong>Download Cursor</strong><br>
-              Go to <a href="https://cursor.sh" target="_blank">cursor.sh</a> and download for your OS.
-            </li>
-            <li>
-              <strong>Install Python</strong><br>
-              If not installed: <a href="https://python.org/downloads" target="_blank">python.org/downloads</a><br>
-              Verify: Open terminal and run <code>python --version</code>
-            </li>
-            <li>
-              <strong>Clone your repository</strong><br>
-              <div class="code-block" style="margin: 0.5rem 0;">
-                <div class="code-content">
-                  <pre><code>git clone https://github.com/nathanbaker-ao/swe-hackers.git
+            <ol class="try-it-steps">
+              <li>
+                <strong>Download Cursor</strong><br />
+                Go to
+                <a href="https://cursor.sh" target="_blank">cursor.sh</a> and
+                download for your OS.
+              </li>
+              <li>
+                <strong>Install Python</strong><br />
+                If not installed:
+                <a href="https://python.org/downloads" target="_blank"
+                  >python.org/downloads</a
+                ><br />
+                Verify: Open terminal and run <code>python --version</code>
+              </li>
+              <li>
+                <strong>Clone your repository</strong><br />
+                <div class="code-block" style="margin: 0.5rem 0">
+                  <div class="code-content">
+                    <pre><code>git clone https://github.com/nathanbaker-ao/swe-hackers.git
 cd swe-hackers/bparker</code></pre>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li>
-              <strong>Open in Cursor</strong><br>
-              Launch Cursor → File → Open Folder → Select your cloned folder
-            </li>
-            <li>
-              <strong>Try the AI</strong><br>
-              Press <kbd>Cmd/Ctrl + K</kbd> to ask the AI anything. Try: "Explain what this file does"
-            </li>
-          </ol>
-        </div>
+              </li>
+              <li>
+                <strong>Open in Cursor</strong><br />
+                Launch Cursor → File → Open Folder → Select your cloned folder
+              </li>
+              <li>
+                <strong>Try the AI</strong><br />
+                Press <kbd>Cmd/Ctrl + K</kbd> to ask the AI anything. Try:
+                "Explain what this file does"
+              </li>
+            </ol>
+          </div>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">Your New Workflow</div>
-          <div class="mermaid">
-            flowchart LR
-              THINK["🧠 Think<br/><small>What do I want?</small>"]
-              ASK["💬 Ask AI<br/><small>Cmd+K in Cursor</small>"]
-              REVIEW["👀 Review<br/><small>Read the code</small>"]
-              REFINE["✏️ Refine<br/><small>Iterate if needed</small>"]
-              COMMIT["✅ Commit<br/><small>Push to GitHub</small>"]
-              
-              THINK --> ASK --> REVIEW --> REFINE --> COMMIT
-              REFINE -.->|Not right| ASK
-              
-              style THINK fill:#7986cb,color:#fff
-              style ASK fill:#ffd54f,color:#000
-              style REVIEW fill:#4db6ac,color:#fff
-              style REFINE fill:#ef5350,color:#fff
-              style COMMIT fill:#4caf50,color:#fff
+          <div class="diagram-container scale-in">
+            <div class="diagram-title">Your New Workflow</div>
+            <div class="mermaid">
+              flowchart LR THINK["🧠 Think<br /><small>What do I want?</small>"]
+              ASK["💬 Ask AI<br /><small>Cmd+K in Cursor</small>"] REVIEW["👀
+              Review<br /><small>Read the code</small>"] REFINE["✏️ Refine<br /><small
+                >Iterate if needed</small
+              >"] COMMIT["✅ Commit<br /><small>Push to GitHub</small>"] THINK
+              --> ASK --> REVIEW --> REFINE --> COMMIT REFINE -.->|Not right|
+              ASK style THINK fill:#7986cb,color:#fff style ASK
+              fill:#ffd54f,color:#000 style REVIEW fill:#4db6ac,color:#fff style
+              REFINE fill:#ef5350,color:#fff style COMMIT
+              fill:#4caf50,color:#fff
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════════════════════════════
          CHAPTER PROJECT
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🔨 Chapter Project: The Memory Keeper</h2>
+      <section class="section" data-section="project">
+        <div class="section-content">
+          <h2 class="fade-in">🔨 Chapter Project: The Memory Keeper</h2>
 
-        <div class="story-block fade-in">
-          <p>
-            Build a personal data journal that stores entries in memory and lets you 
-            search, update, and reflect on them. This project reinforces variables, 
-            data types, collections, and CRUD operations.
-          </p>
-        </div>
+          <div class="story-block fade-in">
+            <p>
+              Build a personal data journal that stores entries in memory and
+              lets you search, update, and reflect on them. This project
+              reinforces variables, data types, collections, and CRUD
+              operations.
+            </p>
+          </div>
 
-        <div class="terminal fade-in">
-          <div class="terminal-header">
-            <span class="terminal-dot red"></span>
-            <span class="terminal-dot yellow"></span>
-            <span class="terminal-dot green"></span>
+          <div class="terminal fade-in">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-input">python memory_keeper.py</span>
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output"
+                  >╔═══════════════════════════════════════╗</span
+                >
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output">║ 🪨 THE MEMORY KEEPER 🪨 ║</span>
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output"
+                  >╚═══════════════════════════════════════╝</span
+                >
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output"
+                  >[1] Add Entry [2] Search [3] List All [4] Exit</span
+                >
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output">Choose: </span>
+                <span class="terminal-input" style="color: #ffd54f">1</span>
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output">Title: </span>
+                <span class="terminal-input" style="color: #ffd54f"
+                  >First day back coding</span
+                >
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output">Content: </span>
+                <span class="terminal-input" style="color: #ffd54f"
+                  >Remembered how much I love building things!</span
+                >
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-output success"
+                  >✓ Entry saved with timestamp 2024-01-15 10:30</span
+                >
+              </div>
+            </div>
           </div>
-          <div class="terminal-body">
-            <div class="terminal-line">
-              <span class="terminal-prompt">$</span>
-              <span class="terminal-input">python memory_keeper.py</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">╔═══════════════════════════════════════╗</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">║       🪨 THE MEMORY KEEPER 🪨          ║</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">╚═══════════════════════════════════════╝</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">[1] Add Entry  [2] Search  [3] List All  [4] Exit</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">Choose: </span>
-              <span class="terminal-input" style="color: #ffd54f;">1</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">Title: </span>
-              <span class="terminal-input" style="color: #ffd54f;">First day back coding</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">Content: </span>
-              <span class="terminal-input" style="color: #ffd54f;">Remembered how much I love building things!</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output success">✓ Entry saved with timestamp 2024-01-15 10:30</span>
-            </div>
-          </div>
-        </div>
 
-        <h3 class="fade-in">Requirements</h3>
+          <h3 class="fade-in">Requirements</h3>
 
-        <div class="concept-grid fade-in">
-          <div class="concept-card stone">
-            <div class="concept-card-icon">📝</div>
-            <h4>CRUD Operations</h4>
-            <p>Create, Read, Update, Delete entries stored in a list of dictionaries.</p>
-          </div>
-          
-          <div class="concept-card stone">
-            <div class="concept-card-icon">🔍</div>
-            <h4>Search</h4>
-            <p>Search entries by title or content keywords.</p>
-          </div>
-          
-          <div class="concept-card stone">
-            <div class="concept-card-icon">⏰</div>
-            <h4>Timestamps</h4>
-            <p>Automatically add creation date/time to entries.</p>
-          </div>
-          
-          <div class="concept-card stone">
-            <div class="concept-card-icon">🏷️</div>
-            <h4>Tags</h4>
-            <p>Optional: Add tags to entries for categorization.</p>
-          </div>
-        </div>
+          <div class="concept-grid fade-in">
+            <div class="concept-card stone">
+              <div class="concept-card-icon">📝</div>
+              <h4>CRUD Operations</h4>
+              <p>
+                Create, Read, Update, Delete entries stored in a list of
+                dictionaries.
+              </p>
+            </div>
 
-        <h3 class="fade-in">Starter Structure</h3>
+            <div class="concept-card stone">
+              <div class="concept-card-icon">🔍</div>
+              <h4>Search</h4>
+              <p>Search entries by title or content keywords.</p>
+            </div>
 
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python - memory_keeper.py</span>
-            <button class="code-copy">Copy</button>
+            <div class="concept-card stone">
+              <div class="concept-card-icon">⏰</div>
+              <h4>Timestamps</h4>
+              <p>Automatically add creation date/time to entries.</p>
+            </div>
+
+            <div class="concept-card stone">
+              <div class="concept-card-icon">🏷️</div>
+              <h4>Tags</h4>
+              <p>Optional: Add tags to entries for categorization.</p>
+            </div>
           </div>
-          <div class="code-content">
-            <pre><code><span class="string">"""
+
+          <h3 class="fade-in">Starter Structure</h3>
+
+          <div class="code-block scale-in">
+            <div class="code-header">
+              <span class="code-language">Python - memory_keeper.py</span>
+              <button class="code-copy">Copy</button>
+            </div>
+            <div class="code-content">
+              <pre><code><span class="string">"""
 The Memory Keeper
 A personal journal to practice variables, types, and collections.
 """</span>
@@ -897,54 +957,77 @@ A personal journal to practice variables, types, and collections.
 
 <span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
     main()</code></pre>
+            </div>
+            <div class="code-caption">
+              <p>
+                <span class="icon">🚀</span>
+                <strong>Your Task:</strong> Complete the
+                <code>search_entries</code> function, add options 2 and 3 to the
+                menu, and extend with tags support.
+              </p>
+            </div>
           </div>
-          <div class="code-caption">
+
+          <div class="cta-box fade-in">
+            <h3>📦 Submission</h3>
             <p>
-              <span class="icon">🚀</span>
-              <strong>Your Task:</strong> Complete the <code>search_entries</code> function, 
-              add options 2 and 3 to the menu, and extend with tags support.
+              Create your work in <code>bparker/ch1-stone/</code>, push to a
+              branch, and open a Pull Request to <code>main</code>. Include a
+              README explaining your design decisions.
             </p>
+            <a href="../ch2-lightning/index.html" class="cta-btn">
+              <span>Continue to Chapter 2: Lightning</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="cta-box fade-in">
-          <h3>📦 Submission</h3>
-          <p>
-            Create your work in <code>bparker/ch1-stone/</code>, push to a branch, 
-            and open a Pull Request to <code>main</code>. Include a README explaining 
-            your design decisions.
-          </p>
-          <a href="../ch2-lightning/index.html" class="cta-btn">
-            <span>Continue to Chapter 2: Lightning</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
+    <!-- Bottom Navigation -->
+    <nav class="lesson-nav">
+      <button class="nav-btn" onclick="location.href='../../index.html'">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        Course Home
+      </button>
+      <button
+        class="nav-btn primary"
+        onclick="location.href='../ch2-lightning/index.html'"
+      >
+        Chapter 2: Lightning
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
+    </nav>
 
-  </main>
-
-  <!-- Bottom Navigation -->
-  <nav class="lesson-nav">
-    <button class="nav-btn" onclick="location.href='../../index.html'">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      Course Home
-    </button>
-    <button class="nav-btn primary" onclick="location.href='../ch2-lightning/index.html'">
-      Chapter 2: Lightning
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </button>
-  </nav>
-
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="../../shared/js/lesson.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="../../shared/js/lesson.js"></script>
+  </body>
 </html>
-

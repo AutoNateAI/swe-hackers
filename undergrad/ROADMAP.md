@@ -24,7 +24,7 @@ This course bridges that gap.
 
 ## The Three Forces (Revisited)
 
-You learned these concepts in class. But did anyone tell you what they *really* mean?
+You learned these concepts in class. But did anyone tell you what they _really_ mean?
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -83,14 +83,14 @@ Let's level up.
   Portfolio]            Product]            AI Powers]
 ```
 
-| Week | Chapter | Force | Project | Interview Relevance |
-|------|---------|-------|---------|---------------------|
-| 1 | The Stone Remembers | 🪨 | Production Data Layer | Database design questions |
-| 2 | Lightning Paths | ⚡ | Event-Driven Pipeline | System design: async processing |
-| 3 | The Pull Between | 🧲 | API Integration Suite | API design, integration questions |
-| 4 | The Age of Architects | 🏛️ | System Design Portfolio | System design interviews |
-| 5 | **Capstone I** | 🔥 | Full-Stack Application | Portfolio piece |
-| 6 | **Capstone II** | 🌟 | AI-Augmented Tool | Modern tooling, differentiation |
+| Week | Chapter               | Force | Project                 | Interview Relevance               |
+| ---- | --------------------- | ----- | ----------------------- | --------------------------------- |
+| 1    | The Stone Remembers   | 🪨    | Production Data Layer   | Database design questions         |
+| 2    | Lightning Paths       | ⚡    | Event-Driven Pipeline   | System design: async processing   |
+| 3    | The Pull Between      | 🧲    | API Integration Suite   | API design, integration questions |
+| 4    | The Age of Architects | 🏛️    | System Design Portfolio | System design interviews          |
+| 5    | **Capstone I**        | 🔥    | Full-Stack Application  | Portfolio piece                   |
+| 6    | **Capstone II**       | 🌟    | AI-Augmented Tool       | Modern tooling, differentiation   |
 
 ---
 
@@ -147,6 +147,7 @@ SPEED  ◄───────────────────────�
 What your class taught: "Normalize your tables"
 
 What industry knows:
+
 - Sometimes you denormalize for performance
 - Indexes are critical (and often forgotten)
 - Query patterns determine schema design
@@ -161,13 +162,13 @@ def get_user(user_id: str) -> User:
     cached = cache.get(f"user:{user_id}")
     if cached:
         return User.from_json(cached)
-    
+
     # 2. Cache miss - hit database (slow)
     user = db.query(User).filter_by(id=user_id).first()
-    
+
     # 3. Populate cache for next time
     cache.set(f"user:{user_id}", user.to_json(), ttl=3600)
-    
+
     return user
 ```
 
@@ -190,16 +191,19 @@ Create a **user management system** with:
 **Requirements:**
 
 1. **PostgreSQL Database**
+
    - Users table with proper indexing
    - Sessions table (one-to-many with users)
    - Proper foreign keys and constraints
 
 2. **Redis Cache**
+
    - Cache user profiles (read-heavy data)
    - Store active sessions
    - Implement cache invalidation on updates
 
 3. **Repository Pattern**
+
    ```python
    class UserRepository:
        def get_by_id(self, user_id: str) -> User | None
@@ -228,6 +232,7 @@ your-folder/ch1-stone/
 ```
 
 **Stretch Goals:**
+
 - Add connection pooling
 - Implement read replicas pattern
 - Add database query logging and monitoring
@@ -349,23 +354,26 @@ Image Upload → Queue → [Resize] → Queue → [ML Classify] → Queue → [S
 **Requirements:**
 
 1. **Message Queue** (use Redis Pub/Sub or a simple in-memory queue)
+
    - Producers publish events
    - Consumers process independently
    - Messages survive if a consumer is temporarily down
 
 2. **Multiple Pipeline Stages**
+
    ```python
    # Stage 1: Image processor
    async def process_image(event: ImageUploadEvent) -> ProcessedImageEvent
-   
+
    # Stage 2: Classifier (simulate ML)
    async def classify_image(event: ProcessedImageEvent) -> ClassificationEvent
-   
+
    # Stage 3: Store results
    async def store_result(event: ClassificationEvent) -> None
    ```
 
 3. **Error Handling**
+
    - Retry failed operations (with backoff)
    - Dead letter queue for poison messages
    - Logging and monitoring
@@ -392,6 +400,7 @@ your-folder/ch2-lightning/
 ```
 
 **Stretch Goals:**
+
 - Add metrics (events processed, latency, error rate)
 - Implement circuit breaker pattern
 - Add horizontal scaling (multiple consumers)
@@ -531,24 +540,27 @@ DELETE /users/123       # Delete user 123
 **Requirements:**
 
 1. **Your API (FastAPI)**
+
    ```
    GET /api/dashboard/{username}
    Returns:
    - GitHub: repos, recent commits, contribution stats
    - Weather: current weather for configured location
    - News: top 5 tech headlines
-   
+
    GET /api/health
    Returns status of all downstream services
    ```
 
 2. **External API Integration**
+
    - GitHub API (with authentication)
    - OpenWeatherMap or similar
    - NewsAPI or similar
    - Handle each one failing independently
 
 3. **Production Patterns**
+
    - Caching (don't hit external APIs on every request)
    - Rate limiting (protect yourself)
    - Circuit breaker (if GitHub is down, don't keep trying)
@@ -583,6 +595,7 @@ your-folder/ch3-magnetism/
 ```
 
 **Stretch Goals:**
+
 - Add webhook support for GitHub events
 - Implement request signing for security
 - Add rate limiting per API key
@@ -597,7 +610,7 @@ _Week 4_
 
 ### Did You Know?
 
-**Every FAANG interview has a system design round.** They don't want to see you code — they want to see you *think*. Can you design Twitter? Uber? A URL shortener? Most CS programs never teach this.
+**Every FAANG interview has a system design round.** They don't want to see you code — they want to see you _think_. Can you design Twitter? Uber? A URL shortener? Most CS programs never teach this.
 
 **Senior engineers spend more time designing than coding.** The higher you go, the less you type and the more you draw. Diagrams are the language of architecture.
 
@@ -656,7 +669,7 @@ When faced with any design problem:
 User ID → Hash → Shard
 
 User 1-1M     → Shard A
-User 1M-2M    → Shard B  
+User 1M-2M    → Shard B
 User 2M-3M    → Shard C
 ```
 
@@ -684,16 +697,19 @@ Request → Cache Hit? ─Yes─→ Return Cached
 These are real system design interview questions:
 
 1. **Design a URL Shortener** (bit.ly)
+
    - How do you generate unique short URLs?
    - How do you handle 1 billion URLs?
    - How do you handle 10,000 redirects per second?
 
 2. **Design Twitter's Feed**
+
    - How do you show a user's feed?
    - Push model vs. pull model?
    - How do you handle celebrity accounts (millions of followers)?
 
 3. **Design Uber's Matching System**
+
    - How do you match riders with nearby drivers?
    - How do you handle real-time location updates?
    - What happens when demand exceeds supply?
@@ -709,6 +725,7 @@ These are real system design interview questions:
 **Create detailed designs for THREE systems:**
 
 **System 1: URL Shortener**
+
 - Requirements doc
 - High-level architecture diagram
 - Database schema
@@ -717,6 +734,7 @@ These are real system design interview questions:
 - Tradeoffs discussed
 
 **System 2: Real-time Chat Application**
+
 - How do messages get delivered?
 - How do you handle presence (online/offline)?
 - How do you scale to millions of users?
@@ -724,6 +742,7 @@ These are real system design interview questions:
 
 **System 3: Your Choice**
 Pick something interesting:
+
 - File storage (like Dropbox)
 - Video streaming (like Netflix)
 - Social feed (like Instagram)
@@ -733,16 +752,19 @@ Pick something interesting:
 **For each design, create:**
 
 1. **Requirements Document**
+
    - Functional requirements
    - Non-functional requirements (scale, latency, availability)
    - Constraints and assumptions
 
 2. **Architecture Diagram**
+
    - Component diagram (what are the pieces?)
    - Data flow diagram (how does data move?)
    - Sequence diagram for key operations
 
 3. **Deep Dives**
+
    - Database design
    - API design
    - Caching strategy
@@ -787,20 +809,24 @@ This isn't a school project. This is a **product**.
 **Choose one:**
 
 **Option A: Developer Tool**
+
 - A CLI or web tool that solves a real developer problem
 - Examples: dependency analyzer, code snippet manager, git helper
 
 **Option B: SaaS Product**
+
 - A web application with authentication, data storage, and real features
 - Examples: habit tracker, bookmark manager, study group coordinator
 
 **Option C: API Platform**
+
 - A production-ready API that other developers could use
 - Examples: mock data generator, file conversion service, aggregator
 
 ### Requirements
 
 **Must Have:**
+
 - [ ] Clean, documented code (someone else could contribute)
 - [ ] Comprehensive tests (unit + integration)
 - [ ] Database with migrations
@@ -811,12 +837,14 @@ This isn't a school project. This is a **product**.
 - [ ] Deployed somewhere accessible (Heroku, Railway, Vercel, etc.)
 
 **Architecture Quality:**
+
 - [ ] Clear separation of concerns
 - [ ] Repository pattern for data access
 - [ ] Configuration management (not hardcoded secrets)
 - [ ] Environment-based settings (dev/staging/prod)
 
 **Professional Touches:**
+
 - [ ] CI/CD pipeline (GitHub Actions)
 - [ ] Code formatting (Black, isort)
 - [ ] Type hints throughout
@@ -839,6 +867,7 @@ your-folder/capstone-1/
 ```
 
 **Present:**
+
 - Live demo of your deployed application
 - Architecture walkthrough
 - Discussion of technical decisions
@@ -858,24 +887,28 @@ Build something that demonstrates you can **leverage AI as a professional tool**
 **Choose one:**
 
 **Option A: AI-Powered Code Review Bot**
+
 - Integrates with GitHub
 - Automatically reviews PRs
 - Provides actionable suggestions
 - Learns from feedback
 
 **Option B: Intelligent Documentation Generator**
+
 - Analyzes codebases
 - Generates documentation
 - Creates diagrams from code
 - Updates docs as code changes
 
 **Option C: Dev Assistant API**
+
 - Takes natural language requests
 - Generates code, tests, or documentation
 - Validates and formats output
 - Exposes as an API
 
 **Option D: Your Proposal**
+
 - Must meaningfully integrate AI
 - Must solve a real problem
 - Must be more than a wrapper around ChatGPT
@@ -883,18 +916,21 @@ Build something that demonstrates you can **leverage AI as a professional tool**
 ### Requirements
 
 **AI Integration:**
+
 - [ ] Meaningful use of AI (not just calling an API)
 - [ ] Prompt engineering documented
 - [ ] Output validation and error handling
 - [ ] Cost/usage awareness
 
 **Production Quality:**
+
 - [ ] All requirements from Capstone I
 - [ ] Rate limiting for AI calls
 - [ ] Caching where appropriate
 - [ ] Graceful degradation if AI is unavailable
 
 **Documentation:**
+
 - [ ] How you designed prompts
 - [ ] What works well, what doesn't
 - [ ] Cost analysis
@@ -918,6 +954,7 @@ your-folder/capstone-2/
 ```
 
 **Present:**
+
 - Live demo with real AI interactions
 - Discussion of prompt engineering decisions
 - What you learned about working with AI professionally
@@ -929,6 +966,7 @@ your-folder/capstone-2/
 Six weeks ago, you had a degree and some code.
 
 Now you have:
+
 - A **production data layer** that actually handles scale
 - An **event-driven pipeline** that processes asynchronously
 - An **API integration suite** that handles real-world failures
@@ -954,29 +992,28 @@ Go get that internship. Land that job. Build that startup.
 
 ## Progress Tracker
 
-| Week | Chapter | Project | Status |
-|------|---------|---------|--------|
-| 1 | The Stone Remembers | Production Data Layer | ⬜ |
-| 2 | Lightning Paths | Event-Driven Pipeline | ⬜ |
-| 3 | The Pull Between | API Integration Suite | ⬜ |
-| 4 | The Age of Architects | System Design Portfolio | ⬜ |
-| 5 | **Capstone I** | Full-Stack Application | ⬜ |
-| 6 | **Capstone II** | AI-Augmented Tool | ⬜ |
+| Week | Chapter               | Project                 | Status |
+| ---- | --------------------- | ----------------------- | ------ |
+| 1    | The Stone Remembers   | Production Data Layer   | ⬜     |
+| 2    | Lightning Paths       | Event-Driven Pipeline   | ⬜     |
+| 3    | The Pull Between      | API Integration Suite   | ⬜     |
+| 4    | The Age of Architects | System Design Portfolio | ⬜     |
+| 5    | **Capstone I**        | Full-Stack Application  | ⬜     |
+| 6    | **Capstone II**       | AI-Augmented Tool       | ⬜     |
 
 ---
 
 ## Interview Prep Summary
 
-| Topic | What You Built | Common Questions |
-|-------|---------------|------------------|
-| Databases | Ch1: Data Layer | Schema design, indexing, caching |
-| Async/Events | Ch2: Pipeline | Message queues, async patterns |
-| APIs | Ch3: Integration | REST design, auth, error handling |
-| System Design | Ch4: Portfolio | URL shortener, chat, etc. |
-| Full-Stack | Capstone I | "Tell me about a project..." |
-| Modern Tooling | Capstone II | AI integration, productivity |
+| Topic          | What You Built   | Common Questions                  |
+| -------------- | ---------------- | --------------------------------- |
+| Databases      | Ch1: Data Layer  | Schema design, indexing, caching  |
+| Async/Events   | Ch2: Pipeline    | Message queues, async patterns    |
+| APIs           | Ch3: Integration | REST design, auth, error handling |
+| System Design  | Ch4: Portfolio   | URL shortener, chat, etc.         |
+| Full-Stack     | Capstone I       | "Tell me about a project..."      |
+| Modern Tooling | Capstone II      | AI integration, productivity      |
 
 ---
 
 _They taught you to code. We taught you to build. Now go show them._
-

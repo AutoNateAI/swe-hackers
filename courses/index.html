@@ -27,10 +27,12 @@
       --accent-architect: #4db6ac;
       --accent-fire: #ef5350;
       --accent-star: #ab47bc;
+      --accent-discord: #5865F2;
       
       --font-display: 'Space Grotesk', sans-serif;
       --font-body: 'Inter', sans-serif;
       
+      --radius-md: 8px;
       --radius-lg: 16px;
       --radius-xl: 24px;
     }
@@ -58,7 +60,7 @@
     /* Hero */
     .hero {
       text-align: center;
-      padding: 6rem 2rem;
+      padding: 6rem 2rem 4rem;
       background: 
         radial-gradient(ellipse at 20% 50%, rgba(121, 134, 203, 0.1) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 50%, rgba(77, 182, 172, 0.1) 0%, transparent 50%),
@@ -110,7 +112,7 @@
       color: var(--text-muted);
     }
     
-    /* Courses Grid */
+    /* Section titles */
     .section-title {
       font-family: var(--font-display);
       font-size: 1.75rem;
@@ -127,9 +129,10 @@
       background: linear-gradient(90deg, var(--bg-tertiary), transparent);
     }
     
+    /* Courses Grid */
     .courses-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
       margin-bottom: 4rem;
     }
@@ -191,10 +194,144 @@
     
     /* Color themes for cards */
     .course-card.apprentice { border-top: 3px solid var(--accent-star); }
-    .course-card.bparker { border-top: 3px solid var(--accent-architect); }
     .course-card.undergrad { border-top: 3px solid var(--accent-magnetism); }
     .course-card.junior { border-top: 3px solid var(--accent-lightning); }
-    .course-card.senior { border-top: 3px solid var(--accent-fire); }
+    
+    /* Community Section */
+    .community-section {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      margin-bottom: 4rem;
+      border: 1px solid rgba(88, 101, 242, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .community-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .community-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .community-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      margin: 0;
+    }
+    
+    .discord-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--accent-discord);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+    }
+    
+    .community-description {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    
+    .community-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .community-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .feature-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .feature-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+    
+    .feature-content p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    
+    .channel-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    
+    .channel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .channel-tag .hash {
+      color: var(--accent-discord);
+      font-weight: 600;
+    }
+    
+    .join-discord-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: var(--accent-discord);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .join-discord-btn:hover {
+      background: #4752c4;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+      color: white;
+    }
+    
+    .join-discord-btn svg {
+      width: 24px;
+      height: 24px;
+    }
     
     /* Footer */
     footer {
@@ -211,6 +348,17 @@
     
     footer a:hover {
       color: var(--accent-lightning);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .community-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .community-features {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -263,21 +411,6 @@
         </div>
       </a>
       
-      <a href="bparker/ch1-stone/index.html" class="course-card bparker">
-        <div class="course-icon">🏛️</div>
-        <h3>The Architect's Return</h3>
-        <div class="course-audience">For Career Returners</div>
-        <p>
-          You knew these lands. Reconnect with programming through modern AI tools 
-          and systems thinking. Transition from coder to architect.
-        </p>
-        <div class="course-meta">
-          <span class="course-tag">6 weeks</span>
-          <span class="course-tag">Python</span>
-          <span class="course-tag">AI-Augmented</span>
-        </div>
-      </a>
-      
       <a href="undergrad/ch1-stone/index.html" class="course-card undergrad">
         <div class="course-icon">🎓</div>
         <h3>The Bridge to Industry</h3>
@@ -308,22 +441,75 @@
         </div>
       </a>
       
-      <a href="senior/ch1-stone/index.html" class="course-card senior">
-        <div class="course-icon">⚔️</div>
-        <h3>The Senior Force Multiplier</h3>
-        <div class="course-audience">For Mid-to-Senior Engineers</div>
-        <p>
-          Multiply your impact with AI. Take on bigger projects, lead with diagrams, 
-          and extend your career longevity through efficiency.
-        </p>
-        <div class="course-meta">
-          <span class="course-tag">6 weeks</span>
-          <span class="course-tag">Python</span>
-          <span class="course-tag">Leadership</span>
-        </div>
-      </a>
-      
     </div>
+    
+    <!-- Community Section -->
+    <section class="community-section">
+      <div class="community-header">
+        <h2>🤝 Join Our Learning Community</h2>
+        <span class="discord-badge">
+          <svg width="16" height="16" viewBox="0 0 71 55" fill="currentColor">
+            <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3## 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.0383 50.6034 51.2557 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z"/>
+          </svg>
+          Discord
+        </span>
+      </div>
+      
+      <p class="community-description">
+        Learning is better together. When you start a course, you join a community of 
+        <strong>learners, builders, and mentors</strong> ready to support your journey.
+      </p>
+      
+      <div class="community-features">
+        <div class="community-feature">
+          <span class="feature-icon">📚</span>
+          <div class="feature-content">
+            <h4>Study Hall</h4>
+            <p>Ask questions, share resources, discuss concepts</p>
+          </div>
+        </div>
+        
+        <div class="community-feature">
+          <span class="feature-icon">🔨</span>
+          <div class="feature-content">
+            <h4>Builders Lounge</h4>
+            <p>Get help on your projects and code reviews</p>
+          </div>
+        </div>
+        
+        <div class="community-feature">
+          <span class="feature-icon">🎙️</span>
+          <div class="feature-content">
+            <h4>Voice Sessions</h4>
+            <p>Pair programming, study groups, and office hours</p>
+          </div>
+        </div>
+        
+        <div class="community-feature">
+          <span class="feature-icon">🏆</span>
+          <div class="feature-content">
+            <h4>Hackathons</h4>
+            <p>Build together, compete, and ship real projects</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="channel-list">
+        <span class="channel-tag"><span class="hash">#</span>study-hall</span>
+        <span class="channel-tag"><span class="hash">#</span>builders-lounge</span>
+        <span class="channel-tag"><span class="hash">#</span>code-review</span>
+        <span class="channel-tag"><span class="hash">#</span>help-requests</span>
+        <span class="channel-tag"><span class="hash">#</span>project-showcase</span>
+        <span class="channel-tag"><span class="hash">#</span>tool-tips</span>
+      </div>
+      
+      <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="join-discord-btn">
+        <svg viewBox="0 0 71 55" fill="currentColor">
+          <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.0383 50.6034 51.2557 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z"/>
+        </svg>
+        Join the Community
+      </a>
+    </section>
     
   </main>
   
@@ -351,7 +537,13 @@
       card.style.transition = `all 0.5s ease ${index * 0.1}s`;
       observer.observe(card);
     });
+    
+    // Animate community section
+    const communitySection = document.querySelector('.community-section');
+    communitySection.style.opacity = 0;
+    communitySection.style.transform = 'translateY(30px)';
+    communitySection.style.transition = 'all 0.6s ease 0.3s';
+    observer.observe(communitySection);
   </script>
 </body>
 </html>
-

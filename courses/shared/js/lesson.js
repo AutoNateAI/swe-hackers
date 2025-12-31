@@ -434,6 +434,7 @@ function initMermaid() {
     mermaid.initialize({
       startOnLoad: true,
       theme: 'dark',
+      securityLevel: 'loose',
       themeVariables: {
         primaryColor: '#7986cb',
         primaryTextColor: '#e8e8f0',
@@ -447,13 +448,51 @@ function initMermaid() {
         clusterBkg: '#1a1a2e',
         clusterBorder: '#3f51b5',
         titleColor: '#e8e8f0',
-        edgeLabelBackground: '#1a1a2e'
+        edgeLabelBackground: '#1a1a2e',
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '14px'
       },
       flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
         curve: 'basis',
+        padding: 20,
+        nodeSpacing: 50,
+        rankSpacing: 50,
+        diagramPadding: 20
+      },
+      sequence: {
+        useMaxWidth: false,
+        diagramMarginX: 30,
+        diagramMarginY: 30,
+        boxMargin: 10,
+        boxTextMargin: 10,
+        noteMargin: 15,
+        messageMargin: 40
+      },
+      gantt: {
+        useMaxWidth: false
+      },
+      mindmap: {
+        useMaxWidth: false,
         padding: 20
+      },
+      stateDiagram: {
+        useMaxWidth: false
+      },
+      er: {
+        useMaxWidth: false
       }
     });
+
+    // Re-render after init to ensure settings take effect
+    setTimeout(() => {
+      document.querySelectorAll('.mermaid').forEach(el => {
+        if (el.getAttribute('data-processed') !== 'true') {
+          mermaid.contentLoaded();
+        }
+      });
+    }, 100);
   }
 }
 

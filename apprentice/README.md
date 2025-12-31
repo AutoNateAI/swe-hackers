@@ -1,4 +1,4 @@
-# The Apprentice's Path 🌟
+# The AutoNateAI Apprentice's Path 🌟
 
 Welcome to the beginning of your journey.
 
@@ -17,14 +17,14 @@ By the end, you won't just know Python. You'll understand how ALL programming wo
 
 ## What You'll Build
 
-| Week | Quest | What You'll Create |
-|------|-------|-------------------|
-| 1 | The Stone Remembers | A secret message encoder |
-| 2 | Lightning Paths | A number guessing game |
-| 3 | The Pull Between | A quiz game with scores |
-| 4 | The Age of Architects | A diagram of your dream app |
-| 5 | **Capstone I** | An adventure story game |
-| 6 | **Capstone II** | An AI chatbot helper |
+| Week | Quest                 | What You'll Create          |
+| ---- | --------------------- | --------------------------- |
+| 1    | The Stone Remembers   | A secret message encoder    |
+| 2    | Lightning Paths       | A number guessing game      |
+| 3    | The Pull Between      | A quiz game with scores     |
+| 4    | The Age of Architects | A diagram of your dream app |
+| 5    | **Capstone I**        | An adventure story game     |
+| 6    | **Capstone II**       | An AI chatbot helper        |
 
 ## How It Works
 
@@ -50,5 +50,4 @@ apprentice/
 
 Open `ROADMAP.md` and begin your quest.
 
-*Every master was once a beginner. Every expert was once an apprentice. Your journey starts now.*
-
+_Every master was once a beginner. Every expert was once an apprentice. Your journey starts now._

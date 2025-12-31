@@ -60,15 +60,15 @@ git push origin main
 
 ## Labels Guide
 
-| Label | Description |
-|-------|-------------|
-| `beginner` | Entry-level content |
-| `intermediate` | Requires some experience |
-| `advanced` | Deep dives & expert topics |
-| `tutorial` | Step-by-step guides |
-| `resource` | Links & references |
-| `concept` | Explanations & theory |
+| Label          | Description                |
+| -------------- | -------------------------- |
+| `beginner`     | Entry-level content        |
+| `intermediate` | Requires some experience   |
+| `advanced`     | Deep dives & expert topics |
+| `tutorial`     | Step-by-step guides        |
+| `resource`     | Links & references         |
+| `concept`      | Explanations & theory      |
 
 ---
 
-*Built for hackers who ship.*
+_Built for hackers who ship._

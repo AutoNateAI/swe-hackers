@@ -1,6 +1,6 @@
-# The Apprentice's Path 🌟
+# The AutoNateAI Apprentice's Path 🌟
 
-*A 6-week quest to unlock the secrets of code.*
+_A 6-week quest to unlock the secrets of code._
 
 ---
 
@@ -10,7 +10,7 @@ Something inside you knows there's more.
 
 You've used apps. You've played games. You've watched videos load and buttons click and magic happen on screens. But you've always wondered: **How does it actually work?**
 
-Here's a secret most people never learn: computers aren't smart. They're incredibly fast and incredibly obedient — but they only do *exactly* what someone tells them to do. That someone could be you.
+Here's a secret most people never learn: computers aren't smart. They're incredibly fast and incredibly obedient — but they only do _exactly_ what someone tells them to do. That someone could be you.
 
 The people who know how to speak to computers? They're called **coders**. And the best coders don't just write instructions — they **design entire worlds**.
 
@@ -79,9 +79,9 @@ Let's learn to control them.
 
 ## Chapter 1: The Stone Remembers 🪨
 
-*Week 1*
+_Week 1_
 
-> *"Before you can do anything, you must be able to remember something. The stone never forgets."*
+> _"Before you can do anything, you must be able to remember something. The stone never forgets."_
 
 ### The Story
 
@@ -108,12 +108,12 @@ print("Your score is", score)
 
 **Data Types** — Different kinds of things that fit in boxes
 
-| Type | What It Holds | Example |
-|------|--------------|---------|
-| `str` (string) | Text/words | `"Hello World"` |
-| `int` (integer) | Whole numbers | `42` |
-| `float` | Decimal numbers | `3.14` |
-| `bool` (boolean) | True or False | `True` |
+| Type             | What It Holds   | Example         |
+| ---------------- | --------------- | --------------- |
+| `str` (string)   | Text/words      | `"Hello World"` |
+| `int` (integer)  | Whole numbers   | `42`            |
+| `float`          | Decimal numbers | `3.14`          |
+| `bool` (boolean) | True or False   | `True`          |
 
 **Input** — Asking the user for information
 
@@ -136,6 +136,7 @@ Answer these questions in your notes:
 **Your quest:** Build a program that encodes secret messages!
 
 When you run it:
+
 ```
 ╔═══════════════════════════════════╗
 ║      🔐 SECRET ENCODER 🔐         ║
@@ -151,6 +152,7 @@ Your secret code is: khoor
 ```
 
 **How it works:**
+
 - Each letter shifts forward by 3 (A→D, B→E, etc.)
 - This is called a "Caesar Cipher" — Julius Caesar used it!
 
@@ -181,6 +183,7 @@ print("🔐 SECRET ENCODER 🔐")
 ```
 
 **Deliverables:**
+
 - Working code in `your-folder/ch1-stone/encoder.py`
 - Test it with a friend — can they decode your message?
 
@@ -188,15 +191,16 @@ print("🔐 SECRET ENCODER 🔐")
 
 ## Chapter 2: Lightning Paths ⚡
 
-*Week 2*
+_Week 2_
 
-> *"Lightning doesn't think. It just DOES. It follows the path and strikes. Your code must learn to act."*
+> _"Lightning doesn't think. It just DOES. It follows the path and strikes. Your code must learn to act."_
 
 ### The Story
 
 You've taught the computer to remember. But a brain that only remembers is useless — it needs to **think** and **act**.
 
 Lightning is about **action**:
+
 - Making decisions ("if this, then that")
 - Repeating things ("do this 10 times")
 - Responding to what happens ("when the user clicks, do this")
@@ -218,14 +222,14 @@ else:
 
 **Comparison Operators** — Asking questions
 
-| Operator | Meaning | Example |
-|----------|---------|---------|
-| `==` | equals | `score == 100` |
-| `!=` | not equals | `name != "admin"` |
-| `>` | greater than | `age > 18` |
-| `<` | less than | `tries < 3` |
-| `>=` | greater or equal | `points >= 50` |
-| `<=` | less or equal | `health <= 0` |
+| Operator | Meaning          | Example           |
+| -------- | ---------------- | ----------------- |
+| `==`     | equals           | `score == 100`    |
+| `!=`     | not equals       | `name != "admin"` |
+| `>`      | greater than     | `age > 18`        |
+| `<`      | less than        | `tries < 3`       |
+| `>=`     | greater or equal | `points >= 50`    |
+| `<=`     | less or equal    | `health <= 0`     |
 
 **While Loops** — Repeating until something changes
 
@@ -268,6 +272,7 @@ for color in colors:
 **Your quest:** Build a number guessing game!
 
 When you run it:
+
 ```
 🎲 NUMBER GUESSER 🎲
 
@@ -289,6 +294,7 @@ Play again? (yes/no): yes
 ```
 
 **Requirements:**
+
 - Computer picks a random number (1-100)
 - Player guesses until they get it
 - Tell them "too high" or "too low"
@@ -298,6 +304,7 @@ Play again? (yes/no): yes
 **Hint:** Use `import random` and `random.randint(1, 100)`
 
 **Deliverables:**
+
 - Working code in `your-folder/ch2-lightning/guesser.py`
 - Can you add difficulty levels? (Easy: 1-10, Hard: 1-1000)
 
@@ -305,9 +312,9 @@ Play again? (yes/no): yes
 
 ## Chapter 3: The Pull Between 🧲
 
-*Week 3*
+_Week 3_
 
-> *"Nothing exists alone. The magnet knows: power comes from connection."*
+> _"Nothing exists alone. The magnet knows: power comes from connection."_
 
 ### The Story
 
@@ -392,6 +399,7 @@ player["health"] = 80
 **Your quest:** Build a quiz game with multiple questions and scoring!
 
 When you run it:
+
 ```
 🧠 QUIZ MASTER 🧠
 
@@ -426,6 +434,7 @@ Your answer: A
 ```
 
 **Requirements:**
+
 - At least 5 questions
 - Multiple choice (A, B, C, D)
 - Track score
@@ -446,6 +455,7 @@ questions = [
 ```
 
 **Deliverables:**
+
 - Working code in `your-folder/ch3-magnetism/quiz.py`
 - At least 5 questions on a topic you like
 
@@ -453,9 +463,9 @@ questions = [
 
 ## Chapter 4: The Age of Architects 🏛️
 
-*Week 4*
+_Week 4_
 
-> *"Builders lay bricks. Architects design cities. Which will you be?"*
+> _"Builders lay bricks. Architects design cities. Which will you be?"_
 
 ### The Story
 
@@ -479,7 +489,7 @@ You're not training to be a code typist. You're training to be an **architect**.
 OLD WAY                    NEW WAY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Memorize syntax        →   Understand concepts
-Type code fast         →   Communicate clearly  
+Type code fast         →   Communicate clearly
 Write everything       →   Direct AI to write
 Fix bugs alone         →   Review AI's work
 ```
@@ -489,13 +499,14 @@ Fix bugs alone         →   Review AI's work
 Architects don't write code first. They draw **blueprints**.
 
 In our world, blueprints are called **diagrams**. When you can draw what you want to build, you can:
+
 1. Think more clearly about your project
 2. Explain it to other people
 3. Tell AI exactly what to create
 
 **The Box-and-Arrow Diagram**
 
-This is the simplest kind. Boxes are *things*. Arrows show *how they connect*.
+This is the simplest kind. Boxes are _things_. Arrows show _how they connect_.
 
 ```
 ┌─────────────┐         ┌─────────────┐
@@ -563,6 +574,7 @@ Shows steps and decisions.
 **Step 1: Choose Your Dream App**
 
 What would you build if you could build anything?
+
 - A game you've always wanted
 - An app to solve a problem
 - Something to help your family or friends
@@ -573,10 +585,12 @@ What would you build if you could build anything?
 On paper or digitally, create:
 
 1. **The User Journey** (flowchart)
+
    - What does someone do when they use your app?
    - Draw every screen and decision
 
 2. **The Parts** (box diagram)
+
    - What are the main pieces of your app?
    - How do they connect?
 
@@ -587,6 +601,7 @@ On paper or digitally, create:
 **Step 3: Write a Description**
 
 In 1 page, explain:
+
 - What does your app do?
 - Who would use it?
 - Why is it useful?
@@ -595,11 +610,13 @@ In 1 page, explain:
 **Step 4: Ask AI for Help**
 
 Take ONE small feature from your app. Describe it clearly to an AI tool and ask it to help you code it. Notice:
+
 - How clear did you have to be?
 - What did it get right?
 - What did you have to fix?
 
 **Deliverables:**
+
 - Your 3 diagrams (photos or digital)
 - Your 1-page description
 - A small code snippet AI helped you write
@@ -608,9 +625,9 @@ Take ONE small feature from your app. Describe it clearly to an AI tool and ask 
 
 ## Capstone I: The Adventure Game 🔥
 
-*Week 5*
+_Week 5_
 
-> *"All forces unite. Stone holds the world. Lightning drives the action. Magnetism binds it together. Now... CREATE."*
+> _"All forces unite. Stone holds the world. Lightning drives the action. Magnetism binds it together. Now... CREATE."_
 
 ### The Quest
 
@@ -648,16 +665,19 @@ What do you do?
 ### Requirements
 
 **Stone (Memory):**
+
 - Track player stats (health, inventory, score)
 - Remember choices they've made
 - Save/load game progress (BONUS)
 
 **Lightning (Action):**
+
 - At least 3 different endings
 - Random events (dice rolls, chance encounters)
 - Combat or challenges with win/lose outcomes
 
 **Magnetism (Connection):**
+
 - Functions for each room/scene
 - A clear structure connecting scenes
 - Reusable code for common actions
@@ -665,6 +685,7 @@ What do you do?
 ### Your Story
 
 Create your OWN story! Ideas:
+
 - A haunted house escape
 - A space exploration mission
 - A mystery to solve
@@ -689,9 +710,9 @@ def scene_start(player):
     print("What do you do?")
     print("  1. Option A")
     print("  2. Option B")
-    
+
     choice = input("> ")
-    
+
     if choice == "1":
         return scene_a(player)
     elif choice == "2":
@@ -738,9 +759,9 @@ your-folder/capstone-1-adventure/
 
 ## Capstone II: The AI Helper 🌟
 
-*Week 6*
+_Week 6_
 
-> *"The ancient ones could only dream of this power. You will wield it."*
+> _"The ancient ones could only dream of this power. You will wield it."_
 
 ### The Quest
 
@@ -751,24 +772,28 @@ This is the final test: Can you combine everything you've learned AND work with 
 ### Choose Your Helper
 
 **Option A: Homework Helper**
+
 - User enters a topic they're studying
 - AI explains it simply
 - AI generates practice questions
 - Tracks what topics they've studied
 
 **Option B: Story Writer**
+
 - User gives a prompt (characters, setting, genre)
 - AI generates a short story
 - User can ask for changes
 - Save favorite stories
 
 **Option C: Code Explainer**
+
 - User pastes code they don't understand
 - AI explains what it does line by line
 - AI suggests improvements
 - Keep a history of explained code
 
 **Option D: Your Idea**
+
 - Propose your own AI helper
 - Must take input, use AI, give useful output
 - Get approval first!
@@ -789,12 +814,12 @@ def ask_ai(question):
 def main():
     print("🤖 AI HELPER 🤖")
     print("What do you need help with?")
-    
+
     user_question = input("> ")
-    
+
     print("\nThinking...")
     answer = ask_ai(user_question)
-    
+
     print("\nAI says:")
     print(answer)
 
@@ -804,16 +829,19 @@ main()
 ### Requirements
 
 **Stone:**
+
 - Save conversation history
 - Remember user preferences
 - Store useful responses
 
 **Lightning:**
+
 - Clear menu system
 - Handle errors (what if AI doesn't respond?)
 - Let users continue chatting
 
 **Magnetism:**
+
 - Connect to AI API
 - Clean functions for each feature
 - User-friendly interface
@@ -836,6 +864,7 @@ your-folder/capstone-2-ai-helper/
 Six weeks ago, you knew nothing about code.
 
 Now look at what you've built:
+
 - A secret message encoder
 - A number guessing game
 - A quiz game
@@ -857,14 +886,14 @@ The question is: **"What will I create next?"**
 
 ## Progress Tracker
 
-| Week | Chapter               | Project           | Status |
-| ---- | --------------------- | ----------------- | ------ |
-| 1    | The Stone Remembers   | Secret Encoder    | ⬜     |
-| 2    | Lightning Paths       | Number Guesser    | ⬜     |
-| 3    | The Pull Between      | Quiz Game         | ⬜     |
-| 4    | The Age of Architects | System Canvas     | ⬜     |
-| 5    | **Capstone I**        | Adventure Game    | ⬜     |
-| 6    | **Capstone II**       | AI Helper         | ⬜     |
+| Week | Chapter               | Project        | Status |
+| ---- | --------------------- | -------------- | ------ |
+| 1    | The Stone Remembers   | Secret Encoder | ⬜     |
+| 2    | Lightning Paths       | Number Guesser | ⬜     |
+| 3    | The Pull Between      | Quiz Game      | ⬜     |
+| 4    | The Age of Architects | System Canvas  | ⬜     |
+| 5    | **Capstone I**        | Adventure Game | ⬜     |
+| 6    | **Capstone II**       | AI Helper      | ⬜     |
 
 ---
 
@@ -919,5 +948,4 @@ person["age"] = 13      # change value
 
 ---
 
-*The stone remembers. The lightning strikes. The magnetism connects. And you... you CREATE.*
-
+_The stone remembers. The lightning strikes. The magnetism connects. And you... you CREATE._

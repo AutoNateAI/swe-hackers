@@ -73,14 +73,14 @@ graph LR
     style F fill:#ab47bc,color:#fff
 ```
 
-| Week | Chapter               | Force           | Mini-Project       |
-| ---- | --------------------- | --------------- | ------------------ |
-| 1    | The Stone Remembers   | 🪨 Stone        | Memory Keeper      |
-| 2    | Lightning Paths       | ⚡ Lightning    | Flow Tracker       |
-| 3    | The Pull Between      | 🧲 Magnetism    | Interface Bridge   |
-| 4    | The Age of Architects | 🏛️ Paradigm     | The System Canvas  |
-| 5    | **Capstone I**        | 🔥 Integration  | The Living Archive |
-| 6    | **Capstone II**       | 🌟 AI Mastery   | The Oracle Engine  |
+| Week | Chapter               | Force          | Mini-Project       |
+| ---- | --------------------- | -------------- | ------------------ |
+| 1    | The Stone Remembers   | 🪨 Stone       | Memory Keeper      |
+| 2    | Lightning Paths       | ⚡ Lightning   | Flow Tracker       |
+| 3    | The Pull Between      | 🧲 Magnetism   | Interface Bridge   |
+| 4    | The Age of Architects | 🏛️ Paradigm    | The System Canvas  |
+| 5    | **Capstone I**        | 🔥 Integration | The Living Archive |
+| 6    | **Capstone II**       | 🌟 AI Mastery  | The Oracle Engine  |
 
 ---
 
@@ -334,22 +334,22 @@ This is that moment for software.
 ```mermaid
 timeline
     title The Ages of Software Development
-    
+
     section The Stone Age
         1950s-1970s : Assembly & punch cards
                     : Every instruction handcrafted
                     : "Speaking directly to the machine"
-    
-    section The Bronze Age  
+
+    section The Bronze Age
         1980s-1990s : High-level languages
                     : C, Java, Python
                     : "Abstractions emerge"
-    
+
     section The Iron Age
         2000s-2010s : Frameworks & libraries
                     : Don't reinvent the wheel
                     : "Standing on shoulders"
-    
+
     section The Age of Architects
         2020s+ : AI-augmented development
                : Cursor, Copilot, Claude
@@ -375,25 +375,25 @@ flowchart TB
         TYPE --> DEBUG["Debug"]
         DEBUG --> THINK1
     end
-    
+
     subgraph NEW["✅ The Architect's Way"]
         UNDERSTAND["Understand the system"] --> DIAGRAM["Diagram the solution"]
         DIAGRAM --> DIRECT["Direct the AI"]
         DIRECT --> REVIEW["Review & refine"]
         REVIEW --> UNDERSTAND
     end
-    
+
     style OLD fill:#ffcdd2
     style NEW fill:#c8e6c9
 ```
 
-| Old Skill | New Skill |
-| --------- | --------- |
-| Memorizing syntax | Understanding concepts |
-| Typing fast | Communicating clearly |
-| Writing code | Reading code |
-| Debugging line-by-line | Reviewing AI output |
-| Building components | Designing systems |
+| Old Skill              | New Skill              |
+| ---------------------- | ---------------------- |
+| Memorizing syntax      | Understanding concepts |
+| Typing fast            | Communicating clearly  |
+| Writing code           | Reading code           |
+| Debugging line-by-line | Reviewing AI output    |
+| Building components    | Designing systems      |
 
 You're not becoming obsolete. You're being **promoted**.
 
@@ -410,28 +410,28 @@ flowchart LR
     subgraph YOUR_BRAIN["🧠 Your Brain"]
         VISION["System Vision"]
     end
-    
+
     subgraph DIAGRAMS["📊 Diagrams"]
         FLOW["Flowcharts"]
         SEQ["Sequence"]
         COMP["Components"]
         ER["Data Models"]
     end
-    
+
     subgraph AI["🤖 AI Tools"]
         CURSOR["Cursor"]
         CLAUDE["Claude"]
     end
-    
+
     subgraph CODE["💻 Working Code"]
         IMPL["Implementation"]
     end
-    
+
     YOUR_BRAIN --> DIAGRAMS
     DIAGRAMS --> AI
     AI --> CODE
     CODE --> |"Review"| YOUR_BRAIN
-    
+
     style DIAGRAMS fill:#4db6ac,color:#fff
 ```
 
@@ -454,7 +454,7 @@ flowchart TD
     OUTPUT --> END([End])
 ```
 
-*Use for: Decision logic, user flows, algorithms*
+_Use for: Decision logic, user flows, algorithms_
 
 #### 2. Sequence Diagram — "How do things talk to each other?"
 
@@ -464,7 +464,7 @@ sequenceDiagram
     participant A as App
     participant API as External API
     participant DB as Database
-    
+
     U->>A: Request data
     A->>API: Fetch external data
     API-->>A: Response
@@ -473,7 +473,7 @@ sequenceDiagram
     A-->>U: Display result
 ```
 
-*Use for: API interactions, user journeys, system communication*
+_Use for: API interactions, user journeys, system communication_
 
 #### 3. Component Diagram — "What are the pieces?"
 
@@ -483,22 +483,22 @@ flowchart TB
         WEB[Web App]
         CLI[CLI Tool]
     end
-    
+
     subgraph CORE["⚙️ Core Logic"]
         AUTH[Auth Service]
         DATA[Data Processor]
     end
-    
+
     subgraph STORAGE["🗄️ Storage"]
         DB[(Database)]
         CACHE[(Cache)]
     end
-    
+
     UI --> CORE
     CORE --> STORAGE
 ```
 
-*Use for: System architecture, module boundaries, deployment*
+_Use for: System architecture, module boundaries, deployment_
 
 #### 4. Entity-Relationship — "How is data structured?"
 
@@ -523,7 +523,7 @@ erDiagram
     }
 ```
 
-*Use for: Database design, data models, relationships*
+_Use for: Database design, data models, relationships_
 
 #### 5. State Diagram — "What states can this be in?"
 
@@ -539,7 +539,7 @@ stateDiagram-v2
     Published --> [*]
 ```
 
-*Use for: Workflows, status tracking, lifecycle management*
+_Use for: Workflows, status tracking, lifecycle management_
 
 ### 📝 The Trial
 
@@ -806,14 +806,14 @@ _Welcome back._
 
 ## Timeline
 
-| Week | Focus                      | Deliverable            |
-| ---- | -------------------------- | ---------------------- |
-| 1    | Persistence & Memory       | Memory Keeper app      |
-| 2    | Data Flow & Transformation | Flow Tracker pipeline  |
-| 3    | APIs & Integration         | Weather Dashboard      |
-| 4    | Diagrams & AI Direction    | The System Canvas      |
-| 5    | Full-Stack Integration     | Living Archive system  |
-| 6    | AI Integration             | Oracle Engine          |
+| Week | Focus                      | Deliverable           |
+| ---- | -------------------------- | --------------------- |
+| 1    | Persistence & Memory       | Memory Keeper app     |
+| 2    | Data Flow & Transformation | Flow Tracker pipeline |
+| 3    | APIs & Integration         | Weather Dashboard     |
+| 4    | Diagrams & AI Direction    | The System Canvas     |
+| 5    | Full-Stack Integration     | Living Archive system |
+| 6    | AI Integration             | Oracle Engine         |
 
 **Total:** 6 weeks, 6 projects, 3 forces mastered, 1 architect awakened.
 
