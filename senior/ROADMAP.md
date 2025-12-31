@@ -1,932 +1,782 @@
-# The AutoNateAI Force Multiplier: Engineer to Architect 🏛️
+# The AutoNateAI Senior Amplifier: Multiply Your Impact 🎯
 
-_A 6-week transformation for mid-to-senior engineers ready to multiply their impact._
-
----
-
-## Prologue: The Inflection Point
-
-You've been doing this for years. You're good at it.
-
-You can debug anything. You've seen patterns repeat. You know why that weird legacy code exists. Juniors come to you with questions and you usually have answers.
-
-**But something's shifted.**
-
-AI writes code faster than you. It knows every Stack Overflow answer, every framework, every pattern. The thing you spent years mastering — translating thoughts into code — is being automated.
-
-Some engineers are panicking. They're doubling down on coding speed, trying to stay ahead of the machines.
-
-**That's the wrong game.**
-
-Here's what AI still can't do:
-- Understand the business context
-- Make architectural decisions
-- Navigate organizational politics
-- See the whole system
-- Take responsibility when things break
-- Mentor humans
-- Know when NOT to build something
-
-**The engineers who master these skills won't be replaced. They'll be amplified.**
-
-A senior engineer who can design systems AND direct AI to build them? That's not a 2x engineer. That's a 10x engineer.
-
-This course makes you that engineer.
+_A 6-week intensive for engineers ready to play a bigger game._
 
 ---
 
-## The Three Forces (Architecture Level)
+## Prologue: The Uncomfortable Truth About Senior Engineers
 
-You know Stone, Lightning, and Magnetism as code concepts. At the architecture level, they become something bigger:
+Here's what nobody says out loud at engineering all-hands:
+
+**Most senior engineers have stopped growing.**
+
+They're comfortable. They know their domain. They deliver features reliably. But they haven't significantly increased their impact in years. They've hit a plateau — not of skill, but of *approach*.
+
+They're still working the same way they did 5 years ago. Just better at it.
+
+Meanwhile, the industry is undergoing its biggest shift since cloud computing. AI isn't coming — it's here. And it's not just changing what junior engineers do. It's changing **what's possible for senior engineers who embrace it**.
+
+The seniors who learn to be *amplified* will:
+- Take on projects that would have required teams
+- Design systems in weeks that used to take months
+- Mentor at scale, not one-on-one
+- Stay indispensable while others worry about their jobs
+
+**This course is for engineers who want to multiply their impact, not just maintain it.**
+
+---
+
+## The Three Forces (Senior Edition)
+
+You already know Stone, Lightning, and Magnetism. Here's how they evolve when you're amplified:
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                THE THREE FORCES AT SCALE                             │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  🪨 STONE              ⚡ LIGHTNING           🧲 MAGNETISM           │
-│  State at Scale        Flow at Scale          Integration at Scale   │
-│                                                                      │
-│  Your decisions:       Your decisions:        Your decisions:        │
-│  - Data architecture   - Sync vs async        - Build vs buy        │
-│  - Consistency models  - Event sourcing       - API contracts       │
-│  - Sharding strategy   - Stream processing    - Service boundaries  │
-│  - Caching layers      - Retry patterns       - Failure domains     │
-│                                                                      │
-│  You're not writing    You're not writing     You're not writing    │
-│  queries, you're       handlers, you're       clients, you're       │
-│  designing data        designing flows        designing systems     │
-│  systems.              that scale.            that compose.         │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────┐
+│                    THE THREE FORCES: AMPLIFIED                            │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                           │
+│  🪨 STONE                  ⚡ LIGHTNING              🧲 MAGNETISM          │
+│  (Data at Scale)          (Flow at Scale)          (Integration at Scale)│
+│                                                                           │
+│  Traditional:             Traditional:              Traditional:          │
+│  - Design schemas         - Debug complex bugs      - Design API contracts│
+│  - Optimize queries       - Trace distributed calls - Integrate services  │
+│  - Plan migrations        - Profile performance     - Handle failures     │
+│                                                                           │
+│  Amplified:               Amplified:                Amplified:            │
+│  - Audit entire data      - Generate observability  - Design platform-wide│
+│    landscapes with AI       strategies with AI        integration patterns│
+│  - Generate migration     - AI-powered root cause   - AI-assisted contract│
+│    scripts at scale         analysis                  generation          │
+│  - Automated schema       - Automated performance   - Automated API       │
+│    analysis & docs          regression detection      documentation       │
+│                                                                           │
+└──────────────────────────────────────────────────────────────────────────┘
 ```
-
-At your level, the code is the easy part. **The decisions are what matter.**
 
 ---
 
-## Your Multiplication Path
+## Your Amplification Path
 
 ```
     WEEK 1              WEEK 2              WEEK 3
    🪨 STONE         →   ⚡ LIGHTNING     →  🧲 MAGNETISM
-   Architect            Architect           Architect
-   Data Systems         Event Systems       Service Boundaries
+   Rapid Codebase       System-Wide         Architecture-Level
+   Acquisition          Debugging           Integration
       │                     │                    │
       ▼                     ▼                    ▼
-   [Data                [System              [Integration
-    Strategy]            Flows]               Architecture]
+   [New Service         [Performance        [Platform
+    in Hours]           Investigation]      Strategy]
                                                 │
     ┌───────────────────────────────────────────┘
     │
     ▼
  WEEK 4                WEEK 5              WEEK 6
- 🏛️ LEAD            →  🔥 CAPSTONE I   →  🌟 CAPSTONE II
- Technical              Own a               Direct AI
- Decisions              System              at Scale
+ 🏛️ ARCHITECTS    →   🔥 CAPSTONE I   →  🌟 CAPSTONE II
+ AI-Augmented          Lead a Major        Build Your
+ System Design         Initiative          Amplified Workflow
     │                     │                    │
     ▼                     ▼                    ▼
- [ADRs &               [System              [AI-Directed
-  Leadership]           Owner]               Architecture]
+ [System               [Technical          [Personal
+  Redesign]             Initiative]        Playbook]
 ```
 
-| Week | Chapter | Capability You're Building |
-|------|---------|---------------------------|
-| 1 | The Stone Remembers | Design data systems that scale |
-| 2 | Lightning Paths | Architect async systems for throughput |
-| 3 | The Pull Between | Define service boundaries and contracts |
-| 4 | The Age of Architects | Lead technical decisions formally |
-| 5 | **Capstone I** | Own a system end-to-end |
-| 6 | **Capstone II** | Direct AI to build at scale |
+| Week | Chapter | Senior Skill → Amplified Skill |
+|------|---------|-------------------------------|
+| 1 | The Stone Remembers | Navigate codebases → Acquire any codebase in hours |
+| 2 | Lightning Paths | Debug complex issues → System-wide performance analysis |
+| 3 | The Pull Between | Design integrations → Architect platform-level patterns |
+| 4 | The Age of Architects | System design → AI-augmented architecture |
+| 5 | **Capstone I** | Lead features → Lead major technical initiatives |
+| 6 | **Capstone II** | Use tools → Build your amplified engineering workflow |
 
 ---
 
 ## Chapter 1: The Stone Remembers 🪨
 
-_Week 1: Architect Data Systems_
+_Week 1: Acquire Any Codebase in Hours_
 
-> _"You've written queries for years. Now you'll decide where the data lives, how it's structured, and what consistency means."_
+> _"Senior engineers know their codebase. Amplified engineers can learn any codebase — fast enough to contribute in days, not weeks."_
 
-### The Shift
+### The Senior Plateau
 
-**Then:** "How do I query this efficiently?"
-**Now:** "Should this data even be in this database?"
+You know your service inside out. You've been working on it for years. You can navigate it with your eyes closed.
 
-At the architect level, you're making decisions that affect:
-- Years of future development
-- Millions of dollars in infrastructure
-- Team productivity
-- System reliability
+But what happens when:
+- You're asked to review a critical PR in a service you've never seen
+- Leadership wants your opinion on an acquisition target's codebase
+- You need to integrate with a poorly-documented legacy system
+- You're moving to a new team/company
 
-### Data Architecture Decisions
+**Most seniors take 2-4 weeks to get productive in a new codebase. That's 2-4 weeks of reduced impact.**
 
-**1. Storage Selection**
+### The Amplified Approach
 
-```
-DECISION: Where does this data live?
+With AI as your research assistant, you can:
 
-┌────────────────────────────────────────────────────────────────┐
-│ If you need...              Use...            Because...       │
-├────────────────────────────────────────────────────────────────┤
-│ ACID transactions           PostgreSQL        Strong consistency│
-│ Document flexibility        MongoDB           Schema evolution  │
-│ High write throughput       Cassandra         Distributed writes│
-│ Real-time analytics         ClickHouse        Column storage    │
-│ Cache layer                 Redis             Sub-ms latency    │
-│ Search                      Elasticsearch     Full-text + facets│
-│ Graph relationships         Neo4j             Relationship-heavy│
-│ Time series                 TimescaleDB       Time-based queries│
-└────────────────────────────────────────────────────────────────┘
-
-Reality: Most systems use 3-5 of these together.
-Your job: Define which data goes where.
-```
-
-**2. Consistency Models**
+1. **Generate architectural understanding** — Ask AI to summarize patterns it sees
+2. **Rapid documentation audit** — Have AI identify what's documented vs. what's tribal knowledge
+3. **Dependency mapping** — AI can trace and visualize complex dependency graphs
+4. **Pattern recognition** — AI can identify coding patterns, anti-patterns, and inconsistencies
 
 ```
-DECISION: How consistent does this need to be?
+TRADITIONAL CODEBASE LEARNING:
+Week 1: Get environment running, read some code
+Week 2: Start making small changes, break things
+Week 3: Understand main flows, still missing context
+Week 4: Finally productive
 
-Strong Consistency:
-  - Financial transactions
-  - Inventory counts
-  - User authentication
-  → Use ACID databases, synchronous writes
-
-Eventual Consistency:
-  - Social feeds
-  - Analytics
-  - Recommendations
-  → Use async replication, accept staleness
-
-Your job: Know which parts of your system need which.
-Most engineers default to "strong" everywhere (expensive, slow).
-Architects know when eventual is acceptable (cheaper, faster).
-```
-
-**3. Sharding Strategy**
-
-```
-DECISION: How do you scale writes?
-
-Approaches:
-1. Vertical (bigger machine)
-   → Simple, but has a ceiling
-
-2. Horizontal by user/tenant
-   → Works for most SaaS
-   → Keep user data together
-
-3. Horizontal by hash
-   → Good for random access
-   → Bad for range queries
-
-4. Horizontal by time
-   → Good for logs/events
-   → Archive old shards
-
-Your job: Pick the strategy BEFORE you need it.
-Migrating sharding strategies is painful.
+AI-AMPLIFIED CODEBASE LEARNING:
+Hour 1-2: AI generates architectural overview from code
+Hour 3-4: AI identifies entry points, main flows, patterns
+Hour 5-6: AI highlights unusual patterns, risks, tech debt
+Day 2: You're making informed contributions
 ```
 
 ### 📝 The Trial
 
-For a system you own or are familiar with:
+Pick a codebase you DON'T know well (open source or at your company):
 
-1. Why was each database chosen? Was it the right choice?
-2. What's the consistency model for different data types?
-3. How would you scale writes if traffic 10x'd tomorrow?
-4. Where is data duplicated? Is that intentional or accidental?
-5. What would you change if you could start over?
+1. Use AI to generate an architectural summary
+2. Have AI identify the 5 most critical paths through the code
+3. Ask AI to find patterns it sees repeated throughout
+4. Have AI identify areas of high complexity or technical debt
+5. Document what you learned vs. what you verified manually
 
-### 🔨 Mini-Project: Data Strategy
+### 🔨 Mini-Project: Rapid Acquisition Protocol
 
-**Your quest:** Create a comprehensive data architecture document for a system.
+**Your quest:** Create a repeatable process for learning any new codebase.
 
-**Choose:** An existing system you own OR design a new one (e.g., a food delivery platform, social network, or fintech app).
+**Build a personal protocol that includes:**
 
-**Create:**
+1. **Initial Analysis Prompts**
+   - What questions do you ask AI first?
+   - What context do you provide?
+   - How do you verify AI's answers?
 
-1. **Data Inventory**
-   - Every type of data in the system
-   - Current storage location
-   - Access patterns (read-heavy, write-heavy, mixed)
-   - Consistency requirements
+2. **Architecture Extraction**
+   - How do you get AI to generate useful diagrams?
+   - What visualization tools do you use?
+   - How do you validate the architecture AI describes?
 
-2. **Storage Architecture**
-   - Which databases for which data
-   - Why each choice was made
-   - Alternatives considered
+3. **Risk Identification**
+   - Security vulnerabilities
+   - Performance concerns
+   - Tech debt hotspots
+   - Integration risks
 
-3. **Consistency Model**
-   - Strong consistency boundaries
-   - Eventual consistency acceptable zones
-   - How conflicts are resolved
+4. **Documentation Generation**
+   - What docs should exist but don't?
+   - How do you get AI to generate useful documentation?
+   - How do you ensure accuracy?
 
-4. **Scaling Strategy**
-   - Current capacity
-   - Sharding approach
-   - When/how to migrate to next stage
-
-5. **Data Flow Diagram**
-   - How data moves between stores
-   - Sync vs async replication
-   - Cache invalidation strategy
+**Test your protocol on 2-3 unfamiliar codebases.**
 
 **Deliverables:**
 
 ```
 your-folder/ch1-stone/
-├── DATA_INVENTORY.md
-├── STORAGE_ARCHITECTURE.md
-├── CONSISTENCY_MODEL.md
-├── SCALING_STRATEGY.md
-└── diagrams/
-    ├── data_flow.md
-    └── storage_topology.md
+├── ACQUISITION_PROTOCOL.md    # Your repeatable process
+├── PROMPTS.md                 # Your best AI prompts for codebase learning
+├── codebase-1/                # Analysis of first test codebase
+├── codebase-2/                # Analysis of second test codebase
+└── LEARNINGS.md               # What worked, what didn't
 ```
 
 ---
 
 ## Chapter 2: Lightning Paths ⚡
 
-_Week 2: Architect Async Systems_
+_Week 2: System-Wide Debugging and Performance_
 
-> _"You've written async code. Now you'll decide what's sync vs async, design event-driven systems, and reason about throughput at scale."_
+> _"Senior engineers debug their service. Amplified engineers diagnose system-wide issues across services they've never seen."_
 
-### The Shift
+### The Senior Plateau
 
-**Then:** "How do I make this function async?"
-**Now:** "Should this operation be async? What are the tradeoffs?"
+You're great at debugging your service. You know where to look, what tools to use, how to trace issues. But increasingly, bugs don't live in one service.
 
-### System Flow Decisions
+The hard bugs are:
+- Race conditions across services
+- Performance degradation from upstream changes
+- Cascading failures from third-party dependencies
+- Data inconsistencies across distributed systems
 
-**1. Sync vs Async**
+**These bugs require understanding systems you don't own.**
 
-```
-SYNC:
-  ✓ Simple mental model
-  ✓ Easy to debug
-  ✓ Immediate feedback
-  ✗ Blocks while waiting
-  ✗ Timeout issues
-  ✗ Cascading failures
+### The Amplified Approach
 
-ASYNC:
-  ✓ Non-blocking
-  ✓ Better throughput
-  ✓ Fault isolation
-  ✗ Complex debugging
-  ✗ Ordering challenges
-  ✗ Eventual consistency
+AI can be your distributed systems debugger:
 
-DECISION FRAMEWORK:
-  - User waiting for result? → Sync (usually)
-  - Can be processed later? → Async
-  - External service involved? → Async (with queue)
-  - Must happen in order? → Sync OR ordered queue
-  - Can fail and retry? → Async with dead letter
-```
-
-**2. Event-Driven Architecture**
+1. **Log Analysis at Scale** — Feed AI logs from multiple services, ask for correlation
+2. **Performance Pattern Recognition** — AI can spot degradation patterns humans miss
+3. **Dependency Impact Analysis** — "What happens downstream if this service is slow?"
+4. **Root Cause Hypothesis Generation** — AI generates hypotheses, you test them
 
 ```
-WHEN TO USE:
-  - Multiple services care about the same event
-  - Services shouldn't be tightly coupled
-  - Actions can happen independently
-  - You need audit trail / event sourcing
+TRADITIONAL DEBUGGING (multi-service issue):
+Day 1: Notice problem in your service
+Day 2: Realize it's not your service, escalate
+Day 3: Other team investigates their service
+Day 4: Discover it's actually a third service
+Day 5: Finally identify the root cause
 
-PATTERNS:
-
-1. Event Notification
-   "Something happened" → consumers decide what to do
-   
-2. Event-Carried State Transfer
-   "Something happened AND here's all the data you need"
-   
-3. Event Sourcing
-   State = replay of all events
-   
-4. CQRS
-   Separate read and write models
+AI-AMPLIFIED DEBUGGING:
+Hour 1: Feed AI logs from all potentially-affected services
+Hour 2: AI generates hypotheses about root cause
+Hour 3: You test the most likely hypothesis
+Hour 4: Root cause identified, fix in progress
 ```
 
-**3. Designing for Throughput**
+### Performance Investigation Framework
 
 ```
-BOTTLENECK ANALYSIS:
-
-Request → [API] → [Service] → [Database]
-             ↓         ↓           ↓
-         CPU bound  I/O bound  Query bound
-
-SOLUTIONS BY BOTTLENECK:
-
-CPU Bound:
-  - Horizontal scaling
-  - Caching computed results
-  - Async offload to workers
-
-I/O Bound:
-  - Connection pooling
-  - Async I/O
-  - Batch operations
-
-Query Bound:
-  - Read replicas
-  - Caching layer
-  - Query optimization
-  - Sharding
+┌─────────────────────────────────────────────────────────────────────────┐
+│              AI-AUGMENTED PERFORMANCE INVESTIGATION                      │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  1. GATHER (10 min)                                                     │
+│     - Collect metrics from all potentially-affected services            │
+│     - Pull logs from the relevant time window                           │
+│     - Get deployment history                                            │
+│                                                                          │
+│  2. AI ANALYSIS (15 min)                                                │
+│     - "Analyze these metrics. What patterns do you see?"                │
+│     - "Correlate these logs. What happened in sequence?"                │
+│     - "Given this deployment history, what could have changed?"         │
+│                                                                          │
+│  3. HYPOTHESIS GENERATION (10 min)                                      │
+│     - "What are the 5 most likely root causes?"                         │
+│     - "What evidence would confirm each hypothesis?"                    │
+│     - Rank by likelihood and impact                                     │
+│                                                                          │
+│  4. TARGETED INVESTIGATION (varies)                                     │
+│     - Test hypotheses in order                                          │
+│     - Use AI to dig deeper into most likely causes                      │
+│     - Validate with domain experts                                      │
+│                                                                          │
+│  5. DOCUMENTATION (15 min)                                              │
+│     - AI generates incident report                                      │
+│     - You verify and add context                                        │
+│     - Action items for prevention                                       │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 📝 The Trial
 
-1. For a system you own: What's currently sync that should be async?
-2. What events would make sense for your domain? What would consume them?
-3. Where are the throughput bottlenecks? How would you prove it?
-4. If you had to handle 100x current load tomorrow, what breaks first?
-5. Design an event-driven version of a feature you own.
+Find a recent incident at your company (post-mortem or current investigation):
 
-### 🔨 Mini-Project: System Flows
+1. Gather the data that was available at the time
+2. Use AI to analyze and generate hypotheses
+3. Compare AI's hypotheses to what was actually the root cause
+4. Identify what AI got right and what it missed
+5. What would have been different if you'd used this approach during the incident?
 
-**Your quest:** Design or redesign a system's async architecture.
+### 🔨 Mini-Project: Performance Investigation
 
-**Create:**
+**Your quest:** Use AI to conduct a system-wide performance analysis.
 
-1. **Flow Inventory**
-   - Every major flow in the system
-   - Currently sync vs async
-   - Recommendation with rationale
+**Pick a performance concern at your company and:**
 
-2. **Event Catalog**
-   - Events that should exist
-   - Producers and consumers for each
-   - Event schema
+1. **Baseline Analysis**
+   - Current performance metrics across services
+   - Where are the bottlenecks?
+   - What does "good" look like?
 
-3. **Throughput Analysis**
-   - Current bottlenecks
-   - Capacity of each component
-   - Scaling strategy for each
+2. **AI-Powered Deep Dive**
+   - Feed AI performance data from multiple services
+   - Have AI identify patterns and correlations
+   - Generate hypotheses about root causes
 
-4. **Failure Modes**
-   - What happens when queue backs up?
-   - How are failed events handled?
-   - What needs dead letter queues?
+3. **Investigation Report**
+   - Top 5 performance risks
+   - Evidence for each
+   - Recommended remediation
 
-5. **Architecture Diagrams**
-   - Request flow diagrams
-   - Event flow diagrams
-   - Failure recovery flows
+4. **Monitoring Recommendations**
+   - What should we alert on?
+   - What dashboards should exist?
+   - What SLOs make sense?
 
 **Deliverables:**
 
 ```
 your-folder/ch2-lightning/
-├── FLOW_INVENTORY.md
-├── EVENT_CATALOG.md
-├── THROUGHPUT_ANALYSIS.md
-├── FAILURE_MODES.md
-└── diagrams/
-    ├── request_flows.md
-    ├── event_flows.md
-    └── failure_handling.md
+├── BASELINE.md               # Current state analysis
+├── AI_ANALYSIS.md            # AI's findings and hypotheses
+├── INVESTIGATION_REPORT.md   # Your conclusions
+├── MONITORING_RECS.md        # Observability recommendations
+└── PLAYBOOK.md               # How to investigate this type of issue
 ```
 
 ---
 
 ## Chapter 3: The Pull Between 🧲
 
-_Week 3: Architect Service Boundaries_
+_Week 3: Architecture-Level Integration Patterns_
 
-> _"You've integrated services. Now you'll decide where to draw the lines — what's one service vs many, what's build vs buy, what contracts to enforce."_
+> _"Senior engineers design integrations. Amplified engineers architect integration strategies for entire platforms."_
 
-### The Shift
+### The Senior Plateau
 
-**Then:** "How do I call this other service?"
-**Now:** "Should this even be a separate service?"
+You can design a solid integration. You know about retries, circuit breakers, idempotency. But your impact is limited to integrations you personally build.
 
-### Service Architecture Decisions
+What if you could:
+- Define integration patterns for your entire org
+- Generate integration code that follows best practices automatically
+- Create self-documenting API contracts
+- Identify integration risks across the platform before they become incidents
 
-**1. Service Boundaries**
-
-```
-WHEN TO SPLIT:
-  - Different scaling requirements
-  - Different deployment cadences
-  - Different team ownership
-  - Different security requirements
-  - Clear domain boundary (DDD)
-
-WHEN TO KEEP TOGETHER:
-  - Tightly coupled data
-  - Same team owns both
-  - Distributed transaction would be needed
-  - Network latency would hurt UX
-  - Complexity isn't worth it yet
-
-THE MONOLITH ISN'T DEAD:
-  Modular monolith > poorly designed microservices
-  Split when you have a REASON, not because it's trendy.
-```
-
-**2. Build vs Buy**
+### The Amplified Approach
 
 ```
-BUILD when:
-  - Core competitive advantage
-  - Unique requirements not met by vendors
-  - Long-term cost savings justify investment
-  - You have the expertise to maintain it
+TRADITIONAL INTEGRATION WORK:
+You: Design one integration at a time
+Outcome: Good integrations, but limited to what you can personally review
 
-BUY when:
-  - Commodity functionality (auth, payments, email)
-  - Faster time to market matters
-  - Vendor has better expertise
-  - TCO is lower including maintenance
-
-FRAMEWORK:
-  1. Is this core to our business? (Yes → lean toward build)
-  2. Does a good solution exist? (No → must build)
-  3. Can we afford the build + maintenance? (No → must buy)
-  4. Is vendor lock-in acceptable? (No → be careful)
+AI-AMPLIFIED INTEGRATION WORK:
+You: Define patterns, AI generates implementations
+You: Define contracts, AI generates documentation
+You: Define risks, AI monitors for violations
+Outcome: Your patterns scale across the organization
 ```
 
-**3. API Contract Design**
+### Platform-Level Integration Thinking
 
 ```
-PRINCIPLES:
-  - Contracts are promises
-  - Breaking changes break trust (and systems)
-  - Version explicitly
-  - Design for extension
-
-VERSIONING STRATEGIES:
-  1. URL versioning: /api/v1/users
-  2. Header versioning: Accept-Version: 1
-  3. No versioning (additive only)
-
-EVOLUTION STRATEGY:
-  - New fields: always optional, with defaults
-  - Removing fields: deprecate first, remove in next major
-  - Changing behavior: new endpoint
+┌─────────────────────────────────────────────────────────────────────────┐
+│              INTEGRATION STRATEGY (NOT JUST INTEGRATION)                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  1. PATTERNS                                                            │
+│     - What are our standard integration patterns?                       │
+│     - When do we use sync vs async?                                     │
+│     - What's our retry/circuit breaker standard?                        │
+│     - How do we handle partial failures?                                │
+│                                                                          │
+│  2. CONTRACTS                                                           │
+│     - How do we define API contracts?                                   │
+│     - What's our versioning strategy?                                   │
+│     - How do we handle breaking changes?                                │
+│     - What documentation is required?                                   │
+│                                                                          │
+│  3. OBSERVABILITY                                                       │
+│     - What metrics do all integrations emit?                            │
+│     - What's our distributed tracing strategy?                          │
+│     - How do we alert on integration health?                            │
+│                                                                          │
+│  4. GOVERNANCE                                                          │
+│     - How do we approve new integrations?                               │
+│     - How do we deprecate old ones?                                     │
+│     - Who owns integration health?                                      │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 📝 The Trial
 
-1. Look at your system: What's split that shouldn't be? What's together that should be split?
-2. What services do you depend on that you should own? What do you own that you should outsource?
-3. Find an API contract in your system. How would a breaking change be handled?
-4. Where does a "distributed monolith" exist? (Microservices that must deploy together)
-5. Design the service boundary for a new feature.
+Audit your organization's integration landscape:
 
-### 🔨 Mini-Project: Integration Architecture
+1. List all service-to-service integrations you're aware of
+2. What patterns are used? Are they consistent?
+3. Where is documentation missing?
+4. What happens if your most critical integration fails?
+5. Who owns integration health?
 
-**Your quest:** Document and analyze your system's integration architecture.
+### 🔨 Mini-Project: Platform Integration Strategy
 
-**Create:**
+**Your quest:** Create an integration strategy document for your platform.
 
-1. **Service Map**
-   - Every service in the system
-   - Ownership and team
-   - Communication patterns (sync/async)
-   - Current pain points
+**Build a proposal that includes:**
 
-2. **Boundary Analysis**
-   - Why each boundary exists
-   - Boundaries that should be consolidated
-   - Monolith parts that should be split
-   - Rationale for each recommendation
+1. **Current State Analysis**
+   - Audit existing integrations with AI help
+   - Identify patterns (and anti-patterns)
+   - Document inconsistencies and risks
 
-3. **Build vs Buy Analysis**
-   - What you've built internally
-   - What you buy/use externally
-   - Recommendations for changes
-   - TCO estimates
+2. **Proposed Standards**
+   - Recommended patterns for different scenarios
+   - Contract templates (OpenAPI, AsyncAPI, etc.)
+   - Error handling standards
+   - Observability requirements
 
-4. **Contract Catalog**
-   - Major API contracts
-   - Versioning strategy
-   - Change management process
-   - Contracts that need improvement
+3. **Implementation Toolkit**
+   - Code templates that follow your patterns
+   - AI prompts for generating compliant integrations
+   - Automated validation checks
 
-5. **Architecture Diagrams**
-   - Service topology
-   - Data ownership
-   - Failure domains
+4. **Governance Process**
+   - How new integrations get approved
+   - How existing integrations get audited
+   - Who's responsible for what
 
 **Deliverables:**
 
 ```
 your-folder/ch3-magnetism/
-├── SERVICE_MAP.md
-├── BOUNDARY_ANALYSIS.md
-├── BUILD_VS_BUY.md
-├── CONTRACT_CATALOG.md
-└── diagrams/
-    ├── service_topology.md
-    ├── data_ownership.md
-    └── failure_domains.md
+├── CURRENT_STATE.md          # Audit of existing integrations
+├── PROPOSED_STANDARDS.md     # Your recommended patterns
+├── templates/                # Code templates for common patterns
+├── AI_PROMPTS.md             # Prompts for generating compliant code
+└── GOVERNANCE.md             # Process recommendations
 ```
 
 ---
 
 ## Chapter 4: The Age of Architects 🏛️
 
-_Week 4: Lead Technical Decisions_
+_Week 4: AI-Augmented System Design_
 
-> _"You've made decisions. Now you'll make them formally — documenting, defending, and building consensus around architectural choices."_
+> _"Senior engineers design systems. Amplified engineers design systems that would have taken teams — in weeks."_
 
-### The Shift
+### The Senior Plateau
 
-**Then:** "I think we should do X" (in Slack, forgotten in a week)
-**Now:** "Here's ADR-047, documenting our decision to do X, alternatives considered, and tradeoffs accepted."
+You can design a solid system. You've done it many times. But system design is slow. You need to:
+- Gather requirements
+- Consider trade-offs
+- Document decisions
+- Get buy-in
+- Iterate on feedback
 
-### Architectural Leadership
+**What if AI could accelerate each of these steps without sacrificing quality?**
 
-**1. Architecture Decision Records (ADRs)**
-
-```
-STRUCTURE:
-
-# ADR-047: Use Event Sourcing for Order System
-
-## Status
-Accepted (2024-01-15)
-
-## Context
-Order system needs audit trail, undo capability, 
-and event-driven integration with other services.
-
-## Decision
-We will implement Event Sourcing for orders, 
-storing all state changes as events.
-
-## Alternatives Considered
-1. Traditional CRUD with audit log
-   - Rejected: Audit trail is separate, can get out of sync
-2. Change Data Capture (CDC)
-   - Rejected: Adds infrastructure complexity
-3. Event Sourcing
-   - Selected: Native audit, replayability, event integration
-
-## Consequences
-- (+) Complete audit trail
-- (+) Can rebuild state by replaying
-- (+) Events available for other services
-- (-) More complex reads (need projections)
-- (-) Team needs to learn new patterns
-- (-) Migration of existing data required
-
-## Follow-up Items
-- [ ] Design event schemas
-- [ ] Plan data migration
-- [ ] Training for team
-```
-
-**2. Technical Roadmaps**
+### The Amplified Approach
 
 ```
-Your job isn't just the next sprint. It's the next 6-12 months.
+TRADITIONAL SYSTEM DESIGN (for a major feature):
+Week 1: Requirements gathering and initial research
+Week 2: First design draft
+Week 3: Reviews and iteration
+Week 4: Final design, get approval
+Week 5-8: Implementation
+Total: 8 weeks
 
-Q1: Foundation
-  - Migrate to Kubernetes
-  - Implement observability platform
-  - API gateway rollout
-
-Q2: Scale
-  - Database sharding
-  - Caching layer
-  - Performance optimization
-
-Q3: Features
-  - Real-time capabilities
-  - Mobile API
-  - Partner integrations
-
-Q4: Reliability
-  - Multi-region
-  - Disaster recovery
-  - Chaos engineering
-
-Each item needs: Owner, dependencies, milestones, risks.
+AI-AMPLIFIED SYSTEM DESIGN:
+Day 1-2: AI helps synthesize requirements from meetings/docs
+Day 3-4: AI generates initial design options
+Day 5: You refine and add judgment
+Week 2: Reviews and iteration (AI helps address feedback)
+Week 3-5: Implementation (AI assists)
+Total: 5 weeks, higher quality
 ```
 
-**3. Building Consensus**
+### The AI-Augmented Design Process
 
 ```
-Technical decisions aren't dictatorships.
-
-THE PROCESS:
-1. Write the proposal (ADR draft)
-2. Share with stakeholders EARLY
-3. Gather feedback (async first)
-4. Hold decision meeting (sync, if needed)
-5. Document decision (accepted, rejected, or deferred)
-6. Communicate to affected teams
-
-HANDLING DISAGREEMENT:
-- Seek to understand their concerns
-- Find the underlying values conflict
-- Propose experiments where possible
-- Disagree and commit when needed
-- Document dissent (it's valuable)
+┌─────────────────────────────────────────────────────────────────────────┐
+│              AI-AUGMENTED SYSTEM DESIGN                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  1. REQUIREMENTS SYNTHESIS                                              │
+│     - Feed AI meeting notes, slack threads, tickets                     │
+│     - "What are the requirements? What's ambiguous?"                    │
+│     - Generate questions for stakeholders                               │
+│                                                                          │
+│  2. PRIOR ART RESEARCH                                                  │
+│     - "How have others solved similar problems?"                        │
+│     - "What are common patterns for this type of system?"               │
+│     - "What are the known pitfalls?"                                    │
+│                                                                          │
+│  3. DESIGN GENERATION                                                   │
+│     - "Given these requirements, propose 3 architectures"               │
+│     - "What are the trade-offs of each?"                                │
+│     - "What questions does each design raise?"                          │
+│                                                                          │
+│  4. TRADE-OFF ANALYSIS                                                  │
+│     - "Compare these designs on: scalability, cost, complexity"         │
+│     - "What are the risks of each approach?"                            │
+│     - "What would we regret in 2 years?"                                │
+│                                                                          │
+│  5. DOCUMENTATION                                                       │
+│     - AI generates initial design doc                                   │
+│     - You refine and add context                                        │
+│     - AI generates diagrams from your descriptions                      │
+│                                                                          │
+│  6. REVIEW PREPARATION                                                  │
+│     - "What questions will reviewers ask?"                              │
+│     - "What are the weakest parts of this design?"                      │
+│     - "How would a skeptic critique this?"                              │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 📝 The Trial
 
-1. Find a major technical decision made recently. How was it documented?
-2. Write an ADR for a decision that wasn't documented but should have been.
-3. What's the technical roadmap for your team? If there isn't one, what should it be?
-4. Think of a decision that had disagreement. How was it resolved? How should it have been?
-5. What decision is coming up that you should be driving?
+Pick a recent design doc you wrote or reviewed:
 
-### 🔨 Mini-Project: Technical Leadership
+1. Feed it to AI and ask for critique
+2. Have AI generate alternative approaches you didn't consider
+3. Ask AI what questions a skeptical reviewer would raise
+4. What would you change based on this analysis?
 
-**Your quest:** Create the documentation that demonstrates architectural leadership.
+### 🔨 Mini-Project: System Redesign
 
-**Create:**
+**Your quest:** Use AI to design (or redesign) a significant system.
 
-1. **ADR Collection**
-   - Write 3 ADRs for past decisions (documenting what happened)
-   - Write 1 ADR for an upcoming decision (proposing)
-   - Include alternatives, tradeoffs, and consequences
+**Pick a system that needs improvement and:**
 
-2. **Technical Roadmap**
-   - 6-12 month technical direction
-   - Prioritized initiatives
-   - Dependencies between items
-   - Risks and mitigations
+1. **Requirements Synthesis**
+   - Gather all relevant context (docs, tickets, conversations)
+   - Use AI to synthesize into clear requirements
+   - Identify ambiguities and resolve them
 
-3. **Decision Log**
-   - Major decisions made in past year
-   - Who made them, how they were communicated
-   - Which need revisiting
+2. **Design Exploration**
+   - Have AI generate 3+ architecture options
+   - Document trade-offs of each
+   - Pick the best approach (and document why)
 
-4. **Stakeholder Map**
-   - Who needs to be involved in architectural decisions
-   - Their concerns and priorities
-   - How to communicate with each
+3. **Detailed Design**
+   - Component breakdown
+   - Data model
+   - API contracts
+   - Sequence diagrams
+
+4. **Risk Analysis**
+   - What could go wrong?
+   - How do we mitigate?
+   - What monitoring do we need?
+
+5. **Implementation Plan**
+   - Break into phases
+   - Dependencies and milestones
+   - Resource estimates
 
 **Deliverables:**
 
 ```
 your-folder/ch4-architects/
-├── adrs/
-│   ├── ADR-001-past-decision.md
-│   ├── ADR-002-past-decision.md
-│   ├── ADR-003-past-decision.md
-│   └── ADR-004-proposed.md
-├── TECHNICAL_ROADMAP.md
-├── DECISION_LOG.md
-└── STAKEHOLDER_MAP.md
+├── REQUIREMENTS.md           # Synthesized requirements
+├── OPTIONS_ANALYSIS.md       # Design options and trade-offs
+├── DESIGN.md                 # Your chosen design
+├── DIAGRAMS/                 # Architecture, sequence, data diagrams
+├── RISK_ANALYSIS.md          # What could go wrong
+└── IMPLEMENTATION_PLAN.md    # How to build it
 ```
 
 ---
 
-## Capstone I: Own a System 🔥
+## Capstone I: Lead a Major Technical Initiative 🔥
 
-_Week 5: End-to-End Ownership_
+_Week 5: From Individual Contributor to Technical Leader_
 
-> _"Senior engineers write code. Architects own systems."_
+> _"Senior engineers deliver features. Amplified engineers lead initiatives that transform systems."_
 
 ### The Quest
 
-Take ownership of a **complete system** (or define a new one):
+You've learned to:
+- Acquire codebases rapidly (Ch 1)
+- Diagnose system-wide issues (Ch 2)
+- Think at platform scale (Ch 3)
+- Design with AI assistance (Ch 4)
 
-1. Define the system boundary
-2. Document the architecture (current or proposed)
-3. Create the technical roadmap
-4. Identify and address top risks
-5. Establish success metrics
-6. Present to stakeholders
+**Now lead a major technical initiative using all of these skills.**
 
-### What "Owning a System" Means
+### What Qualifies as "Major"
+
+This should be bigger than a feature:
+- A platform migration
+- A significant architecture change
+- A cross-team technical improvement
+- An infrastructure modernization
+- A performance/reliability initiative
+
+**If it would normally take a team 3+ months, it qualifies.**
+
+### The Process
 
 ```
-YOU'RE RESPONSIBLE FOR:
-  ✓ Architecture decisions
-  ✓ Technical roadmap
-  ✓ Reliability (SLOs, incident response)
-  ✓ Performance
-  ✓ Security posture
-  ✓ Technical debt strategy
-  ✓ Team enablement
-  ✓ Documentation
+WEEK 5 SCHEDULE:
 
-YOU'RE NOT RESPONSIBLE FOR:
-  ✗ Writing all the code
-  ✗ Fixing all the bugs
-  ✗ Being the only one who understands it
+Day 1: Problem Definition
+- What exactly are we solving?
+- What's the impact of solving it?
+- What's the cost of NOT solving it?
+- Who are the stakeholders?
 
-YOU SUCCEED BY:
-  - Making good decisions
-  - Enabling others to contribute
-  - Anticipating problems before they happen
-  - Communicating clearly to stakeholders
+Day 2: Design
+- Use your amplified design process
+- Generate options, analyze trade-offs
+- Create detailed design doc
+
+Day 3: Socialization
+- Present to key stakeholders
+- Gather feedback
+- Iterate on design
+
+Day 4: Planning
+- Break into workstreams
+- Identify dependencies
+- Resource requirements
+- Timeline and milestones
+
+Day 5: Kickoff
+- Get official buy-in
+- Assign responsibilities
+- Start execution
+
+Day 6-7: Execute First Phase
+- Demonstrate progress
+- Validate approach
+- Document learnings
 ```
 
 ### Deliverables
 
 ```
 your-folder/capstone-1/
-├── SYSTEM_OVERVIEW.md           # What is this system?
-├── ARCHITECTURE.md              # How is it built?
-├── diagrams/                    # Visual documentation
-├── adrs/                        # Key decisions
-├── TECHNICAL_ROADMAP.md         # Where is it going?
-├── RISKS_AND_MITIGATIONS.md     # What could go wrong?
-├── SUCCESS_METRICS.md           # How do we know it's working?
-├── RUNBOOK.md                   # How to operate it
-└── PRESENTATION.md              # Stakeholder presentation
+├── PROBLEM_STATEMENT.md      # What we're solving and why
+├── DESIGN.md                 # Technical design
+├── STAKEHOLDER_FEEDBACK.md   # Input from key people
+├── PROJECT_PLAN.md           # Workstreams, milestones, resources
+├── WEEK_1_PROGRESS.md        # What you accomplished
+└── RETROSPECTIVE.md          # What you learned about leading
 ```
 
 ---
 
-## Capstone II: AI-Directed Architecture 🌟
+## Capstone II: Build Your Amplified Workflow 🌟
 
-_Week 6: Multiply Your Impact_
+_Week 6: Your Personal AI-Augmented Engineering System_
 
-> _"The architect who can direct AI doesn't build 10x faster. They build 10x more."_
-
-### The Realization
-
-You now have:
-- Data architecture expertise (Week 1)
-- Async system design (Week 2)
-- Integration architecture (Week 3)
-- Technical leadership (Week 4)
-- System ownership (Capstone I)
-
-**With AI, these skills become superpowers.**
-
-You can:
-- Design a system, then direct AI to implement it
-- Review AI-generated code with architectural understanding
-- Break down complex problems into AI-executable pieces
-- Build in weeks what would take months
+> _"Tools don't make the craftsman. But the best craftsmen have the best tools — and know how to use them."_
 
 ### The Quest
 
-Design and build a **significant project** using AI as your engineering team:
+You've used AI throughout this course. Now systematize it.
 
-**You** do:
-- Architecture and design
-- Breaking down into components
-- Defining contracts and interfaces
-- Reviewing and integrating AI output
-- Testing and validation
-- Documentation
+Build your personal **Amplified Engineering Playbook** — a documented system for how YOU use AI to multiply YOUR impact.
 
-**AI** does:
-- Implementation of components
-- Boilerplate generation
-- Test generation
-- Documentation drafts
+### What Goes in Your Playbook
 
-### Requirements
+1. **Codebase Acquisition Protocol**
+   - Your best prompts for learning new codebases
+   - Your verification checklist
+   - Your documentation templates
 
-- **Significant scope** — would take a team weeks without AI
-- **Your design** — all architecture decisions are yours
-- **AI implementation** — most code written by AI under your direction
-- **Your verification** — you review and validate everything
-- **Full documentation** — ADRs, diagrams, runbooks
+2. **Debugging Workflow**
+   - How you gather information for AI
+   - Your hypothesis generation prompts
+   - Your investigation framework
 
-### The AI Direction Workflow
+3. **Integration Design Process**
+   - Your patterns and when to use them
+   - Your code generation prompts
+   - Your review checklist
 
-```
-ARCHITECTURAL AI DIRECTION:
+4. **System Design Process**
+   - Your requirements synthesis approach
+   - Your design generation prompts
+   - Your trade-off analysis framework
 
-1. DESIGN PHASE (You)
-   - System architecture
-   - Component boundaries
-   - API contracts
-   - Data models
+5. **Code Generation Standards**
+   - What you delegate to AI
+   - What you always do yourself
+   - How you review AI-generated code
 
-2. DECOMPOSITION PHASE (You)
-   - Break into independent components
-   - Define clear interfaces
-   - Specify acceptance criteria
+6. **Knowledge Capture**
+   - How you document what AI teaches you
+   - How you improve your prompts over time
+   - How you share learnings with your team
 
-3. EXECUTION PHASE (AI + You)
-   For each component:
-   a. You: Write detailed prompt with context
-   b. AI: Generate implementation
-   c. You: Review against design
-   d. AI: Revise based on feedback
-   e. You: Integrate and verify
+### The Meta-Quest
 
-4. INTEGRATION PHASE (You)
-   - Assemble components
-   - Verify interfaces work
-   - End-to-end testing
-   - Performance validation
+This isn't just documentation. **Test and refine your playbook** on a real project:
 
-5. DOCUMENTATION PHASE (AI + You)
-   - AI: Generate initial docs
-   - You: Review and enhance
-   - You: Add architectural context
-```
+1. Pick a significant piece of work
+2. Apply your playbook systematically
+3. Measure the difference
+4. Refine based on what works
 
 ### Deliverables
 
 ```
 your-folder/capstone-2/
-├── ARCHITECTURE.md              # Your design
-├── diagrams/                    # System diagrams
-├── components/                  # Component specs
-│   ├── component-a/
-│   │   ├── SPEC.md              # Your spec
-│   │   ├── PROMPTS.md           # AI prompts used
-│   │   └── code/                # AI-generated + reviewed
-│   └── component-b/
-├── integration/                 # How it all connects
-├── tests/                       # Your test suite
-├── AI_LOG.md                    # Complete AI interaction log
-├── TIME_ANALYSIS.md             # Effort comparison
-└── LEARNINGS.md                 # What worked, what didn't
+├── PLAYBOOK.md               # Your complete amplified engineering system
+├── PROMPTS_LIBRARY.md        # Your best AI prompts, organized by use case
+├── VERIFICATION_CHECKLISTS.md # How you verify AI output
+├── REAL_PROJECT/             # Documentation of applying your playbook
+│   ├── BEFORE_AFTER.md       # Impact measurement
+│   └── REFINEMENTS.md        # What you changed based on results
+├── TEAM_GUIDE.md             # How others on your team can use your approach
+└── FUTURE_IMPROVEMENTS.md    # What's next for your AI workflow
 ```
 
 ---
 
-## Epilogue: The Force Multiplier
+## Epilogue: The Amplified Engineer
 
-You came into this course as a mid-to-senior engineer.
+Six weeks ago, you were a senior engineer doing senior work.
 
-You leave as an **architect** who can:
+Now you're an **amplified** engineer who:
 
-- **Design data systems** that scale to millions of users
-- **Architect async systems** that handle massive throughput
-- **Define service boundaries** that enable team autonomy
-- **Lead technical decisions** with formal process and documentation
-- **Own systems end-to-end** with full accountability
-- **Direct AI** to build at a scale that was impossible before
+- **Acquires any codebase in hours** instead of weeks
+- **Diagnoses system-wide issues** across services you don't own
+- **Architects at platform scale** with AI assistance
+- **Designs systems faster** without sacrificing quality
+- **Leads major initiatives** that would have required teams
+- **Has a systematic approach** to AI-augmented engineering
 
-**You're not just faster. You're multiplied.**
+**The engineers who embrace AI won't just keep their jobs. They'll take on bigger roles, more responsibility, and more impact.**
 
-One architect with AI direction capabilities can build what used to require a team. Can maintain what used to require an organization. Can move at a pace that was previously impossible.
+You're now one of them.
 
-The engineers who learn this become irreplaceable. Not because they can code faster than AI — they can't. But because they can **see** what AI can't see, **decide** what AI can't decide, and **lead** where AI can't lead.
+The question isn't whether AI will change software engineering. It will.
 
-**Your career isn't threatened by AI. It's amplified by it.**
+The question is whether you'll be amplified by it — or threatened by it.
 
-Go build something massive.
+**You've chosen amplification. Now go multiply your impact.**
 
 ---
 
 ## Progress Tracker
 
-| Week | Chapter | Capability | Status |
-|------|---------|------------|--------|
-| 1 | The Stone Remembers | Data Architecture | ⬜ |
-| 2 | Lightning Paths | Async System Design | ⬜ |
-| 3 | The Pull Between | Service Boundaries | ⬜ |
-| 4 | The Age of Architects | Technical Leadership | ⬜ |
-| 5 | **Capstone I** | System Ownership | ⬜ |
-| 6 | **Capstone II** | AI-Directed Building | ⬜ |
+| Week | Chapter | Skill | Status |
+|------|---------|-------|--------|
+| 1 | The Stone Remembers | Rapid Codebase Acquisition | ⬜ |
+| 2 | Lightning Paths | System-Wide Debugging | ⬜ |
+| 3 | The Pull Between | Platform Integration Strategy | ⬜ |
+| 4 | The Age of Architects | AI-Augmented Design | ⬜ |
+| 5 | **Capstone I** | Leading Major Initiatives | ⬜ |
+| 6 | **Capstone II** | Personal Amplified Workflow | ⬜ |
 
 ---
 
-## Quick Reference: Architect's Checklist
+## Quick Reference: The Amplified Engineer's Toolkit
 
 ```
-When designing data systems:
-  □ Right storage for each data type
-  □ Consistency model appropriate for use case
-  □ Scaling strategy defined
-  □ Caching layer designed
-  □ Backup and recovery planned
+When acquiring a new codebase:
+  □ AI generates architectural overview
+  □ AI identifies entry points and patterns
+  □ AI highlights risks and tech debt
+  □ You verify and add context
+  □ Document for others
 
-When designing async systems:
-  □ Sync vs async decision intentional
-  □ Event catalog defined
-  □ Failure modes documented
-  □ Dead letter queues planned
-  □ Monitoring for queue depth
+When debugging system-wide issues:
+  □ Gather data from all affected services
+  □ AI correlates and generates hypotheses
+  □ You test hypotheses in priority order
+  □ AI helps generate incident report
 
-When designing service boundaries:
-  □ Each boundary has clear reason
-  □ Data ownership defined
-  □ Contract versioning strategy
-  □ Failure domains isolated
-  □ Build vs buy evaluated
+When designing integrations:
+  □ Define patterns before implementing
+  □ AI generates compliant code
+  □ AI generates documentation
+  □ You review and refine
 
-When leading technical decisions:
-  □ ADR written
-  □ Alternatives documented
-  □ Stakeholders consulted
-  □ Decision communicated
-  □ Follow-up items tracked
+When designing systems:
+  □ AI synthesizes requirements
+  □ AI generates design options
+  □ You add judgment and context
+  □ AI helps with documentation
+  □ AI helps prepare for review
 
-When directing AI:
-  □ Architecture designed first
-  □ Components decomposed clearly
-  □ Interfaces specified
-  □ All output reviewed
-  □ Integration verified
+When leading initiatives:
+  □ Use AI to move faster at every step
+  □ Don't let AI replace your judgment
+  □ Document learnings for others
+  □ Measure impact
 ```
 
 ---
 
-_You've spent years becoming a good engineer. Now you're a force multiplier. Go multiply._
-
+_The best engineers aren't being replaced by AI. They're being amplified by it. You've learned how. Now go lead._

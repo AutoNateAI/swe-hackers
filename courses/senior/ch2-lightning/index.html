@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2: Lightning Paths | Senior Amplifier</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-lightning);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(255, 213, 79, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(255, 143, 0, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-lightning);
+    }
+    
+    .story-block::before {
+      color: var(--accent-lightning);
+    }
+
+    .investigation-phase {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-left: 3px solid var(--accent-lightning);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .phase-time {
+      background: rgba(255, 213, 79, 0.15);
+      color: var(--accent-lightning);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hypothesis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .hypothesis-card {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hypothesis-card.likely {
+      border-color: var(--success);
+    }
+
+    .likelihood-bar {
+      height: 4px;
+      background: var(--bg-secondary);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+
+    .likelihood-fill {
+      height: 100%;
+      background: var(--accent-lightning);
+      border-radius: 2px;
+    }
+
+    .metric-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .metric-item {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-lightning);
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="challenge" title="The Challenge"></div>
+    <div class="progress-dot" data-section="approach" title="Amplified Approach"></div>
+    <div class="progress-dot" data-section="framework" title="Framework"></div>
+    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Chapter 2 • Week 2</span>
+        <div class="hero-icon">⚡</div>
+        <h1>Lightning Paths</h1>
+        <p class="hero-subtitle">
+          Senior engineers debug their service. <strong>Amplified</strong> engineers diagnose 
+          system-wide issues across services they've never seen.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Master system-wide debugging</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- THE CHALLENGE -->
+    <section class="section" data-section="challenge">
+      <div class="section-content">
+        <h2 class="fade-in">🎯 The Debugging Challenge</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            You're great at debugging your own service. You know every log statement, every 
+            database query, every external call. But the <strong>hard bugs</strong> don't live 
+            in one service anymore.
+          </p>
+        </div>
+
+        <p class="fade-in">
+          Today's production issues involve race conditions across services, cascading failures 
+          from third-party dependencies, and data inconsistencies in distributed systems. 
+          These bugs require understanding systems you don't own.
+        </p>
+
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">Where Hard Bugs Hide</div>
+          <div class="mermaid">
+flowchart TB
+    subgraph Known ["Your Domain (Easy)"]
+        A1[Your Service]
+    end
+    
+    subgraph Hard ["The Hard Bugs"]
+        B1[Service A] <--> B2[Service B]
+        B2 <--> B3[Service C]
+        B1 --> Q[Message Queue]
+        Q --> B3
+        B3 --> EXT[Third Party API]
+    end
+    
+    A1 -.->|"You debug here<br/>with ease"| A1
+    Hard -.->|"Multi-service issues<br/>are exponentially harder"| Hard
+    
+    style Known fill:#66bb6a20,stroke:#66bb6a
+    style Hard fill:#ff572220,stroke:#ff5722
+          </div>
+        </div>
+
+        <div class="metric-panel fade-in">
+          <div class="metric-item">
+            <div class="metric-value">5x</div>
+            <div class="metric-label">Longer MTTR for distributed bugs</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">73%</div>
+            <div class="metric-label">Of incidents involve multiple services</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">2-3</div>
+            <div class="metric-label">Teams typically involved in root cause</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMPLIFIED APPROACH -->
+    <section class="section" data-section="approach">
+      <div class="section-content">
+        <h2 class="fade-in">🚀 AI-Augmented Debugging</h2>
+        
+        <p class="fade-in">
+          AI can be your distributed systems debugger. Feed it logs from multiple services, 
+          and it can spot correlations that humans would take hours to find.
+        </p>
+
+        <div class="code-demo fade-in">
+          <div class="code-header">
+            <span>AI Debugging Prompt</span>
+          </div>
+          <pre class="code-content"><code>I'm investigating a performance degradation that started at 14:32 UTC.
+
+Here are logs from:
+- Service A (API Gateway): [paste]
+- Service B (Order Processing): [paste]  
+- Service C (Inventory): [paste]
+
+Here are metrics showing latency spike: [paste]
+
+Recent deployments in the last 24 hours: [list]
+
+Questions:
+1. What correlations do you see in these logs?
+2. What's the sequence of events leading to the issue?
+3. What are the top 3 most likely root causes?
+4. What additional data would help narrow it down?</code></pre>
+        </div>
+
+        <h3 class="fade-in">Hypothesis Generation</h3>
+        
+        <div class="hypothesis-grid fade-in">
+          <div class="hypothesis-card likely">
+            <h4>🔴 High Likelihood</h4>
+            <p>Database connection pool exhaustion in Service B causing upstream timeouts</p>
+            <div class="likelihood-bar">
+              <div class="likelihood-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="hypothesis-card">
+            <h4>🟡 Medium Likelihood</h4>
+            <p>Third-party API rate limiting causing retry storms</p>
+            <div class="likelihood-bar">
+              <div class="likelihood-fill" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="hypothesis-card">
+            <h4>🟢 Lower Likelihood</h4>
+            <p>Memory leak from recent deployment in Service C</p>
+            <div class="likelihood-bar">
+              <div class="likelihood-fill" style="width: 25%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-insight fade-in">
+          <span class="callout-icon">💡</span>
+          <strong>The Amplified Advantage:</strong> AI generates hypotheses in minutes. You test them 
+          in order of likelihood. Result: root cause found 5x faster.
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTIGATION FRAMEWORK -->
+    <section class="section" data-section="framework">
+      <div class="section-content">
+        <h2 class="fade-in">📋 The Investigation Framework</h2>
+        
+        <p class="fade-in">
+          A systematic approach to AI-augmented distributed debugging:
+        </p>
+
+        <div class="investigation-phase fade-in">
+          <div class="phase-header">
+            <h4>1. GATHER</h4>
+            <span class="phase-time">10 min</span>
+          </div>
+          <ul>
+            <li>Collect metrics from all potentially-affected services</li>
+            <li>Pull logs from the relevant time window (+/- 30 min)</li>
+            <li>Get deployment history and recent config changes</li>
+            <li>Note any reported customer impact</li>
+          </ul>
+        </div>
+
+        <div class="investigation-phase fade-in">
+          <div class="phase-header">
+            <h4>2. AI ANALYSIS</h4>
+            <span class="phase-time">15 min</span>
+          </div>
+          <ul>
+            <li>"Analyze these metrics. What patterns do you see?"</li>
+            <li>"Correlate these logs. What happened in sequence?"</li>
+            <li>"Given this deployment history, what could have changed?"</li>
+            <li>"What additional data would help narrow this down?"</li>
+          </ul>
+        </div>
+
+        <div class="investigation-phase fade-in">
+          <div class="phase-header">
+            <h4>3. HYPOTHESIS RANKING</h4>
+            <span class="phase-time">10 min</span>
+          </div>
+          <ul>
+            <li>"What are the 5 most likely root causes?"</li>
+            <li>"What evidence would confirm each hypothesis?"</li>
+            <li>Rank by likelihood AND impact to test</li>
+            <li>Identify quick tests vs. deep investigations</li>
+          </ul>
+        </div>
+
+        <div class="investigation-phase fade-in">
+          <div class="phase-header">
+            <h4>4. TARGETED INVESTIGATION</h4>
+            <span class="phase-time">Varies</span>
+          </div>
+          <ul>
+            <li>Test hypotheses in order of likelihood</li>
+            <li>Use AI to dig deeper into most likely causes</li>
+            <li>Validate with domain experts when needed</li>
+            <li>Document as you go</li>
+          </ul>
+        </div>
+
+        <div class="investigation-phase fade-in">
+          <div class="phase-header">
+            <h4>5. DOCUMENTATION</h4>
+            <span class="phase-time">15 min</span>
+          </div>
+          <ul>
+            <li>AI generates incident report draft</li>
+            <li>You verify and add context</li>
+            <li>Action items for prevention</li>
+            <li>Update runbooks with learnings</li>
+          </ul>
+        </div>
+
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">Investigation Timeline</div>
+          <div class="mermaid">
+gantt
+    title AI-Augmented Incident Investigation
+    dateFormat HH:mm
+    axisFormat %H:%M
+    
+    section Gather
+    Collect data        :a1, 00:00, 10m
+    
+    section AI Analysis
+    Feed AI logs/metrics :a2, after a1, 15m
+    
+    section Hypotheses
+    Rank root causes    :a3, after a2, 10m
+    
+    section Investigation
+    Test top hypothesis :a4, after a3, 30m
+    
+    section Resolution
+    Fix and document    :a5, after a4, 20m
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" data-section="quiz">
+      <div class="section-content">
+        <div class="quiz-container fade-in">
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3>Knowledge Check</h3>
+          </div>
+          
+          <p class="quiz-question">
+            What should be the FIRST step in AI-augmented distributed debugging?
+          </p>
+          
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">A</span>
+              <span class="option-text">Ask AI to fix the bug</span>
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <span class="option-letter">B</span>
+              <span class="option-text">Gather logs, metrics, and deployment history</span>
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">C</span>
+              <span class="option-text">Rollback the last deployment</span>
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">D</span>
+              <span class="option-text">Escalate to the other team</span>
+            </div>
+          </div>
+          
+          <button class="quiz-submit" disabled>Check Answer</button>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Chapter Project: Performance Investigation</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Use AI to conduct a system-wide performance analysis. Pick a performance concern 
+            at your company (or use a public case study) and apply the investigation framework.
+          </p>
+        </div>
+
+        <div class="terminal-demo fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span>Project Structure</span>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line">your-folder/ch2-lightning/</div>
+            <div class="terminal-line">├── BASELINE.md               # Current state analysis</div>
+            <div class="terminal-line">├── AI_ANALYSIS.md            # AI's findings</div>
+            <div class="terminal-line">├── INVESTIGATION_REPORT.md   # Your conclusions</div>
+            <div class="terminal-line">├── MONITORING_RECS.md        # What to alert on</div>
+            <div class="terminal-line">└── PLAYBOOK.md               # Reusable investigation steps</div>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Success Criteria</h3>
+        
+        <ul class="fade-in">
+          <li>AI-generated hypotheses documented and ranked</li>
+          <li>Root cause identified (or top candidates if ongoing)</li>
+          <li>Investigation took &lt;2 hours (vs traditional 1-2 days)</li>
+          <li>Monitoring recommendations created</li>
+          <li>Reusable playbook documented</li>
+        </ul>
+
+        <div class="project-footer fade-in">
+          <h3>📦 Save Your Work!</h3>
+          <p>Commit your investigation report and playbook to your repository.</p>
+          
+          <a href="../ch3-magnetism/index.html" class="nav-link next">
+            <span>Continue to Chapter 3</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Chapter Navigation -->
+  <nav class="chapter-nav">
+    <a href="../ch1-stone/index.html" class="nav-btn prev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      <span>Chapter 1</span>
+    </a>
+    <a href="../ch3-magnetism/index.html" class="nav-btn next">
+      <span>Chapter 3: Magnetism</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>
+

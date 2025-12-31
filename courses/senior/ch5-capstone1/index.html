@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone I: Lead a Major Initiative | Senior Amplifier</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-fire);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(255, 87, 34, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(244, 81, 30, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-fire);
+    }
+    
+    .story-block::before {
+      color: var(--accent-fire);
+    }
+
+    .initiative-scale {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .scale-level {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+    }
+
+    .scale-level.highlight {
+      opacity: 1;
+      border: 2px solid var(--accent-fire);
+      box-shadow: 0 0 30px rgba(255, 87, 34, 0.2);
+    }
+
+    .scale-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .scale-level h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .scale-level p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .week-schedule {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .schedule-day {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .schedule-day:last-child {
+      border-bottom: none;
+    }
+
+    .day-label {
+      min-width: 80px;
+      font-weight: 600;
+      color: var(--accent-fire);
+    }
+
+    .day-tasks {
+      flex: 1;
+    }
+
+    .day-tasks li {
+      margin-bottom: 0.25rem;
+    }
+
+    .leadership-traits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .trait-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border-left: 3px solid var(--accent-fire);
+    }
+
+    .trait-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="scale" title="Initiative Scale"></div>
+    <div class="progress-dot" data-section="process" title="The Process"></div>
+    <div class="progress-dot" data-section="leadership" title="Leadership"></div>
+    <div class="progress-dot" data-section="project" title="Your Initiative"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Capstone I • Week 5</span>
+        <div class="hero-icon">🔥</div>
+        <h1>Lead a Major Initiative</h1>
+        <p class="hero-subtitle">
+          You've learned rapid acquisition, system-wide debugging, platform thinking, and 
+          AI-augmented design. Now <strong>lead something big</strong>.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Step into technical leadership</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- INITIATIVE SCALE -->
+    <section class="section" data-section="scale">
+      <div class="section-content">
+        <h2 class="fade-in">📊 What Qualifies as "Major"?</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            This isn't about building a feature. This is about leading something that would 
+            normally take <strong>a team 3+ months</strong>. Something with stakeholders, 
+            dependencies, and organizational impact.
+          </p>
+        </div>
+
+        <div class="initiative-scale fade-in">
+          <div class="scale-level">
+            <div class="scale-icon">📝</div>
+            <h4>Feature</h4>
+            <p>1-2 weeks, 1 person, contained scope</p>
+          </div>
+          <div class="scale-level">
+            <div class="scale-icon">📦</div>
+            <h4>Project</h4>
+            <p>1-2 months, small team, defined boundaries</p>
+          </div>
+          <div class="scale-level highlight">
+            <div class="scale-icon">🚀</div>
+            <h4>Initiative</h4>
+            <p>3+ months, cross-team, organizational impact</p>
+          </div>
+          <div class="scale-level">
+            <div class="scale-icon">🌐</div>
+            <h4>Program</h4>
+            <p>6+ months, multiple initiatives, strategic</p>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Examples of Major Initiatives</h3>
+        
+        <ul class="fade-in">
+          <li><strong>Platform Migration</strong> — Moving from one cloud/framework/database to another</li>
+          <li><strong>Architecture Transformation</strong> — Monolith to microservices, or vice versa</li>
+          <li><strong>Performance Overhaul</strong> — System-wide latency or cost reduction</li>
+          <li><strong>Security Initiative</strong> — Zero-trust implementation, compliance achievement</li>
+          <li><strong>Infrastructure Modernization</strong> — Kubernetes adoption, serverless migration</li>
+          <li><strong>Developer Experience</strong> — CI/CD transformation, tooling standardization</li>
+        </ul>
+
+        <div class="callout callout-insight fade-in">
+          <span class="callout-icon">💡</span>
+          <strong>The Amplified Advantage:</strong> With AI, you can take on initiatives that would 
+          traditionally require a dedicated team. Your amplified skills let you move at team speed as an individual.
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PROCESS -->
+    <section class="section" data-section="process">
+      <div class="section-content">
+        <h2 class="fade-in">📋 Week 5 Schedule</h2>
+        
+        <p class="fade-in">
+          One week to kickoff a major initiative. Here's how to use your amplified skills:
+        </p>
+
+        <div class="week-schedule fade-in">
+          <div class="schedule-day">
+            <span class="day-label">Day 1</span>
+            <div class="day-tasks">
+              <strong>Problem Definition</strong>
+              <ul>
+                <li>What exactly are we solving?</li>
+                <li>What's the impact of solving it?</li>
+                <li>What's the cost of NOT solving it?</li>
+                <li>Who are the stakeholders?</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="schedule-day">
+            <span class="day-label">Day 2</span>
+            <div class="day-tasks">
+              <strong>Design (AI-Augmented)</strong>
+              <ul>
+                <li>Use your Ch4 process for rapid design</li>
+                <li>Generate options, analyze trade-offs</li>
+                <li>Create detailed design doc</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="schedule-day">
+            <span class="day-label">Day 3</span>
+            <div class="day-tasks">
+              <strong>Socialization</strong>
+              <ul>
+                <li>Present to key stakeholders</li>
+                <li>Gather feedback</li>
+                <li>Iterate on design based on input</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="schedule-day">
+            <span class="day-label">Day 4</span>
+            <div class="day-tasks">
+              <strong>Planning</strong>
+              <ul>
+                <li>Break into workstreams</li>
+                <li>Identify dependencies and blockers</li>
+                <li>Resource requirements</li>
+                <li>Timeline and milestones</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="schedule-day">
+            <span class="day-label">Day 5</span>
+            <div class="day-tasks">
+              <strong>Kickoff</strong>
+              <ul>
+                <li>Get official buy-in</li>
+                <li>Assign responsibilities</li>
+                <li>Start execution on Phase 1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="schedule-day">
+            <span class="day-label">Day 6-7</span>
+            <div class="day-tasks">
+              <strong>Execute First Phase</strong>
+              <ul>
+                <li>Demonstrate early progress</li>
+                <li>Validate approach with real work</li>
+                <li>Document learnings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">Initiative Lifecycle</div>
+          <div class="mermaid">
+flowchart LR
+    A[Problem Definition] --> B[Design]
+    B --> C[Socialization]
+    C --> D[Planning]
+    D --> E[Kickoff]
+    E --> F[Execute Phase 1]
+    F --> G[Retrospective]
+    
+    G -.->|"Iterate"| B
+    
+    style A fill:#ff572220,stroke:#ff5722
+    style E fill:#ff572220,stroke:#ff5722
+    style G fill:#66bb6a20,stroke:#66bb6a
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL LEADERSHIP -->
+    <section class="section" data-section="leadership">
+      <div class="section-content">
+        <h2 class="fade-in">👑 Technical Leadership Skills</h2>
+        
+        <p class="fade-in">
+          Leading an initiative is more than technical work. It requires leadership skills 
+          that AI can't do for you:
+        </p>
+
+        <div class="leadership-traits fade-in">
+          <div class="trait-card">
+            <h4>🎯 Vision Communication</h4>
+            <p>Can you explain WHY this matters in terms stakeholders care about? Business impact, not technical elegance.</p>
+          </div>
+          
+          <div class="trait-card">
+            <h4>🤝 Stakeholder Management</h4>
+            <p>Who needs to buy in? What are their concerns? How do you address them proactively?</p>
+          </div>
+          
+          <div class="trait-card">
+            <h4>📊 Progress Visibility</h4>
+            <p>How do others know the initiative is on track? Clear milestones, regular updates, visible metrics.</p>
+          </div>
+          
+          <div class="trait-card">
+            <h4>🚧 Risk Management</h4>
+            <p>What could go wrong? How are you mitigating? When do you escalate?</p>
+          </div>
+          
+          <div class="trait-card">
+            <h4>🔄 Adaptation</h4>
+            <p>Plans will change. Can you adjust scope, timeline, or approach while maintaining momentum?</p>
+          </div>
+          
+          <div class="trait-card">
+            <h4>📝 Documentation</h4>
+            <p>Are decisions documented? Can someone else understand the initiative if you're unavailable?</p>
+          </div>
+        </div>
+
+        <div class="callout callout-insight fade-in">
+          <span class="callout-icon">💡</span>
+          <strong>AI + Leadership:</strong> AI helps you move faster on the technical work, freeing 
+          time for the human work: communication, alignment, and relationship building.
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔥 Your Initiative</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Pick a real initiative at your company (or propose one). Lead it through 
+            problem definition, design, socialization, planning, and kickoff this week.
+          </p>
+        </div>
+
+        <h3 class="fade-in">Requirements</h3>
+        
+        <ul class="fade-in">
+          <li>Must be a <strong>real initiative</strong>, not a toy project</li>
+          <li>Must have <strong>stakeholders</strong> (PM, leadership, other teams)</li>
+          <li>Must be <strong>3+ months scope</strong> if done traditionally</li>
+          <li>Must demonstrate <strong>AI amplification</strong> in your process</li>
+        </ul>
+
+        <div class="terminal-demo fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span>Deliverables</span>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line">your-folder/capstone-1/</div>
+            <div class="terminal-line">├── PROBLEM_STATEMENT.md      # What we're solving and why</div>
+            <div class="terminal-line">├── DESIGN.md                 # Technical design (AI-assisted)</div>
+            <div class="terminal-line">├── STAKEHOLDER_FEEDBACK.md   # Input from key people</div>
+            <div class="terminal-line">├── PROJECT_PLAN.md           # Workstreams, milestones</div>
+            <div class="terminal-line">├── WEEK_1_PROGRESS.md        # What you accomplished</div>
+            <div class="terminal-line">└── RETROSPECTIVE.md          # What you learned</div>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Success Criteria</h3>
+        
+        <ul class="fade-in">
+          <li>Initiative approved by stakeholders</li>
+          <li>Design doc reviewed and accepted</li>
+          <li>Project plan with clear milestones</li>
+          <li>Phase 1 started with visible progress</li>
+          <li>Learnings documented for future initiatives</li>
+        </ul>
+
+        <div class="project-footer fade-in">
+          <h3>📦 Save Your Work!</h3>
+          <p>Commit your initiative documentation to your repository.</p>
+          
+          <a href="../ch6-capstone2/index.html" class="nav-link next">
+            <span>Continue to Capstone II</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Chapter Navigation -->
+  <nav class="chapter-nav">
+    <a href="../ch4-architect/index.html" class="nav-btn prev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      <span>Chapter 4</span>
+    </a>
+    <a href="../ch6-capstone2/index.html" class="nav-btn next">
+      <span>Capstone II</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>
+

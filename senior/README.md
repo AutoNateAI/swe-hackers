@@ -1,66 +1,78 @@
-# The AutoNateAI Force Multiplier: From Engineer to Architect 🏛️
+# The AutoNateAI Senior Amplifier 🎯
 
-You've been doing this for years. You're good. Maybe even great.
+**For Mid-to-Senior Engineers Ready to 10x Their Impact**
 
-But here's what keeps you up at night:
+You're already good at your job. You can navigate codebases, debug complex issues, design systems, and mentor juniors. But the industry is changing faster than ever, and the engineers who thrive in the next decade won't just be skilled — they'll be **amplified**.
 
-**AI is getting better. Fast.**
+This course teaches you to leverage AI not as a junior crutch, but as a **senior force multiplier**. Think bigger architectures. Deliver faster. Lead more effectively. Future-proof your career.
 
-The code you write in an hour, AI writes in seconds. The patterns you learned over years, AI knows instantly. The debugging intuition you developed through pain, AI is learning from millions of examples.
+## What This Course Is NOT
 
-Some engineers see this as a threat. The smart ones see it as **the greatest opportunity of their careers**.
+- ❌ Not "how to write prompts"
+- ❌ Not "AI basics for beginners"
+- ❌ Not "let AI do your job"
 
-Because here's what AI can't do:
-- See the whole system
-- Make architectural decisions
-- Understand business context
-- Navigate organizational dynamics
-- Mentor humans
-- Take responsibility
+## What This Course IS
 
-**AI is the most powerful tool ever created for engineers who know how to direct it.**
+- ✅ How to leverage AI to tackle problems you'd previously say "no" to
+- ✅ How to design systems that would take teams months — in weeks
+- ✅ How to mentor and scale your impact across your organization
+- ✅ How to stay indispensable as AI reshapes our industry
 
-This course turns you into that engineer.
+## Prerequisites
 
-## Who Is This For?
+- 4+ years of software engineering experience
+- Experience designing systems, not just implementing them
+- Comfort with code reviews, technical decisions, and mentoring
+- Willingness to rethink how you work
 
-- Mid-level to Senior engineers (3+ years)
-- You're technically strong but want more impact
-- You sense AI is changing things but aren't sure how to adapt
-- You want to lead bigger projects
-- You want to future-proof your career
+## Course Structure
 
-## The Shift
+| Week | Chapter | Focus |
+|------|---------|-------|
+| 1 | The Stone Remembers | Rapid codebase acquisition at scale |
+| 2 | Lightning Paths | System-wide debugging and performance |
+| 3 | The Pull Between | Architecture-level integration patterns |
+| 4 | The Age of Architects | AI-augmented system design |
+| 5 | **Capstone I** | Lead a major technical initiative |
+| 6 | **Capstone II** | Build your AI-augmented workflow |
 
-| Engineer Mindset | Architect Mindset |
-|-----------------|-------------------|
-| "How do I code this?" | "Should this be coded at all?" |
-| "What's the best algorithm?" | "What's the right system?" |
-| "How do I finish this task?" | "How do I enable 10 people to finish 100 tasks?" |
-| "AI might replace me" | "AI multiplies me by 10x" |
+## The Three Forces (At Senior Scale)
 
-## What You'll Master
+```
+🪨 STONE (Data & Persistence)
+   Junior: Knows their service's database
+   Senior: Knows the whole data landscape
+   Amplified: Can audit and redesign data architecture across systems
 
-| Week | Chapter | Capability |
-|------|---------|------------|
-| 1 | The Stone Remembers | Reason about data at scale |
-| 2 | Lightning Paths | Design systems, not functions |
-| 3 | The Pull Between | Architect integration strategies |
-| 4 | The Age of Architects | Lead technical decisions |
-| 5 | **Capstone I** | Own a system end-to-end |
-| 6 | **Capstone II** | Direct AI to build at scale |
+⚡ LIGHTNING (Flow & Logic)
+   Junior: Traces bugs in their code
+   Senior: Traces bugs across services
+   Amplified: Designs observability and debugging strategies for entire platforms
 
-## After This Course
+🧲 MAGNETISM (Integration)
+   Junior: Integrates with one API
+   Senior: Designs API contracts
+   Amplified: Architects multi-system integration strategies with AI assistance
+```
 
-- Make architectural decisions with confidence
-- Lead projects that span multiple teams
-- Use AI as your engineering team
-- Create leverage through documentation and design
-- Future-proof your career for the next decade
+## Expected Outcomes
+
+By the end of this course, you will:
+
+1. **Take on bigger projects** — The kind you used to say "that would take 6 months"
+2. **Move faster without cutting corners** — AI handles the boilerplate, you handle the thinking
+3. **Mentor more effectively** — Use AI to scale your knowledge sharing
+4. **Future-proof your career** — Be the engineer who embraces AI, not fears it
+5. **Lead technical initiatives** — From design to delivery to measurement
+
+## Getting Started
+
+1. Read `ROADMAP.md` for the full course structure
+2. Start with Chapter 1 when ready
+3. Each chapter builds on the previous — don't skip ahead
+4. Apply everything to your actual work
 
 ---
 
-Open `ROADMAP.md` to multiply your force.
-
-_You've spent years becoming good. Now become powerful._
-
+*The best engineers aren't being replaced by AI. They're being amplified by it. This course shows you how.*

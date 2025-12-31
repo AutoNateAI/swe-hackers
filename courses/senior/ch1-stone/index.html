@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 1: The Stone Remembers | Senior Force Multiplier</title>
+  <title>Chapter 1: The Stone Remembers | Senior Amplifier</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,97 +18,113 @@
   
   <style>
     :root {
-      --chapter-color: var(--accent-fire);
+      --chapter-color: var(--accent-stone);
     }
     
     .hero::before {
       background: 
-        radial-gradient(ellipse at 30% 50%, rgba(239, 83, 80, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(255, 143, 0, 0.15) 0%, transparent 50%);
+        radial-gradient(ellipse at 30% 50%, rgba(168, 143, 106, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(191, 170, 143, 0.2) 0%, transparent 50%);
     }
     
     .story-block {
-      border-left-color: var(--accent-fire);
+      border-left-color: var(--accent-stone);
     }
     
     .story-block::before {
-      color: var(--accent-fire);
+      color: var(--accent-stone);
     }
 
-    .multiplier-badge {
+    .amplify-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 1rem;
-      background: linear-gradient(135deg, var(--accent-fire), var(--accent-star));
+      background: linear-gradient(135deg, #7c6f64, #a89984);
       border-radius: 20px;
       font-weight: 600;
       font-size: 0.875rem;
-      color: white;
+      color: var(--bg-primary);
       margin: 1rem 0;
     }
 
-    .impact-meter {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .comparison-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
       margin: 2rem 0;
-      padding: 1.5rem;
+    }
+
+    .comparison-column {
       background: var(--bg-secondary);
       border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border-top: 3px solid var(--text-muted);
     }
 
-    .impact-bar {
-      flex: 1;
-      height: 24px;
-      background: var(--bg-tertiary);
+    .comparison-column.amplified {
+      border-top-color: var(--success);
+    }
+
+    .comparison-column h4 {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .comparison-column.amplified h4 {
+      color: var(--success);
+    }
+
+    .comparison-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .comparison-item:last-child {
+      border-bottom: none;
+    }
+
+    .time-badge {
+      background: var(--bg-primary);
+      padding: 0.25rem 0.75rem;
       border-radius: 12px;
-      overflow: hidden;
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
 
-    .impact-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-stone), var(--accent-lightning), var(--accent-fire));
-      border-radius: 12px;
-      transition: width 1s ease;
+    .amplified .time-badge {
+      background: rgba(102, 187, 106, 0.15);
+      color: var(--success);
     }
 
-    .impact-label {
-      font-weight: 600;
-      min-width: 100px;
+    .protocol-step {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-left: 3px solid var(--accent-stone);
     }
 
-    .multiplier-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin: 2rem 0;
+    .protocol-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--accent-stone);
+      color: var(--bg-primary);
+      border-radius: 50%;
+      font-weight: 700;
+      margin-right: 1rem;
     }
 
     @media (max-width: 768px) {
-      .multiplier-grid {
+      .comparison-table {
         grid-template-columns: 1fr;
       }
-    }
-
-    .multiplier-card {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-      border-top: 3px solid var(--accent-fire);
-    }
-
-    .multiplier-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent-fire);
-    }
-
-    .multiplier-label {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
     }
   </style>
 </head>
@@ -119,9 +135,9 @@
   <!-- Progress Tracker (Side) -->
   <nav class="progress-tracker">
     <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="opportunity" title="The Opportunity"></div>
-    <div class="progress-dot" data-section="multipliers" title="Force Multipliers"></div>
-    <div class="progress-dot" data-section="leadership" title="Technical Leadership"></div>
+    <div class="progress-dot" data-section="plateau" title="The Plateau"></div>
+    <div class="progress-dot" data-section="amplified" title="Amplified Approach"></div>
+    <div class="progress-dot" data-section="protocol" title="The Protocol"></div>
     <div class="progress-dot" data-section="quiz" title="Quiz"></div>
     <div class="progress-dot" data-section="project" title="Project"></div>
   </nav>
@@ -134,20 +150,19 @@
     <section class="hero section" data-section="hero">
       <div class="hero-content">
         <span class="hero-chapter">Chapter 1 • Week 1</span>
-        <div class="hero-icon">⚔️</div>
-        <h1>The Senior Force Multiplier</h1>
+        <div class="hero-icon">🪨</div>
+        <h1>The Stone Remembers</h1>
         <p class="hero-subtitle">
-          You're already good. The question isn't if you can code — it's how much 
-          <strong>impact</strong> you can have. AI makes your experience exponentially 
-          more powerful.
+          You know your codebase well. But what if you could master <strong>any</strong> codebase 
+          in hours instead of weeks? Welcome to amplified engineering.
         </p>
-        <div class="multiplier-badge">
-          ⚔️ Force Multiplier Mode
+        <div class="amplify-badge">
+          🎯 Senior Amplifier Mode
         </div>
       </div>
       
       <div class="scroll-indicator">
-        <span>Amplify your impact</span>
+        <span>Begin your amplification</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
@@ -155,216 +170,220 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         THE OPPORTUNITY
+         THE SENIOR PLATEAU
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="opportunity">
+    <section class="section" data-section="plateau">
       <div class="section-content">
-        <h2 class="fade-in">🎯 The Senior Opportunity</h2>
+        <h2 class="fade-in">🏔️ The Senior Plateau</h2>
         
         <div class="story-block fade-in">
           <p>
-            You've spent years building expertise. You know the patterns, the pitfalls, 
-            the right way to build systems. But here's the paradox: as you became senior, 
-            you started spending more time in meetings, reviews, and documentation — 
-            and less time in <em>flow</em>.
+            You've been a senior engineer for a while. You know your service inside out. 
+            You can navigate your codebase with your eyes closed. But here's the uncomfortable truth: 
+            <strong>your expertise is domain-locked</strong>.
           </p>
         </div>
 
         <p class="fade-in">
-          AI tools flip this equation. They handle the tedious parts — boilerplate, 
-          documentation, test scaffolding — while you focus on <strong>architecture, 
-          design decisions, and mentoring</strong>. Your expertise becomes a force multiplier.
+          When you need to review a PR in an unfamiliar service, integrate with a legacy system, 
+          or evaluate an acquisition target's code — you're back to square one. The traditional 
+          approach takes <strong>2-4 weeks</strong> to get productive in a new codebase.
         </p>
 
-        <div class="multiplier-grid fade-in">
-          <div class="multiplier-card">
-            <div class="multiplier-value">3x</div>
-            <div class="multiplier-label">Faster code generation</div>
+        <div class="comparison-table fade-in">
+          <div class="comparison-column">
+            <h4>⏱️ Traditional Timeline</h4>
+            <div class="comparison-item">
+              <span>Week 1</span>
+              <span class="time-badge">Setup & Exploration</span>
+            </div>
+            <div class="comparison-item">
+              <span>Week 2</span>
+              <span class="time-badge">Break Things</span>
+            </div>
+            <div class="comparison-item">
+              <span>Week 3</span>
+              <span class="time-badge">Understand Flows</span>
+            </div>
+            <div class="comparison-item">
+              <span>Week 4</span>
+              <span class="time-badge">Finally Productive</span>
+            </div>
           </div>
-          <div class="multiplier-card">
-            <div class="multiplier-value">5x</div>
-            <div class="multiplier-label">More projects at once</div>
-          </div>
-          <div class="multiplier-card">
-            <div class="multiplier-value">10x</div>
-            <div class="multiplier-label">Impact per hour</div>
+          
+          <div class="comparison-column amplified">
+            <h4>⚡ Amplified Timeline</h4>
+            <div class="comparison-item">
+              <span>Hours 1-2</span>
+              <span class="time-badge">AI Architecture Overview</span>
+            </div>
+            <div class="comparison-item">
+              <span>Hours 3-4</span>
+              <span class="time-badge">Entry Points & Flows</span>
+            </div>
+            <div class="comparison-item">
+              <span>Hours 5-6</span>
+              <span class="time-badge">Patterns & Risks</span>
+            </div>
+            <div class="comparison-item">
+              <span>Day 2</span>
+              <span class="time-badge">Making Contributions</span>
+            </div>
           </div>
         </div>
 
-        <div class="cta-box fade-in">
-          <h3>💡 The Senior Advantage</h3>
-          <p>
-            Juniors use AI to learn. Seniors use AI to <strong>amplify</strong>. 
-            Your experience lets you direct AI better, catch its mistakes faster, 
-            and apply its output to bigger problems.
-          </p>
+        <div class="callout callout-insight fade-in">
+          <span class="callout-icon">💡</span>
+          <strong>The Key Insight:</strong> AI doesn't replace your expertise — it lets you 
+          <em>acquire</em> expertise faster. You're still the judge. AI is your research assistant.
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         FORCE MULTIPLIERS
+         THE AMPLIFIED APPROACH
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="multipliers">
+    <section class="section" data-section="amplified">
       <div class="section-content">
-        <h2 class="fade-in">⚡ Your Force Multipliers</h2>
+        <h2 class="fade-in">🚀 The Amplified Approach</h2>
+        
+        <p class="fade-in">
+          Instead of manually reading thousands of files, let AI do the initial reconnaissance. 
+          Then you apply your senior judgment to verify and extend what it finds.
+        </p>
 
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">The Senior AI Workflow</div>
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">AI-Augmented Codebase Acquisition</div>
           <div class="mermaid">
-            flowchart LR
-              subgraph YOU["🧠 Your Expertise"]
-                ARCH["Architecture<br/>Decisions"]
-                PATTERNS["Pattern<br/>Recognition"]
-                QUALITY["Quality<br/>Standards"]
-              end
-              
-              subgraph AI["🤖 AI Handles"]
-                CODE["Code<br/>Generation"]
-                DOCS["Documentation"]
-                TESTS["Test<br/>Scaffolding"]
-                REVIEW["Initial<br/>Review"]
-              end
-              
-              subgraph OUTPUT["💎 Output"]
-                SHIP["Ship<br/>Faster"]
-                BIGGER["Take on<br/>Bigger Projects"]
-                MENTOR["Mentor<br/>More People"]
-              end
-              
-              YOU --> AI
-              AI --> OUTPUT
-              OUTPUT --> |Feedback| YOU
-              
-              style YOU fill:#2d1a2d,stroke:#ef5350
-              style AI fill:#1a2d2d,stroke:#4db6ac
-              style OUTPUT fill:#2d2d1a,stroke:#ffd54f
+flowchart LR
+    A[New Codebase] --> B[AI Analysis]
+    B --> C[Architecture Summary]
+    B --> D[Entry Points]
+    B --> E[Patterns Found]
+    B --> F[Risk Areas]
+    C --> G[Senior Verification]
+    D --> G
+    E --> G
+    F --> G
+    G --> H[Deep Dive Where Needed]
+    H --> I[Productive in Hours]
+    
+    style A fill:#4a4a5a,stroke:#6a6a7a
+    style B fill:#7986cb,stroke:#3f51b5
+    style I fill:#66bb6a,stroke:#43a047
           </div>
         </div>
 
-        <h3 class="fade-in">Practical AI Applications for Seniors</h3>
+        <h3 class="fade-in">What AI Excels At</h3>
+        
+        <div class="code-demo fade-in">
+          <div class="code-header">
+            <span>AI Prompt</span>
+          </div>
+          <pre class="code-content"><code>Analyze this codebase and provide:
 
-        <div class="concept-grid fade-in">
-          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
-            <div class="concept-card-icon">📊</div>
-            <h4>Architecture Docs</h4>
-            <p>"Generate a C4 diagram for this microservices system based on the codebase"</p>
+1. High-level architecture summary
+2. All entry points (API routes, CLI commands, jobs)
+3. Core data models and their relationships  
+4. Repeated patterns you see
+5. Areas of high complexity or potential tech debt
+6. External services this code integrates with
+
+Focus on structure and patterns, not line-by-line review.</code></pre>
+        </div>
+
+        <h3 class="fade-in">What YOU Still Do</h3>
+
+        <div class="feature-cards fade-in">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h4>Verify</h4>
+            <p>Check AI's claims against the actual code. AI makes mistakes.</p>
           </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
-            <div class="concept-card-icon">🔍</div>
-            <h4>Code Review Prep</h4>
-            <p>"Review this PR for security issues, performance problems, and code smells"</p>
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h4>Context</h4>
+            <p>You know what matters for YOUR situation. AI doesn't.</p>
           </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
-            <div class="concept-card-icon">📝</div>
-            <h4>RFC Generation</h4>
-            <p>"Draft an RFC for migrating from monolith to microservices based on our constraints"</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
-            <div class="concept-card-icon">🧪</div>
-            <h4>Test Strategy</h4>
-            <p>"Generate integration tests for this API based on the OpenAPI spec"</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
-            <div class="concept-card-icon">🎓</div>
-            <h4>Mentoring at Scale</h4>
-            <p>"Create a learning path for a junior engineer joining this team"</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
-            <div class="concept-card-icon">🚨</div>
-            <h4>Incident Response</h4>
-            <p>"Analyze these logs and suggest potential root causes"</p>
+          <div class="feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h4>Judgment</h4>
+            <p>Decide what to trust, what to investigate deeper, what to skip.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         TECHNICAL LEADERSHIP
+         THE RAPID ACQUISITION PROTOCOL
          ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="leadership">
+    <section class="section" data-section="protocol">
       <div class="section-content">
-        <h2 class="fade-in">🏛️ Technical Leadership at Scale</h2>
-
+        <h2 class="fade-in">📋 The Rapid Acquisition Protocol</h2>
+        
         <p class="fade-in">
-          Senior engineers don't just write code — they shape systems, guide teams, 
-          and make decisions that echo for years. AI amplifies this leadership.
+          A repeatable 6-step process for mastering any codebase quickly:
         </p>
 
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Architecture Decision Record (ADR)</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="comment"># ADR-0001: Use Event-Driven Architecture for Order Processing</span>
-
-<span class="keyword">## Status</span>
-Proposed
-
-<span class="keyword">## Context</span>
-Our monolithic order processing system is becoming a bottleneck. 
-Peak load during sales causes timeouts and failed orders.
-
-<span class="keyword">## Decision</span>
-We will adopt an event-driven architecture using:
-- Apache Kafka for event streaming
-- Event sourcing for order state
-- CQRS for read/write separation
-
-<span class="keyword">## Consequences</span>
-<span class="string">Positive:</span>
-- Horizontal scalability
-- Better failure isolation
-- Audit trail via event log
-
-<span class="string">Negative:</span>
-- Increased operational complexity
-- Eventual consistency requires handling
-- Team needs Kafka training</code></pre>
-          </div>
-          <div class="code-caption">
-            <p>
-              <span class="icon">💡</span>
-              <strong>AI Prompt:</strong> "Help me write an ADR for [your decision]. 
-              Include context, alternatives considered, and tradeoffs."
-            </p>
-          </div>
+        <div class="protocol-step fade-in">
+          <span class="protocol-number">1</span>
+          <strong>Initial Reconnaissance</strong>
+          <p>Feed AI the codebase. Ask for structure, not details. Understand the shape before the substance.</p>
         </div>
 
-        <div class="story-block fade-in">
-          <p>
-            The senior who documents decisions well, diagrams systems clearly, 
-            and communicates tradeoffs effectively will always be more valuable 
-            than one who just writes code. AI helps you do all of this at scale.
-          </p>
+        <div class="protocol-step fade-in">
+          <span class="protocol-number">2</span>
+          <strong>Entry Point Mapping</strong>
+          <p>Where does execution start? API routes, CLI commands, job schedulers. These are your map's landmarks.</p>
         </div>
 
-        <h3 class="fade-in">Your Impact Meter</h3>
+        <div class="protocol-step fade-in">
+          <span class="protocol-number">3</span>
+          <strong>Data Model Analysis</strong>
+          <p>What are the nouns? Database schemas, domain objects, API types. Understanding data = understanding the system.</p>
+        </div>
 
-        <div class="impact-meter fade-in">
-          <span class="impact-label">Code Output</span>
-          <div class="impact-bar">
-            <div class="impact-fill" style="width: 40%;"></div>
-          </div>
+        <div class="protocol-step fade-in">
+          <span class="protocol-number">4</span>
+          <strong>Pattern Recognition</strong>
+          <p>How do they do things? Naming conventions, error handling, testing approaches. Learn the local dialect.</p>
         </div>
-        
-        <div class="impact-meter fade-in">
-          <span class="impact-label">Design Influence</span>
-          <div class="impact-bar">
-            <div class="impact-fill" style="width: 80%;"></div>
-          </div>
+
+        <div class="protocol-step fade-in">
+          <span class="protocol-number">5</span>
+          <strong>Risk Assessment</strong>
+          <p>Where are the landmines? Complex areas, tech debt, missing tests, security concerns.</p>
         </div>
-        
-        <div class="impact-meter fade-in">
-          <span class="impact-label">Team Multiplier</span>
-          <div class="impact-bar">
-            <div class="impact-fill" style="width: 95%;"></div>
+
+        <div class="protocol-step fade-in">
+          <span class="protocol-number">6</span>
+          <strong>Documentation Generation</strong>
+          <p>What's missing? Have AI draft docs you wish existed. Then verify and refine.</p>
+        </div>
+
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">Acquisition Protocol Flow</div>
+          <div class="mermaid">
+flowchart TB
+    subgraph Phase1 ["Phase 1: AI Discovery (2 hrs)"]
+        A1[Structure Analysis] --> A2[Entry Points]
+        A2 --> A3[Data Models]
+    end
+    
+    subgraph Phase2 ["Phase 2: Pattern Recognition (2 hrs)"]
+        B1[Code Patterns] --> B2[Risk Areas]
+        B2 --> B3[Dependencies]
+    end
+    
+    subgraph Phase3 ["Phase 3: Verification (2 hrs)"]
+        C1[Spot Check AI Claims] --> C2[Manual Deep Dive]
+        C2 --> C3[Generate Missing Docs]
+    end
+    
+    Phase1 --> Phase2 --> Phase3
+    Phase3 --> D[Productive in Day 2]
+    
+    style D fill:#66bb6a,stroke:#43a047
           </div>
         </div>
       </div>
@@ -375,41 +394,37 @@ We will adopt an event-driven architecture using:
          ═══════════════════════════════════════════════════════════════════════ -->
     <section class="section" data-section="quiz">
       <div class="section-content">
-        <div class="quiz-container" data-answer="B">
+        <div class="quiz-container fade-in">
           <div class="quiz-header">
             <span class="quiz-icon">🧠</span>
-            <h3 class="quiz-title">Knowledge Check</h3>
+            <h3>Knowledge Check</h3>
           </div>
-
+          
           <p class="quiz-question">
-            What makes a senior engineer a "force multiplier" when using AI tools?
+            What's the PRIMARY advantage of AI-augmented codebase acquisition?
           </p>
-
+          
           <div class="quiz-options">
-            <div class="quiz-option" data-value="A">
-              <span class="quiz-option-letter">A</span>
-              <span>They can type prompts faster than juniors</span>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">A</span>
+              <span class="option-text">AI writes code for you</span>
             </div>
-            <div class="quiz-option" data-value="B">
-              <span class="quiz-option-letter">B</span>
-              <span>Their experience lets them direct AI better and validate its output faster</span>
+            <div class="quiz-option" data-correct="true">
+              <span class="option-letter">B</span>
+              <span class="option-text">AI accelerates reconnaissance, you provide judgment</span>
             </div>
-            <div class="quiz-option" data-value="C">
-              <span class="quiz-option-letter">C</span>
-              <span>They have access to more expensive AI models</span>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">C</span>
+              <span class="option-text">AI replaces the need to understand the code</span>
             </div>
-            <div class="quiz-option" data-value="D">
-              <span class="quiz-option-letter">D</span>
-              <span>They don't need AI because they already know everything</span>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">D</span>
+              <span class="option-text">AI guarantees accuracy without verification</span>
             </div>
           </div>
-
-          <div class="quiz-feedback" 
-               data-correct-msg="Exactly! Your years of experience are the secret sauce. You know what good looks like." 
-               data-incorrect-msg="The key is that senior expertise makes AI more effective, not the other way around.">
-          </div>
-
-          <button class="quiz-btn" disabled>Check Answer</button>
+          
+          <button class="quiz-submit" disabled>Check Answer</button>
+          <div class="quiz-feedback"></div>
         </div>
       </div>
     </section>
@@ -419,54 +434,52 @@ We will adopt an event-driven architecture using:
          ═══════════════════════════════════════════════════════════════════════ -->
     <section class="section" data-section="project">
       <div class="section-content">
-        <h2 class="fade-in">🔨 Chapter Project: The Architect's Toolkit</h2>
-
+        <h2 class="fade-in">🔨 Chapter Project: Rapid Acquisition Protocol</h2>
+        
         <div class="story-block fade-in">
           <p>
-            Build a personal toolkit of AI prompts and workflows that amplify your 
-            specific senior responsibilities. This becomes your reusable arsenal.
+            Create YOUR repeatable protocol for learning any new codebase. Test it on 2-3 
+            unfamiliar codebases (open source or internal) and refine based on results.
           </p>
         </div>
 
-        <div class="try-it-box fade-in">
-          <div class="try-it-header">
-            <span class="try-it-icon">🧰</span>
-            <h3 class="try-it-title">Build Your Toolkit</h3>
+        <div class="terminal-demo fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span>Project Structure</span>
           </div>
-
-          <ol class="try-it-steps">
-            <li>
-              <strong>ADR Template</strong><br>
-              Create a prompt that generates well-structured Architecture Decision Records.
-            </li>
-            <li>
-              <strong>Code Review Checklist</strong><br>
-              Build a prompt that analyzes PRs for your team's specific standards.
-            </li>
-            <li>
-              <strong>System Diagram Generator</strong><br>
-              Create a workflow to turn code into Mermaid diagrams automatically.
-            </li>
-            <li>
-              <strong>Incident Analysis</strong><br>
-              Build a prompt that helps analyze logs and suggest root causes.
-            </li>
-            <li>
-              <strong>Onboarding Generator</strong><br>
-              Create a prompt that generates learning paths for new team members.
-            </li>
-          </ol>
+          <div class="terminal-content">
+            <div class="terminal-line">your-folder/ch1-stone/</div>
+            <div class="terminal-line">├── ACQUISITION_PROTOCOL.md    # Your process</div>
+            <div class="terminal-line">├── PROMPTS.md                 # AI prompts that work</div>
+            <div class="terminal-line">├── codebase-1/                # First test analysis</div>
+            <div class="terminal-line">│   ├── ARCHITECTURE.md</div>
+            <div class="terminal-line">│   ├── ENTRY_POINTS.md</div>
+            <div class="terminal-line">│   └── PATTERNS.md</div>
+            <div class="terminal-line">├── codebase-2/                # Second test analysis</div>
+            <div class="terminal-line">└── LEARNINGS.md               # What worked</div>
+          </div>
         </div>
 
-        <div class="cta-box fade-in">
-          <h3>📦 Deliverables</h3>
-          <p>
-            Create <code>senior/ch1-stone/toolkit.md</code> with at least 3 polished, 
-            tested prompts that you'll actually use in your daily work.
-          </p>
-          <a href="../ch2-lightning/index.html" class="cta-btn">
-            <span>Continue to Chapter 2: Scaling Flow</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <h3 class="fade-in">Success Criteria</h3>
+        
+        <ul class="fade-in">
+          <li>Protocol tested on at least 2 unfamiliar codebases</li>
+          <li>Can get productive in a new codebase in &lt; 1 day</li>
+          <li>AI prompts documented and refined</li>
+          <li>Verification checklist created</li>
+          <li>Documentation templates ready for reuse</li>
+        </ul>
+
+        <div class="project-footer fade-in">
+          <h3>📦 Save Your Work!</h3>
+          <p>Commit your protocol and analyses to your repository.</p>
+          
+          <a href="../ch2-lightning/index.html" class="nav-link next">
+            <span>Continue to Chapter 2</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
@@ -476,43 +489,22 @@ We will adopt an event-driven architecture using:
 
   </main>
 
-  <!-- Bottom Navigation -->
-  <nav class="lesson-nav">
-    <button class="nav-btn" onclick="location.href='../../index.html'">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <!-- Chapter Navigation -->
+  <nav class="chapter-nav">
+    <a href="../../index.html" class="nav-btn prev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
       </svg>
-      Course Home
-    </button>
-    <button class="nav-btn primary" onclick="location.href='../ch2-lightning/index.html'">
-      Chapter 2: Lightning
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <span>Course Home</span>
+    </a>
+    <a href="../ch2-lightning/index.html" class="nav-btn next">
+      <span>Chapter 2: Lightning Paths</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M5 12h14M12 5l7 7-7 7"/>
       </svg>
-    </button>
+    </a>
   </nav>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <script src="../../shared/js/lesson.js"></script>
-  
-  <script>
-    // Animate impact meters
-    const meterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const fill = entry.target.querySelector('.impact-fill');
-          const targetWidth = fill.style.width;
-          fill.style.width = '0%';
-          setTimeout(() => {
-            fill.style.width = targetWidth;
-          }, 200);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.impact-meter').forEach(meter => meterObserver.observe(meter));
-  </script>
 </body>
 </html>
-

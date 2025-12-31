@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone II: Your Amplified Workflow | Senior Amplifier</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--success);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(102, 187, 106, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(76, 175, 80, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--success);
+    }
+    
+    .story-block::before {
+      color: var(--success);
+    }
+
+    .playbook-section {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-left: 3px solid var(--success);
+    }
+
+    .playbook-section h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(102, 187, 106, 0.15);
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .skills-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .skill-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 3px solid var(--accent-lightning);
+    }
+
+    .skill-card.ch1 { border-top-color: var(--accent-stone); }
+    .skill-card.ch2 { border-top-color: var(--accent-lightning); }
+    .skill-card.ch3 { border-top-color: var(--accent-magnetism); }
+    .skill-card.ch4 { border-top-color: #7c4dff; }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card h4 {
+      margin-bottom: 0.25rem;
+    }
+
+    .skill-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .impact-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .metric-card {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--success);
+      line-height: 1;
+    }
+
+    .metric-label {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .celebration {
+      background: linear-gradient(135deg, rgba(102, 187, 106, 0.1), rgba(76, 175, 80, 0.05));
+      border: 1px solid rgba(102, 187, 106, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .celebration-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .celebration h3 {
+      color: var(--success);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="skills" title="Skills Review"></div>
+    <div class="progress-dot" data-section="playbook" title="Your Playbook"></div>
+    <div class="progress-dot" data-section="impact" title="Measure Impact"></div>
+    <div class="progress-dot" data-section="project" title="Final Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Capstone II • Week 6</span>
+        <div class="hero-icon">🌟</div>
+        <h1>Your Amplified Workflow</h1>
+        <p class="hero-subtitle">
+          You've learned the skills. Now <strong>systematize</strong> them. Build your personal 
+          playbook for AI-augmented engineering.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Build your system</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SKILLS REVIEW -->
+    <section class="section" data-section="skills">
+      <div class="section-content">
+        <h2 class="fade-in">📚 What You've Learned</h2>
+        
+        <p class="fade-in">
+          Five weeks of intensive learning. Here's what you can now do:
+        </p>
+
+        <div class="skills-summary fade-in">
+          <div class="skill-card ch1">
+            <div class="skill-icon">🪨</div>
+            <h4>Rapid Acquisition</h4>
+            <p>Master any codebase in hours, not weeks</p>
+          </div>
+          <div class="skill-card ch2">
+            <div class="skill-icon">⚡</div>
+            <h4>System Debugging</h4>
+            <p>Diagnose distributed issues with AI assistance</p>
+          </div>
+          <div class="skill-card ch3">
+            <div class="skill-icon">🧲</div>
+            <h4>Platform Strategy</h4>
+            <p>Design integration patterns that scale</p>
+          </div>
+          <div class="skill-card ch4">
+            <div class="skill-icon">🏛️</div>
+            <h4>AI-Augmented Design</h4>
+            <p>Design systems faster without sacrificing quality</p>
+          </div>
+        </div>
+
+        <div class="story-block fade-in">
+          <p>
+            These skills make you 10x more effective with AI. Because now you can give AI 
+            the context it needs, verify its output intelligently, and direct it with clear 
+            designs. <strong>You're amplified.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- YOUR PLAYBOOK -->
+    <section class="section" data-section="playbook">
+      <div class="section-content">
+        <h2 class="fade-in">📖 Building Your Playbook</h2>
+        
+        <p class="fade-in">
+          A playbook is your documented system for how YOU use AI to multiply YOUR impact. 
+          Here's what goes in it:
+        </p>
+
+        <div class="playbook-section fade-in">
+          <h4><span class="section-icon">🔍</span> Codebase Acquisition Protocol</h4>
+          <ul>
+            <li>Your best prompts for learning new codebases</li>
+            <li>Your verification checklist (what to spot-check)</li>
+            <li>Documentation templates you generate</li>
+            <li>Time targets for each phase</li>
+          </ul>
+        </div>
+
+        <div class="playbook-section fade-in">
+          <h4><span class="section-icon">🐛</span> Debugging Workflow</h4>
+          <ul>
+            <li>How you gather information for AI (logs, metrics, context)</li>
+            <li>Your hypothesis generation prompts</li>
+            <li>Your investigation framework</li>
+            <li>Post-incident documentation templates</li>
+          </ul>
+        </div>
+
+        <div class="playbook-section fade-in">
+          <h4><span class="section-icon">🔗</span> Integration Design Process</h4>
+          <ul>
+            <li>Your standard patterns and when to use them</li>
+            <li>Code generation prompts that produce compliant code</li>
+            <li>Your review checklist for AI-generated integrations</li>
+            <li>Documentation standards</li>
+          </ul>
+        </div>
+
+        <div class="playbook-section fade-in">
+          <h4><span class="section-icon">📐</span> System Design Process</h4>
+          <ul>
+            <li>Your requirements synthesis approach</li>
+            <li>Design generation prompts</li>
+            <li>Trade-off analysis framework</li>
+            <li>Review preparation checklist</li>
+          </ul>
+        </div>
+
+        <div class="playbook-section fade-in">
+          <h4><span class="section-icon">💻</span> Code Generation Standards</h4>
+          <ul>
+            <li>What you delegate to AI vs. do yourself</li>
+            <li>How you review AI-generated code</li>
+            <li>Testing requirements for AI code</li>
+            <li>Common corrections you make</li>
+          </ul>
+        </div>
+
+        <div class="playbook-section fade-in">
+          <h4><span class="section-icon">📈</span> Continuous Improvement</h4>
+          <ul>
+            <li>How you track what works and what doesn't</li>
+            <li>How you improve your prompts over time</li>
+            <li>How you share learnings with your team</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEASURE IMPACT -->
+    <section class="section" data-section="impact">
+      <div class="section-content">
+        <h2 class="fade-in">📊 Measuring Your Amplification</h2>
+        
+        <p class="fade-in">
+          How do you know your playbook works? Measure before and after:
+        </p>
+
+        <div class="impact-metrics fade-in">
+          <div class="metric-card">
+            <div class="metric-value">5x</div>
+            <div class="metric-label">Faster codebase onboarding</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">3x</div>
+            <div class="metric-label">Faster incident resolution</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">2x</div>
+            <div class="metric-label">Faster design cycle</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">10x</div>
+            <div class="metric-label">Bigger project scope possible</div>
+          </div>
+        </div>
+
+        <h3 class="fade-in">What to Track</h3>
+        
+        <div class="code-demo fade-in">
+          <div class="code-header">
+            <span>Impact Tracking Template</span>
+          </div>
+          <pre class="code-content"><code>## Task: [Description]
+
+**Without AI (estimated):**
+- Time: X hours/days
+- Effort: [description]
+
+**With AI (actual):**
+- Time: Y hours/days  
+- Effort: [description]
+
+**Amplification Factor:** X/Y
+
+**What worked well:**
+- [Prompt that saved time]
+- [Process that accelerated]
+
+**What to improve:**
+- [Where AI fell short]
+- [What needed manual correction]</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL PROJECT -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🌟 Final Project: Your Playbook</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Build your personal <strong>Amplified Engineering Playbook</strong>. Test it on 
+            a real project. Measure the impact. Refine based on results.
+          </p>
+        </div>
+
+        <div class="terminal-demo fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span>Deliverables</span>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line">your-folder/capstone-2/</div>
+            <div class="terminal-line">├── PLAYBOOK.md               # Your complete system</div>
+            <div class="terminal-line">├── PROMPTS_LIBRARY.md        # Your best AI prompts</div>
+            <div class="terminal-line">├── VERIFICATION_CHECKLISTS.md # How you verify AI output</div>
+            <div class="terminal-line">├── REAL_PROJECT/             # Applied to real work</div>
+            <div class="terminal-line">│   ├── BEFORE_AFTER.md       # Impact measurement</div>
+            <div class="terminal-line">│   └── REFINEMENTS.md        # What you improved</div>
+            <div class="terminal-line">├── TEAM_GUIDE.md             # How others can use this</div>
+            <div class="terminal-line">└── FUTURE_IMPROVEMENTS.md    # What's next</div>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Success Criteria</h3>
+        
+        <ul class="fade-in">
+          <li>Playbook documented with all major workflows</li>
+          <li>Prompts library with 10+ tested prompts</li>
+          <li>Applied to at least one real project</li>
+          <li>Before/after impact measured</li>
+          <li>Ready to share with your team</li>
+        </ul>
+
+        <div class="celebration fade-in">
+          <div class="celebration-icon">🎉</div>
+          <h3>Congratulations, Amplified Engineer!</h3>
+          <p>
+            You've completed the Senior Amplifier course. You now have a systematic approach 
+            to using AI that multiplies your impact. You're not just using AI tools — you're 
+            <strong>amplified</strong> by them.
+          </p>
+          <p style="margin-top: 1rem;">
+            The engineers who embrace AI won't just keep their jobs. They'll take on bigger 
+            roles, more responsibility, and more impact. <strong>You're one of them now.</strong>
+          </p>
+        </div>
+
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">Your Journey Complete</div>
+          <div class="mermaid">
+flowchart LR
+    A[Senior Engineer] --> B[Ch1: Rapid Acquisition]
+    B --> C[Ch2: System Debugging]
+    C --> D[Ch3: Platform Strategy]
+    D --> E[Ch4: AI Design]
+    E --> F[Cap1: Lead Initiative]
+    F --> G[Cap2: Your Playbook]
+    G --> H[Amplified Engineer]
+    
+    style A fill:#4a4a5a,stroke:#6a6a7a
+    style H fill:#66bb6a,stroke:#43a047
+          </div>
+        </div>
+
+        <div class="project-footer fade-in">
+          <h3>📦 Save Your Work!</h3>
+          <p>Commit your playbook and share it with your team. Your amplified journey continues.</p>
+          
+          <a href="../../index.html" class="nav-link next">
+            <span>Return to Course Home</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Chapter Navigation -->
+  <nav class="chapter-nav">
+    <a href="../ch5-capstone1/index.html" class="nav-btn prev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      <span>Capstone I</span>
+    </a>
+    <a href="../../index.html" class="nav-btn next">
+      <span>Course Complete!</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>
+

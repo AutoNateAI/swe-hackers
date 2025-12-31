@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4: The Age of Architects | Senior Amplifier</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: #7c4dff;
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(124, 77, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(101, 31, 255, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: #7c4dff;
+    }
+    
+    .story-block::before {
+      color: #7c4dff;
+    }
+
+    .design-phase {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-left: 3px solid #7c4dff;
+    }
+
+    .design-phase-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .phase-badge {
+      background: rgba(124, 77, 255, 0.15);
+      color: #7c4dff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .timeline-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .timeline-track {
+      position: relative;
+    }
+
+    .timeline-track h4 {
+      text-align: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--bg-tertiary);
+    }
+
+    .timeline-track.amplified h4 {
+      border-bottom-color: var(--success);
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-week {
+      min-width: 60px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .amplified .timeline-week {
+      color: var(--success);
+    }
+
+    .prompt-evolution {
+      display: grid;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .prompt-example {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .prompt-label {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .prompt-label.bad {
+      background: rgba(244, 67, 54, 0.15);
+      color: #f44336;
+    }
+
+    .prompt-label.good {
+      background: rgba(102, 187, 106, 0.15);
+      color: var(--success);
+    }
+
+    .prompt-content {
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="acceleration" title="Design Acceleration"></div>
+    <div class="progress-dot" data-section="process" title="The Process"></div>
+    <div class="progress-dot" data-section="prompts" title="Effective Prompts"></div>
+    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Chapter 4 • Week 4</span>
+        <div class="hero-icon">🏛️</div>
+        <h1>The Age of Architects</h1>
+        <p class="hero-subtitle">
+          Senior engineers design systems. <strong>Amplified</strong> engineers design systems 
+          that would have taken teams — in weeks.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Accelerate your design process</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- DESIGN ACCELERATION -->
+    <section class="section" data-section="acceleration">
+      <div class="section-content">
+        <h2 class="fade-in">⚡ Design at Speed</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            You know how to design systems. Requirements gathering, trade-off analysis, 
+            documentation, reviews, iteration. The problem is it's <strong>slow</strong>. 
+            What if AI could accelerate each step without sacrificing quality?
+          </p>
+        </div>
+
+        <div class="timeline-comparison fade-in">
+          <div class="timeline-track">
+            <h4>Traditional (8 weeks)</h4>
+            <div class="timeline-item">
+              <span class="timeline-week">Week 1</span>
+              <span>Requirements gathering</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Week 2</span>
+              <span>First design draft</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Week 3</span>
+              <span>Reviews and iteration</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Week 4</span>
+              <span>Final design approval</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Wk 5-8</span>
+              <span>Implementation</span>
+            </div>
+          </div>
+          
+          <div class="timeline-track amplified">
+            <h4>Amplified (5 weeks)</h4>
+            <div class="timeline-item">
+              <span class="timeline-week">Day 1-2</span>
+              <span>AI synthesizes requirements</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Day 3-4</span>
+              <span>AI generates design options</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Day 5</span>
+              <span>You refine and add judgment</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Week 2</span>
+              <span>Reviews (AI helps address feedback)</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-week">Wk 3-5</span>
+              <span>Implementation (AI assists)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-insight fade-in">
+          <span class="callout-icon">💡</span>
+          <strong>The Key:</strong> AI is amazing at generating options and documentation. 
+          You're amazing at judgment and context. Combine them.
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PROCESS -->
+    <section class="section" data-section="process">
+      <div class="section-content">
+        <h2 class="fade-in">📋 AI-Augmented Design Process</h2>
+        
+        <div class="design-phase fade-in">
+          <div class="design-phase-header">
+            <h4>1. Requirements Synthesis</h4>
+            <span class="phase-badge">AI Heavy</span>
+          </div>
+          <p>Feed AI meeting notes, Slack threads, tickets, stakeholder emails. Ask:</p>
+          <ul>
+            <li>"What are the requirements? What's ambiguous?"</li>
+            <li>"What questions should we ask stakeholders?"</li>
+            <li>"What are the implied constraints?"</li>
+          </ul>
+        </div>
+
+        <div class="design-phase fade-in">
+          <div class="design-phase-header">
+            <h4>2. Prior Art Research</h4>
+            <span class="phase-badge">AI Heavy</span>
+          </div>
+          <p>Ask AI about existing solutions:</p>
+          <ul>
+            <li>"How have others solved similar problems?"</li>
+            <li>"What are common patterns for this type of system?"</li>
+            <li>"What are the known pitfalls?"</li>
+          </ul>
+        </div>
+
+        <div class="design-phase fade-in">
+          <div class="design-phase-header">
+            <h4>3. Design Generation</h4>
+            <span class="phase-badge">AI + You</span>
+          </div>
+          <p>Have AI propose architectures:</p>
+          <ul>
+            <li>"Given these requirements, propose 3 architectures"</li>
+            <li>"What are the trade-offs of each?"</li>
+            <li>"What questions does each design raise?"</li>
+          </ul>
+        </div>
+
+        <div class="design-phase fade-in">
+          <div class="design-phase-header">
+            <h4>4. Trade-off Analysis</h4>
+            <span class="phase-badge">You Heavy</span>
+          </div>
+          <p>Apply your judgment to AI's options:</p>
+          <ul>
+            <li>Which option best fits YOUR context?</li>
+            <li>What does AI not know about your org/team/constraints?</li>
+            <li>"What would we regret in 2 years?"</li>
+          </ul>
+        </div>
+
+        <div class="design-phase fade-in">
+          <div class="design-phase-header">
+            <h4>5. Documentation</h4>
+            <span class="phase-badge">AI + You</span>
+          </div>
+          <p>Let AI draft, you refine:</p>
+          <ul>
+            <li>AI generates initial design doc from your decisions</li>
+            <li>You add context and correct inaccuracies</li>
+            <li>AI generates diagrams from your descriptions</li>
+          </ul>
+        </div>
+
+        <div class="design-phase fade-in">
+          <div class="design-phase-header">
+            <h4>6. Review Preparation</h4>
+            <span class="phase-badge">AI Heavy</span>
+          </div>
+          <p>Anticipate questions:</p>
+          <ul>
+            <li>"What questions will reviewers ask?"</li>
+            <li>"What are the weakest parts of this design?"</li>
+            <li>"How would a skeptic critique this?"</li>
+          </ul>
+        </div>
+
+        <div class="diagram-container fade-in">
+          <div class="diagram-title">Design Process Flow</div>
+          <div class="mermaid">
+flowchart LR
+    subgraph Input ["Inputs"]
+        I1[Meeting Notes]
+        I2[Slack Threads]
+        I3[Tickets]
+    end
+    
+    subgraph AI ["AI Processing"]
+        A1[Synthesize Requirements]
+        A2[Research Patterns]
+        A3[Generate Options]
+    end
+    
+    subgraph You ["Your Judgment"]
+        Y1[Add Context]
+        Y2[Make Decisions]
+        Y3[Refine Output]
+    end
+    
+    subgraph Output ["Outputs"]
+        O1[Design Doc]
+        O2[Diagrams]
+        O3[Review-Ready]
+    end
+    
+    I1 & I2 & I3 --> A1
+    A1 --> A2 --> A3
+    A3 --> Y1 --> Y2 --> Y3
+    Y3 --> O1 & O2 & O3
+    
+    style AI fill:#7c4dff20,stroke:#7c4dff
+    style You fill:#66bb6a20,stroke:#66bb6a
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EFFECTIVE PROMPTS -->
+    <section class="section" data-section="prompts">
+      <div class="section-content">
+        <h2 class="fade-in">🎯 The Art of Design Prompts</h2>
+        
+        <p class="fade-in">
+          AI output quality depends entirely on prompt quality. Here's the difference:
+        </p>
+
+        <div class="prompt-evolution fade-in">
+          <div class="prompt-example">
+            <div class="prompt-label bad">❌ Vague Prompt</div>
+            <div class="prompt-content">
+              Design a payment system.
+            </div>
+          </div>
+          
+          <div class="prompt-example">
+            <div class="prompt-label good">✅ Effective Prompt</div>
+            <div class="prompt-content">
+Design a payment processing system with these requirements:
+
+**Context:**
+- E-commerce platform, 10K orders/day currently, expect 10x in 2 years
+- Must support credit cards, PayPal, Apple Pay
+- PCI compliance required, we don't want to handle raw card data
+- Currently on AWS, prefer managed services
+
+**Constraints:**
+- Team of 4 engineers, 3 months to MVP
+- Budget: $5K/month infrastructure
+- Must integrate with existing order service (REST API)
+
+**Questions to address:**
+1. Should we use Stripe, Adyen, or build our own gateway connection?
+2. How do we handle failed payments and retries?
+3. What's our strategy for refunds and chargebacks?
+4. How do we ensure idempotency for payment requests?
+
+Please provide 2-3 architecture options with trade-offs.
+            </div>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Prompt Patterns That Work</h3>
+        
+        <div class="feature-cards fade-in">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h4>Context First</h4>
+            <p>Always explain your situation before asking for solutions.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📏</div>
+            <h4>Constraints Explicit</h4>
+            <p>Team size, timeline, budget, tech stack — all constrain solutions.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">❓</div>
+            <h4>Specific Questions</h4>
+            <p>Ask the exact questions you need answered, not vague asks.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔢</div>
+            <h4>Request Options</h4>
+            <p>Ask for 2-3 alternatives with trade-offs, not one "best" answer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" data-section="quiz">
+      <div class="section-content">
+        <div class="quiz-container fade-in">
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3>Knowledge Check</h3>
+          </div>
+          
+          <p class="quiz-question">
+            In AI-augmented design, which phase should be "You Heavy" (your judgment dominant)?
+          </p>
+          
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">A</span>
+              <span class="option-text">Requirements synthesis</span>
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">B</span>
+              <span class="option-text">Prior art research</span>
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <span class="option-letter">C</span>
+              <span class="option-text">Trade-off analysis and decisions</span>
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <span class="option-letter">D</span>
+              <span class="option-text">Documentation generation</span>
+            </div>
+          </div>
+          
+          <button class="quiz-submit" disabled>Check Answer</button>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Chapter Project: System Redesign</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Pick a system that needs improvement at your company (or design a new one). 
+            Use the AI-augmented process to design it in a fraction of the normal time.
+          </p>
+        </div>
+
+        <div class="terminal-demo fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span>Project Structure</span>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line">your-folder/ch4-architects/</div>
+            <div class="terminal-line">├── REQUIREMENTS.md           # Synthesized requirements</div>
+            <div class="terminal-line">├── OPTIONS_ANALYSIS.md       # Design options + trade-offs</div>
+            <div class="terminal-line">├── DESIGN.md                 # Your chosen design</div>
+            <div class="terminal-line">├── DIAGRAMS/                 # Architecture diagrams</div>
+            <div class="terminal-line">│   ├── architecture.mmd</div>
+            <div class="terminal-line">│   ├── sequence.mmd</div>
+            <div class="terminal-line">│   └── data-model.mmd</div>
+            <div class="terminal-line">├── RISK_ANALYSIS.md          # What could go wrong</div>
+            <div class="terminal-line">└── IMPLEMENTATION_PLAN.md    # How to build it</div>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Success Criteria</h3>
+        
+        <ul class="fade-in">
+          <li>Design completed in &lt;1 week (vs traditional 3-4 weeks)</li>
+          <li>Multiple options analyzed with trade-offs</li>
+          <li>AI prompts documented for each phase</li>
+          <li>Clear decisions with rationale</li>
+          <li>Implementation-ready design doc</li>
+        </ul>
+
+        <div class="project-footer fade-in">
+          <h3>📦 Save Your Work!</h3>
+          <p>Commit your design documentation to your repository.</p>
+          
+          <a href="../ch5-capstone1/index.html" class="nav-link next">
+            <span>Continue to Capstone I</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Chapter Navigation -->
+  <nav class="chapter-nav">
+    <a href="../ch3-magnetism/index.html" class="nav-btn prev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      <span>Chapter 3</span>
+    </a>
+    <a href="../ch5-capstone1/index.html" class="nav-btn next">
+      <span>Capstone I</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </nav>
+
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>
+
