@@ -10,14 +10,15 @@
  * 6. Add your domain to authorized domains in Firebase Auth settings
  */
 
-// Firebase configuration - REPLACE WITH YOUR ACTUAL CONFIG
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDiojaiBrj0nRNIGMVHCFr4zMxEMEkv8S0",
+  authDomain: "autonateai-learning-hub.firebaseapp.com",
+  projectId: "autonateai-learning-hub",
+  storageBucket: "autonateai-learning-hub.firebasestorage.app",
+  messagingSenderId: "650162209338",
+  appId: "1:650162209338:web:cb9626f2e6f9ac3eff6b03",
+  measurementId: "G-D7553DEM0Y"
 };
 
 // Initialize Firebase
