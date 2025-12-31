@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4: The Age of Architects | Junior Accelerator</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-architect);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(77, 182, 172, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(38, 166, 154, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-architect);
+    }
+    
+    .story-block::before {
+      color: var(--accent-architect);
+    }
+
+    .workflow-step {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      align-items: flex-start;
+    }
+
+    .workflow-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-architect);
+      color: var(--bg-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .workflow-content h4 {
+      color: var(--accent-architect);
+      margin-bottom: 0.5rem;
+    }
+
+    .workflow-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .comparison-box {
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-secondary);
+    }
+
+    .comparison-box.bad {
+      border-top: 3px solid var(--error);
+    }
+
+    .comparison-box.good {
+      border-top: 3px solid var(--success);
+    }
+
+    .comparison-box h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="trap" title="The Trap"></div>
+    <div class="progress-dot" data-section="workflow" title="Workflow"></div>
+    <div class="progress-dot" data-section="ai-power" title="AI Power"></div>
+    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Chapter 4 • Week 4</span>
+        <div class="hero-icon">🏛️</div>
+        <h1>The Age of Architects</h1>
+        <p class="hero-subtitle">
+          Juniors start coding immediately. Seniors start with a diagram. 
+          Learn to <strong>think before you type</strong>.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Design first</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE JUNIOR TRAP
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="trap">
+      <div class="section-content">
+        <h2 class="fade-in">🪤 The Coding-First Trap</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            New feature request. You read the ticket, open your IDE, and start typing. 
+            Halfway through, you realize your approach won't work. Start over. Repeat 
+            until something works. Tech debt accumulates.
+          </p>
+        </div>
+
+        <div class="comparison-row fade-in">
+          <div class="comparison-box bad">
+            <h4><span>❌</span> Junior Approach</h4>
+            <ol style="padding-left: 1.25rem; color: var(--text-secondary);">
+              <li>Read ticket</li>
+              <li>Open IDE</li>
+              <li>Start coding</li>
+              <li>Realize approach won't work</li>
+              <li>Start over</li>
+              <li>Spend days fixing edge cases</li>
+            </ol>
+            <p style="margin-top: 1rem; padding: 0.5rem; background: rgba(244,67,54,0.1); border-radius: 4px;">
+              <strong>Result:</strong> 2 weeks, painful code reviews, tech debt created
+            </p>
+          </div>
+          
+          <div class="comparison-box good">
+            <h4><span>✅</span> Senior Approach</h4>
+            <ol style="padding-left: 1.25rem; color: var(--text-secondary);">
+              <li>Read ticket, ask clarifying questions</li>
+              <li>Draw the data flow</li>
+              <li>Identify edge cases on paper</li>
+              <li>Write approach in plain English</li>
+              <li>Get quick feedback</li>
+              <li>Code with clear plan</li>
+            </ol>
+            <p style="margin-top: 1rem; padding: 0.5rem; background: rgba(76,175,80,0.1); border-radius: 4px;">
+              <strong>Result:</strong> 1 week, smooth reviews, minimal tech debt
+            </p>
+          </div>
+        </div>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Why Design-First Wins</div>
+          <div class="mermaid">
+            flowchart LR
+              subgraph CODE_FIRST["Code-First Path"]
+                CF1["Start Coding"] --> CF2["Find Problems"]
+                CF2 --> CF3["Rewrite"]
+                CF3 --> CF4["More Problems"]
+                CF4 --> CF5["Debug Forever"]
+              end
+              
+              subgraph DESIGN_FIRST["Design-First Path"]
+                DF1["Diagram"] --> DF2["Find Problems"]
+                DF2 --> DF3["Fix on Paper"]
+                DF3 --> DF4["Code Once"]
+                DF4 --> DF5["Done Right"]
+              end
+              
+              style CF5 fill:#f44336,color:#fff
+              style DF5 fill:#4caf50,color:#fff
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE DESIGN-FIRST WORKFLOW
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="workflow">
+      <div class="section-content">
+        <h2 class="fade-in">📐 The Design-First Workflow</h2>
+
+        <p class="fade-in">
+          Before you write a single line of code, complete these five steps:
+        </p>
+
+        <div class="workflow-step fade-in">
+          <div class="workflow-number">1</div>
+          <div class="workflow-content">
+            <span class="workflow-time">~30 minutes</span>
+            <h4>Clarify</h4>
+            <p>What EXACTLY is the requirement? What's the scope? What's NOT included? What are the success criteria?</p>
+          </div>
+        </div>
+
+        <div class="workflow-step fade-in">
+          <div class="workflow-number">2</div>
+          <div class="workflow-content">
+            <span class="workflow-time">~1 hour</span>
+            <h4>Diagram</h4>
+            <p>Data flow: What data goes where? Component diagram: What pieces are involved? Sequence: What happens in what order?</p>
+          </div>
+        </div>
+
+        <div class="workflow-step fade-in">
+          <div class="workflow-number">3</div>
+          <div class="workflow-content">
+            <span class="workflow-time">~30 minutes</span>
+            <h4>Edge Cases</h4>
+            <p>What if input is invalid? What if external service fails? What if user does something unexpected? Race conditions?</p>
+          </div>
+        </div>
+
+        <div class="workflow-step fade-in">
+          <div class="workflow-number">4</div>
+          <div class="workflow-content">
+            <span class="workflow-time">~30 minutes</span>
+            <h4>Approach Doc</h4>
+            <p>Plain English explanation. Key decisions and why. Risks and mitigations.</p>
+          </div>
+        </div>
+
+        <div class="workflow-step fade-in">
+          <div class="workflow-number">5</div>
+          <div class="workflow-content">
+            <span class="workflow-time">~15 minutes</span>
+            <h4>Quick Review</h4>
+            <p>Show a senior your plan. Get feedback BEFORE you code. Adjust based on their experience.</p>
+          </div>
+        </div>
+
+        <div class="cta-box fade-in" style="background: linear-gradient(135deg, rgba(77, 182, 172, 0.1), var(--bg-secondary));">
+          <h3>⏱️ Total: ~2.5 hours of planning</h3>
+          <p>
+            This "wastes" half a day. But it saves you 3-5 days of rework. 
+            <strong>You spend less total time AND produce better code.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         AI POWER
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="ai-power">
+      <div class="section-content">
+        <h2 class="fade-in">🤖 Design + AI = Superpowers</h2>
+
+        <div class="story-block fade-in">
+          <p>
+            Here's the secret: AI is amazing at coding but terrible at design. 
+            Give AI a clear design, and it executes beautifully. Give it vague requirements, 
+            and it gives you vague code.
+          </p>
+        </div>
+
+        <div class="comparison-row fade-in">
+          <div class="comparison-box bad">
+            <h4><span>❌</span> Bad AI Prompt</h4>
+            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.875rem;">
+              "Write code to handle payments"
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-muted);">
+              → Generic code, misses edge cases, won't fit your architecture
+            </p>
+          </div>
+          
+          <div class="comparison-box good">
+            <h4><span>✅</span> Good AI Prompt</h4>
+            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.875rem;">
+              "Here's my design doc with sequence diagram. Here are the 5 edge cases. Write the PaymentProcessor class that handles this flow."
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-muted);">
+              → Exactly what you need, handles edge cases, fits your architecture
+            </p>
+          </div>
+        </div>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Design-First + AI Workflow</div>
+          <div class="mermaid">
+            sequenceDiagram
+              participant Y as You (Architect)
+              participant AI as AI (Builder)
+              participant C as Codebase
+              
+              Y->>Y: 1. Clarify requirements
+              Y->>Y: 2. Draw diagrams
+              Y->>Y: 3. List edge cases
+              Y->>Y: 4. Write approach
+              
+              Note over Y: Design complete!
+              
+              Y->>AI: Clear prompt + design context
+              AI->>Y: Generated code
+              Y->>Y: Review & verify
+              Y->>AI: Refinements needed
+              AI->>Y: Updated code
+              Y->>C: Integrate & ship
+              
+              Note over Y,C: Senior-level output, junior time invested
+          </div>
+        </div>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Example AI Prompt</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="comment"># Context for AI:</span>
+
+I need to implement a payment processing feature.
+
+<span class="string">## Design Doc Summary</span>
+- User initiates payment via API endpoint POST /payments
+- Validate amount > 0, user has valid card on file
+- Call Stripe API with retry (max 3 attempts, exponential backoff)
+- On success: create Transaction record, update user balance
+- On failure: log error, return appropriate error code
+
+<span class="string">## Edge Cases to Handle</span>
+1. Stripe timeout → retry with backoff
+2. Stripe rate limit → queue and retry later
+3. Duplicate payment attempt → idempotency key
+4. Card declined → return user-friendly error
+5. Partial failure (charge succeeded but DB write failed) → reconciliation
+
+<span class="string">## Our Patterns</span>
+- Use @retry_with_backoff decorator from our utils
+- Use our BaseAPIError for consistent error responses
+- Follow existing PaymentService pattern in services/
+
+<span class="comment"># Now write the PaymentService.process_payment method.</span></code></pre>
+          </div>
+          <div class="code-caption">
+            <p>
+              <span class="icon">💡</span>
+              <strong>Key insight:</strong> The more context you give AI, the better the output. 
+              Design docs ARE that context.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         QUIZ
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="quiz">
+      <div class="section-content">
+        <div class="quiz-container" data-answer="B">
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3 class="quiz-title">Knowledge Check</h3>
+          </div>
+
+          <p class="quiz-question">
+            You're assigned a new feature. What's the FIRST thing you should do?
+          </p>
+
+          <div class="quiz-options">
+            <div class="quiz-option" data-value="A">
+              <span class="quiz-option-letter">A</span>
+              <span>Open your IDE and start a new branch</span>
+            </div>
+            <div class="quiz-option" data-value="B">
+              <span class="quiz-option-letter">B</span>
+              <span>Read the ticket and ask clarifying questions</span>
+            </div>
+            <div class="quiz-option" data-value="C">
+              <span class="quiz-option-letter">C</span>
+              <span>Ask AI to generate the code</span>
+            </div>
+            <div class="quiz-option" data-value="D">
+              <span class="quiz-option-letter">D</span>
+              <span>Look for similar code in the codebase to copy</span>
+            </div>
+          </div>
+
+          <div class="quiz-feedback" 
+               data-correct-msg="Always clarify first! Vague requirements lead to wasted work. Ask: What exactly is needed? What's NOT needed? How will we know it's done?" 
+               data-incorrect-msg="Resist the urge to start coding immediately. Clarification prevents rework. Even 10 minutes of questions saves hours of wrong-direction coding.">
+          </div>
+
+          <button class="quiz-btn" disabled>Check Answer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PROJECT
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Chapter Project: Design First</h2>
+
+        <div class="story-block fade-in">
+          <p>
+            Take a real upcoming feature at work (or propose one). Design it completely 
+            before writing any code. Then use AI to implement based on your design.
+          </p>
+        </div>
+
+        <div class="try-it-box fade-in">
+          <div class="try-it-header">
+            <span class="try-it-icon">📐</span>
+            <h3 class="try-it-title">Design Doc Template</h3>
+          </div>
+
+          <ol class="try-it-steps">
+            <li>
+              <strong>Requirements Doc</strong><br>
+              What is this feature? Who uses it? Success criteria? What's NOT included?
+            </li>
+            <li>
+              <strong>Design Doc</strong><br>
+              Data flow diagram. Component diagram. Sequence diagram for happy path.
+            </li>
+            <li>
+              <strong>Edge Cases</strong><br>
+              List 10+ things that could go wrong. How each is handled.
+            </li>
+            <li>
+              <strong>Approach Summary</strong><br>
+              Plain English explanation. Key decisions. Risks and mitigations.
+            </li>
+            <li>
+              <strong>AI Execution Plan</strong><br>
+              Break down into 3-5 prompts. Each references your design.
+            </li>
+          </ol>
+        </div>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Deliverables</span>
+          </div>
+          <div class="code-content">
+            <pre><code>junior/ch4-architect/
+├── REQUIREMENTS.md       <span class="comment"># What and why</span>
+├── DESIGN.md             <span class="comment"># Diagrams and flows</span>
+├── EDGE_CASES.md         <span class="comment"># All the things that can go wrong</span>
+├── APPROACH.md           <span class="comment"># Your plan in plain English</span>
+├── AI_PROMPTS.md         <span class="comment"># The prompts you'll use</span>
+└── IMPLEMENTATION.md     <span class="comment"># Notes from execution</span></code></pre>
+          </div>
+        </div>
+
+        <div class="cta-box fade-in">
+          <h3>🏆 The Real Win</h3>
+          <p>
+            Share your design doc with your team before implementing. You'll get 
+            early feedback, look professional, and catch problems before they're coded.
+          </p>
+          <a href="../ch5-capstone1/index.html" class="cta-btn">
+            <span>Continue to Capstone I: Lead a Feature</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch3-magnetism/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Chapter 3
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch5-capstone1/index.html'">
+      Capstone I
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+  
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#4db6ac',
+        primaryTextColor: '#e8e8f0',
+        primaryBorderColor: '#4db6ac',
+        lineColor: '#6a6a80',
+        secondaryColor: '#1a1a2e',
+        tertiaryColor: '#12121a',
+        fontFamily: 'Inter, sans-serif'
+      },
+      flowchart: { useMaxWidth: false, htmlLabels: true },
+      sequence: { useMaxWidth: false }
+    });
+  </script>
+</body>
+</html>
+

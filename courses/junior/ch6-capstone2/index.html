@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone II: AI-Paired Development | Junior Accelerator</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-star);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(171, 71, 188, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(156, 39, 176, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-star);
+    }
+    
+    .story-block::before {
+      color: var(--accent-star);
+    }
+
+    .skills-recap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .skill-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--success);
+    }
+
+    .skill-badge .icon {
+      font-size: 1.5rem;
+    }
+
+    .skill-badge .label {
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+
+    .workflow-phase {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+    }
+
+    .phase-number {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--accent-star), #7b1fa2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .phase-content h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-star);
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-actor {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: 20px;
+      color: var(--text-muted);
+    }
+
+    .completion-banner {
+      background: linear-gradient(135deg, var(--accent-star), #7b1fa2);
+      padding: 3rem 2rem;
+      border-radius: var(--radius-xl);
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .completion-banner::before {
+      content: '🎉';
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+
+    .completion-banner::after {
+      content: '🏆';
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+
+    .completion-banner h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .completion-banner p {
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="realization" title="Realization"></div>
+    <div class="progress-dot" data-section="workflow" title="Workflow"></div>
+    <div class="progress-dot" data-section="requirements" title="Requirements"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+    <div class="progress-dot" data-section="graduation" title="Graduation"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Capstone II • Week 6</span>
+        <div class="hero-icon">🌟</div>
+        <h1>AI-Paired Development</h1>
+        <p class="hero-subtitle">
+          AI won't replace engineers. <strong>Engineers with AI will replace engineers without AI.</strong>
+          This week, you become unstoppable.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Become 10x</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE REALIZATION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="realization">
+      <div class="section-content">
+        <h2 class="fade-in">💡 The Realization</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Over the past 5 weeks, you've learned what seniors know: how to read codebases, 
+            trace data flows, integrate properly, design before coding, and own features 
+            end-to-end. These aren't just skills — they're <strong>superpowers when combined with AI</strong>.
+          </p>
+        </div>
+
+        <h3 class="fade-in">Your New Toolkit</h3>
+
+        <div class="skills-recap fade-in">
+          <div class="skill-badge">
+            <span class="icon">🪨</span>
+            <span class="label">Codebase Navigation</span>
+          </div>
+          <div class="skill-badge">
+            <span class="icon">⚡</span>
+            <span class="label">Data Flow Tracing</span>
+          </div>
+          <div class="skill-badge">
+            <span class="icon">🧲</span>
+            <span class="label">Integration Expertise</span>
+          </div>
+          <div class="skill-badge">
+            <span class="icon">🏛️</span>
+            <span class="label">Design-First Thinking</span>
+          </div>
+          <div class="skill-badge">
+            <span class="icon">🔥</span>
+            <span class="label">Feature Ownership</span>
+          </div>
+        </div>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Why These Skills Make AI 10x More Powerful</div>
+          <div class="mermaid">
+            flowchart TB
+              subgraph YOUR_SKILLS["Your Skills"]
+                CODEBASE["Codebase Knowledge"]
+                FLOW["Data Flow Understanding"]
+                INTEGRATION["Integration Expertise"]
+                DESIGN["Design Skills"]
+              end
+              
+              subgraph AI_POWER["AI Capabilities"]
+                CODEGEN["Code Generation"]
+                EXPLAIN["Explanation"]
+                REFACTOR["Refactoring"]
+                TEST["Test Generation"]
+              end
+              
+              subgraph RESULT["The Result"]
+                SENIOR["Senior-Level Output"]
+              end
+              
+              YOUR_SKILLS --> |"Context"| AI_POWER
+              AI_POWER --> |"Execution"| RESULT
+              
+              style SENIOR fill:#ab47bc,color:#fff,stroke-width:2px
+          </div>
+        </div>
+
+        <div class="cta-box fade-in">
+          <h3>The Magic Formula</h3>
+          <p>
+            <strong>Your Knowledge + AI's Speed = Senior-Level Productivity</strong><br><br>
+            You give AI the context (codebase patterns, design constraints, edge cases).<br>
+            AI gives you the execution (code generation, boilerplate, transformations).<br>
+            Together, you're faster than either alone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE AI-PAIRED WORKFLOW
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="workflow">
+      <div class="section-content">
+        <h2 class="fade-in">🤖 The AI-Paired Development Workflow</h2>
+
+        <div class="workflow-phase fade-in">
+          <div class="phase-number">1</div>
+          <div class="phase-content">
+            <h4>You Design <span class="phase-actor">HUMAN</span></h4>
+            <p>Requirements, diagrams, edge cases. This is where your brain matters. AI can't know what the business needs.</p>
+          </div>
+        </div>
+
+        <div class="workflow-phase fade-in">
+          <div class="phase-number">2</div>
+          <div class="phase-content">
+            <h4>You Prompt <span class="phase-actor">HUMAN</span></h4>
+            <p>Break your design into clear, specific prompts. Include context from your codebase. Specify constraints and patterns to follow.</p>
+          </div>
+        </div>
+
+        <div class="workflow-phase fade-in">
+          <div class="phase-number">3</div>
+          <div class="phase-content">
+            <h4>AI Executes <span class="phase-actor">AI</span></h4>
+            <p>Generates code based on your prompt. Fast, but needs verification. Trust but verify.</p>
+          </div>
+        </div>
+
+        <div class="workflow-phase fade-in">
+          <div class="phase-number">4</div>
+          <div class="phase-content">
+            <h4>You Verify <span class="phase-actor">HUMAN</span></h4>
+            <p>Does it match your design? Handle your edge cases? Follow your codebase patterns? This is critical.</p>
+          </div>
+        </div>
+
+        <div class="workflow-phase fade-in">
+          <div class="phase-number">5</div>
+          <div class="phase-content">
+            <h4>You Integrate <span class="phase-actor">HUMAN</span></h4>
+            <p>Adapt AI output to your codebase style. Connect to existing code. Add what AI missed.</p>
+          </div>
+        </div>
+
+        <div class="workflow-phase fade-in">
+          <div class="phase-number">6</div>
+          <div class="phase-content">
+            <h4>You Test <span class="phase-actor">HUMAN</span></h4>
+            <p>AI often misses edge cases. Write tests yourself (or have AI write, then verify every assertion).</p>
+          </div>
+        </div>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Human-AI Loop</div>
+          <div class="mermaid">
+            sequenceDiagram
+              participant Y as You (Architect)
+              participant AI as AI (Builder)
+              participant C as Codebase
+              
+              Y->>Y: Design complete
+              Y->>AI: Prompt with context + design
+              AI->>Y: Generated code
+              Y->>Y: Verify correctness
+              
+              alt Needs refinement
+                Y->>AI: Specific feedback
+                AI->>Y: Updated code
+              end
+              
+              Y->>C: Integrate & test
+              Y->>C: Ship!
+              
+              Note over Y,C: You direct. AI executes. You verify.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         REQUIREMENTS
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="requirements">
+      <div class="section-content">
+        <h2 class="fade-in">⚙️ Capstone Requirements</h2>
+
+        <div class="story-block fade-in">
+          <p>
+            Build something useful. Document every AI interaction. Show the world how 
+            to be 10x more productive with AI as a partner, not a crutch.
+          </p>
+        </div>
+
+        <h3 class="fade-in">Your Project Must:</h3>
+
+        <div class="concept-grid fade-in">
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">🛠️</div>
+            <h4>Be Useful</h4>
+            <p>An internal tool, automation, CLI utility, or feature. Something people will actually use.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">📝</div>
+            <h4>Be Documented</h4>
+            <p>Every AI prompt and response logged. Show before/after — your design vs AI output.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">⏱️</div>
+            <h4>Track Time</h4>
+            <p>Estimate: How long without AI? How long with AI? What's the multiplier?</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">🎓</div>
+            <h4>Teach Others</h4>
+            <p>Your learnings doc should help others adopt AI-paired development effectively.</p>
+          </div>
+        </div>
+
+        <h3 class="fade-in">Project Ideas</h3>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Inspiration</span>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="comment"># Internal Tools</span>
+- Deployment automation script
+- Log analysis / alerting tool
+- Database migration helper
+- API documentation generator
+
+<span class="comment"># Developer Experience</span>
+- Code review checklist enforcer
+- Test coverage reporter
+- Performance monitoring dashboard
+- Onboarding document generator
+
+<span class="comment"># Productivity</span>
+- Meeting notes summarizer (using AI API)
+- Ticket → design doc generator
+- Codebase documentation updater
+- Slack bot for common queries</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PROJECT DELIVERABLES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Capstone Deliverables</h2>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Your Capstone Folder</span>
+          </div>
+          <div class="code-content">
+            <pre><code>junior/capstone-2/
+├── DESIGN.md               <span class="comment"># Your design (before AI)</span>
+│   - What you're building
+│   - Architecture diagrams
+│   - Edge cases identified
+│
+├── AI_LOG.md               <span class="comment"># Every AI interaction</span>
+│   - Prompt 1: [your prompt]
+│   - Response 1: [AI response]
+│   - Your notes: [what you kept/changed]
+│   - ... repeat for all prompts ...
+│
+├── VERIFICATION.md         <span class="comment"># What you caught/fixed</span>
+│   - Issues AI introduced
+│   - Edge cases AI missed
+│   - How you fixed them
+│
+├── code/                   <span class="comment"># The final implementation</span>
+│   └── ...your project files...
+│
+├── tests/                  <span class="comment"># Your test suite</span>
+│   └── ...test files...
+│
+├── TIME_ANALYSIS.md        <span class="comment"># The numbers</span>
+│   - Estimated time without AI
+│   - Actual time with AI
+│   - Multiplier achieved
+│   - Where AI helped most
+│
+└── LEARNINGS.md            <span class="comment"># What to teach others</span>
+    - What works well with AI
+    - What doesn't work well
+    - Best practices discovered
+    - Common pitfalls to avoid</code></pre>
+          </div>
+        </div>
+
+        <div class="try-it-box fade-in">
+          <div class="try-it-header">
+            <span class="try-it-icon">🎯</span>
+            <h3 class="try-it-title">Success Criteria</h3>
+          </div>
+
+          <ul class="task-list" style="list-style: none; padding: 0;">
+            <li style="display: flex; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-secondary);">
+              <span style="color: var(--accent-star);">□</span> Project is complete and working
+            </li>
+            <li style="display: flex; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-secondary);">
+              <span style="color: var(--accent-star);">□</span> At least 10 AI interactions logged
+            </li>
+            <li style="display: flex; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-secondary);">
+              <span style="color: var(--accent-star);">□</span> Time analysis shows measurable improvement
+            </li>
+            <li style="display: flex; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-secondary);">
+              <span style="color: var(--accent-star);">□</span> Learnings doc is actionable for others
+            </li>
+            <li style="display: flex; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-secondary);">
+              <span style="color: var(--accent-star);">□</span> Tests cover key functionality
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         GRADUATION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="graduation">
+      <div class="section-content">
+        <div class="completion-banner fade-in">
+          <h2>🎓 Course Complete</h2>
+          <p>
+            Six weeks ago, you were a junior who wrote code. Now you're an engineer 
+            who navigates codebases, traces data flows, integrates professionally, 
+            designs before coding, owns features, and partners with AI to execute at 
+            10x speed. The title will catch up to the skills. Keep going.
+          </p>
+        </div>
+
+        <h3 class="fade-in">What You've Become</h3>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Your Transformation</div>
+          <div class="mermaid">
+            flowchart LR
+              subgraph BEFORE["Week 0"]
+                B1["Writes code for tickets"]
+                B2["Debugs with print statements"]
+                B3["Copies API examples"]
+                B4["Codes first, thinks later"]
+              end
+              
+              subgraph AFTER["Week 6"]
+                A1["Owns features end-to-end"]
+                A2["Traces data flows systematically"]
+                A3["Integrates with resilience patterns"]
+                A4["Designs first, executes with AI"]
+              end
+              
+              BEFORE --> |"6 weeks"| AFTER
+              
+              style AFTER fill:#ab47bc,color:#fff
+          </div>
+        </div>
+
+        <div class="cta-box fade-in" style="background: linear-gradient(135deg, rgba(171, 71, 188, 0.2), var(--bg-secondary));">
+          <h3>🚀 Your Next Steps</h3>
+          <p>
+            The promotion will follow the skills. But you don't need permission to 
+            keep acting like a senior. Every ticket is a chance to:
+          </p>
+          <ul style="text-align: left; max-width: 500px; margin: 1rem auto;">
+            <li>Ask clarifying questions before coding</li>
+            <li>Draw a diagram before opening your IDE</li>
+            <li>Map the data flow when debugging</li>
+            <li>Use AI with clear context and verification</li>
+            <li>Own outcomes, not just tasks</li>
+          </ul>
+          <p style="margin-top: 1.5rem;">
+            <strong>In 1-2 years, you'll look back and realize: you skipped 5 years of slow learning.</strong>
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;" class="fade-in">
+          <p style="color: var(--text-muted); font-style: italic;">
+            "They'll give you the title when you've proven the skills. You've got the skills. Now go prove them."
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch5-capstone1/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Capstone I
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../../index.html'">
+      Course Home
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+  
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#ab47bc',
+        primaryTextColor: '#e8e8f0',
+        primaryBorderColor: '#ab47bc',
+        lineColor: '#6a6a80',
+        secondaryColor: '#1a1a2e',
+        tertiaryColor: '#12121a',
+        fontFamily: 'Inter, sans-serif'
+      },
+      flowchart: { useMaxWidth: false, htmlLabels: true },
+      sequence: { useMaxWidth: false }
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3: The Pull Between | Junior Accelerator</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-magnetism);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(121, 134, 203, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(63, 81, 181, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-magnetism);
+    }
+    
+    .story-block::before {
+      color: var(--accent-magnetism);
+    }
+
+    .checklist {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .checklist-category {
+      margin-bottom: 1.5rem;
+    }
+
+    .checklist-category h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent-magnetism);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+
+    .checklist-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text-muted);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .scenario-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .scenario-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border-left: 4px solid var(--error);
+    }
+
+    .scenario-card.good {
+      border-left-color: var(--success);
+    }
+
+    .scenario-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .scenario-code {
+      background: var(--bg-tertiary);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="trap" title="The Trap"></div>
+    <div class="progress-dot" data-section="checklist" title="Checklist"></div>
+    <div class="progress-dot" data-section="patterns" title="Patterns"></div>
+    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Chapter 3 • Week 3</span>
+        <div class="hero-icon">🧲</div>
+        <h1>The Pull Between</h1>
+        <p class="hero-subtitle">
+          Juniors call APIs and hope they work. Seniors plan for when they don't. 
+          Learn to <strong>integrate like a professional</strong>.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Master integrations</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE JUNIOR TRAP
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="trap">
+      <div class="section-content">
+        <h2 class="fade-in">🪤 The Integration Trap</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Task: "Integrate with Stripe for payments." Junior approach: Read docs, 
+            copy example, ship it. Two weeks later: 3am page because Stripe is 
+            rate-limiting you in production.
+          </p>
+        </div>
+
+        <div class="scenario-cards fade-in">
+          <div class="scenario-card">
+            <div class="scenario-header">
+              <span>❌</span> Junior Integration
+            </div>
+            <div class="scenario-code">
+<span style="color:#6a6a80"># "It works in dev!"</span>
+<span style="color:#c792ea">def</span> <span style="color:#82aaff">charge_customer</span>(amount):
+    <span style="color:#c792ea">return</span> stripe.charge(amount)
+
+<span style="color:#6a6a80"># No error handling</span>
+<span style="color:#6a6a80"># No retry logic</span>
+<span style="color:#6a6a80"># No rate limit awareness</span>
+<span style="color:#6a6a80"># No monitoring</span>
+            </div>
+          </div>
+          
+          <div class="scenario-card good">
+            <div class="scenario-header">
+              <span>✅</span> Senior Integration
+            </div>
+            <div class="scenario-code">
+<span style="color:#c792ea">@retry</span>(max_attempts=<span style="color:#f78c6c">3</span>, backoff=<span style="color:#f78c6c">2</span>)
+<span style="color:#c792ea">@circuit_breaker</span>(threshold=<span style="color:#f78c6c">5</span>)
+<span style="color:#c792ea">@rate_limit</span>(calls=<span style="color:#f78c6c">100</span>, period=<span style="color:#f78c6c">60</span>)
+<span style="color:#c792ea">def</span> <span style="color:#82aaff">charge_customer</span>(amount):
+    <span style="color:#c792ea">try</span>:
+        result = stripe.charge(amount)
+        metrics.record(<span style="color:#c3e88d">"payment.success"</span>)
+        <span style="color:#c792ea">return</span> result
+    <span style="color:#c792ea">except</span> StripeError <span style="color:#c792ea">as</span> e:
+        metrics.record(<span style="color:#c3e88d">"payment.failure"</span>)
+        alert_oncall(e)
+        <span style="color:#c792ea">raise</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">What Seniors Think About Before Integrating</div>
+          <div class="mermaid">
+            mindmap
+              root((Integration))
+                Happy Path
+                  API calls succeed
+                  Response is valid
+                  Fast response time
+                Sad Path
+                  Known errors
+                  Invalid responses
+                  Rate limits
+                Ugly Path
+                  Network failures
+                  Timeouts
+                  Service down
+                Testing
+                  Mock for unit tests
+                  Sandbox for integration
+                  Chaos testing
+                Monitoring
+                  Latency tracking
+                  Error rates
+                  Business metrics
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE INTEGRATION CHECKLIST
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="checklist">
+      <div class="section-content">
+        <h2 class="fade-in">✅ The Integration Checklist</h2>
+
+        <p class="fade-in">
+          Every external integration must pass this checklist before going to production:
+        </p>
+
+        <div class="checklist fade-in">
+          <div class="checklist-category">
+            <h4>🔐 Authentication</h4>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>API keys/secrets stored in vault (not in code)</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Key rotation plan documented</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Different keys for dev/staging/prod</span>
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>⚠️ Error Handling</h4>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Retry with exponential backoff implemented</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Circuit breaker for cascading failures</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Graceful degradation (what happens if service is down?)</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Timeout configured (don't wait forever)</span>
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>🚦 Rate Limiting</h4>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Know their rate limits (documented)</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Client-side throttling implemented</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Queue for burst handling</span>
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>📊 Monitoring</h4>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Latency tracking (p50, p95, p99)</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Error rate alerts configured</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Business metrics correlation</span>
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>🧪 Testing</h4>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Mock/stub for unit tests</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Sandbox environment for integration tests</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <span>Failure scenarios tested</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         RESILIENCE PATTERNS
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="patterns">
+      <div class="section-content">
+        <h2 class="fade-in">🛡️ Resilience Patterns</h2>
+
+        <h3 class="fade-in">1. Retry with Exponential Backoff</h3>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python - Retry Pattern</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">import</span> time
+<span class="keyword">from</span> functools <span class="keyword">import</span> wraps
+
+<span class="keyword">def</span> <span class="function">retry_with_backoff</span>(max_attempts=<span class="number">3</span>, base_delay=<span class="number">1</span>):
+    <span class="string">"""Retry failed calls with exponential backoff."""</span>
+    <span class="keyword">def</span> <span class="function">decorator</span>(func):
+        <span class="keyword">@wraps</span>(func)
+        <span class="keyword">def</span> <span class="function">wrapper</span>(*args, **kwargs):
+            <span class="keyword">for</span> attempt <span class="keyword">in</span> <span class="function">range</span>(max_attempts):
+                <span class="keyword">try</span>:
+                    <span class="keyword">return</span> func(*args, **kwargs)
+                <span class="keyword">except</span> <span class="function">Exception</span> <span class="keyword">as</span> e:
+                    <span class="keyword">if</span> attempt == max_attempts - <span class="number">1</span>:
+                        <span class="keyword">raise</span>
+                    delay = base_delay * (<span class="number">2</span> ** attempt)
+                    logger.warning(<span class="string">f"Attempt {attempt + 1} failed, retrying in {delay}s"</span>)
+                    time.sleep(delay)
+        <span class="keyword">return</span> wrapper
+    <span class="keyword">return</span> decorator
+
+<span class="comment"># Usage:</span>
+<span class="keyword">@retry_with_backoff</span>(max_attempts=<span class="number">3</span>)
+<span class="keyword">def</span> <span class="function">call_external_api</span>():
+    <span class="keyword">return</span> requests.get(<span class="string">"https://api.example.com/data"</span>)</code></pre>
+          </div>
+        </div>
+
+        <h3 class="fade-in">2. Circuit Breaker</h3>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Circuit Breaker States</div>
+          <div class="mermaid">
+            stateDiagram-v2
+              [*] --> Closed
+              Closed --> Open: Failures exceed threshold
+              Open --> HalfOpen: Timeout expires
+              HalfOpen --> Closed: Success
+              HalfOpen --> Open: Failure
+              
+              note right of Closed: Normal operation\nRequests go through
+              note right of Open: Fail fast\nNo requests sent
+              note right of HalfOpen: Testing recovery\nLimited requests
+          </div>
+        </div>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python - Circuit Breaker</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">class</span> <span class="function">CircuitBreaker</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, failure_threshold=<span class="number">5</span>, recovery_timeout=<span class="number">60</span>):
+        self.failure_threshold = failure_threshold
+        self.recovery_timeout = recovery_timeout
+        self.failures = <span class="number">0</span>
+        self.state = <span class="string">"CLOSED"</span>
+        self.last_failure_time = <span class="keyword">None</span>
+    
+    <span class="keyword">def</span> <span class="function">call</span>(self, func, *args, **kwargs):
+        <span class="keyword">if</span> self.state == <span class="string">"OPEN"</span>:
+            <span class="keyword">if</span> time.time() - self.last_failure_time > self.recovery_timeout:
+                self.state = <span class="string">"HALF_OPEN"</span>
+            <span class="keyword">else</span>:
+                <span class="keyword">raise</span> <span class="function">CircuitOpenError</span>(<span class="string">"Circuit is open"</span>)
+        
+        <span class="keyword">try</span>:
+            result = func(*args, **kwargs)
+            self._on_success()
+            <span class="keyword">return</span> result
+        <span class="keyword">except</span> <span class="function">Exception</span> <span class="keyword">as</span> e:
+            self._on_failure()
+            <span class="keyword">raise</span>
+    
+    <span class="keyword">def</span> <span class="function">_on_success</span>(self):
+        self.failures = <span class="number">0</span>
+        self.state = <span class="string">"CLOSED"</span>
+    
+    <span class="keyword">def</span> <span class="function">_on_failure</span>(self):
+        self.failures += <span class="number">1</span>
+        self.last_failure_time = time.time()
+        <span class="keyword">if</span> self.failures >= self.failure_threshold:
+            self.state = <span class="string">"OPEN"</span></code></pre>
+          </div>
+        </div>
+
+        <div class="cta-box fade-in">
+          <h3>🤖 AI Accelerator</h3>
+          <p>
+            Ask Cursor: <em>"Add retry with backoff and circuit breaker to this API call. 
+            Also add logging and metrics."</em> — AI generates production-ready code instantly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         QUIZ
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="quiz">
+      <div class="section-content">
+        <div class="quiz-container" data-answer="D">
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3 class="quiz-title">Knowledge Check</h3>
+          </div>
+
+          <p class="quiz-question">
+            Your app calls a payment API. The API starts returning errors for 5% of requests. 
+            What should happen?
+          </p>
+
+          <div class="quiz-options">
+            <div class="quiz-option" data-value="A">
+              <span class="quiz-option-letter">A</span>
+              <span>Show error to user immediately</span>
+            </div>
+            <div class="quiz-option" data-value="B">
+              <span class="quiz-option-letter">B</span>
+              <span>Retry infinitely until it works</span>
+            </div>
+            <div class="quiz-option" data-value="C">
+              <span class="quiz-option-letter">C</span>
+              <span>Stop all requests (circuit breaker opens)</span>
+            </div>
+            <div class="quiz-option" data-value="D">
+              <span class="quiz-option-letter">D</span>
+              <span>Retry with backoff, track error rate, alert if threshold exceeded</span>
+            </div>
+          </div>
+
+          <div class="quiz-feedback" 
+               data-correct-msg="Resilient systems retry gracefully, monitor error rates, and alert humans when things go wrong. 5% errors might be temporary — retry first, escalate if persistent." 
+               data-incorrect-msg="5% errors is annoying but not catastrophic. Retry with backoff, track the rate, and alert if it continues. Don't fail fast for intermittent issues.">
+          </div>
+
+          <button class="quiz-btn" disabled>Check Answer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PROJECT
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Chapter Project: Integration Audit</h2>
+
+        <div class="story-block fade-in">
+          <p>
+            Pick your most critical external integration at work. Audit it against 
+            the checklist. Find gaps. Fix one. Document everything.
+          </p>
+        </div>
+
+        <div class="try-it-box fade-in">
+          <div class="try-it-header">
+            <span class="try-it-icon">🔍</span>
+            <h3 class="try-it-title">Audit Steps</h3>
+          </div>
+
+          <ol class="try-it-steps">
+            <li>
+              <strong>Choose your integration</strong><br>
+              Payment provider, email service, auth provider — something critical.
+            </li>
+            <li>
+              <strong>Document current state</strong><br>
+              Where's the code? How does it authenticate? What error handling exists?
+            </li>
+            <li>
+              <strong>Run through the checklist</strong><br>
+              Score it. What's missing? What's implemented poorly?
+            </li>
+            <li>
+              <strong>Identify gaps</strong><br>
+              Prioritize: What could cause a 3am page? Fix that first.
+            </li>
+            <li>
+              <strong>Implement one fix</strong><br>
+              Add retry logic, circuit breaker, or monitoring. Submit as PR.
+            </li>
+          </ol>
+        </div>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Deliverables</span>
+          </div>
+          <div class="code-content">
+            <pre><code>junior/ch3-magnetism/
+├── AUDIT.md              <span class="comment"># Current state of integration</span>
+├── CHECKLIST_RESULTS.md  <span class="comment"># Checklist scores</span>
+├── GAPS.md               <span class="comment"># What's missing, prioritized</span>
+├── IMPROVEMENT.md        <span class="comment"># What you fixed</span>
+└── code/                 <span class="comment"># Your implementation</span>
+    ├── retry_decorator.py
+    └── tests/</code></pre>
+          </div>
+        </div>
+
+        <div class="cta-box fade-in">
+          <h3>💡 Bonus Impact</h3>
+          <p>
+            Present your audit findings to your team. You'll be seen as someone who 
+            thinks about production quality, not just "it works on my machine."
+          </p>
+          <a href="../ch4-architect/index.html" class="cta-btn">
+            <span>Continue to Chapter 4: Design-First Thinking</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch2-lightning/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Chapter 2
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch4-architect/index.html'">
+      Chapter 4: Architects
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+  
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#7986cb',
+        primaryTextColor: '#e8e8f0',
+        primaryBorderColor: '#7986cb',
+        lineColor: '#6a6a80',
+        secondaryColor: '#1a1a2e',
+        tertiaryColor: '#12121a',
+        fontFamily: 'Inter, sans-serif'
+      },
+      flowchart: { useMaxWidth: false, htmlLabels: true },
+      mindmap: { useMaxWidth: false },
+      stateDiagram: { useMaxWidth: false }
+    });
+  </script>
+</body>
+</html>
+

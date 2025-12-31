@@ -155,7 +155,7 @@ strong {
    LAYOUT
    ───────────────────────────────────────────────────────────────────────────── */
 .lesson-container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: var(--space-lg);
 }
@@ -176,7 +176,7 @@ strong {
 .section-content {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-2xl);
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: var(--shadow-lg);
 }
@@ -440,9 +440,11 @@ strong {
 .diagram-container {
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-lg);
   margin: var(--space-xl) 0;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .diagram-title {
@@ -455,6 +457,39 @@ strong {
 .mermaid {
   display: flex;
   justify-content: center;
+  min-width: max-content;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Mermaid SVG overrides to prevent label cutoff */
+.mermaid svg {
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle,
+.mermaid .node ellipse {
+  stroke-width: 2px;
+}
+
+.mermaid .nodeLabel,
+.mermaid .edgeLabel,
+.mermaid text {
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+}
+
+.mermaid .edgeLabel {
+  background: var(--bg-secondary) !important;
+  padding: 4px 8px !important;
+}
+
+/* Ensure flowchart nodes have adequate padding for labels */
+.mermaid .node .label {
+  padding: 8px 12px;
 }
 
 /* Custom diagram SVG styles */
@@ -952,6 +987,35 @@ strong {
 /* ─────────────────────────────────────────────────────────────────────────────
    RESPONSIVE
    ───────────────────────────────────────────────────────────────────────────── */
+
+/* Large screens - allow even wider content */
+@media (min-width: 1400px) {
+  .lesson-container {
+    max-width: 1200px;
+  }
+  
+  .section-content {
+    padding: var(--space-xl) calc(var(--space-2xl) * 1.5);
+  }
+  
+  .diagram-container {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+  .lesson-container {
+    max-width: 100%;
+    padding: var(--space-md);
+  }
+  
+  .section-content {
+    padding: var(--space-xl) var(--space-lg);
+  }
+}
+
+/* Small screens */
 @media (max-width: 768px) {
   .lesson-container {
     padding: var(--space-md);
@@ -976,6 +1040,20 @@ strong {
   .lesson-nav {
     width: calc(100% - var(--space-lg) * 2);
     justify-content: space-between;
+  }
+  
+  .diagram-container {
+    padding: var(--space-lg) var(--space-md);
+    margin: var(--space-lg) calc(-1 * var(--space-md));
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .mermaid .nodeLabel,
+  .mermaid .edgeLabel,
+  .mermaid text {
+    font-size: 12px !important;
   }
 }
 

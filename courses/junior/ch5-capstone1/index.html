@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone I: Lead a Feature | Junior Accelerator</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-fire);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(239, 83, 80, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(244, 67, 54, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-fire);
+    }
+    
+    .story-block::before {
+      color: var(--accent-fire);
+    }
+
+    .ownership-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--accent-fire), #d32f2f);
+      border-radius: 30px;
+      font-weight: 600;
+      color: white;
+      margin: 1rem 0;
+      box-shadow: 0 4px 20px rgba(239, 83, 80, 0.3);
+    }
+
+    .day-block {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid var(--accent-fire);
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .day-number {
+      background: var(--accent-fire);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+    }
+
+    .day-title {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      color: var(--text-secondary);
+    }
+
+    .task-list li::before {
+      content: '□';
+      color: var(--accent-fire);
+      font-weight: bold;
+    }
+
+    .milestone-track {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .milestone-track::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      background: var(--bg-tertiary);
+      z-index: 0;
+    }
+
+    .milestone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .milestone-dot {
+      width: 32px;
+      height: 32px;
+      background: var(--bg-tertiary);
+      border: 3px solid var(--text-muted);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .milestone-dot.active {
+      background: var(--accent-fire);
+      border-color: var(--accent-fire);
+    }
+
+    .milestone-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="ownership" title="Ownership"></div>
+    <div class="progress-dot" data-section="schedule" title="Schedule"></div>
+    <div class="progress-dot" data-section="requirements" title="Requirements"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Capstone I • Week 5</span>
+        <div class="hero-icon">🔥</div>
+        <h1>Lead a Feature</h1>
+        <p class="hero-subtitle">
+          Seniors don't just write code — they <strong>own outcomes</strong>. 
+          This week, you take a real feature from design to deployment.
+        </p>
+        <div class="ownership-badge">
+          🎯 Full Ownership Mode
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Take the lead</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         WHAT OWNERSHIP MEANS
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="ownership">
+      <div class="section-content">
+        <h2 class="fade-in">🎯 What "Owning" a Feature Really Means</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Junior mindset: "I write code for tickets assigned to me."<br>
+            Senior mindset: "I'm responsible for this feature succeeding — from idea to production."
+          </p>
+        </div>
+
+        <p class="fade-in">
+          When you <strong>own</strong> a feature, you're not just writing code. You're:
+        </p>
+
+        <div class="concept-grid fade-in">
+          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
+            <div class="concept-card-icon">📋</div>
+            <h4>Clarifying Requirements</h4>
+            <p>Asking questions. Pushing back on unclear specs. Defining "done."</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
+            <div class="concept-card-icon">📐</div>
+            <h4>Designing the Solution</h4>
+            <p>Writing the design doc. Getting buy-in. Planning for edge cases.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
+            <div class="concept-card-icon">💻</div>
+            <h4>Implementing</h4>
+            <p>Writing code, tests, docs. Using AI to accelerate. Self-reviewing.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
+            <div class="concept-card-icon">🚀</div>
+            <h4>Shipping & Monitoring</h4>
+            <p>Getting through review. Deploying. Watching metrics. Fixing issues.</p>
+          </div>
+        </div>
+
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Full Ownership Lifecycle</div>
+          <div class="mermaid">
+            flowchart LR
+              REQ[Requirements] --> DESIGN[Design]
+              DESIGN --> REVIEW1[Design Review]
+              REVIEW1 --> IMPL[Implementation]
+              IMPL --> REVIEW2[Code Review]
+              REVIEW2 --> DEPLOY[Deploy]
+              DEPLOY --> MONITOR[Monitor]
+              MONITOR --> RETRO[Retrospective]
+              
+              style REQ fill:#ef5350,color:#fff
+              style DESIGN fill:#ff9800,color:#fff
+              style REVIEW1 fill:#ffd54f,color:#000
+              style IMPL fill:#4caf50,color:#fff
+              style REVIEW2 fill:#2196f3,color:#fff
+              style DEPLOY fill:#9c27b0,color:#fff
+              style MONITOR fill:#00bcd4,color:#fff
+              style RETRO fill:#607d8b,color:#fff
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE WEEK SCHEDULE
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="schedule">
+      <div class="section-content">
+        <h2 class="fade-in">📅 Your Week Schedule</h2>
+
+        <div class="milestone-track fade-in">
+          <div class="milestone">
+            <div class="milestone-dot active">📋</div>
+            <span class="milestone-label">Day 1-2</span>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot">📐</div>
+            <span class="milestone-label">Day 2</span>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot">💻</div>
+            <span class="milestone-label">Day 3-4</span>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot">🔍</div>
+            <span class="milestone-label">Day 5-6</span>
+          </div>
+          <div class="milestone">
+            <div class="milestone-dot">🚀</div>
+            <span class="milestone-label">Day 7</span>
+          </div>
+        </div>
+
+        <div class="day-block fade-in">
+          <div class="day-header">
+            <span class="day-number">Day 1-2</span>
+            <span class="day-title">Requirements + Design</span>
+          </div>
+          <ul class="task-list">
+            <li>Meet with stakeholders (PM, designer, other engineers)</li>
+            <li>Write requirements doc with clear success criteria</li>
+            <li>Create design doc with diagrams</li>
+            <li>List edge cases and how to handle them</li>
+            <li>Get design approved before coding</li>
+          </ul>
+        </div>
+
+        <div class="day-block fade-in">
+          <div class="day-header">
+            <span class="day-number">Day 3-4</span>
+            <span class="day-title">Implementation</span>
+          </div>
+          <ul class="task-list">
+            <li>Use AI to accelerate coding (reference your design!)</li>
+            <li>Write tests as you go — not after</li>
+            <li>Self-review before asking for reviews</li>
+            <li>Keep commits atomic and well-described</li>
+            <li>Update design doc if you discover new edge cases</li>
+          </ul>
+        </div>
+
+        <div class="day-block fade-in">
+          <div class="day-header">
+            <span class="day-number">Day 5-6</span>
+            <span class="day-title">Review + Polish</span>
+          </div>
+          <ul class="task-list">
+            <li>Address code review feedback promptly</li>
+            <li>Do manual testing — don't trust only unit tests</li>
+            <li>Update documentation (README, API docs)</li>
+            <li>Prepare deployment checklist</li>
+            <li>Plan rollback strategy if something goes wrong</li>
+          </ul>
+        </div>
+
+        <div class="day-block fade-in">
+          <div class="day-header">
+            <span class="day-number">Day 7</span>
+            <span class="day-title">Deploy + Retrospective</span>
+          </div>
+          <ul class="task-list">
+            <li>Deploy (or get to deploy-ready state)</li>
+            <li>Monitor initial metrics</li>
+            <li>Write retrospective: What went well? What would you do differently?</li>
+            <li>Share learnings with the team</li>
+            <li>Celebrate! You shipped something real.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         REQUIREMENTS
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="requirements">
+      <div class="section-content">
+        <h2 class="fade-in">⚙️ Capstone Requirements</h2>
+
+        <div class="story-block fade-in">
+          <p>
+            This isn't a toy project. It's a real feature that provides real value. 
+            If you can't do it at work, find an open-source project that needs help.
+          </p>
+        </div>
+
+        <h3 class="fade-in">Your Feature Must:</h3>
+
+        <div class="concept-grid fade-in">
+          <div class="concept-card" style="border-top: 3px solid var(--success);">
+            <div class="concept-card-icon">✅</div>
+            <h4>Be Real</h4>
+            <p>An actual feature at work, a meaningful open-source contribution, or a tool your team will use.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--success);">
+            <div class="concept-card-icon">📦</div>
+            <h4>Touch Multiple Components</h4>
+            <p>Not a one-file change. It should involve frontend, backend, database, or multiple services.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--success);">
+            <div class="concept-card-icon">👥</div>
+            <h4>Have Stakeholders</h4>
+            <p>Someone who cares about the outcome: PM, designer, users, or at least other engineers.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--success);">
+            <div class="concept-card-icon">🚀</div>
+            <h4>Be Deployable</h4>
+            <p>It should reach production (or be blocked only by business reasons, not technical completeness).</p>
+          </div>
+        </div>
+
+        <div class="cta-box fade-in">
+          <h3>💡 Need Feature Ideas?</h3>
+          <p>
+            Ask your manager: "Is there a feature that's been on the backlog that I could own end-to-end?"
+            Or: "What's something the team has been meaning to improve but hasn't had time for?"
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PROJECT DELIVERABLES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Capstone Deliverables</h2>
+
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Your Capstone Folder</span>
+          </div>
+          <div class="code-content">
+            <pre><code>junior/capstone-1/
+├── REQUIREMENTS.md         <span class="comment"># What you built and why</span>
+│   - Feature description
+│   - Success criteria  
+│   - Stakeholder sign-off
+│
+├── DESIGN.md               <span class="comment"># Your design document</span>
+│   - Component diagram
+│   - Data flow diagram
+│   - Sequence diagrams
+│   - API contracts (if applicable)
+│
+├── EDGE_CASES.md           <span class="comment"># Things that could go wrong</span>
+│   - Each edge case
+│   - How it's handled
+│
+├── IMPLEMENTATION.md       <span class="comment"># Notes during coding</span>
+│   - Key decisions made
+│   - Deviations from design
+│   - Challenges overcome
+│
+├── PR_LINK.md              <span class="comment"># Link to your PR(s)</span>
+│
+├── RETROSPECTIVE.md        <span class="comment"># Post-mortem</span>
+│   - What went well
+│   - What you'd do differently
+│   - What you learned
+│
+└── STAKEHOLDER_FEEDBACK.md <span class="comment"># What did they say?</span>
+    - Quotes from stakeholders
+    - Any follow-up work identified</code></pre>
+          </div>
+        </div>
+
+        <div class="try-it-box fade-in">
+          <div class="try-it-header">
+            <span class="try-it-icon">🎯</span>
+            <h3 class="try-it-title">Success Checklist</h3>
+          </div>
+
+          <ul class="task-list">
+            <li>Feature is deployed or deploy-ready</li>
+            <li>Design doc exists and was reviewed</li>
+            <li>Tests cover happy path and key edge cases</li>
+            <li>Code review completed and feedback addressed</li>
+            <li>Documentation updated</li>
+            <li>Stakeholders gave feedback</li>
+            <li>Retrospective written</li>
+          </ul>
+        </div>
+
+        <div class="cta-box fade-in" style="background: linear-gradient(135deg, rgba(239, 83, 80, 0.1), var(--bg-secondary));">
+          <h3>🏆 You Did It</h3>
+          <p>
+            When you complete this capstone, you've done something most juniors never do: 
+            you owned a feature end-to-end. That's a senior behavior. Keep doing it.
+          </p>
+          <a href="../ch6-capstone2/index.html" class="cta-btn">
+            <span>Continue to Capstone II: AI-Paired Development</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch4-architect/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Chapter 4
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch6-capstone2/index.html'">
+      Capstone II
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+  
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#ef5350',
+        primaryTextColor: '#e8e8f0',
+        primaryBorderColor: '#ef5350',
+        lineColor: '#6a6a80',
+        secondaryColor: '#1a1a2e',
+        tertiaryColor: '#12121a',
+        fontFamily: 'Inter, sans-serif'
+      },
+      flowchart: { useMaxWidth: false, htmlLabels: true }
+    });
+  </script>
+</body>
+</html>
+
