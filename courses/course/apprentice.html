@@ -12,6 +12,20 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="../shared/css/course-detail.css">
+  <style>
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
   
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -505,38 +519,46 @@
     async function handleEnroll(e) {
       e.preventDefault();
       
-      const user = window.AuthService.getUser();
+      // Wait for auth to be ready
+      const user = await window.AuthService.waitForAuthState();
       
       if (!user) {
         // Not logged in, redirect to register with return URL
-        window.AuthService.setRedirectUrl(`../course/${COURSE_ID}.html`);
+        window.AuthService.setRedirectUrl(window.location.href);
         window.location.href = '../auth/register.html';
         return;
       }
       
-      // Check if already enrolled
-      const progress = await window.DataService.getCourseProgress(COURSE_ID);
-      
-      if (progress) {
-        // Already enrolled, go to course
-        window.location.href = `../${COURSE_ID}/ch1-stone/`;
-        return;
-      }
-      
-      // Enroll user
       const btn = e.target;
       btn.disabled = true;
-      btn.textContent = 'Enrolling...';
+      btn.innerHTML = '<span class="spinner"></span> Enrolling...';
       
-      const result = await window.DataService.enrollInCourse(COURSE_ID, COURSE_DATA);
-      
-      if (result.success) {
-        // Redirect to first lesson
-        window.location.href = `../${COURSE_ID}/ch1-stone/`;
-      } else {
+      try {
+        // Check if already enrolled
+        const progress = await window.DataService.getCourseProgress(COURSE_ID);
+        
+        if (progress) {
+          // Already enrolled, go to course
+          window.location.href = `../${COURSE_ID}/ch1-stone/`;
+          return;
+        }
+        
+        // Enroll user
+        console.log('Enrolling user in course:', COURSE_ID);
+        const result = await window.DataService.enrollInCourse(COURSE_ID, COURSE_DATA);
+        console.log('Enrollment result:', result);
+        
+        if (result.success) {
+          // Redirect to first lesson
+          window.location.href = `../${COURSE_ID}/ch1-stone/`;
+        } else {
+          throw new Error(result.error || 'Enrollment failed');
+        }
+      } catch (error) {
+        console.error('Enrollment error:', error);
         btn.disabled = false;
         btn.textContent = 'Start Learning →';
-        alert('Failed to enroll. Please try again.');
+        alert('Failed to enroll: ' + error.message + '\n\nPlease make sure you are signed in and try again.');
       }
     }
     

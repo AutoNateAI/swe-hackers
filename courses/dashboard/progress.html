@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Progress | AutoNateAI Learning Hub</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Critical styles -->
+  <style>
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+    .auth-loading {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+  
+  <style>
+    /* Progress Page Specific Styles */
+    .progress-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0;
+    }
+    
+    .progress-tab {
+      padding: 1rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+    
+    .progress-tab:hover {
+      color: var(--text-primary);
+    }
+    
+    .progress-tab.active {
+      color: var(--accent-primary);
+    }
+    
+    .progress-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-primary);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Course Progress Cards */
+    .progress-course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .progress-course-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .progress-course-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .progress-course-icon {
+      font-size: 2.5rem;
+    }
+    
+    .progress-course-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .progress-course-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    .chapter-progress-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    
+    .chapter-progress-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+    
+    .chapter-progress-item:hover {
+      background: rgba(121, 134, 203, 0.1);
+      transform: translateX(5px);
+    }
+    
+    .chapter-status {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    
+    .chapter-status.completed {
+      background: rgba(102, 187, 106, 0.2);
+    }
+    
+    .chapter-status.in-progress {
+      background: rgba(255, 213, 79, 0.2);
+    }
+    
+    .chapter-status.locked {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+    
+    .chapter-info h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .chapter-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    
+    /* Notes Section */
+    .notes-container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 1.5rem;
+      min-height: 500px;
+    }
+    
+    .notes-list {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      overflow-y: auto;
+      max-height: 600px;
+    }
+    
+    .notes-list-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .notes-list-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    .new-note-btn {
+      padding: 0.5rem 1rem;
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .new-note-btn:hover {
+      background: var(--accent-secondary);
+    }
+    
+    .note-item {
+      padding: 1rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    
+    .note-item:hover {
+      background: rgba(121, 134, 203, 0.1);
+    }
+    
+    .note-item.active {
+      border-color: var(--accent-primary);
+    }
+    
+    .note-item h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .note-item p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .note-item .note-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+    
+    .note-editor {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .note-editor-header {
+      margin-bottom: 1rem;
+    }
+    
+    .note-title-input {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .note-title-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+    
+    .note-content-input {
+      flex: 1;
+      width: 100%;
+      padding: 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      resize: none;
+      min-height: 300px;
+    }
+    
+    .note-content-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+    
+    .note-editor-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .note-course-tag {
+      padding: 0.25rem 0.75rem;
+      background: rgba(121, 134, 203, 0.15);
+      color: var(--accent-primary);
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    .save-note-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .save-note-btn:hover {
+      background: var(--accent-secondary);
+    }
+    
+    /* Flashcards Section */
+    .flashcards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .flashcard-deck-selector {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    
+    .deck-btn {
+      padding: 0.5rem 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .deck-btn:hover, .deck-btn.active {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+    
+    .flashcard-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    
+    .flashcard {
+      width: 100%;
+      max-width: 600px;
+      height: 350px;
+      perspective: 1000px;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+    
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .flashcard-front {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .flashcard-back {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      transform: rotateY(180deg);
+      color: white;
+    }
+    
+    .flashcard-front h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .flashcard-front p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+    
+    .flashcard-back p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+    
+    .flashcard-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+    
+    .flashcard-controls {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .flashcard-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .flashcard-btn:hover {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+    
+    .flashcard-btn.correct {
+      background: var(--accent-success);
+      border-color: var(--accent-success);
+    }
+    
+    .flashcard-btn.wrong {
+      background: var(--accent-error);
+      border-color: var(--accent-error);
+    }
+    
+    .flashcard-progress {
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+    
+    /* Empty States */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+    
+    .empty-state .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .empty-state h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .notes-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .notes-list {
+        max-height: 300px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .progress-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .progress-tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      
+      .chapter-progress-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+  
+  <!-- Loading Screen -->
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">🏛️</div>
+      <div class="loading-spinner"></div>
+      <p>Loading your progress...</p>
+    </div>
+  </div>
+  
+  <div class="dashboard" id="dashboard-content">
+    
+    <!-- Sidebar (same as other dashboard pages) -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="courses.html" class="nav-link">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Course Library</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="challenges.html" class="nav-link">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Daily Challenges</span>
+                <span class="nav-badge">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">Learning</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="progress.html" class="nav-link active">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">My Progress</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="achievements.html" class="nav-link">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Achievements</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="notes.html" class="nav-link">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Notes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">Community</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="nav-link">
+                <span class="nav-icon">💬</span>
+                <span class="nav-text">Discord</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="leaderboard.html" class="nav-link">
+                <span class="nav-icon">🏅</span>
+                <span class="nav-text">Leaderboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="settings.html" class="nav-link">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak">
+              <span>🔥</span>
+              <span id="user-streak">0</span> day streak
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+    
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title">My Progress</h1>
+        </div>
+      </header>
+      
+      <!-- Content -->
+      <div class="content-area">
+        
+        <!-- Tabs -->
+        <div class="progress-tabs">
+          <button class="progress-tab active" data-tab="courses">📚 Courses</button>
+          <button class="progress-tab" data-tab="notes">📝 Notes</button>
+          <button class="progress-tab" data-tab="flashcards">🃏 Flashcards</button>
+        </div>
+        
+        <!-- Courses Tab -->
+        <div class="tab-content active" id="tab-courses">
+          <div class="progress-course-list" id="progress-course-list">
+            <!-- Courses loaded dynamically -->
+            <div class="empty-state" id="no-courses">
+              <div class="icon">📚</div>
+              <h3>No courses yet</h3>
+              <p>Enroll in a course to start tracking your progress!</p>
+              <a href="courses.html" class="new-note-btn" style="display: inline-block; margin-top: 1rem;">Browse Courses</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Notes Tab -->
+        <div class="tab-content" id="tab-notes">
+          <div class="notes-container">
+            <div class="notes-list">
+              <div class="notes-list-header">
+                <h3>Your Notes</h3>
+                <button class="new-note-btn" id="new-note-btn">+ New Note</button>
+              </div>
+              <div id="notes-list-content">
+                <!-- Notes loaded dynamically -->
+              </div>
+            </div>
+            <div class="note-editor" id="note-editor">
+              <div class="note-editor-header">
+                <input type="text" class="note-title-input" id="note-title" placeholder="Note title...">
+              </div>
+              <textarea class="note-content-input" id="note-content" placeholder="Write your notes here... 
+
+You can use this to:
+• Summarize key concepts from lessons
+• Write code snippets you want to remember
+• Track questions you want to ask
+• Plan your projects"></textarea>
+              <div class="note-editor-footer">
+                <select class="note-course-tag" id="note-course">
+                  <option value="">Select course...</option>
+                  <option value="apprentice">🌟 Apprentice's Path</option>
+                  <option value="undergrad">🎓 Bridge to Industry</option>
+                  <option value="junior">🚀 Junior Accelerator</option>
+                  <option value="senior">🎯 Senior Amplifier</option>
+                </select>
+                <button class="save-note-btn" id="save-note-btn">Save Note</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Flashcards Tab -->
+        <div class="tab-content" id="tab-flashcards">
+          <div class="flashcards-header">
+            <h2>Study with Flashcards</h2>
+            <div class="flashcard-deck-selector">
+              <button class="deck-btn active" data-deck="all">All</button>
+              <button class="deck-btn" data-deck="stone">🪨 Stone</button>
+              <button class="deck-btn" data-deck="lightning">⚡ Lightning</button>
+              <button class="deck-btn" data-deck="magnetism">🧲 Magnetism</button>
+            </div>
+          </div>
+          
+          <div class="flashcard-container">
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <h3 id="flashcard-category">🪨 Stone Force</h3>
+                  <p id="flashcard-question">What is a variable?</p>
+                  <span class="flashcard-hint">Click to flip</span>
+                </div>
+                <div class="flashcard-back">
+                  <p id="flashcard-answer">A variable is a named container that stores data in memory. Think of it as a labeled box where you can put information and retrieve it later by its name.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flashcard-controls">
+              <button class="flashcard-btn wrong" onclick="markCard(false)">❌ Didn't Know</button>
+              <button class="flashcard-btn" onclick="flipCard()">🔄 Flip</button>
+              <button class="flashcard-btn correct" onclick="markCard(true)">✓ Got It!</button>
+            </div>
+            
+            <div class="flashcard-progress">
+              <span id="card-progress">Card 1 of 10</span> • 
+              <span id="card-score">Score: 0/0</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+    
+  </div>
+  
+  <!-- Scripts -->
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/data-service.js"></script>
+  
+  <script>
+    // Course data
+    const COURSES = {
+      apprentice: { name: "The Apprentice's Path", icon: "🌟", subtitle: "For Complete Beginners" },
+      undergrad: { name: "The Bridge to Industry", icon: "🎓", subtitle: "For CS Students" },
+      junior: { name: "The Junior Accelerator", icon: "🚀", subtitle: "For Junior Engineers" },
+      senior: { name: "The Senior Amplifier", icon: "🎯", subtitle: "For Mid-to-Senior Engineers" }
+    };
+    
+    const CHAPTERS = [
+      { id: 'ch1', name: 'The Force of Stone', folder: 'ch1-stone' },
+      { id: 'ch2', name: 'The Force of Lightning', folder: 'ch2-lightning' },
+      { id: 'ch3', name: 'The Force of Magnetism', folder: 'ch3-magnetism' },
+      { id: 'ch4', name: 'The Age of Architects', folder: 'ch4-architect' },
+      { id: 'ch5', name: 'Capstone I', folder: 'ch5-capstone1' },
+      { id: 'ch6', name: 'Capstone II', folder: 'ch6-capstone2' }
+    ];
+    
+    // Flashcard data
+    const FLASHCARDS = [
+      { category: 'stone', q: 'What is a variable?', a: 'A named container that stores data in memory. Like a labeled box for information.' },
+      { category: 'stone', q: 'What are the 3 main data types?', a: 'Numbers (int, float), Strings (text), and Booleans (True/False).' },
+      { category: 'stone', q: 'What is a string?', a: 'A sequence of characters (text) enclosed in quotes, like "Hello World".' },
+      { category: 'lightning', q: 'What does an if statement do?', a: 'Makes decisions by running code only when a condition is True.' },
+      { category: 'lightning', q: 'What is a loop?', a: 'A way to repeat code multiple times. Python has "for" and "while" loops.' },
+      { category: 'lightning', q: 'What is the difference between for and while loops?', a: 'For loops iterate a known number of times. While loops continue until a condition becomes False.' },
+      { category: 'magnetism', q: 'What is a function?', a: 'A reusable block of code that performs a specific task, defined with "def".' },
+      { category: 'magnetism', q: 'What is a parameter?', a: 'A variable in a function definition that receives a value when the function is called.' },
+      { category: 'magnetism', q: 'What does "return" do?', a: 'Sends a value back from a function to the code that called it.' },
+      { category: 'magnetism', q: 'What is an API?', a: 'Application Programming Interface - a way for programs to communicate with each other.' }
+    ];
+    
+    let currentNotes = [];
+    let currentNoteId = null;
+    let currentCardIndex = 0;
+    let cardScore = { correct: 0, total: 0 };
+    let filteredCards = [...FLASHCARDS];
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loadingScreen = document.getElementById('auth-loading');
+      const dashboardContent = document.getElementById('dashboard-content');
+      
+      if (!window.FirebaseApp.init()) {
+        console.error('Firebase initialization failed');
+        return;
+      }
+      
+      window.AuthService.init();
+      
+      const user = await window.AuthService.waitForAuthState();
+      
+      if (!user) {
+        window.AuthService.setRedirectUrl(window.location.href);
+        window.location.href = '../auth/login.html';
+        return;
+      }
+      
+      loadingScreen.classList.add('hidden');
+      dashboardContent.classList.add('ready');
+      
+      loadUserInfo(user);
+      await loadCourseProgress();
+      await loadNotes();
+      
+      setupTabs();
+      setupSidebar();
+      setupNotes();
+      setupFlashcards();
+      setupLogout();
+    });
+    
+    // Load user info
+    function loadUserInfo(user) {
+      const displayName = user.displayName || user.email.split('@')[0];
+      document.getElementById('user-name').textContent = displayName;
+      
+      const avatar = document.getElementById('user-avatar');
+      if (user.photoURL) {
+        avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar" style="width:100%;height:100%;border-radius:50%;">`;
+      } else {
+        avatar.textContent = displayName.charAt(0).toUpperCase();
+      }
+    }
+    
+    // Load course progress
+    async function loadCourseProgress() {
+      try {
+        const courses = await window.DataService.getEnrolledCourses();
+        const container = document.getElementById('progress-course-list');
+        const emptyState = document.getElementById('no-courses');
+        
+        if (courses.length === 0) {
+          emptyState.style.display = 'block';
+          return;
+        }
+        
+        emptyState.style.display = 'none';
+        
+        courses.forEach(course => {
+          const courseInfo = COURSES[course.courseId] || { name: course.courseId, icon: '📚' };
+          const card = createCourseProgressCard(course, courseInfo);
+          container.appendChild(card);
+        });
+        
+      } catch (error) {
+        console.error('Error loading course progress:', error);
+      }
+    }
+    
+    // Create course progress card
+    function createCourseProgressCard(progress, courseInfo) {
+      const card = document.createElement('div');
+      card.className = 'progress-course-card';
+      
+      const lessons = progress.lessons || {};
+      
+      let chaptersHtml = '';
+      CHAPTERS.forEach((chapter, index) => {
+        const lessonProgress = lessons[chapter.id] || {};
+        const isCompleted = lessonProgress.completed;
+        const isInProgress = !isCompleted && (index === 0 || lessons[CHAPTERS[index-1]?.id]?.completed);
+        
+        let statusClass = 'locked';
+        let statusIcon = '🔒';
+        let statusText = 'Locked';
+        
+        if (isCompleted) {
+          statusClass = 'completed';
+          statusIcon = '✓';
+          statusText = 'Completed';
+        } else if (isInProgress) {
+          statusClass = 'in-progress';
+          statusIcon = '▶';
+          statusText = 'Continue';
+        }
+        
+        chaptersHtml += `
+          <a href="../${progress.courseId}/${chapter.folder}/" class="chapter-progress-item">
+            <div class="chapter-status ${statusClass}">${statusIcon}</div>
+            <div class="chapter-info">
+              <h4>Chapter ${index + 1}: ${chapter.name}</h4>
+              <p>${statusText}</p>
+            </div>
+          </a>
+        `;
+      });
+      
+      card.innerHTML = `
+        <div class="progress-course-header">
+          <div class="progress-course-icon">${courseInfo.icon}</div>
+          <div class="progress-course-info">
+            <h3>${courseInfo.name}</h3>
+            <p>${progress.completedLessons || 0} of 6 chapters completed • ${progress.progressPercent || 0}%</p>
+          </div>
+        </div>
+        <div class="chapter-progress-list">
+          ${chaptersHtml}
+        </div>
+      `;
+      
+      return card;
+    }
+    
+    // Setup tabs
+    function setupTabs() {
+      const tabs = document.querySelectorAll('.progress-tab');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
+        });
+      });
+    }
+    
+    // Load notes
+    async function loadNotes() {
+      const user = window.AuthService.getUser();
+      if (!user) return;
+      
+      const db = window.FirebaseApp.getDb();
+      
+      try {
+        const snapshot = await db.collection('users').doc(user.uid)
+          .collection('notes')
+          .orderBy('updatedAt', 'desc')
+          .get();
+        
+        currentNotes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        renderNotesList();
+      } catch (error) {
+        console.error('Error loading notes:', error);
+      }
+    }
+    
+    // Render notes list
+    function renderNotesList() {
+      const container = document.getElementById('notes-list-content');
+      
+      if (currentNotes.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="padding: 2rem;">
+            <div class="icon">📝</div>
+            <p>No notes yet. Create one!</p>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = currentNotes.map(note => `
+        <div class="note-item ${currentNoteId === note.id ? 'active' : ''}" onclick="selectNote('${note.id}')">
+          <h4>${note.title || 'Untitled'}</h4>
+          <p>${note.content?.substring(0, 100) || 'Empty note...'}</p>
+          <div class="note-meta">${note.courseId ? COURSES[note.courseId]?.icon + ' ' : ''}${formatDate(note.updatedAt)}</div>
+        </div>
+      `).join('');
+    }
+    
+    // Select note
+    function selectNote(noteId) {
+      const note = currentNotes.find(n => n.id === noteId);
+      if (!note) return;
+      
+      currentNoteId = noteId;
+      document.getElementById('note-title').value = note.title || '';
+      document.getElementById('note-content').value = note.content || '';
+      document.getElementById('note-course').value = note.courseId || '';
+      
+      renderNotesList();
+    }
+    
+    // Setup notes
+    function setupNotes() {
+      document.getElementById('new-note-btn').addEventListener('click', () => {
+        currentNoteId = null;
+        document.getElementById('note-title').value = '';
+        document.getElementById('note-content').value = '';
+        document.getElementById('note-course').value = '';
+        renderNotesList();
+      });
+      
+      document.getElementById('save-note-btn').addEventListener('click', saveNote);
+    }
+    
+    // Save note
+    async function saveNote() {
+      const user = window.AuthService.getUser();
+      if (!user) return;
+      
+      const title = document.getElementById('note-title').value.trim();
+      const content = document.getElementById('note-content').value.trim();
+      const courseId = document.getElementById('note-course').value;
+      
+      if (!content) {
+        alert('Please write some content for your note.');
+        return;
+      }
+      
+      const db = window.FirebaseApp.getDb();
+      const noteData = {
+        title: title || 'Untitled',
+        content,
+        courseId,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      
+      try {
+        if (currentNoteId) {
+          await db.collection('users').doc(user.uid)
+            .collection('notes').doc(currentNoteId)
+            .update(noteData);
+        } else {
+          noteData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+          const docRef = await db.collection('users').doc(user.uid)
+            .collection('notes').add(noteData);
+          currentNoteId = docRef.id;
+        }
+        
+        await loadNotes();
+        alert('Note saved!');
+      } catch (error) {
+        console.error('Error saving note:', error);
+        alert('Failed to save note. Please try again.');
+      }
+    }
+    
+    // Setup flashcards
+    function setupFlashcards() {
+      document.querySelectorAll('.deck-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.deck-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          const deck = btn.dataset.deck;
+          if (deck === 'all') {
+            filteredCards = [...FLASHCARDS];
+          } else {
+            filteredCards = FLASHCARDS.filter(c => c.category === deck);
+          }
+          
+          currentCardIndex = 0;
+          cardScore = { correct: 0, total: 0 };
+          showCard();
+        });
+      });
+      
+      showCard();
+    }
+    
+    // Show card
+    function showCard() {
+      const card = filteredCards[currentCardIndex];
+      if (!card) return;
+      
+      const categoryNames = { stone: '🪨 Stone Force', lightning: '⚡ Lightning Force', magnetism: '🧲 Magnetism Force' };
+      
+      document.getElementById('flashcard-category').textContent = categoryNames[card.category];
+      document.getElementById('flashcard-question').textContent = card.q;
+      document.getElementById('flashcard-answer').textContent = card.a;
+      document.getElementById('flashcard').classList.remove('flipped');
+      
+      document.getElementById('card-progress').textContent = `Card ${currentCardIndex + 1} of ${filteredCards.length}`;
+      document.getElementById('card-score').textContent = `Score: ${cardScore.correct}/${cardScore.total}`;
+    }
+    
+    // Flip card
+    function flipCard() {
+      document.getElementById('flashcard').classList.toggle('flipped');
+    }
+    
+    // Mark card
+    function markCard(correct) {
+      cardScore.total++;
+      if (correct) cardScore.correct++;
+      
+      currentCardIndex++;
+      if (currentCardIndex >= filteredCards.length) {
+        currentCardIndex = 0;
+        // Shuffle
+        filteredCards = filteredCards.sort(() => Math.random() - 0.5);
+      }
+      
+      showCard();
+    }
+    
+    // Format date
+    function formatDate(timestamp) {
+      if (!timestamp) return '';
+      const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+    
+    // Setup sidebar
+    function setupSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggle = document.getElementById('sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+      });
+      
+      if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        sidebar.classList.add('collapsed');
+      }
+      
+      mobileBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+      });
+      
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+      });
+    }
+    
+    // Setup logout
+    function setupLogout() {
+      document.getElementById('logout-link').addEventListener('click', async (e) => {
+        e.preventDefault();
+        await window.AuthService.logout();
+        window.location.href = '../index.html';
+      });
+    }
+  </script>
+</body>
+</html>
+

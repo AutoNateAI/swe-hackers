@@ -542,7 +542,7 @@ body {
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
 }
@@ -821,7 +821,20 @@ body {
   }
   
   .courses-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .course-progress-card .course-content {
+    padding: var(--space-md);
+  }
+  
+  .course-progress-card .course-name {
+    font-size: 0.95rem;
+  }
+  
+  .course-progress-card .course-subtitle {
+    font-size: 0.75rem;
   }
   
   .content-area {
@@ -831,15 +844,34 @@ body {
 
 @media (max-width: 480px) {
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
   }
   
   .stat-card {
-    padding: var(--space-md);
+    padding: var(--space-sm);
   }
   
   .stat-value {
+    font-size: 1.25rem;
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  
+  .course-progress-card .course-icon {
     font-size: 1.5rem;
+  }
+  
+  .course-progress-card .course-name {
+    font-size: 0.85rem;
+  }
+  
+  .course-progress-card .course-action {
+    padding: var(--space-sm);
+    font-size: 0.8rem;
   }
 }
 
