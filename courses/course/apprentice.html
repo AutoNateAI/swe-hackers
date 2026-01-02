@@ -186,6 +186,30 @@
         
         <div class="chapter-item">
           <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-number">0</div>
+            <div class="chapter-info">
+              <div class="chapter-title">🏛️ The Origins</div>
+              <div class="chapter-subtitle">Pre-Quest: History & Setup</div>
+            </div>
+            <div class="chapter-meta">
+              <span>📖 30 min</span>
+              <span>🛠️ Setup</span>
+            </div>
+          </div>
+          <div class="chapter-content">
+            <ul class="chapter-topics">
+              <li>How rocks, electricity & magnetism became computers</li>
+              <li>Binary: The language of machines</li>
+              <li>File systems & organization</li>
+              <li>The terminal: Talking to your computer</li>
+              <li>Installing Python</li>
+              <li>From command line to GUIs</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="chapter-item">
+          <div class="chapter-header" onclick="toggleChapter(this)">
             <div class="chapter-number">1</div>
             <div class="chapter-info">
               <div class="chapter-title">🪨 The Force of Stone</div>
@@ -538,8 +562,8 @@
         const progress = await window.DataService.getCourseProgress(COURSE_ID);
         
         if (progress) {
-          // Already enrolled, go to course
-          window.location.href = `../${COURSE_ID}/ch1-stone/`;
+          // Already enrolled, go to course (chapter 0 pre-quest)
+          window.location.href = `../${COURSE_ID}/ch0-origins/`;
           return;
         }
         
@@ -549,8 +573,8 @@
         console.log('Enrollment result:', result);
         
         if (result.success) {
-          // Redirect to first lesson
-          window.location.href = `../${COURSE_ID}/ch1-stone/`;
+          // Redirect to pre-quest (chapter 0)
+          window.location.href = `../${COURSE_ID}/ch0-origins/`;
         } else {
           throw new Error(result.error || 'Enrollment failed');
         }
