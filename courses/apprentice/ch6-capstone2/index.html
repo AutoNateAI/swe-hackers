@@ -668,11 +668,10 @@ A command-line assistant that can do lots of things!
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("apprentice", "ch6-capstone2");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("apprentice", "ch6-capstone2");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("apprentice", "ch6-capstone2");
+        }
       });
     </script>
   </body>

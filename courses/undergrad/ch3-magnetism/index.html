@@ -521,11 +521,10 @@ GET /users/123/orders   <span class="comment"># Get orders for user 123</span></
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("undergrad", "ch3-magnetism");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("undergrad", "ch3-magnetism");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("undergrad", "ch3-magnetism");
+        }
       });
     </script>
   </body>

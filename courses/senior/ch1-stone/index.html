@@ -516,11 +516,10 @@ flowchart TB
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("senior", "ch1-stone");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("senior", "ch1-stone");
         }
-      }, 1000);
     });
   </script>
 </body>

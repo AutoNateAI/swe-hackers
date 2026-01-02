@@ -541,11 +541,10 @@ Code to review:
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("undergrad", "ch6-capstone2");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("undergrad", "ch6-capstone2");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("undergrad", "ch6-capstone2");
+        }
       });
     </script>
   </body>

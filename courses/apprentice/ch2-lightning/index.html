@@ -717,11 +717,10 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("apprentice", "ch2-lightning");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("apprentice", "ch2-lightning");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("apprentice", "ch2-lightning");
+        }
       });
     </script>
   </body>

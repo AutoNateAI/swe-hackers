@@ -502,11 +502,10 @@ Generate:
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("senior", "ch3-magnetism");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("senior", "ch3-magnetism");
         }
-      }, 1000);
     });
   </script>
 </body>

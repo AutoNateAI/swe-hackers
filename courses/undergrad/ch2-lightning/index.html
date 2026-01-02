@@ -631,11 +631,10 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("undergrad", "ch2-lightning");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("undergrad", "ch2-lightning");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("undergrad", "ch2-lightning");
+        }
       });
     </script>
   </body>

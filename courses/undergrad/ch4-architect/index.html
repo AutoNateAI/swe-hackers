@@ -550,11 +550,10 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("undergrad", "ch4-architect");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("undergrad", "ch4-architect");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("undergrad", "ch4-architect");
+        }
       });
     </script>
   </body>

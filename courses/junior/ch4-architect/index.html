@@ -558,11 +558,10 @@ I need to implement a payment processing feature.
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("junior", "ch4-architect");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("junior", "ch4-architect");
         }
-      }, 1000);
     });
   </script>
 </body>

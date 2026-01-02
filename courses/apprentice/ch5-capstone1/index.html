@@ -615,11 +615,10 @@ show_room()
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("apprentice", "ch5-capstone1");
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("apprentice", "ch5-capstone1");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("apprentice", "ch5-capstone1");
+        }
       });
     </script>
   </body>

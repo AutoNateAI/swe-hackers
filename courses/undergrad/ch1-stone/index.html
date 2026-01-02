@@ -544,11 +544,10 @@ cache.<span class="function">set</span>(<span class="string">'key'</span>, <span
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("undergrad", "ch1-stone");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("undergrad", "ch1-stone");
         }
-      }, 1000);
     });
   </script>
 </body>

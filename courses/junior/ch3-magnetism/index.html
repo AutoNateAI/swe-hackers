@@ -613,11 +613,10 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("junior", "ch3-magnetism");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("junior", "ch3-magnetism");
         }
-      }, 1000);
     });
   </script>
 </body>

@@ -1060,11 +1060,10 @@ gantt
       }
       
       // Initialize progress tracker after a short delay for auth
-      setTimeout(() => {
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init('senior', 'ch0-origins');
-        }
-      }, 1000);
+      // Initialize progress tracker immediately
+      if (window.ProgressTracker) {
+        window.ProgressTracker.init('senior', 'ch0-origins');
+      }
     });
   </script>
 </body>

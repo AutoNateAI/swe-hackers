@@ -946,11 +946,10 @@ secret = encode_message(message)
         window.LessonIntegration.init("apprentice", "ch1-stone");
         
         // Initialize progress tracker after auth
-        setTimeout(() => {
-          if (window.ProgressTracker) {
-            window.ProgressTracker.init("apprentice", "ch1-stone");
-          }
-        }, 1000);
+        // Initialize progress tracker immediately
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("apprentice", "ch1-stone");
+        }
       });
 
       // Auto-complete is now handled by LessonIntegration.setupAutoComplete()

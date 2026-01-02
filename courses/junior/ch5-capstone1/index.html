@@ -526,11 +526,10 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("junior", "ch5-capstone1");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("junior", "ch5-capstone1");
         }
-      }, 1000);
     });
   </script>
 </body>

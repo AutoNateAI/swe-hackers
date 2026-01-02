@@ -19,22 +19,42 @@ const ProgressTracker = {
    * @param {string} lessonId - e.g., 'ch0-origins', 'ch1-stone'
    */
   async init(courseId, lessonId) {
+    // Prevent double initialization
+    if (this.isInitialized && this.courseId === courseId && this.lessonId === lessonId) {
+      console.log('📊 Progress Tracker already initialized for this lesson');
+      return;
+    }
+    
+    // Reset state for new initialization
     this.courseId = courseId;
     this.lessonId = lessonId;
     this.startTime = Date.now();
     this.sectionTimes = {};
+    this.sections = [];
+    this.currentSection = null;
+    this.isInitialized = false;
     
     // Find all sections on the page
     this.discoverSections();
     
-    // Render the tracker UI
+    // Only proceed if we found sections
+    if (this.sections.length === 0) {
+      console.log('📊 No sections found, retrying in 500ms...');
+      setTimeout(() => this.init(courseId, lessonId), 500);
+      return;
+    }
+    
+    // Render the tracker UI immediately
     this.renderTracker();
     
     // Set up scroll observer
     this.setupScrollObserver();
     
-    // Load existing progress
-    await this.loadProgress();
+    // Update UI to show initial state
+    this.updateTrackerUI();
+    
+    // Load existing progress (async, don't block)
+    this.loadProgress().catch(err => console.error('Error loading progress:', err));
     
     // Set up auto-save
     this.setupAutoSave();
@@ -437,6 +457,25 @@ const ProgressTracker = {
   },
   
   /**
+   * Get section ID from an element (checks id, data-section, data-section-id)
+   */
+  getSectionIdFromElement(el) {
+    return el.id || el.dataset.section || el.dataset.sectionId || null;
+  },
+  
+  /**
+   * Find section by element
+   */
+  findSectionByElement(el) {
+    const sectionId = this.getSectionIdFromElement(el);
+    if (sectionId) {
+      return this.sections.find(s => s.id === sectionId);
+    }
+    // Fallback: find by element reference
+    return this.sections.find(s => s.element === el);
+  },
+  
+  /**
    * Set up intersection observer for section tracking
    */
   setupScrollObserver() {
@@ -448,8 +487,7 @@ const ProgressTracker = {
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const sectionId = entry.target.id;
-        const section = this.sections.find(s => s.id === sectionId);
+        const section = this.findSectionByElement(entry.target);
         
         if (section && entry.isIntersecting) {
           this.setCurrentSection(section);
@@ -467,7 +505,7 @@ const ProgressTracker = {
     const viewObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-          const section = this.sections.find(s => s.id === entry.target.id);
+          const section = this.findSectionByElement(entry.target);
           if (section && !section.viewed) {
             section.viewed = true;
             this.updateTrackerUI();
@@ -481,6 +519,31 @@ const ProgressTracker = {
         viewObserver.observe(section.element);
       }
     });
+    
+    // Set initial section based on scroll position
+    this.detectInitialSection();
+  },
+  
+  /**
+   * Detect which section is currently visible on page load
+   */
+  detectInitialSection() {
+    const viewportMiddle = window.innerHeight / 2;
+    
+    for (const section of this.sections) {
+      if (!section.element) continue;
+      
+      const rect = section.element.getBoundingClientRect();
+      if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+        this.setCurrentSection(section);
+        break;
+      }
+    }
+    
+    // If no section found in middle, mark first section as current
+    if (!this.currentSection && this.sections.length > 0) {
+      this.setCurrentSection(this.sections[0]);
+    }
   },
   
   /**
@@ -497,6 +560,16 @@ const ProgressTracker = {
     this.currentSection = section;
     this.sectionTimes[section.id] = Date.now();
     section.viewed = true;
+    
+    // Mark all sections before this one as viewed (user scrolled past them)
+    const currentIndex = this.sections.indexOf(section);
+    if (currentIndex > 0) {
+      for (let i = 0; i < currentIndex; i++) {
+        if (!this.sections[i].viewed) {
+          this.sections[i].viewed = true;
+        }
+      }
+    }
     
     this.updateTrackerUI();
   },

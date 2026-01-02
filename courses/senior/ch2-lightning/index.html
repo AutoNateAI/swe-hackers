@@ -501,11 +501,10 @@ gantt
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       window.LessonIntegration.init("senior", "ch2-lightning");
-      setTimeout(() => {
+        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("senior", "ch2-lightning");
         }
-      }, 1000);
     });
   </script>
 </body>
