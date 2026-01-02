@@ -140,12 +140,20 @@ const LessonIntegration = {
       }
       
       .progress-dot {
+        display: block;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background: #1a1a2e;
         border: 2px solid #3f3f5f;
         transition: all 0.3s ease;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+      .progress-dot:hover {
+        transform: scale(1.2);
+        border-color: #7986cb;
       }
       
       .progress-dot.completed {
@@ -157,6 +165,10 @@ const LessonIntegration = {
         background: #7986cb;
         border-color: #7986cb;
         animation: pulse 2s ease-in-out infinite;
+      }
+      
+      .progress-dot.current:hover {
+        animation: none;
       }
       
       @keyframes pulse {
@@ -212,6 +224,21 @@ const LessonIntegration = {
   },
   
   /**
+   * Chapter definitions for navigation
+   */
+  getChapters() {
+    return [
+      { id: 'ch0-origins', name: 'Origins', folder: 'ch0-origins', num: 0 },
+      { id: 'ch1-stone', name: 'Stone', folder: 'ch1-stone', num: 1 },
+      { id: 'ch2-lightning', name: 'Lightning', folder: 'ch2-lightning', num: 2 },
+      { id: 'ch3-magnetism', name: 'Magnetism', folder: 'ch3-magnetism', num: 3 },
+      { id: 'ch4-architect', name: 'Architect', folder: 'ch4-architect', num: 4 },
+      { id: 'ch5-capstone1', name: 'Capstone I', folder: 'ch5-capstone1', num: 5 },
+      { id: 'ch6-capstone2', name: 'Capstone II', folder: 'ch6-capstone2', num: 6 }
+    ];
+  },
+  
+  /**
    * Update progress dots
    */
   async updateProgressDots() {
@@ -222,23 +249,24 @@ const LessonIntegration = {
       
       if (!dotsContainer) return;
       
-      const chapters = ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6'];
-      const currentChapter = this.lessonId;
+      const chapters = this.getChapters();
+      const currentLessonId = this.lessonId;
       
       let completedCount = 0;
       let dots = '';
       
-      chapters.forEach((ch, index) => {
-        const isCompleted = progress?.lessons?.[ch]?.completed;
-        const isCurrent = ch === currentChapter;
+      chapters.forEach((ch) => {
+        const isCompleted = progress?.lessons?.[ch.id]?.completed || progress?.lessons?.[ch.folder]?.completed;
+        const isCurrent = ch.id === currentLessonId || ch.folder === currentLessonId;
         
         if (isCompleted) completedCount++;
         
-        dots += `<div class="progress-dot ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}" title="Chapter ${index + 1}"></div>`;
+        // Create clickable dot that navigates to the chapter
+        dots += `<a href="../${ch.folder}/" class="progress-dot ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}" title="${ch.num === 0 ? 'Pre-Quest' : 'Chapter ' + ch.num}: ${ch.name}"></a>`;
       });
       
       dotsContainer.innerHTML = dots;
-      label.textContent = `${completedCount}/6 Complete`;
+      label.textContent = `${completedCount}/${chapters.length} Complete`;
       
     } catch (error) {
       console.error('Error updating progress:', error);

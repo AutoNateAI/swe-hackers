@@ -1330,6 +1330,8 @@ mindmap
   <script src="../../shared/js/firebase-config.js"></script>
   <script src="../../shared/js/auth.js"></script>
   <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/lesson-integration.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
   
   <script>
     // Initialize Mermaid
@@ -1497,11 +1499,17 @@ mindmap
         easing: 'easeOutQuad'
       });
       
-      // Initialize Firebase
-      if (window.FirebaseApp) {
-        window.FirebaseApp.init();
-        window.AuthService.init();
+      // Initialize lesson integration (handles Firebase, auth, and header)
+      if (window.LessonIntegration) {
+        window.LessonIntegration.init('apprentice', 'ch0-origins');
       }
+      
+      // Initialize progress tracker after a short delay for auth
+      setTimeout(() => {
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init('apprentice', 'ch0-origins');
+        }
+      }, 1000);
     });
   </script>
 </body>

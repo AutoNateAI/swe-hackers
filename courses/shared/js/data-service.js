@@ -100,12 +100,12 @@ const DataService = {
       const lessons = data.lessons || {};
       const totalLessons = Object.keys(lessons).length;
       const completedLessons = Object.values(lessons).filter(l => l.completed).length;
-      const progressPercent = totalLessons > 0 ? Math.round((completedLessons / 6) * 100) : 0;
+      const progressPercent = totalLessons > 0 ? Math.round((completedLessons / 7) * 100) : 0;
       
       await progressRef.update({
         progressPercent,
         completedLessons,
-        totalLessons: 6 // Fixed for our 6-chapter courses
+        totalLessons: 7 // Fixed for our 7-chapter courses (includes ch0-origins)
       });
     } catch (error) {
       console.error('Error recalculating progress:', error);
@@ -262,7 +262,7 @@ const DataService = {
       lastActivity: firebase.firestore.FieldValue.serverTimestamp(),
       progressPercent: 0,
       completedLessons: 0,
-      totalLessons: 6,
+      totalLessons: 7, // Includes ch0-origins pre-quest
       lessons: {}
     };
     
@@ -418,6 +418,173 @@ const DataService = {
     } catch (error) {
       console.error('Error getting user stats:', error);
       return null;
+    }
+  },
+
+  /**
+   * Save detailed lesson progress (sections, time spent per section, etc.)
+   */
+  async saveLessonProgress(courseId, lessonId, progressData) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+    
+    const db = window.FirebaseApp.getDb();
+    const lessonRef = db.collection('users').doc(user.uid)
+                       .collection('courseProgress').doc(courseId)
+                       .collection('lessonProgress').doc(lessonId);
+    
+    const data = {
+      ...progressData,
+      userId: user.uid,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    
+    try {
+      await lessonRef.set(data, { merge: true });
+      
+      // Also update the parent course progress with last lesson info
+      const courseRef = db.collection('users').doc(user.uid)
+                         .collection('courseProgress').doc(courseId);
+      
+      await courseRef.set({
+        lastActivity: firebase.firestore.FieldValue.serverTimestamp(),
+        lastLesson: lessonId,
+        lastLessonProgress: progressData.progressPercent,
+        [`lessons.${lessonId}`]: {
+          progressPercent: progressData.progressPercent,
+          viewedSections: progressData.viewedSections,
+          totalSections: progressData.totalSections,
+          totalTimeSpent: progressData.totalTimeSpent,
+          lastSection: progressData.lastSection,
+          lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+        }
+      }, { merge: true });
+      
+      return { success: true };
+    } catch (error) {
+      console.error('Error saving lesson progress:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  /**
+   * Get detailed lesson progress
+   */
+  async getLessonProgress(courseId, lessonId) {
+    const user = window.AuthService.getUser();
+    if (!user) return null;
+    
+    const db = window.FirebaseApp.getDb();
+    const lessonRef = db.collection('users').doc(user.uid)
+                       .collection('courseProgress').doc(courseId)
+                       .collection('lessonProgress').doc(lessonId);
+    
+    try {
+      const doc = await lessonRef.get();
+      return doc.exists ? doc.data() : null;
+    } catch (error) {
+      console.error('Error getting lesson progress:', error);
+      return null;
+    }
+  },
+
+  /**
+   * Get all lessons progress for a course
+   */
+  async getAllLessonsProgress(courseId) {
+    const user = window.AuthService.getUser();
+    if (!user) return [];
+    
+    const db = window.FirebaseApp.getDb();
+    const lessonsRef = db.collection('users').doc(user.uid)
+                        .collection('courseProgress').doc(courseId)
+                        .collection('lessonProgress');
+    
+    try {
+      const snapshot = await lessonsRef.orderBy('updatedAt', 'desc').get();
+      return snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    } catch (error) {
+      console.error('Error getting lessons progress:', error);
+      return [];
+    }
+  },
+
+  /**
+   * Get user's notes for a course
+   */
+  async getNotes(courseId = null) {
+    const user = window.AuthService.getUser();
+    if (!user) return [];
+    
+    const db = window.FirebaseApp.getDb();
+    let notesRef = db.collection('users').doc(user.uid).collection('notes');
+    
+    if (courseId) {
+      notesRef = notesRef.where('courseId', '==', courseId);
+    }
+    
+    try {
+      const snapshot = await notesRef.orderBy('updatedAt', 'desc').get();
+      return snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    } catch (error) {
+      console.error('Error getting notes:', error);
+      return [];
+    }
+  },
+
+  /**
+   * Save a note
+   */
+  async saveNote(noteData) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+    
+    const db = window.FirebaseApp.getDb();
+    const noteId = noteData.id || db.collection('users').doc(user.uid).collection('notes').doc().id;
+    const noteRef = db.collection('users').doc(user.uid).collection('notes').doc(noteId);
+    
+    const data = {
+      ...noteData,
+      id: noteId,
+      userId: user.uid,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    
+    if (!noteData.id) {
+      data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+    }
+    
+    try {
+      await noteRef.set(data, { merge: true });
+      return { success: true, id: noteId };
+    } catch (error) {
+      console.error('Error saving note:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  /**
+   * Delete a note
+   */
+  async deleteNote(noteId) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+    
+    const db = window.FirebaseApp.getDb();
+    const noteRef = db.collection('users').doc(user.uid).collection('notes').doc(noteId);
+    
+    try {
+      await noteRef.delete();
+      return { success: true };
+    } catch (error) {
+      console.error('Error deleting note:', error);
+      return { success: false, error: error.message };
     }
   }
 };
