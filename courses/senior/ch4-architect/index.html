@@ -560,6 +560,23 @@ Please provide 2-3 architecture options with trade-offs.
   </nav>
 
   <script src="../../shared/js/lesson.js"></script>
+  
+  <!-- Lesson Integration -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/lesson-integration.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      window.LessonIntegration.init("senior", "ch4-architect");
+      setTimeout(() => {
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("senior", "ch4-architect");
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
 

@@ -461,23 +461,40 @@
 
   <!-- Bottom Navigation -->
   <nav class="lesson-nav">
-    <button class="nav-btn" onclick="location.href='../../index.html'">
+    <a class="nav-btn" href="../ch0-origins/">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
       </svg>
-      Course Home
-    </button>
-    <button class="nav-btn primary" onclick="location.href='../ch2-lightning/index.html'">
-      Chapter 2: Lightning
+      ← Chapter 0: Origins
+    </a>
+    <a class="nav-btn primary" href="../ch2-lightning/">
+      Chapter 2: Lightning →
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M5 12h14M12 5l7 7-7 7"/>
       </svg>
-    </button>
+    </a>
   </nav>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <script src="../../shared/js/lesson.js"></script>
+  
+  <!-- Lesson Integration -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/lesson-integration.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      window.LessonIntegration.init("junior", "ch1-stone");
+      setTimeout(() => {
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("junior", "ch1-stone");
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
 

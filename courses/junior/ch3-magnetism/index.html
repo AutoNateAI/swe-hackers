@@ -603,6 +603,23 @@
       stateDiagram: { useMaxWidth: false }
     });
   </script>
+  
+  <!-- Lesson Integration -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/lesson-integration.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      window.LessonIntegration.init("junior", "ch3-magnetism");
+      setTimeout(() => {
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("junior", "ch3-magnetism");
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
 

@@ -647,17 +647,34 @@ A command-line assistant that can do lots of things!
         </svg>
         Capstone I
       </button>
-      <button class="nav-btn primary" onclick="location.href='../../index.html'">
-        Course Home
+      <a class="nav-btn primary" href="../ch0-origins/">
+        🔄 Back to Origins
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>
-      </button>
+      </a>
     </nav>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
     <script src="../../shared/js/lesson.js"></script>
+    
+    <!-- Lesson Integration -->
+    <script src="../../shared/js/firebase-config.js"></script>
+    <script src="../../shared/js/auth.js"></script>
+    <script src="../../shared/js/data-service.js"></script>
+    <script src="../../shared/js/lesson-integration.js"></script>
+    <script src="../../shared/js/progress-tracker.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        window.LessonIntegration.init("apprentice", "ch6-capstone2");
+        setTimeout(() => {
+          if (window.ProgressTracker) {
+            window.ProgressTracker.init("apprentice", "ch6-capstone2");
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>
 

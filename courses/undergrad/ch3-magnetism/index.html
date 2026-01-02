@@ -511,6 +511,23 @@ GET /users/123/orders   <span class="comment"># Get orders for user 123</span></
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
     <script src="../../shared/js/lesson.js"></script>
+    
+    <!-- Lesson Integration -->
+    <script src="../../shared/js/firebase-config.js"></script>
+    <script src="../../shared/js/auth.js"></script>
+    <script src="../../shared/js/data-service.js"></script>
+    <script src="../../shared/js/lesson-integration.js"></script>
+    <script src="../../shared/js/progress-tracker.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        window.LessonIntegration.init("undergrad", "ch3-magnetism");
+        setTimeout(() => {
+          if (window.ProgressTracker) {
+            window.ProgressTracker.init("undergrad", "ch3-magnetism");
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>
 

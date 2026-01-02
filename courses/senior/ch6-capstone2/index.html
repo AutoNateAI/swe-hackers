@@ -453,6 +453,23 @@ flowchart LR
   </nav>
 
   <script src="../../shared/js/lesson.js"></script>
+  
+  <!-- Lesson Integration -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/lesson-integration.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      window.LessonIntegration.init("senior", "ch6-capstone2");
+      setTimeout(() => {
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init("senior", "ch6-capstone2");
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
 

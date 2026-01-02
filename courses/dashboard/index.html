@@ -342,25 +342,25 @@
         name: "The Apprentice's Path",
         icon: "🌟",
         subtitle: "For Complete Beginners",
-        link: "../apprentice/ch1-stone/"
+        link: "../apprentice/ch0-origins/"
       },
       undergrad: {
         name: "The Bridge to Industry",
         icon: "🎓",
         subtitle: "For CS Students",
-        link: "../undergrad/ch1-stone/"
+        link: "../undergrad/ch0-origins/"
       },
       junior: {
         name: "The Junior Accelerator",
         icon: "🚀",
         subtitle: "For Junior Engineers",
-        link: "../junior/ch1-stone/"
+        link: "../junior/ch0-origins/"
       },
       senior: {
         name: "The Senior Amplifier",
         icon: "🎯",
         subtitle: "For Mid-to-Senior Engineers",
-        link: "../senior/ch1-stone/"
+        link: "../senior/ch0-origins/"
       }
     };
     
@@ -498,18 +498,22 @@
       const completedLessons = progress.completedLessons || 0;
       const progressPercent = progress.progressPercent || 0;
       
-      // Find next lesson
-      let nextLesson = 1;
+      // Find next lesson (starting from ch0-origins)
+      let nextLesson = 0;
+      const chapterIds = ['ch0-origins', 'ch1-stone', 'ch2-lightning', 'ch3-magnetism', 'ch4-architect', 'ch5-capstone1', 'ch6-capstone2'];
       if (progress.lessons) {
-        for (let i = 1; i <= 6; i++) {
-          if (!progress.lessons[`ch${i}`]?.completed) {
+        for (let i = 0; i <= 6; i++) {
+          const chId = chapterIds[i];
+          if (!progress.lessons[chId]?.completed) {
             nextLesson = i;
             break;
           }
+          // If all are complete, stay on last
+          if (i === 6) nextLesson = 6;
         }
       }
       
-      const chapterNames = ['Stone', 'Lightning', 'Magnetism', 'Architect', 'Capstone I', 'Capstone II'];
+      const chapterNames = ['Origins', 'Stone', 'Lightning', 'Magnetism', 'Architect', 'Capstone I', 'Capstone II'];
       const nextChapterLink = getChapterLink(progress.courseId, nextLesson);
       
       card.innerHTML = `
@@ -549,7 +553,7 @@
           </div>
           
           <a href="${nextChapterLink}" class="course-action">
-            ${completedLessons === 6 ? 'Review Course' : `Continue: ${chapterNames[nextLesson - 1]} →`}
+            ${completedLessons === 7 ? 'Review Course' : `Continue: ${chapterNames[nextLesson]} →`}
           </a>
         </div>
       `;
@@ -559,8 +563,8 @@
     
     // Get chapter link
     function getChapterLink(courseId, chapter) {
-      const chapterFolders = ['ch1-stone', 'ch2-lightning', 'ch3-magnetism', 'ch4-architect', 'ch5-capstone1', 'ch6-capstone2'];
-      return `../${courseId}/${chapterFolders[chapter - 1]}/`;
+      const chapterFolders = ['ch0-origins', 'ch1-stone', 'ch2-lightning', 'ch3-magnetism', 'ch4-architect', 'ch5-capstone1', 'ch6-capstone2'];
+      return `../${courseId}/${chapterFolders[chapter]}/`;
     }
     
     // Format time

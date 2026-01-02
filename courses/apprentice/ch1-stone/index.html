@@ -861,7 +861,7 @@ secret = encode_message(message)
 
     <!-- Bottom Navigation -->
     <nav class="lesson-nav">
-      <button class="nav-btn" onclick="history.back()">
+      <a class="nav-btn" href="../ch0-origins/">
         <svg
           width="16"
           height="16"
@@ -872,13 +872,13 @@ secret = encode_message(message)
         >
           <path d="M19 12H5M12 19l-7-7 7-7" />
         </svg>
-        Previous
-      </button>
-      <button
+        ← Chapter 0: Origins
+      </a>
+      <a
         class="nav-btn primary"
-        onclick="location.href='../ch2-lightning/index.html'"
+        href="../ch2-lightning/"
       >
-        Chapter 2: Lightning
+        Chapter 2: Lightning →
         <svg
           width="16"
           height="16"
@@ -889,7 +889,7 @@ secret = encode_message(message)
         >
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>
-      </button>
+      </a>
     </nav>
 
     <!-- Scripts -->
@@ -939,10 +939,18 @@ secret = encode_message(message)
     <script src="../../shared/js/auth.js"></script>
     <script src="../../shared/js/data-service.js"></script>
     <script src="../../shared/js/lesson-integration.js"></script>
+    <script src="../../shared/js/progress-tracker.js"></script>
     <script>
       // Initialize lesson integration
       document.addEventListener("DOMContentLoaded", () => {
-        window.LessonIntegration.init("apprentice", "ch1");
+        window.LessonIntegration.init("apprentice", "ch1-stone");
+        
+        // Initialize progress tracker after auth
+        setTimeout(() => {
+          if (window.ProgressTracker) {
+            window.ProgressTracker.init("apprentice", "ch1-stone");
+          }
+        }, 1000);
       });
 
       // Mark lesson complete when user reaches the end
