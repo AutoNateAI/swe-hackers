@@ -253,10 +253,54 @@ const DataService = {
     
     try {
       const snapshot = await progressCollection.get();
-      return snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
+      
+      // For each course, also fetch lesson progress from subcollection
+      const courses = await Promise.all(snapshot.docs.map(async doc => {
+        const courseData = { id: doc.id, ...doc.data() };
+        
+        // If lessons field is empty, fetch from subcollection
+        if (!courseData.lessons || Object.keys(courseData.lessons).length === 0) {
+          console.log('📊 Fetching lessons from subcollection for:', doc.id);
+          const lessonsSnapshot = await db.collection('users').doc(user.uid)
+            .collection('courseProgress').doc(doc.id)
+            .collection('lessonProgress').get();
+          
+          // Build lessons object from subcollection
+          const lessons = {};
+          let completedCount = 0;
+          
+          lessonsSnapshot.docs.forEach(lessonDoc => {
+            const lessonData = lessonDoc.data();
+            lessons[lessonDoc.id] = {
+              completed: lessonData.completed || lessonData.progressPercent >= 100 || 
+                        (lessonData.viewedSections >= lessonData.totalSections),
+              progressPercent: lessonData.progressPercent || 0,
+              viewedSections: lessonData.viewedSections || 0,
+              totalSections: lessonData.totalSections || 0,
+              totalTimeSpent: lessonData.totalTimeSpent || 0
+            };
+            
+            if (lessons[lessonDoc.id].completed) {
+              completedCount++;
+            }
+          });
+          
+          courseData.lessons = lessons;
+          courseData.completedLessons = Math.max(courseData.completedLessons || 0, completedCount);
+          courseData.progressPercent = Math.round((completedCount / 7) * 100);
+          
+          console.log('📊 Loaded lessons from subcollection:', {
+            courseId: doc.id,
+            lessonCount: Object.keys(lessons).length,
+            completedCount,
+            lessons
+          });
+        }
+        
+        return courseData;
       }));
+      
+      return courses;
     } catch (error) {
       console.error('Error getting enrolled courses:', error);
       return [];
