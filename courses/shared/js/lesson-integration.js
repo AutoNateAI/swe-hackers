@@ -334,35 +334,47 @@ const LessonIntegration = {
    * Setup automatic lesson completion when user scrolls to bottom
    */
   setupAutoComplete() {
-    // Find the element to observe (bottom navigation or last section)
-    const navElement = document.querySelector('.lesson-nav, .chapter-nav');
-    const sections = document.querySelectorAll('section.section, section[data-section], .lesson-section, .continue-section');
+    // Track if user has scrolled at all
+    let hasScrolled = false;
+    let scrollHandler = () => {
+      hasScrolled = true;
+      window.removeEventListener('scroll', scrollHandler);
+    };
+    window.addEventListener('scroll', scrollHandler);
     
-    let targetElement = navElement;
-    if (!targetElement && sections.length > 0) {
-      targetElement = sections[sections.length - 1];
-    }
-    
-    if (!targetElement) {
-      console.log('📊 No target element for auto-complete');
-      return;
-    }
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            console.log('📊 User reached end of lesson, marking complete');
-            this.finishLesson();
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    
-    observer.observe(targetElement);
-    console.log('📊 Auto-complete observer set on:', targetElement.className || targetElement.tagName);
+    // Delay observer setup to prevent firing on page load
+    setTimeout(() => {
+      // Find the element to observe (bottom navigation or last section)
+      const navElement = document.querySelector('.lesson-nav, .chapter-nav');
+      const sections = document.querySelectorAll('section.section, section[data-section], .lesson-section, .continue-section');
+      
+      let targetElement = navElement;
+      if (!targetElement && sections.length > 0) {
+        targetElement = sections[sections.length - 1];
+      }
+      
+      if (!targetElement) {
+        console.log('📊 No target element for auto-complete');
+        return;
+      }
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // Only trigger if user has scrolled AND element is in view
+            if (entry.isIntersecting && hasScrolled) {
+              console.log('📊 User reached end of lesson, marking complete');
+              this.finishLesson();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.5, rootMargin: '0px' }
+      );
+      
+      observer.observe(targetElement);
+      console.log('📊 Auto-complete observer set on:', targetElement.className || targetElement.tagName);
+    }, 2000); // Wait 2 seconds before setting up observer
   },
   
   /**

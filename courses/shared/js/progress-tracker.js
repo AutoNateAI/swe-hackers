@@ -559,19 +559,42 @@ const ProgressTracker = {
     // Start timing new section
     this.currentSection = section;
     this.sectionTimes[section.id] = Date.now();
+    
+    // Check if state changed
+    const wasViewed = section.viewed;
     section.viewed = true;
     
     // Mark all sections before this one as viewed (user scrolled past them)
     const currentIndex = this.sections.indexOf(section);
+    let stateChanged = !wasViewed;
+    
     if (currentIndex > 0) {
       for (let i = 0; i < currentIndex; i++) {
         if (!this.sections[i].viewed) {
           this.sections[i].viewed = true;
+          stateChanged = true;
         }
       }
     }
     
     this.updateTrackerUI();
+    
+    // Save immediately if state changed (debounced)
+    if (stateChanged) {
+      this.debouncedSave();
+    }
+  },
+  
+  /**
+   * Debounced save to avoid too many writes
+   */
+  debouncedSave() {
+    if (this.saveTimeout) {
+      clearTimeout(this.saveTimeout);
+    }
+    this.saveTimeout = setTimeout(() => {
+      this.saveProgress();
+    }, 1000); // Save after 1 second of no changes
   },
   
   /**
@@ -628,12 +651,37 @@ const ProgressTracker = {
    * Load progress from Firestore
    */
   async loadProgress() {
-    if (!window.DataService || !window.AuthService?.getUser()) return;
+    // Wait for auth to be ready
+    if (!window.AuthService) {
+      console.log('📊 AuthService not ready, retrying in 500ms...');
+      setTimeout(() => this.loadProgress(), 500);
+      return;
+    }
+    
+    // Check if user is logged in
+    const user = window.AuthService.getUser();
+    if (!user) {
+      // Try waiting for auth state
+      try {
+        await window.AuthService.waitForAuthState();
+      } catch (e) {
+        console.log('📊 User not authenticated, skipping progress load');
+        return;
+      }
+    }
+    
+    if (!window.DataService) {
+      console.log('📊 DataService not ready');
+      return;
+    }
     
     try {
+      console.log('📊 Loading progress for:', this.courseId, this.lessonId);
       const progress = await window.DataService.getLessonProgress(this.courseId, this.lessonId);
       
       if (progress && progress.sections) {
+        console.log('📊 Loaded saved progress:', progress.sections.length, 'sections');
+        
         // Restore section states
         progress.sections.forEach(savedSection => {
           const section = this.sections.find(s => s.id === savedSection.id);
@@ -645,9 +693,11 @@ const ProgressTracker = {
         });
         
         this.updateTrackerUI();
+      } else {
+        console.log('📊 No saved progress found');
       }
     } catch (error) {
-      console.error('Error loading progress:', error);
+      console.error('📊 Error loading progress:', error);
     }
   },
   
@@ -655,7 +705,12 @@ const ProgressTracker = {
    * Save progress to Firestore
    */
   async saveProgress() {
-    if (!window.DataService || !window.AuthService?.getUser()) return;
+    if (!window.DataService || !window.AuthService?.getUser()) {
+      console.log('📊 Cannot save - DataService or Auth not ready');
+      return;
+    }
+    
+    console.log('📊 Saving progress...');
     
     // Update current section time
     if (this.currentSection) {
@@ -689,9 +744,10 @@ const ProgressTracker = {
     };
     
     try {
-      await window.DataService.saveLessonProgress(this.courseId, this.lessonId, progressData);
+      const result = await window.DataService.saveLessonProgress(this.courseId, this.lessonId, progressData);
+      console.log('📊 Progress saved:', viewedCount + '/' + this.sections.length, 'sections viewed');
     } catch (error) {
-      console.error('Error saving progress:', error);
+      console.error('📊 Error saving progress:', error);
     }
   },
   

@@ -500,18 +500,37 @@
       
       // Find next lesson (starting from ch0-origins)
       let nextLesson = 0;
+      let actualCompletedCount = 0;
       const chapterIds = ['ch0-origins', 'ch1-stone', 'ch2-lightning', 'ch3-magnetism', 'ch4-architect', 'ch5-capstone1', 'ch6-capstone2'];
+      
       if (progress.lessons) {
+        // Count completed lessons and find next incomplete
+        let foundIncomplete = false;
         for (let i = 0; i <= 6; i++) {
           const chId = chapterIds[i];
-          if (!progress.lessons[chId]?.completed) {
+          const lessonProgress = progress.lessons[chId];
+          
+          // Consider complete if marked complete OR 100% viewed
+          const isComplete = lessonProgress?.completed || 
+                            (lessonProgress?.progressPercent >= 100) ||
+                            (lessonProgress?.viewedSections >= lessonProgress?.totalSections);
+          
+          if (isComplete) {
+            actualCompletedCount++;
+          } else if (!foundIncomplete) {
             nextLesson = i;
-            break;
+            foundIncomplete = true;
           }
-          // If all are complete, stay on last
-          if (i === 6) nextLesson = 6;
+        }
+        
+        // If all complete, show last lesson
+        if (!foundIncomplete) {
+          nextLesson = 6;
         }
       }
+      
+      // Use actual count if higher than stored count (in case of sync issues)
+      const displayCompletedLessons = Math.max(completedLessons, actualCompletedCount);
       
       const chapterNames = ['Origins', 'Stone', 'Lightning', 'Magnetism', 'Architect', 'Capstone I', 'Capstone II'];
       const nextChapterLink = getChapterLink(progress.courseId, nextLesson);
@@ -529,7 +548,7 @@
           
           <div class="progress-section">
             <div class="progress-header">
-              <span class="progress-label">${completedLessons}/7 Chapters Complete</span>
+              <span class="progress-label">${displayCompletedLessons}/7 Chapters Complete</span>
               <span class="progress-percent">${progressPercent}%</span>
             </div>
             <div class="progress-bar">
@@ -539,11 +558,11 @@
           
           <div class="course-stats">
             <div class="course-stat">
-              <div class="course-stat-value">${completedLessons}</div>
+              <div class="course-stat-value">${displayCompletedLessons}</div>
               <div class="course-stat-label">Completed</div>
             </div>
             <div class="course-stat">
-              <div class="course-stat-value">${7 - completedLessons}</div>
+              <div class="course-stat-value">${7 - displayCompletedLessons}</div>
               <div class="course-stat-label">Remaining</div>
             </div>
             <div class="course-stat">
@@ -553,7 +572,7 @@
           </div>
           
           <a href="${nextChapterLink}" class="course-action">
-            ${completedLessons === 7 ? 'Review Course' : `Continue: ${chapterNames[nextLesson]} →`}
+            ${displayCompletedLessons === 7 ? 'Review Course' : `Continue: ${chapterNames[nextLesson]} →`}
           </a>
         </div>
       `;

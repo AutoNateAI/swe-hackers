@@ -446,19 +446,36 @@ const DataService = {
       const courseRef = db.collection('users').doc(user.uid)
                          .collection('courseProgress').doc(courseId);
       
+      // Mark lesson as complete if all sections viewed
+      const isComplete = progressData.progressPercent >= 100 || 
+                        (progressData.viewedSections >= progressData.totalSections);
+      
+      const lessonData = {
+        progressPercent: progressData.progressPercent,
+        viewedSections: progressData.viewedSections,
+        totalSections: progressData.totalSections,
+        totalTimeSpent: progressData.totalTimeSpent,
+        lastSection: progressData.lastSection,
+        lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      
+      // Only mark completed if actually complete
+      if (isComplete) {
+        lessonData.completed = true;
+        lessonData.completedAt = firebase.firestore.FieldValue.serverTimestamp();
+      }
+      
       await courseRef.set({
         lastActivity: firebase.firestore.FieldValue.serverTimestamp(),
         lastLesson: lessonId,
         lastLessonProgress: progressData.progressPercent,
-        [`lessons.${lessonId}`]: {
-          progressPercent: progressData.progressPercent,
-          viewedSections: progressData.viewedSections,
-          totalSections: progressData.totalSections,
-          totalTimeSpent: progressData.totalTimeSpent,
-          lastSection: progressData.lastSection,
-          lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-        }
+        [`lessons.${lessonId}`]: lessonData
       }, { merge: true });
+      
+      // Recalculate overall progress if lesson was completed
+      if (isComplete) {
+        await this.recalculateCourseProgress(courseId);
+      }
       
       return { success: true };
     } catch (error) {
