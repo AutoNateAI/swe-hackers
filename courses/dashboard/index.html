@@ -233,6 +233,97 @@
           <p style="color: var(--text-secondary);">Ready to continue your journey with the Three Forces?</p>
         </div>
         
+        <!-- Analytics Panel -->
+        <div class="analytics-panel" id="analytics-panel">
+          <div class="analytics-header">
+            <h3 class="analytics-title">🧠 Your Learning Analytics</h3>
+            <span class="analytics-updated" id="analytics-updated">Loading...</span>
+          </div>
+          
+          <div class="analytics-content">
+            <!-- Cognitive Score Ring -->
+            <div class="cognitive-score-container">
+              <div class="score-ring" id="score-ring">
+                <svg viewBox="0 0 120 120" class="score-svg">
+                  <defs>
+                    <linearGradient id="score-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#7986cb"/>
+                      <stop offset="50%" style="stop-color:#4db6ac"/>
+                      <stop offset="100%" style="stop-color:#ffd54f"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="60" cy="60" r="54" class="score-bg"/>
+                  <circle cx="60" cy="60" r="54" class="score-progress" id="score-progress" stroke="url(#score-gradient)"/>
+                </svg>
+                <div class="score-inner">
+                  <span class="score-value" id="cognitive-score">--</span>
+                  <span class="score-label">Score</span>
+                </div>
+              </div>
+              <div class="score-level" id="score-level">Loading...</div>
+              <div class="score-message" id="score-message">Calculating your progress...</div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+              <div class="quick-stat" data-stat="velocity">
+                <div class="quick-stat-icon">⚡</div>
+                <div class="quick-stat-value" id="qs-velocity">--</div>
+                <div class="quick-stat-label">Lessons/Week</div>
+                <div class="quick-stat-trend" id="qs-velocity-trend"></div>
+              </div>
+              
+              <div class="quick-stat" data-stat="mastery">
+                <div class="quick-stat-icon">🎯</div>
+                <div class="quick-stat-value" id="qs-mastery">--</div>
+                <div class="quick-stat-label">Quiz Mastery</div>
+                <div class="quick-stat-detail" id="qs-mastery-detail"></div>
+              </div>
+              
+              <div class="quick-stat" data-stat="streak">
+                <div class="quick-stat-icon">🔥</div>
+                <div class="quick-stat-value" id="qs-streak">--</div>
+                <div class="quick-stat-label">Day Streak</div>
+                <div class="quick-stat-badge" id="qs-streak-badge"></div>
+              </div>
+              
+              <div class="quick-stat" data-stat="lessons">
+                <div class="quick-stat-icon">📚</div>
+                <div class="quick-stat-value" id="qs-lessons">--</div>
+                <div class="quick-stat-label">Completed</div>
+                <div class="quick-stat-detail" id="qs-lessons-detail"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Score Breakdown (expandable) -->
+          <details class="score-breakdown">
+            <summary class="breakdown-toggle">View Score Breakdown</summary>
+            <div class="breakdown-content" id="breakdown-content">
+              <div class="breakdown-row">
+                <span class="breakdown-label">🎯 Mastery</span>
+                <div class="breakdown-bar"><div class="breakdown-fill" id="bd-mastery" style="width: 0%"></div></div>
+                <span class="breakdown-value" id="bd-mastery-val">0%</span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-label">⚡ Velocity</span>
+                <div class="breakdown-bar"><div class="breakdown-fill" id="bd-velocity" style="width: 0%"></div></div>
+                <span class="breakdown-value" id="bd-velocity-val">0%</span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-label">🔥 Streak</span>
+                <div class="breakdown-bar"><div class="breakdown-fill" id="bd-streak" style="width: 0%"></div></div>
+                <span class="breakdown-value" id="bd-streak-val">0%</span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-label">📚 Completion</span>
+                <div class="breakdown-bar"><div class="breakdown-fill" id="bd-completion" style="width: 0%"></div></div>
+                <span class="breakdown-value" id="bd-completion-val">0%</span>
+              </div>
+            </div>
+          </details>
+        </div>
+        
         <!-- Stats Grid -->
         <div class="stats-grid">
           <div class="stat-card animate-in animate-delay-1" style="opacity: 0;">
@@ -396,6 +487,7 @@
       loadUserInfo(user);
       await loadUserStats();
       await loadEnrolledCourses();
+      await loadAnalytics();
       
       // Setup UI interactions
       setupSidebar();
@@ -658,6 +750,131 @@
         await window.AuthService.logout();
         window.location.href = '../index.html';
       });
+    }
+    
+    // Load and display analytics
+    async function loadAnalytics() {
+      try {
+        const summary = await window.AnalyticsService.getDashboardSummary();
+        console.log('📊 Analytics loaded:', summary);
+        
+        // Update cognitive score
+        const scoreEl = document.getElementById('cognitive-score');
+        const progressEl = document.getElementById('score-progress');
+        const levelEl = document.getElementById('score-level');
+        const messageEl = document.getElementById('score-message');
+        const updatedEl = document.getElementById('analytics-updated');
+        
+        // Animate score counter
+        animateCounter(scoreEl, 0, summary.cognitiveScore, 1500);
+        
+        // Animate progress ring (339.292 is circumference of r=54 circle)
+        const circumference = 339.292;
+        const offset = circumference - (summary.cognitiveScore / 100) * circumference;
+        setTimeout(() => {
+          progressEl.style.strokeDashoffset = offset;
+        }, 100);
+        
+        // Set level and message
+        levelEl.textContent = summary.cognitiveLevel;
+        levelEl.className = 'score-level ' + summary.cognitiveLevel;
+        messageEl.textContent = summary.cognitiveMessage;
+        updatedEl.textContent = 'Updated just now';
+        
+        // Update quick stats
+        document.getElementById('qs-velocity').textContent = summary.velocity;
+        const velocityTrend = document.getElementById('qs-velocity-trend');
+        if (summary.velocityTrendPercent !== 0) {
+          velocityTrend.textContent = `${summary.velocityTrendPercent > 0 ? '+' : ''}${summary.velocityTrendPercent}%`;
+          velocityTrend.className = 'quick-stat-trend ' + summary.velocityTrend;
+        } else {
+          velocityTrend.textContent = 'Start learning!';
+          velocityTrend.className = 'quick-stat-trend neutral';
+        }
+        
+        document.getElementById('qs-mastery').textContent = summary.quizMastery + '%';
+        const masteryDetail = document.getElementById('qs-mastery-detail');
+        masteryDetail.textContent = summary.quizzesCompleted > 0 
+          ? `${summary.quizzesCompleted} quiz${summary.quizzesCompleted > 1 ? 'zes' : ''}` 
+          : 'No quizzes yet';
+        
+        document.getElementById('qs-streak').textContent = summary.streak;
+        const streakBadge = document.getElementById('qs-streak-badge');
+        if (summary.isActiveToday) {
+          streakBadge.textContent = '✓ Today';
+          streakBadge.style.display = 'block';
+        } else {
+          streakBadge.style.display = 'none';
+        }
+        
+        document.getElementById('qs-lessons').textContent = summary.lessonsCompleted;
+        const lessonsDetail = document.getElementById('qs-lessons-detail');
+        lessonsDetail.textContent = summary.lessonsCompleted > 0 
+          ? 'lessons done' 
+          : 'Get started!';
+        
+        // Update breakdown if full data available
+        if (summary.fullData?.cognitive?.breakdown) {
+          const bd = summary.fullData.cognitive.breakdown;
+          
+          document.getElementById('bd-mastery').style.width = bd.mastery.normalized + '%';
+          document.getElementById('bd-mastery-val').textContent = bd.mastery.normalized + '%';
+          
+          document.getElementById('bd-velocity').style.width = bd.velocity.normalized + '%';
+          document.getElementById('bd-velocity-val').textContent = bd.velocity.normalized + '%';
+          
+          document.getElementById('bd-streak').style.width = bd.streak.normalized + '%';
+          document.getElementById('bd-streak-val').textContent = bd.streak.normalized + '%';
+          
+          document.getElementById('bd-completion').style.width = bd.completion.normalized + '%';
+          document.getElementById('bd-completion-val').textContent = bd.completion.normalized + '%';
+        }
+        
+        // Animate panel
+        anime({
+          targets: '.analytics-panel',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+          easing: 'easeOutCubic'
+        });
+        
+        anime({
+          targets: '.quick-stat',
+          opacity: [0, 1],
+          translateY: [15, 0],
+          delay: anime.stagger(100, { start: 400 }),
+          duration: 500,
+          easing: 'easeOutCubic'
+        });
+        
+      } catch (error) {
+        console.error('Error loading analytics:', error);
+        document.getElementById('score-message').textContent = 'Unable to load analytics';
+      }
+    }
+    
+    // Animate counter from start to end
+    function animateCounter(element, start, end, duration) {
+      const startTime = performance.now();
+      const diff = end - start;
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + diff * eased);
+        
+        element.textContent = current;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      
+      requestAnimationFrame(update);
     }
   </script>
 </body>
