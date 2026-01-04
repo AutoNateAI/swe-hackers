@@ -1026,16 +1026,191 @@ const ActivityTracker = {
         lessonId: this.lessonId
       });
       
-      // Count attempts per activity
+      // Track best attempts per activity for restoration
+      const bestAttempts = {};
+      
+      // Count attempts per activity and track best scores
       attempts.forEach(attempt => {
         const current = this.attemptCounts[attempt.activityId] || 0;
         this.attemptCounts[attempt.activityId] = Math.max(current, attempt.attemptNumber || 1);
+        
+        // Track best attempt (highest score or correct)
+        if (!bestAttempts[attempt.activityId] || 
+            attempt.score > bestAttempts[attempt.activityId].score ||
+            (attempt.correct && !bestAttempts[attempt.activityId].correct)) {
+          bestAttempts[attempt.activityId] = attempt;
+        }
       });
       
       console.log('🎯 Loaded attempt counts:', this.attemptCounts);
+      
+      // Restore completed activities visual state
+      this.restoreCompletedActivities(bestAttempts);
+      
     } catch (error) {
       console.error('🎯 Error loading attempt counts:', error);
     }
+  },
+  
+  /**
+   * Restore visual state for completed activities
+   */
+  restoreCompletedActivities(bestAttempts) {
+    Object.entries(bestAttempts).forEach(([activityId, attempt]) => {
+      const activity = this.activities.find(a => a.id === activityId);
+      if (!activity) return;
+      
+      const el = activity.element;
+      const type = activity.type;
+      
+      console.log('🎯 Restoring activity:', activityId, { correct: attempt.correct, score: attempt.score });
+      
+      // Mark as completed based on type
+      switch (type) {
+        case 'quiz':
+          this.restoreQuizState(activity, attempt);
+          break;
+        case 'dragdrop':
+          this.restoreDragDropState(activity, attempt);
+          break;
+        case 'code':
+          this.restoreCodeState(activity, attempt);
+          break;
+        case 'demo':
+          this.restoreDemoState(activity, attempt);
+          break;
+      }
+    });
+  },
+  
+  /**
+   * Restore quiz visual state
+   */
+  restoreQuizState(activity, attempt) {
+    const el = activity.element;
+    if (!attempt.correct && attempt.score < 1) return; // Only restore if completed correctly
+    
+    // Mark the selected option
+    if (attempt.response?.selected) {
+      const option = el.querySelector(`[data-value="${attempt.response.selected}"]`);
+      if (option) {
+        option.classList.add('selected', 'correct');
+      }
+    }
+    
+    // Update feedback
+    const feedback = el.querySelector('.quiz-feedback');
+    if (feedback) {
+      feedback.textContent = feedback.dataset.correctMsg || '✅ Already completed!';
+      feedback.classList.add('visible', 'correct');
+    }
+    
+    // Update button
+    const btn = el.querySelector('.quiz-btn');
+    if (btn) {
+      btn.textContent = '✅ Completed';
+      btn.disabled = true;
+      btn.classList.add('correct');
+    }
+    
+    // Mark container
+    el.classList.add('activity-completed');
+  },
+  
+  /**
+   * Restore drag & drop visual state
+   */
+  restoreDragDropState(activity, attempt) {
+    const el = activity.element;
+    if (attempt.score < 1) return; // Only restore if fully correct
+    
+    // Mark all dropzones as correct
+    const dropzones = el.querySelectorAll('[data-dropzone]');
+    dropzones.forEach(zone => {
+      zone.classList.add('correct', 'filled');
+    });
+    
+    // Update feedback
+    const feedback = el.querySelector('.dragdrop-feedback');
+    if (feedback) {
+      feedback.textContent = '🎉 Already completed!';
+      feedback.classList.add('visible', 'correct');
+    }
+    
+    // Update button
+    const btn = el.querySelector('.dragdrop-btn, .activity-btn');
+    if (btn) {
+      btn.textContent = '✅ Completed';
+      btn.disabled = true;
+      btn.classList.add('correct');
+    }
+    
+    // Mark container
+    el.classList.add('activity-completed');
+  },
+  
+  /**
+   * Restore code challenge visual state
+   */
+  restoreCodeState(activity, attempt) {
+    const el = activity.element;
+    if (attempt.score < 1) return; // Only restore if all tests passed
+    
+    // Show the submitted code
+    const codeInput = el.querySelector('.code-input');
+    if (codeInput && attempt.response?.code) {
+      codeInput.value = attempt.response.code;
+      codeInput.disabled = true;
+    }
+    
+    // Update feedback
+    const feedback = el.querySelector('.code-feedback');
+    if (feedback) {
+      feedback.textContent = '🎉 All tests passed!';
+      feedback.classList.add('visible', 'correct');
+    }
+    
+    // Update button
+    const btn = el.querySelector('.run-btn');
+    if (btn) {
+      btn.textContent = '✅ Completed';
+      btn.disabled = true;
+      btn.classList.add('correct');
+    }
+    
+    // Mark container
+    el.classList.add('activity-completed');
+  },
+  
+  /**
+   * Restore demo visual state
+   */
+  restoreDemoState(activity, attempt) {
+    const el = activity.element;
+    
+    // Mark as completed
+    el.classList.add('demo-complete', 'activity-completed');
+    
+    // Update status
+    const status = el.querySelector('.demo-status');
+    if (status) {
+      status.textContent = '✅ Completed';
+      status.classList.add('complete');
+    }
+    
+    // Fill all progress dots
+    const dots = el.querySelectorAll('.demo-progress-dot');
+    dots.forEach(dot => dot.classList.add('active'));
+    
+    // Mark all interactive elements as interacted
+    const interactives = el.querySelectorAll('[data-interact]');
+    interactives.forEach(intEl => {
+      intEl.classList.add('interacted');
+      const valueEl = intEl.querySelector('.value');
+      if (valueEl) {
+        valueEl.style.background = 'var(--accent-stone)';
+      }
+    });
   },
   
   /**

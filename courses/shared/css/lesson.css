@@ -1392,6 +1392,39 @@ strong {
   animation: feedbackPulse 0.5s ease;
 }
 
+/* === COMPLETED ACTIVITY STATE === */
+.activity-completed {
+  position: relative;
+  opacity: 0.9;
+}
+
+.activity-completed::before {
+  content: '✅ Completed';
+  position: absolute;
+  top: -12px;
+  right: var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--success);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.quiz-option.correct {
+  border-color: var(--success) !important;
+  background: rgba(76, 175, 80, 0.15) !important;
+}
+
+.quiz-btn.correct,
+.dragdrop-btn.correct,
+.activity-btn.correct,
+.run-btn.correct {
+  background: var(--success) !important;
+  cursor: default !important;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
    NAVIGATION
    ───────────────────────────────────────────────────────────────────────────── */
