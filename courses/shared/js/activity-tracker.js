@@ -1018,13 +1018,32 @@ const ActivityTracker = {
    * Load attempt counts from Firestore
    */
   async loadAttemptCounts() {
-    if (!window.DataService || !window.AuthService?.getUser()) return;
+    if (!window.DataService) {
+      console.log('🎯 DataService not available, skipping load');
+      return;
+    }
+    
+    // Wait for auth state to be ready
+    if (window.AuthService?.waitForAuthState) {
+      console.log('🎯 Waiting for auth state...');
+      await window.AuthService.waitForAuthState();
+    }
+    
+    const user = window.AuthService?.getUser();
+    if (!user) {
+      console.log('🎯 User not authenticated, skipping load');
+      return;
+    }
+    
+    console.log('🎯 Loading attempts for user:', user.email);
     
     try {
       const attempts = await window.DataService.getActivityAttempts({
         courseId: this.courseId,
         lessonId: this.lessonId
       });
+      
+      console.log('🎯 Fetched attempts from Firestore:', attempts.length);
       
       // Track best attempts per activity for restoration
       const bestAttempts = {};
@@ -1043,6 +1062,7 @@ const ActivityTracker = {
       });
       
       console.log('🎯 Loaded attempt counts:', this.attemptCounts);
+      console.log('🎯 Best attempts to restore:', Object.keys(bestAttempts));
       
       // Restore completed activities visual state
       this.restoreCompletedActivities(bestAttempts);

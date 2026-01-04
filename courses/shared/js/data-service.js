@@ -789,36 +789,49 @@ const DataService = {
     if (!user) return [];
     
     const db = window.FirebaseApp.getDb();
-    let query = db.collection('users').doc(user.uid).collection('activityAttempts');
-    
-    // Apply filters
-    if (filters.courseId) {
-      query = query.where('courseId', '==', filters.courseId);
-    }
-    if (filters.lessonId) {
-      query = query.where('lessonId', '==', filters.lessonId);
-    }
-    if (filters.activityType) {
-      query = query.where('activityType', '==', filters.activityType);
-    }
-    if (filters.activityId) {
-      query = query.where('activityId', '==', filters.activityId);
-    }
-    
-    // Order by creation time
-    query = query.orderBy('createdAt', 'desc');
-    
-    // Limit results
-    if (filters.limit) {
-      query = query.limit(filters.limit);
-    }
     
     try {
-      const snapshot = await query.get();
-      return snapshot.docs.map(doc => ({
+      // Simple query - get all attempts then filter client-side
+      // This avoids needing composite indexes in Firestore
+      const snapshot = await db.collection('users').doc(user.uid)
+                               .collection('activityAttempts').get();
+      
+      let results = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
+      
+      console.log('📊 Fetched all attempts:', results.length);
+      
+      // Apply filters client-side
+      if (filters.courseId) {
+        results = results.filter(a => a.courseId === filters.courseId);
+      }
+      if (filters.lessonId) {
+        results = results.filter(a => a.lessonId === filters.lessonId);
+      }
+      if (filters.activityType) {
+        results = results.filter(a => a.activityType === filters.activityType);
+      }
+      if (filters.activityId) {
+        results = results.filter(a => a.activityId === filters.activityId);
+      }
+      
+      // Sort by creation time (newest first)
+      results.sort((a, b) => {
+        const aTime = a.createdAt?._seconds || 0;
+        const bTime = b.createdAt?._seconds || 0;
+        return bTime - aTime;
+      });
+      
+      // Apply limit
+      if (filters.limit) {
+        results = results.slice(0, filters.limit);
+      }
+      
+      console.log('📊 Filtered attempts:', results.length);
+      return results;
+      
     } catch (error) {
       console.error('Error getting activity attempts:', error);
       return [];
