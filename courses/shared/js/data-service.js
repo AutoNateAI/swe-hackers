@@ -690,6 +690,247 @@ const DataService = {
       console.error('Error deleting note:', error);
       return { success: false, error: error.message };
     }
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // ACTIVITY TRACKING METHODS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  /**
+   * Save an activity attempt
+   */
+  async saveActivityAttempt(attemptData) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+    
+    const db = window.FirebaseApp.getDb();
+    const attemptRef = db.collection('users').doc(user.uid)
+                        .collection('activityAttempts').doc();
+    
+    const data = {
+      ...attemptData,
+      odlActivityId: attemptData.activityId, // Keep original for queries
+      userId: user.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    
+    // Remove localId before saving to Firestore
+    delete data.localId;
+    
+    try {
+      await attemptRef.set(data);
+      console.log('📊 Activity attempt saved:', attemptData.activityId);
+      
+      // Update activity stats on course progress
+      await this.updateActivityStats(attemptData.courseId, attemptData);
+      
+      return { success: true, attemptId: attemptRef.id };
+    } catch (error) {
+      console.error('Error saving activity attempt:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  /**
+   * Update aggregated activity stats on course progress
+   */
+  async updateActivityStats(courseId, attemptData) {
+    const user = window.AuthService.getUser();
+    if (!user) return;
+    
+    const db = window.FirebaseApp.getDb();
+    const courseRef = db.collection('users').doc(user.uid)
+                       .collection('courseProgress').doc(courseId);
+    
+    try {
+      // Get current stats
+      const doc = await courseRef.get();
+      const currentStats = doc.exists ? (doc.data().activityStats || {}) : {};
+      
+      // Update stats
+      const newStats = {
+        totalAttempts: (currentStats.totalAttempts || 0) + 1,
+        totalCorrect: (currentStats.totalCorrect || 0) + (attemptData.correct ? 1 : 0),
+        lastActivity: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      
+      // Track first-try success
+      if (attemptData.attemptNumber === 1 && attemptData.correct) {
+        newStats.correctFirstTry = (currentStats.correctFirstTry || 0) + 1;
+      }
+      
+      // Update by type
+      const byType = currentStats.byType || {};
+      const typeStats = byType[attemptData.activityType] || { attempts: 0, totalScore: 0 };
+      typeStats.attempts += 1;
+      typeStats.totalScore += attemptData.score || 0;
+      typeStats.avgScore = typeStats.totalScore / typeStats.attempts;
+      byType[attemptData.activityType] = typeStats;
+      newStats.byType = byType;
+      
+      // Calculate overall avg score
+      newStats.avgScore = newStats.totalCorrect / newStats.totalAttempts;
+      
+      await courseRef.set({
+        activityStats: newStats
+      }, { merge: true });
+      
+      console.log('📊 Activity stats updated for:', courseId);
+    } catch (error) {
+      console.error('Error updating activity stats:', error);
+    }
+  },
+
+  /**
+   * Get activity attempts with filters
+   */
+  async getActivityAttempts(filters = {}) {
+    const user = window.AuthService.getUser();
+    if (!user) return [];
+    
+    const db = window.FirebaseApp.getDb();
+    let query = db.collection('users').doc(user.uid).collection('activityAttempts');
+    
+    // Apply filters
+    if (filters.courseId) {
+      query = query.where('courseId', '==', filters.courseId);
+    }
+    if (filters.lessonId) {
+      query = query.where('lessonId', '==', filters.lessonId);
+    }
+    if (filters.activityType) {
+      query = query.where('activityType', '==', filters.activityType);
+    }
+    if (filters.activityId) {
+      query = query.where('activityId', '==', filters.activityId);
+    }
+    
+    // Order by creation time
+    query = query.orderBy('createdAt', 'desc');
+    
+    // Limit results
+    if (filters.limit) {
+      query = query.limit(filters.limit);
+    }
+    
+    try {
+      const snapshot = await query.get();
+      return snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    } catch (error) {
+      console.error('Error getting activity attempts:', error);
+      return [];
+    }
+  },
+
+  /**
+   * Get activity stats for a course
+   */
+  async getActivityStats(courseId) {
+    const user = window.AuthService.getUser();
+    if (!user) return null;
+    
+    const db = window.FirebaseApp.getDb();
+    const courseRef = db.collection('users').doc(user.uid)
+                       .collection('courseProgress').doc(courseId);
+    
+    try {
+      const doc = await courseRef.get();
+      return doc.exists ? doc.data().activityStats : null;
+    } catch (error) {
+      console.error('Error getting activity stats:', error);
+      return null;
+    }
+  },
+
+  /**
+   * Recalculate activity stats from all attempts
+   */
+  async recalculateActivityStats(courseId) {
+    const user = window.AuthService.getUser();
+    if (!user) return;
+    
+    console.log('📊 Recalculating activity stats for:', courseId);
+    
+    // Get all attempts for this course
+    const attempts = await this.getActivityAttempts({ courseId });
+    
+    if (attempts.length === 0) return;
+    
+    // Calculate stats
+    const stats = {
+      totalAttempts: attempts.length,
+      totalCorrect: attempts.filter(a => a.correct).length,
+      correctFirstTry: attempts.filter(a => a.attemptNumber === 1 && a.correct).length,
+      byType: {},
+      lastActivity: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    
+    // Group by type
+    attempts.forEach(attempt => {
+      const type = attempt.activityType || 'unknown';
+      if (!stats.byType[type]) {
+        stats.byType[type] = { attempts: 0, totalScore: 0 };
+      }
+      stats.byType[type].attempts += 1;
+      stats.byType[type].totalScore += attempt.score || 0;
+    });
+    
+    // Calculate averages
+    Object.keys(stats.byType).forEach(type => {
+      stats.byType[type].avgScore = stats.byType[type].totalScore / stats.byType[type].attempts;
+    });
+    stats.avgScore = stats.totalCorrect / stats.totalAttempts;
+    
+    // Save updated stats
+    const db = window.FirebaseApp.getDb();
+    const courseRef = db.collection('users').doc(user.uid)
+                       .collection('courseProgress').doc(courseId);
+    
+    try {
+      await courseRef.set({ activityStats: stats }, { merge: true });
+      console.log('📊 Activity stats recalculated:', stats);
+    } catch (error) {
+      console.error('Error saving recalculated stats:', error);
+    }
+  },
+
+  /**
+   * Get activity definition (correct answer, points, etc.)
+   */
+  async getActivityDefinition(activityId) {
+    const db = window.FirebaseApp.getDb();
+    const activityRef = db.collection('activities').doc(activityId);
+    
+    try {
+      const doc = await activityRef.get();
+      return doc.exists ? doc.data() : null;
+    } catch (error) {
+      console.error('Error getting activity definition:', error);
+      return null;
+    }
+  },
+
+  /**
+   * Create or update activity definition (admin function)
+   */
+  async saveActivityDefinition(activityId, data) {
+    const db = window.FirebaseApp.getDb();
+    const activityRef = db.collection('activities').doc(activityId);
+    
+    try {
+      await activityRef.set({
+        ...data,
+        activityId,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      return { success: true };
+    } catch (error) {
+      console.error('Error saving activity definition:', error);
+      return { success: false, error: error.message };
+    }
   }
 };
 

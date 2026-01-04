@@ -661,13 +661,13 @@ courses/
 
 ## Design Decisions ✅
 
-| Decision | Choice | Rationale |
-| --- | --- | --- |
-| **Answer Storage** | Firestore | Secure, can't be cheated by inspecting HTML |
-| **Retry Limits** | Unlimited | Learning > Testing, let them practice |
-| **Partial Credit** | Yes (0.0 - 1.0) | 4/5 correct = 0.8 score, encourages progress |
-| **Time Limits** | Daily challenges only | Regular lessons = no pressure, dailies = gamification |
-| **Offline Support** | Cache + sync | Try to save immediately, queue if offline |
+| Decision            | Choice                | Rationale                                             |
+| ------------------- | --------------------- | ----------------------------------------------------- |
+| **Answer Storage**  | Firestore             | Secure, can't be cheated by inspecting HTML           |
+| **Retry Limits**    | Unlimited             | Learning > Testing, let them practice                 |
+| **Partial Credit**  | Yes (0.0 - 1.0)       | 4/5 correct = 0.8 score, encourages progress          |
+| **Time Limits**     | Daily challenges only | Regular lessons = no pressure, dailies = gamification |
+| **Offline Support** | Cache + sync          | Try to save immediately, queue if offline             |
 
 ---
 
@@ -683,9 +683,9 @@ sequenceDiagram
 
     U->>Act: Submits answer "B"
     Act->>AT: completeActivity(id, { selected: "B" })
-    
+
     Note over AT: Check if we have correct answer cached
-    
+
     alt Answer cached locally
         AT->>AT: Validate against cache
     else Need to fetch
@@ -695,7 +695,7 @@ sequenceDiagram
         DS-->>AT: correctAnswer = "B"
         AT->>AT: Cache for future attempts
     end
-    
+
     AT->>AT: Calculate score (1.0 = correct)
     AT->>DS: saveActivityAttempt(attemptData)
     DS-->>AT: ✅ Saved
@@ -708,12 +708,14 @@ sequenceDiagram
 Correct answers live in Firestore, not in the HTML. Here's why:
 
 **If answers were in HTML:**
+
 ```html
 <!-- BAD: Student can right-click → Inspect → See answer! -->
-<div data-activity="quiz-1" data-correct="B">
+<div data-activity="quiz-1" data-correct="B"></div>
 ```
 
 **With Firestore validation:**
+
 ```javascript
 // Firestore: activities/quiz-variables-q1
 {
@@ -737,14 +739,14 @@ flowchart LR
         Q1[Correct] --> S1[Score: 1.0]
         Q2[Wrong] --> S2[Score: 0.0]
     end
-    
+
     subgraph DragDrop["🎯 Drag & Drop (Partial)"]
         D1[5/5 correct] --> SD1[Score: 1.0]
         D2[4/5 correct] --> SD2[Score: 0.8]
         D3[3/5 correct] --> SD3[Score: 0.6]
         D4[0/5 correct] --> SD4[Score: 0.0]
     end
-    
+
     subgraph Code["💻 Code Challenge (Partial)"]
         C1[All tests pass] --> SC1[Score: 1.0]
         C2[3/4 tests pass] --> SC2[Score: 0.75]
@@ -762,18 +764,18 @@ calculateScore(activityType, response, correctAnswer) {
     case 'quiz':
       // Binary: right or wrong
       return response.selected === correctAnswer ? 1.0 : 0.0;
-      
+
     case 'dragdrop':
       // Partial: count correct placements
       const correct = response.placements.filter(
         (p, i) => p === correctAnswer.placements[i]
       ).length;
       return correct / correctAnswer.placements.length;
-      
+
     case 'code':
       // Partial: percentage of tests passed
       return response.testsPassed / response.totalTests;
-      
+
     case 'demo':
       // Engagement-based: did they interact?
       return response.interacted ? 1.0 : 0.5;
@@ -792,14 +794,14 @@ flowchart TB
         R2[Learn at your pace]
         R3[Retry forever]
     end
-    
+
     subgraph Daily["🌅 Daily Challenges"]
         D1[Time limit: 60-300s]
         D2[Countdown visible]
         D3[Auto-submit on expire]
         D4[Bonus points for speed]
     end
-    
+
     style Regular fill:#51cf66,stroke:#2f9e44
     style Daily fill:#fcc419,stroke:#f59f00
 ```
@@ -808,18 +810,18 @@ flowchart TB
 
 ```javascript
 // Only for daily challenges
-if (courseId === 'daily') {
+if (courseId === "daily") {
   const timeLimit = activity.dataset.timeLimit || 120; // seconds
-  
+
   ActivityTracker.startTimer(activityId, timeLimit, {
     onTick: (remaining) => updateTimerUI(remaining),
     onExpire: () => {
       // Auto-submit with current state
       ActivityTracker.completeActivity(activityId, {
         ...currentResponse,
-        timedOut: true
+        timedOut: true,
       });
-    }
+    },
   });
 }
 ```
@@ -835,10 +837,10 @@ flowchart TB
         O2[Save to Firestore]
         O3[Update local cache]
         O4[Show confirmation]
-        
+
         O1 --> O2 --> O3 --> O4
     end
-    
+
     subgraph Offline["📴 Offline Flow"]
         F1[User submits answer]
         F2{Online?}
@@ -846,13 +848,13 @@ flowchart TB
         F4[Show "Saved offline" toast]
         F5[Background sync when online]
         F6[Clear queue after sync]
-        
+
         F1 --> F2
         F2 -->|No| F3 --> F4
         F2 -->|Yes| O2
         F3 -.->|Later| F5 --> F6
     end
-    
+
     style F3 fill:#7986cb,stroke:#3949ab,color:#fff
     style F5 fill:#7986cb,stroke:#3949ab,color:#fff
 ```
@@ -869,14 +871,14 @@ Imagine a student on a train going through a tunnel. They just aced a quiz, but 
 async saveAttemptWithCache(attemptData) {
   // Always save to localStorage first (instant)
   this.cacheAttempt(attemptData);
-  
+
   try {
     // Try to save to Firestore
     await DataService.saveActivityAttempt(attemptData);
-    
+
     // Success! Remove from cache
     this.removeCachedAttempt(attemptData.localId);
-    
+
   } catch (error) {
     if (this.isOfflineError(error)) {
       // Queue for later sync
@@ -909,10 +911,10 @@ window.addEventListener('online', () => {
       score: 1.0,
       // ... full attempt data
     },
-    queuedAt: "2024-01-03T18:00:00Z"
+    queuedAt: "2024-01-03T18:00:00Z",
   },
   // ... more queued attempts
-]
+];
 ```
 
 ### Sync Process
@@ -921,9 +923,9 @@ window.addEventListener('online', () => {
 async syncQueuedAttempts() {
   const queue = this.getQueue();
   if (queue.length === 0) return;
-  
+
   console.log(`📊 Syncing ${queue.length} queued attempts...`);
-  
+
   for (const item of queue) {
     try {
       await DataService.saveActivityAttempt(item.attemptData);
@@ -934,13 +936,13 @@ async syncQueuedAttempts() {
       // Keep in queue, try again later
     }
   }
-  
+
   // Recalculate stats after batch sync
   const courseIds = [...new Set(queue.map(q => q.attemptData.courseId))];
   for (const courseId of courseIds) {
     await DataService.recalculateActivityStats(courseId);
   }
-  
+
   this.showToast("✅ All progress synced!");
 }
 ```
@@ -949,13 +951,13 @@ async syncQueuedAttempts() {
 
 ## Activity Types Summary
 
-| Type | Scoring | Time Limit | Offline | Use Case |
-| --- | --- | --- | --- | --- |
-| 🧠 **Quiz** | Binary (0/1) | Daily only | ✅ Cached | Knowledge check |
-| 🎯 **Drag & Drop** | Partial (0.0-1.0) | Daily only | ✅ Cached | Concept matching |
-| 💻 **Code Challenge** | Test-based (0.0-1.0) | Daily only | ✅ Cached | Practical skills |
-| 🔄 **Interactive Demo** | Engagement (0.5/1.0) | Never | ✅ Cached | Exploration |
-| ⏱️ **Timed Challenge** | Binary + bonus | Always | ✅ Cached | Daily gamification |
+| Type                    | Scoring              | Time Limit | Offline   | Use Case           |
+| ----------------------- | -------------------- | ---------- | --------- | ------------------ |
+| 🧠 **Quiz**             | Binary (0/1)         | Daily only | ✅ Cached | Knowledge check    |
+| 🎯 **Drag & Drop**      | Partial (0.0-1.0)    | Daily only | ✅ Cached | Concept matching   |
+| 💻 **Code Challenge**   | Test-based (0.0-1.0) | Daily only | ✅ Cached | Practical skills   |
+| 🔄 **Interactive Demo** | Engagement (0.5/1.0) | Never      | ✅ Cached | Exploration        |
+| ⏱️ **Timed Challenge**  | Binary + bonus       | Always     | ✅ Cached | Daily gamification |
 
 ---
 

@@ -518,7 +518,13 @@
          ═══════════════════════════════════════════════════════════════════════ -->
       <section class="section" data-section="quiz1">
         <div class="section-content">
-          <div class="quiz-container" data-answer="B">
+          <div 
+            class="quiz-container" 
+            data-activity="quiz-ch1-datatypes"
+            data-type="quiz"
+            data-points="10"
+            data-answer="B"
+          >
             <div class="quiz-header">
               <span class="quiz-icon">🧠</span>
               <h3 class="quiz-title">Knowledge Check</h3>
@@ -940,15 +946,20 @@ secret = encode_message(message)
     <script src="../../shared/js/data-service.js"></script>
     <script src="../../shared/js/lesson-integration.js"></script>
     <script src="../../shared/js/progress-tracker.js"></script>
+    <script src="../../shared/js/activity-tracker.js"></script>
     <script>
       // Initialize lesson integration
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("apprentice", "ch1-stone");
         
-        // Initialize progress tracker after auth
-        // Initialize progress tracker immediately
+        // Initialize progress tracker
         if (window.ProgressTracker) {
           window.ProgressTracker.init("apprentice", "ch1-stone");
+        }
+        
+        // Initialize activity tracker for quizzes and interactive elements
+        if (window.ActivityTracker) {
+          window.ActivityTracker.init("apprentice", "ch1-stone");
         }
       });
 
