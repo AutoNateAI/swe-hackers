@@ -324,40 +324,68 @@
           </details>
         </div>
         
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-          <div class="stat-card animate-in animate-delay-1" style="opacity: 0;">
-            <div class="stat-header">
-              <div class="stat-icon streak">🔥</div>
-              <span class="stat-change positive" id="streak-change">+1</span>
+        <!-- Visual Stats Grid -->
+        <div class="visual-stats-grid">
+          
+          <!-- Weekly Activity Heatmap -->
+          <div class="visual-stat-card animate-in animate-delay-1" style="opacity: 0;">
+            <div class="visual-stat-header">
+              <span class="visual-stat-title">🔥 Weekly Activity</span>
+              <span class="visual-stat-value" id="vs-streak-value">0 day streak</span>
             </div>
-            <div class="stat-value" id="stat-streak">0</div>
-            <div class="stat-label">Day Streak</div>
+            <div class="activity-heatmap" id="activity-heatmap">
+              <!-- 7 days, dynamically filled -->
+            </div>
+            <div class="heatmap-labels">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
           </div>
           
-          <div class="stat-card animate-in animate-delay-2" style="opacity: 0;">
-            <div class="stat-header">
-              <div class="stat-icon courses">📚</div>
+          <!-- Course Progress Bars -->
+          <div class="visual-stat-card animate-in animate-delay-2" style="opacity: 0;">
+            <div class="visual-stat-header">
+              <span class="visual-stat-title">📚 Course Progress</span>
+              <span class="visual-stat-value" id="vs-courses-value">0 enrolled</span>
             </div>
-            <div class="stat-value" id="stat-courses">0</div>
-            <div class="stat-label">Courses Enrolled</div>
+            <div class="course-progress-list" id="course-progress-list">
+              <div class="no-data-message">Enroll in a course to track progress</div>
+            </div>
           </div>
           
-          <div class="stat-card animate-in animate-delay-3" style="opacity: 0;">
-            <div class="stat-header">
-              <div class="stat-icon lessons">✅</div>
+          <!-- Topic Mastery Chart -->
+          <div class="visual-stat-card animate-in animate-delay-3" style="opacity: 0;">
+            <div class="visual-stat-header">
+              <span class="visual-stat-title">🎯 Topic Mastery</span>
+              <span class="visual-stat-value" id="vs-mastery-value">0% avg</span>
             </div>
-            <div class="stat-value" id="stat-lessons">0</div>
-            <div class="stat-label">Lessons Completed</div>
+            <div class="topic-chart" id="topic-chart">
+              <div class="no-data-message">Complete quizzes to see mastery</div>
+            </div>
           </div>
           
-          <div class="stat-card animate-in animate-delay-4" style="opacity: 0;">
-            <div class="stat-header">
-              <div class="stat-icon time">⏱️</div>
+          <!-- Learning Velocity Chart -->
+          <div class="visual-stat-card animate-in animate-delay-4" style="opacity: 0;">
+            <div class="visual-stat-header">
+              <span class="visual-stat-title">📈 Learning Velocity</span>
+              <span class="visual-stat-value" id="vs-velocity-value">0 lessons/week</span>
             </div>
-            <div class="stat-value" id="stat-time">0h</div>
-            <div class="stat-label">Time Learning</div>
+            <div class="velocity-chart" id="velocity-chart">
+              <div class="velocity-bars">
+                <div class="velocity-bar" data-week="4"></div>
+                <div class="velocity-bar" data-week="3"></div>
+                <div class="velocity-bar" data-week="2"></div>
+                <div class="velocity-bar" data-week="1"></div>
+              </div>
+              <div class="velocity-labels">
+                <span>4 wks</span><span>3 wks</span><span>2 wks</span><span>Last wk</span>
+              </div>
+            </div>
+            <div class="velocity-target">
+              <span class="target-line"></span>
+              <span class="target-label">Target: 2/week</span>
+            </div>
           </div>
+          
         </div>
         
         <!-- Continue Learning Section -->
@@ -526,21 +554,14 @@
       }
     }
     
-    // Load user stats
+    // Load user stats - now uses visual cards
     async function loadUserStats() {
       try {
         const stats = await window.DataService.getUserStats();
         
         if (stats) {
-          document.getElementById('stat-streak').textContent = stats.currentStreak || 0;
+          // Update sidebar streak
           document.getElementById('user-streak').textContent = stats.currentStreak || 0;
-          document.getElementById('stat-courses').textContent = stats.enrolledCourses || 0;
-          document.getElementById('stat-lessons').textContent = stats.completedLessons || 0;
-          
-          // Format time
-          const hours = Math.floor((stats.totalTimeSpent || 0) / 3600);
-          const minutes = Math.floor(((stats.totalTimeSpent || 0) % 3600) / 60);
-          document.getElementById('stat-time').textContent = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
         }
       } catch (error) {
         console.error('Error loading stats:', error);
@@ -555,6 +576,9 @@
         
         const grid = document.getElementById('courses-grid');
         const emptyState = document.getElementById('empty-courses');
+        
+        // Render course progress visual card
+        renderCourseProgress(courses);
         
         if (courses.length === 0) {
           emptyState.style.display = 'block';
@@ -848,10 +872,165 @@
           easing: 'easeOutCubic'
         });
         
+        // Render visual stat cards
+        renderActivityHeatmap(summary.fullData.streak);
+        renderTopicMastery(summary.fullData.mastery);
+        renderVelocityChart(summary.fullData.velocity);
+        
       } catch (error) {
         console.error('Error loading analytics:', error);
         document.getElementById('score-message').textContent = 'Unable to load analytics';
       }
+    }
+    
+    // Render weekly activity heatmap
+    function renderActivityHeatmap(streakData) {
+      const container = document.getElementById('activity-heatmap');
+      const valueEl = document.getElementById('vs-streak-value');
+      
+      valueEl.textContent = `${streakData.streak} day streak`;
+      
+      // Get last 7 days
+      const today = new Date();
+      const dayOfWeek = today.getDay(); // 0 = Sunday
+      const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+      
+      container.innerHTML = '';
+      
+      for (let i = 0; i < 7; i++) {
+        const dayDate = new Date(today);
+        dayDate.setDate(today.getDate() + mondayOffset + i);
+        const dateStr = dayDate.toISOString().split('T')[0];
+        
+        const dayEl = document.createElement('div');
+        dayEl.className = 'heatmap-day';
+        
+        // Check if this day is today
+        if (dateStr === streakData.lastActiveDate && streakData.isActiveToday) {
+          dayEl.classList.add('today', 'active-3');
+        } else if (dateStr === today.toISOString().split('T')[0]) {
+          dayEl.classList.add('today', 'active-0');
+        } else if (dateStr <= streakData.lastActiveDate) {
+          // Simple approximation - mark recent days as active based on streak
+          const daysAgo = Math.floor((new Date(streakData.lastActiveDate) - dayDate) / (24*60*60*1000));
+          if (daysAgo >= 0 && daysAgo < streakData.streak) {
+            dayEl.classList.add('active-2');
+          }
+        }
+        
+        container.appendChild(dayEl);
+      }
+    }
+    
+    // Render topic mastery chart
+    function renderTopicMastery(masteryData) {
+      const container = document.getElementById('topic-chart');
+      const valueEl = document.getElementById('vs-mastery-value');
+      
+      valueEl.textContent = `${masteryData.mastery}% avg`;
+      
+      if (!masteryData.byTopic || Object.keys(masteryData.byTopic).length === 0) {
+        container.innerHTML = '<div class="no-data-message">Complete quizzes to see mastery</div>';
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      // Sort topics by mastery
+      const topics = Object.entries(masteryData.byTopic)
+        .sort((a, b) => b[1].mastery - a[1].mastery)
+        .slice(0, 5); // Show top 5
+      
+      topics.forEach(([topic, data]) => {
+        const row = document.createElement('div');
+        row.className = 'topic-row';
+        
+        let barClass = 'topic-bar';
+        if (data.mastery >= 80) barClass += ' perfect';
+        else if (data.mastery >= 50) barClass += ' good';
+        else barClass += ' needs-work';
+        
+        row.innerHTML = `
+          <span class="topic-name">${topic}</span>
+          <div class="topic-bar-container">
+            <div class="${barClass}" style="width: ${data.mastery}%"></div>
+          </div>
+          <span class="topic-score">${data.mastery}%</span>
+        `;
+        
+        container.appendChild(row);
+      });
+    }
+    
+    // Render velocity chart
+    function renderVelocityChart(velocityData) {
+      const valueEl = document.getElementById('vs-velocity-value');
+      valueEl.textContent = `${velocityData.velocity} lessons/week`;
+      
+      const bars = document.querySelectorAll('.velocity-bar');
+      
+      // For now, show current week vs estimate
+      // In a full implementation, we'd track weekly history
+      const currentWeekLessons = velocityData.recentWeekCompleted || 0;
+      const maxHeight = 70; // pixels
+      const targetLessons = 2;
+      
+      bars.forEach((bar, index) => {
+        let count = 0;
+        let height = 4;
+        
+        if (index === 3) { // Last week (most recent)
+          count = currentWeekLessons;
+          height = Math.max(4, (count / Math.max(targetLessons, count)) * maxHeight);
+          bar.classList.add('current');
+        } else {
+          // Placeholder for historical data
+          count = 0;
+          height = 4;
+        }
+        
+        bar.style.height = height + 'px';
+        bar.setAttribute('data-count', count);
+      });
+    }
+    
+    // Render course progress bars
+    function renderCourseProgress(courses) {
+      const container = document.getElementById('course-progress-list');
+      const valueEl = document.getElementById('vs-courses-value');
+      
+      valueEl.textContent = `${courses.length} enrolled`;
+      
+      if (courses.length === 0) {
+        container.innerHTML = '<div class="no-data-message">Enroll in a course to track progress</div>';
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      const icons = {
+        apprentice: '🌟',
+        undergrad: '🎓',
+        junior: '🚀',
+        senior: '🎯'
+      };
+      
+      courses.forEach(course => {
+        const progress = course.progressPercent || 0;
+        const courseId = course.courseId || course.id;
+        
+        const item = document.createElement('div');
+        item.className = 'course-progress-item';
+        item.innerHTML = `
+          <span class="course-progress-icon">${icons[courseId] || '📚'}</span>
+          <div class="course-progress-bar-container">
+            <div class="course-progress-bar ${courseId}" style="width: ${progress}%"></div>
+          </div>
+          <span class="course-progress-percent">${progress}%</span>
+        `;
+        
+        container.appendChild(item);
+      });
     }
     
     // Animate counter from start to end
