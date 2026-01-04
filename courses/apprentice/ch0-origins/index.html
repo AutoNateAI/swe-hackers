@@ -855,53 +855,67 @@
           (off, no electricity). This is called <strong>binary</strong> — the language of machines.
         </p>
         
-        <div class="circuit-demo">
-          <h3 style="text-align: center; margin-bottom: 1.5rem; font-family: var(--font-display);">
-            ⚡ Watch Electricity Flow Through Transistors
-          </h3>
+        <div 
+          class="demo-container circuit-demo"
+          data-activity="demo-ch0-circuit"
+          data-type="demo"
+          data-points="10"
+          data-interactions="4"
+        >
+          <div class="demo-title">⚡ Watch Electricity Flow Through Transistors</div>
+          <span class="demo-status">Toggle 4 transistors</span>
           
-          <svg class="circuit-svg" viewBox="0 0 700 200">
-            <!-- Main wire path -->
-            <path class="circuit-path" d="M 50 100 L 150 100 L 200 100 L 300 100 L 350 100 L 450 100 L 500 100 L 600 100 L 650 100" />
+          <div class="demo-area">
+            <svg class="circuit-svg" viewBox="0 0 700 200">
+              <!-- Main wire path -->
+              <path class="circuit-path" d="M 50 100 L 150 100 L 200 100 L 300 100 L 350 100 L 450 100 L 500 100 L 600 100 L 650 100" />
+              
+              <!-- Glowing electricity -->
+              <path class="circuit-glow" id="electricity" d="M 50 100 L 150 100 L 200 100 L 300 100 L 350 100 L 450 100 L 500 100 L 600 100 L 650 100" />
+              
+              <!-- Transistors -->
+              <rect class="transistor" id="t1" x="140" y="75" width="40" height="50" rx="5" />
+              <rect class="transistor" id="t2" x="290" y="75" width="40" height="50" rx="5" />
+              <rect class="transistor" id="t3" x="440" y="75" width="40" height="50" rx="5" />
+              <rect class="transistor" id="t4" x="590" y="75" width="40" height="50" rx="5" />
+              
+              <!-- Labels -->
+              <text x="160" y="150" fill="#666" font-size="12" text-anchor="middle">T1</text>
+              <text x="310" y="150" fill="#666" font-size="12" text-anchor="middle">T2</text>
+              <text x="460" y="150" fill="#666" font-size="12" text-anchor="middle">T3</text>
+              <text x="610" y="150" fill="#666" font-size="12" text-anchor="middle">T4</text>
+              
+              <!-- Power source -->
+              <circle cx="50" cy="100" r="15" fill="#ffd700" />
+              <text x="50" y="55" fill="#ffd700" font-size="12" text-anchor="middle">POWER</text>
+            </svg>
             
-            <!-- Glowing electricity -->
-            <path class="circuit-glow" id="electricity" d="M 50 100 L 150 100 L 200 100 L 300 100 L 350 100 L 450 100 L 500 100 L 600 100 L 650 100" />
+            <div class="bit-display">
+              <div class="bit" id="bit1">0</div>
+              <div class="bit" id="bit2">0</div>
+              <div class="bit" id="bit3">0</div>
+              <div class="bit" id="bit4">0</div>
+            </div>
             
-            <!-- Transistors -->
-            <rect class="transistor" id="t1" x="140" y="75" width="40" height="50" rx="5" />
-            <rect class="transistor" id="t2" x="290" y="75" width="40" height="50" rx="5" />
-            <rect class="transistor" id="t3" x="440" y="75" width="40" height="50" rx="5" />
-            <rect class="transistor" id="t4" x="590" y="75" width="40" height="50" rx="5" />
-            
-            <!-- Labels -->
-            <text x="160" y="150" fill="#666" font-size="12" text-anchor="middle">T1</text>
-            <text x="310" y="150" fill="#666" font-size="12" text-anchor="middle">T2</text>
-            <text x="460" y="150" fill="#666" font-size="12" text-anchor="middle">T3</text>
-            <text x="610" y="150" fill="#666" font-size="12" text-anchor="middle">T4</text>
-            
-            <!-- Power source -->
-            <circle cx="50" cy="100" r="15" fill="#ffd700" />
-            <text x="50" y="55" fill="#ffd700" font-size="12" text-anchor="middle">POWER</text>
-          </svg>
-          
-          <div class="bit-display">
-            <div class="bit" id="bit1">0</div>
-            <div class="bit" id="bit2">0</div>
-            <div class="bit" id="bit3">0</div>
-            <div class="bit" id="bit4">0</div>
+            <div class="circuit-controls">
+              <button class="circuit-btn" data-interact="t1" onclick="toggleBit(0)">Toggle T1</button>
+              <button class="circuit-btn" data-interact="t2" onclick="toggleBit(1)">Toggle T2</button>
+              <button class="circuit-btn" data-interact="t3" onclick="toggleBit(2)">Toggle T3</button>
+              <button class="circuit-btn" data-interact="t4" onclick="toggleBit(3)">Toggle T4</button>
+              <button class="circuit-btn" onclick="runSequence()" style="background: var(--accent-primary);">
+                ▶ Run Demo
+              </button>
+            </div>
           </div>
           
-          <div class="circuit-controls">
-            <button class="circuit-btn" onclick="toggleBit(0)">Toggle T1</button>
-            <button class="circuit-btn" onclick="toggleBit(1)">Toggle T2</button>
-            <button class="circuit-btn" onclick="toggleBit(2)">Toggle T3</button>
-            <button class="circuit-btn" onclick="toggleBit(3)">Toggle T4</button>
-            <button class="circuit-btn" onclick="runSequence()" style="background: var(--accent-primary);">
-              ▶ Run Demo
-            </button>
+          <div class="demo-progress">
+            <div class="demo-progress-dot"></div>
+            <div class="demo-progress-dot"></div>
+            <div class="demo-progress-dot"></div>
+            <div class="demo-progress-dot"></div>
           </div>
           
-          <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+          <p style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
             Click the buttons to toggle transistors on/off, or run the demo to see electricity flow!
           </p>
         </div>
@@ -954,19 +968,47 @@ graph LR
           </pre>
         </div>
         
-        <div class="origin-quiz" id="binary-quiz">
-          <div class="quiz-question">
-            🧠 Quick Check: What decimal number does binary <code>1100</code> represent?
+        <div 
+          class="quiz-container origin-quiz" 
+          id="binary-quiz"
+          data-activity="quiz-ch0-binary"
+          data-type="quiz"
+          data-points="10"
+          data-answer="C"
+        >
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3 class="quiz-title">Quick Check</h3>
           </div>
-          <div class="quiz-options">
-            <button class="quiz-option" onclick="checkAnswer(this, false)">6</button>
-            <button class="quiz-option" onclick="checkAnswer(this, false)">10</button>
-            <button class="quiz-option" onclick="checkAnswer(this, true)">12</button>
-            <button class="quiz-option" onclick="checkAnswer(this, false)">14</button>
-          </div>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+          <p class="quiz-question">
+            What decimal number does binary <code>1100</code> represent?
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
             Hint: 8 + 4 + 0 + 0 = ?
           </p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-value="A">
+              <span class="quiz-option-letter">A</span>
+              <span>6</span>
+            </div>
+            <div class="quiz-option" data-value="B">
+              <span class="quiz-option-letter">B</span>
+              <span>10</span>
+            </div>
+            <div class="quiz-option" data-value="C">
+              <span class="quiz-option-letter">C</span>
+              <span>12</span>
+            </div>
+            <div class="quiz-option" data-value="D">
+              <span class="quiz-option-letter">D</span>
+              <span>14</span>
+            </div>
+          </div>
+          <div class="quiz-feedback"
+            data-correct-msg="Correct! 1100 = 8 + 4 + 0 + 0 = 12"
+            data-incorrect-msg="Not quite. Remember: each position is a power of 2 (8, 4, 2, 1)."
+          ></div>
+          <button class="quiz-btn" disabled>Check Answer</button>
         </div>
       </div>
     </section>
@@ -1348,6 +1390,7 @@ mindmap
   <script src="../../shared/js/data-service.js"></script>
   <script src="../../shared/js/lesson-integration.js"></script>
   <script src="../../shared/js/progress-tracker.js"></script>
+  <script src="../../shared/js/activity-tracker.js"></script>
   
   <script>
     // Initialize Mermaid
@@ -1441,23 +1484,7 @@ mindmap
       });
     }
     
-    // Quiz
-    function checkAnswer(btn, isCorrect) {
-      document.querySelectorAll('.quiz-option').forEach(opt => {
-        opt.disabled = true;
-        opt.classList.remove('correct', 'incorrect');
-      });
-      
-      btn.classList.add(isCorrect ? 'correct' : 'incorrect');
-      
-      if (!isCorrect) {
-        document.querySelectorAll('.quiz-option').forEach(opt => {
-          if (opt.textContent === '12') {
-            opt.classList.add('correct');
-          }
-        });
-      }
-    }
+    // Quiz is now handled by ActivityTracker
     
     // Animate on scroll
     function setupScrollAnimations() {
@@ -1520,9 +1547,14 @@ mindmap
         window.LessonIntegration.init('apprentice', 'ch0-origins');
       }
       
-      // Initialize progress tracker immediately
+      // Initialize progress tracker
       if (window.ProgressTracker) {
         window.ProgressTracker.init('apprentice', 'ch0-origins');
+      }
+      
+      // Initialize activity tracker
+      if (window.ActivityTracker) {
+        window.ActivityTracker.init('apprentice', 'ch0-origins');
       }
     });
   </script>

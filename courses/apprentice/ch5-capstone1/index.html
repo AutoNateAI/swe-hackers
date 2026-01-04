@@ -612,12 +612,15 @@ show_room()
     <script src="../../shared/js/data-service.js"></script>
     <script src="../../shared/js/lesson-integration.js"></script>
     <script src="../../shared/js/progress-tracker.js"></script>
+    <script src="../../shared/js/activity-tracker.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("apprentice", "ch5-capstone1");
-        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("apprentice", "ch5-capstone1");
+        }
+        if (window.ActivityTracker) {
+          window.ActivityTracker.init("apprentice", "ch5-capstone1");
         }
       });
     </script>

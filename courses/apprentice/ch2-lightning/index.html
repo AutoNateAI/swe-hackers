@@ -444,7 +444,13 @@
       <!-- QUIZ -->
       <section class="section" data-section="quiz">
         <div class="section-content">
-          <div class="quiz-container" data-answer="C">
+          <div 
+            class="quiz-container"
+            data-activity="quiz-ch2-loops"
+            data-type="quiz"
+            data-points="10"
+            data-answer="C"
+          >
             <div class="quiz-header">
               <span class="quiz-icon">🧠</span>
               <h3 class="quiz-title">Knowledge Check</h3>
@@ -714,12 +720,15 @@
     <script src="../../shared/js/data-service.js"></script>
     <script src="../../shared/js/lesson-integration.js"></script>
     <script src="../../shared/js/progress-tracker.js"></script>
+    <script src="../../shared/js/activity-tracker.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         window.LessonIntegration.init("apprentice", "ch2-lightning");
-        // Initialize progress tracker immediately
         if (window.ProgressTracker) {
           window.ProgressTracker.init("apprentice", "ch2-lightning");
+        }
+        if (window.ActivityTracker) {
+          window.ActivityTracker.init("apprentice", "ch2-lightning");
         }
       });
     </script>
