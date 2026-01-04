@@ -375,34 +375,43 @@
 
           <h3 class="fade-in">See It In Action</h3>
 
-          <p class="fade-in">Click on any box to see what's stored inside:</p>
+          <p class="fade-in">Click on each memory box to explore what's stored inside:</p>
 
-          <div class="memory-viz">
-            <div
-              class="memory-box"
-              onclick="this.querySelector('.value').style.background='var(--accent-stone)'"
-            >
-              <div class="label">player_name</div>
-              <div class="value">"Alex"</div>
-              <div class="type">string (text)</div>
+          <!-- Interactive Demo Activity -->
+          <div 
+            class="demo-container"
+            data-activity="demo-ch1-memory"
+            data-type="demo"
+            data-points="10"
+            data-interactions="3"
+          >
+            <div class="demo-title">🎮 Memory Explorer</div>
+            <span class="demo-status">Click to explore</span>
+            
+            <div class="demo-area memory-viz">
+              <div class="memory-box" data-interact="box-1">
+                <div class="label">player_name</div>
+                <div class="value">"Alex"</div>
+                <div class="type">string (text)</div>
+              </div>
+
+              <div class="memory-box" data-interact="box-2">
+                <div class="label">score</div>
+                <div class="value">0</div>
+                <div class="type">integer (number)</div>
+              </div>
+
+              <div class="memory-box" data-interact="box-3">
+                <div class="label">is_playing</div>
+                <div class="value">True</div>
+                <div class="type">boolean (yes/no)</div>
+              </div>
             </div>
-
-            <div
-              class="memory-box"
-              onclick="this.querySelector('.value').style.background='var(--accent-stone)'"
-            >
-              <div class="label">score</div>
-              <div class="value">0</div>
-              <div class="type">integer (number)</div>
-            </div>
-
-            <div
-              class="memory-box"
-              onclick="this.querySelector('.value').style.background='var(--accent-stone)'"
-            >
-              <div class="label">is_playing</div>
-              <div class="value">True</div>
-              <div class="type">boolean (yes/no)</div>
+            
+            <div class="demo-progress">
+              <div class="demo-progress-dot"></div>
+              <div class="demo-progress-dot"></div>
+              <div class="demo-progress-dot"></div>
             </div>
           </div>
         </div>
@@ -471,44 +480,38 @@
           <h3 class="fade-in">🎮 Your Turn: Match the Types!</h3>
           <p class="fade-in">Drag each value to its correct data type:</p>
 
-          <div class="drag-drop-container">
-            <div class="drag-items">
-              <div class="drag-item" data-value="42" draggable="true">42</div>
-              <div class="drag-item" data-value="hello" draggable="true">
-                "Hello"
+          <div 
+            class="dragdrop-container"
+            data-activity="dragdrop-ch1-types"
+            data-type="dragdrop"
+            data-points="15"
+          >
+            <div class="dragdrop-title">🎯 Match the Data Types</div>
+            
+            <div class="draggables">
+              <div data-draggable="int-42">42</div>
+              <div data-draggable="str-hello">"Hello"</div>
+              <div data-draggable="bool-true">True</div>
+              <div data-draggable="float-314">3.14</div>
+            </div>
+
+            <div class="dropzones">
+              <div data-dropzone="string" data-correct="str-hello">
+                <span class="zone-label">📝 String (text)</span>
               </div>
-              <div class="drag-item" data-value="true" draggable="true">
-                True
+              <div data-dropzone="integer" data-correct="int-42">
+                <span class="zone-label">🔢 Integer</span>
               </div>
-              <div class="drag-item" data-value="3.14" draggable="true">
-                3.14
+              <div data-dropzone="float" data-correct="float-314">
+                <span class="zone-label">📊 Float</span>
               </div>
-              <div class="drag-item" data-value="name" draggable="true">
-                "Alex"
-              </div>
-              <div class="drag-item" data-value="false" draggable="true">
-                False
+              <div data-dropzone="boolean" data-correct="bool-true">
+                <span class="zone-label">✓✗ Boolean</span>
               </div>
             </div>
 
-            <div class="drop-zones">
-              <div class="drop-zone" data-accepts="hello,name">
-                <div class="drop-zone-title">📝 String (text)</div>
-                <div class="drop-zone-content"></div>
-              </div>
-              <div class="drop-zone" data-accepts="42">
-                <div class="drop-zone-title">🔢 Integer (whole number)</div>
-                <div class="drop-zone-content"></div>
-              </div>
-              <div class="drop-zone" data-accepts="3.14">
-                <div class="drop-zone-title">📊 Float (decimal)</div>
-                <div class="drop-zone-content"></div>
-              </div>
-              <div class="drop-zone" data-accepts="true,false">
-                <div class="drop-zone-title">✓✗ Boolean (true/false)</div>
-                <div class="drop-zone-content"></div>
-              </div>
-            </div>
+            <div class="dragdrop-feedback"></div>
+            <button class="dragdrop-btn" disabled>Check Matches</button>
           </div>
         </div>
       </section>
@@ -720,6 +723,33 @@
                 stone is learning to remember!
               </p>
             </div>
+          </div>
+
+          <!-- Code Challenge Activity -->
+          <div 
+            class="code-challenge"
+            data-activity="code-ch1-greeting"
+            data-type="code"
+            data-points="20"
+            data-keywords="input,print,name"
+          >
+            <div class="code-challenge-title">💻 Code Challenge: Create a Greeting</div>
+            <p class="code-challenge-desc">
+              Write Python code that:
+              <br>1. Asks for the user's name using <code>input()</code>
+              <br>2. Prints a greeting with their name using <code>print()</code>
+            </p>
+            
+            <textarea 
+              class="code-input" 
+              placeholder="# Write your code here...
+name = input(&quot;What is your name? &quot;)
+print(&quot;Hello, &quot; + name + &quot;!&quot;)"
+            ></textarea>
+            
+            <div class="code-output"></div>
+            <div class="code-feedback"></div>
+            <button class="run-btn">▶ Run Code</button>
           </div>
         </div>
       </section>

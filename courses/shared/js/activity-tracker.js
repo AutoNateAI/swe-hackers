@@ -92,32 +92,575 @@ const ActivityTracker = {
       }
     });
     
-    // Listen for quiz option selection
-    if (activity.type === 'quiz') {
-      const options = el.querySelectorAll('.quiz-option');
-      options.forEach(option => {
-        option.addEventListener('click', () => {
-          // Highlight selected option
-          options.forEach(o => o.classList.remove('selected'));
-          option.classList.add('selected');
-          
-          // Enable submit button
-          const submitBtn = el.querySelector('.quiz-btn');
-          if (submitBtn) submitBtn.disabled = false;
-        });
+    // Type-specific listeners
+    switch (activity.type) {
+      case 'quiz':
+        this.setupQuizListeners(activity);
+        break;
+      case 'dragdrop':
+        this.setupDragDropListeners(activity);
+        break;
+      case 'code':
+        this.setupCodeChallengeListeners(activity);
+        break;
+      case 'demo':
+        this.setupDemoListeners(activity);
+        break;
+    }
+  },
+  
+  /**
+   * Setup quiz listeners
+   */
+  setupQuizListeners(activity) {
+    const el = activity.element;
+    const options = el.querySelectorAll('.quiz-option');
+    
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        options.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        
+        const submitBtn = el.querySelector('.quiz-btn, .activity-btn');
+        if (submitBtn) submitBtn.disabled = false;
+      });
+    });
+    
+    const submitBtn = el.querySelector('.quiz-btn, .activity-btn');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        const selected = el.querySelector('.quiz-option.selected');
+        if (selected) {
+          this.submitQuizAnswer(activity.id, selected.dataset.value);
+        }
+      });
+    }
+  },
+  
+  /**
+   * Setup drag and drop listeners
+   */
+  setupDragDropListeners(activity) {
+    const el = activity.element;
+    const draggables = el.querySelectorAll('[data-draggable]');
+    const dropzones = el.querySelectorAll('[data-dropzone]');
+    
+    // Track placements
+    activity.placements = {};
+    
+    draggables.forEach(draggable => {
+      draggable.setAttribute('draggable', 'true');
+      
+      draggable.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', draggable.dataset.draggable);
+        draggable.classList.add('dragging');
       });
       
-      // Listen for submit
-      const submitBtn = el.querySelector('.quiz-btn');
-      if (submitBtn) {
-        submitBtn.addEventListener('click', () => {
-          const selected = el.querySelector('.quiz-option.selected');
-          if (selected) {
-            const answer = selected.dataset.value;
-            this.submitQuizAnswer(activity.id, answer);
+      draggable.addEventListener('dragend', () => {
+        draggable.classList.remove('dragging');
+      });
+    });
+    
+    dropzones.forEach(dropzone => {
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('drag-over');
+      });
+      
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('drag-over');
+      });
+      
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('drag-over');
+        
+        const draggedId = e.dataTransfer.getData('text/plain');
+        const draggedEl = el.querySelector(`[data-draggable="${draggedId}"]`);
+        
+        if (draggedEl) {
+          // Remove from previous dropzone
+          const prevZone = Object.entries(activity.placements)
+            .find(([zone, item]) => item === draggedId);
+          if (prevZone) {
+            delete activity.placements[prevZone[0]];
+          }
+          
+          // Place in new dropzone
+          const zoneId = dropzone.dataset.dropzone;
+          activity.placements[zoneId] = draggedId;
+          
+          // Visual feedback
+          dropzone.classList.add('filled');
+          dropzone.innerHTML = '';
+          dropzone.appendChild(draggedEl.cloneNode(true));
+          draggedEl.classList.add('placed');
+          
+          // Check if all zones are filled
+          this.checkDragDropComplete(activity);
+        }
+      });
+    });
+    
+    // Submit button
+    const submitBtn = el.querySelector('.activity-btn, .dragdrop-btn');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        this.submitDragDropAnswer(activity.id, activity.placements);
+      });
+    }
+  },
+  
+  /**
+   * Check if drag and drop is complete
+   */
+  checkDragDropComplete(activity) {
+    const el = activity.element;
+    const dropzones = el.querySelectorAll('[data-dropzone]');
+    const allFilled = Array.from(dropzones).every(zone => 
+      activity.placements[zone.dataset.dropzone]
+    );
+    
+    const submitBtn = el.querySelector('.activity-btn, .dragdrop-btn');
+    if (submitBtn) {
+      submitBtn.disabled = !allFilled;
+    }
+  },
+  
+  /**
+   * Submit drag and drop answer
+   */
+  async submitDragDropAnswer(activityId, placements) {
+    const timer = this.activityTimers[activityId];
+    const timeSpentMs = timer ? Date.now() - timer.startTime : 0;
+    
+    // Get correct answer
+    const correctAnswer = await this.getCorrectAnswer(activityId);
+    
+    // Calculate score (partial credit)
+    let correctCount = 0;
+    let totalZones = 0;
+    
+    if (correctAnswer && correctAnswer.placements) {
+      totalZones = Object.keys(correctAnswer.placements).length;
+      for (const [zone, correctItem] of Object.entries(correctAnswer.placements)) {
+        if (placements[zone] === correctItem) {
+          correctCount++;
+        }
+      }
+    } else {
+      // Fallback: check data-correct attributes
+      const activity = this.activities.find(a => a.id === activityId);
+      if (activity) {
+        const dropzones = activity.element.querySelectorAll('[data-dropzone]');
+        totalZones = dropzones.length;
+        dropzones.forEach(zone => {
+          const zoneId = zone.dataset.dropzone;
+          const correctItem = zone.dataset.correct;
+          if (placements[zoneId] === correctItem) {
+            correctCount++;
           }
         });
       }
+    }
+    
+    const score = totalZones > 0 ? correctCount / totalZones : 0;
+    const correct = score === 1.0;
+    
+    const attemptData = {
+      activityId,
+      activityType: 'dragdrop',
+      courseId: this.courseId,
+      lessonId: this.lessonId,
+      attemptNumber: (this.attemptCounts[activityId] || 0) + 1,
+      correct,
+      score,
+      timeSpentMs,
+      response: { placements, correctCount, totalZones },
+      startedAt: timer?.startTime ? new Date(timer.startTime).toISOString() : null,
+      completedAt: new Date().toISOString()
+    };
+    
+    console.log('🎯 Submitting drag & drop answer:', attemptData);
+    
+    this.attemptCounts[activityId] = attemptData.attemptNumber;
+    await this.saveAttemptWithCache(attemptData);
+    this.showDragDropFeedback(activityId, score, correctCount, totalZones);
+    delete this.activityTimers[activityId];
+    
+    return { correct, score, attemptNumber: attemptData.attemptNumber };
+  },
+  
+  /**
+   * Show drag and drop feedback
+   */
+  showDragDropFeedback(activityId, score, correctCount, totalZones) {
+    const activity = this.activities.find(a => a.id === activityId);
+    if (!activity) return;
+    
+    const el = activity.element;
+    const feedbackEl = el.querySelector('.activity-feedback, .dragdrop-feedback');
+    
+    // Visual feedback on dropzones
+    const dropzones = el.querySelectorAll('[data-dropzone]');
+    dropzones.forEach(zone => {
+      const zoneId = zone.dataset.dropzone;
+      const correctItem = zone.dataset.correct;
+      const placedItem = activity.placements[zoneId];
+      
+      if (placedItem === correctItem) {
+        zone.classList.add('correct');
+      } else {
+        zone.classList.add('incorrect');
+      }
+    });
+    
+    // Feedback message
+    if (feedbackEl) {
+      const msg = score === 1 
+        ? '🎉 Perfect! All matches correct!'
+        : `You got ${correctCount}/${totalZones} correct. ${score >= 0.5 ? 'Good effort!' : 'Try again!'}`;
+      feedbackEl.textContent = msg;
+      feedbackEl.classList.add('visible', score === 1 ? 'correct' : 'partial');
+    }
+    
+    // Update button
+    const submitBtn = el.querySelector('.activity-btn, .dragdrop-btn');
+    if (submitBtn) {
+      submitBtn.textContent = score === 1 ? '✅ Perfect!' : `${Math.round(score * 100)}% Correct`;
+      submitBtn.disabled = true;
+      submitBtn.classList.add(score === 1 ? 'correct' : 'partial');
+    }
+  },
+  
+  /**
+   * Setup code challenge listeners
+   */
+  setupCodeChallengeListeners(activity) {
+    const el = activity.element;
+    const codeInput = el.querySelector('textarea, .code-input, [contenteditable]');
+    const runBtn = el.querySelector('.run-btn, .activity-btn');
+    
+    if (codeInput) {
+      codeInput.addEventListener('input', () => {
+        if (runBtn) {
+          runBtn.disabled = codeInput.value?.trim().length === 0 && 
+                           codeInput.textContent?.trim().length === 0;
+        }
+      });
+    }
+    
+    if (runBtn) {
+      runBtn.addEventListener('click', () => {
+        const code = codeInput?.value || codeInput?.textContent || '';
+        this.submitCodeChallenge(activity.id, code);
+      });
+    }
+  },
+  
+  /**
+   * Submit code challenge
+   */
+  async submitCodeChallenge(activityId, code) {
+    const timer = this.activityTimers[activityId];
+    const timeSpentMs = timer ? Date.now() - timer.startTime : 0;
+    
+    // Get expected output/tests
+    const activity = this.activities.find(a => a.id === activityId);
+    const testCases = await this.getCodeTestCases(activityId);
+    
+    // Run tests (simulated - in real app, would use a sandbox)
+    const results = this.runCodeTests(code, testCases, activity);
+    
+    const score = results.totalTests > 0 ? results.passed / results.totalTests : 0;
+    const correct = score === 1.0;
+    
+    const attemptData = {
+      activityId,
+      activityType: 'code',
+      courseId: this.courseId,
+      lessonId: this.lessonId,
+      attemptNumber: (this.attemptCounts[activityId] || 0) + 1,
+      correct,
+      score,
+      timeSpentMs,
+      response: { 
+        code, 
+        testsPassed: results.passed, 
+        totalTests: results.totalTests,
+        testResults: results.details
+      },
+      startedAt: timer?.startTime ? new Date(timer.startTime).toISOString() : null,
+      completedAt: new Date().toISOString()
+    };
+    
+    console.log('🎯 Submitting code challenge:', attemptData);
+    
+    this.attemptCounts[activityId] = attemptData.attemptNumber;
+    await this.saveAttemptWithCache(attemptData);
+    this.showCodeFeedback(activityId, results);
+    delete this.activityTimers[activityId];
+    
+    return { correct, score, attemptNumber: attemptData.attemptNumber };
+  },
+  
+  /**
+   * Get code test cases from Firestore or data attributes
+   */
+  async getCodeTestCases(activityId) {
+    // Try Firestore first
+    const activityData = await this.getCorrectAnswer(activityId);
+    if (activityData?.testCases) {
+      return activityData.testCases;
+    }
+    
+    // Fallback to data attributes
+    const activity = this.activities.find(a => a.id === activityId);
+    if (activity?.element) {
+      const testData = activity.element.dataset.tests;
+      if (testData) {
+        try {
+          return JSON.parse(testData);
+        } catch (e) {
+          console.error('Failed to parse test cases:', e);
+        }
+      }
+      
+      // Check for keywords to match
+      const keywords = activity.element.dataset.keywords;
+      if (keywords) {
+        return { type: 'keywords', keywords: keywords.split(',').map(k => k.trim()) };
+      }
+    }
+    
+    return null;
+  },
+  
+  /**
+   * Run code tests (simulated)
+   */
+  runCodeTests(code, testCases, activity) {
+    const results = { passed: 0, totalTests: 0, details: [] };
+    
+    if (!testCases) {
+      // No tests defined - check if code is non-empty
+      results.totalTests = 1;
+      results.passed = code.trim().length > 10 ? 1 : 0;
+      results.details.push({
+        test: 'Code submitted',
+        passed: results.passed === 1
+      });
+      return results;
+    }
+    
+    if (testCases.type === 'keywords') {
+      // Simple keyword matching
+      const lowerCode = code.toLowerCase();
+      testCases.keywords.forEach(keyword => {
+        results.totalTests++;
+        const passed = lowerCode.includes(keyword.toLowerCase());
+        results.details.push({ test: `Contains "${keyword}"`, passed });
+        if (passed) results.passed++;
+      });
+    } else if (Array.isArray(testCases)) {
+      // Array of test cases with expected output
+      testCases.forEach((test, i) => {
+        results.totalTests++;
+        // Simplified check - in production would use actual execution
+        const passed = code.includes(test.expected) || 
+                      (test.contains && code.includes(test.contains));
+        results.details.push({ 
+          test: test.name || `Test ${i + 1}`, 
+          passed,
+          expected: test.expected
+        });
+        if (passed) results.passed++;
+      });
+    }
+    
+    return results;
+  },
+  
+  /**
+   * Show code challenge feedback
+   */
+  showCodeFeedback(activityId, results) {
+    const activity = this.activities.find(a => a.id === activityId);
+    if (!activity) return;
+    
+    const el = activity.element;
+    const feedbackEl = el.querySelector('.activity-feedback, .code-feedback');
+    const outputEl = el.querySelector('.code-output');
+    
+    // Show test results
+    if (outputEl) {
+      let html = '<div class="test-results">';
+      results.details.forEach(test => {
+        const icon = test.passed ? '✅' : '❌';
+        html += `<div class="test-result ${test.passed ? 'passed' : 'failed'}">${icon} ${test.test}</div>`;
+      });
+      html += '</div>';
+      outputEl.innerHTML = html;
+      outputEl.classList.add('visible');
+    }
+    
+    const score = results.totalTests > 0 ? results.passed / results.totalTests : 0;
+    
+    // Feedback message
+    if (feedbackEl) {
+      const msg = score === 1 
+        ? '🎉 All tests passed!'
+        : `${results.passed}/${results.totalTests} tests passed`;
+      feedbackEl.textContent = msg;
+      feedbackEl.classList.add('visible', score === 1 ? 'correct' : 'partial');
+    }
+    
+    // Update button
+    const runBtn = el.querySelector('.run-btn, .activity-btn');
+    if (runBtn) {
+      runBtn.textContent = score === 1 ? '✅ All Passed!' : `${results.passed}/${results.totalTests} Passed`;
+      runBtn.classList.add(score === 1 ? 'correct' : 'partial');
+    }
+  },
+  
+  /**
+   * Setup interactive demo listeners
+   */
+  setupDemoListeners(activity) {
+    const el = activity.element;
+    
+    // Track interactions
+    activity.interactions = {
+      clicks: 0,
+      hovers: 0,
+      timeSpent: 0,
+      completed: false,
+      interacted: new Set()
+    };
+    
+    // Track clicks on interactive elements
+    const interactiveEls = el.querySelectorAll('[data-interact], button:not(.complete-demo-btn), .interactive');
+    const progressDots = el.querySelectorAll('.demo-progress-dot');
+    
+    interactiveEls.forEach((intEl, index) => {
+      intEl.addEventListener('click', () => {
+        const interactId = intEl.dataset.interact || `el-${index}`;
+        
+        // Track unique interactions
+        if (!activity.interactions.interacted.has(interactId)) {
+          activity.interactions.interacted.add(interactId);
+          activity.interactions.clicks++;
+          intEl.classList.add('interacted');
+          
+          // Visual feedback - highlight the element
+          const valueEl = intEl.querySelector('.value');
+          if (valueEl) {
+            valueEl.style.background = 'var(--accent-stone)';
+            valueEl.style.transition = 'background 0.3s ease';
+          }
+          
+          // Update progress dots
+          if (progressDots[activity.interactions.clicks - 1]) {
+            progressDots[activity.interactions.clicks - 1].classList.add('active');
+          }
+          
+          this.checkDemoProgress(activity);
+        }
+      });
+    });
+    
+    // Track hovers
+    el.addEventListener('mouseover', () => {
+      activity.interactions.hovers++;
+    });
+    
+    // Check for completion trigger
+    const completeBtn = el.querySelector('.complete-demo-btn, [data-complete]');
+    if (completeBtn) {
+      completeBtn.addEventListener('click', () => {
+        activity.interactions.completed = true;
+        this.submitDemoInteraction(activity.id);
+      });
+    }
+    
+    // Auto-complete after enough interactions
+    const autoCompleteThreshold = parseInt(el.dataset.interactions) || 3;
+    activity.autoCompleteThreshold = autoCompleteThreshold;
+  },
+  
+  /**
+   * Check demo progress and auto-complete if threshold met
+   */
+  checkDemoProgress(activity) {
+    if (activity.interactions.clicks >= activity.autoCompleteThreshold && 
+        !activity.interactions.completed) {
+      activity.interactions.completed = true;
+      this.submitDemoInteraction(activity.id);
+    }
+  },
+  
+  /**
+   * Submit demo interaction
+   */
+  async submitDemoInteraction(activityId) {
+    const activity = this.activities.find(a => a.id === activityId);
+    if (!activity) return;
+    
+    const timer = this.activityTimers[activityId];
+    const timeSpentMs = timer ? Date.now() - timer.startTime : 0;
+    
+    // Score based on engagement (0.5 for minimal, 1.0 for good engagement)
+    const interactions = activity.interactions;
+    const engagementScore = Math.min(1.0, 
+      0.5 + (interactions.clicks / (activity.autoCompleteThreshold * 2)) * 0.5
+    );
+    
+    const attemptData = {
+      activityId,
+      activityType: 'demo',
+      courseId: this.courseId,
+      lessonId: this.lessonId,
+      attemptNumber: (this.attemptCounts[activityId] || 0) + 1,
+      correct: true, // Demos are always "correct" if completed
+      score: engagementScore,
+      timeSpentMs,
+      response: {
+        clicks: interactions.clicks,
+        hovers: interactions.hovers,
+        completed: interactions.completed
+      },
+      startedAt: timer?.startTime ? new Date(timer.startTime).toISOString() : null,
+      completedAt: new Date().toISOString()
+    };
+    
+    console.log('🎯 Submitting demo interaction:', attemptData);
+    
+    this.attemptCounts[activityId] = attemptData.attemptNumber;
+    await this.saveAttemptWithCache(attemptData);
+    this.showDemoFeedback(activityId, engagementScore);
+    delete this.activityTimers[activityId];
+    
+    return { correct: true, score: engagementScore, attemptNumber: attemptData.attemptNumber };
+  },
+  
+  /**
+   * Show demo feedback
+   */
+  showDemoFeedback(activityId, score) {
+    const activity = this.activities.find(a => a.id === activityId);
+    if (!activity) return;
+    
+    const el = activity.element;
+    el.classList.add('demo-complete');
+    
+    // Show completion toast
+    this.showToast(`🎯 Demo complete! Engagement: ${Math.round(score * 100)}%`);
+    
+    // Update any completion indicator
+    const indicator = el.querySelector('.demo-status, .activity-status');
+    if (indicator) {
+      indicator.textContent = '✅ Completed';
+      indicator.classList.add('complete');
     }
   },
   

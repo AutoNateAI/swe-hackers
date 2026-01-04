@@ -1,0 +1,53 @@
+# AutoNateAI Learning Hub - Cursor Rules
+
+## Firebase Scripts
+
+There are CLI scripts in `firebase-scripts/` for querying Firestore data directly.
+
+### Prerequisites
+- Service account key must exist at `~/firebase-admin-key.json`
+- Run `npm install` in the `firebase-scripts/` folder first
+
+### Available Commands
+
+```bash
+# List all users and their activity counts
+cd firebase-scripts && node query-activities.js --list-users
+
+# Query a specific user's activities
+cd firebase-scripts && node query-activities.js <userId> [courseId]
+
+# General Firestore query
+cd firebase-scripts && node query-firestore.js <path>
+```
+
+### Common Debugging Tasks
+
+1. **Check if quiz answer was logged:**
+   ```bash
+   cd firebase-scripts && node query-activities.js --list-users
+   # Then use the userId to query:
+   cd firebase-scripts && node query-activities.js <userId> apprentice
+   ```
+
+2. **Check course progress:**
+   ```bash
+   cd firebase-scripts && node query-firestore.js users/<userId>/courseProgress/apprentice
+   ```
+
+3. **Check lesson progress:**
+   ```bash
+   cd firebase-scripts && node query-firestore.js users/<userId>/courseProgress/apprentice/lessonProgress
+   ```
+
+## Project Structure
+
+- `courses/` - The deployed learning portal (GitHub Pages at autonateai.com)
+- `firebase-scripts/` - CLI tools for Firestore queries
+- `diagrams_and_docs/` - Architecture documentation with Mermaid diagrams
+- `apprentice/`, `junior/`, `senior/`, `undergrad/` - Course roadmaps and READMEs
+
+## Documentation Style
+
+When creating architecture docs, use storytelling with Mermaid diagrams. See `diagrams_and_docs/progress-data-flow.md` for the pattern.
+
