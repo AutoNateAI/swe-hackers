@@ -1,0 +1,15 @@
+{
+  "name": "firebase-scripts",
+  "version": "1.0.0",
+  "description": "Firebase CLI scripts for AutoNateAI Learning Hub",
+  "type": "module",
+  "scripts": {
+    "query": "node query-firestore.js",
+    "users": "node list-users.js",
+    "activities": "node query-activities.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}
+
