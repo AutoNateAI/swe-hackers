@@ -31,6 +31,7 @@ Imagine Maria, a student using AutoNateAI. She's been working through the Appren
 Maria opens her dashboard and sees "3/7 Chapters Complete" and a "Continue" button. That's it. She clicks continue and jumps right into Chapter 4.
 
 But Maria has questions:
+
 - "Am I actually understanding this stuff, or just clicking through?"
 - "Which topics are my weakest?"
 - "How much time have I invested?"
@@ -48,6 +49,7 @@ Maria opens her dashboard and immediately sees:
 ```
 
 When she clicks on "Apprentice Course", instead of jumping into a lesson, she lands on a **Course Dashboard** with:
+
 - All 7 chapters laid out with completion status
 - Analytics per chapter (time spent, quiz scores, activities completed)
 - Quick access to flashcards and notes
@@ -68,7 +70,7 @@ flowchart TB
         AGG --> SK[Streak Counter]
         AGG --> TA[Time Analytics]
         AGG --> CP[Cognitive Progress]
-        
+
         COURSES[My Courses Grid]
         COURSES --> CARD1[Course Card 1]
         COURSES --> CARD2[Course Card 2]
@@ -84,7 +86,7 @@ flowchart TB
             T4[🗃️ Flashcards]
             T5[📓 Notes]
         end
-        
+
         T2 --> CH_LIST[Chapter List with Stats]
         T3 --> CH_ANALYTICS[Per-Chapter Analytics]
         T4 --> FLASH[Flashcard Deck]
@@ -103,13 +105,13 @@ flowchart TB
 
 Maria logs in and sees her main dashboard. At the top, a new **Analytics Panel** shows her aggregated progress across ALL courses:
 
-| Metric | Value | Meaning |
-|--------|-------|---------|
-| Learning Velocity | 2.3 lessons/week | How fast she's progressing |
-| Quiz Mastery | 87% | First-try accuracy on quizzes |
-| Active Streak | 5 days | Consecutive days with activity |
-| Time Invested | 4.5 hours | Total time in lessons |
-| Cognitive Score | 78/100 | Composite learning strength |
+| Metric            | Value            | Meaning                        |
+| ----------------- | ---------------- | ------------------------------ |
+| Learning Velocity | 2.3 lessons/week | How fast she's progressing     |
+| Quiz Mastery      | 87%              | First-try accuracy on quizzes  |
+| Active Streak     | 5 days           | Consecutive days with activity |
+| Time Invested     | 4.5 hours        | Total time in lessons          |
+| Cognitive Score   | 78/100           | Composite learning strength    |
 
 Below that, her enrolled courses appear as cards with progress bars.
 
@@ -118,6 +120,7 @@ Below that, her enrolled courses appear as cards with progress bars.
 Maria clicks on "The Apprentice's Path". Instead of jumping into a lesson, she lands on a **Course Dashboard** — a new intermediate page.
 
 This page has tabs:
+
 - **Overview**: Course description, total progress, estimated completion
 - **Chapters**: All 7 chapters with individual progress, time spent, quiz scores
 - **Analytics**: Detailed charts showing performance over time
@@ -127,6 +130,7 @@ This page has tabs:
 **Step 3: Chapter Selection**
 
 From the Chapters tab, Maria can see:
+
 - ✅ Chapter 0: Origins (100% | 23 min | Quiz: ✓)
 - ✅ Chapter 1: Stone (100% | 45 min | Quiz: 90%)
 - 🔄 Chapter 2: Lightning (67% | 18 min | Quiz: —)
@@ -202,22 +206,26 @@ erDiagram
 Think of the Firestore database like Maria's personal learning journal. It has several sections:
 
 **📁 Course Progress** — One folder per course she's enrolled in
+
 - Overall completion percentage
 - Summary of all lesson progress
 - Activity statistics (quiz accuracy, attempts, etc.)
 - Time tracking
 
 **📁 Lesson Progress** — Inside each course folder, detailed records for each lesson
+
 - Which sections were viewed
 - Time spent on this specific lesson
 - Whether it's marked complete
 
 **📁 Activity Attempts** — Every quiz answered, every drag-drop completed
+
 - Individual attempt records with scores
 - Time taken per activity
 - Retry patterns
 
 **📁 Daily Stats** — Aggregated daily metrics (NEW!)
+
 - How many lessons completed today
 - Daily quiz accuracy
 - Time spent learning
@@ -225,13 +233,13 @@ Think of the Firestore database like Maria's personal learning journal. It has s
 
 ### Technical Details: Firestore Paths
 
-| Collection Path | Document | Purpose |
-|----------------|----------|---------|
-| `users/{uid}` | User doc | Profile, settings |
-| `users/{uid}/courseProgress/{courseId}` | Course doc | Per-course summary |
-| `users/{uid}/courseProgress/{courseId}/lessonProgress/{lessonId}` | Lesson doc | Per-lesson details |
-| `users/{uid}/activityAttempts/{attemptId}` | Attempt doc | Individual activity records |
-| `users/{uid}/dailyStats/{date}` | Stats doc | Daily aggregations |
+| Collection Path                                                   | Document    | Purpose                     |
+| ----------------------------------------------------------------- | ----------- | --------------------------- |
+| `users/{uid}`                                                     | User doc    | Profile, settings           |
+| `users/{uid}/courseProgress/{courseId}`                           | Course doc  | Per-course summary          |
+| `users/{uid}/courseProgress/{courseId}/lessonProgress/{lessonId}` | Lesson doc  | Per-lesson details          |
+| `users/{uid}/activityAttempts/{attemptId}`                        | Attempt doc | Individual activity records |
+| `users/{uid}/dailyStats/{date}`                                   | Stats doc   | Daily aggregations          |
 
 ---
 
@@ -402,30 +410,30 @@ URL pattern: `dashboard/course.html?id=apprentice`
 
 This service contains all the calculation logic:
 
-| Method | Purpose | Inputs |
-|--------|---------|--------|
-| `calculateLearningVelocity(userId)` | Lessons per week | lessonProgress data |
-| `calculateQuizMastery(userId, courseId?)` | First-try accuracy | activityAttempts |
-| `calculateStreak(userId)` | Consecutive active days | activityAttempts, lessonProgress |
-| `calculateCognitiveScore(userId)` | Composite score | All above |
-| `getChapterAnalytics(courseId, lessonId)` | Per-chapter stats | lessonProgress, activityAttempts |
+| Method                                    | Purpose                 | Inputs                           |
+| ----------------------------------------- | ----------------------- | -------------------------------- |
+| `calculateLearningVelocity(userId)`       | Lessons per week        | lessonProgress data              |
+| `calculateQuizMastery(userId, courseId?)` | First-try accuracy      | activityAttempts                 |
+| `calculateStreak(userId)`                 | Consecutive active days | activityAttempts, lessonProgress |
+| `calculateCognitiveScore(userId)`         | Composite score         | All above                        |
+| `getChapterAnalytics(courseId, lessonId)` | Per-chapter stats       | lessonProgress, activityAttempts |
 
 **New Components:**
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| `AnalyticsPanel` | Main dashboard, Course dashboard | Displays aggregated metrics |
-| `ChapterList` | Course dashboard | Shows all chapters with stats |
-| `CourseStats` | Course dashboard | Course-level analytics |
+| Component        | Location                         | Purpose                       |
+| ---------------- | -------------------------------- | ----------------------------- |
+| `AnalyticsPanel` | Main dashboard, Course dashboard | Displays aggregated metrics   |
+| `ChapterList`    | Course dashboard                 | Shows all chapters with stats |
+| `CourseStats`    | Course dashboard                 | Course-level analytics        |
 
 **Reusing Existing Code:**
 
-| Existing | Reuse For |
-|----------|-----------|
-| `data-service.js` | All Firestore reads |
+| Existing          | Reuse For                       |
+| ----------------- | ------------------------------- |
+| `data-service.js` | All Firestore reads             |
 | `FlashcardViewer` | Course dashboard flashcards tab |
-| `NotesManager` | Course dashboard notes tab |
-| `auth.js` | Authentication checks |
+| `NotesManager`    | Course dashboard notes tab      |
+| `auth.js`         | Authentication checks           |
 
 ---
 
@@ -480,6 +488,7 @@ flowchart TB
 When Maria clicks on "The Apprentice's Path", she lands on a dedicated **Course Dashboard**.
 
 **The Header:**
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ 🌟 The Apprentice's Path                                    │
@@ -489,6 +498,7 @@ When Maria clicks on "The Apprentice's Path", she lands on a dedicated **Course 
 ```
 
 **The Tabs:**
+
 ```
 ┌──────────┬──────────┬───────────┬────────────┬────────┐
 │ Overview │ Chapters │ Analytics │ Flashcards │ Notes  │
@@ -496,6 +506,7 @@ When Maria clicks on "The Apprentice's Path", she lands on a dedicated **Course 
 ```
 
 **Overview Tab:**
+
 - Course description and learning objectives
 - Quick stats: "3 chapters done • 2h 15m invested • 87% quiz score"
 - Timeline showing when each chapter was completed
@@ -510,6 +521,7 @@ When Maria clicks on "The Apprentice's Path", she lands on a dedicated **Course 
 | ... | | | | |
 
 **Analytics Tab:**
+
 - Bar chart: Time spent per chapter
 - Line chart: Quiz scores over time
 - Activity feed: "Jan 3: Completed Chapter 1 Quiz (90%)"
@@ -555,7 +567,7 @@ When Maria clicks on "The Apprentice's Path", here's what happens in the backgro
 
 ```javascript
 // File: dashboard/course.html
-const courseId = new URLSearchParams(window.location.search).get('id');
+const courseId = new URLSearchParams(window.location.search).get("id");
 const courseData = await DataService.getCourseProgress(courseId);
 // Returns: { completedLessons: 2, progressPercent: 29, ... }
 ```
@@ -591,6 +603,7 @@ const analytics = await AnalyticsService.getChapterAnalytics(courseId);
 **Step 4: Render** (50ms)
 
 The page renders with all data:
+
 - Header shows overall progress
 - Chapters tab shows lesson list
 - Analytics tab shows charts
@@ -635,6 +648,7 @@ gantt
 **Phase 1: Analytics Service** (3-4 days)
 
 Create `shared/js/analytics-service.js` with calculation methods:
+
 - `calculateLearningVelocity()`
 - `calculateQuizMastery()`
 - `calculateStreak()`
@@ -644,6 +658,7 @@ Create `shared/js/analytics-service.js` with calculation methods:
 **Phase 2: Main Dashboard Enhancement** (2-3 days)
 
 Add the aggregated analytics panel to `dashboard/index.html`:
+
 - Show Learning Velocity
 - Show Quiz Mastery percentage
 - Show Streak counter
@@ -652,6 +667,7 @@ Add the aggregated analytics panel to `dashboard/index.html`:
 **Phase 3: Course Dashboard** (5-6 days)
 
 Create new page `dashboard/course.html` with:
+
 - Course header with progress
 - Tab navigation (Overview, Chapters, Analytics, Flashcards, Notes)
 - Chapter list with per-chapter stats
@@ -671,30 +687,30 @@ Create new page `dashboard/course.html` with:
 
 ### New Files
 
-| File | Purpose | Priority |
-|------|---------|----------|
-| `shared/js/analytics-service.js` | Analytics calculations | P0 |
-| `dashboard/course.html` | Course dashboard page | P0 |
-| `shared/css/course-dashboard.css` | Course dashboard styles | P1 |
-| `shared/js/chapter-list.js` | Chapter list component | P1 |
-| `shared/js/analytics-panel.js` | Analytics display component | P1 |
+| File                              | Purpose                     | Priority |
+| --------------------------------- | --------------------------- | -------- |
+| `shared/js/analytics-service.js`  | Analytics calculations      | P0       |
+| `dashboard/course.html`           | Course dashboard page       | P0       |
+| `shared/css/course-dashboard.css` | Course dashboard styles     | P1       |
+| `shared/js/chapter-list.js`       | Chapter list component      | P1       |
+| `shared/js/analytics-panel.js`    | Analytics display component | P1       |
 
 ### Modified Files
 
-| File | Changes | Priority |
-|------|---------|----------|
-| `dashboard/index.html` | Add analytics panel | P0 |
-| `data-service.js` | Add `getAllLessonsProgress()`, `getDailyStats()` | P0 |
-| `dashboard.css` | Styles for analytics panel | P1 |
-| Course detail pages | Link to course dashboard instead of lesson | P2 |
+| File                   | Changes                                          | Priority |
+| ---------------------- | ------------------------------------------------ | -------- |
+| `dashboard/index.html` | Add analytics panel                              | P0       |
+| `data-service.js`      | Add `getAllLessonsProgress()`, `getDailyStats()` | P0       |
+| `dashboard.css`        | Styles for analytics panel                       | P1       |
+| Course detail pages    | Link to course dashboard instead of lesson       | P2       |
 
 ### Existing Files to Reuse
 
-| File | Reuse |
-|------|-------|
-| `progress.html` | Flashcard viewer code |
-| `progress.html` | Notes manager code |
-| `auth.js` | Authentication patterns |
+| File              | Reuse                   |
+| ----------------- | ----------------------- |
+| `progress.html`   | Flashcard viewer code   |
+| `progress.html`   | Notes manager code      |
+| `auth.js`         | Authentication patterns |
 | `data-service.js` | Base Firestore patterns |
 
 ---
@@ -704,11 +720,13 @@ Create new page `dashboard/course.html` with:
 Before building, we should decide:
 
 1. **Streak Definition**: Does viewing a lesson count as activity, or only completing activities?
+
    - Option A: Any page view = activity
    - Option B: Only quiz/activity completion
    - Option C: Either (hybrid)
 
 2. **Cognitive Score Weights**: Are these weights good?
+
    - Quiz Mastery: 40%
    - Learning Velocity: 30%
    - Streak: 20%
@@ -716,7 +734,8 @@ Before building, we should decide:
 
 3. **Historical Data**: Should we calculate velocity since enrollment or only last 30 days?
 
-4. **Course Dashboard URL**: 
+4. **Course Dashboard URL**:
+
    - Option A: `dashboard/course.html?id=apprentice`
    - Option B: `course/apprentice/dashboard.html`
    - Option C: `dashboard/apprentice/` (folder-based)
@@ -740,6 +759,7 @@ This architecture enables Maria (and all students) to:
 ✅ Make informed decisions about where to focus study time
 
 The implementation builds on existing patterns:
+
 - Reuses `data-service.js` for Firestore access
 - Extends rather than replaces current dashboard
 - Uses same auth and component patterns
@@ -748,4 +768,3 @@ The implementation builds on existing patterns:
 **Estimated Total Effort: 12-16 days**
 
 Ready to build? Let's start with Phase 1: The Analytics Service! 🚀
-
