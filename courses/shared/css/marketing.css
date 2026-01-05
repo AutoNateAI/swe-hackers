@@ -528,6 +528,14 @@ body {
   font-size: 3rem;
 }
 
+.course-banner-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
 .course-banner.apprentice {
   background: linear-gradient(135deg, #ab47bc, #7986cb);
 }
