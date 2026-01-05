@@ -530,10 +530,11 @@ body {
 
 .course-banner-img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  aspect-ratio: 1536 / 1024;
+  object-fit: contain;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--bg-tertiary);
 }
 
 .course-banner.apprentice {
