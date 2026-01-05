@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Course Catalog | AutoNateAI</title>
+  <meta name="description" content="Explore our AI-augmented learning courses. From complete beginners to senior engineers - find your path to mastering development with AI.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://autonateai.com/catalog">
+  <meta property="og:title" content="Course Catalog | AutoNateAI">
+  <meta property="og:description" content="Explore our AI-augmented learning courses for all skill levels.">
+  <meta property="og:image" content="https://autonateai.com/assets/og-preview.png">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Course Catalog | AutoNateAI">
+  <meta name="twitter:image" content="https://autonateai.com/assets/og-preview.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="shared/css/marketing.css">
+  
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <!-- Shared Components -->
+  <script src="shared/js/navbar.js" defer></script>
+  
+  <style>
+    .catalog-hero {
+      padding: calc(var(--nav-height) + 4rem) 2rem 3rem;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(121, 134, 203, 0.15) 0%, transparent 60%),
+        var(--bg-primary);
+    }
+    
+    .catalog-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .catalog-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .catalog-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+    
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    @media (max-width: 900px) {
+      .catalog-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+    }
+    
+    .catalog-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .catalog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border-color: var(--accent-primary);
+    }
+    
+    .catalog-card-image {
+      width: 100%;
+      aspect-ratio: 1536 / 1024;
+      object-fit: cover;
+    }
+    
+    .catalog-card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .catalog-card-badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      background: rgba(121, 134, 203, 0.2);
+      color: var(--accent-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+    
+    .catalog-card-badge.beginner { background: rgba(255, 213, 79, 0.2); color: #ffd54f; }
+    .catalog-card-badge.junior { background: rgba(0, 188, 212, 0.2); color: #00bcd4; }
+    .catalog-card-badge.senior { background: rgba(156, 39, 176, 0.2); color: #ce93d8; }
+    .catalog-card-badge.undergrad { background: rgba(63, 81, 181, 0.2); color: #7986cb; }
+    
+    .catalog-card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    
+    .catalog-card-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    
+    .catalog-card-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    
+    .catalog-card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .catalog-card-btn {
+      display: block;
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+    
+    .catalog-card-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(121, 134, 203, 0.3);
+    }
+    
+    .coming-soon-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--bg-secondary);
+      margin-top: 4rem;
+    }
+    
+    .coming-soon-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .coming-soon-text {
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    
+    .notify-form {
+      display: flex;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .notify-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+    
+    .notify-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+    
+    .notify-btn {
+      padding: 1rem 2rem;
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .notify-btn:hover {
+      background: var(--accent-secondary);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav class="marketing-nav" id="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-icon">🏛️</span>
+        <span>AutoNateAI</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="catalog.html" class="nav-link" style="color: var(--accent-primary);">Courses</a>
+        <a href="blog/" class="nav-link">Blog</a>
+        <a href="consulting.html" class="nav-link">Consulting</a>
+        <a href="enterprise.html" class="nav-link">Enterprise</a>
+        <a href="challenges.html" class="nav-link">Challenges</a>
+      </div>
+      
+      <div class="nav-cta">
+        <a href="auth/login.html" class="nav-btn secondary">Sign In</a>
+        <a href="auth/register.html" class="nav-btn primary">Get Started</a>
+      </div>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+  
+  <!-- Hero -->
+  <section class="catalog-hero">
+    <h1 class="catalog-title">Course Catalog</h1>
+    <p class="catalog-subtitle">
+      Choose your path. From complete beginners to senior engineers, 
+      we have a course designed for your journey.
+    </p>
+  </section>
+  
+  <!-- Filters -->
+  <div class="catalog-filters">
+    <button class="filter-btn active" data-filter="all">All Courses</button>
+    <button class="filter-btn" data-filter="beginner">Beginner</button>
+    <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+    <button class="filter-btn" data-filter="advanced">Advanced</button>
+  </div>
+  
+  <!-- Course Grid -->
+  <div class="catalog-grid">
+    
+    <!-- Apprentice -->
+    <div class="catalog-card" data-level="beginner">
+      <img src="assets/courses/course-apprentice.png" alt="The Apprentice's Path" class="catalog-card-image">
+      <div class="catalog-card-body">
+        <span class="catalog-card-badge beginner">Beginner</span>
+        <h2 class="catalog-card-title">The Apprentice's Path</h2>
+        <p class="catalog-card-desc">
+          Start from zero. Learn Python programming fundamentals through the "Three Forces" 
+          narrative — data as stone, control flow as lightning, functions as magnetism.
+        </p>
+        <div class="catalog-card-meta">
+          <span>📚 7 Chapters</span>
+          <span>⏱️ 6 Weeks</span>
+          <span>🎯 2 Capstones</span>
+        </div>
+        <a href="course/apprentice.html" class="catalog-card-btn">View Course →</a>
+      </div>
+    </div>
+    
+    <!-- Undergrad -->
+    <div class="catalog-card" data-level="intermediate">
+      <img src="assets/courses/course-undergrad.png" alt="The Bridge to Industry" class="catalog-card-image">
+      <div class="catalog-card-body">
+        <span class="catalog-card-badge undergrad">CS Students</span>
+        <h2 class="catalog-card-title">The Bridge to Industry</h2>
+        <p class="catalog-card-desc">
+          Bridge the gap between academia and industry. Transform your CS knowledge into 
+          job-ready skills with AI-augmented workflows and real-world projects.
+        </p>
+        <div class="catalog-card-meta">
+          <span>📚 7 Chapters</span>
+          <span>⏱️ 4-8 Weeks</span>
+          <span>🎯 2 Capstones</span>
+        </div>
+        <a href="course/undergrad.html" class="catalog-card-btn">View Course →</a>
+      </div>
+    </div>
+    
+    <!-- Junior -->
+    <div class="catalog-card" data-level="intermediate">
+      <img src="assets/courses/course-junior.png" alt="The Junior Accelerator" class="catalog-card-image">
+      <div class="catalog-card-body">
+        <span class="catalog-card-badge junior">Junior Engineers</span>
+        <h2 class="catalog-card-title">The Junior Accelerator</h2>
+        <p class="catalog-card-desc">
+          Skip the 5-year grind. Learn to think like a senior engineer with AI as your 
+          accelerator. Build systems, not just features.
+        </p>
+        <div class="catalog-card-meta">
+          <span>📚 7 Chapters</span>
+          <span>⏱️ 4-8 Weeks</span>
+          <span>🎯 2 Capstones</span>
+        </div>
+        <a href="course/junior.html" class="catalog-card-btn">View Course →</a>
+      </div>
+    </div>
+    
+    <!-- Senior -->
+    <div class="catalog-card" data-level="advanced">
+      <img src="assets/courses/course-senior.png" alt="The Senior Amplifier" class="catalog-card-image">
+      <div class="catalog-card-body">
+        <span class="catalog-card-badge senior">Mid-to-Senior</span>
+        <h2 class="catalog-card-title">The Senior Amplifier</h2>
+        <p class="catalog-card-desc">
+          Multiply your impact. Learn agentic workflows, architecture patterns, and how to 
+          10x your output with AI-augmented development.
+        </p>
+        <div class="catalog-card-meta">
+          <span>📚 7 Chapters</span>
+          <span>⏱️ 4-8 Weeks</span>
+          <span>🎯 2 Capstones</span>
+        </div>
+        <a href="course/senior.html" class="catalog-card-btn">View Course →</a>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Coming Soon -->
+  <section class="coming-soon-section">
+    <h2 class="coming-soon-title">🚧 More Courses Coming Soon</h2>
+    <p class="coming-soon-text">
+      We're building specialized tracks for DevOps, Frontend, Backend, and AI/ML. 
+      Get notified when they launch.
+    </p>
+    <form class="notify-form" onsubmit="return false;">
+      <input type="email" class="notify-input" placeholder="Enter your email">
+      <button type="submit" class="notify-btn">Notify Me</button>
+    </form>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span>🏛️</span>
+            <span>AutoNateAI</span>
+          </div>
+          <p class="footer-tagline">AI-Augmented Learning for Modern Developers</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Courses</h4>
+          <a href="course/apprentice.html">The Apprentice's Path</a>
+          <a href="course/junior.html">The Junior Accelerator</a>
+          <a href="course/senior.html">The Senior Amplifier</a>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Company</h4>
+          <a href="blog/">Blog</a>
+          <a href="consulting.html">Consulting</a>
+          <a href="enterprise.html">Enterprise</a>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Community</h4>
+          <a href="https://discord.gg/Me5N8tCdkC" target="_blank">Discord</a>
+          <a href="challenges.html">Daily Challenges</a>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 AutoNateAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.catalog-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.level === filter) {
+            card.style.display = 'flex';
+            anime({
+              targets: card,
+              opacity: [0, 1],
+              translateY: [20, 0],
+              duration: 400,
+              easing: 'easeOutQuad'
+            });
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Animate cards on load
+    anime({
+      targets: '.catalog-card',
+      opacity: [0, 1],
+      translateY: [30, 0],
+      delay: anime.stagger(100),
+      duration: 600,
+      easing: 'easeOutQuad'
+    });
+  </script>
+</body>
+</html>
+

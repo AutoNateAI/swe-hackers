@@ -51,6 +51,7 @@
     menu.id = 'mobile-menu';
     
     menu.innerHTML = `
+      <a href="${basePath}catalog.html">Courses</a>
       <a href="${basePath}blog/">Blog</a>
       <a href="${basePath}consulting.html">Consulting</a>
       <a href="${basePath}enterprise.html">Enterprise</a>
@@ -117,6 +118,7 @@
       
       // Check if current path matches this link
       const isActive = 
+        (href.includes('catalog') && path.includes('catalog')) ||
         (href.includes('blog') && path.includes('/blog')) ||
         (href.includes('consulting') && path.includes('consulting')) ||
         (href.includes('enterprise') && path.includes('enterprise')) ||
