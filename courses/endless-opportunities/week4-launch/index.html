@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 4: Business Launch | AI Freelancing Bootcamp</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <style>
+    :root {
+      --chapter-color: #EF4444;
+      --chapter-gradient: linear-gradient(135deg, #DC2626, #EF4444);
+    }
+    
+    .launch-hero {
+      text-align: center;
+      padding: 3rem;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), transparent);
+      border-radius: var(--radius-xl);
+      margin: 2rem 0;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    
+    .launch-hero h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: var(--chapter-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .checklist-section {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .checklist-item:last-child { border-bottom: none; }
+    
+    .checklist-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--chapter-color);
+      border-radius: 4px;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .checklist-item.done .checklist-checkbox {
+      background: var(--chapter-color);
+      color: white;
+    }
+    
+    .checklist-content h4 {
+      font-family: var(--font-display);
+      margin-bottom: 0.25rem;
+    }
+    
+    .checklist-content p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    .pitch-template {
+      background: #0d0d14;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      border-left: 4px solid var(--chapter-color);
+    }
+    
+    .pitch-template strong { color: var(--chapter-color); }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    
+    .pricing-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .pricing-card.featured {
+      border-color: var(--chapter-color);
+      position: relative;
+    }
+    
+    .pricing-tier {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--chapter-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .pricing-services {
+      text-align: left;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    .pricing-services li {
+      padding: 0.25rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    
+    .pricing-services li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--chapter-color);
+    }
+    
+    .outreach-methods {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .outreach-methods { grid-template-columns: 1fr; }
+    }
+    
+    .outreach-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .outreach-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .outreach-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .outreach-card ul {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-left: 1.25rem;
+    }
+    
+    .celebration-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+    }
+    
+    .celebration-section h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #4CAF50, #81C784);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    
+    .certificate-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+    }
+    
+    .certificate-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+    }
+  </style>
+  
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  
+  <header class="lesson-header" style="background: var(--chapter-gradient);">
+    <div class="lesson-header-content">
+      <div class="lesson-badge">Week 4</div>
+      <h1 class="lesson-title">Business Launch</h1>
+      <p class="lesson-subtitle">Build your portfolio, find clients, get PAID</p>
+    </div>
+  </header>
+  
+  <div class="lesson-container">
+    
+    <section class="lesson-section">
+      <div class="launch-hero">
+        <h3>🚀 This Is It!</h3>
+        <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+          You've learned the skills. Now it's time to turn them into a real business. 
+          By the end of this week, you'll have a portfolio, a pitch, and hopefully 
+          your first paying client.
+        </p>
+      </div>
+    </section>
+    
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📦</span>
+        Your Portfolio Checklist
+      </h2>
+      
+      <div class="section-content">
+        <div class="checklist-section">
+          <div class="checklist-item" data-item="social">
+            <div class="checklist-checkbox">✓</div>
+            <div class="checklist-content">
+              <h4>Social Media Samples (7+ posts)</h4>
+              <p>Posts for 2-3 different business types showing range</p>
+            </div>
+          </div>
+          
+          <div class="checklist-item" data-item="blog">
+            <div class="checklist-checkbox">✓</div>
+            <div class="checklist-content">
+              <h4>Blog/Article Sample (1-2 pieces)</h4>
+              <p>800+ word articles demonstrating writing ability</p>
+            </div>
+          </div>
+          
+          <div class="checklist-item" data-item="visual">
+            <div class="checklist-checkbox">✓</div>
+            <div class="checklist-content">
+              <h4>Visual Portfolio (logos, graphics)</h4>
+              <p>Logo concepts, social graphics, thumbnails</p>
+            </div>
+          </div>
+          
+          <div class="checklist-item" data-item="research">
+            <div class="checklist-checkbox">✓</div>
+            <div class="checklist-content">
+              <h4>Research/Analysis Sample</h4>
+              <p>Market research or competitor analysis report</p>
+            </div>
+          </div>
+          
+          <div class="checklist-item" data-item="presentation">
+            <div class="checklist-checkbox">✓</div>
+            <div class="checklist-content">
+              <h4>Professional Presentation</h4>
+              <p>Google Drive folder or simple portfolio site</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">💰</span>
+        Setting Your Prices
+      </h2>
+      
+      <div class="section-content">
+        <p>Start with these beginner-friendly rates. As you build reputation, increase 25-50%.</p>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-tier">Starter</div>
+            <div class="pricing-amount">$25-50</div>
+            <ul class="pricing-services">
+              <li>Week of social posts</li>
+              <li>Product descriptions</li>
+              <li>Simple graphics</li>
+              <li>Email templates</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-card featured">
+            <div class="pricing-tier">Standard</div>
+            <div class="pricing-amount">$75-150</div>
+            <ul class="pricing-services">
+              <li>Blog posts</li>
+              <li>Logo design</li>
+              <li>Video thumbnails</li>
+              <li>Ad copy sets</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-card">
+            <div class="pricing-tier">Premium</div>
+            <div class="pricing-amount">$200+</div>
+            <ul class="pricing-services">
+              <li>Market research</li>
+              <li>Business plans</li>
+              <li>Complete brand kits</li>
+              <li>Monthly retainers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📣</span>
+        Finding Your First Clients
+      </h2>
+      
+      <div class="section-content">
+        <div class="outreach-methods">
+          <div class="outreach-card">
+            <h4>🏪 Local Businesses</h4>
+            <p>Walk into local shops and offer your services directly.</p>
+            <ul>
+              <li>Restaurants without social media</li>
+              <li>New businesses needing logos</li>
+              <li>Shops with outdated graphics</li>
+            </ul>
+          </div>
+          
+          <div class="outreach-card">
+            <h4>👨‍👩‍👧 Family & Friends</h4>
+            <p>Start with your network. Do work for free or discounted to build testimonials.</p>
+            <ul>
+              <li>Side hustles and startups</li>
+              <li>Church/community organizations</li>
+              <li>Small business owners in family</li>
+            </ul>
+          </div>
+          
+          <div class="outreach-card">
+            <h4>📱 Social Media</h4>
+            <p>Post your work and announce your services.</p>
+            <ul>
+              <li>Share portfolio pieces</li>
+              <li>Create before/after posts</li>
+              <li>Tag local businesses</li>
+            </ul>
+          </div>
+          
+          <div class="outreach-card">
+            <h4>🌐 Online Platforms</h4>
+            <p>Start building profiles on freelance marketplaces.</p>
+            <ul>
+              <li>Fiverr (great for beginners)</li>
+              <li>Upwork (higher quality clients)</li>
+              <li>Local Facebook groups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🎤</span>
+        Your Pitch Script
+      </h2>
+      
+      <div class="section-content">
+        <div class="pitch-template">
+          "Hi, I'm <strong>[Your Name]</strong>. I help local businesses like yours 
+          create <strong>[social media content / professional graphics / marketing materials]</strong> 
+          using the latest AI tools.<br><br>
+          
+          I noticed <strong>[specific observation about their business]</strong>. 
+          I could help you <strong>[specific benefit]</strong>.<br><br>
+          
+          I've got some samples I'd love to show you. Would you have 5 minutes 
+          to take a look? If you like what you see, I could put together a 
+          proposal for you."
+        </div>
+        
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Key Elements</div>
+          <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+            <li><strong>Be specific:</strong> Mention something real about their business</li>
+            <li><strong>Show, don't tell:</strong> Have samples ready to show immediately</li>
+            <li><strong>Low commitment:</strong> Just ask for 5 minutes, not a sale</li>
+            <li><strong>Be confident:</strong> You have real skills to offer!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📋</span>
+        Final Assignment
+      </h2>
+      
+      <div class="section-content">
+        <div class="callout callout-success" style="border-color: var(--chapter-color);">
+          <div class="callout-title">🎯 Your Launch Mission</div>
+          <ol style="padding-left: 1.5rem; margin-top: 1rem; line-height: 2;">
+            <li><strong>Complete your portfolio</strong> — all checklist items above</li>
+            <li><strong>Create a services menu</strong> — what you offer and prices</li>
+            <li><strong>Reach out to 5 potential clients</strong> — family, local, or online</li>
+            <li><strong>Practice your pitch</strong> — record yourself and improve</li>
+            <li><strong>Land your first client</strong> — even if it's discounted!</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    
+    <section class="celebration-section">
+      <h2>🎓 Congratulations!</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        You've completed the AI Freelancing Bootcamp! You now have skills that 
+        most adults don't have. Your future is in your hands.
+      </p>
+      <a href="../../course/endless-opportunities.html" class="certificate-btn">
+        🏆 View Your Certificate
+      </a>
+    </section>
+    
+  </div>
+  
+  <nav class="lesson-nav">
+    <a class="nav-btn" href="../week3-claude/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      ← Week 3: Claude
+    </a>
+    <a class="nav-btn primary" href="../../course/endless-opportunities.html">
+      Complete Course →
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </nav>
+  
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    
+    document.querySelectorAll('.checklist-item').forEach(item => {
+      item.addEventListener('click', () => item.classList.toggle('done'));
+    });
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.FirebaseApp.init()) {
+        window.AuthService.init();
+        const user = await window.AuthService.waitForAuthState();
+        if (!user) {
+          window.AuthService.setRedirectUrl(window.location.href);
+          window.location.href = '../../auth/login.html';
+          return;
+        }
+        if (window.RBACService) {
+          const canAccess = await window.RBACService.canAccessCourse('endless-opportunities');
+          if (!canAccess) {
+            window.RBACService.handleAccessDenied('organization');
+            return;
+          }
+        }
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init('endless-opportunities', 'week4-launch');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

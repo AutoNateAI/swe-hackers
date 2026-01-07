@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 3: Claude & Analysis | AI Freelancing Bootcamp</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <style>
+    :root {
+      --chapter-color: #F59E0B;
+      --chapter-gradient: linear-gradient(135deg, #D97706, #F59E0B);
+    }
+    
+    .comparison-table {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .comparison-table th {
+      background: var(--bg-tertiary);
+      padding: 1rem;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+    }
+    
+    .comparison-table td {
+      padding: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    .comparison-table tr:hover td {
+      background: rgba(245, 158, 11, 0.05);
+    }
+    
+    .high-value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .high-value-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .high-value-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .high-value-card:hover {
+      border-color: var(--chapter-color);
+    }
+    
+    .high-value-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    
+    .high-value-icon {
+      font-size: 2rem;
+    }
+    
+    .high-value-price {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--chapter-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .high-value-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .high-value-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .research-steps {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .research-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--chapter-color);
+    }
+    
+    .research-step-num {
+      width: 40px;
+      height: 40px;
+      background: var(--chapter-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .research-step-content h4 {
+      font-family: var(--font-display);
+      margin-bottom: 0.5rem;
+    }
+    
+    .research-step-content p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    .deliverable-example {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    
+    .deliverable-header {
+      background: var(--chapter-gradient);
+      padding: 1rem 1.5rem;
+      font-family: var(--font-display);
+    }
+    
+    .deliverable-body {
+      padding: 1.5rem;
+    }
+    
+    .deliverable-section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .deliverable-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .deliverable-section h5 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--chapter-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .deliverable-section p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .continue-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+    }
+    
+    .continue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: var(--chapter-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+    }
+    
+    .continue-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  
+  <!-- Week Header -->
+  <header class="lesson-header" style="background: var(--chapter-gradient);">
+    <div class="lesson-header-content">
+      <div class="lesson-badge">Week 3</div>
+      <h1 class="lesson-title">Claude & Analysis</h1>
+      <p class="lesson-subtitle">Research, strategy, and high-value consulting services</p>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <div class="lesson-container">
+    
+    <!-- Section 1: Why Claude? -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🧠</span>
+        Meet Claude: The Thinking AI
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          While ChatGPT is great for content, <strong>Claude</strong> excels at deep thinking, 
+          research, and analysis. Made by Anthropic, Claude can process long documents, 
+          reason through complex problems, and help you offer premium consulting services.
+        </p>
+        
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>ChatGPT</th>
+                <th>Claude</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Quick content creation</td>
+                <td>✅ Excellent</td>
+                <td>✅ Good</td>
+              </tr>
+              <tr>
+                <td>Long document analysis</td>
+                <td>⚠️ Limited</td>
+                <td>✅ Excellent (200K+ tokens)</td>
+              </tr>
+              <tr>
+                <td>Complex reasoning</td>
+                <td>✅ Good</td>
+                <td>✅ Excellent</td>
+              </tr>
+              <tr>
+                <td>Research synthesis</td>
+                <td>✅ Good</td>
+                <td>✅ Excellent</td>
+              </tr>
+              <tr>
+                <td>Business analysis</td>
+                <td>✅ Good</td>
+                <td>✅ Excellent</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="callout callout-insight">
+          <div class="callout-title">🎯 The Strategic Advantage</div>
+          <p>
+            With Claude, you move from "content creator" to "strategic consultant." 
+            Instead of writing posts for $25, you're delivering market research for $200 
+            or business plans for $500+. <strong>Same time, 10x the income.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 2: High-Value Services -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">💎</span>
+        High-Value Services to Offer
+      </h2>
+      
+      <div class="section-content">
+        <div class="high-value-grid">
+          <div class="high-value-card">
+            <div class="high-value-header">
+              <span class="high-value-icon">📊</span>
+              <span class="high-value-price">$100-300</span>
+            </div>
+            <div class="high-value-title">Market Research Reports</div>
+            <div class="high-value-desc">
+              Analyze industries, competitors, and trends. Deliver professional 
+              reports that help businesses make better decisions.
+            </div>
+          </div>
+          
+          <div class="high-value-card">
+            <div class="high-value-header">
+              <span class="high-value-icon">📈</span>
+              <span class="high-value-price">$150-500</span>
+            </div>
+            <div class="high-value-title">Business Plan Writing</div>
+            <div class="high-value-desc">
+              Help entrepreneurs articulate their vision with structured, 
+              investor-ready business plans and pitch decks.
+            </div>
+          </div>
+          
+          <div class="high-value-card">
+            <div class="high-value-header">
+              <span class="high-value-icon">🔍</span>
+              <span class="high-value-price">$75-200</span>
+            </div>
+            <div class="high-value-title">Competitor Analysis</div>
+            <div class="high-value-desc">
+              Deep-dive into competitor strategies, strengths, weaknesses, 
+              and opportunities for differentiation.
+            </div>
+          </div>
+          
+          <div class="high-value-card">
+            <div class="high-value-header">
+              <span class="high-value-icon">📋</span>
+              <span class="high-value-price">$100-250</span>
+            </div>
+            <div class="high-value-title">Strategic Recommendations</div>
+            <div class="high-value-desc">
+              Analyze a business's current state and provide actionable 
+              recommendations for growth and improvement.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 3: Research Workflow -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🔄</span>
+        The Research Workflow
+      </h2>
+      
+      <div class="section-content">
+        <div class="diagram-container">
+          <pre class="mermaid">
+flowchart LR
+    A[🎯 Define Scope] --> B[📚 Gather Data]
+    B --> C[🧠 Analyze with Claude]
+    C --> D[📝 Synthesize Findings]
+    D --> E[📊 Create Deliverable]
+    E --> F[✅ Present to Client]
+    
+    style A fill:#1a1a2e,stroke:#F59E0B
+    style B fill:#1a1a2e,stroke:#F59E0B
+    style C fill:#1a1a2e,stroke:#F59E0B
+    style D fill:#1a1a2e,stroke:#F59E0B
+    style E fill:#1a1a2e,stroke:#F59E0B
+    style F fill:#1a1a2e,stroke:#F59E0B
+          </pre>
+        </div>
+        
+        <div class="research-steps">
+          <div class="research-step">
+            <div class="research-step-num">1</div>
+            <div class="research-step-content">
+              <h4>Define the Scope</h4>
+              <p>What question are you answering? What does the client need to know? Set clear boundaries for your research.</p>
+            </div>
+          </div>
+          
+          <div class="research-step">
+            <div class="research-step-num">2</div>
+            <div class="research-step-content">
+              <h4>Gather Data</h4>
+              <p>Collect relevant information: competitor websites, industry reports, customer reviews, social media presence, etc.</p>
+            </div>
+          </div>
+          
+          <div class="research-step">
+            <div class="research-step-num">3</div>
+            <div class="research-step-content">
+              <h4>Analyze with Claude</h4>
+              <p>Feed data to Claude with clear prompts. Ask for patterns, insights, opportunities, and recommendations.</p>
+            </div>
+          </div>
+          
+          <div class="research-step">
+            <div class="research-step-num">4</div>
+            <div class="research-step-content">
+              <h4>Synthesize Findings</h4>
+              <p>Organize Claude's insights into a coherent narrative. Add your own observations and connections.</p>
+            </div>
+          </div>
+          
+          <div class="research-step">
+            <div class="research-step-num">5</div>
+            <div class="research-step-content">
+              <h4>Create Deliverable</h4>
+              <p>Format your findings into a professional report, presentation, or document that delivers value.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 4: Example Deliverable -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📄</span>
+        Example: Competitor Analysis Report
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Here's what a professional competitor analysis deliverable looks like:
+        </p>
+        
+        <div class="deliverable-example">
+          <div class="deliverable-header">
+            📊 Competitor Analysis: Local Pizza Market
+          </div>
+          <div class="deliverable-body">
+            <div class="deliverable-section">
+              <h5>Executive Summary</h5>
+              <p>Analysis of 5 main competitors in the Grand Rapids pizza market, identifying key differentiators and market opportunities for [Client Name].</p>
+            </div>
+            
+            <div class="deliverable-section">
+              <h5>Key Findings</h5>
+              <p>• 3 of 5 competitors focus on delivery speed, leaving quality positioning underserved<br>
+              • Social media presence is weak across all competitors (avg. 2 posts/week)<br>
+              • No competitor offers a loyalty program or mobile app</p>
+            </div>
+            
+            <div class="deliverable-section">
+              <h5>Opportunities</h5>
+              <p>• Position as premium quality option with transparent ingredient sourcing<br>
+              • Dominate local social media with 5+ posts/week and engagement<br>
+              • First-mover advantage on loyalty/rewards program</p>
+            </div>
+            
+            <div class="deliverable-section">
+              <h5>Recommendations</h5>
+              <p>1. Rebrand messaging around "craft quality" positioning<br>
+              2. Invest in social media content calendar (see appendix)<br>
+              3. Launch simple punch-card loyalty program within 30 days</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Pro Tip: Add Visual Elements</div>
+          <p>
+            Use Canva to add charts, comparison tables, and branded headers to your reports. 
+            A polished visual presentation justifies premium pricing.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 5: Claude Prompting -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">✨</span>
+        Effective Claude Prompts
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Claude responds well to clear, structured prompts. Here's a template:
+        </p>
+        
+        <div class="code-block" style="background: #0d0d14; padding: 1.5rem; border-radius: var(--radius-lg); margin: 1rem 0; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8;">
+          <span style="color: var(--chapter-color);"># Role</span><br>
+          You are a business strategy consultant specializing in [industry].<br><br>
+          
+          <span style="color: var(--chapter-color);"># Context</span><br>
+          I'm analyzing the competitive landscape for [client description].<br>
+          They currently [current situation].<br>
+          Their goal is [desired outcome].<br><br>
+          
+          <span style="color: var(--chapter-color);"># Data</span><br>
+          Here's information about their competitors:<br>
+          [Paste competitor data, website content, reviews, etc.]<br><br>
+          
+          <span style="color: var(--chapter-color);"># Task</span><br>
+          Please analyze this data and provide:<br>
+          1. Key patterns and trends across competitors<br>
+          2. Gaps and opportunities in the market<br>
+          3. Specific, actionable recommendations<br>
+          4. Risks and considerations<br><br>
+          
+          <span style="color: var(--chapter-color);"># Format</span><br>
+          Structure your response with clear headers and bullet points.
+          Use specific examples from the data to support conclusions.
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 6: Portfolio Project -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📁</span>
+        Week 3 Portfolio Project
+      </h2>
+      
+      <div class="section-content">
+        <div class="callout callout-success" style="border-color: var(--chapter-color);">
+          <div class="callout-title">🎯 Create Your First Research Deliverable</div>
+          <p>
+            Choose ONE of the following and create a complete, professional deliverable:
+          </p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li><strong>Market Research Report:</strong> Analyze an industry you're interested in (gaming, fashion, food, etc.)</li>
+            <li><strong>Competitor Analysis:</strong> Pick a local business type and analyze 3-5 competitors in your area</li>
+            <li><strong>Business Plan Outline:</strong> Create a structured plan for a fictional startup idea</li>
+          </ul>
+          <p style="margin-top: 1rem;">
+            Your deliverable should be at least 2-3 pages and include executive summary, 
+            key findings, and actionable recommendations.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Continue Section -->
+    <section class="continue-section">
+      <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
+        Ready for Week 4?
+      </h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        It's time to launch! Week 4 is all about building your portfolio, 
+        finding your first clients, and getting paid for your skills.
+      </p>
+      <a href="../week4-launch/" class="continue-btn">
+        Continue to Week 4: Business Launch →
+      </a>
+    </section>
+    
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <a class="nav-btn" href="../week2-visual/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      ← Week 2: Visual AI
+    </a>
+    <a class="nav-btn primary" href="../week4-launch/">
+      Week 4: Launch →
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </nav>
+  
+  <!-- Scripts -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#F59E0B',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#D97706',
+        lineColor: '#F59E0B',
+        secondaryColor: '#1a1a2e'
+      }
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.FirebaseApp.init()) {
+        window.AuthService.init();
+        
+        const user = await window.AuthService.waitForAuthState();
+        
+        if (!user) {
+          window.AuthService.setRedirectUrl(window.location.href);
+          window.location.href = '../../auth/login.html';
+          return;
+        }
+        
+        if (window.RBACService) {
+          const canAccess = await window.RBACService.canAccessCourse('endless-opportunities');
+          if (!canAccess) {
+            window.RBACService.handleAccessDenied('organization');
+            return;
+          }
+        }
+        
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init('endless-opportunities', 'week3-claude');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

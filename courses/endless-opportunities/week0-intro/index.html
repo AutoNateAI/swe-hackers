@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | AI Freelancing Bootcamp</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <style>
+    :root {
+      --chapter-color: #4CAF50;
+      --chapter-gradient: linear-gradient(135deg, #2E7D32, #4CAF50);
+    }
+    
+    /* Hero section */
+    .intro-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f1f0f 50%, #1a2e1a 100%);
+    }
+    
+    .particles-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #4CAF50;
+      border-radius: 50%;
+      opacity: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    
+    .partner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.3), rgba(76, 175, 80, 0.2));
+      border: 1px solid rgba(76, 175, 80, 0.5);
+      border-radius: 30px;
+      color: #4CAF50;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #4CAF50, #81C784, #4CAF50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid var(--text-muted);
+      border-bottom: 2px solid var(--text-muted);
+      transform: rotate(45deg);
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(10px); }
+    }
+    
+    /* Journey Map */
+    .journey-section {
+      padding: 4rem 0;
+      background: linear-gradient(180deg, #1a2e1a, var(--bg-secondary));
+    }
+    
+    .journey-map {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    
+    @media (max-width: 900px) {
+      .journey-map {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .journey-map {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .journey-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .journey-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .journey-card:hover {
+      border-color: var(--chapter-color);
+      transform: translateY(-5px);
+    }
+    
+    .journey-week {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--chapter-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .journey-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .journey-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .journey-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(76, 175, 80, 0.2);
+    }
+    
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--chapter-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    /* Why AI Section */
+    .why-ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .why-ai-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .why-ai-card {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border-left: 4px solid var(--chapter-color);
+    }
+    
+    .why-ai-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--chapter-color);
+    }
+    
+    .why-ai-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    /* About EO Section */
+    .about-section {
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.05));
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(76, 175, 80, 0.2);
+    }
+    
+    .about-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .about-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .about-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--chapter-color);
+      font-weight: 500;
+    }
+    
+    /* Expectations */
+    .expectations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .expectations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .expectations-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .expectations-card h4 {
+      font-family: var(--font-display);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .expectations-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .expectations-card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    .expectations-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--chapter-color);
+      font-weight: bold;
+    }
+    
+    .expectations-card.bring li::before {
+      content: '📌';
+    }
+    
+    /* Continue Button */
+    .continue-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+    }
+    
+    .continue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: var(--chapter-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+    }
+    
+    .continue-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  
+  <!-- Hero Section -->
+  <section class="intro-hero">
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="hero-content">
+      <span class="partner-badge">🌟 Endless Opportunities Partnership</span>
+      <h1 class="hero-title">Welcome to the Future</h1>
+      <p class="hero-subtitle">
+        You're about to learn the most powerful skill of the 21st century: 
+        how to harness AI to create real value, earn real money, and build 
+        your own freelance business — all in just 4 weeks.
+      </p>
+    </div>
+    
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <div class="lesson-container">
+    
+    <!-- The Opportunity Section -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">💡</span>
+        The Opportunity in Front of You
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Here's a secret that most adults don't even know yet: <strong>AI is changing everything</strong>.
+          The way we work, the way we create, the way businesses operate — it's all transforming 
+          faster than ever before.
+        </p>
+        
+        <p>
+          Right now, companies are <em>desperate</em> for people who know how to use AI tools. 
+          They need content. They need designs. They need help. And most people have no idea 
+          how to deliver it.
+        </p>
+        
+        <p>
+          <strong>That's where you come in.</strong>
+        </p>
+        
+        <div class="callout callout-story">
+          <div class="callout-title">🎯 The Reality</div>
+          <p>
+            In the next 4 weeks, you'll learn skills that professionals are paying thousands of 
+            dollars to acquire. You'll be able to offer services that businesses need RIGHT NOW. 
+            And you'll have something most people your age don't have: a portfolio of real work 
+            and the confidence to get paid for it.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Journey Map Section -->
+    <section class="journey-section">
+      <div class="lesson-container">
+        <h2 class="section-title" style="text-align: center;">
+          <span class="title-icon">🗺️</span>
+          Your 4-Week Journey
+        </h2>
+        
+        <div class="journey-map">
+          <div class="journey-card">
+            <div class="journey-week">Week 1</div>
+            <div class="journey-icon">✍️</div>
+            <div class="journey-title">ChatGPT Mastery</div>
+            <div class="journey-desc">Master AI text generation & offer content creation services</div>
+          </div>
+          
+          <div class="journey-card">
+            <div class="journey-week">Week 2</div>
+            <div class="journey-icon">🎨</div>
+            <div class="journey-title">Visual AI</div>
+            <div class="journey-desc">Create stunning graphics, logos, and videos with AI</div>
+          </div>
+          
+          <div class="journey-card">
+            <div class="journey-week">Week 3</div>
+            <div class="journey-icon">🧠</div>
+            <div class="journey-title">Claude & Analysis</div>
+            <div class="journey-desc">Research, business planning, and high-value consulting</div>
+          </div>
+          
+          <div class="journey-card">
+            <div class="journey-week">Week 4</div>
+            <div class="journey-icon">🚀</div>
+            <div class="journey-title">Business Launch</div>
+            <div class="journey-desc">Build your portfolio, find clients, get PAID</div>
+          </div>
+        </div>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value">5+</div>
+            <div class="stat-label">AI Tools Mastered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">10+</div>
+            <div class="stat-label">Portfolio Pieces</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">18</div>
+            <div class="stat-label">Service Guides</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$</div>
+            <div class="stat-label">Real Earnings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Why AI Section -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🤖</span>
+        Why AI? Why Now?
+      </h2>
+      
+      <div class="section-content">
+        <div class="why-ai-grid">
+          <div class="why-ai-card">
+            <h4>⚡ Speed</h4>
+            <p>
+              Tasks that took hours now take minutes. A week of social media content? 
+              10 minutes. A professional blog post? 5 minutes. You become 10x faster.
+            </p>
+          </div>
+          
+          <div class="why-ai-card">
+            <h4>🎯 Quality</h4>
+            <p>
+              AI helps you produce professional-grade work. No more "good for a student" — 
+              your output will compete with expensive agencies.
+            </p>
+          </div>
+          
+          <div class="why-ai-card">
+            <h4>💰 Opportunity</h4>
+            <p>
+              Businesses are willing to pay for AI-powered services right now. The market 
+              is wide open, and you're getting in early.
+            </p>
+          </div>
+        </div>
+        
+        <div class="diagram-container">
+          <pre class="mermaid">
+flowchart LR
+    subgraph "The Old Way"
+        O1[💡 Idea] --> O2[📚 Learn for Years]
+        O2 --> O3[💼 Get Experience]
+        O3 --> O4[🏢 Maybe Get Hired]
+    end
+    
+    subgraph "The AI Way"
+        N1[💡 Idea] --> N2[🤖 Learn AI Tools]
+        N2 --> N3[📦 Build Portfolio]
+        N3 --> N4[💵 Start Earning]
+    end
+    
+    style O1 fill:#1a1a2e,stroke:#666
+    style O2 fill:#1a1a2e,stroke:#666
+    style O3 fill:#1a1a2e,stroke:#666
+    style O4 fill:#1a1a2e,stroke:#666
+    style N1 fill:#1a1a2e,stroke:#4CAF50
+    style N2 fill:#1a1a2e,stroke:#4CAF50
+    style N3 fill:#1a1a2e,stroke:#4CAF50
+    style N4 fill:#1a1a2e,stroke:#4CAF50
+          </pre>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Endless Opportunities -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🌟</span>
+        About Endless Opportunities
+      </h2>
+      
+      <div class="section-content">
+        <div class="about-section">
+          <h3>🌱 Our Mission</h3>
+          <p>
+            <strong>Endless Opportunities</strong> has been empowering first-generation students 
+            in Greater Grand Rapids since 2011. We believe that every young person deserves access 
+            to the skills and opportunities that lead to economic success.
+          </p>
+          <p>
+            This AI Freelancing Bootcamp is a collaboration between Endless Opportunities and 
+            AutoNateAI — combining youth development expertise with cutting-edge AI education.
+          </p>
+          
+          <div class="about-stats">
+            <div class="about-stat">📅 Founded 2011</div>
+            <div class="about-stat">🎓 100+ Students Served</div>
+            <div class="about-stat">🏙️ Grand Rapids, MI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- What to Expect -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📋</span>
+        What to Expect
+      </h2>
+      
+      <div class="section-content">
+        <div class="expectations-grid">
+          <div class="expectations-card">
+            <h4>✅ You Will Get</h4>
+            <ul>
+              <li>Hands-on practice with real AI tools</li>
+              <li>A portfolio of professional work</li>
+              <li>Service guides with pricing strategies</li>
+              <li>Client acquisition techniques</li>
+              <li>Community support and feedback</li>
+              <li>Certificate of completion</li>
+            </ul>
+          </div>
+          
+          <div class="expectations-card bring">
+            <h4>📌 You Will Bring</h4>
+            <ul>
+              <li>A laptop with internet access</li>
+              <li>Curiosity and willingness to learn</li>
+              <li>2 hours per week for live sessions</li>
+              <li>Time for homework and projects</li>
+              <li>An open mind about AI</li>
+              <li>The drive to build something real</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="callout callout-success">
+          <div class="callout-title">🎯 By the End of This Program</div>
+          <p>
+            You'll be able to offer professional services to local businesses, create content 
+            faster than most adults, and have the confidence to pitch yourself as an AI-powered 
+            freelancer. Some of you may even land your first paying client before week 4 is over!
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Rules & Guidelines -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📜</span>
+        Ground Rules
+      </h2>
+      
+      <div class="section-content">
+        <div class="diagram-container">
+          <pre class="mermaid">
+mindmap
+  root((Our Values))
+    🤝 Respect
+      Listen when others share
+      Give constructive feedback
+      Celebrate wins together
+    💪 Effort
+      Complete your projects
+      Ask questions
+      Help your peers
+    🎯 Integrity
+      Be honest about your work
+      Credit AI assistance
+      Deliver quality
+    🚀 Growth
+      Embrace challenges
+      Learn from mistakes
+      Keep improving
+          </pre>
+        </div>
+        
+        <div class="callout callout-warning">
+          <div class="callout-title">⚠️ Important: AI Ethics</div>
+          <p>
+            AI is a powerful tool, but with power comes responsibility. We'll teach you how to 
+            use AI ethically — being transparent with clients about AI assistance, not 
+            misrepresenting your work, and understanding the limitations of these tools. 
+            Your reputation matters!
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Ready Section -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🔥</span>
+        Are You Ready?
+      </h2>
+      
+      <div class="section-content">
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+          The next 4 weeks could change your life. Not because AI is magic, but because 
+          <strong>you're about to learn skills that give you an unfair advantage</strong>.
+        </p>
+        
+        <p style="text-align: center; color: var(--text-secondary);">
+          While others are wondering what AI is, you'll be using it to build your future.
+        </p>
+        
+        <div class="callout callout-story" style="text-align: center; margin-top: 2rem;">
+          <p style="font-size: 1.25rem; font-style: italic;">
+            "The best time to learn AI was yesterday. The second best time is right now."
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Continue Section -->
+    <section class="continue-section">
+      <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
+        Let's Begin!
+      </h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Week 1 awaits. Time to master ChatGPT and start building your first portfolio pieces.
+      </p>
+      <a href="../week1-chatgpt/" class="continue-btn">
+        Start Week 1: ChatGPT Mastery →
+      </a>
+    </section>
+    
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <a class="nav-btn" href="../../course/endless-opportunities.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      ← Course Overview
+    </a>
+    <a class="nav-btn primary" href="../week1-chatgpt/">
+      Week 1: ChatGPT →
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </nav>
+  
+  <!-- Scripts -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#4CAF50',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#2E7D32',
+        lineColor: '#4CAF50',
+        secondaryColor: '#1a1a2e',
+        tertiaryColor: '#16161a'
+      }
+    });
+    
+    // Create particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        container.appendChild(particle);
+      }
+      
+      anime({
+        targets: '.particle',
+        opacity: [0, 0.6, 0],
+        scale: [0, 1, 0],
+        translateY: [-100, 100],
+        delay: anime.stagger(100, { from: 'random' }),
+        duration: 4000,
+        loop: true,
+        easing: 'easeOutQuad'
+      });
+    }
+    
+    // Scroll animations
+    function setupScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.journey-card').forEach((item, i) => {
+        item.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(item);
+      });
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      createParticles();
+      setupScrollAnimations();
+      
+      // Hero animation
+      anime({
+        targets: '.hero-content > *',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        delay: anime.stagger(200, { start: 500 }),
+        duration: 800,
+        easing: 'easeOutQuad'
+      });
+      
+      // Firebase init
+      if (window.FirebaseApp.init()) {
+        window.AuthService.init();
+        
+        const user = await window.AuthService.waitForAuthState();
+        
+        if (!user) {
+          window.AuthService.setRedirectUrl(window.location.href);
+          window.location.href = '../../auth/login.html';
+          return;
+        }
+        
+        // Check RBAC access
+        if (window.RBACService) {
+          const canAccess = await window.RBACService.canAccessCourse('endless-opportunities');
+          if (!canAccess) {
+            window.RBACService.handleAccessDenied('organization');
+            return;
+          }
+        }
+        
+        // Initialize progress tracking
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init('endless-opportunities', 'week0-intro');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

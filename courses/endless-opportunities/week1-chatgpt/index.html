@@ -1,668 +1,753 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 1: ChatGPT Mastery | AI Freelancing Bootcamp</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../shared/css/lesson.css" />
-
-    <!-- Mermaid for diagrams -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-
-    <style>
-      :root {
-        --chapter-color: #4CAF50;
-        --chapter-gradient: linear-gradient(135deg, #2E7D32, #4CAF50);
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 1: ChatGPT Mastery | AI Freelancing Bootcamp</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <style>
+    :root {
+      --chapter-color: #10B981;
+      --chapter-gradient: linear-gradient(135deg, #059669, #10B981);
+    }
+    
+    /* Week 1 specific styles */
+    .prompt-lab {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    
+    .prompt-input {
+      width: 100%;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .prompt-input:focus {
+      outline: none;
+      border-color: var(--chapter-color);
+    }
+    
+    .prompt-output {
+      margin-top: 1rem;
+      padding: 1.5rem;
+      background: #0d0d14;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      min-height: 150px;
+      border-left: 3px solid var(--chapter-color);
+    }
+    
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 900px) {
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-
-      .hero::before {
-        background: radial-gradient(
-            ellipse at 30% 50%,
-            rgba(76, 175, 80, 0.2) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 70% 30%,
-            rgba(46, 125, 50, 0.15) 0%,
-            transparent 50%
-          );
+    }
+    
+    @media (max-width: 600px) {
+      .service-grid {
+        grid-template-columns: 1fr;
       }
-
-      .story-block {
-        border-left-color: var(--chapter-color);
+    }
+    
+    .service-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      border-color: var(--chapter-color);
+      transform: translateY(-3px);
+    }
+    
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .service-price {
+      color: var(--chapter-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .service-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    .prompt-formula {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--chapter-color);
+    }
+    
+    .formula-parts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    
+    .formula-part {
+      padding: 1rem 1.5rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    
+    .formula-part-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    
+    .formula-part-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--chapter-color);
+    }
+    
+    .formula-plus {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+    }
+    
+    .example-prompts {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .example-prompt {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .example-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #ef4444;
+      margin-bottom: 0.5rem;
+    }
+    
+    .example-label.good {
+      color: var(--chapter-color);
+    }
+    
+    .example-text {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    .portfolio-section {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    
+    .portfolio-checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    @media (max-width: 600px) {
+      .portfolio-checklist {
+        grid-template-columns: 1fr;
       }
-
-      .story-block::before {
-        color: var(--chapter-color);
-      }
+    }
+    
+    .portfolio-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+    }
+    
+    .portfolio-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--chapter-color);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    
+    .portfolio-item.completed .portfolio-checkbox {
+      background: var(--chapter-color);
+      color: white;
+    }
+    
+    .continue-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+    }
+    
+    .continue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: var(--chapter-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+    
+    .continue-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  
+  <!-- Week Header -->
+  <header class="lesson-header">
+    <div class="lesson-header-content">
+      <div class="lesson-badge">Week 1</div>
+      <h1 class="lesson-title">ChatGPT Mastery</h1>
+      <p class="lesson-subtitle">Turn words into money with AI-powered content creation</p>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <div class="lesson-container">
+    
+    <!-- Section 1: What is ChatGPT? -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🤖</span>
+        What is ChatGPT?
+      </h2>
       
-      /* Activity cards */
-      .activity-card {
-        background: var(--bg-tertiary);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      
-      .activity-card h4 {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--chapter-color);
-        margin-bottom: 1rem;
-      }
-      
-      .activity-steps {
-        list-style: none;
-        padding: 0;
-        counter-reset: step;
-      }
-      
-      .activity-steps li {
-        counter-increment: step;
-        padding: 0.75rem 0;
-        padding-left: 2.5rem;
-        position: relative;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      
-      .activity-steps li:last-child {
-        border-bottom: none;
-      }
-      
-      .activity-steps li::before {
-        content: counter(step);
-        position: absolute;
-        left: 0;
-        width: 1.75rem;
-        height: 1.75rem;
-        background: var(--chapter-color);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 0.85rem;
-      }
-      
-      /* Prompt examples */
-      .prompt-example {
-        background: #1a1a2e;
-        border: 1px solid rgba(76, 175, 80, 0.3);
-        border-radius: var(--radius-md);
-        padding: 1.25rem;
-        margin: 1rem 0;
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        position: relative;
-      }
-      
-      .prompt-example::before {
-        content: 'PROMPT';
-        position: absolute;
-        top: -10px;
-        left: 12px;
-        background: #1a1a2e;
-        padding: 0 0.5rem;
-        font-size: 0.7rem;
-        color: var(--chapter-color);
-        font-weight: 600;
-        letter-spacing: 0.1em;
-      }
-      
-      .prompt-bad {
-        border-color: rgba(244, 67, 54, 0.3);
-      }
-      
-      .prompt-bad::before {
-        content: '❌ BAD PROMPT';
-        color: #f44336;
-      }
-      
-      .prompt-good {
-        border-color: rgba(76, 175, 80, 0.5);
-      }
-      
-      .prompt-good::before {
-        content: '✅ GOOD PROMPT';
-        color: #4CAF50;
-      }
-      
-      /* CLEAR framework */
-      .framework-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
-        margin: 2rem 0;
-      }
-      
-      @media (max-width: 900px) {
-        .framework-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      
-      .framework-item {
-        background: var(--bg-tertiary);
-        border-radius: var(--radius-md);
-        padding: 1.25rem;
-        text-align: center;
-        border-top: 3px solid var(--chapter-color);
-      }
-      
-      .framework-item .letter {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--chapter-color);
-        margin-bottom: 0.5rem;
-      }
-      
-      .framework-item .word {
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-      
-      .framework-item .desc {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-      }
-      
-      /* Service pricing card */
-      .service-card {
-        background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border: 1px solid rgba(76, 175, 80, 0.2);
-      }
-      
-      .service-card h4 {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      .service-card .price {
-        color: var(--chapter-color);
-        font-weight: 700;
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
-      }
-      
-      .service-card .includes {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-      }
-    </style>
-
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="lesson-nav">
-      <a href="../../course/endless-opportunities.html" class="nav-back">
-        ← Course Overview
-      </a>
-      <div class="nav-progress">
-        <span class="nav-chapter">Week 1 of 4</span>
-      </div>
-      <div class="nav-actions">
-        <a href="../../dashboard/index.html" class="nav-dashboard">Dashboard</a>
-      </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="chapter-badge">Week 1</div>
-        <h1 class="hero-title">
-          <span class="chapter-icon">✍️</span>
-          AI Foundations & ChatGPT Mastery
-        </h1>
-        <p class="hero-subtitle">
-          Understanding AI & Making Money with Text
+      <div class="section-content">
+        <p>
+          <strong>ChatGPT</strong> is an AI that can write, answer questions, and help you create 
+          content faster than you ever imagined. It's like having a super-smart writing assistant 
+          that never sleeps and can work on anything from emails to entire blog posts.
         </p>
+        
+        <p>
+          But here's what most people don't understand: <em>ChatGPT is only as good as the 
+          instructions you give it</em>. The secret to getting incredible results? 
+          <strong>Prompt Engineering</strong> — the art of asking the right questions 
+          the right way.
+        </p>
+        
+        <div class="callout callout-insight">
+          <div class="callout-title">💡 The Big Secret</div>
+          <p>
+            Anyone can type into ChatGPT. But the people who make money with it know 
+            <strong>how to prompt effectively</strong>. By the end of this week, you'll 
+            write prompts that produce professional-quality content in seconds.
+          </p>
+        </div>
       </div>
     </section>
-
-    <!-- Lesson Content -->
-    <main class="lesson-main">
-      <article class="lesson-content">
+    
+    <!-- Section 2: The Prompt Formula -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📝</span>
+        The Perfect Prompt Formula
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Every great prompt has 4 parts. Master this formula, and you'll get consistently 
+          amazing results:
+        </p>
         
-        <!-- Introduction -->
-        <section class="content-section" id="introduction">
-          <h2>🎯 This Week's Mission</h2>
+        <div class="prompt-formula">
+          <div class="formula-parts">
+            <div class="formula-part">
+              <div class="formula-part-label">Role</div>
+              <div class="formula-part-value">Who is the AI?</div>
+            </div>
+            <span class="formula-plus">+</span>
+            <div class="formula-part">
+              <div class="formula-part-label">Task</div>
+              <div class="formula-part-value">What to do?</div>
+            </div>
+            <span class="formula-plus">+</span>
+            <div class="formula-part">
+              <div class="formula-part-label">Context</div>
+              <div class="formula-part-value">Background info</div>
+            </div>
+            <span class="formula-plus">+</span>
+            <div class="formula-part">
+              <div class="formula-part-label">Format</div>
+              <div class="formula-part-value">How to deliver?</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="diagram-container">
+          <pre class="mermaid">
+flowchart TD
+    A[🎭 Role] --> B[Define expertise]
+    B --> C["You are a professional copywriter..."]
+    
+    D[📋 Task] --> E[Clear instruction]
+    E --> F["Write 5 Instagram captions for..."]
+    
+    G[📚 Context] --> H[Background details]
+    H --> I["The business is a local bakery..."]
+    
+    J[📐 Format] --> K[Structure output]
+    K --> L["Include emojis, hashtags, 150 chars max"]
+    
+    style A fill:#1a1a2e,stroke:#10B981
+    style D fill:#1a1a2e,stroke:#10B981
+    style G fill:#1a1a2e,stroke:#10B981
+    style J fill:#1a1a2e,stroke:#10B981
+          </pre>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">❌ Bad Prompt vs. ✅ Good Prompt</h3>
+        
+        <div class="example-prompts">
+          <div class="example-prompt">
+            <div class="example-label">❌ Bad Prompt</div>
+            <div class="example-text">
+              "Write a social media post for my client"
+            </div>
+          </div>
           
-          <div class="story-block">
-            <p>
-              <strong>Welcome to Week 1!</strong> This week, you'll go from knowing nothing about AI 
-              to being able to use ChatGPT like a pro. More importantly, you'll learn how to 
-              turn this skill into real money through content creation services.
-            </p>
+          <div class="example-prompt">
+            <div class="example-label good">✅ Good Prompt</div>
+            <div class="example-text">
+              "You are an expert social media manager specializing in local businesses.
+              
+Write an engaging Instagram caption for a family-owned pizza restaurant called 'Mama Rosa's' that's celebrating their 25th anniversary. 
+
+The tone should be warm and nostalgic, mentioning their signature deep-dish pizza. Include a call-to-action to visit this weekend, relevant emojis, and 5 hashtags. Keep it under 200 characters."
+            </div>
           </div>
-
-          <h3>By the end of this week, you will:</h3>
-          <ul>
-            <li>✅ Understand what AI is and how it works (basics)</li>
-            <li>✅ Master ChatGPT for professional content creation</li>
-            <li>✅ Write prompts that get amazing results every time</li>
-            <li>✅ Create 3 portfolio pieces you can show to clients</li>
-            <li>✅ Identify 5 potential clients in your network</li>
-          </ul>
-        </section>
-
-        <!-- What is AI? -->
-        <section class="content-section" id="what-is-ai">
-          <h2>🤖 What is AI, Really?</h2>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 3: Freelance Services -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">💼</span>
+        Services You Can Offer This Week
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          You don't need years of experience to offer these services. With ChatGPT and 
+          good prompts, you can deliver professional quality today.
+        </p>
+        
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <div class="service-title">Social Media Posts</div>
+            <div class="service-price">$25-50 per week</div>
+            <div class="service-desc">5-7 posts with captions, hashtags, and engagement hooks</div>
+          </div>
           
+          <div class="service-card">
+            <div class="service-icon">📧</div>
+            <div class="service-title">Email Sequences</div>
+            <div class="service-price">$50-100 per sequence</div>
+            <div class="service-desc">3-5 welcome or promotional emails for businesses</div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">📝</div>
+            <div class="service-title">Blog Posts</div>
+            <div class="service-price">$50-150 per post</div>
+            <div class="service-desc">800-1500 word SEO-optimized articles</div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">📄</div>
+            <div class="service-title">Product Descriptions</div>
+            <div class="service-price">$5-15 each</div>
+            <div class="service-desc">Compelling copy for online stores</div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">📋</div>
+            <div class="service-title">Business Bios</div>
+            <div class="service-price">$25-50 each</div>
+            <div class="service-desc">Professional bios for LinkedIn, websites</div>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">🎯</div>
+            <div class="service-title">Ad Copy</div>
+            <div class="service-price">$30-75 per set</div>
+            <div class="service-desc">Headlines and copy for Facebook/Google ads</div>
+          </div>
+        </div>
+        
+        <div class="callout callout-tip">
+          <div class="callout-title">🎯 Pro Tip: Start with Social Media</div>
           <p>
-            Let's cut through the hype and jargon. <strong>Artificial Intelligence (AI)</strong> 
-            is simply software that can learn from examples and make predictions or generate content.
+            Social media posts are the easiest service to start with. Local businesses 
+            ALWAYS need content, and you can create a week's worth in 30 minutes. 
+            That's $25-50 for half an hour of work!
           </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 4: Hands-On Practice -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🔬</span>
+        Hands-On Practice
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Let's practice the prompt formula. For each exercise, write your prompt using 
+          <strong>Role + Task + Context + Format</strong>.
+        </p>
+        
+        <div 
+          class="demo-container prompt-lab"
+          data-activity="demo-week1-prompt"
+          data-type="demo"
+          data-points="15"
+        >
+          <h3 style="margin-bottom: 1rem;">🧪 Prompt Lab: Social Media Post</h3>
+          
+          <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+            <strong>Scenario:</strong> A local coffee shop called "Bean There" wants 3 Instagram 
+            posts promoting their new fall pumpkin spice latte. Write the prompt you would use:
+          </p>
+          
+          <textarea class="prompt-input" id="prompt-exercise" placeholder="Write your prompt here using the formula...
 
-          <div class="story-block">
-            <p>
-              <strong>Think of it like this:</strong> AI is like a really smart autocomplete. 
-              When you text your friends, your phone suggests the next word. ChatGPT does 
-              the same thing, but it's been trained on so much text that it can write entire 
-              paragraphs, articles, and even code.
+Role: You are...
+Task: Write...
+Context: The business is...
+Format: Include..."></textarea>
+          
+          <div class="prompt-output" id="prompt-result">
+            <p style="color: var(--text-muted); font-style: italic;">
+              Write your prompt above, then click "Test Prompt" to see an example response.
             </p>
           </div>
-
-          <h3>AI You Already Use Every Day</h3>
-          <ul>
-            <li>📱 <strong>Autocorrect</strong> - predicts what you meant to type</li>
-            <li>🎵 <strong>Spotify/TikTok</strong> - recommends content you'll like</li>
-            <li>📸 <strong>Face filters</strong> - recognizes your face in real-time</li>
-            <li>🗣️ <strong>Siri/Alexa</strong> - understands your voice commands</li>
-          </ul>
-
-          <h3>Why AI is Your Superpower</h3>
-          <p>
-            Here's the truth: AI won't replace you. But <strong>people who know how to use AI 
-            will replace people who don't</strong>. By learning these tools now, you're giving 
-            yourself a massive advantage over everyone else.
-          </p>
-
-          <div class="mermaid">
-flowchart LR
-    A[🧠 Your Ideas] --> B[🤖 AI Tools]
-    B --> C[📝 Professional Content]
-    C --> D[💵 Paid Services]
-    D --> E[📈 More Clients]
-    E --> A
-          </div>
-        </section>
-
-        <!-- ChatGPT Setup -->
-        <section class="content-section" id="chatgpt-setup">
-          <h2>💬 Setting Up ChatGPT</h2>
-
-          <div class="activity-card">
-            <h4>🛠️ Activity: Create Your ChatGPT Account</h4>
-            <ol class="activity-steps">
-              <li>Go to <a href="https://chat.openai.com" target="_blank">chat.openai.com</a></li>
-              <li>Click "Sign Up" and create a free account</li>
-              <li>Verify your email address</li>
-              <li>Start a new chat and say "Hello!"</li>
-              <li>Ask it: "What can you help me with?"</li>
-            </ol>
-          </div>
-
-          <h3>Your First Conversation</h3>
-          <p>
-            ChatGPT works like a conversation. You type something, it responds. 
-            But the <strong>quality of your output depends on the quality of your input</strong>. 
-            This is where prompt engineering comes in.
-          </p>
-        </section>
-
-        <!-- Prompt Engineering -->
-        <section class="content-section" id="prompt-engineering">
-          <h2>🎯 Prompt Engineering 101</h2>
-
-          <p>
-            <strong>Prompt engineering</strong> is the art of writing instructions that get AI 
-            to give you exactly what you want. It's the #1 skill that separates beginners 
-            from professionals.
-          </p>
-
-          <h3>Bad Prompts vs. Good Prompts</h3>
-
-          <div class="prompt-example prompt-bad">
-            Write something about coffee
-          </div>
-
-          <p>This is too vague. You'll get a generic response that's not useful for anything.</p>
-
-          <div class="prompt-example prompt-good">
-            Write a 150-word Instagram caption for a local coffee shop called "Morning Buzz" 
-            in Grand Rapids. The tone should be friendly and energetic. Include 3-5 relevant 
-            hashtags. The post is about their new fall pumpkin spice latte.
-          </div>
-
-          <p>This is specific, actionable, and gives ChatGPT everything it needs to create something you can actually use.</p>
-
-          <h3>The CLEAR Framework</h3>
-          <p>Use this framework every time you write a prompt:</p>
-
-          <div class="framework-grid">
-            <div class="framework-item">
-              <div class="letter">C</div>
-              <div class="word">Context</div>
-              <div class="desc">Who are you? What's the situation?</div>
-            </div>
-            <div class="framework-item">
-              <div class="letter">L</div>
-              <div class="word">Length</div>
-              <div class="desc">How long should the output be?</div>
-            </div>
-            <div class="framework-item">
-              <div class="letter">E</div>
-              <div class="word">Examples</div>
-              <div class="desc">Show what you want</div>
-            </div>
-            <div class="framework-item">
-              <div class="letter">A</div>
-              <div class="word">Audience</div>
-              <div class="desc">Who is this for?</div>
-            </div>
-            <div class="framework-item">
-              <div class="letter">R</div>
-              <div class="word">Result</div>
-              <div class="desc">What format do you need?</div>
-            </div>
-          </div>
-
-          <div class="activity-card">
-            <h4>🎮 Activity: Prompt Challenge</h4>
-            <p>Try these prompts and see the difference:</p>
-            <ol class="activity-steps">
-              <li>Ask ChatGPT: "Write a tweet" - note the result</li>
-              <li>Now try: "Write a tweet for a fitness coach targeting busy moms. It should be motivational, under 280 characters, and include a call-to-action to join a free workout challenge."</li>
-              <li>Compare the two outputs. Which one could you actually use?</li>
-            </ol>
-          </div>
-        </section>
-
-        <!-- Content Creation Services -->
-        <section class="content-section" id="services">
-          <h2>💼 Services You Can Offer This Week</h2>
-
-          <p>
-            Now let's get to the money-making part! Here are three services you can 
-            start offering right now with just ChatGPT:
-          </p>
-
-          <div class="service-card">
-            <h4>📱 Service #1: Social Media Content</h4>
-            <div class="price">$50-150 per week of content</div>
-            <div class="includes">
-              <strong>What you deliver:</strong> 7 days of posts (captions + hashtags) 
-              for platforms like Instagram, Facebook, or LinkedIn. Local businesses 
-              NEED this but don't have time to create it themselves.
-            </div>
-          </div>
-
-          <div class="service-card">
-            <h4>✏️ Service #2: Blog Writing</h4>
-            <div class="price">$25-75 per 500-word article</div>
-            <div class="includes">
-              <strong>What you deliver:</strong> SEO-friendly blog posts that help 
-              businesses show up in Google searches. Every business needs content 
-              but hates writing.
-            </div>
-          </div>
-
-          <div class="service-card">
-            <h4>📧 Service #3: Email Newsletters</h4>
-            <div class="price">$30-100 per newsletter</div>
-            <div class="includes">
-              <strong>What you deliver:</strong> Weekly or monthly newsletters that 
-              keep customers engaged. Include subject line, body copy, and call-to-action.
-            </div>
-          </div>
-
-          <h3>Demo: Create Social Media Content in 10 Minutes</h3>
-
-          <div class="prompt-example prompt-good">
-            I'm creating a week of Instagram content for a local bakery called "Sweet Dreams" 
-            in Grand Rapids, MI. 
-
-            Create 7 Instagram posts (one for each day of the week) with:
-            - A compelling caption (50-100 words each)
-            - 5-7 relevant hashtags per post
-            - The theme for each day (Mix of: product highlights, behind-the-scenes, 
-              customer appreciation, local community, weekend specials)
-
-            Tone: Warm, friendly, a little bit playful
-            Audience: Local families and young professionals
-          </div>
-
-          <p>
-            <strong>Try this yourself!</strong> Copy this prompt, change the business name 
-            and details, and see what ChatGPT creates. This is exactly what you'll do for 
-            paying clients.
-          </p>
-        </section>
-
-        <!-- Finding Clients -->
-        <section class="content-section" id="finding-clients">
-          <h2>🎯 Finding Your First Clients</h2>
-
-          <p>
-            The best clients are already in your network. Think about:
-          </p>
-
-          <ul>
-            <li>👨‍👩‍👧 <strong>Family members</strong> who own businesses</li>
-            <li>🏪 <strong>Local shops</strong> you visit regularly</li>
-            <li>⛪ <strong>Churches or community organizations</strong></li>
-            <li>🏫 <strong>School clubs or sports teams</strong></li>
-            <li>💇 <strong>Your barber, hairstylist, or local restaurant</strong></li>
-          </ul>
-
-          <div class="activity-card">
-            <h4>📝 Activity: Client Prospecting</h4>
-            <ol class="activity-steps">
-              <li>Write down 10 businesses or people you know personally</li>
-              <li>Circle the 5 who might need content help</li>
-              <li>For each one, note what service you could offer them</li>
-              <li>Draft a simple message to reach out this week</li>
-            </ol>
-          </div>
-
-          <h3>Sample Outreach Message</h3>
-          <div class="prompt-example">
-            Hey [Name]! I'm learning some new AI tools for creating social media content, 
-            and I'm looking for a few local businesses to practice with. Would you be 
-            interested in getting a free week of Instagram posts for [Business Name]? 
-            I'd love to help and get some feedback. Let me know!
-          </div>
-
-          <p>
-            <strong>Pro tip:</strong> Offer your first project for free or cheap to build 
-            your portfolio. Once you have proof of your work, you can charge full price.
-          </p>
-        </section>
-
-        <!-- Week 1 Project -->
-        <section class="content-section" id="project">
-          <h2>🔨 Week 1 Project: Content Creation Portfolio</h2>
-
-          <div class="story-block">
-            <p>
-              <strong>Your mission:</strong> Create 3 portfolio pieces that prove you can 
-              deliver professional content. These will be your samples when pitching to 
-              real clients.
-            </p>
-          </div>
-
-          <h3>Deliverables</h3>
-          <ol>
-            <li>
-              <strong>Social Media Package:</strong> 7-day content calendar for a local 
-              business (real or practice)
-            </li>
-            <li>
-              <strong>Blog Post:</strong> 500-word article on a topic you choose
-            </li>
-            <li>
-              <strong>Business Bio:</strong> Professional "About Us" section for a business
-            </li>
-          </ol>
-
-          <h3>Submission</h3>
-          <p>
-            Complete your project before the next session. Be ready to share your 
-            best piece with the group!
-          </p>
-        </section>
-
-        <!-- Homework -->
-        <section class="content-section" id="homework">
-          <h2>📚 Homework & Practice</h2>
-
-          <h3>Must Do (Required)</h3>
-          <ul>
-            <li>✅ Complete Week 1 project (3 portfolio pieces)</li>
-            <li>✅ Set up your ChatGPT account</li>
-            <li>✅ Practice the CLEAR framework with 10 different prompts</li>
-            <li>✅ Identify 5 potential clients in your network</li>
-            <li>✅ Reach out to at least 1 person about doing a practice project</li>
-          </ul>
-
-          <h3>Extra Credit (Optional but Awesome)</h3>
-          <ul>
-            <li>🌟 Try the 100 Prompts Challenge - test ChatGPT's limits</li>
-            <li>🌟 Interview a local business owner about their content needs</li>
-            <li>🌟 Create content for a real client (even if free)</li>
-            <li>🌟 Help a classmate with their project</li>
-          </ul>
-        </section>
-
-        <!-- Key Takeaways -->
-        <section class="content-section" id="takeaways">
-          <h2>🎓 Key Takeaways</h2>
-
-          <ol>
-            <li><strong>AI is a tool</strong> - it amplifies your skills, not replaces them</li>
-            <li><strong>Prompts matter</strong> - better input = better output</li>
-            <li><strong>Use the CLEAR framework</strong> - Context, Length, Examples, Audience, Result</li>
-            <li><strong>Start with what you know</strong> - your network is full of potential clients</li>
-            <li><strong>Build your portfolio</strong> - proof of work is everything</li>
-          </ol>
-
-          <div class="story-block">
-            <p>
-              <strong>Remember:</strong> You're not just learning AI. You're building a business! 
-              The skills you learn this week are worth real money. Let's get it! 💼✨
-            </p>
-          </div>
-        </section>
-
-        <!-- Navigation -->
-        <div class="lesson-navigation">
-          <a href="../../course/endless-opportunities.html" class="nav-prev">
-            ← Course Overview
-          </a>
-          <a href="../week2-visual/" class="nav-next">
-            Week 2: Visual AI →
-          </a>
+          
+          <button class="quiz-btn" onclick="testPrompt()" style="margin-top: 1rem; background: var(--chapter-gradient);">
+            Test Prompt
+          </button>
         </div>
-
-      </article>
-
-      <!-- Sidebar -->
-      <aside class="lesson-sidebar">
-        <div class="sidebar-section">
-          <h3>📚 In This Lesson</h3>
-          <ul class="toc-list">
-            <li><a href="#introduction">This Week's Mission</a></li>
-            <li><a href="#what-is-ai">What is AI?</a></li>
-            <li><a href="#chatgpt-setup">Setting Up ChatGPT</a></li>
-            <li><a href="#prompt-engineering">Prompt Engineering</a></li>
-            <li><a href="#services">Services to Offer</a></li>
-            <li><a href="#finding-clients">Finding Clients</a></li>
-            <li><a href="#project">Week 1 Project</a></li>
-            <li><a href="#homework">Homework</a></li>
-            <li><a href="#takeaways">Key Takeaways</a></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-section">
-          <h3>🔗 Resources</h3>
-          <ul class="resource-list">
-            <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
-            <li><a href="https://claude.ai" target="_blank">Claude</a></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-section">
-          <h3>✅ Progress</h3>
-          <div class="progress-tracker" id="progress-tracker">
-            <div class="progress-bar">
-              <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        
+        <div 
+          class="quiz-container"
+          data-activity="quiz-week1-formula"
+          data-type="quiz"
+          data-points="10"
+          data-answer="B"
+        >
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3 class="quiz-title">Knowledge Check</h3>
+          </div>
+          <p class="quiz-question">
+            What are the 4 parts of the Perfect Prompt Formula?
+          </p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-value="A">
+              <span class="quiz-option-letter">A</span>
+              <span>Subject, Verb, Object, Adjective</span>
             </div>
-            <span class="progress-text" id="progress-text">0% complete</span>
+            <div class="quiz-option" data-value="B">
+              <span class="quiz-option-letter">B</span>
+              <span>Role, Task, Context, Format</span>
+            </div>
+            <div class="quiz-option" data-value="C">
+              <span class="quiz-option-letter">C</span>
+              <span>Who, What, When, Where</span>
+            </div>
+            <div class="quiz-option" data-value="D">
+              <span class="quiz-option-letter">D</span>
+              <span>Input, Process, Output, Review</span>
+            </div>
+          </div>
+          <div class="quiz-feedback"
+            data-correct-msg="Correct! Role + Task + Context + Format = Perfect prompts every time."
+            data-incorrect-msg="Not quite! Remember: Role (who is AI), Task (what to do), Context (background), Format (how to deliver)."
+          ></div>
+          <button class="quiz-btn" disabled>Check Answer</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 5: Portfolio Project -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📁</span>
+        Week 1 Portfolio Project
+      </h2>
+      
+      <div class="section-content">
+        <div class="portfolio-section">
+          <h3 style="margin-bottom: 1rem;">🎯 Create Your First Portfolio Pieces</h3>
+          <p>
+            By the end of this week, you'll have created ALL of the following. These become 
+            real samples you can show potential clients!
+          </p>
+          
+          <div class="portfolio-checklist">
+            <div class="portfolio-item" data-item="social">
+              <div class="portfolio-checkbox">✓</div>
+              <span>7 social media posts for a made-up business</span>
+            </div>
+            <div class="portfolio-item" data-item="email">
+              <div class="portfolio-checkbox">✓</div>
+              <span>3-email welcome sequence</span>
+            </div>
+            <div class="portfolio-item" data-item="blog">
+              <div class="portfolio-checkbox">✓</div>
+              <span>1 blog post (800+ words)</span>
+            </div>
+            <div class="portfolio-item" data-item="products">
+              <div class="portfolio-checkbox">✓</div>
+              <span>5 product descriptions</span>
+            </div>
+            <div class="portfolio-item" data-item="bio">
+              <div class="portfolio-checkbox">✓</div>
+              <span>2 professional bios</span>
+            </div>
+            <div class="portfolio-item" data-item="ads">
+              <div class="portfolio-checkbox">✓</div>
+              <span>3 ad copy variations</span>
+            </div>
           </div>
         </div>
-      </aside>
-    </main>
-
-    <!-- Scripts -->
-    <script src="../../shared/js/firebase-config.js"></script>
-    <script src="../../shared/js/auth.js"></script>
-    <script src="../../shared/js/data-service.js"></script>
-    <script src="../../shared/js/rbac.js"></script>
-    <script src="../../shared/js/route-guard.js"></script>
-    <script src="../../shared/js/progress-tracker.js"></script>
-    <script src="../../shared/js/lesson.js"></script>
-
-    <script>
-      // Initialize Mermaid
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: 'dark',
-        themeVariables: {
-          primaryColor: '#4CAF50',
-          primaryTextColor: '#fff',
-          primaryBorderColor: '#2E7D32',
-          lineColor: '#4CAF50',
-          secondaryColor: '#1a1a2e',
-          tertiaryColor: '#16161a'
-        }
+        
+        <div class="callout callout-success">
+          <div class="callout-title">🚀 Why This Matters</div>
+          <p>
+            When you approach a local business next week, you won't be saying "I can write 
+            for you." You'll say "Here's what I've already created" and show them your 
+            portfolio. That's the difference between getting hired and getting ignored.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 6: Homework -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📚</span>
+        Homework
+      </h2>
+      
+      <div class="section-content">
+        <ol style="padding-left: 1.5rem; line-height: 2;">
+          <li><strong>Create a ChatGPT account</strong> if you don't have one (free tier is fine)</li>
+          <li><strong>Practice 10 prompts</strong> using the formula — screenshot your best results</li>
+          <li><strong>Complete 3 portfolio pieces</strong> from the checklist above</li>
+          <li><strong>Find 3 local businesses</strong> in your area that might need content help</li>
+          <li><strong>Write down</strong> what services you'd feel comfortable offering today</li>
+        </ol>
+        
+        <div class="callout callout-warning">
+          <div class="callout-title">⏰ Time Commitment</div>
+          <p>
+            Plan for about <strong>2-3 hours</strong> of practice this week outside of class. 
+            The more prompts you write, the better you'll get!
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Continue Section -->
+    <section class="continue-section">
+      <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
+        Ready for Week 2?
+      </h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Next up: Visual AI. Learn to create logos, graphics, thumbnails, and videos 
+        that look like they were made by professional designers.
+      </p>
+      <a href="../week2-visual/" class="continue-btn">
+        Continue to Week 2: Visual AI →
+      </a>
+    </section>
+    
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <a class="nav-btn" href="../week0-intro/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      ← Introduction
+    </a>
+    <a class="nav-btn primary" href="../week2-visual/">
+      Week 2: Visual AI →
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </nav>
+  
+  <!-- Scripts -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  <script src="../../shared/js/activity-tracker.js"></script>
+  
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#10B981',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#059669',
+        lineColor: '#10B981',
+        secondaryColor: '#1a1a2e'
+      }
+    });
+    
+    // Test prompt function
+    function testPrompt() {
+      const input = document.getElementById('prompt-exercise').value;
+      const output = document.getElementById('prompt-result');
+      
+      if (input.length < 50) {
+        output.innerHTML = `
+          <p style="color: #ef4444;">Your prompt seems short. Try adding more detail using the formula:</p>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-muted);">
+            <li>Role: Who is the AI?</li>
+            <li>Task: What should it create?</li>
+            <li>Context: Background about the business</li>
+            <li>Format: How should the output look?</li>
+          </ul>
+        `;
+        return;
+      }
+      
+      // Check for formula parts
+      const hasRole = input.toLowerCase().includes('you are') || input.toLowerCase().includes('act as');
+      const hasFormat = input.toLowerCase().includes('include') || input.toLowerCase().includes('format') || input.toLowerCase().includes('hashtag');
+      
+      let feedback = '';
+      if (hasRole && hasFormat) {
+        feedback = `
+          <p style="color: #10B981; font-weight: 600;">✅ Great prompt structure!</p>
+          <p style="margin-top: 1rem;">Here's what ChatGPT might generate:</p>
+          <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-tertiary); border-radius: 8px;">
+            <p><strong>Post 1:</strong> 🍂 Fall is HERE and so is our Pumpkin Spice Latte! ☕ Warm up with the perfect blend of autumn spices and smooth espresso. Available now at Bean There! #PumpkinSpice #FallVibes #LocalCoffee #BeanThere #PSL</p>
+            <p style="margin-top: 1rem;"><strong>Post 2:</strong> POV: You take your first sip of our new Pumpkin Spice Latte 🎃✨ Pure autumn magic in a cup. Who's trying it this week? Tag a friend who NEEDS this! #CoffeeLovers #FallFlavor #PumpkinSeason</p>
+          </div>
+        `;
+      } else {
+        feedback = `
+          <p style="color: #f59e0b;">🔶 Good start, but try adding:</p>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+            ${!hasRole ? '<li>A role for the AI (e.g., "You are a social media expert...")</li>' : ''}
+            ${!hasFormat ? '<li>Format specifications (e.g., "Include emojis, hashtags, keep under 150 chars...")</li>' : ''}
+          </ul>
+        `;
+      }
+      
+      output.innerHTML = feedback;
+    }
+    
+    // Portfolio item toggle
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('completed');
       });
-
-      // Course and lesson info
-      const COURSE_ID = 'endless-opportunities';
-      const LESSON_ID = 'week1-chatgpt';
-
-      // Initialize
-      document.addEventListener('DOMContentLoaded', async () => {
-        if (!window.FirebaseApp.init()) {
-          console.error('Firebase initialization failed');
-          return;
-        }
-
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Firebase init
+      if (window.FirebaseApp.init()) {
         window.AuthService.init();
         
-        // Wait for auth then check access
         const user = await window.AuthService.waitForAuthState();
         
         if (!user) {
@@ -670,22 +755,26 @@ flowchart LR
           window.location.href = '../../auth/login.html';
           return;
         }
-
+        
         // Check RBAC access
         if (window.RBACService) {
-          const canAccess = await window.RBACService.canAccessCourse(COURSE_ID);
+          const canAccess = await window.RBACService.canAccessCourse('endless-opportunities');
           if (!canAccess) {
             window.RBACService.handleAccessDenied('organization');
             return;
           }
         }
-
-        // Initialize progress tracking if available
+        
+        // Initialize trackers
         if (window.ProgressTracker) {
-          window.ProgressTracker.init(COURSE_ID, LESSON_ID);
+          window.ProgressTracker.init('endless-opportunities', 'week1-chatgpt');
         }
-      });
-    </script>
-  </body>
+        
+        if (window.ActivityTracker) {
+          window.ActivityTracker.init('endless-opportunities', 'week1-chatgpt');
+        }
+      }
+    });
+  </script>
+</body>
 </html>
-

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 2: Visual AI | AI Freelancing Bootcamp</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <style>
+    :root {
+      --chapter-color: #8B5CF6;
+      --chapter-gradient: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    }
+    
+    .tool-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 900px) {
+      .tool-showcase {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .tool-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .tool-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .tool-card:hover {
+      border-color: var(--chapter-color);
+      transform: translateY(-5px);
+    }
+    
+    .tool-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tool-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tool-purpose {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    
+    .tool-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-sm);
+      color: var(--chapter-color);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .tool-link:hover {
+      background: rgba(139, 92, 246, 0.2);
+    }
+    
+    .visual-services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .visual-services {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .visual-service {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border-left: 4px solid var(--chapter-color);
+    }
+    
+    .visual-service h4 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    
+    .visual-service h4 span:last-child {
+      color: var(--chapter-color);
+      font-size: 0.9rem;
+    }
+    
+    .visual-service p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .visual-service ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    .visual-service li {
+      padding: 0.25rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    
+    .visual-service li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--chapter-color);
+    }
+    
+    .prompt-examples {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .prompt-example {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .prompt-example-header {
+      background: var(--bg-tertiary);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .prompt-example-body {
+      padding: 1rem;
+    }
+    
+    .prompt-example-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--chapter-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .prompt-example-text {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding: 1rem;
+      background: #0d0d14;
+      border-radius: var(--radius-md);
+    }
+    
+    .workflow-steps {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .workflow-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: var(--chapter-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .step-content h4 {
+      font-family: var(--font-display);
+      margin-bottom: 0.5rem;
+    }
+    
+    .step-content p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    
+    .continue-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+    }
+    
+    .continue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: var(--chapter-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+    }
+    
+    .continue-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  
+  <!-- Week Header -->
+  <header class="lesson-header" style="background: var(--chapter-gradient);">
+    <div class="lesson-header-content">
+      <div class="lesson-badge">Week 2</div>
+      <h1 class="lesson-title">Visual AI</h1>
+      <p class="lesson-subtitle">Create stunning graphics, logos, and videos like a pro designer</p>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <div class="lesson-container">
+    
+    <!-- Section 1: The Visual Advantage -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🎨</span>
+        The Visual Advantage
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Here's a fact that will change how you think about freelancing: 
+          <strong>humans process images 60,000 times faster than text</strong>. 
+          That's why businesses pay premium prices for visual content.
+        </p>
+        
+        <p>
+          Professional designers charge $50-500+ per hour. But with AI tools, you can 
+          create designs that compete with expensive agencies — and you can do it in minutes.
+        </p>
+        
+        <div class="callout callout-insight">
+          <div class="callout-title">💰 The Market Reality</div>
+          <p>
+            Small businesses need logos, social media graphics, thumbnails, and marketing 
+            materials. They can't afford expensive designers. That's YOUR opportunity.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 2: Your AI Design Toolkit -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🛠️</span>
+        Your AI Design Toolkit
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          You'll master these free/affordable tools this week:
+        </p>
+        
+        <div class="tool-showcase">
+          <div class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <div class="tool-name">DALL-E 3</div>
+            <div class="tool-purpose">Generate any image from text descriptions</div>
+            <a href="https://openai.com/dall-e-3" class="tool-link" target="_blank">Try It →</a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">🎭</div>
+            <div class="tool-name">Midjourney</div>
+            <div class="tool-purpose">Ultra-realistic and artistic images</div>
+            <a href="https://midjourney.com" class="tool-link" target="_blank">Try It →</a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">✨</div>
+            <div class="tool-name">Canva AI</div>
+            <div class="tool-purpose">Edit, enhance, and design layouts</div>
+            <a href="https://canva.com" class="tool-link" target="_blank">Try It →</a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">🎬</div>
+            <div class="tool-name">Runway ML</div>
+            <div class="tool-purpose">AI video generation and editing</div>
+            <a href="https://runwayml.com" class="tool-link" target="_blank">Try It →</a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">🔊</div>
+            <div class="tool-name">ElevenLabs</div>
+            <div class="tool-purpose">AI voiceovers for videos</div>
+            <a href="https://elevenlabs.io" class="tool-link" target="_blank">Try It →</a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">📐</div>
+            <div class="tool-name">Remove.bg</div>
+            <div class="tool-purpose">Remove backgrounds instantly</div>
+            <a href="https://remove.bg" class="tool-link" target="_blank">Try It →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 3: Visual Services -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">💼</span>
+        Visual Services You Can Offer
+      </h2>
+      
+      <div class="section-content">
+        <div class="visual-services">
+          <div class="visual-service">
+            <h4><span>🎨 Logo Design</span><span>$50-200</span></h4>
+            <p>Create unique logos for businesses using AI generation + refinement</p>
+            <ul>
+              <li>3-5 concept variations</li>
+              <li>Color and style adjustments</li>
+              <li>Transparent PNG files</li>
+            </ul>
+          </div>
+          
+          <div class="visual-service">
+            <h4><span>📱 Social Media Graphics</span><span>$25-75/week</span></h4>
+            <p>Eye-catching posts, stories, and covers for all platforms</p>
+            <ul>
+              <li>Quote cards and announcements</li>
+              <li>Promotional graphics</li>
+              <li>Story templates</li>
+            </ul>
+          </div>
+          
+          <div class="visual-service">
+            <h4><span>🖼️ Thumbnail Design</span><span>$15-40 each</span></h4>
+            <p>YouTube and social media thumbnails that get clicks</p>
+            <ul>
+              <li>Bold text overlays</li>
+              <li>Attention-grabbing compositions</li>
+              <li>Platform-optimized sizes</li>
+            </ul>
+          </div>
+          
+          <div class="visual-service">
+            <h4><span>🎬 Short Video Content</span><span>$50-150 per video</span></h4>
+            <p>AI-generated video clips and animations</p>
+            <ul>
+              <li>Product showcases</li>
+              <li>Social media reels</li>
+              <li>Animated logos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 4: Image Prompt Mastery -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📝</span>
+        Image Prompt Mastery
+      </h2>
+      
+      <div class="section-content">
+        <p>
+          Just like ChatGPT, AI image tools need specific prompts. Here's the formula:
+        </p>
+        
+        <div class="diagram-container">
+          <pre class="mermaid">
+flowchart LR
+    A[Subject] --> B[Style]
+    B --> C[Mood/Color]
+    C --> D[Details]
+    D --> E[Technical Specs]
+    
+    style A fill:#1a1a2e,stroke:#8B5CF6
+    style B fill:#1a1a2e,stroke:#8B5CF6
+    style C fill:#1a1a2e,stroke:#8B5CF6
+    style D fill:#1a1a2e,stroke:#8B5CF6
+    style E fill:#1a1a2e,stroke:#8B5CF6
+          </pre>
+        </div>
+        
+        <div class="prompt-examples">
+          <div class="prompt-example">
+            <div class="prompt-example-header">
+              <span>🏪</span> Logo for a Coffee Shop
+            </div>
+            <div class="prompt-example-body">
+              <div class="prompt-example-label">Prompt</div>
+              <div class="prompt-example-text">
+A minimalist logo for a coffee shop called "Morning Brew". Clean lines, modern aesthetic. Coffee cup icon with steam forming the letter M. Warm earth tones (brown, cream, gold). Professional vector style, simple enough to work on signage and business cards. White background, high contrast.
+              </div>
+            </div>
+          </div>
+          
+          <div class="prompt-example">
+            <div class="prompt-example-header">
+              <span>📱</span> Instagram Post for a Gym
+            </div>
+            <div class="prompt-example-body">
+              <div class="prompt-example-label">Prompt</div>
+              <div class="prompt-example-text">
+Dynamic fitness motivation image. Athletic person mid-workout, dramatic lighting with blue and orange color scheme. Energy and power vibes. High contrast, cinematic quality. Space at top for text overlay. 1:1 aspect ratio for Instagram. Modern, inspiring, high-energy mood.
+              </div>
+            </div>
+          </div>
+          
+          <div class="prompt-example">
+            <div class="prompt-example-header">
+              <span>🎥</span> YouTube Thumbnail
+            </div>
+            <div class="prompt-example-body">
+              <div class="prompt-example-label">Prompt</div>
+              <div class="prompt-example-text">
+Eye-catching YouTube thumbnail. Shocked/excited facial expression, bright yellow background. Bold graphics, slight 3D effect. Leave space on right side for large text. Vibrant, attention-grabbing, professional quality. 16:9 aspect ratio.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 5: Client Workflow -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">🔄</span>
+        Your Design Workflow
+      </h2>
+      
+      <div class="section-content">
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Gather Requirements</h4>
+              <p>Ask the client: What's the business? What style do they like? What will this be used for? Get reference images if possible.</p>
+            </div>
+          </div>
+          
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Generate Options</h4>
+              <p>Create 5-10 variations using AI tools. Experiment with different prompts and styles until you have strong options.</p>
+            </div>
+          </div>
+          
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Refine and Edit</h4>
+              <p>Use Canva or editing tools to polish your top 3 choices. Add text, adjust colors, ensure proper sizing.</p>
+            </div>
+          </div>
+          
+          <div class="workflow-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Present Options</h4>
+              <p>Show the client 2-3 refined options. Explain your design choices and ask which direction they prefer.</p>
+            </div>
+          </div>
+          
+          <div class="workflow-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h4>Revise and Deliver</h4>
+              <p>Make requested changes, export in required formats (PNG, JPG, transparent), and deliver final files.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Pro Tip: Underpromise, Overdeliver</div>
+          <p>
+            Tell clients you'll deliver 2-3 options, but give them 4-5. Include extra sizes they 
+            didn't ask for. This small extra effort leads to repeat business and referrals.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 6: Portfolio Project -->
+    <section class="lesson-section">
+      <h2 class="section-title">
+        <span class="title-icon">📁</span>
+        Week 2 Portfolio Project
+      </h2>
+      
+      <div class="section-content">
+        <div class="callout callout-success" style="border-color: var(--chapter-color);">
+          <div class="callout-title">🎯 Create a Complete Visual Package</div>
+          <p>
+            Pick a fictional business type (restaurant, fitness studio, online store) and create:
+          </p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li><strong>1 Logo</strong> with 3 variations (color, black, white)</li>
+            <li><strong>5 Social Media Posts</strong> for different platforms</li>
+            <li><strong>3 YouTube Thumbnails</strong> in different styles</li>
+            <li><strong>1 Short Video</strong> (15-30 seconds) using Runway or Canva</li>
+            <li><strong>A brand mood board</strong> showing colors, fonts, style</li>
+          </ul>
+        </div>
+        
+        <div class="callout callout-warning">
+          <div class="callout-title">⚠️ Important: Save Your Work</div>
+          <p>
+            Create a folder for each project. Save both the final images AND your prompts. 
+            This helps you recreate similar work faster for future clients.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Continue Section -->
+    <section class="continue-section">
+      <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
+        Ready for Week 3?
+      </h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Next up: Claude & Analysis. Learn to offer high-value research, strategy, 
+        and consulting services that command premium prices.
+      </p>
+      <a href="../week3-claude/" class="continue-btn">
+        Continue to Week 3: Claude & Analysis →
+      </a>
+    </section>
+    
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <a class="nav-btn" href="../week1-chatgpt/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      ← Week 1: ChatGPT
+    </a>
+    <a class="nav-btn primary" href="../week3-claude/">
+      Week 3: Claude →
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </nav>
+  
+  <!-- Scripts -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/data-service.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+  <script src="../../shared/js/progress-tracker.js"></script>
+  
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#8B5CF6',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#7C3AED',
+        lineColor: '#8B5CF6',
+        secondaryColor: '#1a1a2e'
+      }
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.FirebaseApp.init()) {
+        window.AuthService.init();
+        
+        const user = await window.AuthService.waitForAuthState();
+        
+        if (!user) {
+          window.AuthService.setRedirectUrl(window.location.href);
+          window.location.href = '../../auth/login.html';
+          return;
+        }
+        
+        if (window.RBACService) {
+          const canAccess = await window.RBACService.canAccessCourse('endless-opportunities');
+          if (!canAccess) {
+            window.RBACService.handleAccessDenied('organization');
+            return;
+          }
+        }
+        
+        if (window.ProgressTracker) {
+          window.ProgressTracker.init('endless-opportunities', 'week2-visual');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
