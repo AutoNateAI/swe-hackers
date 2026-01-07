@@ -33,6 +33,13 @@ const RBACService = {
   // Role hierarchy (higher index = more permissions)
   ROLE_HIERARCHY: ['user', 'enterprise', 'admin'],
 
+  // Super admin emails that automatically get admin role
+  // These are platform owners who should always have admin access
+  SUPER_ADMIN_EMAILS: [
+    'autonate.ai@gmail.com',
+    'autonateai@gmail.com'
+  ],
+
   // Course visibility types
   VISIBILITY: {
     PUBLIC: 'public',           // Anyone can see (logged in or not)
@@ -99,11 +106,20 @@ const RBACService = {
       }
 
       const userData = userDoc.data();
+      
+      // Check if user is a super admin by email
+      const isSuperAdmin = this.SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase());
+      
+      // If super admin but not marked as admin in DB, auto-update
+      if (isSuperAdmin && userData.role !== 'admin') {
+        await this._promoteSuperAdmin(user.uid);
+      }
+      
       const permissions = {
-        role: userData.role || 'user',
+        role: isSuperAdmin ? 'admin' : (userData.role || 'user'),
         organizationAccess: userData.organizationAccess || [],
         courseAccess: userData.courseAccess || [],
-        isAdmin: userData.role === 'admin',
+        isAdmin: isSuperAdmin || userData.role === 'admin',
         isEnterprise: userData.role === 'enterprise' || (userData.organizationAccess?.length > 0)
       };
 
@@ -138,18 +154,43 @@ const RBACService = {
     const db = window.FirebaseApp?.getDb();
     if (!db) return;
 
+    // Check if this is a super admin
+    const isSuperAdmin = this.SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase());
+
     try {
       await db.collection('users').doc(user.uid).set({
         uid: user.uid,
         email: user.email,
         displayName: user.displayName || user.email.split('@')[0],
-        role: 'user',
+        role: isSuperAdmin ? 'admin' : 'user',
         organizationAccess: [],
         courseAccess: [],
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       }, { merge: true });
+      
+      if (isSuperAdmin) {
+        console.log('🔐 Super admin account initialized:', user.email);
+      }
     } catch (error) {
       console.error('Error creating user document:', error);
+    }
+  },
+
+  /**
+   * Promote a super admin user to admin role in database
+   */
+  async _promoteSuperAdmin(userId) {
+    const db = window.FirebaseApp?.getDb();
+    if (!db) return;
+
+    try {
+      await db.collection('users').doc(userId).update({
+        role: 'admin',
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      console.log('🔐 Super admin promoted to admin role');
+    } catch (error) {
+      console.error('Error promoting super admin:', error);
     }
   },
 
