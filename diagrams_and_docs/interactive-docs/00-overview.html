@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Overview - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>SWE Hackers Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="00-overview.html" class="active">Overview</a>
+        <a href="01-service-layer.html">Services</a>
+        <a href="03-data-model.html">Data Model</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>System Overview</span>
+      </div>
+      <h1>🏗️ System Overview</h1>
+      <p>High-level architecture and how all components connect together</p>
+    </div>
+
+    <!-- System Context Diagram -->
+    <section class="section">
+      <h2>System Context</h2>
+      <p>The SWE Hackers platform follows a static-first architecture with Firebase powering the backend. All HTML is pre-rendered and served from GitHub Pages, with client-side JavaScript handling dynamic functionality.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">System Context Diagram</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="force">Physics</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="system-context" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Page Type</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Data Store</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot external"></div>
+            <span>External</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag nodes to rearrange</span>
+          <span>🔍 Hover for details</span>
+          <span>👆 Click to select</span>
+          <span>🔄 Double-click to reset view</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Dependency Graph -->
+    <section class="section">
+      <h2>Service Dependencies</h2>
+      <p>All shared services live in <code>/courses/shared/js/</code> and follow a clear dependency hierarchy. Services are initialized in order to ensure dependencies are available.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Service Dependency Graph</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchicalLR">Horizontal</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="service-dependencies" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #ab47bc;"></div>
+            <span>Config</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Auth Layer</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Core Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #42a5f5;"></div>
+            <span>UI Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-line solid"></div>
+            <span>Required</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-line dashed"></div>
+            <span>Optional</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag nodes to rearrange</span>
+          <span>🔍 Hover to see connections</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- High-Level Data Flow -->
+    <section class="section">
+      <h2>High-Level Data Flow</h2>
+      <p>Data flows from user interactions through services to Firestore and back. Understanding this flow is key to debugging and extending the platform.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Data Flow Architecture</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="data-flow" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot external"></div>
+            <span>User/Browser</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>UI Layer</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Service Layer</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Data Layer</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag nodes to rearrange</span>
+          <span>🔍 Hover to trace data flow</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Type Overview -->
+    <section class="section">
+      <h2>Page Types & Requirements</h2>
+      <p>Different page types have different authentication and service requirements. This diagram shows which services are loaded for each page type.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Page Type Service Matrix</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="concentric">Concentric</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="page-services" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Page Type</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-line solid"></div>
+            <span>Required</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-line dashed"></div>
+            <span>Optional</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Click a page type to see its services</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Principles -->
+    <section class="section">
+      <h2>Architecture Principles</h2>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Principle</th>
+              <th>Implementation</th>
+              <th>Trade-offs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Static-First</strong></td>
+              <td>All HTML pre-rendered; Firebase handles dynamic data</td>
+              <td>No SSR for SEO (mitigated with meta tags)</td>
+            </tr>
+            <tr>
+              <td><strong>Progressive Enhancement</strong></td>
+              <td>Pages work without JS, enhanced with interactivity</td>
+              <td>Some features require JS</td>
+            </tr>
+            <tr>
+              <td><strong>Shared Services</strong></td>
+              <td>Single JS files in /shared/js/ used across all pages</td>
+              <td>Pages load all services even if not needed</td>
+            </tr>
+            <tr>
+              <td><strong>Firestore-Centric</strong></td>
+              <td>All user data flows through Firestore with real-time sync</td>
+              <td>Vendor lock-in, client-side business logic</td>
+            </tr>
+            <tr>
+              <td><strong>Client-Side RBAC</strong></td>
+              <td>Role-based access control enforced in browser</td>
+              <td>UI can be bypassed (Firestore rules are the real gate)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="01-service-layer.html" class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>Service Layer Deep Dive</h3>
+          <p>Explore each service's API, state management, and internal logic.</p>
+        </a>
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>Understand the Firestore collection structure and relationships.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#system-context">System Context</a></li>
+      <li><a href="#service-dependencies">Service Dependencies</a></li>
+      <li><a href="#data-flow">Data Flow</a></li>
+      <li><a href="#page-services">Page Types</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // ============================================
+      // DIAGRAM 1: System Context
+      // ============================================
+      const systemContextElements = [
+        // External actors
+        { data: { id: 'user', label: 'User', type: 'external', description: 'Students learning on the platform' } },
+        { data: { id: 'admin', label: 'Admin', type: 'external', description: 'Platform administrators' } },
+        
+        // Hosting
+        { data: { id: 'github', label: 'GitHub Pages', type: 'external', description: 'Static file hosting via CDN' } },
+        
+        // Frontend
+        { data: { id: 'marketing', label: 'Marketing Pages', type: 'page', description: 'Public landing, catalog, pricing' } },
+        { data: { id: 'auth-pages', label: 'Auth Pages', type: 'page', description: 'Login, register, password reset' } },
+        { data: { id: 'dashboard', label: 'Dashboard', type: 'page', description: 'User progress and analytics' } },
+        { data: { id: 'lessons', label: 'Lesson Pages', type: 'page', description: 'Interactive course content' } },
+        { data: { id: 'blog', label: 'Blog', type: 'page', description: 'Articles and tutorials' } },
+        
+        // Services
+        { data: { id: 'shared-js', label: 'Shared JS Services', type: 'service', description: '9 shared JavaScript services' } },
+        
+        // Firebase
+        { data: { id: 'firebase-auth', label: 'Firebase Auth', type: 'auth', description: 'User authentication and sessions' } },
+        { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'NoSQL document database' } },
+        
+        // Edges
+        { data: { source: 'user', target: 'github', label: 'HTTP' } },
+        { data: { source: 'admin', target: 'github', label: 'HTTP' } },
+        { data: { source: 'github', target: 'marketing' } },
+        { data: { source: 'github', target: 'auth-pages' } },
+        { data: { source: 'github', target: 'dashboard' } },
+        { data: { source: 'github', target: 'lessons' } },
+        { data: { source: 'github', target: 'blog' } },
+        { data: { source: 'marketing', target: 'shared-js', type: 'optional' } },
+        { data: { source: 'auth-pages', target: 'shared-js' } },
+        { data: { source: 'dashboard', target: 'shared-js' } },
+        { data: { source: 'lessons', target: 'shared-js' } },
+        { data: { source: 'blog', target: 'shared-js', type: 'optional' } },
+        { data: { source: 'shared-js', target: 'firebase-auth', type: 'auth' } },
+        { data: { source: 'shared-js', target: 'firestore', type: 'data' } },
+      ];
+
+      const cySystemContext = DiagramUtils.createDiagram('system-context', systemContextElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cySystemContext, 'system-context');
+
+      // ============================================
+      // DIAGRAM 2: Service Dependencies
+      // ============================================
+      const serviceDependencyElements = [
+        // Config layer
+        { data: { id: 'firebase-config', label: 'FirebaseApp', type: 'config', description: 'Initializes Firebase SDK (app, auth, db)' } },
+        
+        // Auth layer
+        { data: { id: 'auth-service', label: 'AuthService', type: 'auth', description: 'User authentication and session management' } },
+        
+        // Core services
+        { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'All Firestore CRUD operations' } },
+        { data: { id: 'rbac', label: 'RBACService', type: 'service', description: 'Role-based access control checks' } },
+        
+        // Feature services
+        { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Lesson progress via IntersectionObserver' } },
+        { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Quiz/activity completion tracking' } },
+        { data: { id: 'analytics', label: 'AnalyticsService', type: 'service', description: 'Learning metrics calculation' } },
+        
+        // UI services
+        { data: { id: 'route-guard', label: 'RouteGuard', type: 'ui', description: 'Page access protection' } },
+        { data: { id: 'lesson-integration', label: 'LessonIntegration', type: 'ui', description: 'Lesson page orchestration' } },
+        
+        // Dependencies
+        { data: { source: 'auth-service', target: 'firebase-config' } },
+        { data: { source: 'data-service', target: 'firebase-config' } },
+        { data: { source: 'data-service', target: 'auth-service' } },
+        { data: { source: 'rbac', target: 'firebase-config' } },
+        { data: { source: 'rbac', target: 'auth-service' } },
+        { data: { source: 'progress-tracker', target: 'data-service' } },
+        { data: { source: 'progress-tracker', target: 'auth-service' } },
+        { data: { source: 'activity-tracker', target: 'data-service' } },
+        { data: { source: 'activity-tracker', target: 'auth-service' } },
+        { data: { source: 'analytics', target: 'data-service' } },
+        { data: { source: 'route-guard', target: 'auth-service' } },
+        { data: { source: 'route-guard', target: 'rbac' } },
+        { data: { source: 'lesson-integration', target: 'auth-service' } },
+        { data: { source: 'lesson-integration', target: 'data-service' } },
+        { data: { source: 'lesson-integration', target: 'progress-tracker' } },
+        { data: { source: 'lesson-integration', target: 'activity-tracker' } },
+      ];
+
+      const cyServiceDeps = DiagramUtils.createDiagram('service-dependencies', serviceDependencyElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyServiceDeps, 'service-dependencies');
+
+      // ============================================
+      // DIAGRAM 3: Data Flow
+      // ============================================
+      const dataFlowElements = [
+        // User layer
+        { data: { id: 'browser', label: 'Browser', type: 'external', description: 'User browser client' } },
+        
+        // UI layer
+        { data: { id: 'html-page', label: 'HTML Page', type: 'page', description: 'Static HTML with scripts' } },
+        { data: { id: 'ui-components', label: 'UI Components', type: 'page', description: 'Buttons, forms, progress bars' } },
+        
+        // Service layer
+        { data: { id: 'event-handlers', label: 'Event Handlers', type: 'service', description: 'Click, scroll, input handlers' } },
+        { data: { id: 'services', label: 'Services', type: 'service', description: 'Auth, Data, Progress, Activity' } },
+        { data: { id: 'state-mgmt', label: 'State Management', type: 'service', description: 'Window globals, LocalStorage' } },
+        
+        // Data layer
+        { data: { id: 'firebase-sdk', label: 'Firebase SDK', type: 'auth', description: 'Client-side Firebase library' } },
+        { data: { id: 'firestore-db', label: 'Firestore', type: 'data', description: 'Cloud database' } },
+        { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+        
+        // Edges - Request flow
+        { data: { source: 'browser', target: 'html-page', label: 'Load' } },
+        { data: { source: 'html-page', target: 'ui-components', label: 'Render' } },
+        { data: { source: 'ui-components', target: 'event-handlers', label: 'Events' } },
+        { data: { source: 'event-handlers', target: 'services', label: 'Call' } },
+        { data: { source: 'services', target: 'state-mgmt', label: 'Update' } },
+        { data: { source: 'services', target: 'firebase-sdk', label: 'API' } },
+        { data: { source: 'firebase-sdk', target: 'firestore-db', label: 'Write', type: 'data' } },
+        { data: { source: 'services', target: 'local-storage', label: 'Cache', type: 'data' } },
+        
+        // Response flow
+        { data: { source: 'firestore-db', target: 'firebase-sdk', label: 'Data', type: 'data' } },
+        { data: { source: 'firebase-sdk', target: 'services', label: 'Response' } },
+        { data: { source: 'state-mgmt', target: 'ui-components', label: 'Reactivity' } },
+      ];
+
+      const cyDataFlow = DiagramUtils.createDiagram('data-flow', dataFlowElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyDataFlow, 'data-flow');
+
+      // ============================================
+      // DIAGRAM 4: Page Type Services
+      // ============================================
+      const pageServicesElements = [
+        // Page types
+        { data: { id: 'pg-marketing', label: 'Marketing', type: 'page', description: 'Landing, catalog, pricing pages' } },
+        { data: { id: 'pg-auth', label: 'Auth Pages', type: 'page', description: 'Login, register, reset' } },
+        { data: { id: 'pg-dashboard', label: 'Dashboard', type: 'page', description: 'User progress overview' } },
+        { data: { id: 'pg-lesson', label: 'Lessons', type: 'page', description: 'Course content pages' } },
+        { data: { id: 'pg-blog', label: 'Blog', type: 'page', description: 'Articles and tutorials' } },
+        { data: { id: 'pg-partner', label: 'Partner Course', type: 'page', description: 'Organization-specific courses' } },
+        
+        // Services
+        { data: { id: 'svc-navbar', label: 'navbar.js', type: 'ui', description: 'Navigation component' } },
+        { data: { id: 'svc-auth', label: 'auth.js', type: 'auth', description: 'Authentication' } },
+        { data: { id: 'svc-data', label: 'data-service.js', type: 'service', description: 'Firestore operations' } },
+        { data: { id: 'svc-progress', label: 'progress-tracker.js', type: 'service', description: 'Lesson progress' } },
+        { data: { id: 'svc-activity', label: 'activity-tracker.js', type: 'service', description: 'Activity completion' } },
+        { data: { id: 'svc-analytics', label: 'analytics-service.js', type: 'service', description: 'Learning metrics' } },
+        { data: { id: 'svc-rbac', label: 'rbac.js', type: 'service', description: 'Access control' } },
+        { data: { id: 'svc-route', label: 'route-guard.js', type: 'service', description: 'Page protection' } },
+        { data: { id: 'svc-lesson', label: 'lesson-integration.js', type: 'ui', description: 'Lesson orchestration' } },
+        { data: { id: 'svc-blog', label: 'blog.js', type: 'ui', description: 'Blog features' } },
+        
+        // Marketing page
+        { data: { source: 'pg-marketing', target: 'svc-navbar' } },
+        
+        // Auth pages
+        { data: { source: 'pg-auth', target: 'svc-auth' } },
+        
+        // Dashboard
+        { data: { source: 'pg-dashboard', target: 'svc-auth' } },
+        { data: { source: 'pg-dashboard', target: 'svc-data' } },
+        { data: { source: 'pg-dashboard', target: 'svc-analytics' } },
+        { data: { source: 'pg-dashboard', target: 'svc-route' } },
+        
+        // Lessons
+        { data: { source: 'pg-lesson', target: 'svc-auth' } },
+        { data: { source: 'pg-lesson', target: 'svc-data' } },
+        { data: { source: 'pg-lesson', target: 'svc-progress' } },
+        { data: { source: 'pg-lesson', target: 'svc-activity' } },
+        { data: { source: 'pg-lesson', target: 'svc-route' } },
+        { data: { source: 'pg-lesson', target: 'svc-lesson' } },
+        
+        // Blog
+        { data: { source: 'pg-blog', target: 'svc-blog' } },
+        { data: { source: 'pg-blog', target: 'svc-navbar', type: 'optional' } },
+        
+        // Partner courses
+        { data: { source: 'pg-partner', target: 'svc-auth' } },
+        { data: { source: 'pg-partner', target: 'svc-data' } },
+        { data: { source: 'pg-partner', target: 'svc-progress' } },
+        { data: { source: 'pg-partner', target: 'svc-activity' } },
+        { data: { source: 'pg-partner', target: 'svc-rbac' } },
+        { data: { source: 'pg-partner', target: 'svc-route' } },
+        { data: { source: 'pg-partner', target: 'svc-lesson' } },
+      ];
+
+      const cyPageServices = DiagramUtils.createDiagram('page-services', pageServicesElements, {
+        layout: {
+          name: 'cose',
+          padding: 50,
+          nodeRepulsion: 6000,
+          idealEdgeLength: 80,
+          edgeElasticity: 50,
+          gravity: 0.5,
+          numIter: 1000,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyPageServices, 'page-services');
+    });
+  </script>
+</body>
+</html>

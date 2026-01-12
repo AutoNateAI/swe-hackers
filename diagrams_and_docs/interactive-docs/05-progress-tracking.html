@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Tracking - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>SWE Hackers Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="01-service-layer.html">Services</a>
+        <a href="05-progress-tracking.html" class="active">Progress</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Progress Tracking</span>
+      </div>
+      <h1>📊 Progress Tracking</h1>
+      <p>How lesson progress and activity completion is tracked and analyzed</p>
+    </div>
+
+    <!-- Progress System Overview -->
+    <section class="section">
+      <h2>Tracking System Overview</h2>
+      <p>The platform uses two complementary services to track user engagement: ProgressTracker for scroll-based section visibility, and ActivityTracker for interactive element completion.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Tracking System Components</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="tracking-overview" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot external"></div>
+            <span>User Action</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Tracker Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Storage</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #42a5f5;"></div>
+            <span>UI Update</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag to explore the tracking architecture</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Discovery -->
+    <section class="section">
+      <h2>Section Discovery</h2>
+      <p>ProgressTracker discovers trackable sections on page load by looking for elements with <code>data-section</code> attributes.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Section Discovery Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="section-discovery" class="diagram-canvas"></div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">HTML</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('pre').textContent)">Copy</button>
+        </div>
+        <pre><code>&lt;section class="section" data-section="intro"&gt;
+  &lt;h2&gt;Introduction&lt;/h2&gt;
+  ...
+&lt;/section&gt;
+
+&lt;section class="section" data-section="concepts"&gt;
+  &lt;h2&gt;Core Concepts&lt;/h2&gt;
+  ...
+&lt;/section&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Scroll Observation -->
+    <section class="section">
+      <h2>Scroll Observation</h2>
+      <p>The IntersectionObserver API monitors which sections are visible in the viewport. When 50% of a section is visible, it's marked as "viewed".</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">IntersectionObserver Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchicalLR">Horizontal</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="scroll-observation" class="diagram-canvas"></div>
+      </div>
+
+      <div class="info-box success">
+        <h4>✅ Why IntersectionObserver?</h4>
+        <p>Unlike scroll event listeners, IntersectionObserver is performant and doesn't fire constantly during scrolling. It only triggers when visibility thresholds are crossed.</p>
+      </div>
+    </section>
+
+    <!-- Progress Calculation -->
+    <section class="section">
+      <h2>Progress Calculation</h2>
+      <p>Progress is calculated as the percentage of discovered sections that have been viewed.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Progress Calculation Pipeline</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="progress-calc" class="diagram-canvas"></div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">JavaScript</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('pre').textContent)">Copy</button>
+        </div>
+        <pre><code>// Progress calculation
+const totalSections = this.sections.length;
+const viewedCount = this.viewedSections.size;
+const progress = Math.round((viewedCount / totalSections) * 100);
+
+// Lesson completion when progress >= 90%
+if (progress >= 90) {
+  this.markLessonComplete();
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Activity Tracking -->
+    <section class="section">
+      <h2>Activity Tracking</h2>
+      <p>ActivityTracker monitors quizzes, drag-drop activities, code challenges, and interactive demos.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Activity Types and Tracking</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="concentric">Concentric</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="activity-types" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>ActivityTracker</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Activity Type</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Storage</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Click an activity type to see its tracking flow</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offline Support -->
+    <section class="section">
+      <h2>Offline Support</h2>
+      <p>ActivityTracker caches attempts in LocalStorage when offline and syncs when connection is restored.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Offline Queue Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="offline-flow" class="diagram-canvas"></div>
+      </div>
+
+      <div class="info-box">
+        <h4>💡 Offline Cache Key</h4>
+        <p>Queued attempts are stored in <code>localStorage['activityQueue']</code> as a JSON array. The sync happens on the <code>online</code> window event.</p>
+      </div>
+    </section>
+
+    <!-- Analytics Calculation -->
+    <section class="section">
+      <h2>Analytics Metrics</h2>
+      <p>The AnalyticsService calculates learning metrics from raw progress and activity data.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Analytics Metrics Pipeline</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchicalLR">Horizontal</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="analytics-metrics" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Raw Data</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Calculation</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Output Metric</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🔍 Hover over metrics to see their formulas</span>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Formula</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Learning Velocity</strong></td>
+              <td><code>lessonsCompleted / weeksActive × 20</code></td>
+              <td>Lessons per week, scaled to 100</td>
+            </tr>
+            <tr>
+              <td><strong>Quiz Mastery</strong></td>
+              <td><code>avgCorrect / totalAttempts × 100</code></td>
+              <td>Average quiz score percentage</td>
+            </tr>
+            <tr>
+              <td><strong>Active Streak</strong></td>
+              <td><code>consecutiveDaysActive</code></td>
+              <td>Days in a row with activity</td>
+            </tr>
+            <tr>
+              <td><strong>Cognitive Score</strong></td>
+              <td><code>0.4×Mastery + 0.3×Velocity + 0.2×Streak + 0.1×Completion</code></td>
+              <td>Weighted composite score</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Completion Flow -->
+    <section class="section">
+      <h2>Lesson Completion Flow</h2>
+      <p>When a lesson reaches 90%+ progress, a series of events fires to update the UI and persist completion.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Completion Event Chain</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="completion-flow" class="diagram-canvas"></div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>See the Firestore schema for progress data.</p>
+        </a>
+        <a href="06-frontend-patterns.html" class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Frontend Patterns</h3>
+          <p>UI patterns for progress indicators.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#tracking-overview">Overview</a></li>
+      <li><a href="#section-discovery">Discovery</a></li>
+      <li><a href="#scroll-observation">Scroll</a></li>
+      <li><a href="#progress-calc">Calculation</a></li>
+      <li><a href="#activity-types">Activities</a></li>
+      <li><a href="#offline-flow">Offline</a></li>
+      <li><a href="#analytics-metrics">Analytics</a></li>
+      <li><a href="#completion-flow">Completion</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // ============================================
+      // DIAGRAM 1: Tracking Overview
+      // ============================================
+      const overviewElements = [
+        // User actions
+        { data: { id: 'scroll', label: 'User Scrolls', type: 'external', description: 'User scrolls through lesson' } },
+        { data: { id: 'quiz', label: 'Quiz Answer', type: 'external', description: 'User answers quiz' } },
+        { data: { id: 'drag', label: 'Drag & Drop', type: 'external', description: 'User completes drag activity' } },
+        
+        // Services
+        { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Tracks section visibility' } },
+        { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Tracks activity completion' } },
+        { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'Persists to Firestore' } },
+        
+        // Storage
+        { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'data', description: 'Subcollection' } },
+        { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'data', description: 'Subcollection' } },
+        { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+        
+        // UI
+        { data: { id: 'progress-bar', label: 'Progress Bar', type: 'ui', description: 'Visual progress indicator' } },
+        { data: { id: 'quiz-feedback', label: 'Quiz Feedback', type: 'ui', description: 'Correct/incorrect UI' } },
+        { data: { id: 'toast', label: 'Completion Toast', type: 'ui', description: 'Lesson complete notification' } },
+        
+        // Edges
+        { data: { source: 'scroll', target: 'progress-tracker' } },
+        { data: { source: 'quiz', target: 'activity-tracker' } },
+        { data: { source: 'drag', target: 'activity-tracker' } },
+        { data: { source: 'progress-tracker', target: 'data-service' } },
+        { data: { source: 'activity-tracker', target: 'data-service' } },
+        { data: { source: 'activity-tracker', target: 'local-storage', type: 'data' } },
+        { data: { source: 'data-service', target: 'lesson-progress', type: 'data' } },
+        { data: { source: 'data-service', target: 'activity-attempts', type: 'data' } },
+        { data: { source: 'progress-tracker', target: 'progress-bar' } },
+        { data: { source: 'activity-tracker', target: 'quiz-feedback' } },
+        { data: { source: 'progress-tracker', target: 'toast' } },
+      ];
+
+      const cyOverview = DiagramUtils.createDiagram('tracking-overview', overviewElements, {
+        layout: {
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 70,
+          padding: 20
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyOverview, 'tracking-overview');
+
+      // ============================================
+      // DIAGRAM 2: Section Discovery
+      // ============================================
+      const discoveryElements = [
+        { data: { id: 'page-load', label: 'Page Load', type: 'external', description: 'Lesson page loads' } },
+        { data: { id: 'init', label: 'ProgressTracker.init()', type: 'service', description: 'Initialize tracker' } },
+        { data: { id: 'discover', label: 'discoverSections()', type: 'service', description: 'Find all sections' } },
+        { data: { id: 'query', label: 'querySelectorAll', type: 'service', description: '[data-section] elements' } },
+        { data: { id: 'sections', label: 'sections Array', type: 'data', description: 'All trackable sections' } },
+        { data: { id: 'observer', label: 'Setup Observer', type: 'service', description: 'IntersectionObserver' } },
+        
+        { data: { source: 'page-load', target: 'init' } },
+        { data: { source: 'init', target: 'discover' } },
+        { data: { source: 'discover', target: 'query' } },
+        { data: { source: 'query', target: 'sections' } },
+        { data: { source: 'sections', target: 'observer' } },
+      ];
+
+      const cyDiscovery = DiagramUtils.createDiagram('section-discovery', discoveryElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyDiscovery, 'section-discovery');
+
+      // ============================================
+      // DIAGRAM 3: Scroll Observation
+      // ============================================
+      const scrollElements = [
+        { data: { id: 'scroll', label: 'User Scrolls', type: 'external', description: 'Page scroll event' } },
+        { data: { id: 'observer', label: 'IntersectionObserver', type: 'service', description: 'Monitors visibility' } },
+        { data: { id: 'callback', label: 'Callback Triggered', type: 'service', description: 'Section entered/exited' } },
+        { data: { id: 'check', label: 'isIntersecting?', type: 'service', description: 'Check visibility ratio' } },
+        { data: { id: 'add-viewed', label: 'Add to viewedSections', type: 'service', description: 'Mark as viewed' } },
+        { data: { id: 'calc', label: 'Calculate Progress', type: 'service', description: 'Update percentage' } },
+        { data: { id: 'save', label: 'Save Progress', type: 'data', description: 'Debounced save to Firestore' } },
+        
+        { data: { source: 'scroll', target: 'observer' } },
+        { data: { source: 'observer', target: 'callback' } },
+        { data: { source: 'callback', target: 'check' } },
+        { data: { source: 'check', target: 'add-viewed' } },
+        { data: { source: 'add-viewed', target: 'calc' } },
+        { data: { source: 'calc', target: 'save' } },
+      ];
+
+      const cyScroll = DiagramUtils.createDiagram('scroll-observation', scrollElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyScroll, 'scroll-observation');
+
+      // ============================================
+      // DIAGRAM 4: Progress Calculation
+      // ============================================
+      const calcElements = [
+        { data: { id: 'sections', label: 'sections.length', type: 'service', description: 'Total section count' } },
+        { data: { id: 'viewed', label: 'viewedSections.size', type: 'service', description: 'Viewed section count' } },
+        { data: { id: 'divide', label: 'viewed / total', type: 'service', description: 'Calculate ratio' } },
+        { data: { id: 'percent', label: '× 100', type: 'service', description: 'Convert to percent' } },
+        { data: { id: 'round', label: 'Math.round()', type: 'service', description: 'Round to integer' } },
+        { data: { id: 'progress', label: 'progress %', type: 'data', description: 'Final progress value' } },
+        { data: { id: 'check-90', label: '>= 90%?', type: 'service', description: 'Check completion' } },
+        { data: { id: 'complete', label: 'Mark Complete', type: 'data', description: 'Trigger completion' } },
+        
+        { data: { source: 'sections', target: 'divide' } },
+        { data: { source: 'viewed', target: 'divide' } },
+        { data: { source: 'divide', target: 'percent' } },
+        { data: { source: 'percent', target: 'round' } },
+        { data: { source: 'round', target: 'progress' } },
+        { data: { source: 'progress', target: 'check-90' } },
+        { data: { source: 'check-90', target: 'complete' } },
+      ];
+
+      const cyCalc = DiagramUtils.createDiagram('progress-calc', calcElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyCalc, 'progress-calc');
+
+      // ============================================
+      // DIAGRAM 5: Activity Types
+      // ============================================
+      const activityElements = [
+        // Core
+        { data: { id: 'tracker', label: 'ActivityTracker', type: 'service', description: 'Activity tracking service' } },
+        
+        // Types
+        { data: { id: 'quiz', label: 'Quiz', type: 'page', description: 'Multiple choice questions' } },
+        { data: { id: 'drag', label: 'Drag & Drop', type: 'page', description: 'Match items to targets' } },
+        { data: { id: 'code', label: 'Code Challenge', type: 'page', description: 'Write/complete code' } },
+        { data: { id: 'demo', label: 'Interactive Demo', type: 'page', description: 'Hands-on exploration' } },
+        
+        // Attributes
+        { data: { id: 'quiz-attr', label: 'data-answer', type: 'service', description: 'Correct answer value' } },
+        { data: { id: 'drag-attr', label: 'data-target', type: 'service', description: 'Drop zone mapping' } },
+        { data: { id: 'code-attr', label: 'data-solution', type: 'service', description: 'Expected output' } },
+        { data: { id: 'demo-attr', label: 'data-complete', type: 'service', description: 'Completion criteria' } },
+        
+        // Storage
+        { data: { id: 'firestore', label: 'activityAttempts', type: 'data', description: 'Firestore subcollection' } },
+        { data: { id: 'local', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+        
+        // Edges
+        { data: { source: 'tracker', target: 'quiz' } },
+        { data: { source: 'tracker', target: 'drag' } },
+        { data: { source: 'tracker', target: 'code' } },
+        { data: { source: 'tracker', target: 'demo' } },
+        { data: { source: 'quiz', target: 'quiz-attr' } },
+        { data: { source: 'drag', target: 'drag-attr' } },
+        { data: { source: 'code', target: 'code-attr' } },
+        { data: { source: 'demo', target: 'demo-attr' } },
+        { data: { source: 'tracker', target: 'firestore', type: 'data' } },
+        { data: { source: 'tracker', target: 'local', type: 'data' } },
+      ];
+
+      const cyActivity = DiagramUtils.createDiagram('activity-types', activityElements, {
+        layout: {
+          name: 'cose',
+          padding: 40,
+          nodeRepulsion: 5000,
+          idealEdgeLength: 80,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyActivity, 'activity-types');
+
+      // ============================================
+      // DIAGRAM 6: Offline Flow
+      // ============================================
+      const offlineElements = [
+        { data: { id: 'attempt', label: 'Activity Attempt', type: 'external', description: 'User completes activity' } },
+        { data: { id: 'check-online', label: 'navigator.onLine?', type: 'service', description: 'Check connection' } },
+        { data: { id: 'save-firestore', label: 'Save to Firestore', type: 'data', description: 'Direct save' } },
+        { data: { id: 'queue', label: 'Add to Queue', type: 'service', description: 'Queue for later' } },
+        { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Persist queue' } },
+        { data: { id: 'online-event', label: 'online Event', type: 'external', description: 'Connection restored' } },
+        { data: { id: 'sync', label: 'syncQueuedAttempts()', type: 'service', description: 'Process queue' } },
+        { data: { id: 'clear-queue', label: 'Clear Queue', type: 'service', description: 'Remove synced items' } },
+        
+        { data: { source: 'attempt', target: 'check-online' } },
+        { data: { source: 'check-online', target: 'save-firestore' } },
+        { data: { source: 'check-online', target: 'queue' } },
+        { data: { source: 'queue', target: 'local-storage' } },
+        { data: { source: 'online-event', target: 'sync' } },
+        { data: { source: 'local-storage', target: 'sync' } },
+        { data: { source: 'sync', target: 'save-firestore' } },
+        { data: { source: 'sync', target: 'clear-queue' } },
+      ];
+
+      const cyOffline = DiagramUtils.createDiagram('offline-flow', offlineElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyOffline, 'offline-flow');
+
+      // ============================================
+      // DIAGRAM 7: Analytics Metrics
+      // ============================================
+      const analyticsElements = [
+        // Raw data
+        { data: { id: 'lesson-data', label: 'lessonProgress', type: 'data', description: 'Lesson completion records' } },
+        { data: { id: 'activity-data', label: 'activityAttempts', type: 'data', description: 'Quiz attempts and scores' } },
+        { data: { id: 'challenge-data', label: 'dailyChallenges', type: 'data', description: 'Daily challenge records' } },
+        { data: { id: 'user-data', label: 'users/{uid}', type: 'data', description: 'User streak data' } },
+        
+        // Calculations
+        { data: { id: 'calc-velocity', label: 'calcVelocity()', type: 'service', description: 'lessons/week × 20' } },
+        { data: { id: 'calc-mastery', label: 'calcMastery()', type: 'service', description: 'avg correct × 100' } },
+        { data: { id: 'calc-streak', label: 'calcStreak()', type: 'service', description: 'consecutive days' } },
+        { data: { id: 'calc-cognitive', label: 'calcCognitive()', type: 'service', description: 'weighted composite' } },
+        
+        // Outputs
+        { data: { id: 'velocity', label: 'Learning Velocity', type: 'page', description: '0-100 score' } },
+        { data: { id: 'mastery', label: 'Quiz Mastery', type: 'page', description: '0-100%' } },
+        { data: { id: 'streak', label: 'Active Streak', type: 'page', description: 'days count' } },
+        { data: { id: 'cognitive', label: 'Cognitive Score', type: 'page', description: '0-100 composite' } },
+        
+        // Data to calc
+        { data: { source: 'lesson-data', target: 'calc-velocity' } },
+        { data: { source: 'activity-data', target: 'calc-mastery' } },
+        { data: { source: 'challenge-data', target: 'calc-streak' } },
+        { data: { source: 'user-data', target: 'calc-streak' } },
+        
+        // Calc to output
+        { data: { source: 'calc-velocity', target: 'velocity' } },
+        { data: { source: 'calc-mastery', target: 'mastery' } },
+        { data: { source: 'calc-streak', target: 'streak' } },
+        
+        // Outputs to cognitive
+        { data: { source: 'velocity', target: 'calc-cognitive' } },
+        { data: { source: 'mastery', target: 'calc-cognitive' } },
+        { data: { source: 'streak', target: 'calc-cognitive' } },
+        { data: { source: 'calc-cognitive', target: 'cognitive' } },
+      ];
+
+      const cyAnalytics = DiagramUtils.createDiagram('analytics-metrics', analyticsElements, {
+        layout: {
+          name: 'dagre',
+          rankDir: 'LR',
+          nodeSep: 40,
+          rankSep: 80,
+          padding: 20
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyAnalytics, 'analytics-metrics');
+
+      // ============================================
+      // DIAGRAM 8: Completion Flow
+      // ============================================
+      const completionElements = [
+        { data: { id: 'progress-90', label: 'Progress >= 90%', type: 'service', description: 'Threshold reached' } },
+        { data: { id: 'check-complete', label: 'Already Complete?', type: 'service', description: 'Prevent duplicate' } },
+        { data: { id: 'mark-complete', label: 'markLessonComplete()', type: 'service', description: 'Set completed flag' } },
+        { data: { id: 'dispatch', label: 'Dispatch Event', type: 'service', description: 'lessonComplete event' } },
+        { data: { id: 'save', label: 'Save to Firestore', type: 'data', description: 'Persist completion' } },
+        { data: { id: 'toast', label: 'Show Toast', type: 'ui', description: 'Completion notification' } },
+        { data: { id: 'update-course', label: 'Update Course', type: 'data', description: 'Increment completedLessons' } },
+        { data: { id: 'update-streak', label: 'Update Streak', type: 'data', description: 'Refresh user streak' } },
+        
+        { data: { source: 'progress-90', target: 'check-complete' } },
+        { data: { source: 'check-complete', target: 'mark-complete' } },
+        { data: { source: 'mark-complete', target: 'dispatch' } },
+        { data: { source: 'dispatch', target: 'save' } },
+        { data: { source: 'dispatch', target: 'toast' } },
+        { data: { source: 'save', target: 'update-course' } },
+        { data: { source: 'save', target: 'update-streak' } },
+      ];
+
+      const cyCompletion = DiagramUtils.createDiagram('completion-flow', completionElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyCompletion, 'completion-flow');
+    });
+  </script>
+</body>
+</html>

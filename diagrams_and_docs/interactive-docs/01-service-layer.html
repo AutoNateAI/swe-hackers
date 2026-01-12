@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Layer - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>SWE Hackers Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="01-service-layer.html" class="active">Services</a>
+        <a href="03-data-model.html">Data Model</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Service Layer</span>
+      </div>
+      <h1>⚙️ Service Layer Architecture</h1>
+      <p>Deep dive into the shared JavaScript services that power the platform</p>
+    </div>
+
+    <!-- Service Initialization Order -->
+    <section class="section">
+      <h2>Service Initialization Order</h2>
+      <p>Services must be initialized in a specific order to ensure dependencies are available. The initialization chain flows from config to auth to data services.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Initialization Sequence</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchicalLR">Horizontal</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="init-sequence" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #ab47bc;"></div>
+            <span>Step 1: Config</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Step 2: Auth</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Step 3: Services</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #42a5f5;"></div>
+            <span>Step 4: UI</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag nodes to rearrange</span>
+          <span>🔍 Hover to see what each service provides</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FirebaseApp Service -->
+    <section class="section">
+      <h2>FirebaseApp (firebase-config.js)</h2>
+      <p>The foundation service that initializes the Firebase SDK and exposes core Firebase objects.</p>
+      
+      <div class="info-box">
+        <h4>💡 Key Responsibility</h4>
+        <p>Initialize Firebase SDK exactly once and expose <code>app</code>, <code>auth</code>, and <code>db</code> via <code>window.FirebaseApp</code></p>
+      </div>
+
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">FirebaseApp Internal Structure</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="firebase-config-detail" class="diagram-canvas small"></div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">JavaScript</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('pre').textContent)">Copy</button>
+        </div>
+        <pre><code>// Usage
+window.FirebaseApp.init();
+const auth = window.FirebaseApp.getAuth();
+const db = window.FirebaseApp.getDb();</code></pre>
+      </div>
+    </section>
+
+    <!-- AuthService -->
+    <section class="section">
+      <h2>AuthService (auth.js)</h2>
+      <p>Handles all user authentication: registration, login (email/Google), logout, password reset, and session state.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">AuthService Architecture</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="auth-service-detail" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Auth Methods</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>State/Events</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Storage</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag to explore the auth flow</span>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Parameters</th>
+              <th>Returns</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>init()</code></td>
+              <td>-</td>
+              <td>Sets up auth state listener</td>
+            </tr>
+            <tr>
+              <td><code>register(email, password, displayName)</code></td>
+              <td>string, string, string</td>
+              <td>Promise&lt;UserCredential&gt;</td>
+            </tr>
+            <tr>
+              <td><code>loginWithEmail(email, password)</code></td>
+              <td>string, string</td>
+              <td>Promise&lt;UserCredential&gt;</td>
+            </tr>
+            <tr>
+              <td><code>loginWithGoogle()</code></td>
+              <td>-</td>
+              <td>Promise&lt;UserCredential&gt;</td>
+            </tr>
+            <tr>
+              <td><code>logout()</code></td>
+              <td>-</td>
+              <td>Promise&lt;void&gt;</td>
+            </tr>
+            <tr>
+              <td><code>getUser()</code></td>
+              <td>-</td>
+              <td>User | null</td>
+            </tr>
+            <tr>
+              <td><code>waitForAuthState()</code></td>
+              <td>-</td>
+              <td>Promise&lt;User | null&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DataService -->
+    <section class="section">
+      <h2>DataService (data-service.js)</h2>
+      <p>Central hub for all Firestore operations: progress, activities, notes, enrollments, and more.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">DataService Operations Map</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="concentric">Concentric</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="data-service-detail" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>DataService</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Operation Category</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Firestore Collection</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Click an operation to see which collections it touches</span>
+        </div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>⚠️ Critical Pattern: Dual-Write for Progress</h4>
+        <p>Lesson progress is written to both a subcollection (<code>lessonProgress/{lessonId}</code>) AND the parent document's <code>lessons</code> field. The dashboard reads from the parent field, but falls back to subcollection if empty.</p>
+      </div>
+    </section>
+
+    <!-- Progress & Activity Services -->
+    <section class="section">
+      <h2>ProgressTracker & ActivityTracker</h2>
+      <p>These two services work together to track user engagement with lesson content.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Tracking Services Interaction</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="tracking-services" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot external"></div>
+            <span>Browser APIs</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Tracker Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Storage</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🔍 Hover over a service to see its data flow</span>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Tracks</th>
+              <th>Mechanism</th>
+              <th>Storage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ProgressTracker</code></td>
+              <td>Section visibility</td>
+              <td>IntersectionObserver</td>
+              <td>lessonProgress subcollection</td>
+            </tr>
+            <tr>
+              <td><code>ActivityTracker</code></td>
+              <td>Quiz/activity completion</td>
+              <td>Event listeners</td>
+              <td>activityAttempts subcollection</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- AnalyticsService -->
+    <section class="section">
+      <h2>AnalyticsService (analytics-service.js)</h2>
+      <p>Calculates learning metrics from raw progress and activity data.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Analytics Calculation Pipeline</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="analytics-pipeline" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Raw Data</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Calculation</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Output Metric</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🔍 Hover over metrics to see their formulas</span>
+        </div>
+      </div>
+
+      <div class="info-box success">
+        <h4>📊 Cognitive Score Formula</h4>
+        <p><code>CognitiveScore = (0.4 × QuizMastery) + (0.3 × LearningVelocity) + (0.2 × Streak) + (0.1 × Completion)</code></p>
+      </div>
+    </section>
+
+    <!-- RBAC & RouteGuard -->
+    <section class="section">
+      <h2>RBAC & RouteGuard</h2>
+      <p>Access control services that protect pages and features based on user roles and organization membership.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Access Control Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchicalLR">Horizontal</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="access-control" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot external"></div>
+            <span>User Request</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Auth Check</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>RBAC Check</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Result</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🔍 Trace the access control decision flow</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="00-overview.html" class="card">
+          <div class="card-icon">🏗️</div>
+          <h3>Back to Overview</h3>
+          <p>See how services fit into the overall architecture.</p>
+        </a>
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>Explore the Firestore collections these services interact with.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#init-sequence">Initialization</a></li>
+      <li><a href="#firebase-config-detail">FirebaseApp</a></li>
+      <li><a href="#auth-service-detail">AuthService</a></li>
+      <li><a href="#data-service-detail">DataService</a></li>
+      <li><a href="#tracking-services">Trackers</a></li>
+      <li><a href="#analytics-pipeline">Analytics</a></li>
+      <li><a href="#access-control">RBAC</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // ============================================
+      // DIAGRAM 1: Initialization Sequence
+      // ============================================
+      const initElements = [
+        // Step 1
+        { data: { id: 'firebase-config', label: 'FirebaseApp.init()', type: 'config', description: 'Initialize Firebase SDK' } },
+        
+        // Step 2
+        { data: { id: 'auth-init', label: 'AuthService.init()', type: 'auth', description: 'Setup auth state listener' } },
+        
+        // Step 3 - Parallel
+        { data: { id: 'data-ready', label: 'DataService ready', type: 'service', description: 'Uses FirebaseApp.getDb()' } },
+        { data: { id: 'rbac-ready', label: 'RBACService ready', type: 'service', description: 'Uses auth + db' } },
+        
+        // Step 4
+        { data: { id: 'route-guard', label: 'RouteGuard.init()', type: 'ui', description: 'Check page access' } },
+        { data: { id: 'progress-init', label: 'ProgressTracker.init()', type: 'ui', description: 'Setup scroll observer' } },
+        { data: { id: 'activity-init', label: 'ActivityTracker.init()', type: 'ui', description: 'Discover activities' } },
+        
+        // Edges
+        { data: { source: 'firebase-config', target: 'auth-init' } },
+        { data: { source: 'auth-init', target: 'data-ready' } },
+        { data: { source: 'auth-init', target: 'rbac-ready' } },
+        { data: { source: 'data-ready', target: 'route-guard' } },
+        { data: { source: 'rbac-ready', target: 'route-guard' } },
+        { data: { source: 'route-guard', target: 'progress-init' } },
+        { data: { source: 'route-guard', target: 'activity-init' } },
+      ];
+
+      const cyInit = DiagramUtils.createDiagram('init-sequence', initElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyInit, 'init-sequence');
+
+      // ============================================
+      // DIAGRAM 2: FirebaseApp Detail
+      // ============================================
+      const firebaseElements = [
+        { data: { id: 'config', label: 'firebaseConfig', type: 'config', description: 'API keys and project settings' } },
+        { data: { id: 'init-fn', label: 'initFirebase()', type: 'service', description: 'Initializes SDK if not already done' } },
+        { data: { id: 'app', label: 'app', type: 'service', description: 'Firebase App instance' } },
+        { data: { id: 'auth', label: 'auth', type: 'auth', description: 'Firebase Auth instance' } },
+        { data: { id: 'db', label: 'db', type: 'data', description: 'Firestore instance' } },
+        { data: { id: 'window', label: 'window.FirebaseApp', type: 'ui', description: 'Global export object' } },
+        
+        { data: { source: 'config', target: 'init-fn' } },
+        { data: { source: 'init-fn', target: 'app' } },
+        { data: { source: 'app', target: 'auth' } },
+        { data: { source: 'app', target: 'db' } },
+        { data: { source: 'auth', target: 'window' } },
+        { data: { source: 'db', target: 'window' } },
+      ];
+
+      const cyFirebase = DiagramUtils.createDiagram('firebase-config-detail', firebaseElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyFirebase, 'firebase-config-detail');
+
+      // ============================================
+      // DIAGRAM 3: AuthService Detail
+      // ============================================
+      const authElements = [
+        // Core
+        { data: { id: 'auth-service', label: 'AuthService', type: 'auth', description: 'Main authentication service' } },
+        
+        // Methods
+        { data: { id: 'register', label: 'register()', type: 'auth', description: 'Create new user account' } },
+        { data: { id: 'login-email', label: 'loginWithEmail()', type: 'auth', description: 'Email/password login' } },
+        { data: { id: 'login-google', label: 'loginWithGoogle()', type: 'auth', description: 'Google OAuth login' } },
+        { data: { id: 'logout', label: 'logout()', type: 'auth', description: 'Sign out user' } },
+        { data: { id: 'reset', label: 'resetPassword()', type: 'auth', description: 'Send reset email' } },
+        
+        // State
+        { data: { id: 'current-user', label: 'currentUser', type: 'service', description: 'Cached user object' } },
+        { data: { id: 'auth-ready', label: '_authReadyPromise', type: 'service', description: 'Resolves when auth state known' } },
+        { data: { id: 'state-changed', label: 'onAuthStateChanged()', type: 'service', description: 'Register state listeners' } },
+        
+        // Storage
+        { data: { id: 'firebase-auth', label: 'Firebase Auth', type: 'external', description: 'Firebase Auth backend' } },
+        { data: { id: 'user-doc', label: 'users/{uid}', type: 'data', description: 'User profile document' } },
+        
+        // Edges
+        { data: { source: 'auth-service', target: 'register' } },
+        { data: { source: 'auth-service', target: 'login-email' } },
+        { data: { source: 'auth-service', target: 'login-google' } },
+        { data: { source: 'auth-service', target: 'logout' } },
+        { data: { source: 'auth-service', target: 'reset' } },
+        { data: { source: 'auth-service', target: 'current-user' } },
+        { data: { source: 'auth-service', target: 'auth-ready' } },
+        { data: { source: 'auth-service', target: 'state-changed' } },
+        { data: { source: 'register', target: 'firebase-auth' } },
+        { data: { source: 'login-email', target: 'firebase-auth' } },
+        { data: { source: 'login-google', target: 'firebase-auth' } },
+        { data: { source: 'register', target: 'user-doc', type: 'data' } },
+        { data: { source: 'firebase-auth', target: 'current-user' } },
+      ];
+
+      const cyAuth = DiagramUtils.createDiagram('auth-service-detail', authElements, {
+        layout: {
+          name: 'cose',
+          padding: 40,
+          nodeRepulsion: 5000,
+          idealEdgeLength: 70,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyAuth, 'auth-service-detail');
+
+      // ============================================
+      // DIAGRAM 4: DataService Detail
+      // ============================================
+      const dataElements = [
+        // Core
+        { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'Central data operations hub' } },
+        
+        // Operation categories
+        { data: { id: 'progress-ops', label: 'Progress Ops', type: 'page', description: 'Lesson and course progress' } },
+        { data: { id: 'activity-ops', label: 'Activity Ops', type: 'page', description: 'Quiz and activity attempts' } },
+        { data: { id: 'enrollment-ops', label: 'Enrollment Ops', type: 'page', description: 'Course enrollments' } },
+        { data: { id: 'notes-ops', label: 'Notes Ops', type: 'page', description: 'User notes' } },
+        { data: { id: 'challenge-ops', label: 'Challenge Ops', type: 'page', description: 'Daily challenges' } },
+        
+        // Collections
+        { data: { id: 'users', label: 'users', type: 'data', description: 'User profiles' } },
+        { data: { id: 'course-progress', label: 'courseProgress', type: 'data', description: 'Course-level progress' } },
+        { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'data', description: 'Lesson-level progress' } },
+        { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'data', description: 'Activity attempt records' } },
+        { data: { id: 'notes', label: 'notes', type: 'data', description: 'User notes' } },
+        { data: { id: 'challenges', label: 'dailyChallenges', type: 'data', description: 'Challenge completions' } },
+        
+        // Edges
+        { data: { source: 'data-service', target: 'progress-ops' } },
+        { data: { source: 'data-service', target: 'activity-ops' } },
+        { data: { source: 'data-service', target: 'enrollment-ops' } },
+        { data: { source: 'data-service', target: 'notes-ops' } },
+        { data: { source: 'data-service', target: 'challenge-ops' } },
+        { data: { source: 'progress-ops', target: 'course-progress', type: 'data' } },
+        { data: { source: 'progress-ops', target: 'lesson-progress', type: 'data' } },
+        { data: { source: 'activity-ops', target: 'activity-attempts', type: 'data' } },
+        { data: { source: 'enrollment-ops', target: 'users', type: 'data' } },
+        { data: { source: 'enrollment-ops', target: 'course-progress', type: 'data' } },
+        { data: { source: 'notes-ops', target: 'notes', type: 'data' } },
+        { data: { source: 'challenge-ops', target: 'challenges', type: 'data' } },
+      ];
+
+      const cyData = DiagramUtils.createDiagram('data-service-detail', dataElements, {
+        layout: {
+          name: 'cose',
+          padding: 50,
+          nodeRepulsion: 8000,
+          idealEdgeLength: 100,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyData, 'data-service-detail');
+
+      // ============================================
+      // DIAGRAM 5: Tracking Services
+      // ============================================
+      const trackingElements = [
+        // Browser APIs
+        { data: { id: 'intersection', label: 'IntersectionObserver', type: 'external', description: 'Browser visibility API' } },
+        { data: { id: 'dom-events', label: 'DOM Events', type: 'external', description: 'Click, change events' } },
+        
+        // Services
+        { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Tracks section visibility' } },
+        { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Tracks activity completion' } },
+        
+        // Internal state
+        { data: { id: 'viewed-sections', label: 'viewedSections Set', type: 'service', description: 'Sections user has scrolled to' } },
+        { data: { id: 'activity-state', label: 'completedActivities', type: 'service', description: 'Completed activity IDs' } },
+        
+        // Storage
+        { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'data', description: 'Firestore subcollection' } },
+        { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'data', description: 'Firestore subcollection' } },
+        { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+        
+        // Edges
+        { data: { source: 'intersection', target: 'progress-tracker' } },
+        { data: { source: 'dom-events', target: 'activity-tracker' } },
+        { data: { source: 'progress-tracker', target: 'viewed-sections' } },
+        { data: { source: 'activity-tracker', target: 'activity-state' } },
+        { data: { source: 'viewed-sections', target: 'lesson-progress', type: 'data' } },
+        { data: { source: 'activity-state', target: 'activity-attempts', type: 'data' } },
+        { data: { source: 'activity-tracker', target: 'local-storage', type: 'data' } },
+      ];
+
+      const cyTracking = DiagramUtils.createDiagram('tracking-services', trackingElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyTracking, 'tracking-services');
+
+      // ============================================
+      // DIAGRAM 6: Analytics Pipeline
+      // ============================================
+      const analyticsElements = [
+        // Raw data sources
+        { data: { id: 'progress-data', label: 'Progress Data', type: 'data', description: 'Lesson completion records' } },
+        { data: { id: 'activity-data', label: 'Activity Data', type: 'data', description: 'Quiz attempts and scores' } },
+        { data: { id: 'streak-data', label: 'Streak Data', type: 'data', description: 'Daily activity records' } },
+        
+        // Calculations
+        { data: { id: 'calc-velocity', label: 'calculateVelocity()', type: 'service', description: 'Lessons per week rate' } },
+        { data: { id: 'calc-mastery', label: 'calculateMastery()', type: 'service', description: 'Quiz score average' } },
+        { data: { id: 'calc-streak', label: 'calculateStreak()', type: 'service', description: 'Consecutive active days' } },
+        { data: { id: 'calc-cognitive', label: 'calculateCognitive()', type: 'service', description: 'Weighted composite score' } },
+        
+        // Output metrics
+        { data: { id: 'velocity', label: 'Learning Velocity', type: 'page', description: 'lessons/week × 20' } },
+        { data: { id: 'mastery', label: 'Quiz Mastery', type: 'page', description: 'avg score as %' } },
+        { data: { id: 'streak', label: 'Active Streak', type: 'page', description: 'consecutive days' } },
+        { data: { id: 'cognitive', label: 'Cognitive Score', type: 'page', description: 'weighted composite' } },
+        
+        // Edges
+        { data: { source: 'progress-data', target: 'calc-velocity' } },
+        { data: { source: 'activity-data', target: 'calc-mastery' } },
+        { data: { source: 'streak-data', target: 'calc-streak' } },
+        { data: { source: 'calc-velocity', target: 'velocity' } },
+        { data: { source: 'calc-mastery', target: 'mastery' } },
+        { data: { source: 'calc-streak', target: 'streak' } },
+        { data: { source: 'velocity', target: 'calc-cognitive' } },
+        { data: { source: 'mastery', target: 'calc-cognitive' } },
+        { data: { source: 'streak', target: 'calc-cognitive' } },
+        { data: { source: 'calc-cognitive', target: 'cognitive' } },
+      ];
+
+      const cyAnalytics = DiagramUtils.createDiagram('analytics-pipeline', analyticsElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyAnalytics, 'analytics-pipeline');
+
+      // ============================================
+      // DIAGRAM 7: Access Control Flow
+      // ============================================
+      const accessElements = [
+        // Request
+        { data: { id: 'request', label: 'Page Request', type: 'external', description: 'User navigates to page' } },
+        
+        // RouteGuard checks
+        { data: { id: 'is-protected', label: 'isProtectedPage()', type: 'service', description: 'Check if page needs auth' } },
+        
+        // Auth check
+        { data: { id: 'auth-check', label: 'Auth Check', type: 'auth', description: 'Is user signed in?' } },
+        
+        // RBAC checks
+        { data: { id: 'role-check', label: 'hasRole()', type: 'service', description: 'Check user role' } },
+        { data: { id: 'org-check', label: 'belongsToOrg()', type: 'service', description: 'Check org membership' } },
+        { data: { id: 'course-check', label: 'canAccessCourse()', type: 'service', description: 'Check course access' } },
+        
+        // Results
+        { data: { id: 'allow', label: 'Allow Access', type: 'page', description: 'Render page content' } },
+        { data: { id: 'login-redirect', label: 'Redirect: Login', type: 'external', description: 'Send to login page' } },
+        { data: { id: 'access-denied', label: 'Access Denied', type: 'external', description: 'Show error message' } },
+        
+        // Edges
+        { data: { source: 'request', target: 'is-protected' } },
+        { data: { source: 'is-protected', target: 'auth-check' } },
+        { data: { source: 'auth-check', target: 'role-check' } },
+        { data: { source: 'auth-check', target: 'login-redirect', type: 'optional' } },
+        { data: { source: 'role-check', target: 'org-check' } },
+        { data: { source: 'org-check', target: 'course-check' } },
+        { data: { source: 'course-check', target: 'allow' } },
+        { data: { source: 'course-check', target: 'access-denied', type: 'optional' } },
+      ];
+
+      const cyAccess = DiagramUtils.createDiagram('access-control', accessElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyAccess, 'access-control');
+    });
+  </script>
+</body>
+</html>
