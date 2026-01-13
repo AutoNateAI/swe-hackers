@@ -40,18 +40,8 @@ service cloud.firestore {
       // Only admins can delete users
       allow delete: if isAdmin();
       
-      // Course progress subcollection - users can read/write their own
-      match /courseProgress/{courseId} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      
-      // Activity attempts subcollection
-      match /activityAttempts/{attemptId} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      
-      // Any other user subcollections
-      match /{subcollection}/{docId} {
+      // All user subcollections and nested data (courseProgress, lessonProgress, etc.)
+      match /{document=**} {
         allow read, write: if isOwner(userId) || isAdmin();
       }
     }
