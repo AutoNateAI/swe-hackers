@@ -1,328 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SWE Hackers - Interactive Architecture Documentation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="shared/styles.css">
-  <style>
-    .hero-visual {
-      margin-top: 3rem;
-      position: relative;
-      height: 300px;
-      background: var(--bg-secondary);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWE Hackers - Interactive Architecture Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="shared/styles.css" />
+    <style>
+      .hero-visual {
+        margin-top: 3rem;
+        position: relative;
+        height: 300px;
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+      }
 
-    .hero-visual canvas {
-      position: absolute;
-      inset: 0;
-    }
+      .hero-visual canvas {
+        position: absolute;
+        inset: 0;
+      }
 
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: var(--bg-secondary);
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-label {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .feature {
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .feature h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature p {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-    }
-
-    @media (max-width: 768px) {
       .stats-bar {
-        flex-direction: column;
-        gap: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-value {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
       }
 
       .features {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
       }
-    }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <div class="header-content">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">⚡</div>
-        <span>SWE Hackers Docs</span>
-      </a>
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="00-overview.html">Overview</a>
-        <a href="01-service-layer.html">Services</a>
-        <a href="03-data-model.html">Data Model</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>Interactive Architecture Documentation</h1>
-      <p>Explore the SWE Hackers platform architecture through interactive diagrams. Drag nodes, trace connections, and understand how everything fits together.</p>
-      
-      <div class="stats-bar">
-        <div class="stat">
-          <div class="stat-value" data-count="9">0</div>
-          <div class="stat-label">Core Services</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value" data-count="7">0</div>
-          <div class="stat-label">Page Types</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value" data-count="12">0</div>
-          <div class="stat-label">Data Collections</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value" data-count="50">0</div>
-          <div class="stat-label">+ Interactive Diagrams</div>
-        </div>
+      .feature {
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .feature h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature p {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 768px) {
+        .stats-bar {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">⚡</div>
+          <span>SWE Hackers Docs</span>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="00-overview.html">Overview</a>
+          <a href="01-service-layer.html">Services</a>
+          <a href="03-data-model.html">Data Model</a>
+        </nav>
       </div>
+    </header>
 
-      <div class="features">
-        <div class="feature">
-          <div class="feature-icon">🖱️</div>
-          <h3>Drag & Explore</h3>
-          <p>Click and drag nodes to rearrange diagrams and understand relationships</p>
+    <main class="container">
+      <section class="hero">
+        <h1>Interactive Architecture Documentation</h1>
+        <p>
+          Explore the SWE Hackers platform architecture through interactive
+          diagrams. Drag nodes, trace connections, and understand how everything
+          fits together.
+        </p>
+
+        <div class="stats-bar">
+          <div class="stat">
+            <div class="stat-value" data-count="9">0</div>
+            <div class="stat-label">Core Services</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-count="7">0</div>
+            <div class="stat-label">Page Types</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-count="12">0</div>
+            <div class="stat-label">Data Collections</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-count="59">0</div>
+            <div class="stat-label">+ Interactive Diagrams</div>
+          </div>
         </div>
-        <div class="feature">
-          <div class="feature-icon">🔍</div>
-          <h3>Hover for Details</h3>
-          <p>Hover over any component to see its connections and description</p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">🖱️</div>
+            <h3>Drag & Explore</h3>
+            <p>
+              Click and drag nodes to rearrange diagrams and understand
+              relationships
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🔍</div>
+            <h3>Hover for Details</h3>
+            <p>
+              Hover over any component to see its connections and description
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📤</div>
+            <h3>Export Diagrams</h3>
+            <p>
+              Export any diagram as a PNG for presentations or documentation
+            </p>
+          </div>
         </div>
-        <div class="feature">
-          <div class="feature-icon">📤</div>
-          <h3>Export Diagrams</h3>
-          <p>Export any diagram as a PNG for presentations or documentation</p>
+      </section>
+
+      <section class="section" style="margin-top: 2rem">
+        <h2>Documentation Sections</h2>
+        <p>Click any card to explore that section's interactive diagrams.</p>
+
+        <div class="cards-grid">
+          <a href="00-overview.html" class="card">
+            <div class="card-icon">🏗️</div>
+            <h3>System Overview</h3>
+            <p>
+              High-level architecture, data flows, and how all components
+              connect together.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Architecture</span>
+              <span class="tag">Data Flow</span>
+              <span class="tag">Tech Stack</span>
+            </div>
+          </a>
+
+          <a href="01-service-layer.html" class="card">
+            <div class="card-icon">⚙️</div>
+            <h3>Service Layer</h3>
+            <p>
+              Deep dive into the shared JavaScript services that power the
+              platform.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Firebase</span>
+              <span class="tag">Auth</span>
+              <span class="tag">Data Service</span>
+            </div>
+          </a>
+
+          <a href="02-page-types.html" class="card">
+            <div class="card-icon">📄</div>
+            <h3>Page Types</h3>
+            <p>
+              Architecture patterns for different page types: marketing,
+              lessons, dashboard.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Layouts</span>
+              <span class="tag">Loading</span>
+              <span class="tag">Routing</span>
+            </div>
+          </a>
+
+          <a href="03-data-model.html" class="card">
+            <div class="card-icon">🗄️</div>
+            <h3>Data Model</h3>
+            <p>Firestore collections, schemas, and entity relationships.</p>
+            <div class="card-tags">
+              <span class="tag">Firestore</span>
+              <span class="tag">Schemas</span>
+              <span class="tag">Relations</span>
+            </div>
+          </a>
+
+          <a href="04-authentication-rbac.html" class="card">
+            <div class="card-icon">🔐</div>
+            <h3>Authentication & RBAC</h3>
+            <p>
+              User authentication flows and role-based access control system.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Firebase Auth</span>
+              <span class="tag">Roles</span>
+              <span class="tag">Permissions</span>
+            </div>
+          </a>
+
+          <a href="05-progress-tracking.html" class="card">
+            <div class="card-icon">📊</div>
+            <h3>Progress Tracking</h3>
+            <p>
+              How lesson progress and activity completion is tracked and
+              analyzed.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Progress</span>
+              <span class="tag">Activities</span>
+              <span class="tag">Analytics</span>
+            </div>
+          </a>
+
+          <a href="06-frontend-patterns.html" class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Frontend Patterns</h3>
+            <p>CSS architecture, UI components, and animation patterns.</p>
+            <div class="card-tags">
+              <span class="tag">CSS</span>
+              <span class="tag">Components</span>
+              <span class="tag">Animations</span>
+            </div>
+          </a>
+
+          <a href="07-partnership-portal.html" class="card">
+            <div class="card-icon">🤝</div>
+            <h3>Partnership Portal</h3>
+            <p>
+              Admin portal for managing educational partnerships with
+              organizations.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Admin</span>
+              <span class="tag">Partnerships</span>
+              <span class="tag">Analytics</span>
+            </div>
+          </a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" style="margin-top: 2rem;">
-      <h2>Documentation Sections</h2>
-      <p>Click any card to explore that section's interactive diagrams.</p>
+      <section class="section">
+        <h2>Quick Reference</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Type</th>
+                <th>Key Responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>firebase-config.js</code></td>
+                <td>Config</td>
+                <td>Initialize Firebase SDK, expose app/auth/db</td>
+              </tr>
+              <tr>
+                <td><code>auth.js</code></td>
+                <td>Service</td>
+                <td>User registration, login, session management</td>
+              </tr>
+              <tr>
+                <td><code>data-service.js</code></td>
+                <td>Service</td>
+                <td>All Firestore CRUD operations</td>
+              </tr>
+              <tr>
+                <td><code>progress-tracker.js</code></td>
+                <td>Service</td>
+                <td>Lesson section visibility tracking</td>
+              </tr>
+              <tr>
+                <td><code>activity-tracker.js</code></td>
+                <td>Service</td>
+                <td>Quiz/drag-drop/code activity tracking</td>
+              </tr>
+              <tr>
+                <td><code>analytics-service.js</code></td>
+                <td>Service</td>
+                <td>Learning metrics calculation</td>
+              </tr>
+              <tr>
+                <td><code>rbac.js</code></td>
+                <td>Service</td>
+                <td>Role and organization permission checks</td>
+              </tr>
+              <tr>
+                <td><code>route-guard.js</code></td>
+                <td>Service</td>
+                <td>Page access protection</td>
+              </tr>
+              <tr>
+                <td><code>lesson-integration.js</code></td>
+                <td>Integration</td>
+                <td>Lesson page service orchestration</td>
+              </tr>
+              <tr>
+                <td><code>partner-service.js</code></td>
+                <td>Service</td>
+                <td>Partnership CRUD, interactions, analytics</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
 
-      <div class="cards-grid">
-        <a href="00-overview.html" class="card">
-          <div class="card-icon">🏗️</div>
-          <h3>System Overview</h3>
-          <p>High-level architecture, data flows, and how all components connect together.</p>
-          <div class="card-tags">
-            <span class="tag">Architecture</span>
-            <span class="tag">Data Flow</span>
-            <span class="tag">Tech Stack</span>
-          </div>
-        </a>
+    <button class="back-to-top" title="Back to top">↑</button>
 
-        <a href="01-service-layer.html" class="card">
-          <div class="card-icon">⚙️</div>
-          <h3>Service Layer</h3>
-          <p>Deep dive into the shared JavaScript services that power the platform.</p>
-          <div class="card-tags">
-            <span class="tag">Firebase</span>
-            <span class="tag">Auth</span>
-            <span class="tag">Data Service</span>
-          </div>
-        </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="shared/diagram-utils.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize page animations
+        DiagramUtils.initPageAnimations();
+        DiagramUtils.setupBackToTop();
 
-        <a href="02-page-types.html" class="card">
-          <div class="card-icon">📄</div>
-          <h3>Page Types</h3>
-          <p>Architecture patterns for different page types: marketing, lessons, dashboard.</p>
-          <div class="card-tags">
-            <span class="tag">Layouts</span>
-            <span class="tag">Loading</span>
-            <span class="tag">Routing</span>
-          </div>
-        </a>
-
-        <a href="03-data-model.html" class="card">
-          <div class="card-icon">🗄️</div>
-          <h3>Data Model</h3>
-          <p>Firestore collections, schemas, and entity relationships.</p>
-          <div class="card-tags">
-            <span class="tag">Firestore</span>
-            <span class="tag">Schemas</span>
-            <span class="tag">Relations</span>
-          </div>
-        </a>
-
-        <a href="04-authentication-rbac.html" class="card">
-          <div class="card-icon">🔐</div>
-          <h3>Authentication & RBAC</h3>
-          <p>User authentication flows and role-based access control system.</p>
-          <div class="card-tags">
-            <span class="tag">Firebase Auth</span>
-            <span class="tag">Roles</span>
-            <span class="tag">Permissions</span>
-          </div>
-        </a>
-
-        <a href="05-progress-tracking.html" class="card">
-          <div class="card-icon">📊</div>
-          <h3>Progress Tracking</h3>
-          <p>How lesson progress and activity completion is tracked and analyzed.</p>
-          <div class="card-tags">
-            <span class="tag">Progress</span>
-            <span class="tag">Activities</span>
-            <span class="tag">Analytics</span>
-          </div>
-        </a>
-
-        <a href="06-frontend-patterns.html" class="card">
-          <div class="card-icon">🎨</div>
-          <h3>Frontend Patterns</h3>
-          <p>CSS architecture, UI components, and animation patterns.</p>
-          <div class="card-tags">
-            <span class="tag">CSS</span>
-            <span class="tag">Components</span>
-            <span class="tag">Animations</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Quick Reference</h2>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Component</th>
-              <th>Type</th>
-              <th>Key Responsibility</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>firebase-config.js</code></td>
-              <td>Config</td>
-              <td>Initialize Firebase SDK, expose app/auth/db</td>
-            </tr>
-            <tr>
-              <td><code>auth.js</code></td>
-              <td>Service</td>
-              <td>User registration, login, session management</td>
-            </tr>
-            <tr>
-              <td><code>data-service.js</code></td>
-              <td>Service</td>
-              <td>All Firestore CRUD operations</td>
-            </tr>
-            <tr>
-              <td><code>progress-tracker.js</code></td>
-              <td>Service</td>
-              <td>Lesson section visibility tracking</td>
-            </tr>
-            <tr>
-              <td><code>activity-tracker.js</code></td>
-              <td>Service</td>
-              <td>Quiz/drag-drop/code activity tracking</td>
-            </tr>
-            <tr>
-              <td><code>analytics-service.js</code></td>
-              <td>Service</td>
-              <td>Learning metrics calculation</td>
-            </tr>
-            <tr>
-              <td><code>rbac.js</code></td>
-              <td>Service</td>
-              <td>Role and organization permission checks</td>
-            </tr>
-            <tr>
-              <td><code>route-guard.js</code></td>
-              <td>Service</td>
-              <td>Page access protection</td>
-            </tr>
-            <tr>
-              <td><code>lesson-integration.js</code></td>
-              <td>Integration</td>
-              <td>Lesson page service orchestration</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <button class="back-to-top" title="Back to top">↑</button>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="shared/diagram-utils.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize page animations
-      DiagramUtils.initPageAnimations();
-      DiagramUtils.setupBackToTop();
-
-      // Animate stat counters
-      document.querySelectorAll('.stat-value').forEach(stat => {
-        const target = parseInt(stat.dataset.count);
-        anime({
-          targets: stat,
-          innerHTML: [0, target],
-          round: 1,
-          duration: 1500,
-          delay: 600,
-          easing: 'easeOutExpo'
+        // Animate stat counters
+        document.querySelectorAll(".stat-value").forEach((stat) => {
+          const target = parseInt(stat.dataset.count);
+          anime({
+            targets: stat,
+            innerHTML: [0, target],
+            round: 1,
+            duration: 1500,
+            delay: 600,
+            easing: "easeOutExpo",
+          });
         });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

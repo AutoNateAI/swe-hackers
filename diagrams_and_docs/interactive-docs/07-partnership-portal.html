@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership Portal - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>SWE Hackers Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="04-authentication-rbac.html">Auth & RBAC</a>
+        <a href="07-partnership-portal.html" class="active">Partnerships</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Partnership Portal</span>
+      </div>
+      <h1>🤝 Partnership Portal</h1>
+      <p>Admin-only portal for managing educational partnerships with organizations, schools, churches, foundations, and businesses</p>
+    </div>
+
+    <!-- Feature Overview -->
+    <section class="section">
+      <h2>Feature Overview</h2>
+      <p>The Partnership Portal enables AutoNateAI admins to manage relationships with educational partners, track interactions, and monitor partnership analytics.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Partnership Portal Architecture</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="concentric">Radial</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="feature-overview" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Admin Features</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Partner Types</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Offerings</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🖱️ Drag nodes to explore the partnership ecosystem</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Model -->
+    <section class="section">
+      <h2>Data Model</h2>
+      <p>Partners are stored as top-level documents with subcollections for interactions, attachments, courses, and analytics.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Firestore Collection Structure</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchicalLR">Horizontal</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="data-model" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Collection</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Document</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Subcollection</span>
+          </div>
+        </div>
+        <div class="diagram-instructions">
+          <span>🔍 Click a collection to see its schema</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Entity Relationships -->
+    <section class="section">
+      <h2>Entity Relationships</h2>
+      <p>How partners, interactions, attachments, and analytics relate to each other.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Entity Relationship Diagram</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="force">Physics</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="entity-relations" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Core Entity</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Related Entity</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Tracking Entity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Schema -->
+    <section class="section">
+      <h2>Partner Document Schema</h2>
+      <p>The <code>partners/{partnerId}</code> document stores organization info, contact details, and metrics.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Partner Document Structure</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="partner-schema" class="diagram-canvas"></div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">TypeScript</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('pre').textContent)">Copy</button>
+        </div>
+        <pre><code>interface PartnerDocument {
+  id: string;
+  name: string;
+  type: 'school' | 'university' | 'church' | 'foundation' | 'business' | 'community' | 'government';
+  status: 'prospect' | 'active' | 'paused' | 'churned';
+  
+  // Contact
+  contact: {
+    name: string;
+    email: string;
+    phone?: string;
+    title?: string;
+  };
+  
+  // Details
+  website?: string;
+  description?: string;
+  logoURL?: string;
+  address?: Address;
+  tags?: string[];
+  
+  // Tracking
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+  createdBy: string;
+  lastInteractionId?: string;
+  lastInteractionAt?: Timestamp;
+  totalInteractions: number;
+  
+  // Metrics
+  metrics: {
+    totalStudents: number;
+    totalCourses: number;
+    activeCohorts: number;
+    revenue: number;
+  };
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Partner Status Flow -->
+    <section class="section">
+      <h2>Partner Status Flow</h2>
+      <p>Partners move through different statuses as the relationship evolves.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Partner Status State Machine</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="status-flow" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #ffd93d;"></div>
+            <span>Prospect</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #51cf66;"></div>
+            <span>Active</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #7986cb;"></div>
+            <span>Paused</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #ff6b6b;"></div>
+            <span>Churned</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>📊 Status Definitions</h4>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <li><strong>Prospect:</strong> Initial outreach, discovery calls, evaluating fit</li>
+          <li><strong>Active:</strong> Agreement signed, courses running, students enrolled</li>
+          <li><strong>Paused:</strong> Between cohorts, budget review, temporary hold</li>
+          <li><strong>Churned:</strong> Partnership ended, lost opportunity</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Interaction Flow -->
+    <section class="section">
+      <h2>Interaction Recording Flow</h2>
+      <p>Every touchpoint with a partner is recorded as an interaction for tracking and analytics.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Add Interaction Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="interaction-flow" class="diagram-canvas"></div>
+        <div class="diagram-instructions">
+          <span>🔍 Follow the data path from user action to storage</span>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">TypeScript</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('pre').textContent)">Copy</button>
+        </div>
+        <pre><code>interface Interaction {
+  id: string;
+  partnerId: string;
+  type: 'call' | 'meeting' | 'email' | 'milestone' | 'note' | 'demo' | 'proposal';
+  title: string;
+  description: string;
+  outcome?: string;
+  nextSteps?: string;
+  interactionDate: Timestamp;
+  createdAt: Timestamp;
+  createdBy: string;
+  attachmentIds?: string[];
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Service Layer -->
+    <section class="section">
+      <h2>Service Layer Architecture</h2>
+      <p>The PartnerService handles all CRUD operations, file uploads, and analytics recording.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">PartnerService Architecture</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-layout="hierarchical">Vertical</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="service-layer" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #42a5f5;"></div>
+            <span>UI Components</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Service Methods</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot data"></div>
+            <span>Firebase Services</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics Dashboard -->
+    <section class="section">
+      <h2>Analytics Dashboard</h2>
+      <p>Time-series analytics for tracking partner engagement and measuring success.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Analytics Data Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="analytics-flow" class="diagram-canvas large"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Event Source</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Processing</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #42a5f5;"></div>
+            <span>Visualization</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Analytics Event</th>
+              <th>Description</th>
+              <th>Chart Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>student_enrolled</code></td>
+              <td>New student enrollment in partner course</td>
+              <td>Area chart</td>
+            </tr>
+            <tr>
+              <td><code>cohort_started</code></td>
+              <td>New live cohort begins</td>
+              <td>Timeline</td>
+            </tr>
+            <tr>
+              <td><code>cohort_completed</code></td>
+              <td>Cohort finishes with completion rate</td>
+              <td>Bar chart</td>
+            </tr>
+            <tr>
+              <td><code>interaction_logged</code></td>
+              <td>Partner touchpoint recorded</td>
+              <td>Line chart</td>
+            </tr>
+            <tr>
+              <td><code>revenue_recorded</code></td>
+              <td>Payment or invoice tracked</td>
+              <td>Line chart</td>
+            </tr>
+            <tr>
+              <td><code>status_changed</code></td>
+              <td>Partner status transition</td>
+              <td>Status log</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Page Architecture -->
+    <section class="section">
+      <h2>Frontend Page Architecture</h2>
+      <p>The partnership portal consists of multiple pages within the admin section.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Page Structure</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="page-structure" class="diagram-canvas"></div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>🔐 Access Control</h4>
+        <p>All partnership pages require <code>admin</code> role. The RouteGuard will:</p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <li>Check authentication status</li>
+          <li>Verify user has <code>role: 'admin'</code> in their user document</li>
+          <li>Redirect unauthorized users to dashboard with error</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- API Reference -->
+    <section class="section">
+      <h2>PartnerService API Reference</h2>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Parameters</th>
+              <th>Returns</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>getPartners(filters?)</code></td>
+              <td><code>{ status?, type?, search? }</code></td>
+              <td><code>Partner[]</code></td>
+              <td>List partners with filters</td>
+            </tr>
+            <tr>
+              <td><code>getPartner(id)</code></td>
+              <td><code>partnerId: string</code></td>
+              <td><code>Partner</code></td>
+              <td>Get single partner</td>
+            </tr>
+            <tr>
+              <td><code>createPartner(data)</code></td>
+              <td><code>PartnerInput</code></td>
+              <td><code>{ success, partnerId }</code></td>
+              <td>Create new partner</td>
+            </tr>
+            <tr>
+              <td><code>updatePartner(id, data)</code></td>
+              <td><code>partnerId, Partial&lt;Partner&gt;</code></td>
+              <td><code>{ success }</code></td>
+              <td>Update partner</td>
+            </tr>
+            <tr>
+              <td><code>createInteraction(partnerId, data)</code></td>
+              <td><code>partnerId, InteractionInput</code></td>
+              <td><code>{ success, interactionId }</code></td>
+              <td>Add interaction</td>
+            </tr>
+            <tr>
+              <td><code>uploadAttachment(partnerId, file, meta)</code></td>
+              <td><code>partnerId, File, metadata</code></td>
+              <td><code>{ success, url }</code></td>
+              <td>Upload file</td>
+            </tr>
+            <tr>
+              <td><code>getAnalytics(partnerId, range)</code></td>
+              <td><code>partnerId, { start, end }</code></td>
+              <td><code>AnalyticsEvent[]</code></td>
+              <td>Get time-series data</td>
+            </tr>
+            <tr>
+              <td><code>getPartnerStats()</code></td>
+              <td>none</td>
+              <td><code>DashboardStats</code></td>
+              <td>Aggregate stats</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Implementation Phases -->
+    <section class="section">
+      <h2>Implementation Phases</h2>
+      
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="card">
+          <div class="card-icon">🏗️</div>
+          <h3>Phase 1: Foundation</h3>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+            <li>Create partners collection</li>
+            <li>Basic CRUD in PartnerService</li>
+            <li>Partner list page</li>
+            <li>Add partner form</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>Phase 2: Interactions</h3>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+            <li>Interactions subcollection</li>
+            <li>Partner detail page</li>
+            <li>Interaction timeline</li>
+            <li>Add interaction modal</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">📎</div>
+          <h3>Phase 3: Attachments</h3>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+            <li>Firebase Storage setup</li>
+            <li>File upload component</li>
+            <li>Attachment gallery</li>
+            <li>Link to interactions</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Phase 4: Analytics</h3>
+          <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+            <li>Analytics subcollection</li>
+            <li>Event recording</li>
+            <li>Dashboard charts</li>
+            <li>Time-series visualization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Related Documentation</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>Firestore patterns used in the platform.</p>
+        </a>
+        <a href="04-authentication-rbac.html" class="card">
+          <div class="card-icon">🔐</div>
+          <h3>Authentication & RBAC</h3>
+          <p>Admin role and access control system.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#feature-overview">Overview</a></li>
+      <li><a href="#data-model">Data Model</a></li>
+      <li><a href="#entity-relations">Relationships</a></li>
+      <li><a href="#partner-schema">Partner Schema</a></li>
+      <li><a href="#status-flow">Status Flow</a></li>
+      <li><a href="#interaction-flow">Interactions</a></li>
+      <li><a href="#service-layer">Service Layer</a></li>
+      <li><a href="#analytics-flow">Analytics</a></li>
+      <li><a href="#page-structure">Pages</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // ============================================
+      // DIAGRAM 1: Feature Overview
+      // ============================================
+      const overviewElements = [
+        // Portal features (center)
+        { data: { id: 'portal', label: 'Partnership Portal', type: 'auth', description: 'Admin-only partnership management' } },
+        { data: { id: 'list', label: 'Partner List', type: 'auth', description: 'View all partners' } },
+        { data: { id: 'detail', label: 'Partner Detail', type: 'auth', description: 'Individual partner view' } },
+        { data: { id: 'add', label: 'Add Partner', type: 'auth', description: 'Create new partner' } },
+        { data: { id: 'interact', label: 'Interactions', type: 'auth', description: 'Track touchpoints' } },
+        { data: { id: 'attach', label: 'Attachments', type: 'auth', description: 'Files and media' } },
+        { data: { id: 'analytics', label: 'Analytics', type: 'auth', description: 'Time-series data' } },
+        
+        // Partner types
+        { data: { id: 'schools', label: '🏫 Schools', type: 'service', description: 'K-12 and districts' } },
+        { data: { id: 'churches', label: '⛪ Churches', type: 'service', description: 'Religious orgs' } },
+        { data: { id: 'foundations', label: '🏛️ Foundations', type: 'service', description: 'Non-profits' } },
+        { data: { id: 'business', label: '🏢 Businesses', type: 'service', description: 'Corporate partners' } },
+        { data: { id: 'community', label: '👥 Community', type: 'service', description: 'Community orgs' } },
+        
+        // Offerings
+        { data: { id: 'free-courses', label: '📚 4 Free Courses', type: 'page', description: 'Evergreen curriculum' } },
+        { data: { id: 'custom', label: '🎨 Custom Courses', type: 'page', description: 'Tailored curriculum' } },
+        { data: { id: 'cohort', label: '👨‍🏫 Live Cohorts', type: 'page', description: 'Live teaching' } },
+        { data: { id: 'digital', label: '💻 Digital Access', type: 'page', description: 'Interactive lessons' } },
+        
+        // Edges
+        { data: { source: 'portal', target: 'list' } },
+        { data: { source: 'portal', target: 'detail' } },
+        { data: { source: 'portal', target: 'add' } },
+        { data: { source: 'portal', target: 'interact' } },
+        { data: { source: 'portal', target: 'attach' } },
+        { data: { source: 'portal', target: 'analytics' } },
+        
+        { data: { source: 'list', target: 'schools' } },
+        { data: { source: 'list', target: 'churches' } },
+        { data: { source: 'list', target: 'foundations' } },
+        { data: { source: 'list', target: 'business' } },
+        { data: { source: 'list', target: 'community' } },
+        
+        { data: { source: 'detail', target: 'free-courses' } },
+        { data: { source: 'detail', target: 'custom' } },
+        { data: { source: 'detail', target: 'cohort' } },
+        { data: { source: 'detail', target: 'digital' } },
+      ];
+
+      const cyOverview = DiagramUtils.createDiagram('feature-overview', overviewElements, {
+        layout: {
+          name: 'cose',
+          padding: 50,
+          nodeRepulsion: 8000,
+          idealEdgeLength: 120,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyOverview, 'feature-overview');
+
+      // ============================================
+      // DIAGRAM 2: Data Model
+      // ============================================
+      const dataModelElements = [
+        // Root
+        { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'Root database' } },
+        
+        // Partners collection
+        { data: { id: 'partners-col', label: 'partners', type: 'data', description: 'Partners collection' } },
+        
+        // Partner document
+        { data: { id: 'partner-doc', label: '{partnerId}', type: 'service', description: 'Partner document' } },
+        
+        // Subcollections
+        { data: { id: 'interactions', label: 'interactions', type: 'page', description: 'Partner touchpoints' } },
+        { data: { id: 'attachments', label: 'attachments', type: 'page', description: 'Files and media' } },
+        { data: { id: 'courses', label: 'courses', type: 'page', description: 'Partner courses' } },
+        { data: { id: 'analytics', label: 'analytics', type: 'page', description: 'Time-series events' } },
+        
+        // Documents
+        { data: { id: 'inter-doc', label: '{interactionId}', type: 'service', description: 'Interaction record' } },
+        { data: { id: 'attach-doc', label: '{attachmentId}', type: 'service', description: 'Attachment record' } },
+        { data: { id: 'course-doc', label: '{courseId}', type: 'service', description: 'Course offering' } },
+        { data: { id: 'event-doc', label: '{eventId}', type: 'service', description: 'Analytics event' } },
+        
+        // Edges
+        { data: { source: 'firestore', target: 'partners-col' } },
+        { data: { source: 'partners-col', target: 'partner-doc' } },
+        { data: { source: 'partner-doc', target: 'interactions' } },
+        { data: { source: 'partner-doc', target: 'attachments' } },
+        { data: { source: 'partner-doc', target: 'courses' } },
+        { data: { source: 'partner-doc', target: 'analytics' } },
+        { data: { source: 'interactions', target: 'inter-doc' } },
+        { data: { source: 'attachments', target: 'attach-doc' } },
+        { data: { source: 'courses', target: 'course-doc' } },
+        { data: { source: 'analytics', target: 'event-doc' } },
+      ];
+
+      const cyDataModel = DiagramUtils.createDiagram('data-model', dataModelElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyDataModel, 'data-model');
+
+      // ============================================
+      // DIAGRAM 3: Entity Relationships
+      // ============================================
+      const entityElements = [
+        // Entities
+        { data: { id: 'partner', label: 'Partner', type: 'auth', description: 'Organization record' } },
+        { data: { id: 'interaction', label: 'Interaction', type: 'service', description: 'Touchpoint record' } },
+        { data: { id: 'attachment', label: 'Attachment', type: 'page', description: 'File or media' } },
+        { data: { id: 'course', label: 'PartnerCourse', type: 'service', description: 'Course offering' } },
+        { data: { id: 'analytics', label: 'AnalyticsEvent', type: 'page', description: 'Time-series event' } },
+        { data: { id: 'admin', label: 'Admin User', type: 'auth', description: 'Platform admin' } },
+        
+        // Relationships
+        { data: { source: 'partner', target: 'interaction', label: 'has many' } },
+        { data: { source: 'partner', target: 'attachment', label: 'has many' } },
+        { data: { source: 'partner', target: 'course', label: 'offers' } },
+        { data: { source: 'partner', target: 'analytics', label: 'generates' } },
+        { data: { source: 'interaction', target: 'attachment', label: 'may have' } },
+        { data: { source: 'admin', target: 'partner', label: 'manages' } },
+        { data: { source: 'admin', target: 'interaction', label: 'creates' } },
+      ];
+
+      const cyEntity = DiagramUtils.createDiagram('entity-relations', entityElements, {
+        layout: {
+          name: 'cose',
+          padding: 50,
+          nodeRepulsion: 6000,
+          idealEdgeLength: 100,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyEntity, 'entity-relations');
+
+      // ============================================
+      // DIAGRAM 4: Partner Schema
+      // ============================================
+      const partnerSchemaElements = [
+        { data: { id: 'partner-doc', label: 'partners/{partnerId}', type: 'data', description: 'Partner document' } },
+        
+        // Identity
+        { data: { id: 'id', label: 'id: string', type: 'service', description: 'Document ID' } },
+        { data: { id: 'name', label: 'name: string', type: 'service', description: 'Organization name' } },
+        { data: { id: 'type', label: 'type: string', type: 'service', description: 'school|church|etc' } },
+        { data: { id: 'status', label: 'status: string', type: 'service', description: 'prospect|active|etc' } },
+        
+        // Contact
+        { data: { id: 'contact', label: 'contact: object', type: 'auth', description: 'Primary contact' } },
+        { data: { id: 'website', label: 'website?: string', type: 'auth', description: 'Organization URL' } },
+        { data: { id: 'logoURL', label: 'logoURL?: string', type: 'auth', description: 'Logo image' } },
+        
+        // Tracking
+        { data: { id: 'created', label: 'createdAt: Timestamp', type: 'page', description: 'Creation time' } },
+        { data: { id: 'updated', label: 'updatedAt: Timestamp', type: 'page', description: 'Last update' } },
+        { data: { id: 'lastInteraction', label: 'lastInteractionAt: Timestamp', type: 'page', description: 'Last touchpoint' } },
+        
+        // Metrics
+        { data: { id: 'metrics', label: 'metrics: object', type: 'page', description: 'students, courses, revenue' } },
+        
+        // Edges
+        { data: { source: 'partner-doc', target: 'id' } },
+        { data: { source: 'partner-doc', target: 'name' } },
+        { data: { source: 'partner-doc', target: 'type' } },
+        { data: { source: 'partner-doc', target: 'status' } },
+        { data: { source: 'partner-doc', target: 'contact' } },
+        { data: { source: 'partner-doc', target: 'website' } },
+        { data: { source: 'partner-doc', target: 'logoURL' } },
+        { data: { source: 'partner-doc', target: 'created' } },
+        { data: { source: 'partner-doc', target: 'updated' } },
+        { data: { source: 'partner-doc', target: 'lastInteraction' } },
+        { data: { source: 'partner-doc', target: 'metrics' } },
+      ];
+
+      const cyPartnerSchema = DiagramUtils.createDiagram('partner-schema', partnerSchemaElements, {
+        layout: {
+          name: 'cose',
+          padding: 30,
+          nodeRepulsion: 4000,
+          idealEdgeLength: 60,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyPartnerSchema, 'partner-schema');
+
+      // ============================================
+      // DIAGRAM 5: Status Flow
+      // ============================================
+      const statusFlowElements = [
+        { data: { id: 'start', label: 'Start', type: 'external', description: 'Initial contact' } },
+        { data: { id: 'prospect', label: 'Prospect', type: 'prospect', description: 'Discovery phase' } },
+        { data: { id: 'active', label: 'Active', type: 'active', description: 'Partnership running' } },
+        { data: { id: 'paused', label: 'Paused', type: 'paused', description: 'Temporary hold' } },
+        { data: { id: 'churned', label: 'Churned', type: 'churned', description: 'Partnership ended' } },
+        
+        // Edges with labels
+        { data: { source: 'start', target: 'prospect', label: 'Initial outreach' } },
+        { data: { source: 'prospect', target: 'active', label: 'Agreement signed' } },
+        { data: { source: 'prospect', target: 'churned', label: 'Lost opportunity' } },
+        { data: { source: 'active', target: 'paused', label: 'Temporary hold' } },
+        { data: { source: 'paused', target: 'active', label: 'Reactivated' } },
+        { data: { source: 'active', target: 'churned', label: 'Partnership ended' } },
+        { data: { source: 'churned', target: 'prospect', label: 'Re-engaged' } },
+      ];
+
+      const cyStatusFlow = DiagramUtils.createDiagram('status-flow', statusFlowElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR,
+        style: [
+          ...DiagramUtils.getDefaultStyle(),
+          {
+            selector: 'node[type="prospect"]',
+            style: { 'background-color': '#ffd93d', 'border-color': '#f59f00' }
+          },
+          {
+            selector: 'node[type="active"]',
+            style: { 'background-color': '#51cf66', 'border-color': '#2f9e44' }
+          },
+          {
+            selector: 'node[type="paused"]',
+            style: { 'background-color': '#7986cb', 'border-color': '#3949ab' }
+          },
+          {
+            selector: 'node[type="churned"]',
+            style: { 'background-color': '#ff6b6b', 'border-color': '#c92a2a' }
+          }
+        ]
+      });
+      DiagramUtils.setupDiagramControls(cyStatusFlow, 'status-flow');
+
+      // ============================================
+      // DIAGRAM 6: Interaction Flow
+      // ============================================
+      const interactionFlowElements = [
+        { data: { id: 'admin', label: 'Admin', type: 'external', description: 'Admin user' } },
+        { data: { id: 'form', label: 'Interaction Form', type: 'service', description: 'Input interaction details' } },
+        { data: { id: 'service', label: 'PartnerService', type: 'service', description: 'createInteraction()' } },
+        { data: { id: 'inter-col', label: 'interactions.add()', type: 'data', description: 'Create interaction doc' } },
+        { data: { id: 'partner-update', label: 'partner.update()', type: 'data', description: 'Update lastInteraction' } },
+        { data: { id: 'analytics', label: 'recordAnalyticsEvent()', type: 'data', description: 'Log analytics event' } },
+        { data: { id: 'timeline', label: 'Update Timeline', type: 'service', description: 'Show in UI' } },
+        
+        // Edges
+        { data: { source: 'admin', target: 'form' } },
+        { data: { source: 'form', target: 'service' } },
+        { data: { source: 'service', target: 'inter-col' } },
+        { data: { source: 'service', target: 'partner-update' } },
+        { data: { source: 'service', target: 'analytics' } },
+        { data: { source: 'inter-col', target: 'timeline' } },
+      ];
+
+      const cyInteraction = DiagramUtils.createDiagram('interaction-flow', interactionFlowElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyInteraction, 'interaction-flow');
+
+      // ============================================
+      // DIAGRAM 7: Service Layer
+      // ============================================
+      const serviceLayerElements = [
+        // UI Components
+        { data: { id: 'list-ui', label: 'Partner List', type: 'ui', description: 'List view page' } },
+        { data: { id: 'detail-ui', label: 'Partner Detail', type: 'ui', description: 'Detail view page' } },
+        { data: { id: 'form-ui', label: 'Partner Forms', type: 'ui', description: 'Add/Edit forms' } },
+        { data: { id: 'timeline-ui', label: 'Timeline', type: 'ui', description: 'Interaction timeline' } },
+        { data: { id: 'analytics-ui', label: 'Analytics', type: 'ui', description: 'Charts dashboard' } },
+        
+        // Service methods
+        { data: { id: 'get-partners', label: 'getPartners()', type: 'service', description: 'List partners' } },
+        { data: { id: 'get-partner', label: 'getPartner()', type: 'service', description: 'Get one partner' } },
+        { data: { id: 'create-partner', label: 'createPartner()', type: 'service', description: 'Add partner' } },
+        { data: { id: 'create-interaction', label: 'createInteraction()', type: 'service', description: 'Add interaction' } },
+        { data: { id: 'upload-attachment', label: 'uploadAttachment()', type: 'service', description: 'Upload file' } },
+        { data: { id: 'get-analytics', label: 'getAnalytics()', type: 'service', description: 'Get events' } },
+        
+        // Firebase
+        { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'Database' } },
+        { data: { id: 'storage', label: 'Storage', type: 'data', description: 'File storage' } },
+        
+        // Edges
+        { data: { source: 'list-ui', target: 'get-partners' } },
+        { data: { source: 'detail-ui', target: 'get-partner' } },
+        { data: { source: 'form-ui', target: 'create-partner' } },
+        { data: { source: 'timeline-ui', target: 'create-interaction' } },
+        { data: { source: 'detail-ui', target: 'upload-attachment' } },
+        { data: { source: 'analytics-ui', target: 'get-analytics' } },
+        
+        { data: { source: 'get-partners', target: 'firestore', type: 'data' } },
+        { data: { source: 'get-partner', target: 'firestore', type: 'data' } },
+        { data: { source: 'create-partner', target: 'firestore', type: 'data' } },
+        { data: { source: 'create-interaction', target: 'firestore', type: 'data' } },
+        { data: { source: 'upload-attachment', target: 'storage', type: 'data' } },
+        { data: { source: 'upload-attachment', target: 'firestore', type: 'data' } },
+        { data: { source: 'get-analytics', target: 'firestore', type: 'data' } },
+      ];
+
+      const cyService = DiagramUtils.createDiagram('service-layer', serviceLayerElements, {
+        layout: {
+          name: 'cose',
+          padding: 50,
+          nodeRepulsion: 6000,
+          idealEdgeLength: 100,
+          animate: false
+        }
+      });
+      DiagramUtils.setupDiagramControls(cyService, 'service-layer');
+
+      // ============================================
+      // DIAGRAM 8: Analytics Flow
+      // ============================================
+      const analyticsFlowElements = [
+        // Event sources
+        { data: { id: 'enroll', label: 'Student Enrolled', type: 'page', description: 'New enrollment' } },
+        { data: { id: 'cohort-start', label: 'Cohort Started', type: 'page', description: 'Cohort begins' } },
+        { data: { id: 'cohort-end', label: 'Cohort Completed', type: 'page', description: 'Cohort ends' } },
+        { data: { id: 'interaction', label: 'Interaction Logged', type: 'page', description: 'Touchpoint' } },
+        { data: { id: 'revenue', label: 'Revenue Recorded', type: 'page', description: 'Payment' } },
+        
+        // Processing
+        { data: { id: 'store', label: 'analytics/{eventId}', type: 'service', description: 'Store event' } },
+        { data: { id: 'aggregate', label: 'Aggregate by Date', type: 'service', description: 'Group events' } },
+        { data: { id: 'calculate', label: 'Calculate Trends', type: 'service', description: 'Compute metrics' } },
+        
+        // Visualization
+        { data: { id: 'line-chart', label: 'Activity Line Chart', type: 'ui', description: 'Over time' } },
+        { data: { id: 'bar-chart', label: 'Status Bar Chart', type: 'ui', description: 'By status' } },
+        { data: { id: 'pie-chart', label: 'Type Pie Chart', type: 'ui', description: 'By type' } },
+        { data: { id: 'table', label: 'Top Partners Table', type: 'ui', description: 'Rankings' } },
+        
+        // Edges
+        { data: { source: 'enroll', target: 'store' } },
+        { data: { source: 'cohort-start', target: 'store' } },
+        { data: { source: 'cohort-end', target: 'store' } },
+        { data: { source: 'interaction', target: 'store' } },
+        { data: { source: 'revenue', target: 'store' } },
+        
+        { data: { source: 'store', target: 'aggregate' } },
+        { data: { source: 'aggregate', target: 'calculate' } },
+        
+        { data: { source: 'calculate', target: 'line-chart' } },
+        { data: { source: 'calculate', target: 'bar-chart' } },
+        { data: { source: 'calculate', target: 'pie-chart' } },
+        { data: { source: 'calculate', target: 'table' } },
+      ];
+
+      const cyAnalytics = DiagramUtils.createDiagram('analytics-flow', analyticsFlowElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchicalLR
+      });
+      DiagramUtils.setupDiagramControls(cyAnalytics, 'analytics-flow');
+
+      // ============================================
+      // DIAGRAM 9: Page Structure
+      // ============================================
+      const pageStructureElements = [
+        { data: { id: 'admin', label: 'admin/', type: 'data', description: 'Admin section' } },
+        { data: { id: 'partnerships', label: 'partnerships/', type: 'page', description: 'Partnership pages' } },
+        { data: { id: 'index', label: 'index.html', type: 'service', description: 'Partner list dashboard' } },
+        { data: { id: 'partner', label: 'partner.html', type: 'service', description: 'Partner detail view' } },
+        { data: { id: 'add', label: 'add.html', type: 'service', description: 'Add new partner' } },
+        { data: { id: 'analytics', label: 'analytics.html', type: 'service', description: 'Analytics dashboard' } },
+        
+        // Edges
+        { data: { source: 'admin', target: 'partnerships' } },
+        { data: { source: 'partnerships', target: 'index' } },
+        { data: { source: 'partnerships', target: 'partner' } },
+        { data: { source: 'partnerships', target: 'add' } },
+        { data: { source: 'partnerships', target: 'analytics' } },
+      ];
+
+      const cyPageStructure = DiagramUtils.createDiagram('page-structure', pageStructureElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyPageStructure, 'page-structure');
+    });
+  </script>
+</body>
+</html>

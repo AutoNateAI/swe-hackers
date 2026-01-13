@@ -20,7 +20,7 @@ flowchart TB
             CRS[Course Content]
             BG[Blog System]
         end
-        
+
         subgraph SharedJS["Shared JavaScript Layer"]
             FBC[Firebase Config]
             AUTH[Auth Service]
@@ -50,13 +50,13 @@ flowchart TB
 
 ## Architecture Principles
 
-| Principle | Implementation |
-|-----------|----------------|
-| **Static-First** | All HTML is pre-rendered; Firebase handles dynamic data |
-| **Progressive Enhancement** | Pages work without JS, enhanced with interactivity |
-| **Shared Services** | Single JS files in `/shared/js/` used across all pages |
-| **Firestore-Centric** | All user data flows through Firestore with real-time sync |
-| **RBAC for Access** | Role-based access control for partner courses |
+| Principle                   | Implementation                                            |
+| --------------------------- | --------------------------------------------------------- |
+| **Static-First**            | All HTML is pre-rendered; Firebase handles dynamic data   |
+| **Progressive Enhancement** | Pages work without JS, enhanced with interactivity        |
+| **Shared Services**         | Single JS files in `/shared/js/` used across all pages    |
+| **Firestore-Centric**       | All user data flows through Firestore with real-time sync |
+| **RBAC for Access**         | Role-based access control for partner courses             |
 
 ## Directory Structure
 
@@ -151,7 +151,7 @@ sequenceDiagram
     Auth-->>JS: Auth ready
     JS->>JS: AuthService.init()
     JS->>Auth: onAuthStateChanged()
-    
+
     alt User signed in
         Auth-->>JS: User object
         JS->>FS: Load progress data
@@ -211,7 +211,7 @@ flowchart TD
     PT --> AS
     AT --> AS
     RBAC --> RG
-    
+
     AUTH --> NB
     AUTH --> LI
     DS --> LI
@@ -226,15 +226,15 @@ flowchart TD
 
 ## Page Type Matrix
 
-| Page Type | Auth Required | Route Guard | Services Used |
-|-----------|---------------|-------------|---------------|
-| Marketing (index, catalog) | ❌ | ❌ | navbar.js |
-| Auth (login, register) | ❌ | ❌ | auth.js |
-| Course Detail | ❌ | ❌ | auth.js, data-service.js |
-| Dashboard | ✅ | ✅ | All services |
-| Lesson | ✅ | ✅ + RBAC | All services |
-| Blog | ❌ | ❌ | blog.js |
-| Partner Course | ✅ | ✅ + Org | All services + RBAC |
+| Page Type                  | Auth Required | Route Guard | Services Used            |
+| -------------------------- | ------------- | ----------- | ------------------------ |
+| Marketing (index, catalog) | ❌            | ❌          | navbar.js                |
+| Auth (login, register)     | ❌            | ❌          | auth.js                  |
+| Course Detail              | ❌            | ❌          | auth.js, data-service.js |
+| Dashboard                  | ✅            | ✅          | All services             |
+| Lesson                     | ✅            | ✅ + RBAC   | All services             |
+| Blog                       | ❌            | ❌          | blog.js                  |
+| Partner Course             | ✅            | ✅ + Org    | All services + RBAC      |
 
 ## Request Flow by Page Type
 
@@ -246,7 +246,7 @@ flowchart LR
     HTML --> CSS[marketing.css]
     HTML --> NB[navbar.js]
     NB --> UI[Enhanced Navigation]
-    
+
     style HTML fill:#51cf66,stroke:#2f9e44
 ```
 
@@ -259,16 +259,16 @@ flowchart LR
     HTML --> JS[Shared JS Bundle]
     JS --> FB[Firebase Init]
     FB --> AUTH[Auth Check]
-    
+
     AUTH -->|Signed In| DATA[Load User Data]
     AUTH -->|Not Signed In| LOGIN[Redirect Login]
-    
+
     DATA --> RBAC{RBAC Check}
     RBAC -->|Allowed| RENDER[Render Page]
     RBAC -->|Denied| DENY[Access Denied]
-    
+
     RENDER --> TRACK[Progress Tracking]
-    
+
     style LOAD fill:#ffd93d,stroke:#f59f00
     style AUTH fill:#7986cb,stroke:#3949ab
     style RBAC fill:#ff6b6b,stroke:#c92a2a
@@ -307,12 +307,14 @@ mindmap
 **Decision:** All pages are static HTML served from GitHub Pages/Firebase Hosting.
 
 **Rationale:**
+
 - Zero server infrastructure to maintain
 - Fast load times (CDN-cached)
 - Easy to deploy (git push)
 - Firebase handles all dynamic functionality
 
 **Trade-offs:**
+
 - No server-side rendering for SEO (mitigated with meta tags)
 - All business logic in client-side JS
 
@@ -321,12 +323,14 @@ mindmap
 **Decision:** One set of JS files in `/shared/js/` used by all pages.
 
 **Rationale:**
+
 - DRY principle - single source of truth
 - Easier maintenance
 - Consistent behavior across pages
 - Browser caching benefits
 
 **Trade-offs:**
+
 - Pages load all services even if not needed
 - Careful coordination for changes
 
@@ -335,11 +339,13 @@ mindmap
 **Decision:** Lesson progress stored in subcollections under course progress.
 
 **Rationale:**
+
 - Allows detailed per-lesson tracking
 - Can scale to many lessons without huge documents
 - Enables granular queries
 
 **Trade-offs:**
+
 - Requires multiple reads for dashboard (mitigated with fallback logic)
 - More complex data model
 
@@ -348,24 +354,26 @@ mindmap
 **Decision:** Role-based access control implemented in client-side JS.
 
 **Rationale:**
+
 - Sufficient for current scale
 - No server needed for access decisions
 - Firestore security rules provide true enforcement
 
 **Trade-offs:**
+
 - UI can be bypassed (Firestore rules are the real gate)
 - Must keep client RBAC in sync with security rules
 
 ## Related Documentation
 
-| Document | Description |
-|----------|-------------|
-| [01-service-layer.md](./01-service-layer.md) | Deep dive into shared JS services |
-| [02-page-types.md](./02-page-types.md) | Page architecture patterns |
-| [03-data-model.md](./03-data-model.md) | Firestore data model |
-| [04-authentication-rbac.md](./04-authentication-rbac.md) | Auth and RBAC system |
-| [05-progress-tracking.md](./05-progress-tracking.md) | Progress tracking system |
-| [06-frontend-patterns.md](./06-frontend-patterns.md) | CSS and UI patterns |
+| Document                                                 | Description                       |
+| -------------------------------------------------------- | --------------------------------- |
+| [01-service-layer.md](./01-service-layer.md)             | Deep dive into shared JS services |
+| [02-page-types.md](./02-page-types.md)                   | Page architecture patterns        |
+| [03-data-model.md](./03-data-model.md)                   | Firestore data model              |
+| [04-authentication-rbac.md](./04-authentication-rbac.md) | Auth and RBAC system              |
+| [05-progress-tracking.md](./05-progress-tracking.md)     | Progress tracking system          |
+| [06-frontend-patterns.md](./06-frontend-patterns.md)     | CSS and UI patterns               |
 
 ## Quick Start for Engineers
 
