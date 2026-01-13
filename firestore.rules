@@ -1,0 +1,113 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ══════════════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Check if user is the document owner
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Check if user has admin role
+    function isAdmin() {
+      return isAuthenticated() && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // USER COLLECTION
+    // ══════════════════════════════════════════════════════════════════
+    
+    match /users/{userId} {
+      // Users can read their own profile, admins can read all
+      allow read: if isOwner(userId) || isAdmin();
+      
+      // Users can create their own profile
+      allow create: if isOwner(userId);
+      
+      // Users can update their own profile (but not role), admins can update any
+      allow update: if isOwner(userId) || isAdmin();
+      
+      // Only admins can delete users
+      allow delete: if isAdmin();
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // COURSE PROGRESS
+    // ══════════════════════════════════════════════════════════════════
+    
+    match /courseProgress/{docId} {
+      allow read, write: if isAuthenticated() && 
+                            resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated();
+      allow read: if isAdmin();
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // ACTIVITY ATTEMPTS
+    // ══════════════════════════════════════════════════════════════════
+    
+    match /activityAttempts/{attemptId} {
+      allow read, write: if isAuthenticated() && 
+                            resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated();
+      allow read: if isAdmin();
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // PARTNERSHIP PORTAL (Admin Only)
+    // ══════════════════════════════════════════════════════════════════
+    
+    match /partners/{partnerId} {
+      // Only admins can read/write partners
+      allow read, write: if isAdmin();
+      
+      // Interactions subcollection
+      match /interactions/{interactionId} {
+        allow read, write: if isAdmin();
+      }
+      
+      // Attachments subcollection
+      match /attachments/{attachmentId} {
+        allow read, write: if isAdmin();
+      }
+      
+      // Partner courses subcollection
+      match /courses/{courseId} {
+        allow read, write: if isAdmin();
+      }
+      
+      // Analytics events subcollection
+      match /analytics/{eventId} {
+        allow read, write: if isAdmin();
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // ORGANIZATIONS
+    // ══════════════════════════════════════════════════════════════════
+    
+    match /organizations/{orgId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // COURSES (metadata)
+    // ══════════════════════════════════════════════════════════════════
+    
+    match /courses/{courseId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+  }
+}

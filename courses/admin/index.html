@@ -1,957 +1,1117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | AutoNateAI</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../shared/css/dashboard.css">
-  
-  <style>
-    .admin-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    
-    .admin-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .admin-title {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 700;
-    }
-    
-    .admin-badge {
-      background: linear-gradient(135deg, #f44336, #e91e63);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    
-    .admin-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 1rem;
-    }
-    
-    .admin-tab {
-      padding: 0.75rem 1.5rem;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-md);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .admin-tab:hover {
-      background: rgba(255,255,255,0.05);
-    }
-    
-    .admin-tab.active {
-      background: var(--accent-primary);
-      color: white;
-      border-color: var(--accent-primary);
-    }
-    
-    .admin-panel {
-      display: none;
-    }
-    
-    .admin-panel.active {
-      display: block;
-    }
-    
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    
-    .data-table th,
-    .data-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    
-    .data-table th {
-      background: var(--bg-tertiary);
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-    }
-    
-    .data-table tr:hover td {
-      background: rgba(255,255,255,0.02);
-    }
-    
-    .course-row:hover td {
-      background: rgba(121, 134, 203, 0.1) !important;
-      transition: background 0.2s;
-    }
-    
-    .course-row:hover .action-btn {
-      background: var(--accent-primary);
-      color: white;
-      border-color: var(--accent-primary);
-    }
-    
-    .role-badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .role-badge.admin {
-      background: rgba(244, 67, 54, 0.2);
-      color: #f44336;
-    }
-    
-    .role-badge.enterprise {
-      background: rgba(156, 39, 176, 0.2);
-      color: #ce93d8;
-    }
-    
-    .role-badge.user {
-      background: rgba(121, 134, 203, 0.2);
-      color: #7986cb;
-    }
-    
-    .org-tag {
-      display: inline-block;
-      padding: 0.2rem 0.5rem;
-      background: rgba(76, 175, 80, 0.15);
-      color: #4CAF50;
-      border-radius: var(--radius-sm);
-      font-size: 0.7rem;
-      margin: 0.1rem;
-    }
-    
-    .action-btn {
-      padding: 0.4rem 0.75rem;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-size: 0.8rem;
-      transition: all 0.2s;
-    }
-    
-    .action-btn:hover {
-      background: var(--accent-primary);
-      border-color: var(--accent-primary);
-      color: white;
-    }
-    
-    .action-btn.danger:hover {
-      background: #f44336;
-      border-color: #f44336;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    .stat-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    
-    .stat-card .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-card .stat-value {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 700;
-    }
-    
-    .search-bar {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .search-input {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      background: var(--bg-tertiary);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 0.95rem;
-    }
-    
-    .search-input:focus {
-      outline: none;
-      border-color: var(--accent-primary);
-    }
-    
-    .filter-select {
-      padding: 0.75rem 1rem;
-      background: var(--bg-tertiary);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 0.95rem;
-      min-width: 150px;
-    }
-    
-    /* Modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    
-    .modal-overlay.active {
-      display: flex;
-    }
-    
-    .modal {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      max-width: 500px;
-      width: 90%;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    
-    .form-label {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .form-input,
-    .form-select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--bg-tertiary);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 0.95rem;
-    }
-    
-    .form-input:focus,
-    .form-select:focus {
-      outline: none;
-      border-color: var(--accent-primary);
-    }
-    
-    .form-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .btn-primary {
-      background: var(--accent-primary);
-      border: none;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background: var(--accent-secondary);
-    }
-    
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--text-secondary);
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.05);
-    }
-    
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--bg-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-    }
-    
-    .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top-color: var(--accent-primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    .access-denied {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-    
-    .access-denied h2 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .access-denied p {
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-    }
-    
-    @media (max-width: 900px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | AutoNateAI</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/dashboard.css" />
+
+    <style>
+      .admin-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
       }
-      
-      .data-table {
+
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .admin-title {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 700;
+      }
+
+      .admin-badge {
+        background: linear-gradient(135deg, #f44336, #e91e63);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-full);
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .admin-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1rem;
+      }
+
+      .admin-tab {
+        padding: 0.75rem 1.5rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .admin-tab:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .admin-tab.active {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+      }
+
+      .admin-panel {
+        display: none;
+      }
+
+      .admin-panel.active {
         display: block;
-        overflow-x: auto;
       }
-    }
-  </style>
-  
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-</head>
-<body>
-  <!-- Loading -->
-  <div class="loading-overlay" id="loading">
-    <div class="loading-spinner"></div>
-  </div>
-  
-  <!-- Access Denied (hidden by default) -->
-  <div class="access-denied" id="access-denied" style="display: none;">
-    <h2>🔒 Access Denied</h2>
-    <p>You don't have permission to access the admin dashboard.</p>
-    <a href="../dashboard/index.html" class="btn btn-primary">Go to Dashboard</a>
-  </div>
-  
-  <!-- Admin Dashboard -->
-  <div class="admin-container" id="admin-content" style="display: none;">
-    <header class="admin-header">
-      <div>
-        <h1 class="admin-title">🛡️ Admin Dashboard</h1>
-      </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <span class="admin-badge">Admin</span>
-        <a href="../dashboard/index.html" style="color: var(--text-secondary); text-decoration: none;">← Back to Dashboard</a>
-      </div>
-    </header>
-    
-    <!-- Stats -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-label">Total Users</div>
-        <div class="stat-value" id="stat-users">-</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Enterprise Users</div>
-        <div class="stat-value" id="stat-enterprise">-</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Organizations</div>
-        <div class="stat-value" id="stat-orgs">-</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Active Courses</div>
-        <div class="stat-value" id="stat-courses">-</div>
-      </div>
-    </div>
-    
-    <!-- Tabs -->
-    <div class="admin-tabs">
-      <button class="admin-tab active" data-tab="users">👥 Users</button>
-      <button class="admin-tab" data-tab="organizations">🏢 Organizations</button>
-      <button class="admin-tab" data-tab="courses">📚 Courses</button>
-    </div>
-    
-    <!-- Users Panel -->
-    <div class="admin-panel active" id="panel-users">
-      <div class="search-bar">
-        <input type="text" class="search-input" id="user-search" placeholder="Search users by email or name...">
-        <select class="filter-select" id="role-filter">
-          <option value="">All Roles</option>
-          <option value="admin">Admin</option>
-          <option value="enterprise">Enterprise</option>
-          <option value="user">User</option>
-        </select>
-        <select class="filter-select" id="org-filter">
-          <option value="">All Organizations</option>
-        </select>
-      </div>
-      
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Role</th>
-            <th>Organizations</th>
-            <th>Created</th>
-            <th>Last Login</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="users-table">
-          <tr>
-            <td colspan="6" style="text-align: center; color: var(--text-muted);">Loading users...</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <!-- Organizations Panel -->
-    <div class="admin-panel" id="panel-organizations">
-      <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Search organizations...">
-        <button class="btn btn-primary" onclick="openAddOrgModal()">+ Add Organization</button>
-      </div>
-      
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Organization</th>
-            <th>Users</th>
-            <th>Courses</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="orgs-table">
-          <tr>
-            <td>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.5rem;">🌟</span>
-                <div>
-                  <div style="font-weight: 500;">Endless Opportunities</div>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">endless-opportunities</div>
-                </div>
-              </div>
-            </td>
-            <td id="eo-user-count">-</td>
-            <td>1</td>
-            <td><span style="color: #4CAF50;">● Active</span></td>
-            <td>
-              <button class="action-btn" onclick="viewOrgUsers('endless-opportunities')">View Users</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <!-- Courses Panel -->
-    <div class="admin-panel" id="panel-courses">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Course</th>
-            <th>Visibility</th>
-            <th>Organizations</th>
-            <th>Enrollments</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="courses-table">
-          <!-- Apprentice -->
-          <tr class="course-row" onclick="window.location.href='../course/apprentice.html'" style="cursor: pointer;">
-            <td>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.5rem;">⭐</span>
-                <div>
-                  <div style="font-weight: 500;">The Apprentice's Path</div>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">apprentice</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="role-badge user">Public</span></td>
-            <td>-</td>
-            <td id="enrollments-apprentice">-</td>
-            <td>
-              <a href="../course/apprentice.html" class="action-btn" onclick="event.stopPropagation();">View</a>
-            </td>
-          </tr>
-          <!-- Undergrad -->
-          <tr class="course-row" onclick="window.location.href='../course/undergrad.html'" style="cursor: pointer;">
-            <td>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.5rem;">🎓</span>
-                <div>
-                  <div style="font-weight: 500;">The Bridge to Industry</div>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">undergrad</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="role-badge user">Public</span></td>
-            <td>-</td>
-            <td id="enrollments-undergrad">-</td>
-            <td>
-              <a href="../course/undergrad.html" class="action-btn" onclick="event.stopPropagation();">View</a>
-            </td>
-          </tr>
-          <!-- Junior -->
-          <tr class="course-row" onclick="window.location.href='../course/junior.html'" style="cursor: pointer;">
-            <td>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.5rem;">🚀</span>
-                <div>
-                  <div style="font-weight: 500;">The Junior Accelerator</div>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">junior</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="role-badge user">Public</span></td>
-            <td>-</td>
-            <td id="enrollments-junior">-</td>
-            <td>
-              <a href="../course/junior.html" class="action-btn" onclick="event.stopPropagation();">View</a>
-            </td>
-          </tr>
-          <!-- Senior -->
-          <tr class="course-row" onclick="window.location.href='../course/senior.html'" style="cursor: pointer;">
-            <td>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.5rem;">👑</span>
-                <div>
-                  <div style="font-weight: 500;">The Senior Amplifier</div>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">senior</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="role-badge user">Public</span></td>
-            <td>-</td>
-            <td id="enrollments-senior">-</td>
-            <td>
-              <a href="../course/senior.html" class="action-btn" onclick="event.stopPropagation();">View</a>
-            </td>
-          </tr>
-          <!-- Endless Opportunities -->
-          <tr class="course-row" onclick="window.location.href='../course/endless-opportunities.html'" style="cursor: pointer;">
-            <td>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.5rem;">🌟</span>
-                <div>
-                  <div style="font-weight: 500;">AI Freelancing Bootcamp</div>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">endless-opportunities</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="role-badge enterprise">Organization</span></td>
-            <td><span class="org-tag">endless-opportunities</span></td>
-            <td id="enrollments-endless-opportunities">-</td>
-            <td>
-              <a href="../course/endless-opportunities.html" class="action-btn" onclick="event.stopPropagation();">View</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
-  <!-- Edit User Modal -->
-  <div class="modal-overlay" id="edit-user-modal">
-    <div class="modal">
-      <div class="modal-header">
-        <h3 class="modal-title">Edit User</h3>
-        <button class="modal-close" onclick="closeModal('edit-user-modal')">&times;</button>
-      </div>
-      
-      <form id="edit-user-form">
-        <input type="hidden" id="edit-user-id">
-        
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" id="edit-user-email" disabled>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label">Display Name</label>
-          <input type="text" class="form-input" id="edit-user-name">
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label">Role</label>
-          <select class="form-select" id="edit-user-role">
-            <option value="user">User</option>
-            <option value="enterprise">Enterprise</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label">Organization Access</label>
-          <div id="org-checkboxes">
-            <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
-              <input type="checkbox" value="endless-opportunities" class="org-checkbox">
-              Endless Opportunities
-            </label>
-          </div>
-        </div>
-        
-        <div class="form-actions">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('edit-user-modal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  
-  <!-- Scripts -->
-  <script src="../shared/js/firebase-config.js"></script>
-  <script src="../shared/js/auth.js"></script>
-  <script src="../shared/js/rbac.js"></script>
-  
-  <script>
-    // State
-    let allUsers = [];
-    let currentEditUser = null;
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', async () => {
-      if (!window.FirebaseApp.init()) {
-        console.error('Firebase initialization failed');
-        return;
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
       }
-      
-      window.AuthService.init();
-      
-      // Wait for auth
-      const user = await window.AuthService.waitForAuthState();
-      
-      if (!user) {
-        window.location.href = '../auth/login.html';
-        return;
+
+      .data-table th,
+      .data-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
-      
-      // Check admin access
-      if (window.RBACService) {
-        const isAdmin = await window.RBACService.hasRole('admin');
-        
-        if (!isAdmin) {
-          document.getElementById('loading').style.display = 'none';
-          document.getElementById('access-denied').style.display = 'block';
-          return;
+
+      .data-table th {
+        background: var(--bg-tertiary);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+      }
+
+      .data-table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .course-row:hover td {
+        background: rgba(121, 134, 203, 0.1) !important;
+        transition: background 0.2s;
+      }
+
+      .course-row:hover .action-btn {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+      }
+
+      .role-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .role-badge.admin {
+        background: rgba(244, 67, 54, 0.2);
+        color: #f44336;
+      }
+
+      .role-badge.enterprise {
+        background: rgba(156, 39, 176, 0.2);
+        color: #ce93d8;
+      }
+
+      .role-badge.user {
+        background: rgba(121, 134, 203, 0.2);
+        color: #7986cb;
+      }
+
+      .org-tag {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        background: rgba(76, 175, 80, 0.15);
+        color: #4caf50;
+        border-radius: var(--radius-sm);
+        font-size: 0.7rem;
+        margin: 0.1rem;
+      }
+
+      .action-btn {
+        padding: 0.4rem 0.75rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-sm);
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.2s;
+      }
+
+      .action-btn:hover {
+        background: var(--accent-primary);
+        border-color: var(--accent-primary);
+        color: white;
+      }
+
+      .action-btn.danger:hover {
+        background: #f44336;
+        border-color: #f44336;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .stat-card .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-card .stat-value {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .search-bar {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        background: var(--bg-tertiary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-size: 0.95rem;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+      }
+
+      .filter-select {
+        padding: 0.75rem 1rem;
+        background: var(--bg-tertiary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        min-width: 150px;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        max-width: 500px;
+        width: 90%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-input,
+      .form-select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: var(--bg-tertiary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-size: 0.95rem;
+      }
+
+      .form-input:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: var(--accent-primary);
+        border: none;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-secondary);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--text-secondary);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top-color: var(--accent-primary);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
       }
-      
-      // Show admin content
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('admin-content').style.display = 'block';
-      
-      // Load data
-      await loadUsers();
-      await loadStats();
-      
-      // Set up tab switching
-      setupTabs();
-      
-      // Set up search and filters
-      setupFilters();
-      
-      // Set up form handlers
-      setupForms();
-    });
-    
-    // Tab switching
-    function setupTabs() {
-      const tabs = document.querySelectorAll('.admin-tab');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          
-          document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
-          document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
-        });
+
+      .access-denied {
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+
+      .access-denied h2 {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .access-denied p {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+      }
+
+      @media (max-width: 900px) {
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .data-table {
+          display: block;
+          overflow-x: auto;
+        }
+      }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  </head>
+  <body>
+    <!-- Loading -->
+    <div class="loading-overlay" id="loading">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Access Denied (hidden by default) -->
+    <div class="access-denied" id="access-denied" style="display: none">
+      <h2>🔒 Access Denied</h2>
+      <p>You don't have permission to access the admin dashboard.</p>
+      <a href="../dashboard/index.html" class="btn btn-primary"
+        >Go to Dashboard</a
+      >
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container" id="admin-content" style="display: none">
+      <header class="admin-header">
+        <div>
+          <h1 class="admin-title">🛡️ Admin Dashboard</h1>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <span class="admin-badge">Admin</span>
+          <a
+            href="../dashboard/index.html"
+            style="color: var(--text-secondary); text-decoration: none"
+            >← Back to Dashboard</a
+          >
+        </div>
+      </header>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Users</div>
+          <div class="stat-value" id="stat-users">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Enterprise Users</div>
+          <div class="stat-value" id="stat-enterprise">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Organizations</div>
+          <div class="stat-value" id="stat-orgs">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Courses</div>
+          <div class="stat-value" id="stat-courses">-</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="users">👥 Users</button>
+        <button class="admin-tab" data-tab="organizations">
+          🏢 Organizations
+        </button>
+        <button class="admin-tab" data-tab="courses">📚 Courses</button>
+        <a
+          href="partnerships/index.html"
+          class="admin-tab"
+          style="text-decoration: none"
+          >🤝 Partnerships</a
+        >
+      </div>
+
+      <!-- Users Panel -->
+      <div class="admin-panel active" id="panel-users">
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            id="user-search"
+            placeholder="Search users by email or name..."
+          />
+          <select class="filter-select" id="role-filter">
+            <option value="">All Roles</option>
+            <option value="admin">Admin</option>
+            <option value="enterprise">Enterprise</option>
+            <option value="user">User</option>
+          </select>
+          <select class="filter-select" id="org-filter">
+            <option value="">All Organizations</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Role</th>
+              <th>Organizations</th>
+              <th>Created</th>
+              <th>Last Login</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-table">
+            <tr>
+              <td
+                colspan="6"
+                style="text-align: center; color: var(--text-muted)"
+              >
+                Loading users...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Organizations Panel -->
+      <div class="admin-panel" id="panel-organizations">
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search organizations..."
+          />
+          <button class="btn btn-primary" onclick="openAddOrgModal()">
+            + Add Organization
+          </button>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Organization</th>
+              <th>Users</th>
+              <th>Courses</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orgs-table">
+            <tr>
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.75rem">
+                  <span style="font-size: 1.5rem">🌟</span>
+                  <div>
+                    <div style="font-weight: 500">Endless Opportunities</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted)">
+                      endless-opportunities
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td id="eo-user-count">-</td>
+              <td>1</td>
+              <td><span style="color: #4caf50">● Active</span></td>
+              <td>
+                <button
+                  class="action-btn"
+                  onclick="viewOrgUsers('endless-opportunities')"
+                >
+                  View Users
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Courses Panel -->
+      <div class="admin-panel" id="panel-courses">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Visibility</th>
+              <th>Organizations</th>
+              <th>Enrollments</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="courses-table">
+            <!-- Apprentice -->
+            <tr
+              class="course-row"
+              onclick="window.location.href='../course/apprentice.html'"
+              style="cursor: pointer"
+            >
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.75rem">
+                  <span style="font-size: 1.5rem">⭐</span>
+                  <div>
+                    <div style="font-weight: 500">The Apprentice's Path</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted)">
+                      apprentice
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role-badge user">Public</span></td>
+              <td>-</td>
+              <td id="enrollments-apprentice">-</td>
+              <td>
+                <a
+                  href="../course/apprentice.html"
+                  class="action-btn"
+                  onclick="event.stopPropagation();"
+                  >View</a
+                >
+              </td>
+            </tr>
+            <!-- Undergrad -->
+            <tr
+              class="course-row"
+              onclick="window.location.href='../course/undergrad.html'"
+              style="cursor: pointer"
+            >
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.75rem">
+                  <span style="font-size: 1.5rem">🎓</span>
+                  <div>
+                    <div style="font-weight: 500">The Bridge to Industry</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted)">
+                      undergrad
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role-badge user">Public</span></td>
+              <td>-</td>
+              <td id="enrollments-undergrad">-</td>
+              <td>
+                <a
+                  href="../course/undergrad.html"
+                  class="action-btn"
+                  onclick="event.stopPropagation();"
+                  >View</a
+                >
+              </td>
+            </tr>
+            <!-- Junior -->
+            <tr
+              class="course-row"
+              onclick="window.location.href='../course/junior.html'"
+              style="cursor: pointer"
+            >
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.75rem">
+                  <span style="font-size: 1.5rem">🚀</span>
+                  <div>
+                    <div style="font-weight: 500">The Junior Accelerator</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted)">
+                      junior
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role-badge user">Public</span></td>
+              <td>-</td>
+              <td id="enrollments-junior">-</td>
+              <td>
+                <a
+                  href="../course/junior.html"
+                  class="action-btn"
+                  onclick="event.stopPropagation();"
+                  >View</a
+                >
+              </td>
+            </tr>
+            <!-- Senior -->
+            <tr
+              class="course-row"
+              onclick="window.location.href='../course/senior.html'"
+              style="cursor: pointer"
+            >
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.75rem">
+                  <span style="font-size: 1.5rem">👑</span>
+                  <div>
+                    <div style="font-weight: 500">The Senior Amplifier</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted)">
+                      senior
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role-badge user">Public</span></td>
+              <td>-</td>
+              <td id="enrollments-senior">-</td>
+              <td>
+                <a
+                  href="../course/senior.html"
+                  class="action-btn"
+                  onclick="event.stopPropagation();"
+                  >View</a
+                >
+              </td>
+            </tr>
+            <!-- Endless Opportunities -->
+            <tr
+              class="course-row"
+              onclick="window.location.href='../course/endless-opportunities.html'"
+              style="cursor: pointer"
+            >
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.75rem">
+                  <span style="font-size: 1.5rem">🌟</span>
+                  <div>
+                    <div style="font-weight: 500">AI Freelancing Bootcamp</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted)">
+                      endless-opportunities
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role-badge enterprise">Organization</span></td>
+              <td><span class="org-tag">endless-opportunities</span></td>
+              <td id="enrollments-endless-opportunities">-</td>
+              <td>
+                <a
+                  href="../course/endless-opportunities.html"
+                  class="action-btn"
+                  onclick="event.stopPropagation();"
+                  >View</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal-overlay" id="edit-user-modal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit User</h3>
+          <button class="modal-close" onclick="closeModal('edit-user-modal')">
+            &times;
+          </button>
+        </div>
+
+        <form id="edit-user-form">
+          <input type="hidden" id="edit-user-id" />
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-input"
+              id="edit-user-email"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Display Name</label>
+            <input type="text" class="form-input" id="edit-user-name" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Role</label>
+            <select class="form-select" id="edit-user-role">
+              <option value="user">User</option>
+              <option value="enterprise">Enterprise</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Organization Access</label>
+            <div id="org-checkboxes">
+              <label
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                  margin: 0.5rem 0;
+                "
+              >
+                <input
+                  type="checkbox"
+                  value="endless-opportunities"
+                  class="org-checkbox"
+                />
+                Endless Opportunities
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeModal('edit-user-modal')"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../shared/js/firebase-config.js"></script>
+    <script src="../shared/js/auth.js"></script>
+    <script src="../shared/js/rbac.js"></script>
+
+    <script>
+      // State
+      let allUsers = [];
+      let currentEditUser = null;
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", async () => {
+        if (!window.FirebaseApp.init()) {
+          console.error("Firebase initialization failed");
+          return;
+        }
+
+        window.AuthService.init();
+
+        // Wait for auth
+        const user = await window.AuthService.waitForAuthState();
+
+        if (!user) {
+          window.location.href = "../auth/login.html";
+          return;
+        }
+
+        // Check admin access
+        if (window.RBACService) {
+          const isAdmin = await window.RBACService.hasRole("admin");
+
+          if (!isAdmin) {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("access-denied").style.display = "block";
+            return;
+          }
+        }
+
+        // Show admin content
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("admin-content").style.display = "block";
+
+        // Load data
+        await loadUsers();
+        await loadStats();
+
+        // Set up tab switching
+        setupTabs();
+
+        // Set up search and filters
+        setupFilters();
+
+        // Set up form handlers
+        setupForms();
       });
-    }
-    
-    // Load users
-    async function loadUsers() {
-      const db = window.FirebaseApp.getDb();
-      
-      try {
-        const snapshot = await db.collection('users').get();
-        allUsers = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        
-        renderUsers(allUsers);
-        
-        // Update org filter
-        const orgs = new Set();
-        allUsers.forEach(user => {
-          (user.organizationAccess || []).forEach(org => orgs.add(org));
+
+      // Tab switching
+      function setupTabs() {
+        const tabs = document.querySelectorAll(".admin-tab");
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            document
+              .querySelectorAll(".admin-panel")
+              .forEach((p) => p.classList.remove("active"));
+            document
+              .getElementById(`panel-${tab.dataset.tab}`)
+              .classList.add("active");
+          });
         });
-        
-        const orgFilter = document.getElementById('org-filter');
-        orgs.forEach(org => {
-          const option = document.createElement('option');
-          option.value = org;
-          option.textContent = org;
-          orgFilter.appendChild(option);
-        });
-        
-        // Update EO user count
-        const eoUsers = allUsers.filter(u => 
-          (u.organizationAccess || []).includes('endless-opportunities')
-        ).length;
-        document.getElementById('eo-user-count').textContent = eoUsers;
-        
-      } catch (error) {
-        console.error('Error loading users:', error);
       }
-    }
-    
-    // Render users table
-    function renderUsers(users) {
-      const tbody = document.getElementById('users-table');
-      
-      if (users.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No users found</td></tr>';
-        return;
+
+      // Load users
+      async function loadUsers() {
+        const db = window.FirebaseApp.getDb();
+
+        try {
+          const snapshot = await db.collection("users").get();
+          allUsers = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+
+          renderUsers(allUsers);
+
+          // Update org filter
+          const orgs = new Set();
+          allUsers.forEach((user) => {
+            (user.organizationAccess || []).forEach((org) => orgs.add(org));
+          });
+
+          const orgFilter = document.getElementById("org-filter");
+          orgs.forEach((org) => {
+            const option = document.createElement("option");
+            option.value = org;
+            option.textContent = org;
+            orgFilter.appendChild(option);
+          });
+
+          // Update EO user count
+          const eoUsers = allUsers.filter((u) =>
+            (u.organizationAccess || []).includes("endless-opportunities")
+          ).length;
+          document.getElementById("eo-user-count").textContent = eoUsers;
+        } catch (error) {
+          console.error("Error loading users:", error);
+        }
       }
-      
-      tbody.innerHTML = users.map(user => `
+
+      // Render users table
+      function renderUsers(users) {
+        const tbody = document.getElementById("users-table");
+
+        if (users.length === 0) {
+          tbody.innerHTML =
+            '<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No users found</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = users
+          .map(
+            (user) => `
         <tr>
           <td>
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <div style="width: 36px; height: 36px; background: var(--accent-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">
-                ${(user.displayName || user.email || '?')[0].toUpperCase()}
+                ${(user.displayName || user.email || "?")[0].toUpperCase()}
               </div>
               <div>
-                <div style="font-weight: 500;">${user.displayName || 'No name'}</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">${user.email}</div>
+                <div style="font-weight: 500;">${
+                  user.displayName || "No name"
+                }</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">${
+                  user.email
+                }</div>
               </div>
             </div>
           </td>
-          <td><span class="role-badge ${user.role || 'user'}">${user.role || 'user'}</span></td>
+          <td><span class="role-badge ${user.role || "user"}">${
+              user.role || "user"
+            }</span></td>
           <td>
-            ${(user.organizationAccess || []).map(org => `<span class="org-tag">${org}</span>`).join('') || '<span style="color: var(--text-muted);">-</span>'}
+            ${
+              (user.organizationAccess || [])
+                .map((org) => `<span class="org-tag">${org}</span>`)
+                .join("") || '<span style="color: var(--text-muted);">-</span>'
+            }
           </td>
           <td style="font-size: 0.85rem; color: var(--text-muted);">
-            ${user.createdAt ? new Date(user.createdAt.seconds * 1000).toLocaleDateString() : '-'}
+            ${
+              user.createdAt
+                ? new Date(user.createdAt.seconds * 1000).toLocaleDateString()
+                : "-"
+            }
           </td>
           <td style="font-size: 0.85rem; color: var(--text-muted);">
-            ${user.lastLoginAt ? new Date(user.lastLoginAt.seconds * 1000).toLocaleDateString() : '-'}
+            ${
+              user.lastLoginAt
+                ? new Date(user.lastLoginAt.seconds * 1000).toLocaleDateString()
+                : "-"
+            }
           </td>
           <td>
-            <button class="action-btn" onclick="editUser('${user.id}')">Edit</button>
+            <button class="action-btn" onclick="editUser('${
+              user.id
+            }')">Edit</button>
           </td>
         </tr>
-      `).join('');
-    }
-    
-    // Load stats
-    async function loadStats() {
-      document.getElementById('stat-users').textContent = allUsers.length;
-      
-      const enterpriseUsers = allUsers.filter(u => 
-        u.role === 'enterprise' || (u.organizationAccess && u.organizationAccess.length > 0)
-      ).length;
-      document.getElementById('stat-enterprise').textContent = enterpriseUsers;
-      
-      // Count unique orgs
-      const orgs = new Set();
-      allUsers.forEach(user => {
-        (user.organizationAccess || []).forEach(org => orgs.add(org));
-      });
-      document.getElementById('stat-orgs').textContent = orgs.size;
-      
-      // Count courses (hardcoded for now)
-      document.getElementById('stat-courses').textContent = '5';
-    }
-    
-    // Setup filters
-    function setupFilters() {
-      const searchInput = document.getElementById('user-search');
-      const roleFilter = document.getElementById('role-filter');
-      const orgFilter = document.getElementById('org-filter');
-      
-      const filterUsers = () => {
-        const search = searchInput.value.toLowerCase();
-        const role = roleFilter.value;
-        const org = orgFilter.value;
-        
-        const filtered = allUsers.filter(user => {
-          const matchesSearch = !search || 
-            (user.email && user.email.toLowerCase().includes(search)) ||
-            (user.displayName && user.displayName.toLowerCase().includes(search));
-          
-          const matchesRole = !role || user.role === role;
-          
-          const matchesOrg = !org || 
-            (user.organizationAccess && user.organizationAccess.includes(org));
-          
-          return matchesSearch && matchesRole && matchesOrg;
-        });
-        
-        renderUsers(filtered);
-      };
-      
-      searchInput.addEventListener('input', filterUsers);
-      roleFilter.addEventListener('change', filterUsers);
-      orgFilter.addEventListener('change', filterUsers);
-    }
-    
-    // Edit user
-    function editUser(userId) {
-      const user = allUsers.find(u => u.id === userId);
-      if (!user) return;
-      
-      currentEditUser = user;
-      
-      document.getElementById('edit-user-id').value = user.id;
-      document.getElementById('edit-user-email').value = user.email;
-      document.getElementById('edit-user-name').value = user.displayName || '';
-      document.getElementById('edit-user-role').value = user.role || 'user';
-      
-      // Set org checkboxes
-      document.querySelectorAll('.org-checkbox').forEach(cb => {
-        cb.checked = (user.organizationAccess || []).includes(cb.value);
-      });
-      
-      document.getElementById('edit-user-modal').classList.add('active');
-    }
-    
-    // Setup forms
-    function setupForms() {
-      document.getElementById('edit-user-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const userId = document.getElementById('edit-user-id').value;
-        const role = document.getElementById('edit-user-role').value;
-        const displayName = document.getElementById('edit-user-name').value;
-        
-        const organizationAccess = [];
-        document.querySelectorAll('.org-checkbox:checked').forEach(cb => {
-          organizationAccess.push(cb.value);
-        });
-        
-        const db = window.FirebaseApp.getDb();
-        
-        try {
-          await db.collection('users').doc(userId).update({
-            role,
-            displayName,
-            organizationAccess,
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-          });
-          
-          closeModal('edit-user-modal');
-          await loadUsers();
-          await loadStats();
-          
-          alert('User updated successfully!');
-        } catch (error) {
-          console.error('Error updating user:', error);
-          alert('Error updating user: ' + error.message);
-        }
-      });
-    }
-    
-    // Modal helpers
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove('active');
-    }
-    
-    function viewOrgUsers(orgId) {
-      document.getElementById('org-filter').value = orgId;
-      document.getElementById('org-filter').dispatchEvent(new Event('change'));
-      
-      // Switch to users tab
-      document.querySelector('[data-tab="users"]').click();
-    }
-    
-    function openAddOrgModal() {
-      alert('Organization management coming soon!');
-    }
-  </script>
-</body>
-</html>
+      `
+          )
+          .join("");
+      }
 
+      // Load stats
+      async function loadStats() {
+        document.getElementById("stat-users").textContent = allUsers.length;
+
+        const enterpriseUsers = allUsers.filter(
+          (u) =>
+            u.role === "enterprise" ||
+            (u.organizationAccess && u.organizationAccess.length > 0)
+        ).length;
+        document.getElementById("stat-enterprise").textContent =
+          enterpriseUsers;
+
+        // Count unique orgs
+        const orgs = new Set();
+        allUsers.forEach((user) => {
+          (user.organizationAccess || []).forEach((org) => orgs.add(org));
+        });
+        document.getElementById("stat-orgs").textContent = orgs.size;
+
+        // Count courses (hardcoded for now)
+        document.getElementById("stat-courses").textContent = "5";
+      }
+
+      // Setup filters
+      function setupFilters() {
+        const searchInput = document.getElementById("user-search");
+        const roleFilter = document.getElementById("role-filter");
+        const orgFilter = document.getElementById("org-filter");
+
+        const filterUsers = () => {
+          const search = searchInput.value.toLowerCase();
+          const role = roleFilter.value;
+          const org = orgFilter.value;
+
+          const filtered = allUsers.filter((user) => {
+            const matchesSearch =
+              !search ||
+              (user.email && user.email.toLowerCase().includes(search)) ||
+              (user.displayName &&
+                user.displayName.toLowerCase().includes(search));
+
+            const matchesRole = !role || user.role === role;
+
+            const matchesOrg =
+              !org ||
+              (user.organizationAccess &&
+                user.organizationAccess.includes(org));
+
+            return matchesSearch && matchesRole && matchesOrg;
+          });
+
+          renderUsers(filtered);
+        };
+
+        searchInput.addEventListener("input", filterUsers);
+        roleFilter.addEventListener("change", filterUsers);
+        orgFilter.addEventListener("change", filterUsers);
+      }
+
+      // Edit user
+      function editUser(userId) {
+        const user = allUsers.find((u) => u.id === userId);
+        if (!user) return;
+
+        currentEditUser = user;
+
+        document.getElementById("edit-user-id").value = user.id;
+        document.getElementById("edit-user-email").value = user.email;
+        document.getElementById("edit-user-name").value =
+          user.displayName || "";
+        document.getElementById("edit-user-role").value = user.role || "user";
+
+        // Set org checkboxes
+        document.querySelectorAll(".org-checkbox").forEach((cb) => {
+          cb.checked = (user.organizationAccess || []).includes(cb.value);
+        });
+
+        document.getElementById("edit-user-modal").classList.add("active");
+      }
+
+      // Setup forms
+      function setupForms() {
+        document
+          .getElementById("edit-user-form")
+          .addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const userId = document.getElementById("edit-user-id").value;
+            const role = document.getElementById("edit-user-role").value;
+            const displayName = document.getElementById("edit-user-name").value;
+
+            const organizationAccess = [];
+            document.querySelectorAll(".org-checkbox:checked").forEach((cb) => {
+              organizationAccess.push(cb.value);
+            });
+
+            const db = window.FirebaseApp.getDb();
+
+            try {
+              await db.collection("users").doc(userId).update({
+                role,
+                displayName,
+                organizationAccess,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+              });
+
+              closeModal("edit-user-modal");
+              await loadUsers();
+              await loadStats();
+
+              alert("User updated successfully!");
+            } catch (error) {
+              console.error("Error updating user:", error);
+              alert("Error updating user: " + error.message);
+            }
+          });
+      }
+
+      // Modal helpers
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove("active");
+      }
+
+      function viewOrgUsers(orgId) {
+        document.getElementById("org-filter").value = orgId;
+        document
+          .getElementById("org-filter")
+          .dispatchEvent(new Event("change"));
+
+        // Switch to users tab
+        document.querySelector('[data-tab="users"]').click();
+      }
+
+      function openAddOrgModal() {
+        alert("Organization management coming soon!");
+      }
+    </script>
+  </body>
+</html>

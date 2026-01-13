@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Detail | AutoNateAI Admin</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  
+  <style>
+    .admin-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .partner-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .partner-logo-large {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      overflow: hidden;
+    }
+    
+    .partner-logo-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .partner-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    
+    .partner-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-muted);
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    
+    .status-badge.prospect { background: rgba(255, 217, 61, 0.2); color: #ffd93d; }
+    .status-badge.active { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+    .status-badge.paused { background: rgba(121, 134, 203, 0.2); color: #7986cb; }
+    .status-badge.churned { background: rgba(244, 67, 54, 0.2); color: #f44336; }
+    
+    .type-badge {
+      padding: 0.2rem 0.5rem;
+      background: rgba(76, 175, 80, 0.15);
+      color: #4CAF50;
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      text-transform: capitalize;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+    }
+    
+    .btn-primary { background: var(--accent-primary); color: white; }
+    .btn-primary:hover { background: var(--accent-secondary); }
+    .btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-secondary); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.05); }
+    .btn-danger { background: rgba(244, 67, 54, 0.2); color: #f44336; }
+    .btn-danger:hover { background: rgba(244, 67, 54, 0.3); }
+    
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 1rem;
+    }
+    
+    .tab {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .tab:hover { background: rgba(255,255,255,0.05); }
+    .tab.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+    
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    
+    /* Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .info-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .info-card h3 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .info-row:last-child { border-bottom: none; }
+    .info-label { color: var(--text-muted); }
+    .info-value { font-weight: 500; }
+    
+    .metric-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+    
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      padding-bottom: 2rem;
+    }
+    
+    .timeline-item:last-child { padding-bottom: 0; }
+    
+    .timeline-icon {
+      position: absolute;
+      left: 8px;
+      width: 26px;
+      height: 26px;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+    
+    .timeline-content {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .timeline-type {
+      font-size: 0.75rem;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+    }
+    
+    .timeline-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    .timeline-body {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .timeline-meta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.8rem;
+    }
+    
+    .timeline-meta span {
+      color: var(--text-muted);
+    }
+    
+    /* Attachments Grid */
+    .attachments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .attachment-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .attachment-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+    
+    .attachment-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .attachment-name {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      word-break: break-word;
+    }
+    
+    .attachment-size {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    /* Upload Dropzone */
+    .dropzone {
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 2rem;
+    }
+    
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--accent-primary);
+      background: rgba(121, 134, 203, 0.1);
+    }
+    
+    .dropzone-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .dropzone-text {
+      color: var(--text-secondary);
+    }
+    
+    /* Chart Container */
+    .chart-container {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 1.5rem;
+    }
+    
+    .chart-container h3 {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-wrapper {
+      position: relative;
+      height: 300px;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal-overlay.active { display: flex; }
+    
+    .modal {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+    
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    /* Loading */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .description-text {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+    }
+    
+    @media (max-width: 768px) {
+      .admin-header { flex-direction: column; gap: 1rem; }
+      .header-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+      .tabs { flex-wrap: wrap; }
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <!-- Loading -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="admin-container" id="main-content" style="display: none;">
+    <header class="admin-header">
+      <div class="partner-header">
+        <div class="partner-logo-large" id="partner-logo">🏢</div>
+        <div>
+          <h1 class="partner-title" id="partner-name">Loading...</h1>
+          <div class="partner-meta">
+            <span class="status-badge" id="partner-status">-</span>
+            <span class="type-badge" id="partner-type">-</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-secondary">← All Partners</a>
+        <a href="add.html" class="btn btn-secondary" id="edit-btn">Edit</a>
+        <button class="btn btn-danger" onclick="deletePartner()">Delete</button>
+      </div>
+    </header>
+    
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="timeline">Timeline</button>
+      <button class="tab" data-tab="attachments">Attachments</button>
+      <button class="tab" data-tab="analytics">Analytics</button>
+    </div>
+    
+    <!-- Overview Tab -->
+    <div class="tab-panel active" id="panel-overview">
+      <div class="cards-grid">
+        <div class="metric-card">
+          <div class="metric-value" id="metric-students">0</div>
+          <div class="metric-label">Students</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value" id="metric-courses">0</div>
+          <div class="metric-label">Courses</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value" id="metric-cohorts">0</div>
+          <div class="metric-label">Active Cohorts</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value" id="metric-revenue">$0</div>
+          <div class="metric-label">Revenue</div>
+        </div>
+      </div>
+      
+      <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="info-card">
+          <h3>Contact Information</h3>
+          <div class="info-row">
+            <span class="info-label">Name</span>
+            <span class="info-value" id="contact-name">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-value" id="contact-email">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value" id="contact-phone">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Title</span>
+            <span class="info-value" id="contact-title">-</span>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <h3>Organization Details</h3>
+          <div class="info-row">
+            <span class="info-label">Website</span>
+            <span class="info-value"><a href="#" id="org-website" target="_blank" style="color: var(--accent-primary);">-</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Created</span>
+            <span class="info-value" id="org-created">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Last Interaction</span>
+            <span class="info-value" id="org-last-interaction">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Total Interactions</span>
+            <span class="info-value" id="org-total-interactions">0</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="info-card">
+        <h3>Description</h3>
+        <p class="description-text" id="partner-description">No description provided.</p>
+      </div>
+    </div>
+    
+    <!-- Timeline Tab -->
+    <div class="tab-panel" id="panel-timeline">
+      <div style="margin-bottom: 1.5rem;">
+        <button class="btn btn-primary" onclick="openInteractionModal()">+ Add Interaction</button>
+      </div>
+      
+      <div class="timeline" id="timeline-container">
+        <div class="empty-state">Loading interactions...</div>
+      </div>
+    </div>
+    
+    <!-- Attachments Tab -->
+    <div class="tab-panel" id="panel-attachments">
+      <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+        <div class="dropzone-icon">📎</div>
+        <div class="dropzone-text">Drop files here or click to upload</div>
+        <input type="file" id="file-input" multiple style="display: none;">
+      </div>
+      
+      <div class="attachments-grid" id="attachments-container">
+        <div class="empty-state">Loading attachments...</div>
+      </div>
+    </div>
+    
+    <!-- Analytics Tab -->
+    <div class="tab-panel" id="panel-analytics">
+      <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="chart-container">
+          <h3>Activity Over Time</h3>
+          <div class="chart-wrapper">
+            <canvas id="activity-chart"></canvas>
+          </div>
+        </div>
+        <div class="chart-container">
+          <h3>Interactions by Type</h3>
+          <div class="chart-wrapper">
+            <canvas id="interactions-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Interaction Modal -->
+  <div class="modal-overlay" id="interaction-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Interaction</h3>
+        <button class="modal-close" onclick="closeModal('interaction-modal')">&times;</button>
+      </div>
+      
+      <form id="interaction-form">
+        <div class="form-group">
+          <label class="form-label">Type *</label>
+          <select class="form-select" id="interaction-type" required>
+            <option value="">Select type...</option>
+            <option value="call">📞 Call</option>
+            <option value="meeting">🤝 Meeting</option>
+            <option value="email">📧 Email</option>
+            <option value="milestone">🎯 Milestone</option>
+            <option value="demo">🖥️ Demo</option>
+            <option value="proposal">📋 Proposal</option>
+            <option value="note">📝 Note</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Title *</label>
+          <input type="text" class="form-input" id="interaction-title" placeholder="e.g., Discovery Call" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Date</label>
+          <input type="datetime-local" class="form-input" id="interaction-date">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-textarea" id="interaction-description" placeholder="Details about the interaction..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Outcome</label>
+          <input type="text" class="form-input" id="interaction-outcome" placeholder="e.g., Scheduled follow-up demo">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Next Steps</label>
+          <input type="text" class="form-input" id="interaction-nextsteps" placeholder="e.g., Send proposal by Friday">
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('interaction-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Interaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/partner-service.js"></script>
+  
+  <script>
+    // Constants
+    const TYPE_ICONS = {
+      school: '🏫', university: '🎓', church: '⛪', foundation: '🏛️',
+      business: '🏢', community: '👥', government: '🏛️'
+    };
+    
+    const INTERACTION_ICONS = {
+      call: '📞', meeting: '🤝', email: '📧', milestone: '🎯',
+      demo: '🖥️', proposal: '📋', note: '📝'
+    };
+    
+    const ATTACHMENT_ICONS = {
+      document: '📄', image: '🖼️', video: '🎬',
+      presentation: '📊', spreadsheet: '📈', screenshot: '📸'
+    };
+    
+    // State
+    let partnerId = null;
+    let partner = null;
+    let activityChart = null;
+    let interactionsChart = null;
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Get partner ID from URL
+      const params = new URLSearchParams(window.location.search);
+      partnerId = params.get('id');
+      
+      if (!partnerId) {
+        window.location.href = 'index.html';
+        return;
+      }
+      
+      if (!window.FirebaseApp.init()) {
+        console.error('Firebase initialization failed');
+        return;
+      }
+      
+      window.AuthService.init();
+      
+      const user = await window.AuthService.waitForAuthState();
+      
+      if (!user) {
+        window.location.href = '../../auth/login.html';
+        return;
+      }
+      
+      // Check admin access
+      if (window.RBACService) {
+        const isAdmin = await window.RBACService.hasRole('admin');
+        if (!isAdmin) {
+          window.location.href = '../../dashboard/index.html';
+          return;
+        }
+      }
+      
+      // Load partner data
+      await loadPartner();
+      
+      // Show content
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      
+      // Setup tabs
+      setupTabs();
+      
+      // Setup file upload
+      setupFileUpload();
+      
+      // Setup interaction form
+      setupInteractionForm();
+      
+      // Load additional data
+      await loadInteractions();
+      await loadAttachments();
+      await loadAnalytics();
+    });
+    
+    // Load partner
+    async function loadPartner() {
+      partner = await window.PartnerService.getPartner(partnerId);
+      
+      if (!partner) {
+        alert('Partner not found');
+        window.location.href = 'index.html';
+        return;
+      }
+      
+      // Update header
+      document.getElementById('partner-name').textContent = partner.name;
+      document.getElementById('partner-status').textContent = partner.status;
+      document.getElementById('partner-status').className = `status-badge ${partner.status}`;
+      document.getElementById('partner-type').textContent = partner.type;
+      
+      const logoEl = document.getElementById('partner-logo');
+      if (partner.logoURL) {
+        logoEl.innerHTML = `<img src="${partner.logoURL}" alt="${partner.name}">`;
+      } else {
+        logoEl.textContent = TYPE_ICONS[partner.type] || '🏢';
+      }
+      
+      // Update edit link
+      document.getElementById('edit-btn').href = `add.html?id=${partnerId}`;
+      
+      // Update metrics
+      document.getElementById('metric-students').textContent = (partner.metrics?.totalStudents || 0).toLocaleString();
+      document.getElementById('metric-courses').textContent = partner.metrics?.totalCourses || 0;
+      document.getElementById('metric-cohorts').textContent = partner.metrics?.activeCohorts || 0;
+      document.getElementById('metric-revenue').textContent = '$' + (partner.metrics?.revenue || 0).toLocaleString();
+      
+      // Update contact info
+      document.getElementById('contact-name').textContent = partner.contact?.name || '-';
+      document.getElementById('contact-email').textContent = partner.contact?.email || '-';
+      document.getElementById('contact-phone').textContent = partner.contact?.phone || '-';
+      document.getElementById('contact-title').textContent = partner.contact?.title || '-';
+      
+      // Update org details
+      const websiteEl = document.getElementById('org-website');
+      if (partner.website) {
+        websiteEl.href = partner.website;
+        websiteEl.textContent = partner.website.replace(/^https?:\/\//, '');
+      } else {
+        websiteEl.textContent = '-';
+        websiteEl.removeAttribute('href');
+      }
+      
+      document.getElementById('org-created').textContent = formatDate(partner.createdAt);
+      document.getElementById('org-last-interaction').textContent = formatDate(partner.lastInteractionAt) || 'Never';
+      document.getElementById('org-total-interactions').textContent = partner.totalInteractions || 0;
+      
+      // Update description
+      document.getElementById('partner-description').textContent = partner.description || 'No description provided.';
+    }
+    
+    // Setup tabs
+    function setupTabs() {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
+        });
+      });
+    }
+    
+    // Load interactions
+    async function loadInteractions() {
+      const interactions = await window.PartnerService.getInteractions(partnerId);
+      const container = document.getElementById('timeline-container');
+      
+      if (interactions.length === 0) {
+        container.innerHTML = '<div class="empty-state">No interactions yet. Add your first interaction!</div>';
+        return;
+      }
+      
+      container.innerHTML = interactions.map(i => `
+        <div class="timeline-item">
+          <div class="timeline-icon">${INTERACTION_ICONS[i.type] || '📝'}</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-type">${i.type}</div>
+                <div class="timeline-title">${escapeHtml(i.title)}</div>
+              </div>
+              <div class="timeline-date">${formatDate(i.interactionDate || i.createdAt)}</div>
+            </div>
+            ${i.description ? `<div class="timeline-body">${escapeHtml(i.description)}</div>` : ''}
+            ${i.outcome || i.nextSteps ? `
+              <div class="timeline-meta">
+                ${i.outcome ? `<span><strong>Outcome:</strong> ${escapeHtml(i.outcome)}</span>` : ''}
+                ${i.nextSteps ? `<span><strong>Next:</strong> ${escapeHtml(i.nextSteps)}</span>` : ''}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Load attachments
+    async function loadAttachments() {
+      const attachments = await window.PartnerService.getAttachments(partnerId);
+      const container = document.getElementById('attachments-container');
+      
+      if (attachments.length === 0) {
+        container.innerHTML = '<div class="empty-state" style="grid-column: 1/-1;">No attachments yet. Upload files above!</div>';
+        return;
+      }
+      
+      container.innerHTML = attachments.map(a => `
+        <div class="attachment-card" onclick="window.open('${a.url}', '_blank')">
+          <div class="attachment-icon">${ATTACHMENT_ICONS[a.type] || '📄'}</div>
+          <div class="attachment-name">${escapeHtml(a.name)}</div>
+          <div class="attachment-size">${formatFileSize(a.sizeBytes)}</div>
+        </div>
+      `).join('');
+    }
+    
+    // Load analytics
+    async function loadAnalytics() {
+      // Get analytics data for last 30 days
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - 30);
+      
+      const events = await window.PartnerService.getAnalytics(partnerId, { startDate, endDate });
+      
+      // Group events by date for activity chart
+      const activityByDate = {};
+      const interactionsByType = {};
+      
+      events.forEach(event => {
+        // Activity by date
+        const date = event.date;
+        activityByDate[date] = (activityByDate[date] || 0) + 1;
+        
+        // Interactions by type
+        if (event.eventType === 'interaction_logged' && event.data?.interactionType) {
+          const type = event.data.interactionType;
+          interactionsByType[type] = (interactionsByType[type] || 0) + 1;
+        }
+      });
+      
+      // Generate date labels for last 30 days
+      const labels = [];
+      const activityData = [];
+      for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+        const dateStr = d.toISOString().split('T')[0];
+        labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        activityData.push(activityByDate[dateStr] || 0);
+      }
+      
+      // Activity Chart
+      const activityCtx = document.getElementById('activity-chart').getContext('2d');
+      if (activityChart) activityChart.destroy();
+      activityChart = new Chart(activityCtx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Events',
+            data: activityData,
+            borderColor: '#7986cb',
+            backgroundColor: 'rgba(121, 134, 203, 0.1)',
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: true, ticks: { stepSize: 1 } }
+          }
+        }
+      });
+      
+      // Interactions by Type Chart
+      const interactionsCtx = document.getElementById('interactions-chart').getContext('2d');
+      if (interactionsChart) interactionsChart.destroy();
+      
+      const typeLabels = Object.keys(interactionsByType);
+      const typeData = Object.values(interactionsByType);
+      
+      if (typeLabels.length > 0) {
+        interactionsChart = new Chart(interactionsCtx, {
+          type: 'doughnut',
+          data: {
+            labels: typeLabels.map(t => t.charAt(0).toUpperCase() + t.slice(1)),
+            datasets: [{
+              data: typeData,
+              backgroundColor: ['#7986cb', '#4CAF50', '#ffd93d', '#f44336', '#9c27b0', '#00bcd4', '#ff9800']
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'right' } }
+          }
+        });
+      } else {
+        interactionsCtx.canvas.parentElement.innerHTML = '<div class="empty-state">No interaction data yet</div>';
+      }
+    }
+    
+    // Setup file upload
+    function setupFileUpload() {
+      const dropzone = document.getElementById('dropzone');
+      const fileInput = document.getElementById('file-input');
+      
+      // Drag and drop
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+      
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+      });
+      
+      dropzone.addEventListener('drop', async (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        await uploadFiles(files);
+      });
+      
+      // File input change
+      fileInput.addEventListener('change', async () => {
+        await uploadFiles(fileInput.files);
+        fileInput.value = '';
+      });
+    }
+    
+    // Upload files
+    async function uploadFiles(files) {
+      for (const file of files) {
+        const result = await window.PartnerService.uploadAttachment(partnerId, file);
+        if (result.success) {
+          console.log('File uploaded:', file.name);
+        } else {
+          alert('Failed to upload ' + file.name + ': ' + result.error);
+        }
+      }
+      await loadAttachments();
+    }
+    
+    // Setup interaction form
+    function setupInteractionForm() {
+      const form = document.getElementById('interaction-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const data = {
+          type: document.getElementById('interaction-type').value,
+          title: document.getElementById('interaction-title').value,
+          description: document.getElementById('interaction-description').value,
+          outcome: document.getElementById('interaction-outcome').value,
+          nextSteps: document.getElementById('interaction-nextsteps').value
+        };
+        
+        const dateValue = document.getElementById('interaction-date').value;
+        if (dateValue) {
+          data.interactionDate = firebase.firestore.Timestamp.fromDate(new Date(dateValue));
+        }
+        
+        const result = await window.PartnerService.createInteraction(partnerId, data);
+        
+        if (result.success) {
+          closeModal('interaction-modal');
+          form.reset();
+          await loadInteractions();
+          await loadPartner();
+          await loadAnalytics();
+        } else {
+          alert('Error: ' + result.error);
+        }
+      });
+    }
+    
+    // Open interaction modal
+    function openInteractionModal() {
+      document.getElementById('interaction-modal').classList.add('active');
+      // Set default date to now
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      document.getElementById('interaction-date').value = now.toISOString().slice(0, 16);
+    }
+    
+    // Close modal
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+    
+    // Delete partner
+    async function deletePartner() {
+      if (!confirm('Are you sure you want to delete this partner? This action cannot be undone.')) {
+        return;
+      }
+      
+      const result = await window.PartnerService.deletePartner(partnerId);
+      
+      if (result.success) {
+        window.location.href = 'index.html';
+      } else {
+        alert('Error: ' + result.error);
+      }
+    }
+    
+    // Format date
+    function formatDate(timestamp) {
+      if (!timestamp) return null;
+      const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp._seconds * 1000);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    
+    // Format file size
+    function formatFileSize(bytes) {
+      if (!bytes) return '0 B';
+      const units = ['B', 'KB', 'MB', 'GB'];
+      let i = 0;
+      while (bytes >= 1024 && i < units.length - 1) {
+        bytes /= 1024;
+        i++;
+      }
+      return bytes.toFixed(1) + ' ' + units[i];
+    }
+    
+    // Escape HTML
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

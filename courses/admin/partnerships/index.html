@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership Portal | AutoNateAI Admin</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  
+  <style>
+    .admin-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .admin-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .admin-badge {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .stat-card .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-card .stat-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    
+    .stat-card .stat-change {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+    }
+    
+    .stat-card .stat-change.positive {
+      color: #4CAF50;
+    }
+    
+    .search-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+    
+    .filter-select {
+      padding: 0.75rem 1rem;
+      background: var(--bg-tertiary);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      min-width: 150px;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    
+    .data-table th,
+    .data-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .data-table th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    
+    .data-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    
+    .partner-row {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .partner-row:hover td {
+      background: rgba(121, 134, 203, 0.1) !important;
+    }
+    
+    .partner-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .partner-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      overflow: hidden;
+    }
+    
+    .partner-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .partner-name {
+      font-weight: 500;
+    }
+    
+    .partner-type {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: capitalize;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    
+    .status-badge.prospect {
+      background: rgba(255, 217, 61, 0.2);
+      color: #ffd93d;
+    }
+    
+    .status-badge.active {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+    }
+    
+    .status-badge.paused {
+      background: rgba(121, 134, 203, 0.2);
+      color: #7986cb;
+    }
+    
+    .status-badge.churned {
+      background: rgba(244, 67, 54, 0.2);
+      color: #f44336;
+    }
+    
+    .type-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      background: rgba(76, 175, 80, 0.15);
+      color: #4CAF50;
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      text-transform: capitalize;
+    }
+    
+    .contact-cell {
+      font-size: 0.85rem;
+    }
+    
+    .contact-cell .contact-name {
+      font-weight: 500;
+    }
+    
+    .contact-cell .contact-email {
+      color: var(--text-muted);
+    }
+    
+    .date-cell {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    .action-btn {
+      padding: 0.4rem 0.75rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    
+    .action-btn:hover {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary {
+      background: var(--accent-primary);
+      border: none;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-secondary);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text-secondary);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .access-denied {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    
+    .access-denied h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .access-denied p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+    
+    .empty-state h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    
+    .empty-state p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .type-icons {
+      font-size: 1.25rem;
+    }
+    
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .data-table {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      .search-bar {
+        flex-direction: column;
+      }
+      
+      .filter-select {
+        width: 100%;
+      }
+    }
+  </style>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <!-- Loading -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+  
+  <!-- Access Denied (hidden by default) -->
+  <div class="access-denied" id="access-denied" style="display: none;">
+    <h2>🔒 Access Denied</h2>
+    <p>You don't have permission to access the Partnership Portal.</p>
+    <a href="../../dashboard/index.html" class="btn btn-primary">Go to Dashboard</a>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="admin-container" id="main-content" style="display: none;">
+    <header class="admin-header">
+      <div>
+        <h1 class="admin-title">🤝 Partnership Portal</h1>
+      </div>
+      <div class="header-actions">
+        <span class="admin-badge">Admin</span>
+        <a href="../index.html" class="btn btn-secondary">← Admin Dashboard</a>
+        <a href="add.html" class="btn btn-primary">+ Add Partner</a>
+      </div>
+    </header>
+    
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Partners</div>
+        <div class="stat-value" id="stat-total">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active Partners</div>
+        <div class="stat-value" id="stat-active">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Students</div>
+        <div class="stat-value" id="stat-students">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Revenue</div>
+        <div class="stat-value" id="stat-revenue">-</div>
+      </div>
+    </div>
+    
+    <!-- Filters -->
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-input" placeholder="Search partners by name, contact, or email...">
+      <select class="filter-select" id="status-filter">
+        <option value="">All Statuses</option>
+        <option value="prospect">Prospect</option>
+        <option value="active">Active</option>
+        <option value="paused">Paused</option>
+        <option value="churned">Churned</option>
+      </select>
+      <select class="filter-select" id="type-filter">
+        <option value="">All Types</option>
+        <option value="school">School</option>
+        <option value="university">University</option>
+        <option value="church">Church</option>
+        <option value="foundation">Foundation</option>
+        <option value="business">Business</option>
+        <option value="community">Community</option>
+        <option value="government">Government</option>
+      </select>
+    </div>
+    
+    <!-- Partners Table -->
+    <table class="data-table" id="partners-table">
+      <thead>
+        <tr>
+          <th>Partner</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Contact</th>
+          <th>Students</th>
+          <th>Last Interaction</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="partners-tbody">
+        <tr>
+          <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+            Loading partners...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <h3>No Partners Found</h3>
+      <p>Get started by adding your first partnership.</p>
+      <a href="add.html" class="btn btn-primary">+ Add Partner</a>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/partner-service.js"></script>
+  
+  <script>
+    // Type icons map
+    const TYPE_ICONS = {
+      school: '🏫',
+      university: '🎓',
+      church: '⛪',
+      foundation: '🏛️',
+      business: '🏢',
+      community: '👥',
+      government: '🏛️'
+    };
+    
+    // State
+    let allPartners = [];
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!window.FirebaseApp.init()) {
+        console.error('Firebase initialization failed');
+        return;
+      }
+      
+      window.AuthService.init();
+      
+      // Wait for auth
+      const user = await window.AuthService.waitForAuthState();
+      
+      if (!user) {
+        window.location.href = '../../auth/login.html';
+        return;
+      }
+      
+      // Check admin access
+      if (window.RBACService) {
+        const isAdmin = await window.RBACService.hasRole('admin');
+        
+        if (!isAdmin) {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('access-denied').style.display = 'block';
+          return;
+        }
+      }
+      
+      // Show main content
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      
+      // Load data
+      await loadPartners();
+      await loadStats();
+      
+      // Setup filters
+      setupFilters();
+    });
+    
+    // Load partners
+    async function loadPartners() {
+      try {
+        allPartners = await window.PartnerService.getPartners();
+        renderPartners(allPartners);
+      } catch (error) {
+        console.error('Error loading partners:', error);
+      }
+    }
+    
+    // Load stats
+    async function loadStats() {
+      try {
+        const stats = await window.PartnerService.getPartnerStats();
+        if (stats) {
+          document.getElementById('stat-total').textContent = stats.total;
+          document.getElementById('stat-active').textContent = stats.byStatus.active || 0;
+          document.getElementById('stat-students').textContent = stats.totalStudents.toLocaleString();
+          document.getElementById('stat-revenue').textContent = '$' + stats.totalRevenue.toLocaleString();
+        }
+      } catch (error) {
+        console.error('Error loading stats:', error);
+      }
+    }
+    
+    // Render partners table
+    function renderPartners(partners) {
+      const tbody = document.getElementById('partners-tbody');
+      const emptyState = document.getElementById('empty-state');
+      const table = document.getElementById('partners-table');
+      
+      if (partners.length === 0) {
+        table.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+      
+      table.style.display = 'table';
+      emptyState.style.display = 'none';
+      
+      tbody.innerHTML = partners.map(partner => `
+        <tr class="partner-row" onclick="viewPartner('${partner.id}')">
+          <td>
+            <div class="partner-info">
+              <div class="partner-logo">
+                ${partner.logoURL 
+                  ? `<img src="${partner.logoURL}" alt="${partner.name}">`
+                  : TYPE_ICONS[partner.type] || '🏢'
+                }
+              </div>
+              <div>
+                <div class="partner-name">${escapeHtml(partner.name)}</div>
+                <div class="partner-type">${partner.type}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="type-badge">${partner.type}</span>
+          </td>
+          <td>
+            <span class="status-badge ${partner.status}">${partner.status}</span>
+          </td>
+          <td class="contact-cell">
+            ${partner.contact?.name 
+              ? `<div class="contact-name">${escapeHtml(partner.contact.name)}</div>
+                 <div class="contact-email">${escapeHtml(partner.contact.email || '')}</div>`
+              : '<span style="color: var(--text-muted);">No contact</span>'
+            }
+          </td>
+          <td>
+            ${partner.metrics?.totalStudents || 0}
+          </td>
+          <td class="date-cell">
+            ${partner.lastInteractionAt 
+              ? formatDate(partner.lastInteractionAt)
+              : '<span style="color: var(--text-muted);">Never</span>'
+            }
+          </td>
+          <td>
+            <button class="action-btn" onclick="event.stopPropagation(); viewPartner('${partner.id}')">View</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+    
+    // Setup filters
+    function setupFilters() {
+      const searchInput = document.getElementById('search-input');
+      const statusFilter = document.getElementById('status-filter');
+      const typeFilter = document.getElementById('type-filter');
+      
+      const filterPartners = () => {
+        const search = searchInput.value.toLowerCase();
+        const status = statusFilter.value;
+        const type = typeFilter.value;
+        
+        let filtered = allPartners;
+        
+        if (search) {
+          filtered = filtered.filter(p => 
+            p.name?.toLowerCase().includes(search) ||
+            p.contact?.name?.toLowerCase().includes(search) ||
+            p.contact?.email?.toLowerCase().includes(search)
+          );
+        }
+        
+        if (status) {
+          filtered = filtered.filter(p => p.status === status);
+        }
+        
+        if (type) {
+          filtered = filtered.filter(p => p.type === type);
+        }
+        
+        renderPartners(filtered);
+      };
+      
+      searchInput.addEventListener('input', filterPartners);
+      statusFilter.addEventListener('change', filterPartners);
+      typeFilter.addEventListener('change', filterPartners);
+    }
+    
+    // View partner detail
+    function viewPartner(partnerId) {
+      window.location.href = `partner.html?id=${partnerId}`;
+    }
+    
+    // Format date
+    function formatDate(timestamp) {
+      if (!timestamp) return '';
+      const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp._seconds * 1000);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

@@ -1055,6 +1055,160 @@ service firebase.storage {
 
 ---
 
+## Deployment: Security Rules
+
+### Firestore Security Rules
+
+Add the following to your `firestore.rules` file. The `isAdmin()` helper should already exist from the base rules.
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper: Check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // ... existing rules ...
+    
+    // ══════════════════════════════════════════════════════════════════
+    // PARTNERSHIP PORTAL RULES
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Partners collection - admin only
+    match /partners/{partnerId} {
+      allow read, write: if isAdmin();
+      
+      // Interactions subcollection
+      match /interactions/{interactionId} {
+        allow read, write: if isAdmin();
+      }
+      
+      // Attachments subcollection
+      match /attachments/{attachmentId} {
+        allow read, write: if isAdmin();
+      }
+      
+      // Partner courses subcollection
+      match /courses/{courseId} {
+        allow read, write: if isAdmin();
+      }
+      
+      // Analytics events subcollection
+      match /analytics/{eventId} {
+        allow read, write: if isAdmin();
+      }
+    }
+  }
+}
+```
+
+### Firebase Storage Security Rules
+
+Add the following to your `storage.rules` file:
+
+```javascript
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper: Check if user is admin (requires Firestore lookup)
+    function isAdmin() {
+      return request.auth != null && 
+             firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // ... existing rules ...
+    
+    // ══════════════════════════════════════════════════════════════════
+    // PARTNERSHIP PORTAL STORAGE RULES
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Partner files - admin only
+    match /partners/{partnerId}/{allPaths=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
+```
+
+### Deployment Steps
+
+1. **Firestore Rules**: Copy the partners rules to your Firebase Console → Firestore → Rules
+2. **Storage Rules**: Copy the storage rules to Firebase Console → Storage → Rules
+3. **Deploy via CLI** (recommended):
+   ```bash
+   firebase deploy --only firestore:rules
+   firebase deploy --only storage:rules
+   ```
+
+### Firestore Indexes
+
+Create composite indexes for efficient queries:
+
+| Collection | Fields | Query Type |
+|------------|--------|------------|
+| `partners` | `status`, `updatedAt` | Filter + Order |
+| `partners` | `type`, `updatedAt` | Filter + Order |
+| `partners/{id}/interactions` | `interactionDate` | Order DESC |
+| `partners/{id}/analytics` | `date`, `eventType` | Filter + Order |
+
+Create via Firebase Console → Firestore → Indexes, or add to `firestore.indexes.json`:
+
+```json
+{
+  "indexes": [
+    {
+      "collectionGroup": "partners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "partners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "type", "order": "ASCENDING" },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## Implementation Status
+
+### Completed Files
+
+| File | Purpose |
+|------|---------|
+| `shared/js/partner-service.js` | CRUD, interactions, attachments, analytics |
+| `admin/partnerships/index.html` | Partner list with stats and filters |
+| `admin/partnerships/partner.html` | Detail page with tabs |
+| `admin/partnerships/add.html` | Add/edit partner form |
+| `admin/index.html` | Updated with Partnerships tab |
+
+### Testing Checklist
+
+- [ ] Create a test partner via the Add Partner form
+- [ ] Verify partner appears in list
+- [ ] Test status and type filters
+- [ ] Add an interaction via the Timeline tab
+- [ ] Upload an attachment via the Attachments tab
+- [ ] Verify analytics charts render
+- [ ] Edit partner and save changes
+- [ ] Delete a partner (soft delete)
+- [ ] Test non-admin access is denied
+
+---
+
 ## Related Documentation
 
 - [02-page-types.md](./02-page-types.md) - Admin page patterns
