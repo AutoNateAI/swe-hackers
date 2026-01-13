@@ -39,7 +39,7 @@
     <!-- Page Type Overview -->
     <section class="section">
       <h2>Page Type Hierarchy</h2>
-      <p>The platform has 7 distinct page types, each with different authentication requirements and service dependencies.</p>
+      <p>The platform has 8 distinct page types, each with different authentication requirements and service dependencies.</p>
       
       <div class="diagram-container">
         <div class="diagram-header">
@@ -123,6 +123,12 @@
               <td>✅</td>
               <td>✅ + RBAC</td>
               <td><code>/endless-opportunities/week1/</code></td>
+            </tr>
+            <tr>
+              <td><strong>Admin</strong></td>
+              <td>✅</td>
+              <td>✅ + Admin Role</td>
+              <td><code>/admin/</code></td>
             </tr>
           </tbody>
         </table>
@@ -294,6 +300,52 @@
       </div>
     </section>
 
+    <!-- Admin Architecture -->
+    <section class="section">
+      <h2>Admin Pages</h2>
+      <p>Platform administration dashboard for user management, organization management, and course oversight. Requires admin role.</p>
+      
+      <div class="diagram-container">
+        <div class="diagram-header">
+          <span class="diagram-title">Admin Access Control Flow</span>
+          <div class="diagram-controls">
+            <button class="diagram-btn" data-action="fit">Fit</button>
+            <button class="diagram-btn" data-action="reset">Reset</button>
+            <button class="diagram-btn" data-action="export">Export PNG</button>
+          </div>
+        </div>
+        <div id="admin-flow" class="diagram-canvas"></div>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-dot external"></div>
+            <span>Request</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot auth"></div>
+            <span>Auth Check</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot service"></div>
+            <span>Role Check</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot page"></div>
+            <span>Result</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>🛡️ Admin Capabilities</h4>
+        <ul style="margin: 0.5rem 0 0 1rem; color: var(--text-secondary);">
+          <li>View and edit all user profiles and roles</li>
+          <li>Grant/revoke organization access</li>
+          <li>View course enrollment statistics</li>
+          <li>Manage organizations</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Navigation -->
     <section class="section">
       <h2>Next Steps</h2>
@@ -321,6 +373,7 @@
       <li><a href="#dashboard-flow">Dashboard</a></li>
       <li><a href="#lesson-architecture">Lessons</a></li>
       <li><a href="#partner-flow">Partner</a></li>
+      <li><a href="#admin-flow">Admin</a></li>
     </ul>
   </nav>
 
@@ -571,6 +624,33 @@
         layout: DiagramUtils.LAYOUTS.hierarchical
       });
       DiagramUtils.setupDiagramControls(cyPartner, 'partner-flow');
+
+      // ============================================
+      // DIAGRAM 7: Admin Access Flow
+      // ============================================
+      const adminElements = [
+        { data: { id: 'request', label: 'Admin Page Request', type: 'external', description: 'User visits /admin/' } },
+        { data: { id: 'auth-check', label: 'Auth Check', type: 'auth', description: 'Is user signed in?' } },
+        { data: { id: 'no-auth', label: 'Redirect Login', type: 'external', description: 'Not authenticated' } },
+        { data: { id: 'load-perms', label: 'Load Permissions', type: 'service', description: 'Get user RBAC data' } },
+        { data: { id: 'role-check', label: 'Admin Role?', type: 'service', description: 'Check role === admin' } },
+        { data: { id: 'super-check', label: 'Super Admin?', type: 'service', description: 'Check email whitelist' } },
+        { data: { id: 'access-denied', label: 'Access Denied', type: 'external', description: 'Redirect to dashboard' } },
+        { data: { id: 'admin-dash', label: 'Admin Dashboard', type: 'page', description: 'Full admin access' } },
+        
+        { data: { source: 'request', target: 'auth-check' } },
+        { data: { source: 'auth-check', target: 'no-auth', type: 'optional' } },
+        { data: { source: 'auth-check', target: 'load-perms' } },
+        { data: { source: 'load-perms', target: 'role-check' } },
+        { data: { source: 'role-check', target: 'super-check' } },
+        { data: { source: 'role-check', target: 'access-denied', type: 'optional' } },
+        { data: { source: 'super-check', target: 'admin-dash' } },
+      ];
+
+      const cyAdmin = DiagramUtils.createDiagram('admin-flow', adminElements, {
+        layout: DiagramUtils.LAYOUTS.hierarchical
+      });
+      DiagramUtils.setupDiagramControls(cyAdmin, 'admin-flow');
     });
   </script>
 </body>
