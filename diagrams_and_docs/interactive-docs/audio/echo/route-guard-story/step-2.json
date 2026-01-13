@@ -3,123 +3,83 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Show Loading. For protected pages, we show a loading screen. Content stays hidden until auth state is confirmed. No flash of forbidden content!",
-  "duration": 10.5600004196167,
+  "text": "Public Page. This is a public page! No authentication required. Content loads immediately for everyone.",
+  "duration": 8.520000457763672,
   "words": [
     {
-      "word": "Show",
+      "word": "Public",
       "start": 0,
-      "end": 0.5600000023841858
+      "end": 0.5
     },
     {
-      "word": "loading",
-      "start": 0.5600000023841858,
-      "end": 0.8399999737739563
+      "word": "page",
+      "start": 0.5,
+      "end": 0.9399999976158142
     },
     {
-      "word": "For",
-      "start": 1.0399999618530273,
-      "end": 1.7599999904632568
-    },
-    {
-      "word": "protected",
-      "start": 1.7599999904632568,
-      "end": 2.259999990463257
-    },
-    {
-      "word": "pages",
-      "start": 2.259999990463257,
-      "end": 2.6600000858306885
-    },
-    {
-      "word": "we",
-      "start": 2.8399999141693115,
-      "end": 3.0199999809265137
-    },
-    {
-      "word": "show",
-      "start": 3.0199999809265137,
-      "end": 3.2200000286102295
-    },
-    {
-      "word": "a",
-      "start": 3.2200000286102295,
-      "end": 3.440000057220459
-    },
-    {
-      "word": "loading",
-      "start": 3.440000057220459,
-      "end": 3.640000104904175
-    },
-    {
-      "word": "screen",
-      "start": 3.640000104904175,
-      "end": 4.460000038146973
-    },
-    {
-      "word": "Content",
-      "start": 5.320000171661377,
-      "end": 5.320000171661377
-    },
-    {
-      "word": "stays",
-      "start": 5.320000171661377,
-      "end": 5.659999847412109
-    },
-    {
-      "word": "hidden",
-      "start": 5.659999847412109,
-      "end": 5.940000057220459
-    },
-    {
-      "word": "until",
-      "start": 5.940000057220459,
-      "end": 6.300000190734863
-    },
-    {
-      "word": "off",
-      "start": 6.300000190734863,
-      "end": 6.699999809265137
-    },
-    {
-      "word": "state",
-      "start": 6.699999809265137,
-      "end": 6.920000076293945
+      "word": "This",
+      "start": 1.600000023841858,
+      "end": 1.6399999856948853
     },
     {
       "word": "is",
-      "start": 6.920000076293945,
-      "end": 7.139999866485596
+      "start": 1.6399999856948853,
+      "end": 1.8200000524520874
     },
     {
-      "word": "confirmed",
-      "start": 7.139999866485596,
-      "end": 7.539999961853027
+      "word": "a",
+      "start": 1.8200000524520874,
+      "end": 2.0999999046325684
+    },
+    {
+      "word": "public",
+      "start": 2.0999999046325684,
+      "end": 2.359999895095825
+    },
+    {
+      "word": "page",
+      "start": 2.359999895095825,
+      "end": 2.880000114440918
     },
     {
       "word": "No",
-      "start": 8.399999618530273,
-      "end": 8.600000381469727
+      "start": 3.5,
+      "end": 3.759999990463257
     },
     {
-      "word": "flash",
-      "start": 8.600000381469727,
-      "end": 9.020000457763672
+      "word": "authentication",
+      "start": 3.759999990463257,
+      "end": 4.559999942779541
     },
     {
-      "word": "of",
-      "start": 9.020000457763672,
-      "end": 9.739999771118164
+      "word": "required",
+      "start": 4.559999942779541,
+      "end": 5.679999828338623
     },
     {
-      "word": "forbidden",
-      "start": 9.739999771118164,
-      "end": 9.739999771118164
+      "word": "Content",
+      "start": 6.340000152587891,
+      "end": 6.340000152587891
     },
     {
-      "word": "content",
-      "start": 9.739999771118164,
-      "end": 10.220000267028809
+      "word": "loads",
+      "start": 6.340000152587891,
+      "end": 6.619999885559082
+    },
+    {
+      "word": "immediately",
+      "start": 6.619999885559082,
+      "end": 7.239999771118164
+    },
+    {
+      "word": "for",
+      "start": 7.239999771118164,
+      "end": 7.800000190734863
+    },
+    {
+      "word": "everyone",
+      "start": 7.800000190734863,
+      "end": 8.319999694824219
     }
   ]
 }

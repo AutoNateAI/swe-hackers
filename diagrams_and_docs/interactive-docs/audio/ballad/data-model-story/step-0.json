@@ -3,103 +3,103 @@
   "stepId": "step-0",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Firestore Structure. Partnership data lives in Firestore with a hierarchical structure. Top-level partners collection with nested subcollections.",
-  "duration": 11.609999656677246,
+  "text": "Firestore Root. Partnership data lives in Firestore with a hierarchical structure. Top-level partners collection with nested subcollections.",
+  "duration": 11.199999809265137,
   "words": [
     {
       "word": "Firestore",
       "start": 0,
-      "end": 0.7599999904632568
+      "end": 0.7400000095367432
     },
     {
-      "word": "Structure",
-      "start": 0.7599999904632568,
-      "end": 1.4199999570846558
+      "word": "Root",
+      "start": 0.7400000095367432,
+      "end": 1.440000057220459
     },
     {
       "word": "Partnership",
-      "start": 2.859999895095825,
-      "end": 2.859999895095825
+      "start": 2.299999952316284,
+      "end": 2.299999952316284
     },
     {
       "word": "data",
-      "start": 2.859999895095825,
-      "end": 3.2200000286102295
+      "start": 2.299999952316284,
+      "end": 2.700000047683716
     },
     {
       "word": "lives",
-      "start": 3.2200000286102295,
-      "end": 3.5199999809265137
+      "start": 2.700000047683716,
+      "end": 3.0799999237060547
     },
     {
       "word": "in",
-      "start": 3.5199999809265137,
-      "end": 4.059999942779541
+      "start": 3.0799999237060547,
+      "end": 3.7200000286102295
     },
     {
       "word": "Firestore",
-      "start": 4.059999942779541,
-      "end": 4.340000152587891
+      "start": 3.7200000286102295,
+      "end": 3.9200000762939453
     },
     {
       "word": "with",
-      "start": 4.340000152587891,
-      "end": 4.940000057220459
+      "start": 3.9200000762939453,
+      "end": 4.28000020980835
     },
     {
       "word": "a",
-      "start": 4.940000057220459,
-      "end": 5.300000190734863
+      "start": 4.28000020980835,
+      "end": 4.639999866485596
     },
     {
       "word": "hierarchical",
-      "start": 5.300000190734863,
-      "end": 6
+      "start": 4.639999866485596,
+      "end": 5.340000152587891
     },
     {
       "word": "structure",
-      "start": 6,
-      "end": 6.480000019073486
+      "start": 5.340000152587891,
+      "end": 5.760000228881836
     },
     {
       "word": "Top",
-      "start": 7.380000114440918,
-      "end": 7.440000057220459
+      "start": 7,
+      "end": 7.079999923706055
     },
     {
       "word": "level",
-      "start": 7.440000057220459,
-      "end": 7.699999809265137
+      "start": 7.079999923706055,
+      "end": 7.420000076293945
     },
     {
       "word": "partners",
-      "start": 7.699999809265137,
-      "end": 8.15999984741211
+      "start": 7.420000076293945,
+      "end": 7.960000038146973
     },
     {
       "word": "collection",
-      "start": 8.15999984741211,
-      "end": 8.699999809265137
+      "start": 7.960000038146973,
+      "end": 8.479999542236328
     },
     {
       "word": "with",
-      "start": 8.699999809265137,
-      "end": 9.5
+      "start": 8.479999542236328,
+      "end": 9.119999885559082
     },
     {
       "word": "nested",
-      "start": 9.5,
-      "end": 10.100000381469727
+      "start": 9.119999885559082,
+      "end": 9.859999656677246
     },
     {
       "word": "sub",
-      "start": 10.100000381469727,
-      "end": 10.460000038146973
+      "start": 9.859999656677246,
+      "end": 10.239999771118164
     },
     {
       "word": "collections",
-      "start": 10.460000038146973,
-      "end": 10.9399995803833
+      "start": 10.239999771118164,
+      "end": 10.699999809265137
     }
   ]
 }

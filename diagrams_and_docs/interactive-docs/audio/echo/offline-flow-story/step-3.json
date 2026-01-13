@@ -3,93 +3,98 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "LocalStorage Backup. The queue persists in LocalStorage. Even if the browser closes, queued attempts survive.",
-  "duration": 7.800000190734863,
+  "text": "Queue for Later. Offline path: attempts go into a queue. The activity is stored locally, waiting for reconnection.",
+  "duration": 7.559999942779541,
   "words": [
     {
-      "word": "Local",
+      "word": "Two",
       "start": 0,
-      "end": 0.5199999809265137
+      "end": 0.30000001192092896
     },
     {
-      "word": "Storage",
-      "start": 0.5199999809265137,
+      "word": "for",
+      "start": 0.30000001192092896,
+      "end": 0.5600000023841858
+    },
+    {
+      "word": "later",
+      "start": 0.5600000023841858,
       "end": 0.8600000143051147
     },
     {
-      "word": "Backup",
-      "start": 0.8600000143051147,
-      "end": 1.4199999570846558
+      "word": "Offline",
+      "start": 1.3799999952316284,
+      "end": 1.7799999713897705
     },
     {
-      "word": "The",
-      "start": 1.5800000429153442,
-      "end": 2.3399999141693115
+      "word": "path",
+      "start": 1.7799999713897705,
+      "end": 2.180000066757202
+    },
+    {
+      "word": "Attempts",
+      "start": 2.759999990463257,
+      "end": 2.9200000762939453
+    },
+    {
+      "word": "go",
+      "start": 2.9200000762939453,
+      "end": 3.0199999809265137
+    },
+    {
+      "word": "into",
+      "start": 3.0199999809265137,
+      "end": 3.240000009536743
+    },
+    {
+      "word": "a",
+      "start": 3.240000009536743,
+      "end": 3.4600000381469727
     },
     {
       "word": "queue",
-      "start": 2.3399999141693115,
-      "end": 2.3399999141693115
-    },
-    {
-      "word": "persists",
-      "start": 2.3399999141693115,
-      "end": 3.0799999237060547
-    },
-    {
-      "word": "in",
-      "start": 3.0799999237060547,
-      "end": 3.3399999141693115
-    },
-    {
-      "word": "local",
-      "start": 3.3399999141693115,
+      "start": 3.4600000381469727,
       "end": 3.700000047683716
     },
     {
-      "word": "storage",
-      "start": 3.700000047683716,
-      "end": 4.099999904632568
+      "word": "The",
+      "start": 4.099999904632568,
+      "end": 4.320000171661377
     },
     {
-      "word": "Even",
-      "start": 4.639999866485596,
-      "end": 4.820000171661377
+      "word": "activity",
+      "start": 4.320000171661377,
+      "end": 4.619999885559082
     },
     {
-      "word": "if",
-      "start": 4.820000171661377,
-      "end": 4.960000038146973
+      "word": "is",
+      "start": 4.619999885559082,
+      "end": 5.199999809265137
     },
     {
-      "word": "the",
-      "start": 4.960000038146973,
-      "end": 5.159999847412109
+      "word": "stored",
+      "start": 5.199999809265137,
+      "end": 5.199999809265137
     },
     {
-      "word": "browser",
-      "start": 5.159999847412109,
-      "end": 5.360000133514404
+      "word": "locally",
+      "start": 5.199999809265137,
+      "end": 5.71999979019165
     },
     {
-      "word": "closes",
-      "start": 5.360000133514404,
-      "end": 5.860000133514404
+      "word": "waiting",
+      "start": 6.320000171661377,
+      "end": 6.320000171661377
     },
     {
-      "word": "queued",
-      "start": 6.460000038146973,
-      "end": 6.5
+      "word": "for",
+      "start": 6.320000171661377,
+      "end": 6.619999885559082
     },
     {
-      "word": "attempts",
-      "start": 6.5,
-      "end": 6.880000114440918
-    },
-    {
-      "word": "survive",
-      "start": 6.880000114440918,
-      "end": 7.400000095367432
+      "word": "reconnection",
+      "start": 6.619999885559082,
+      "end": 7.199999809265137
     }
   ]
 }

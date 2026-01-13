@@ -3,108 +3,108 @@
   "stepId": "step-0",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Raw Lesson Data. Analytics starts with raw data from Firestore. Lesson completion records tell us what content users have consumed.",
-  "duration": 9.5,
+  "text": "Lesson Progress Data. Analytics starts with raw data from Firestore. Lesson completion records tell us what content users have consumed.",
+  "duration": 11.25,
   "words": [
     {
-      "word": "Raw",
+      "word": "Lesson",
       "start": 0,
-      "end": 0.3799999952316284
+      "end": 0.5
     },
     {
-      "word": "lesson",
-      "start": 0.3799999952316284,
-      "end": 0.699999988079071
+      "word": "Progress",
+      "start": 0.5,
+      "end": 1
     },
     {
-      "word": "data",
-      "start": 0.699999988079071,
-      "end": 1.0199999809265137
+      "word": "Data",
+      "start": 1,
+      "end": 1.4800000190734863
     },
     {
       "word": "Analytics",
-      "start": 2,
-      "end": 2
+      "start": 2.0399999618530273,
+      "end": 2.9800000190734863
     },
     {
       "word": "starts",
-      "start": 2,
-      "end": 2.4000000953674316
+      "start": 2.9800000190734863,
+      "end": 3.380000114440918
     },
     {
       "word": "with",
-      "start": 2.4000000953674316,
-      "end": 2.8399999141693115
+      "start": 3.380000114440918,
+      "end": 3.759999990463257
     },
     {
       "word": "raw",
-      "start": 2.8399999141693115,
-      "end": 3.0799999237060547
+      "start": 3.759999990463257,
+      "end": 4
     },
     {
       "word": "data",
-      "start": 3.0799999237060547,
-      "end": 3.4000000953674316
+      "start": 4,
+      "end": 4.300000190734863
     },
     {
       "word": "from",
-      "start": 3.4000000953674316,
-      "end": 3.799999952316284
+      "start": 4.300000190734863,
+      "end": 4.78000020980835
     },
     {
       "word": "Firestore",
-      "start": 3.799999952316284,
-      "end": 4.440000057220459
+      "start": 4.78000020980835,
+      "end": 5.960000038146973
     },
     {
       "word": "Lesson",
-      "start": 5.21999979019165,
-      "end": 5.460000038146973
+      "start": 6.420000076293945,
+      "end": 6.679999828338623
     },
     {
       "word": "completion",
-      "start": 5.460000038146973,
-      "end": 5.940000057220459
+      "start": 6.679999828338623,
+      "end": 7.159999847412109
     },
     {
       "word": "records",
-      "start": 5.940000057220459,
-      "end": 6.340000152587891
+      "start": 7.159999847412109,
+      "end": 7.639999866485596
     },
     {
       "word": "tell",
-      "start": 6.340000152587891,
-      "end": 6.659999847412109
+      "start": 7.639999866485596,
+      "end": 8.220000267028809
     },
     {
       "word": "us",
-      "start": 6.659999847412109,
-      "end": 6.940000057220459
-    },
-    {
-      "word": "what",
-      "start": 6.940000057220459,
-      "end": 7.21999979019165
-    },
-    {
-      "word": "content",
-      "start": 7.21999979019165,
-      "end": 7.760000228881836
-    },
-    {
-      "word": "users",
-      "start": 7.760000228881836,
-      "end": 8.199999809265137
-    },
-    {
-      "word": "have",
-      "start": 8.199999809265137,
+      "start": 8.220000267028809,
       "end": 8.520000457763672
     },
     {
-      "word": "consumed",
+      "word": "what",
       "start": 8.520000457763672,
-      "end": 8.979999542236328
+      "end": 8.920000076293945
+    },
+    {
+      "word": "content",
+      "start": 8.920000076293945,
+      "end": 9.479999542236328
+    },
+    {
+      "word": "users",
+      "start": 9.479999542236328,
+      "end": 9.960000038146973
+    },
+    {
+      "word": "have",
+      "start": 9.960000038146973,
+      "end": 10.319999694824219
+    },
+    {
+      "word": "consumed",
+      "start": 10.319999694824219,
+      "end": 10.779999732971191
     }
   ]
 }

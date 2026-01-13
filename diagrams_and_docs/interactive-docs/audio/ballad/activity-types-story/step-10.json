@@ -1,0 +1,95 @@
+{
+  "storyId": "activity-types-story",
+  "stepId": "step-10",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "LocalStorage Backup. LocalStorage provides offline resilience. If Firestore is unreachable, attempts queue locally until sync.",
+  "duration": 10.84000015258789,
+  "words": [
+    {
+      "word": "Local",
+      "start": 0,
+      "end": 0.3799999952316284
+    },
+    {
+      "word": "storage",
+      "start": 0.3799999952316284,
+      "end": 0.6200000047683716
+    },
+    {
+      "word": "backup",
+      "start": 0.6200000047683716,
+      "end": 1.1799999475479126
+    },
+    {
+      "word": "Local",
+      "start": 1.9600000381469727,
+      "end": 2.059999942779541
+    },
+    {
+      "word": "storage",
+      "start": 2.059999942779541,
+      "end": 2.380000114440918
+    },
+    {
+      "word": "provides",
+      "start": 2.380000114440918,
+      "end": 2.9800000190734863
+    },
+    {
+      "word": "offline",
+      "start": 2.9800000190734863,
+      "end": 3.5799999237060547
+    },
+    {
+      "word": "resilience",
+      "start": 3.5799999237060547,
+      "end": 4.179999828338623
+    },
+    {
+      "word": "If",
+      "start": 5,
+      "end": 5.099999904632568
+    },
+    {
+      "word": "Firestore",
+      "start": 5.099999904632568,
+      "end": 5.599999904632568
+    },
+    {
+      "word": "is",
+      "start": 5.599999904632568,
+      "end": 6.039999961853027
+    },
+    {
+      "word": "unreachable",
+      "start": 6.039999961853027,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "attempts",
+      "start": 7.380000114440918,
+      "end": 7.71999979019165
+    },
+    {
+      "word": "queue",
+      "start": 7.71999979019165,
+      "end": 8.180000305175781
+    },
+    {
+      "word": "locally",
+      "start": 8.180000305175781,
+      "end": 8.65999984741211
+    },
+    {
+      "word": "until",
+      "start": 8.65999984741211,
+      "end": 9.380000114440918
+    },
+    {
+      "word": "sync",
+      "start": 9.380000114440918,
+      "end": 9.779999732971191
+    }
+  ]
+}

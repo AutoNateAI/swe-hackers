@@ -3,123 +3,93 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Progress Records. Progress connects users to courses and lessons. Each user has many progress records—one for each course and lesson they've touched.",
-  "duration": 10.800000190734863,
+  "text": "Analytics Events. Partners generate analytics events. Every enrollment, completion, and interaction becomes a data point for insights.",
+  "duration": 10.699999809265137,
   "words": [
     {
-      "word": "Progress",
+      "word": "Analytics",
       "start": 0,
-      "end": 0.6200000047683716
+      "end": 0.6399999856948853
     },
     {
-      "word": "Records",
-      "start": 0.6200000047683716,
-      "end": 1.100000023841858
+      "word": "Events",
+      "start": 0.6399999856948853,
+      "end": 1.0800000429153442
     },
     {
-      "word": "Progress",
-      "start": 1.1200000047683716,
-      "end": 2
+      "word": "Partners",
+      "start": 1.0800000429153442,
+      "end": 2.0399999618530273
     },
     {
-      "word": "connects",
-      "start": 2,
-      "end": 2.4600000381469727
+      "word": "generate",
+      "start": 2.0399999618530273,
+      "end": 2.5999999046325684
     },
     {
-      "word": "users",
-      "start": 2.4600000381469727,
-      "end": 2.9200000762939453
+      "word": "analytics",
+      "start": 2.5999999046325684,
+      "end": 3.240000009536743
     },
     {
-      "word": "to",
-      "start": 2.9200000762939453,
-      "end": 3.4000000953674316
+      "word": "events",
+      "start": 3.240000009536743,
+      "end": 3.740000009536743
     },
     {
-      "word": "courses",
-      "start": 3.4000000953674316,
-      "end": 3.7200000286102295
+      "word": "Every",
+      "start": 4.440000057220459,
+      "end": 4.699999809265137
+    },
+    {
+      "word": "enrollment",
+      "start": 4.699999809265137,
+      "end": 5.440000057220459
+    },
+    {
+      "word": "completion",
+      "start": 6.380000114440918,
+      "end": 6.380000114440918
     },
     {
       "word": "and",
-      "start": 3.7200000286102295,
-      "end": 4.340000152587891
+      "start": 6.5,
+      "end": 7.679999828338623
     },
     {
-      "word": "lessons",
-      "start": 4.340000152587891,
-      "end": 4.71999979019165
+      "word": "interaction",
+      "start": 7.679999828338623,
+      "end": 7.679999828338623
     },
     {
-      "word": "Each",
-      "start": 5.559999942779541,
-      "end": 5.699999809265137
+      "word": "becomes",
+      "start": 7.679999828338623,
+      "end": 8.359999656677246
     },
     {
-      "word": "user",
-      "start": 5.699999809265137,
-      "end": 6.019999980926514
+      "word": "a",
+      "start": 8.359999656677246,
+      "end": 8.739999771118164
     },
     {
-      "word": "has",
-      "start": 6.019999980926514,
-      "end": 6.28000020980835
+      "word": "data",
+      "start": 8.739999771118164,
+      "end": 9.0600004196167
     },
     {
-      "word": "many",
-      "start": 6.28000020980835,
-      "end": 6.699999809265137
-    },
-    {
-      "word": "progress",
-      "start": 6.699999809265137,
-      "end": 7.139999866485596
-    },
-    {
-      "word": "records",
-      "start": 7.139999866485596,
-      "end": 7.579999923706055
-    },
-    {
-      "word": "one",
-      "start": 8.279999732971191,
-      "end": 8.380000114440918
-    },
-    {
-      "word": "for",
-      "start": 8.380000114440918,
-      "end": 8.5600004196167
-    },
-    {
-      "word": "each",
-      "start": 8.5600004196167,
-      "end": 9.039999961853027
-    },
-    {
-      "word": "course",
-      "start": 9.039999961853027,
+      "word": "point",
+      "start": 9.0600004196167,
       "end": 9.300000190734863
     },
     {
-      "word": "and",
+      "word": "for",
       "start": 9.300000190734863,
-      "end": 9.720000267028809
+      "end": 9.65999984741211
     },
     {
-      "word": "lesson",
-      "start": 9.720000267028809,
-      "end": 9.84000015258789
-    },
-    {
-      "word": "they've",
-      "start": 9.84000015258789,
-      "end": 10.5
-    },
-    {
-      "word": "touched",
-      "start": 10.5,
-      "end": 10.5
+      "word": "insights",
+      "start": 9.65999984741211,
+      "end": 10.100000381469727
     }
   ]
 }

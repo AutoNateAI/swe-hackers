@@ -3,118 +3,108 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Secondary Text. text-secondary at hash a8a8b8 is slightly dimmer. 8.5:1 contrast for less prominent text—still highly readable.",
-  "duration": 13.149999618530273,
+  "text": "Card Background. bg-card at hash 16162a is even lighter. Cards pop against the page background. Visual hierarchy through shade!",
+  "duration": 13.050000190734863,
   "words": [
     {
-      "word": "Secondary",
+      "word": "Card",
       "start": 0,
-      "end": 0.9200000166893005
+      "end": 0.47999998927116394
     },
     {
-      "word": "text",
-      "start": 0.9200000166893005,
-      "end": 1.399999976158142
+      "word": "background",
+      "start": 0.47999998927116394,
+      "end": 1.2000000476837158
     },
     {
-      "word": "Text",
-      "start": 1.5399999618530273,
+      "word": "BG",
+      "start": 2.1600000858306885,
       "end": 2.4200000762939453
     },
     {
-      "word": "secondary",
+      "word": "card",
       "start": 2.4200000762939453,
-      "end": 2.880000114440918
+      "end": 2.740000009536743
     },
     {
       "word": "at",
-      "start": 2.880000114440918,
-      "end": 3.2799999713897705
+      "start": 2.740000009536743,
+      "end": 3.0399999618530273
     },
     {
       "word": "hash",
-      "start": 3.2799999713897705,
-      "end": 3.700000047683716
+      "start": 3.0399999618530273,
+      "end": 3.299999952316284
     },
     {
-      "word": "A88B8",
-      "start": 3.700000047683716,
-      "end": 5.039999961853027
+      "word": "16162A",
+      "start": 3.299999952316284,
+      "end": 5.420000076293945
     },
     {
       "word": "is",
-      "start": 5.039999961853027,
-      "end": 5.380000114440918
+      "start": 5.420000076293945,
+      "end": 5.920000076293945
     },
     {
-      "word": "slightly",
-      "start": 5.380000114440918,
-      "end": 5.820000171661377
+      "word": "even",
+      "start": 5.920000076293945,
+      "end": 6.360000133514404
     },
     {
-      "word": "dimmer",
-      "start": 5.820000171661377,
-      "end": 6.260000228881836
+      "word": "lighter",
+      "start": 6.360000133514404,
+      "end": 6.71999979019165
     },
     {
-      "word": "8",
-      "start": 7.139999866485596,
-      "end": 7.360000133514404
+      "word": "Cards",
+      "start": 7.960000038146973,
+      "end": 7.960000038146973
     },
     {
-      "word": "5",
-      "start": 7.360000133514404,
-      "end": 7.980000019073486
+      "word": "pop",
+      "start": 7.960000038146973,
+      "end": 8.399999618530273
     },
     {
-      "word": "to",
-      "start": 7.980000019073486,
-      "end": 8.180000305175781
+      "word": "against",
+      "start": 8.399999618530273,
+      "end": 8.84000015258789
     },
     {
-      "word": "1",
-      "start": 8.180000305175781,
-      "end": 8.479999542236328
+      "word": "the",
+      "start": 8.84000015258789,
+      "end": 9.119999885559082
     },
     {
-      "word": "contrast",
-      "start": 8.479999542236328,
-      "end": 9.199999809265137
+      "word": "page",
+      "start": 9.119999885559082,
+      "end": 9.5
     },
     {
-      "word": "for",
-      "start": 9.199999809265137,
-      "end": 9.760000228881836
+      "word": "background",
+      "start": 9.5,
+      "end": 10.199999809265137
     },
     {
-      "word": "less",
-      "start": 9.760000228881836,
-      "end": 10.0600004196167
+      "word": "Visual",
+      "start": 11.119999885559082,
+      "end": 11.399999618530273
     },
     {
-      "word": "prominent",
-      "start": 10.0600004196167,
-      "end": 10.5
+      "word": "hierarchy",
+      "start": 11.399999618530273,
+      "end": 11.979999542236328
     },
     {
-      "word": "text",
-      "start": 10.5,
-      "end": 10.979999542236328
+      "word": "through",
+      "start": 11.979999542236328,
+      "end": 12.479999542236328
     },
     {
-      "word": "still",
-      "start": 11.380000114440918,
-      "end": 11.800000190734863
-    },
-    {
-      "word": "highly",
-      "start": 11.800000190734863,
-      "end": 12.199999809265137
-    },
-    {
-      "word": "readable",
-      "start": 12.199999809265137,
-      "end": 12.520000457763672
+      "word": "shade",
+      "start": 12.479999542236328,
+      "end": 12.880000114440918
     }
   ]
 }

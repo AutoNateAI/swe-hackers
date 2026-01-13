@@ -3,98 +3,93 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Correct/Incorrect. After submission, correct and incorrect classes apply. Green for right, red for wrong. Immediate visual feedback!",
-  "duration": 13.460000038146973,
+  "text": "Submit Button. The submit button triggers validation. Disabled until a selection is made, then ready for action!",
+  "duration": 9.359999656677246,
   "words": [
     {
-      "word": "correct",
+      "word": "Submit",
       "start": 0,
-      "end": 0.7599999904632568
+      "end": 0.6000000238418579
     },
     {
-      "word": "incorrect",
-      "start": 1.340000033378601,
+      "word": "button",
+      "start": 0.6000000238418579,
+      "end": 1
+    },
+    {
+      "word": "The",
+      "start": 1.6399999856948853,
       "end": 1.8799999952316284
     },
     {
-      "word": "After",
-      "start": 2.9200000762939453,
-      "end": 3.059999942779541
+      "word": "Submit",
+      "start": 1.8799999952316284,
+      "end": 2.2200000286102295
     },
     {
-      "word": "submission",
-      "start": 3.059999942779541,
-      "end": 3.619999885559082
+      "word": "button",
+      "start": 2.2200000286102295,
+      "end": 2.5999999046325684
     },
     {
-      "word": "correct",
-      "start": 4.5,
-      "end": 4.5
+      "word": "triggers",
+      "start": 2.5999999046325684,
+      "end": 2.9800000190734863
     },
     {
-      "word": "and",
-      "start": 4.5,
-      "end": 5.039999961853027
+      "word": "validation",
+      "start": 2.9800000190734863,
+      "end": 3.5799999237060547
     },
     {
-      "word": "incorrect",
-      "start": 5.039999961853027,
-      "end": 5.519999980926514
+      "word": "Disabled",
+      "start": 4.460000038146973,
+      "end": 4.840000152587891
     },
     {
-      "word": "classes",
-      "start": 5.519999980926514,
-      "end": 6.099999904632568
+      "word": "until",
+      "start": 4.840000152587891,
+      "end": 5.260000228881836
     },
     {
-      "word": "apply",
-      "start": 6.099999904632568,
-      "end": 6.78000020980835
+      "word": "a",
+      "start": 5.260000228881836,
+      "end": 5.539999961853027
     },
     {
-      "word": "Green",
-      "start": 8.039999961853027,
-      "end": 8.039999961853027
+      "word": "selection",
+      "start": 5.539999961853027,
+      "end": 5.820000171661377
+    },
+    {
+      "word": "is",
+      "start": 5.820000171661377,
+      "end": 6.159999847412109
+    },
+    {
+      "word": "made",
+      "start": 6.159999847412109,
+      "end": 6.340000152587891
+    },
+    {
+      "word": "Then",
+      "start": 6.980000019073486,
+      "end": 7.21999979019165
+    },
+    {
+      "word": "ready",
+      "start": 7.21999979019165,
+      "end": 7.78000020980835
     },
     {
       "word": "for",
-      "start": 8.039999961853027,
-      "end": 8.359999656677246
+      "start": 7.78000020980835,
+      "end": 8.539999961853027
     },
     {
-      "word": "right",
-      "start": 8.359999656677246,
-      "end": 8.720000267028809
-    },
-    {
-      "word": "red",
-      "start": 9.579999923706055,
-      "end": 9.619999885559082
-    },
-    {
-      "word": "for",
-      "start": 9.619999885559082,
-      "end": 10.239999771118164
-    },
-    {
-      "word": "wrong",
-      "start": 10.239999771118164,
-      "end": 10.359999656677246
-    },
-    {
-      "word": "Immediate",
-      "start": 11.4399995803833,
-      "end": 11.819999694824219
-    },
-    {
-      "word": "visual",
-      "start": 11.819999694824219,
-      "end": 12.5
-    },
-    {
-      "word": "feedback",
-      "start": 12.5,
-      "end": 13
+      "word": "action",
+      "start": 8.539999961853027,
+      "end": 8.539999961853027
     }
   ]
 }

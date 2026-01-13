@@ -3,98 +3,98 @@
   "stepId": "step-2",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Query Selectors. querySelectorAll finds all elements with data-section attributes. These are our trackable content sections.",
-  "duration": 10.920000076293945,
+  "text": "Discover Sections. discoverSections scans the DOM for trackable content. It looks for specific attributes marking important sections.",
+  "duration": 12,
   "words": [
     {
-      "word": "Query",
+      "word": "Discover",
       "start": 0,
-      "end": 0.6000000238418579
+      "end": 0.8399999737739563
     },
     {
-      "word": "Selectors",
-      "start": 0.6000000238418579,
-      "end": 1.2799999713897705
+      "word": "Sections",
+      "start": 0.8399999737739563,
+      "end": 1.8799999952316284
     },
     {
-      "word": "Query",
-      "start": 2.5,
-      "end": 2.5
+      "word": "Discover",
+      "start": 3.4600000381469727,
+      "end": 3.4600000381469727
     },
     {
-      "word": "Selector",
-      "start": 2.5,
-      "end": 2.940000057220459
+      "word": "Sections",
+      "start": 3.4600000381469727,
+      "end": 3.859999895095825
     },
     {
-      "word": "All",
-      "start": 2.940000057220459,
-      "end": 3.299999952316284
+      "word": "scans",
+      "start": 3.859999895095825,
+      "end": 4.71999979019165
     },
     {
-      "word": "finds",
-      "start": 3.299999952316284,
-      "end": 3.8399999141693115
+      "word": "the",
+      "start": 4.71999979019165,
+      "end": 5.239999771118164
     },
     {
-      "word": "all",
-      "start": 3.8399999141693115,
-      "end": 4.420000076293945
+      "word": "DOM",
+      "start": 5.239999771118164,
+      "end": 5.239999771118164
     },
     {
-      "word": "elements",
-      "start": 4.420000076293945,
-      "end": 4.739999771118164
-    },
-    {
-      "word": "with",
-      "start": 4.739999771118164,
-      "end": 5.260000228881836
-    },
-    {
-      "word": "data",
-      "start": 5.260000228881836,
-      "end": 5.800000190734863
-    },
-    {
-      "word": "section",
-      "start": 5.800000190734863,
-      "end": 6.21999979019165
-    },
-    {
-      "word": "attributes",
-      "start": 6.21999979019165,
-      "end": 6.860000133514404
-    },
-    {
-      "word": "These",
-      "start": 7.880000114440918,
-      "end": 8.199999809265137
-    },
-    {
-      "word": "are",
-      "start": 8.199999809265137,
-      "end": 8.619999885559082
-    },
-    {
-      "word": "our",
-      "start": 8.619999885559082,
-      "end": 8.979999542236328
+      "word": "for",
+      "start": 5.239999771118164,
+      "end": 5.599999904632568
     },
     {
       "word": "trackable",
-      "start": 8.979999542236328,
-      "end": 9.420000076293945
+      "start": 5.599999904632568,
+      "end": 6.079999923706055
     },
     {
       "word": "content",
-      "start": 9.420000076293945,
-      "end": 9.920000076293945
+      "start": 6.079999923706055,
+      "end": 6.559999942779541
+    },
+    {
+      "word": "It",
+      "start": 7.699999809265137,
+      "end": 7.739999771118164
+    },
+    {
+      "word": "looks",
+      "start": 7.739999771118164,
+      "end": 7.960000038146973
+    },
+    {
+      "word": "for",
+      "start": 7.960000038146973,
+      "end": 8.539999961853027
+    },
+    {
+      "word": "specific",
+      "start": 8.539999961853027,
+      "end": 8.979999542236328
+    },
+    {
+      "word": "attributes",
+      "start": 8.979999542236328,
+      "end": 9.600000381469727
+    },
+    {
+      "word": "marking",
+      "start": 9.800000190734863,
+      "end": 10.300000190734863
+    },
+    {
+      "word": "important",
+      "start": 10.300000190734863,
+      "end": 11.039999961853027
     },
     {
       "word": "sections",
-      "start": 9.920000076293945,
-      "end": 10.319999694824219
+      "start": 11.039999961853027,
+      "end": 11.420000076293945
     }
   ]
 }

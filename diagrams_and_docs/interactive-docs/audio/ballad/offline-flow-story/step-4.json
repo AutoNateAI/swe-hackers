@@ -3,83 +3,93 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Connection Restored. The online event fires when connection returns. Time to sync those queued attempts!",
-  "duration": 9.90999984741211,
+  "text": "LocalStorage Backup. The queue persists in LocalStorage. Even if the browser closes, queued attempts survive.",
+  "duration": 8.4399995803833,
   "words": [
     {
-      "word": "Connection",
+      "word": "Local",
       "start": 0,
-      "end": 0.8399999737739563
+      "end": 0.47999998927116394
     },
     {
-      "word": "restored",
-      "start": 0.8399999737739563,
-      "end": 1.5399999618530273
+      "word": "Storage",
+      "start": 0.47999998927116394,
+      "end": 0.7799999713897705
+    },
+    {
+      "word": "Backup",
+      "start": 0.7799999713897705,
+      "end": 1.3200000524520874
     },
     {
       "word": "The",
-      "start": 2.319999933242798,
-      "end": 2.5
+      "start": 2.0999999046325684,
+      "end": 2.4600000381469727
     },
     {
-      "word": "online",
-      "start": 2.5,
-      "end": 3.0199999809265137
+      "word": "queue",
+      "start": 2.4600000381469727,
+      "end": 2.4800000190734863
     },
     {
-      "word": "event",
-      "start": 3.0199999809265137,
-      "end": 3.359999895095825
+      "word": "persists",
+      "start": 2.4800000190734863,
+      "end": 3.1600000858306885
     },
     {
-      "word": "fires",
-      "start": 3.359999895095825,
-      "end": 4
+      "word": "in",
+      "start": 3.1600000858306885,
+      "end": 3.5199999809265137
     },
     {
-      "word": "when",
-      "start": 4,
-      "end": 4.400000095367432
+      "word": "local",
+      "start": 3.5199999809265137,
+      "end": 3.799999952316284
     },
     {
-      "word": "Connection",
-      "start": 4.400000095367432,
-      "end": 4.960000038146973
+      "word": "storage",
+      "start": 3.799999952316284,
+      "end": 4.159999847412109
     },
     {
-      "word": "returns",
-      "start": 4.960000038146973,
-      "end": 5.519999980926514
+      "word": "Even",
+      "start": 4.699999809265137,
+      "end": 4.900000095367432
     },
     {
-      "word": "Time",
-      "start": 6.400000095367432,
-      "end": 6.71999979019165
+      "word": "if",
+      "start": 4.900000095367432,
+      "end": 5.059999942779541
     },
     {
-      "word": "to",
-      "start": 6.71999979019165,
-      "end": 7.300000190734863
+      "word": "the",
+      "start": 5.059999942779541,
+      "end": 5.559999942779541
     },
     {
-      "word": "sync",
-      "start": 7.300000190734863,
-      "end": 7.320000171661377
+      "word": "browser",
+      "start": 5.559999942779541,
+      "end": 5.559999942779541
     },
     {
-      "word": "those",
-      "start": 7.320000171661377,
-      "end": 7.820000171661377
+      "word": "closes",
+      "start": 5.559999942779541,
+      "end": 6.119999885559082
     },
     {
       "word": "queued",
-      "start": 7.820000171661377,
-      "end": 8.279999732971191
+      "start": 6.739999771118164,
+      "end": 6.760000228881836
     },
     {
       "word": "attempts",
-      "start": 8.279999732971191,
-      "end": 8.739999771118164
+      "start": 6.760000228881836,
+      "end": 7.300000190734863
+    },
+    {
+      "word": "survive",
+      "start": 7.300000190734863,
+      "end": 7.980000019073486
     }
   ]
 }

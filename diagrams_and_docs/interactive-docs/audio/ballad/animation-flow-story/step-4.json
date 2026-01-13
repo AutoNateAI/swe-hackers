@@ -3,123 +3,83 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Fade In Effect. The signature fade-in: opacity zero to one, translateY 20 to zero. Content rises into view. Elegant and informative!",
-  "duration": 14.15999984741211,
+  "text": "IntersectionObserver. IntersectionObserver efficiently detects visibility. No scroll event spam—just precise threshold crossings.",
+  "duration": 12.720000267028809,
   "words": [
     {
-      "word": "fade",
+      "word": "Intersection",
       "start": 0,
-      "end": 0.4399999976158142
+      "end": 0.8799999952316284
     },
     {
-      "word": "in",
-      "start": 0.4399999976158142,
-      "end": 0.8199999928474426
+      "word": "Observer",
+      "start": 0.8799999952316284,
+      "end": 1.559999942779541
     },
     {
-      "word": "effect",
-      "start": 0.8199999928474426,
-      "end": 1.4199999570846558
+      "word": "Intersection",
+      "start": 2.4600000381469727,
+      "end": 3.0999999046325684
     },
     {
-      "word": "The",
-      "start": 2.240000009536743,
-      "end": 2.3399999141693115
+      "word": "Observer",
+      "start": 3.0999999046325684,
+      "end": 4.059999942779541
     },
     {
-      "word": "signature",
-      "start": 2.3399999141693115,
-      "end": 2.880000114440918
+      "word": "Efficiently",
+      "start": 4.900000095367432,
+      "end": 5.559999942779541
     },
     {
-      "word": "fade",
-      "start": 2.880000114440918,
-      "end": 3.380000114440918
+      "word": "detects",
+      "start": 5.559999942779541,
+      "end": 6.920000076293945
     },
     {
-      "word": "in",
-      "start": 3.380000114440918,
-      "end": 3.740000009536743
+      "word": "visibility",
+      "start": 6.920000076293945,
+      "end": 6.920000076293945
     },
     {
-      "word": "Opacity",
-      "start": 4.099999904632568,
-      "end": 4.480000019073486
+      "word": "No",
+      "start": 7.960000038146973,
+      "end": 8.220000267028809
     },
     {
-      "word": "0",
-      "start": 4.480000019073486,
-      "end": 5.099999904632568
+      "word": "scroll",
+      "start": 8.220000267028809,
+      "end": 8.5600004196167
     },
     {
-      "word": "to",
-      "start": 5.099999904632568,
-      "end": 5.320000171661377
+      "word": "event",
+      "start": 8.5600004196167,
+      "end": 8.899999618530273
     },
     {
-      "word": "1",
-      "start": 5.320000171661377,
-      "end": 5.880000114440918
+      "word": "spam",
+      "start": 8.899999618530273,
+      "end": 9.180000305175781
     },
     {
-      "word": "Translate",
-      "start": 6.599999904632568,
-      "end": 6.71999979019165
+      "word": "Just",
+      "start": 9.800000190734863,
+      "end": 10.0600004196167
     },
     {
-      "word": "Y",
-      "start": 6.71999979019165,
-      "end": 7.059999942779541
+      "word": "precise",
+      "start": 10.0600004196167,
+      "end": 10.779999732971191
     },
     {
-      "word": "20",
-      "start": 7.059999942779541,
-      "end": 7.659999847412109
+      "word": "threshold",
+      "start": 10.779999732971191,
+      "end": 11.600000381469727
     },
     {
-      "word": "to",
-      "start": 7.659999847412109,
-      "end": 8.180000305175781
-    },
-    {
-      "word": "0",
-      "start": 8.180000305175781,
-      "end": 8.680000305175781
-    },
-    {
-      "word": "Content",
-      "start": 9.84000015258789,
-      "end": 9.84000015258789
-    },
-    {
-      "word": "rises",
-      "start": 9.84000015258789,
-      "end": 10.479999542236328
-    },
-    {
-      "word": "into",
-      "start": 10.479999542236328,
-      "end": 11.020000457763672
-    },
-    {
-      "word": "view",
-      "start": 11.020000457763672,
-      "end": 11.300000190734863
-    },
-    {
-      "word": "Elegant",
-      "start": 12.239999771118164,
-      "end": 12.520000457763672
-    },
-    {
-      "word": "and",
-      "start": 12.520000457763672,
-      "end": 13.260000228881836
-    },
-    {
-      "word": "informative",
-      "start": 13.260000228881836,
-      "end": 13.720000267028809
+      "word": "crossings",
+      "start": 11.600000381469727,
+      "end": 12.220000267028809
     }
   ]
 }

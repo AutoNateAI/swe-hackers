@@ -3,108 +3,83 @@
   "stepId": "step-3",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "File Storage. uploadAttachment uses Firebase Storage for files. The URL gets saved in Firestore with metadata. Best of both!",
-  "duration": 11.199999809265137,
+  "text": "Timeline UI. The interaction timeline shows chronological history. Every touchpoint visualized on a scrollable timeline!",
+  "duration": 10.319999694824219,
   "words": [
     {
-      "word": "File",
+      "word": "Timeline",
       "start": 0,
-      "end": 0.6200000047683716
+      "end": 0.6399999856948853
     },
     {
-      "word": "storage",
-      "start": 0.6200000047683716,
-      "end": 1.059999942779541
-    },
-    {
-      "word": "Upload",
-      "start": 1.940000057220459,
-      "end": 2.2200000286102295
-    },
-    {
-      "word": "Attachment",
-      "start": 2.2200000286102295,
-      "end": 2.640000104904175
-    },
-    {
-      "word": "uses",
-      "start": 2.640000104904175,
-      "end": 3.2799999713897705
-    },
-    {
-      "word": "Firebase",
-      "start": 3.2799999713897705,
-      "end": 3.940000057220459
-    },
-    {
-      "word": "Storage",
-      "start": 3.940000057220459,
-      "end": 4.340000152587891
-    },
-    {
-      "word": "for",
-      "start": 4.340000152587891,
-      "end": 4.940000057220459
-    },
-    {
-      "word": "files",
-      "start": 4.940000057220459,
-      "end": 5.340000152587891
+      "word": "UI",
+      "start": 0.6399999856948853,
+      "end": 1.2000000476837158
     },
     {
       "word": "The",
-      "start": 6,
-      "end": 6.119999885559082
+      "start": 2.299999952316284,
+      "end": 2.4600000381469727
     },
     {
-      "word": "URL",
-      "start": 6.119999885559082,
-      "end": 6.619999885559082
+      "word": "interaction",
+      "start": 2.4600000381469727,
+      "end": 3.0399999618530273
     },
     {
-      "word": "gets",
-      "start": 6.619999885559082,
-      "end": 7.059999942779541
+      "word": "timeline",
+      "start": 3.0399999618530273,
+      "end": 3.559999942779541
     },
     {
-      "word": "saved",
-      "start": 7.059999942779541,
+      "word": "shows",
+      "start": 3.559999942779541,
+      "end": 4.159999847412109
+    },
+    {
+      "word": "chronological",
+      "start": 4.159999847412109,
+      "end": 5.059999942779541
+    },
+    {
+      "word": "history",
+      "start": 5.059999942779541,
+      "end": 5.579999923706055
+    },
+    {
+      "word": "every",
+      "start": 6.539999961853027,
+      "end": 6.71999979019165
+    },
+    {
+      "word": "touchpoint",
+      "start": 6.71999979019165,
       "end": 7.360000133514404
     },
     {
-      "word": "in",
+      "word": "visualized",
       "start": 7.360000133514404,
-      "end": 7.739999771118164
+      "end": 8.319999694824219
     },
     {
-      "word": "Firestore",
-      "start": 7.739999771118164,
-      "end": 8.140000343322754
+      "word": "on",
+      "start": 8.319999694824219,
+      "end": 8.5600004196167
     },
     {
-      "word": "with",
-      "start": 8.140000343322754,
-      "end": 8.640000343322754
+      "word": "a",
+      "start": 8.5600004196167,
+      "end": 8.880000114440918
     },
     {
-      "word": "metadata",
-      "start": 8.640000343322754,
-      "end": 9.180000305175781
+      "word": "scrollable",
+      "start": 8.880000114440918,
+      "end": 9.399999618530273
     },
     {
-      "word": "Best",
-      "start": 10.359999656677246,
-      "end": 10.399999618530273
-    },
-    {
-      "word": "of",
-      "start": 10.399999618530273,
-      "end": 10.619999885559082
-    },
-    {
-      "word": "both",
-      "start": 10.619999885559082,
-      "end": 10.859999656677246
+      "word": "timeline",
+      "start": 9.399999618530273,
+      "end": 9.859999656677246
     }
   ]
 }

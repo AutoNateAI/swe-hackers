@@ -14,28 +14,88 @@
           "connectsTo": null
         },
         {
+          "nodeId": "landing",
+          "edges": [{ "from": "marketing-css", "to": "landing" }],
+          "icon": "🏠",
+          "title": "Landing Page",
+          "narration": "The landing page is the first impression. Hero section, value props, call-to-action—all styled by marketing.css.",
+          "connectsTo": "marketing.css"
+        },
+        {
+          "nodeId": "catalog",
+          "edges": [{ "from": "marketing-css", "to": "catalog" }],
+          "icon": "📚",
+          "title": "Course Catalog",
+          "narration": "The catalog showcases all available courses. Card grids, filters, course previews—marketing.css makes it shine.",
+          "connectsTo": "marketing.css"
+        },
+        {
           "nodeId": "auth-css",
-          "edges": [{ "from": "auth-css", "to": "login" }],
           "icon": "🔐",
           "title": "Auth Styles",
           "narration": "auth.css styles login and registration forms. Centered cards, input fields, validation messages—clean and focused.",
-          "connectsTo": "Login/Register"
+          "connectsTo": null
+        },
+        {
+          "nodeId": "login",
+          "edges": [{ "from": "auth-css", "to": "login" }],
+          "icon": "🔑",
+          "title": "Login Page",
+          "narration": "The login page is minimal and focused. Email, password, submit—no distractions, just authentication.",
+          "connectsTo": "auth.css"
+        },
+        {
+          "nodeId": "register",
+          "edges": [{ "from": "auth-css", "to": "register" }],
+          "icon": "📝",
+          "title": "Register Page",
+          "narration": "Registration adds display name to the form. Same clean styling, slightly longer form, welcoming new users.",
+          "connectsTo": "auth.css"
         },
         {
           "nodeId": "dashboard-css",
-          "edges": [{ "from": "dashboard-css", "to": "dashboard" }],
           "icon": "📊",
           "title": "Dashboard Styles",
           "narration": "dashboard.css creates the user hub layout. Sidebar navigation, stats cards, course grids, activity feeds.",
-          "connectsTo": "Dashboard"
+          "connectsTo": null
+        },
+        {
+          "nodeId": "dashboard",
+          "edges": [{ "from": "dashboard-css", "to": "dashboard" }],
+          "icon": "🏠",
+          "title": "User Dashboard",
+          "narration": "The dashboard is the user's home base. Progress overview, enrolled courses, recent activity—all in one place.",
+          "connectsTo": "dashboard.css"
         },
         {
           "nodeId": "lesson-css",
-          "edges": [{ "from": "lesson-css", "to": "lesson" }],
           "icon": "📚",
           "title": "Lesson Styles",
           "narration": "lesson.css is the richest file. Content sections, code blocks, quizzes, drag-drop zones, progress indicators!",
-          "connectsTo": "Lessons"
+          "connectsTo": null
+        },
+        {
+          "nodeId": "lesson",
+          "edges": [{ "from": "lesson-css", "to": "lesson" }],
+          "icon": "📖",
+          "title": "Lesson Pages",
+          "narration": "Every lesson page uses these styles. Interactive content, readable typography, engaging activities.",
+          "connectsTo": "lesson.css"
+        },
+        {
+          "nodeId": "blog-css",
+          "icon": "✍️",
+          "title": "Blog Styles",
+          "narration": "blog.css handles article formatting. Long-form content, images, code snippets—optimized for reading.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "blog",
+          "edges": [{ "from": "blog-css", "to": "blog" }],
+          "icon": "📰",
+          "title": "Blog Pages",
+          "narration": "Blog articles share knowledge beyond courses. Same quality typography and styling, different content focus.",
+          "connectsTo": "blog.css"
         }
       ]
     },
@@ -63,9 +123,65 @@
           "nodeId": "bg-primary",
           "edges": [{ "from": "colors", "to": "bg-primary" }],
           "icon": "⬛",
-          "title": "Background Colors",
-          "narration": "bg-primary is the darkest at hash 0a0a0f. Secondary and card backgrounds get progressively lighter. Depth through color!",
+          "title": "Primary Background",
+          "narration": "bg-primary is the darkest at hash 0a0a0f. The main canvas color, providing maximum contrast for content.",
           "connectsTo": "Colors"
+        },
+        {
+          "nodeId": "bg-secondary",
+          "edges": [{ "from": "colors", "to": "bg-secondary" }],
+          "icon": "⬛",
+          "title": "Secondary Background",
+          "narration": "bg-secondary is slightly lighter at hash 12121a. Used for cards and elevated surfaces to create depth.",
+          "connectsTo": "Colors"
+        },
+        {
+          "nodeId": "accent-primary",
+          "edges": [{ "from": "colors", "to": "accent-primary" }],
+          "icon": "💜",
+          "title": "Primary Accent",
+          "narration": "accent-primary is our signature purple. Links, buttons, interactive elements—it draws the eye to action!",
+          "connectsTo": "Colors"
+        },
+        {
+          "nodeId": "accent-success",
+          "edges": [{ "from": "colors", "to": "accent-success" }],
+          "icon": "💚",
+          "title": "Success Color",
+          "narration": "accent-success is a vibrant green. Correct answers, completed tasks, positive feedback—celebration in color!",
+          "connectsTo": "Colors"
+        },
+        {
+          "nodeId": "spacing",
+          "edges": [{ "from": "root", "to": "spacing" }],
+          "icon": "📏",
+          "title": "Spacing Scale",
+          "narration": "Spacing tokens create consistent rhythm. Small, medium, large—predictable gaps throughout the UI.",
+          "connectsTo": ":root"
+        },
+        {
+          "nodeId": "spacing-sm",
+          "edges": [{ "from": "spacing", "to": "spacing-sm" }],
+          "icon": "📏",
+          "title": "Small Spacing",
+          "narration": "spacing-sm is half a rem. Tight gaps between related elements, compact but not cramped.",
+          "connectsTo": "Spacing"
+        },
+        {
+          "nodeId": "spacing-md",
+          "edges": [{ "from": "spacing", "to": "spacing-md" }],
+          "icon": "📏",
+          "title": "Medium Spacing",
+          "narration": "spacing-md is one rem. The default gap, comfortable separation between most elements.",
+          "connectsTo": "Spacing"
+        },
+        {
+          "nodeId": "spacing-lg",
+          "edges": [{ "from": "spacing", "to": "spacing-lg" }],
+          "icon": "📏",
+          "title": "Large Spacing",
+          "narration": "spacing-lg is one and a half rem. Section separators, content breaks, breathing room!",
+          "connectsTo": "Spacing"
         },
         {
           "nodeId": "typography",
@@ -76,12 +192,44 @@
           "connectsTo": ":root"
         },
         {
+          "nodeId": "font-sans",
+          "edges": [{ "from": "typography", "to": "font-sans" }],
+          "icon": "📝",
+          "title": "Body Font",
+          "narration": "Inter is our body font. Excellent legibility at all sizes, perfect for long-form content reading.",
+          "connectsTo": "Typography"
+        },
+        {
+          "nodeId": "font-display",
+          "edges": [{ "from": "typography", "to": "font-display" }],
+          "icon": "📝",
+          "title": "Display Font",
+          "narration": "Space Grotesk is for headings. Bold geometric shapes make titles pop and grab attention.",
+          "connectsTo": "Typography"
+        },
+        {
           "nodeId": "effects",
           "edges": [{ "from": "root", "to": "effects" }],
           "icon": "✨",
-          "title": "Effects & Transitions",
-          "narration": "Shadows and transitions bring the UI to life. Subtle shadows create depth. Smooth transitions make interactions feel polished.",
+          "title": "Effects",
+          "narration": "Shadows and transitions bring the UI to life. Subtle effects, big impact on polish!",
           "connectsTo": ":root"
+        },
+        {
+          "nodeId": "shadow-md",
+          "edges": [{ "from": "effects", "to": "shadow-md" }],
+          "icon": "🌑",
+          "title": "Medium Shadow",
+          "narration": "shadow-md adds depth to cards and modals. Soft edges, subtle elevation—professional polish.",
+          "connectsTo": "Effects"
+        },
+        {
+          "nodeId": "transition",
+          "edges": [{ "from": "effects", "to": "transition" }],
+          "icon": "⚡",
+          "title": "Standard Transition",
+          "narration": "transition-medium is 300ms ease. Smooth state changes, not too fast, not too slow. Just right!",
+          "connectsTo": "Effects"
         }
       ]
     },
@@ -93,24 +241,46 @@
         {
           "nodeId": "page-load",
           "icon": "🚀",
-          "title": "Page Load Animations",
+          "title": "Page Load Trigger",
           "narration": "Page load triggers entrance animations. Content fades in, elements stagger into view. First impressions matter!",
           "connectsTo": null
         },
         {
           "nodeId": "scroll",
           "icon": "📜",
-          "title": "Scroll Triggers",
-          "narration": "IntersectionObserver triggers scroll animations. As sections enter the viewport, they animate into visibility.",
+          "title": "Scroll Trigger",
+          "narration": "Scrolling triggers reveal animations. As users explore, content animates into the viewport. Progressive discovery!",
           "connectsTo": null
         },
         {
+          "nodeId": "hover",
+          "icon": "👆",
+          "title": "Hover Trigger",
+          "narration": "Mouse hover triggers interactive feedback. Buttons grow, cards lift, colors shift. Immediate response to user intent!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "click",
+          "icon": "🖱️",
+          "title": "Click Trigger",
+          "narration": "Clicks trigger action animations. Ripples, expansions, state transitions. Confirming user actions visually!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "observer",
+          "edges": [{ "from": "scroll", "to": "observer" }],
+          "icon": "👁️",
+          "title": "IntersectionObserver",
+          "narration": "IntersectionObserver efficiently detects visibility. No scroll event spam—just precise threshold crossings.",
+          "connectsTo": "Scroll"
+        },
+        {
           "nodeId": "anime-js",
-          "edges": [{ "from": "page-load", "to": "anime-js" }, { "from": "observer", "to": "anime-js" }],
+          "edges": [{ "from": "page-load", "to": "anime-js" }, { "from": "observer", "to": "anime-js" }, { "from": "click", "to": "anime-js" }],
           "icon": "🎬",
           "title": "Anime.js Engine",
           "narration": "Anime.js handles complex animations. Staggered reveals, elastic easing, timeline sequences—smooth and performant!",
-          "connectsTo": "Page Load, Observer"
+          "connectsTo": "Page Load, Observer, Click"
         },
         {
           "nodeId": "css-trans",
@@ -118,15 +288,47 @@
           "icon": "🔄",
           "title": "CSS Transitions",
           "narration": "Simple interactions use CSS transitions. Hover effects, focus states, color changes—no JavaScript needed!",
-          "connectsTo": "Hover Events"
+          "connectsTo": "Hover"
         },
         {
           "nodeId": "fade-in",
           "edges": [{ "from": "anime-js", "to": "fade-in" }],
           "icon": "👁️",
           "title": "Fade In Effect",
-          "narration": "The signature fade-in: opacity zero to one, translateY 20 to zero. Content rises into view. Elegant and informative!",
+          "narration": "The signature fade-in: opacity zero to one, translateY 20 to zero. Content rises into view. Elegant!",
           "connectsTo": "Anime.js"
+        },
+        {
+          "nodeId": "stagger",
+          "edges": [{ "from": "anime-js", "to": "stagger" }],
+          "icon": "📊",
+          "title": "Stagger Effect",
+          "narration": "Stagger delays each element slightly. Lists and grids cascade into view—dynamic and engaging!",
+          "connectsTo": "Anime.js"
+        },
+        {
+          "nodeId": "slide",
+          "edges": [{ "from": "anime-js", "to": "slide" }],
+          "icon": "➡️",
+          "title": "Slide Effect",
+          "narration": "Slide animations move elements horizontally or vertically. Drawers open, panels expand, content shifts!",
+          "connectsTo": "Anime.js"
+        },
+        {
+          "nodeId": "scale",
+          "edges": [{ "from": "css-trans", "to": "scale" }],
+          "icon": "🔍",
+          "title": "Scale Effect",
+          "narration": "Scale transforms resize elements. Buttons grow on hover, cards enlarge on focus. Subtle emphasis!",
+          "connectsTo": "CSS Transitions"
+        },
+        {
+          "nodeId": "color",
+          "edges": [{ "from": "css-trans", "to": "color" }],
+          "icon": "🎨",
+          "title": "Color Change",
+          "narration": "Color transitions shift hues smoothly. Hover states, active states, focus states—all visually distinct.",
+          "connectsTo": "CSS Transitions"
         }
       ]
     },
@@ -159,18 +361,58 @@
           "connectsTo": "Card"
         },
         {
+          "nodeId": "card-footer",
+          "edges": [{ "from": "card", "to": "card-footer" }],
+          "icon": "🔽",
+          "title": "Card Footer",
+          "narration": "Card footers hold actions. Buttons, links, timestamps—everything that lets users take next steps.",
+          "connectsTo": "Card"
+        },
+        {
+          "nodeId": "card-hover",
+          "edges": [{ "from": "card", "to": "card-hover" }],
+          "icon": "✨",
+          "title": "Card Hover State",
+          "narration": "On hover, cards lift slightly and borders brighten. Subtle feedback that says 'this is interactive!'",
+          "connectsTo": "Card"
+        },
+        {
           "nodeId": "btn",
           "icon": "🔘",
-          "title": "Button Component",
-          "narration": "Buttons have a base class with variants. Primary buttons stand out with accent colors. Secondary buttons are subtle.",
+          "title": "Button Base",
+          "narration": "Buttons have a base class with shared styles. Padding, border-radius, font—consistent across variants.",
           "connectsTo": null
+        },
+        {
+          "nodeId": "btn-primary",
+          "edges": [{ "from": "btn", "to": "btn-primary" }],
+          "icon": "💜",
+          "title": "Primary Button",
+          "narration": "Primary buttons demand attention. Solid accent background, high contrast text—the main call to action.",
+          "connectsTo": "Button"
+        },
+        {
+          "nodeId": "btn-secondary",
+          "edges": [{ "from": "btn", "to": "btn-secondary" }],
+          "icon": "⬜",
+          "title": "Secondary Button",
+          "narration": "Secondary buttons are subtle. Outlined style, lower visual weight—for alternative actions.",
+          "connectsTo": "Button"
         },
         {
           "nodeId": "progress",
           "icon": "📊",
-          "title": "Progress Bar",
-          "narration": "Progress bars show completion visually. A container with a fill element—width percentage equals progress percentage!",
+          "title": "Progress Bar Container",
+          "narration": "Progress bars show completion visually. A container track with a fill element inside.",
           "connectsTo": null
+        },
+        {
+          "nodeId": "progress-fill",
+          "edges": [{ "from": "progress", "to": "progress-fill" }],
+          "icon": "🟩",
+          "title": "Progress Fill",
+          "narration": "The fill element shows actual progress. Width percentage equals progress percentage—simple and clear!",
+          "connectsTo": "Progress Bar"
         }
       ]
     },
@@ -183,7 +425,7 @@
           "nodeId": "dashboard-layout",
           "icon": "📊",
           "title": "Dashboard Layout",
-          "narration": "Dashboard uses a sidebar plus main content pattern. Fixed 240-pixel sidebar on the left, flex-grow main area on the right.",
+          "narration": "Dashboard uses a sidebar plus main content pattern. Fixed navigation on the left, scrollable content on the right.",
           "connectsTo": null
         },
         {
@@ -191,29 +433,109 @@
           "edges": [{ "from": "dashboard-layout", "to": "sidebar" }],
           "icon": "📋",
           "title": "Sidebar Navigation",
-          "narration": "The sidebar provides persistent navigation. User profile, course links, settings—always accessible without scrolling.",
+          "narration": "The sidebar provides persistent navigation. 240 pixels wide, fixed position—always accessible!",
+          "connectsTo": "Dashboard Layout"
+        },
+        {
+          "nodeId": "main-content",
+          "edges": [{ "from": "dashboard-layout", "to": "main-content" }, { "from": "lesson-layout", "to": "main-content" }],
+          "icon": "📄",
+          "title": "Main Content Area",
+          "narration": "Main content fills the remaining space with flex-grow. Scrollable, responsive, the star of the show!",
+          "connectsTo": "Dashboard, Lesson"
+        },
+        {
+          "nodeId": "pg-dashboard",
+          "edges": [{ "from": "dashboard-layout", "to": "pg-dashboard" }],
+          "icon": "🏠",
+          "title": "Dashboard Page",
+          "narration": "The dashboard page uses this layout. User's home base with sidebar navigation always available.",
           "connectsTo": "Dashboard Layout"
         },
         {
           "nodeId": "lesson-layout",
           "icon": "📚",
           "title": "Lesson Layout",
-          "narration": "Lesson pages have three columns: header, scrollable content, and progress nav on the right tracking scroll position.",
+          "narration": "Lesson pages have three columns: fixed header, scrollable content center, progress nav on the right.",
           "connectsTo": null
+        },
+        {
+          "nodeId": "header",
+          "edges": [{ "from": "lesson-layout", "to": "header" }],
+          "icon": "📍",
+          "title": "Fixed Header",
+          "narration": "A 60-pixel header stays at the top. Course title, breadcrumb, quick actions—context always visible.",
+          "connectsTo": "Lesson Layout"
+        },
+        {
+          "nodeId": "progress-nav",
+          "edges": [{ "from": "lesson-layout", "to": "progress-nav" }],
+          "icon": "📊",
+          "title": "Progress Navigation",
+          "narration": "Right sidebar tracks scroll position. Jump to sections, see progress at a glance, navigate efficiently!",
+          "connectsTo": "Lesson Layout"
+        },
+        {
+          "nodeId": "pg-lesson",
+          "edges": [{ "from": "lesson-layout", "to": "pg-lesson" }],
+          "icon": "📖",
+          "title": "Lesson Pages",
+          "narration": "All lesson pages share this layout. Consistent learning experience across all courses.",
+          "connectsTo": "Lesson Layout"
         },
         {
           "nodeId": "marketing-layout",
           "icon": "🎯",
           "title": "Marketing Layout",
-          "narration": "Marketing pages use full-width sections. Hero at the top, feature grids, testimonials, call-to-action. Scroll storytelling!",
+          "narration": "Marketing pages use full-width sections. No sidebar, no constraints—bold visual storytelling!",
           "connectsTo": null
+        },
+        {
+          "nodeId": "hero",
+          "edges": [{ "from": "marketing-layout", "to": "hero" }],
+          "icon": "🌟",
+          "title": "Hero Section",
+          "narration": "The hero section is the first impression. Full-width, bold headline, compelling CTA—capture attention!",
+          "connectsTo": "Marketing Layout"
+        },
+        {
+          "nodeId": "card-grid",
+          "edges": [{ "from": "marketing-layout", "to": "card-grid" }],
+          "icon": "📊",
+          "title": "Card Grid",
+          "narration": "Auto-fill grids showcase features or courses. Responsive columns, consistent cards, easy scanning.",
+          "connectsTo": "Marketing Layout"
+        },
+        {
+          "nodeId": "pg-landing",
+          "edges": [{ "from": "marketing-layout", "to": "pg-landing" }],
+          "icon": "🏠",
+          "title": "Landing Page",
+          "narration": "The landing page showcases the platform. Hero, features, testimonials—scroll through the story!",
+          "connectsTo": "Marketing Layout"
         },
         {
           "nodeId": "auth-layout",
           "icon": "🔐",
           "title": "Auth Layout",
-          "narration": "Auth pages center a single form card. Maximum 400-pixel width, vertically centered. Clean and focused on the task.",
+          "narration": "Auth pages center a single form card. Maximum focus on the task—sign in or register.",
           "connectsTo": null
+        },
+        {
+          "nodeId": "form-card",
+          "edges": [{ "from": "auth-layout", "to": "form-card" }],
+          "icon": "📝",
+          "title": "Centered Form Card",
+          "narration": "A max-width form card centers vertically and horizontally. Clean, focused, distraction-free!",
+          "connectsTo": "Auth Layout"
+        },
+        {
+          "nodeId": "pg-auth",
+          "edges": [{ "from": "auth-layout", "to": "pg-auth" }],
+          "icon": "🔑",
+          "title": "Auth Pages",
+          "narration": "Login and register share this layout. Consistent authentication experience.",
+          "connectsTo": "Auth Layout"
         }
       ]
     },
@@ -242,7 +564,31 @@
           "edges": [{ "from": "container", "to": "options" }],
           "icon": "📋",
           "title": "Options Container",
-          "narration": "Options are grouped in a container. Each option has a data-value attribute that gets compared against data-answer.",
+          "narration": "Options are grouped in a container. Vertical list or grid, depending on content length.",
+          "connectsTo": "Container"
+        },
+        {
+          "nodeId": "option",
+          "edges": [{ "from": "options", "to": "option" }],
+          "icon": "⭕",
+          "title": "Individual Option",
+          "narration": "Each option has a data-value attribute. Click to select—visual feedback confirms the choice.",
+          "connectsTo": "Options"
+        },
+        {
+          "nodeId": "btn",
+          "edges": [{ "from": "container", "to": "btn" }],
+          "icon": "🔘",
+          "title": "Submit Button",
+          "narration": "The submit button triggers validation. Disabled until a selection is made, then ready for action!",
+          "connectsTo": "Container"
+        },
+        {
+          "nodeId": "feedback",
+          "edges": [{ "from": "container", "to": "feedback" }],
+          "icon": "💬",
+          "title": "Feedback Area",
+          "narration": "The feedback area reveals after submission. Correct answer, explanation, encouragement—learning moment!",
           "connectsTo": "Container"
         },
         {
@@ -250,15 +596,23 @@
           "edges": [{ "from": "option", "to": "selected" }],
           "icon": "👆",
           "title": "Selected State",
-          "narration": "Clicking an option adds the selected class. Visual feedback with border color and background change—the user knows their choice!",
+          "narration": "Clicking an option adds the selected class. Border highlight, background change—clear visual selection!",
           "connectsTo": "Option"
         },
         {
           "nodeId": "correct",
           "edges": [{ "from": "option", "to": "correct" }],
           "icon": "✅",
-          "title": "Correct/Incorrect",
-          "narration": "After submission, correct and incorrect classes apply. Green for right, red for wrong. Immediate visual feedback!",
+          "title": "Correct State",
+          "narration": "After submission, the correct answer gets the correct class. Green border, checkmark—celebration!",
+          "connectsTo": "Option"
+        },
+        {
+          "nodeId": "incorrect",
+          "edges": [{ "from": "option", "to": "incorrect" }],
+          "icon": "❌",
+          "title": "Incorrect State",
+          "narration": "Wrong selections get the incorrect class. Red border, x-mark—but with helpful explanation below!",
           "connectsTo": "Option"
         }
       ]
@@ -284,12 +638,28 @@
           "connectsTo": "Mobile"
         },
         {
+          "nodeId": "hide-sidebar",
+          "edges": [{ "from": "mobile", "to": "hide-sidebar" }],
+          "icon": "📵",
+          "title": "Hidden Sidebar",
+          "narration": "Sidebars collapse to hamburger menus on mobile. Screen space is precious—content comes first!",
+          "connectsTo": "Mobile"
+        },
+        {
           "nodeId": "tablet",
           "edges": [{ "from": "mobile", "to": "tablet" }],
           "icon": "📲",
           "title": "Tablet Range",
-          "narration": "768 to 1024 pixels is tablet territory. Two-column grids appear, sidebars become collapsible toggles.",
+          "narration": "768 to 1024 pixels is tablet territory. More space allows for some side-by-side layouts.",
           "connectsTo": "Mobile"
+        },
+        {
+          "nodeId": "two-col",
+          "edges": [{ "from": "tablet", "to": "two-col" }],
+          "icon": "📊",
+          "title": "Two Columns",
+          "narration": "Two-column grids appear on tablets. Course cards side by side, better use of horizontal space.",
+          "connectsTo": "Tablet"
         },
         {
           "nodeId": "desktop",
@@ -300,12 +670,28 @@
           "connectsTo": "Tablet"
         },
         {
+          "nodeId": "full-layout",
+          "edges": [{ "from": "desktop", "to": "full-layout" }],
+          "icon": "🖥️",
+          "title": "Full Layout",
+          "narration": "Desktop shows the complete layout. Sidebar visible, three-column lessons, all features accessible.",
+          "connectsTo": "Desktop"
+        },
+        {
           "nodeId": "large",
           "edges": [{ "from": "desktop", "to": "large" }],
           "icon": "🖥️",
           "title": "Large Screens",
-          "narration": "Above 1280 pixels, we add max-width containers. Content doesn't stretch infinitely—readable line lengths are maintained.",
+          "narration": "Above 1280 pixels, we add constraints. Content doesn't stretch infinitely—readable line lengths are maintained.",
           "connectsTo": "Desktop"
+        },
+        {
+          "nodeId": "max-width",
+          "edges": [{ "from": "large", "to": "max-width" }],
+          "icon": "📏",
+          "title": "Max Width Container",
+          "narration": "Max-width containers center content on large screens. 1200 pixel limit keeps text readable and layouts balanced.",
+          "connectsTo": "Large"
         }
       ]
     },
@@ -320,6 +706,22 @@
           "title": "Primary Background",
           "narration": "bg-primary is the darkest background at hash 0a0a0f. Nearly black, it provides maximum contrast for text.",
           "connectsTo": null
+        },
+        {
+          "nodeId": "bg-secondary",
+          "edges": [{ "from": "bg-primary", "to": "bg-secondary" }],
+          "icon": "⬛",
+          "title": "Secondary Background",
+          "narration": "bg-secondary at hash 12121a is slightly elevated. Used for cards and containers to create depth.",
+          "connectsTo": "bg-primary"
+        },
+        {
+          "nodeId": "bg-card",
+          "edges": [{ "from": "bg-secondary", "to": "bg-card" }],
+          "icon": "⬛",
+          "title": "Card Background",
+          "narration": "bg-card at hash 16162a is even lighter. Cards pop against the page background. Visual hierarchy through shade!",
+          "connectsTo": "bg-secondary"
         },
         {
           "nodeId": "text-primary",
@@ -338,11 +740,19 @@
           "connectsTo": "bg-primary"
         },
         {
+          "nodeId": "text-muted",
+          "edges": [{ "from": "bg-primary", "to": "text-muted" }],
+          "icon": "📝",
+          "title": "Muted Text",
+          "narration": "text-muted at hash 6a6a80 is the lightest text. 4.6:1 contrast—for hints, placeholders, de-emphasized content.",
+          "connectsTo": "bg-primary"
+        },
+        {
           "nodeId": "accent-primary",
           "edges": [{ "from": "bg-card", "to": "accent-primary" }],
           "icon": "💜",
-          "title": "Accent Colors",
-          "narration": "Accent colors provide visual interest. Purple primary, teal secondary, green success—each tested for adequate contrast.",
+          "title": "Primary Accent",
+          "narration": "accent-primary purple achieves 6.8:1 contrast on card backgrounds. Links and interactive elements stand out!",
           "connectsTo": "bg-card"
         },
         {
@@ -350,7 +760,15 @@
           "edges": [{ "from": "bg-card", "to": "accent-success" }],
           "icon": "💚",
           "title": "Success Green",
-          "narration": "accent-success at hash 66bb6a achieves 8.1:1 contrast. Perfect for positive feedback without being harsh on dark backgrounds.",
+          "narration": "accent-success at hash 66bb6a achieves 8.1:1 contrast. Perfect for positive feedback without being harsh.",
+          "connectsTo": "bg-card"
+        },
+        {
+          "nodeId": "accent-error",
+          "edges": [{ "from": "bg-card", "to": "accent-error" }],
+          "icon": "❤️",
+          "title": "Error Red",
+          "narration": "accent-error red achieves 5.2:1 contrast. Clear error indication while remaining readable on dark backgrounds.",
           "connectsTo": "bg-card"
         }
       ]

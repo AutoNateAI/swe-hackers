@@ -3,113 +3,108 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Welcome to Dashboard. Registration complete! Auth state changes, listeners fire, and the user lands on their brand new dashboard. Learning begins!",
-  "duration": 11.710000038146973,
+  "text": "Create User Document. With auth complete, we create the Firestore user document. Profile info, default role, creation timestamp—everything initialized!",
+  "duration": 11.520000457763672,
   "words": [
     {
-      "word": "Welcome",
+      "word": "Create",
       "start": 0,
-      "end": 0.5
-    },
-    {
-      "word": "to",
-      "start": 0.5,
-      "end": 0.800000011920929
-    },
-    {
-      "word": "Dashboard",
-      "start": 0.800000011920929,
-      "end": 1.4199999570846558
-    },
-    {
-      "word": "Registration",
-      "start": 2.200000047683716,
-      "end": 2.559999942779541
-    },
-    {
-      "word": "complete",
-      "start": 2.559999942779541,
-      "end": 3.2799999713897705
-    },
-    {
-      "word": "Auth",
-      "start": 3.9200000762939453,
-      "end": 4
-    },
-    {
-      "word": "state",
-      "start": 4,
-      "end": 4.300000190734863
-    },
-    {
-      "word": "changes",
-      "start": 4.300000190734863,
-      "end": 4.78000020980835
-    },
-    {
-      "word": "listeners",
-      "start": 5.519999980926514,
-      "end": 5.519999980926514
-    },
-    {
-      "word": "fire",
-      "start": 5.519999980926514,
-      "end": 6.099999904632568
-    },
-    {
-      "word": "and",
-      "start": 6.480000019073486,
-      "end": 6.559999942779541
-    },
-    {
-      "word": "the",
-      "start": 6.559999942779541,
-      "end": 6.760000228881836
+      "end": 0.47999998927116394
     },
     {
       "word": "user",
+      "start": 0.47999998927116394,
+      "end": 0.800000011920929
+    },
+    {
+      "word": "document",
+      "start": 0.800000011920929,
+      "end": 1.2599999904632568
+    },
+    {
+      "word": "With",
+      "start": 1.2599999904632568,
+      "end": 2.119999885559082
+    },
+    {
+      "word": "Auth",
+      "start": 2.119999885559082,
+      "end": 2.4600000381469727
+    },
+    {
+      "word": "complete",
+      "start": 2.4600000381469727,
+      "end": 2.940000057220459
+    },
+    {
+      "word": "we",
+      "start": 3.180000066757202,
+      "end": 3.4600000381469727
+    },
+    {
+      "word": "create",
+      "start": 3.4600000381469727,
+      "end": 3.7799999713897705
+    },
+    {
+      "word": "the",
+      "start": 3.7799999713897705,
+      "end": 4.079999923706055
+    },
+    {
+      "word": "Firestore",
+      "start": 4.079999923706055,
+      "end": 4.599999904632568
+    },
+    {
+      "word": "user",
+      "start": 4.599999904632568,
+      "end": 5.039999961853027
+    },
+    {
+      "word": "document",
+      "start": 5.039999961853027,
+      "end": 5.71999979019165
+    },
+    {
+      "word": "Profile",
+      "start": 6.440000057220459,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "info",
       "start": 6.760000228881836,
-      "end": 7.119999885559082
+      "end": 7.199999809265137
     },
     {
-      "word": "lands",
-      "start": 7.119999885559082,
-      "end": 7.440000057220459
+      "word": "default",
+      "start": 7.920000076293945,
+      "end": 7.920000076293945
     },
     {
-      "word": "on",
-      "start": 7.440000057220459,
-      "end": 7.78000020980835
+      "word": "role",
+      "start": 7.920000076293945,
+      "end": 8.34000015258789
     },
     {
-      "word": "their",
-      "start": 7.78000020980835,
-      "end": 7.960000038146973
+      "word": "creation",
+      "start": 9,
+      "end": 9.119999885559082
     },
     {
-      "word": "brand",
-      "start": 7.960000038146973,
-      "end": 8.479999542236328
+      "word": "timestamp",
+      "start": 9.119999885559082,
+      "end": 9.739999771118164
     },
     {
-      "word": "new",
-      "start": 8.479999542236328,
-      "end": 8.880000114440918
+      "word": "everything",
+      "start": 10.100000381469727,
+      "end": 10.619999885559082
     },
     {
-      "word": "dashboard",
-      "start": 8.880000114440918,
-      "end": 9.4399995803833
-    },
-    {
-      "word": "Learning",
-      "start": 10.479999542236328,
-      "end": 10.5
-    },
-    {
-      "word": "begins",
-      "start": 10.5,
-      "end": 11.119999885559082
+      "word": "initialized",
+      "start": 10.619999885559082,
+      "end": 11.34000015258789
     }
   ]
 }

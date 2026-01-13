@@ -3,83 +3,98 @@
   "stepId": "step-2",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Anime.js Engine. Anime.js handles complex animations. Staggered reveals, elastic easing, timeline sequences—smooth and performant!",
-  "duration": 14.5600004196167,
+  "text": "Hover Trigger. Mouse hover triggers interactive feedback. Buttons grow, cards lift, colors shift. Immediate response to user intent!",
+  "duration": 13.239999771118164,
   "words": [
     {
-      "word": "AnimeJS",
+      "word": "Hover",
       "start": 0,
-      "end": 1.0199999809265137
+      "end": 0.3799999952316284
     },
     {
-      "word": "Engine",
-      "start": 1.0199999809265137,
-      "end": 1.6399999856948853
+      "word": "trigger",
+      "start": 0.3799999952316284,
+      "end": 0.7799999713897705
     },
     {
-      "word": "AnimeJS",
-      "start": 2.4600000381469727,
-      "end": 3.2200000286102295
+      "word": "Mouse",
+      "start": 1.7400000095367432,
+      "end": 1.840000033378601
     },
     {
-      "word": "handles",
-      "start": 3.2200000286102295,
-      "end": 3.7200000286102295
+      "word": "hover",
+      "start": 1.840000033378601,
+      "end": 2.119999885559082
     },
     {
-      "word": "complex",
-      "start": 3.7200000286102295,
-      "end": 4.559999942779541
+      "word": "triggers",
+      "start": 2.119999885559082,
+      "end": 2.7200000286102295
     },
     {
-      "word": "animations",
-      "start": 4.559999942779541,
-      "end": 5.320000171661377
+      "word": "interactive",
+      "start": 2.7200000286102295,
+      "end": 3.5799999237060547
     },
     {
-      "word": "staggered",
-      "start": 6.320000171661377,
+      "word": "feedback",
+      "start": 3.5799999237060547,
+      "end": 4.119999885559082
+    },
+    {
+      "word": "Buttons",
+      "start": 5.079999923706055,
+      "end": 5.300000190734863
+    },
+    {
+      "word": "grow",
+      "start": 5.300000190734863,
+      "end": 5.760000228881836
+    },
+    {
+      "word": "cards",
+      "start": 6.639999866485596,
       "end": 6.639999866485596
     },
     {
-      "word": "reveals",
+      "word": "lift",
       "start": 6.639999866485596,
-      "end": 7.039999961853027
+      "end": 7.059999942779541
     },
     {
-      "word": "elastic",
-      "start": 8.079999923706055,
-      "end": 8.079999923706055
+      "word": "colors",
+      "start": 7.860000133514404,
+      "end": 7.860000133514404
     },
     {
-      "word": "easing",
-      "start": 8.079999923706055,
-      "end": 8.859999656677246
+      "word": "shift",
+      "start": 7.860000133514404,
+      "end": 8.520000457763672
     },
     {
-      "word": "timeline",
-      "start": 9.65999984741211,
-      "end": 9.899999618530273
+      "word": "Immediate",
+      "start": 9.640000343322754,
+      "end": 9.880000114440918
     },
     {
-      "word": "sequences",
-      "start": 9.899999618530273,
-      "end": 10.65999984741211
+      "word": "response",
+      "start": 9.880000114440918,
+      "end": 10.359999656677246
     },
     {
-      "word": "smooth",
-      "start": 11.5,
-      "end": 11.84000015258789
+      "word": "to",
+      "start": 10.359999656677246,
+      "end": 10.9399995803833
     },
     {
-      "word": "and",
-      "start": 11.84000015258789,
-      "end": 12.420000076293945
+      "word": "user",
+      "start": 10.9399995803833,
+      "end": 11.319999694824219
     },
     {
-      "word": "performant",
-      "start": 12.420000076293945,
-      "end": 13.180000305175781
+      "word": "intent",
+      "start": 11.319999694824219,
+      "end": 11.920000076293945
     }
   ]
 }

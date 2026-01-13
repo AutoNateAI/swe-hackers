@@ -3,93 +3,88 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Tablet Range. 768 to 1024 pixels is tablet territory. Two-column grids appear, sidebars become collapsible toggles.",
-  "duration": 9.760000228881836,
+  "text": "Hidden Sidebar. Sidebars collapse to hamburger menus on mobile. Screen space is precious—content comes first!",
+  "duration": 9.5,
   "words": [
     {
-      "word": "Tablet",
+      "word": "Hidden",
       "start": 0,
-      "end": 0.46000000834465027
+      "end": 0.5
     },
     {
-      "word": "range",
-      "start": 0.46000000834465027,
-      "end": 0.8399999737739563
-    },
-    {
-      "word": "768",
-      "start": 0.8399999737739563,
-      "end": 2.440000057220459
-    },
-    {
-      "word": "to",
-      "start": 2.440000057220459,
-      "end": 2.640000104904175
-    },
-    {
-      "word": "1024",
-      "start": 2.640000104904175,
-      "end": 3.440000057220459
-    },
-    {
-      "word": "pixels",
-      "start": 3.440000057220459,
-      "end": 3.9200000762939453
-    },
-    {
-      "word": "is",
-      "start": 3.9200000762939453,
-      "end": 4.300000190734863
-    },
-    {
-      "word": "tablet",
-      "start": 4.300000190734863,
-      "end": 4.539999961853027
-    },
-    {
-      "word": "territory",
-      "start": 4.539999961853027,
-      "end": 5.099999904632568
-    },
-    {
-      "word": "Two",
-      "start": 5.71999979019165,
-      "end": 5.880000114440918
-    },
-    {
-      "word": "column",
-      "start": 5.880000114440918,
-      "end": 6.239999771118164
-    },
-    {
-      "word": "grids",
-      "start": 6.239999771118164,
-      "end": 6.539999961853027
-    },
-    {
-      "word": "appear",
-      "start": 6.539999961853027,
-      "end": 7.039999961853027
+      "word": "sidebar",
+      "start": 0.5,
+      "end": 1.1399999856948853
     },
     {
       "word": "Sidebars",
-      "start": 7.71999979019165,
-      "end": 7.980000019073486
+      "start": 2.4600000381469727,
+      "end": 2.4600000381469727
     },
     {
-      "word": "become",
-      "start": 7.980000019073486,
-      "end": 8.420000076293945
+      "word": "collapse",
+      "start": 2.4600000381469727,
+      "end": 2.880000114440918
     },
     {
-      "word": "collapsible",
-      "start": 8.420000076293945,
-      "end": 9.039999961853027
+      "word": "to",
+      "start": 2.880000114440918,
+      "end": 3.200000047683716
     },
     {
-      "word": "toggles",
-      "start": 9.039999961853027,
-      "end": 9.520000457763672
+      "word": "hamburger",
+      "start": 3.200000047683716,
+      "end": 3.619999885559082
+    },
+    {
+      "word": "menus",
+      "start": 3.619999885559082,
+      "end": 3.9600000381469727
+    },
+    {
+      "word": "on",
+      "start": 3.9600000381469727,
+      "end": 4.260000228881836
+    },
+    {
+      "word": "mobile",
+      "start": 4.260000228881836,
+      "end": 4.659999847412109
+    },
+    {
+      "word": "Screen",
+      "start": 5.860000133514404,
+      "end": 5.880000114440918
+    },
+    {
+      "word": "space",
+      "start": 5.880000114440918,
+      "end": 6.260000228881836
+    },
+    {
+      "word": "is",
+      "start": 6.260000228881836,
+      "end": 7
+    },
+    {
+      "word": "precious",
+      "start": 7,
+      "end": 7
+    },
+    {
+      "word": "Content",
+      "start": 8.020000457763672,
+      "end": 8.020000457763672
+    },
+    {
+      "word": "comes",
+      "start": 8.020000457763672,
+      "end": 8.4399995803833
+    },
+    {
+      "word": "first",
+      "start": 8.4399995803833,
+      "end": 8.920000076293945
     }
   ]
 }

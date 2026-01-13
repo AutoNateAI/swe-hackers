@@ -3,108 +3,83 @@
   "stepId": "step-5",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Sync Process. syncQueuedAttempts processes the queue. Each pending attempt is saved to Firestore, then removed from the queue.",
-  "duration": 11.4399995803833,
+  "text": "Connection Restored. The online event fires when connection returns. Time to sync those queued attempts!",
+  "duration": 8.800000190734863,
   "words": [
     {
-      "word": "Sync",
+      "word": "Connection",
       "start": 0,
-      "end": 0.6000000238418579
+      "end": 0.6800000071525574
     },
     {
-      "word": "process",
-      "start": 0.6000000238418579,
-      "end": 1.2200000286102295
+      "word": "restored",
+      "start": 0.6800000071525574,
+      "end": 1.2000000476837158
     },
     {
-      "word": "Sync",
-      "start": 2.1600000858306885,
-      "end": 2.359999895095825
+      "word": "The",
+      "start": 1.9199999570846558,
+      "end": 2.0999999046325684
     },
     {
-      "word": "queued",
-      "start": 2.359999895095825,
+      "word": "online",
+      "start": 2.0999999046325684,
       "end": 2.619999885559082
     },
     {
-      "word": "attempts",
+      "word": "event",
       "start": 2.619999885559082,
-      "end": 3.0999999046325684
+      "end": 3.059999942779541
     },
     {
-      "word": "processes",
-      "start": 3.0999999046325684,
-      "end": 3.819999933242798
+      "word": "fires",
+      "start": 3.059999942779541,
+      "end": 3.5799999237060547
     },
     {
-      "word": "the",
-      "start": 3.819999933242798,
-      "end": 4.440000057220459
+      "word": "when",
+      "start": 3.5799999237060547,
+      "end": 4.059999942779541
     },
     {
-      "word": "queue",
-      "start": 4.440000057220459,
-      "end": 4.440000057220459
+      "word": "Connection",
+      "start": 4.059999942779541,
+      "end": 4.539999961853027
     },
     {
-      "word": "Each",
-      "start": 5.300000190734863,
-      "end": 5.639999866485596
+      "word": "returns",
+      "start": 4.539999961853027,
+      "end": 5.119999885559082
     },
     {
-      "word": "pending",
-      "start": 5.639999866485596,
-      "end": 6.099999904632568
-    },
-    {
-      "word": "attempt",
-      "start": 6.099999904632568,
-      "end": 6.579999923706055
-    },
-    {
-      "word": "is",
-      "start": 6.579999923706055,
-      "end": 7.159999847412109
-    },
-    {
-      "word": "saved",
-      "start": 7.159999847412109,
-      "end": 7.579999923706055
+      "word": "Time",
+      "start": 6.019999980926514,
+      "end": 6.360000133514404
     },
     {
       "word": "to",
-      "start": 7.579999923706055,
-      "end": 8.15999984741211
+      "start": 6.360000133514404,
+      "end": 6.880000114440918
     },
     {
-      "word": "Firestore",
-      "start": 8.15999984741211,
-      "end": 8.760000228881836
+      "word": "sync",
+      "start": 6.880000114440918,
+      "end": 6.900000095367432
     },
     {
-      "word": "then",
-      "start": 9.399999618530273,
-      "end": 9.65999984741211
+      "word": "those",
+      "start": 6.900000095367432,
+      "end": 7.340000152587891
     },
     {
-      "word": "removed",
-      "start": 9.65999984741211,
-      "end": 10.279999732971191
+      "word": "queued",
+      "start": 7.340000152587891,
+      "end": 7.739999771118164
     },
     {
-      "word": "from",
-      "start": 10.279999732971191,
-      "end": 10.640000343322754
-    },
-    {
-      "word": "the",
-      "start": 10.640000343322754,
-      "end": 10.859999656677246
-    },
-    {
-      "word": "queue",
-      "start": 10.859999656677246,
-      "end": 11.0600004196167
+      "word": "attempts",
+      "start": 7.739999771118164,
+      "end": 8.260000228881836
     }
   ]
 }

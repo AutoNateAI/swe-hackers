@@ -4,97 +4,72 @@
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
   "text": "PartnerService. createInteraction in PartnerService handles the save. It updates multiple documents in a coordinated operation.",
-  "duration": 8.949999809265137,
+  "duration": 9.859999656677246,
   "words": [
     {
-      "word": "Partner",
+      "word": "PartnerService",
       "start": 0,
-      "end": 0.5199999809265137
+      "end": 0.8600000143051147
     },
     {
-      "word": "Service",
-      "start": 0.5199999809265137,
-      "end": 1
-    },
-    {
-      "word": "Create",
-      "start": 1.5199999809265137,
-      "end": 1.7799999713897705
-    },
-    {
-      "word": "interaction",
-      "start": 1.7799999713897705,
-      "end": 2.4200000762939453
-    },
-    {
-      "word": "in",
-      "start": 2.4200000762939453,
-      "end": 2.819999933242798
-    },
-    {
-      "word": "Partner",
-      "start": 2.819999933242798,
-      "end": 3.1600000858306885
-    },
-    {
-      "word": "Service",
-      "start": 3.1600000858306885,
-      "end": 3.5799999237060547
+      "word": "CreateInteractionInPartnerService",
+      "start": 0.8600000143051147,
+      "end": 3.700000047683716
     },
     {
       "word": "handles",
-      "start": 3.5799999237060547,
-      "end": 4.159999847412109
+      "start": 3.700000047683716,
+      "end": 4.260000228881836
     },
     {
       "word": "the",
-      "start": 4.159999847412109,
-      "end": 4.480000019073486
+      "start": 4.260000228881836,
+      "end": 4.5
     },
     {
       "word": "save",
-      "start": 4.480000019073486,
-      "end": 4.840000152587891
+      "start": 4.5,
+      "end": 4.860000133514404
     },
     {
       "word": "It",
-      "start": 5.519999980926514,
-      "end": 5.599999904632568
+      "start": 6.179999828338623,
+      "end": 6.260000228881836
     },
     {
       "word": "updates",
-      "start": 5.599999904632568,
-      "end": 5.940000057220459
+      "start": 6.260000228881836,
+      "end": 6.599999904632568
     },
     {
       "word": "multiple",
-      "start": 5.940000057220459,
-      "end": 6.579999923706055
+      "start": 6.599999904632568,
+      "end": 7.179999828338623
     },
     {
       "word": "documents",
-      "start": 6.579999923706055,
-      "end": 7.059999942779541
+      "start": 7.179999828338623,
+      "end": 7.699999809265137
     },
     {
       "word": "in",
-      "start": 7.059999942779541,
-      "end": 7.300000190734863
+      "start": 7.699999809265137,
+      "end": 8
     },
     {
       "word": "a",
-      "start": 7.300000190734863,
-      "end": 7.639999866485596
+      "start": 8,
+      "end": 8.300000190734863
     },
     {
       "word": "coordinated",
-      "start": 7.639999866485596,
-      "end": 8.0600004196167
+      "start": 8.300000190734863,
+      "end": 8.760000228881836
     },
     {
       "word": "operation",
-      "start": 8.0600004196167,
-      "end": 8.699999809265137
+      "start": 8.760000228881836,
+      "end": 9.460000038146973
     }
   ]
 }

@@ -3,103 +3,93 @@
   "stepId": "step-0",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "UI Components. The frontend has several pages—partner list, detail view, forms, timeline, analytics dashboard. All need data!",
-  "duration": 11.300000190734863,
+  "text": "Partner List UI. The partner list page shows all partners. Filter, search, sort—find any partner quickly!",
+  "duration": 9.5,
   "words": [
     {
-      "word": "UI",
-      "start": 0,
-      "end": 0.6000000238418579
-    },
-    {
-      "word": "components",
-      "start": 0.6000000238418579,
-      "end": 1.1799999475479126
-    },
-    {
-      "word": "The",
-      "start": 1.899999976158142,
-      "end": 2.0999999046325684
-    },
-    {
-      "word": "front",
-      "start": 2.0999999046325684,
-      "end": 2.380000114440918
-    },
-    {
-      "word": "end",
-      "start": 2.380000114440918,
-      "end": 2.5799999237060547
-    },
-    {
-      "word": "has",
-      "start": 2.5799999237060547,
-      "end": 2.819999933242798
-    },
-    {
-      "word": "several",
-      "start": 2.819999933242798,
-      "end": 3.180000066757202
-    },
-    {
-      "word": "pages",
-      "start": 3.180000066757202,
-      "end": 3.640000104904175
-    },
-    {
       "word": "Partner",
-      "start": 4.519999980926514,
-      "end": 4.519999980926514
+      "start": 0,
+      "end": 0.5199999809265137
     },
     {
       "word": "list",
-      "start": 4.519999980926514,
-      "end": 4.840000152587891
+      "start": 0.5199999809265137,
+      "end": 0.7599999904632568
     },
     {
-      "word": "detail",
-      "start": 5.260000228881836,
-      "end": 5.519999980926514
+      "word": "UI",
+      "start": 0.7599999904632568,
+      "end": 1.2599999904632568
     },
     {
-      "word": "view",
-      "start": 5.519999980926514,
-      "end": 5.820000171661377
+      "word": "The",
+      "start": 1.9199999570846558,
+      "end": 2.059999942779541
     },
     {
-      "word": "forms",
-      "start": 6.639999866485596,
-      "end": 6.639999866485596
+      "word": "partner",
+      "start": 2.059999942779541,
+      "end": 2.319999933242798
     },
     {
-      "word": "timeline",
-      "start": 7.019999980926514,
-      "end": 7.420000076293945
+      "word": "list",
+      "start": 2.319999933242798,
+      "end": 2.640000104904175
     },
     {
-      "word": "analytics",
-      "start": 8.300000190734863,
-      "end": 8.300000190734863
+      "word": "page",
+      "start": 2.640000104904175,
+      "end": 2.9600000381469727
     },
     {
-      "word": "dashboard",
-      "start": 8.300000190734863,
-      "end": 8.779999732971191
+      "word": "shows",
+      "start": 2.9600000381469727,
+      "end": 3.3399999141693115
     },
     {
-      "word": "All",
-      "start": 9.720000267028809,
-      "end": 10.079999923706055
+      "word": "all",
+      "start": 3.3399999141693115,
+      "end": 3.9000000953674316
     },
     {
-      "word": "need",
-      "start": 10.079999923706055,
-      "end": 10.5600004196167
+      "word": "partners",
+      "start": 3.9000000953674316,
+      "end": 4.340000152587891
     },
     {
-      "word": "data",
-      "start": 10.5600004196167,
-      "end": 10.960000038146973
+      "word": "Filter",
+      "start": 5.460000038146973,
+      "end": 5.460000038146973
+    },
+    {
+      "word": "search",
+      "start": 6.260000228881836,
+      "end": 6.260000228881836
+    },
+    {
+      "word": "sort",
+      "start": 7,
+      "end": 7
+    },
+    {
+      "word": "find",
+      "start": 7.539999961853027,
+      "end": 7.579999923706055
+    },
+    {
+      "word": "any",
+      "start": 7.579999923706055,
+      "end": 8.119999885559082
+    },
+    {
+      "word": "partner",
+      "start": 8.119999885559082,
+      "end": 8.420000076293945
+    },
+    {
+      "word": "quickly",
+      "start": 8.420000076293945,
+      "end": 8.979999542236328
     }
   ]
 }

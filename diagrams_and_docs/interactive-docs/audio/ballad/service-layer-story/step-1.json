@@ -3,93 +3,88 @@
   "stepId": "step-1",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Service Methods. PartnerService provides clean methods. getPartners, createPartner, createInteraction, uploadAttachment—organized API!",
-  "duration": 11.109999656677246,
+  "text": "Partner Detail UI. The detail page shows everything about one partner. Profile, interactions, attachments, courses, analytics.",
+  "duration": 12.550000190734863,
   "words": [
     {
-      "word": "Service",
-      "start": 0,
-      "end": 0.6000000238418579
-    },
-    {
-      "word": "methods",
-      "start": 0.6000000238418579,
-      "end": 1.0800000429153442
-    },
-    {
       "word": "Partner",
-      "start": 2.059999942779541,
-      "end": 2.1600000858306885
+      "start": 0,
+      "end": 0.5
     },
     {
-      "word": "service",
-      "start": 2.1600000858306885,
-      "end": 2.5399999618530273
+      "word": "Detail",
+      "start": 0.5,
+      "end": 1.059999942779541
     },
     {
-      "word": "provides",
-      "start": 2.5399999618530273,
-      "end": 3.0199999809265137
+      "word": "UI",
+      "start": 1.059999942779541,
+      "end": 1.8600000143051147
     },
     {
-      "word": "clean",
-      "start": 3.0199999809265137,
-      "end": 3.4600000381469727
+      "word": "The",
+      "start": 2.680000066757202,
+      "end": 2.7799999713897705
     },
     {
-      "word": "methods",
-      "start": 3.4600000381469727,
-      "end": 3.880000114440918
+      "word": "detail",
+      "start": 2.7799999713897705,
+      "end": 3.200000047683716
     },
     {
-      "word": "Get",
-      "start": 4.699999809265137,
+      "word": "page",
+      "start": 3.200000047683716,
+      "end": 3.559999942779541
+    },
+    {
+      "word": "shows",
+      "start": 3.559999942779541,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "everything",
+      "start": 4.059999942779541,
       "end": 4.760000228881836
     },
     {
-      "word": "partners",
+      "word": "about",
       "start": 4.760000228881836,
-      "end": 5.179999828338623
+      "end": 5.260000228881836
     },
     {
-      "word": "create",
-      "start": 5.860000133514404,
-      "end": 5.880000114440918
+      "word": "one",
+      "start": 5.260000228881836,
+      "end": 5.840000152587891
     },
     {
       "word": "partner",
-      "start": 5.880000114440918,
-      "end": 6.260000228881836
+      "start": 5.840000152587891,
+      "end": 6.179999828338623
     },
     {
-      "word": "create",
-      "start": 6.920000076293945,
-      "end": 6.920000076293945
+      "word": "Profile",
+      "start": 7.380000114440918,
+      "end": 7.679999828338623
     },
     {
-      "word": "interaction",
-      "start": 6.920000076293945,
-      "end": 7.480000019073486
+      "word": "Interactions",
+      "start": 8.800000190734863,
+      "end": 8.800000190734863
     },
     {
-      "word": "upload",
-      "start": 8.220000267028809,
-      "end": 8.220000267028809
+      "word": "Attachments",
+      "start": 9.600000381469727,
+      "end": 9.859999656677246
     },
     {
-      "word": "attachment",
-      "start": 8.220000267028809,
-      "end": 8.720000267028809
+      "word": "Courses",
+      "start": 10.699999809265137,
+      "end": 10.960000038146973
     },
     {
-      "word": "Organized",
-      "start": 9.65999984741211,
-      "end": 10.039999961853027
-    },
-    {
-      "word": "API",
-      "start": 10.039999961853027,
-      "end": 10.5
+      "word": "Analytics",
+      "start": 11.819999694824219,
+      "end": 12.039999961853027
     }
   ]
 }

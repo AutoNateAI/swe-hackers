@@ -3,93 +3,98 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Dashboard Styles. dashboard.css creates the user hub layout. Sidebar navigation, stats cards, course grids, activity feeds.",
-  "duration": 11.350000381469727,
+  "text": "Course Catalog. The catalog showcases all available courses. Card grids, filters, course previews—marketing.css makes it shine.",
+  "duration": 10.600000381469727,
   "words": [
     {
-      "word": "Dashboard",
+      "word": "Course",
       "start": 0,
-      "end": 0.6399999856948853
+      "end": 0.5
     },
     {
-      "word": "Styles",
-      "start": 0.6399999856948853,
-      "end": 1.440000057220459
+      "word": "Catalog",
+      "start": 0.5,
+      "end": 1.0399999618530273
     },
     {
-      "word": "Dashboard",
-      "start": 1.7200000286102295,
-      "end": 2.6600000858306885
+      "word": "The",
+      "start": 1.559999942779541,
+      "end": 1.6799999475479126
     },
     {
-      "word": "css",
-      "start": 2.6600000858306885,
-      "end": 3.5999999046325684
+      "word": "catalog",
+      "start": 1.6799999475479126,
+      "end": 2.0399999618530273
     },
     {
-      "word": "creates",
-      "start": 3.5999999046325684,
-      "end": 4
+      "word": "showcases",
+      "start": 2.0399999618530273,
+      "end": 2.799999952316284
     },
     {
-      "word": "the",
-      "start": 4,
+      "word": "all",
+      "start": 2.799999952316284,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "available",
+      "start": 3.380000114440918,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "courses",
+      "start": 3.819999933242798,
       "end": 4.239999771118164
     },
     {
-      "word": "user",
-      "start": 4.239999771118164,
-      "end": 4.5
-    },
-    {
-      "word": "hub",
-      "start": 4.5,
-      "end": 4.760000228881836
-    },
-    {
-      "word": "layout",
-      "start": 4.760000228881836,
-      "end": 5.300000190734863
-    },
-    {
-      "word": "Sidebar",
-      "start": 6.28000020980835,
-      "end": 6.480000019073486
-    },
-    {
-      "word": "navigation",
-      "start": 6.480000019073486,
-      "end": 7.139999866485596
-    },
-    {
-      "word": "stats",
-      "start": 7.820000171661377,
-      "end": 7.980000019073486
-    },
-    {
-      "word": "cards",
-      "start": 7.980000019073486,
-      "end": 8.380000114440918
-    },
-    {
-      "word": "course",
-      "start": 8.960000038146973,
-      "end": 9.079999923706055
+      "word": "card",
+      "start": 4.920000076293945,
+      "end": 5.019999980926514
     },
     {
       "word": "grids",
-      "start": 9.079999923706055,
-      "end": 9.399999618530273
+      "start": 5.019999980926514,
+      "end": 5.28000020980835
     },
     {
-      "word": "activity",
-      "start": 10.079999923706055,
-      "end": 10.300000190734863
+      "word": "filters",
+      "start": 6.099999904632568,
+      "end": 6.099999904632568
     },
     {
-      "word": "feeds",
-      "start": 10.300000190734863,
-      "end": 10.65999984741211
+      "word": "course",
+      "start": 6.659999847412109,
+      "end": 6.739999771118164
+    },
+    {
+      "word": "previews",
+      "start": 6.739999771118164,
+      "end": 7.619999885559082
+    },
+    {
+      "word": "Marketing",
+      "start": 7.659999847412109,
+      "end": 8.039999961853027
+    },
+    {
+      "word": "CSS",
+      "start": 8.039999961853027,
+      "end": 9.020000457763672
+    },
+    {
+      "word": "makes",
+      "start": 9.020000457763672,
+      "end": 9.619999885559082
+    },
+    {
+      "word": "it",
+      "start": 9.619999885559082,
+      "end": 9.899999618530273
+    },
+    {
+      "word": "shine",
+      "start": 9.899999618530273,
+      "end": 10.140000343322754
     }
   ]
 }

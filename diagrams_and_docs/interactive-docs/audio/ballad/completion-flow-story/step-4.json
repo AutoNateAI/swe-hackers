@@ -3,78 +3,93 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Celebration Toast!. A toast notification appears celebrating the achievement. Visual feedback motivates continued learning!",
-  "duration": 9.260000228881836,
+  "text": "Save to Firestore. Completion is persisted to Firestore. The lessonProgress document updates with completedAt timestamp.",
+  "duration": 10.100000381469727,
   "words": [
     {
-      "word": "Celebration",
+      "word": "Save",
       "start": 0,
-      "end": 0.7599999904632568
+      "end": 0.5400000214576721
     },
     {
-      "word": "Toast",
-      "start": 0.7599999904632568,
-      "end": 1.1399999856948853
+      "word": "to",
+      "start": 0.5400000214576721,
+      "end": 0.8600000143051147
     },
     {
-      "word": "A",
-      "start": 1.7200000286102295,
-      "end": 1.8600000143051147
+      "word": "Firestore",
+      "start": 0.8600000143051147,
+      "end": 1.5
     },
     {
-      "word": "toast",
-      "start": 1.8600000143051147,
-      "end": 2.140000104904175
+      "word": "Completion",
+      "start": 2.5,
+      "end": 2.700000047683716
     },
     {
-      "word": "notification",
-      "start": 2.140000104904175,
-      "end": 2.880000114440918
+      "word": "is",
+      "start": 2.700000047683716,
+      "end": 3.0199999809265137
     },
     {
-      "word": "appears",
-      "start": 2.880000114440918,
-      "end": 3.5199999809265137
+      "word": "persisted",
+      "start": 3.0199999809265137,
+      "end": 3.5399999618530273
     },
     {
-      "word": "celebrating",
-      "start": 3.5199999809265137,
-      "end": 4.300000190734863
+      "word": "to",
+      "start": 3.5399999618530273,
+      "end": 3.859999895095825
     },
     {
-      "word": "the",
-      "start": 4.300000190734863,
-      "end": 4.639999866485596
+      "word": "Firestore",
+      "start": 3.859999895095825,
+      "end": 4.71999979019165
     },
     {
-      "word": "achievement",
-      "start": 4.639999866485596,
-      "end": 5.059999942779541
+      "word": "The",
+      "start": 5.119999885559082,
+      "end": 5.239999771118164
     },
     {
-      "word": "Visual",
-      "start": 6.079999923706055,
-      "end": 6.340000152587891
+      "word": "lesson",
+      "start": 5.239999771118164,
+      "end": 5.579999923706055
     },
     {
-      "word": "feedback",
-      "start": 6.340000152587891,
-      "end": 7
+      "word": "progress",
+      "start": 5.579999923706055,
+      "end": 6.059999942779541
     },
     {
-      "word": "motivates",
-      "start": 7,
-      "end": 7.78000020980835
+      "word": "document",
+      "start": 6.059999942779541,
+      "end": 6.639999866485596
     },
     {
-      "word": "continued",
-      "start": 7.78000020980835,
-      "end": 8.479999542236328
+      "word": "updates",
+      "start": 6.639999866485596,
+      "end": 7.119999885559082
     },
     {
-      "word": "learning",
-      "start": 8.479999542236328,
-      "end": 8.859999656677246
+      "word": "with",
+      "start": 7.119999885559082,
+      "end": 7.480000019073486
+    },
+    {
+      "word": "completed",
+      "start": 7.480000019073486,
+      "end": 7.980000019073486
+    },
+    {
+      "word": "at",
+      "start": 7.980000019073486,
+      "end": 8.319999694824219
+    },
+    {
+      "word": "timestamp",
+      "start": 8.319999694824219,
+      "end": 9.020000457763672
     }
   ]
 }

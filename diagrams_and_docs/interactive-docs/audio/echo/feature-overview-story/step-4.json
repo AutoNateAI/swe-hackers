@@ -3,118 +3,83 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Course Offerings. Partners can offer our four free courses, request custom curriculum, run live cohorts, or provide digital access to their members.",
-  "duration": 10.600000381469727,
+  "text": "Interactions. Every touchpoint is recorded. Calls, meetings, emails, demos—complete history of the relationship journey.",
+  "duration": 9.720000267028809,
   "words": [
     {
-      "word": "Course",
+      "word": "Interactions",
       "start": 0,
-      "end": 0.46000000834465027
+      "end": 0.7400000095367432
     },
     {
-      "word": "offerings",
-      "start": 0.46000000834465027,
-      "end": 0.8999999761581421
+      "word": "Every",
+      "start": 1.5199999809265137,
+      "end": 1.659999966621399
     },
     {
-      "word": "Partners",
-      "start": 1.9800000190734863,
-      "end": 1.9800000190734863
+      "word": "touchpoint",
+      "start": 1.659999966621399,
+      "end": 2.180000066757202
     },
     {
-      "word": "can",
-      "start": 1.9800000190734863,
-      "end": 2.2799999713897705
+      "word": "is",
+      "start": 2.180000066757202,
+      "end": 2.559999942779541
     },
     {
-      "word": "offer",
-      "start": 2.2799999713897705,
-      "end": 2.5399999618530273
-    },
-    {
-      "word": "our",
-      "start": 2.5399999618530273,
+      "word": "recorded",
+      "start": 2.559999942779541,
       "end": 2.940000057220459
     },
     {
-      "word": "four",
-      "start": 2.940000057220459,
-      "end": 3.259999990463257
+      "word": "Calls",
+      "start": 3.8399999141693115,
+      "end": 4.019999980926514
     },
     {
-      "word": "free",
-      "start": 3.259999990463257,
-      "end": 3.5399999618530273
+      "word": "Meetings",
+      "start": 4.5,
+      "end": 4.71999979019165
     },
     {
-      "word": "courses",
-      "start": 3.5399999618530273,
-      "end": 3.9000000953674316
+      "word": "Emails",
+      "start": 5.360000133514404,
+      "end": 5.360000133514404
     },
     {
-      "word": "request",
-      "start": 4.739999771118164,
-      "end": 4.739999771118164
+      "word": "Demos",
+      "start": 6.059999942779541,
+      "end": 6.059999942779541
     },
     {
-      "word": "custom",
-      "start": 4.739999771118164,
-      "end": 5.260000228881836
+      "word": "Complete",
+      "start": 6.920000076293945,
+      "end": 6.960000038146973
     },
     {
-      "word": "curriculum",
-      "start": 5.260000228881836,
-      "end": 5.78000020980835
-    },
-    {
-      "word": "run",
-      "start": 6.559999942779541,
-      "end": 6.559999942779541
-    },
-    {
-      "word": "live",
-      "start": 6.559999942779541,
-      "end": 7
-    },
-    {
-      "word": "cohorts",
-      "start": 7,
+      "word": "history",
+      "start": 6.960000038146973,
       "end": 7.5
     },
     {
-      "word": "or",
-      "start": 7.679999828338623,
-      "end": 8.079999923706055
+      "word": "of",
+      "start": 7.5,
+      "end": 7.760000228881836
     },
     {
-      "word": "provide",
-      "start": 8.079999923706055,
-      "end": 8.420000076293945
+      "word": "the",
+      "start": 7.760000228881836,
+      "end": 7.980000019073486
     },
     {
-      "word": "digital",
-      "start": 8.420000076293945,
-      "end": 8.960000038146973
+      "word": "relationship",
+      "start": 7.980000019073486,
+      "end": 8.520000457763672
     },
     {
-      "word": "access",
-      "start": 8.960000038146973,
-      "end": 9.399999618530273
-    },
-    {
-      "word": "to",
-      "start": 9.399999618530273,
-      "end": 9.699999809265137
-    },
-    {
-      "word": "their",
-      "start": 9.699999809265137,
-      "end": 9.899999618530273
-    },
-    {
-      "word": "members",
-      "start": 9.899999618530273,
-      "end": 10.199999809265137
+      "word": "journey",
+      "start": 8.520000457763672,
+      "end": 8.899999618530273
     }
   ]
 }

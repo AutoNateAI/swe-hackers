@@ -3,88 +3,83 @@
   "stepId": "step-0",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Event Sources. Analytics events come from many sources. Student enrollments, cohort milestones, interactions, revenue—all tracked!",
-  "duration": 12.600000381469727,
+  "text": "Student Enrolled. Student enrollment triggers an analytics event. A new learner joins through this partner!",
+  "duration": 9.449999809265137,
   "words": [
     {
-      "word": "Event",
+      "word": "Student",
       "start": 0,
-      "end": 0.7200000286102295
+      "end": 0.800000011920929
     },
     {
-      "word": "sources",
-      "start": 0.7200000286102295,
-      "end": 1.2400000095367432
-    },
-    {
-      "word": "Analytics",
-      "start": 2.440000057220459,
-      "end": 2.4600000381469727
-    },
-    {
-      "word": "events",
-      "start": 2.4600000381469727,
-      "end": 2.880000114440918
-    },
-    {
-      "word": "come",
-      "start": 2.880000114440918,
-      "end": 3.3399999141693115
-    },
-    {
-      "word": "from",
-      "start": 3.3399999141693115,
-      "end": 3.7200000286102295
-    },
-    {
-      "word": "many",
-      "start": 3.7200000286102295,
-      "end": 4.139999866485596
-    },
-    {
-      "word": "sources",
-      "start": 4.139999866485596,
-      "end": 4.599999904632568
+      "word": "enrolled",
+      "start": 0.800000011920929,
+      "end": 1.4600000381469727
     },
     {
       "word": "Student",
-      "start": 5.900000095367432,
-      "end": 5.900000095367432
+      "start": 2.819999933242798,
+      "end": 2.819999933242798
     },
     {
-      "word": "enrolments",
-      "start": 5.900000095367432,
-      "end": 6.519999980926514
+      "word": "enrolment",
+      "start": 2.819999933242798,
+      "end": 3.359999895095825
     },
     {
-      "word": "Cohort",
-      "start": 7.639999866485596,
-      "end": 7.639999866485596
+      "word": "triggers",
+      "start": 3.359999895095825,
+      "end": 3.940000057220459
     },
     {
-      "word": "milestones",
-      "start": 7.639999866485596,
-      "end": 8.300000190734863
+      "word": "an",
+      "start": 3.940000057220459,
+      "end": 4.460000038146973
     },
     {
-      "word": "Interactions",
-      "start": 9.140000343322754,
-      "end": 9.5600004196167
+      "word": "analytics",
+      "start": 4.460000038146973,
+      "end": 4.880000114440918
     },
     {
-      "word": "Revenue",
-      "start": 10.539999961853027,
-      "end": 10.539999961853027
+      "word": "event",
+      "start": 4.880000114440918,
+      "end": 5.28000020980835
     },
     {
-      "word": "All",
-      "start": 11.100000381469727,
-      "end": 11.5
+      "word": "A",
+      "start": 6.079999923706055,
+      "end": 6.21999979019165
     },
     {
-      "word": "tracked",
-      "start": 11.5,
-      "end": 11.880000114440918
+      "word": "new",
+      "start": 6.21999979019165,
+      "end": 6.559999942779541
+    },
+    {
+      "word": "learner",
+      "start": 6.559999942779541,
+      "end": 6.880000114440918
+    },
+    {
+      "word": "joins",
+      "start": 6.880000114440918,
+      "end": 7.460000038146973
+    },
+    {
+      "word": "through",
+      "start": 7.460000038146973,
+      "end": 8.0600004196167
+    },
+    {
+      "word": "this",
+      "start": 8.0600004196167,
+      "end": 8.4399995803833
+    },
+    {
+      "word": "partner",
+      "start": 8.4399995803833,
+      "end": 8.779999732971191
     }
   ]
 }

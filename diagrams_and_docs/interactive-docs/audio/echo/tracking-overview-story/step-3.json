@@ -3,98 +3,98 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Data Persistence. Both trackers feed into DataService. Progress and activity data flows to Firestore for permanent storage.",
-  "duration": 10.5600004196167,
+  "text": "ProgressTracker. ProgressTracker watches scrolling behavior. It uses IntersectionObserver to detect which sections users have viewed.",
+  "duration": 9.600000381469727,
   "words": [
     {
-      "word": "Data",
+      "word": "Progress",
       "start": 0,
-      "end": 0.41999998688697815
+      "end": 0.5799999833106995
     },
     {
-      "word": "Persistence",
-      "start": 0.41999998688697815,
-      "end": 1.399999976158142
-    },
-    {
-      "word": "Both",
-      "start": 1.399999976158142,
-      "end": 2.059999942779541
-    },
-    {
-      "word": "trackers",
-      "start": 2.059999942779541,
-      "end": 2.680000066757202
-    },
-    {
-      "word": "feed",
-      "start": 2.680000066757202,
-      "end": 3.140000104904175
-    },
-    {
-      "word": "into",
-      "start": 3.140000104904175,
-      "end": 3.5
-    },
-    {
-      "word": "data",
-      "start": 3.5,
-      "end": 3.9800000190734863
-    },
-    {
-      "word": "service",
-      "start": 3.9800000190734863,
-      "end": 4.559999942779541
+      "word": "Tracker",
+      "start": 0.5799999833106995,
+      "end": 0.8799999952316284
     },
     {
       "word": "Progress",
-      "start": 5.579999923706055,
-      "end": 5.579999923706055
+      "start": 1.8799999952316284,
+      "end": 1.8799999952316284
     },
     {
-      "word": "and",
-      "start": 5.579999923706055,
-      "end": 5.860000133514404
+      "word": "Tracker",
+      "start": 1.8799999952316284,
+      "end": 2.240000009536743
     },
     {
-      "word": "activity",
-      "start": 5.860000133514404,
-      "end": 6.320000171661377
+      "word": "watches",
+      "start": 2.240000009536743,
+      "end": 3.0399999618530273
     },
     {
-      "word": "data",
-      "start": 6.320000171661377,
-      "end": 6.860000133514404
+      "word": "scrolling",
+      "start": 3.0399999618530273,
+      "end": 3.5199999809265137
     },
     {
-      "word": "flows",
-      "start": 6.860000133514404,
-      "end": 7.460000038146973
+      "word": "behavior",
+      "start": 3.5199999809265137,
+      "end": 4.099999904632568
+    },
+    {
+      "word": "It",
+      "start": 4.739999771118164,
+      "end": 4.739999771118164
+    },
+    {
+      "word": "uses",
+      "start": 4.739999771118164,
+      "end": 5.039999961853027
+    },
+    {
+      "word": "Intersection",
+      "start": 5.039999961853027,
+      "end": 5.880000114440918
+    },
+    {
+      "word": "Observer",
+      "start": 5.880000114440918,
+      "end": 6.380000114440918
     },
     {
       "word": "to",
-      "start": 7.460000038146973,
-      "end": 7.860000133514404
+      "start": 6.380000114440918,
+      "end": 6.880000114440918
     },
     {
-      "word": "Firestore",
-      "start": 7.860000133514404,
-      "end": 8.520000457763672
+      "word": "detect",
+      "start": 6.880000114440918,
+      "end": 7.260000228881836
     },
     {
-      "word": "for",
-      "start": 8.520000457763672,
-      "end": 9.119999885559082
+      "word": "which",
+      "start": 7.260000228881836,
+      "end": 7.71999979019165
     },
     {
-      "word": "permanent",
-      "start": 9.119999885559082,
-      "end": 9.640000343322754
+      "word": "sections",
+      "start": 7.71999979019165,
+      "end": 8.199999809265137
     },
     {
-      "word": "storage",
-      "start": 9.640000343322754,
-      "end": 10.260000228881836
+      "word": "users",
+      "start": 8.199999809265137,
+      "end": 8.640000343322754
+    },
+    {
+      "word": "have",
+      "start": 8.640000343322754,
+      "end": 9.039999961853027
+    },
+    {
+      "word": "viewed",
+      "start": 9.039999961853027,
+      "end": 9.279999732971191
     }
   ]
 }

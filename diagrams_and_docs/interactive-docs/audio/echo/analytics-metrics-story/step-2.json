@@ -3,93 +3,73 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Quiz Mastery. calcMastery averages quiz performance. Correct answers divided by total attempts—expressed as a percentage.",
-  "duration": 9.399999618530273,
+  "text": "Daily Challenges. Daily challenge completions show consistency. Regular engagement builds lasting learning habits.",
+  "duration": 8.4399995803833,
   "words": [
     {
-      "word": "QuizMastery",
+      "word": "Daily",
       "start": 0,
-      "end": 1
+      "end": 0.46000000834465027
     },
     {
-      "word": "–",
-      "start": 1,
-      "end": 1.7400000095367432
+      "word": "Challenges",
+      "start": 0.46000000834465027,
+      "end": 1.0399999618530273
     },
     {
-      "word": "CalcMastery",
-      "start": 1.7400000095367432,
-      "end": 2.380000114440918
+      "word": "Daily",
+      "start": 1.0399999618530273,
+      "end": 2.059999942779541
     },
     {
-      "word": "averages",
-      "start": 2.380000114440918,
-      "end": 2.819999933242798
+      "word": "Challenge",
+      "start": 2.059999942779541,
+      "end": 2.5199999809265137
     },
     {
-      "word": "quiz",
-      "start": 2.819999933242798,
-      "end": 3.2799999713897705
+      "word": "completions",
+      "start": 2.5199999809265137,
+      "end": 3.200000047683716
     },
     {
-      "word": "performance",
-      "start": 3.2799999713897705,
-      "end": 3.9200000762939453
+      "word": "show",
+      "start": 3.200000047683716,
+      "end": 3.5399999618530273
     },
     {
-      "word": "–",
-      "start": 3.9200000762939453,
-      "end": 4.78000020980835
+      "word": "consistency",
+      "start": 3.5399999618530273,
+      "end": 4.420000076293945
     },
     {
-      "word": "correct",
-      "start": 4.78000020980835,
-      "end": 4.840000152587891
+      "word": "Regular",
+      "start": 5.599999904632568,
+      "end": 5.599999904632568
     },
     {
-      "word": "answers",
-      "start": 4.840000152587891,
-      "end": 5.380000114440918
-    },
-    {
-      "word": "divided",
-      "start": 5.380000114440918,
-      "end": 5.920000076293945
-    },
-    {
-      "word": "by",
-      "start": 5.920000076293945,
+      "word": "engagement",
+      "start": 5.599999904632568,
       "end": 6.239999771118164
     },
     {
-      "word": "total",
+      "word": "builds",
       "start": 6.239999771118164,
-      "end": 6.559999942779541
+      "end": 6.679999828338623
     },
     {
-      "word": "attempts",
-      "start": 6.559999942779541,
-      "end": 7
+      "word": "lasting",
+      "start": 6.679999828338623,
+      "end": 7.320000171661377
     },
     {
-      "word": "expressed",
-      "start": 8,
-      "end": 8
+      "word": "learning",
+      "start": 7.320000171661377,
+      "end": 7.820000171661377
     },
     {
-      "word": "as",
-      "start": 8,
-      "end": 8.460000038146973
-    },
-    {
-      "word": "a",
-      "start": 8.460000038146973,
-      "end": 8.739999771118164
-    },
-    {
-      "word": "percentage",
-      "start": 8.739999771118164,
-      "end": 9
+      "word": "habits",
+      "start": 7.820000171661377,
+      "end": 8.079999923706055
     }
   ]
 }

@@ -3,108 +3,93 @@
   "stepId": "step-3",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Activity Entity. Activities are interactive elements within lessons. Quizzes test knowledge, drag-drops build mental models, code challenges apply skills.",
-  "duration": 13.699999809265137,
+  "text": "Partner Course. Partners offer courses to their members. Each course relationship tracks pricing, enrollment, and completion metrics.",
+  "duration": 11.199999809265137,
   "words": [
     {
-      "word": "activity",
+      "word": "Partner",
       "start": 0,
-      "end": 0.7599999904632568
+      "end": 0.5199999809265137
     },
     {
-      "word": "entity",
-      "start": 0.7599999904632568,
-      "end": 1.340000033378601
+      "word": "course",
+      "start": 0.5199999809265137,
+      "end": 1.059999942779541
     },
     {
-      "word": "Activities",
-      "start": 2.5399999618530273,
-      "end": 2.7799999713897705
+      "word": "Partners",
+      "start": 2.240000009536743,
+      "end": 2.240000009536743
     },
     {
-      "word": "are",
-      "start": 2.7799999713897705,
-      "end": 3.200000047683716
+      "word": "offer",
+      "start": 2.240000009536743,
+      "end": 2.700000047683716
     },
     {
-      "word": "interactive",
-      "start": 3.200000047683716,
-      "end": 3.859999895095825
+      "word": "courses",
+      "start": 2.700000047683716,
+      "end": 3.0799999237060547
     },
     {
-      "word": "elements",
-      "start": 3.859999895095825,
-      "end": 4.380000114440918
+      "word": "to",
+      "start": 3.0799999237060547,
+      "end": 3.5799999237060547
     },
     {
-      "word": "within",
-      "start": 4.380000114440918,
-      "end": 4.78000020980835
+      "word": "their",
+      "start": 3.5799999237060547,
+      "end": 3.880000114440918
     },
     {
-      "word": "lessons",
-      "start": 4.78000020980835,
-      "end": 5.320000171661377
+      "word": "members",
+      "start": 3.880000114440918,
+      "end": 4.199999809265137
     },
     {
-      "word": "Quizzes",
-      "start": 6.400000095367432,
-      "end": 6.639999866485596
+      "word": "Each",
+      "start": 5.099999904632568,
+      "end": 5.28000020980835
     },
     {
-      "word": "test",
-      "start": 6.639999866485596,
-      "end": 7.039999961853027
+      "word": "course",
+      "start": 5.28000020980835,
+      "end": 5.71999979019165
     },
     {
-      "word": "knowledge",
-      "start": 7.039999961853027,
-      "end": 7.519999980926514
+      "word": "relationship",
+      "start": 5.71999979019165,
+      "end": 6.440000057220459
     },
     {
-      "word": "Drag",
-      "start": 8.34000015258789,
-      "end": 8.420000076293945
+      "word": "tracks",
+      "start": 6.440000057220459,
+      "end": 6.980000019073486
     },
     {
-      "word": "drops",
-      "start": 8.420000076293945,
-      "end": 8.899999618530273
+      "word": "pricing",
+      "start": 6.980000019073486,
+      "end": 7.619999885559082
     },
     {
-      "word": "build",
-      "start": 8.899999618530273,
-      "end": 9.399999618530273
+      "word": "enrolment",
+      "start": 8.399999618530273,
+      "end": 8.680000305175781
     },
     {
-      "word": "mental",
-      "start": 9.399999618530273,
-      "end": 9.899999618530273
+      "word": "and",
+      "start": 8.680000305175781,
+      "end": 9.260000228881836
     },
     {
-      "word": "models",
-      "start": 9.899999618530273,
+      "word": "completion",
+      "start": 9.260000228881836,
+      "end": 9.859999656677246
+    },
+    {
+      "word": "metrics",
+      "start": 9.859999656677246,
       "end": 10.399999618530273
-    },
-    {
-      "word": "Code",
-      "start": 11.359999656677246,
-      "end": 11.5
-    },
-    {
-      "word": "challenges",
-      "start": 11.5,
-      "end": 12.0600004196167
-    },
-    {
-      "word": "apply",
-      "start": 12.0600004196167,
-      "end": 12.899999618530273
-    },
-    {
-      "word": "skills",
-      "start": 12.899999618530273,
-      "end": 13.460000038146973
     }
   ]
 }

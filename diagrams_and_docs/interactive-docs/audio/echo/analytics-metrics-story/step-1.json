@@ -3,113 +3,93 @@
   "stepId": "step-1",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Learning Velocity. calcVelocity computes learning speed. Lessons completed per week, multiplied by 20, gives a 0-100 velocity score.",
-  "duration": 11.4399995803833,
+  "text": "Activity Attempts Data. Quiz attempts and scores provide mastery signals. How well are users understanding the material?",
+  "duration": 8.609999656677246,
   "words": [
     {
-      "word": "Learning",
+      "word": "Activity",
       "start": 0,
-      "end": 0.46000000834465027
+      "end": 0.6000000238418579
     },
     {
-      "word": "velocity",
-      "start": 0.46000000834465027,
-      "end": 0.9599999785423279
+      "word": "Attempts",
+      "start": 0.6000000238418579,
+      "end": 1.159999966621399
     },
     {
-      "word": "Calc",
-      "start": 2.0399999618530273,
-      "end": 2.119999885559082
+      "word": "Data",
+      "start": 1.159999966621399,
+      "end": 1.340000033378601
     },
     {
-      "word": "velocity",
-      "start": 2.119999885559082,
-      "end": 2.640000104904175
+      "word": "Quiz",
+      "start": 1.5399999618530273,
+      "end": 2.5
     },
     {
-      "word": "computes",
-      "start": 2.640000104904175,
-      "end": 3.119999885559082
+      "word": "attempts",
+      "start": 2.5,
+      "end": 2.7799999713897705
     },
     {
-      "word": "learning",
-      "start": 3.119999885559082,
-      "end": 3.559999942779541
+      "word": "and",
+      "start": 2.7799999713897705,
+      "end": 3.2799999713897705
     },
     {
-      "word": "speed",
-      "start": 3.559999942779541,
-      "end": 4.099999904632568
+      "word": "scores",
+      "start": 3.2799999713897705,
+      "end": 3.5199999809265137
     },
     {
-      "word": "Lessons",
-      "start": 5.039999961853027,
-      "end": 5.239999771118164
+      "word": "provide",
+      "start": 3.5199999809265137,
+      "end": 4
     },
     {
-      "word": "completed",
-      "start": 5.239999771118164,
-      "end": 5.659999847412109
+      "word": "mastery",
+      "start": 4,
+      "end": 4.480000019073486
     },
     {
-      "word": "per",
-      "start": 5.659999847412109,
-      "end": 6.039999961853027
+      "word": "signals",
+      "start": 4.480000019073486,
+      "end": 4.940000057220459
     },
     {
-      "word": "week",
-      "start": 6.039999961853027,
-      "end": 6.300000190734863
+      "word": "How",
+      "start": 5.760000228881836,
+      "end": 5.840000152587891
     },
     {
-      "word": "multiplied",
-      "start": 6.699999809265137,
-      "end": 7.019999980926514
+      "word": "well",
+      "start": 5.840000152587891,
+      "end": 6.199999809265137
     },
     {
-      "word": "by",
-      "start": 7.019999980926514,
-      "end": 7.380000114440918
+      "word": "are",
+      "start": 6.199999809265137,
+      "end": 6.960000038146973
     },
     {
-      "word": "20",
-      "start": 7.380000114440918,
-      "end": 7.840000152587891
+      "word": "users",
+      "start": 6.960000038146973,
+      "end": 6.960000038146973
     },
     {
-      "word": "gives",
-      "start": 8.460000038146973,
-      "end": 8.479999542236328
+      "word": "understanding",
+      "start": 6.960000038146973,
+      "end": 7.760000228881836
     },
     {
-      "word": "a",
-      "start": 8.479999542236328,
-      "end": 8.84000015258789
+      "word": "the",
+      "start": 7.760000228881836,
+      "end": 8.380000114440918
     },
     {
-      "word": "0",
-      "start": 8.84000015258789,
-      "end": 9.15999984741211
-    },
-    {
-      "word": "to",
-      "start": 9.15999984741211,
-      "end": 9.479999542236328
-    },
-    {
-      "word": "100",
-      "start": 9.479999542236328,
-      "end": 10.119999885559082
-    },
-    {
-      "word": "velocity",
-      "start": 10.119999885559082,
-      "end": 10.760000228881836
-    },
-    {
-      "word": "score",
-      "start": 10.760000228881836,
-      "end": 11.079999923706055
+      "word": "material",
+      "start": 8.380000114440918,
+      "end": 8.380000114440918
     }
   ]
 }

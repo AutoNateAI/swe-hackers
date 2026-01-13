@@ -3,93 +3,103 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Organization Check. For partner courses, verify organization membership. The user's organizations array must include the required org.",
-  "duration": 10.5600004196167,
+  "text": "Admin Bypass. Admins get VIP treatment—they bypass all other checks! If role equals admin, access is granted immediately.",
+  "duration": 9.859999656677246,
   "words": [
     {
-      "word": "Organization",
+      "word": "Admin",
       "start": 0,
-      "end": 0.8999999761581421
+      "end": 0.46000000834465027
     },
     {
-      "word": "Check",
-      "start": 0.8999999761581421,
-      "end": 1.3200000524520874
+      "word": "Bypass",
+      "start": 0.46000000834465027,
+      "end": 1.1399999856948853
     },
     {
-      "word": "For",
-      "start": 2.2200000286102295,
-      "end": 2.2200000286102295
+      "word": "Admins",
+      "start": 1.1399999856948853,
+      "end": 1.9199999570846558
     },
     {
-      "word": "partner",
-      "start": 2.2200000286102295,
-      "end": 2.559999942779541
+      "word": "get",
+      "start": 1.9199999570846558,
+      "end": 2.140000104904175
     },
     {
-      "word": "courses",
-      "start": 2.559999942779541,
-      "end": 2.940000057220459
+      "word": "VIP",
+      "start": 2.140000104904175,
+      "end": 2.680000066757202
     },
     {
-      "word": "verify",
-      "start": 3.819999933242798,
-      "end": 3.819999933242798
+      "word": "treatment",
+      "start": 2.680000066757202,
+      "end": 3.2200000286102295
     },
     {
-      "word": "organization",
-      "start": 3.819999933242798,
-      "end": 4.639999866485596
+      "word": "They",
+      "start": 3.680000066757202,
+      "end": 3.799999952316284
     },
     {
-      "word": "membership",
-      "start": 4.639999866485596,
-      "end": 5.239999771118164
+      "word": "bypass",
+      "start": 3.799999952316284,
+      "end": 4.300000190734863
     },
     {
-      "word": "The",
-      "start": 5.840000152587891,
-      "end": 5.960000038146973
+      "word": "all",
+      "start": 4.300000190734863,
+      "end": 4.739999771118164
     },
     {
-      "word": "user's",
-      "start": 5.960000038146973,
-      "end": 6.599999904632568
+      "word": "other",
+      "start": 4.739999771118164,
+      "end": 5.039999961853027
     },
     {
-      "word": "organizations",
-      "start": 6.599999904632568,
-      "end": 7.159999847412109
+      "word": "checks",
+      "start": 5.039999961853027,
+      "end": 5.420000076293945
     },
     {
-      "word": "array",
-      "start": 7.159999847412109,
-      "end": 7.539999961853027
+      "word": "If",
+      "start": 6.059999942779541,
+      "end": 6.139999866485596
     },
     {
-      "word": "must",
-      "start": 7.539999961853027,
-      "end": 8.260000228881836
+      "word": "role",
+      "start": 6.139999866485596,
+      "end": 6.420000076293945
     },
     {
-      "word": "include",
-      "start": 8.260000228881836,
-      "end": 8.760000228881836
+      "word": "equals",
+      "start": 6.420000076293945,
+      "end": 6.960000038146973
     },
     {
-      "word": "the",
-      "start": 8.760000228881836,
-      "end": 9.079999923706055
+      "word": "admin",
+      "start": 6.960000038146973,
+      "end": 7.380000114440918
     },
     {
-      "word": "required",
-      "start": 9.079999923706055,
-      "end": 9.520000457763672
+      "word": "access",
+      "start": 8.199999809265137,
+      "end": 8.199999809265137
     },
     {
-      "word": "org",
-      "start": 9.520000457763672,
-      "end": 9.960000038146973
+      "word": "is",
+      "start": 8.199999809265137,
+      "end": 8.520000457763672
+    },
+    {
+      "word": "granted",
+      "start": 8.520000457763672,
+      "end": 8.880000114440918
+    },
+    {
+      "word": "immediately",
+      "start": 8.880000114440918,
+      "end": 9.579999923706055
     }
   ]
 }

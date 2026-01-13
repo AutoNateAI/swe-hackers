@@ -3,93 +3,88 @@
   "stepId": "step-3",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Active Streak. calcStreak counts consecutive days with activity. Miss a day? Streak resets. Consistency is rewarded!",
-  "duration": 10.40999984741211,
+  "text": "User Profile Data. The user document stores streak information. Current streak, longest streak, last active date.",
+  "duration": 9.90999984741211,
   "words": [
     {
-      "word": "Active",
+      "word": "User",
       "start": 0,
-      "end": 0.6600000262260437
+      "end": 0.5
+    },
+    {
+      "word": "profile",
+      "start": 0.5,
+      "end": 0.9599999785423279
+    },
+    {
+      "word": "data",
+      "start": 0.9599999785423279,
+      "end": 1.3600000143051147
+    },
+    {
+      "word": "The",
+      "start": 2.2200000286102295,
+      "end": 2.319999933242798
+    },
+    {
+      "word": "user",
+      "start": 2.319999933242798,
+      "end": 2.640000104904175
+    },
+    {
+      "word": "document",
+      "start": 2.640000104904175,
+      "end": 3.140000104904175
+    },
+    {
+      "word": "stores",
+      "start": 3.140000104904175,
+      "end": 3.5399999618530273
     },
     {
       "word": "streak",
-      "start": 0.6600000262260437,
-      "end": 1.059999942779541
+      "start": 3.5399999618530273,
+      "end": 4.039999961853027
     },
     {
-      "word": "Calc",
-      "start": 2.0799999237060547,
-      "end": 2.240000009536743
+      "word": "information",
+      "start": 4.039999961853027,
+      "end": 4.639999866485596
+    },
+    {
+      "word": "current",
+      "start": 5.519999980926514,
+      "end": 5.599999904632568
     },
     {
       "word": "streak",
-      "start": 2.240000009536743,
-      "end": 2.5
-    },
-    {
-      "word": "counts",
-      "start": 2.5,
-      "end": 3
-    },
-    {
-      "word": "consecutive",
-      "start": 3,
-      "end": 3.680000066757202
-    },
-    {
-      "word": "days",
-      "start": 3.680000066757202,
-      "end": 3.9800000190734863
-    },
-    {
-      "word": "with",
-      "start": 3.9800000190734863,
-      "end": 4.28000020980835
-    },
-    {
-      "word": "activity",
-      "start": 4.28000020980835,
-      "end": 5.059999942779541
-    },
-    {
-      "word": "Miss",
-      "start": 5.659999847412109,
-      "end": 5.659999847412109
-    },
-    {
-      "word": "a",
-      "start": 5.659999847412109,
+      "start": 5.599999904632568,
       "end": 6.019999980926514
     },
     {
-      "word": "day",
-      "start": 6.019999980926514,
-      "end": 6.079999923706055
+      "word": "longest",
+      "start": 6.900000095367432,
+      "end": 6.940000057220459
     },
     {
-      "word": "Streak",
-      "start": 6.920000076293945,
-      "end": 7.059999942779541
+      "word": "streak",
+      "start": 6.940000057220459,
+      "end": 7.360000133514404
     },
     {
-      "word": "resets",
-      "start": 7.059999942779541,
-      "end": 7.679999828338623
+      "word": "last",
+      "start": 8,
+      "end": 8.380000114440918
     },
     {
-      "word": "Consistency",
-      "start": 8.520000457763672,
-      "end": 9.0600004196167
+      "word": "active",
+      "start": 8.380000114440918,
+      "end": 8.800000190734863
     },
     {
-      "word": "is",
-      "start": 9.0600004196167,
-      "end": 9.640000343322754
-    },
-    {
-      "word": "rewarded",
-      "start": 9.640000343322754,
-      "end": 9.9399995803833
+      "word": "date",
+      "start": 8.800000190734863,
+      "end": 9.140000343322754
     }
   ]
 }

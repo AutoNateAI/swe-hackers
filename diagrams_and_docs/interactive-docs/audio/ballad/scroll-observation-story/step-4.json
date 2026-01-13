@@ -3,93 +3,133 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Debounced Save. Progress is saved with debouncing—multiple rapid views trigger just one Firestore write. Network efficiency!",
-  "duration": 11.800000190734863,
+  "text": "Mark as Viewed. The section ID is added to the viewedSections Set. Sets prevent duplicates—view a section twice, it still only counts once.",
+  "duration": 11.15999984741211,
   "words": [
     {
-      "word": "Debounced",
+      "word": "Mark",
       "start": 0,
-      "end": 0.5400000214576721
+      "end": 0.46000000834465027
     },
     {
-      "word": "save",
-      "start": 0.5400000214576721,
-      "end": 1.059999942779541
+      "word": "as",
+      "start": 0.46000000834465027,
+      "end": 0.6200000047683716
     },
     {
-      "word": "Progress",
-      "start": 2.2799999713897705,
-      "end": 2.2799999713897705
+      "word": "viewed",
+      "start": 0.6200000047683716,
+      "end": 0.9200000166893005
+    },
+    {
+      "word": "The",
+      "start": 1.600000023841858,
+      "end": 1.7599999904632568
+    },
+    {
+      "word": "section",
+      "start": 1.7599999904632568,
+      "end": 2.0399999618530273
+    },
+    {
+      "word": "ID",
+      "start": 2.0399999618530273,
+      "end": 2.4000000953674316
     },
     {
       "word": "is",
-      "start": 2.2799999713897705,
-      "end": 2.859999895095825
+      "start": 2.4000000953674316,
+      "end": 2.759999990463257
     },
     {
-      "word": "saved",
-      "start": 2.859999895095825,
-      "end": 2.859999895095825
+      "word": "added",
+      "start": 2.759999990463257,
+      "end": 2.9800000190734863
     },
     {
-      "word": "with",
-      "start": 2.859999895095825,
-      "end": 3.319999933242798
+      "word": "to",
+      "start": 2.9800000190734863,
+      "end": 3.180000066757202
     },
     {
-      "word": "debouncing",
-      "start": 3.319999933242798,
-      "end": 3.9200000762939453
+      "word": "the",
+      "start": 3.180000066757202,
+      "end": 3.380000114440918
     },
     {
-      "word": "Multiple",
-      "start": 5.099999904632568,
-      "end": 5.099999904632568
+      "word": "viewed",
+      "start": 3.380000114440918,
+      "end": 3.619999885559082
     },
     {
-      "word": "rapid",
-      "start": 5.099999904632568,
-      "end": 5.5
+      "word": "section",
+      "start": 3.619999885559082,
+      "end": 4.139999866485596
     },
     {
-      "word": "views",
-      "start": 5.5,
+      "word": "set",
+      "start": 4.139999866485596,
+      "end": 4.639999866485596
+    },
+    {
+      "word": "Sets",
+      "start": 5.880000114440918,
       "end": 5.880000114440918
     },
     {
-      "word": "trigger",
+      "word": "prevent",
       "start": 5.880000114440918,
-      "end": 6.380000114440918
+      "end": 6.420000076293945
     },
     {
-      "word": "just",
-      "start": 6.380000114440918,
-      "end": 6.980000019073486
+      "word": "duplicates",
+      "start": 6.420000076293945,
+      "end": 7.059999942779541
     },
     {
-      "word": "one",
-      "start": 6.980000019073486,
-      "end": 7.940000057220459
+      "word": "View",
+      "start": 7.78000020980835,
+      "end": 7.78000020980835
     },
     {
-      "word": "Firestore",
-      "start": 7.940000057220459,
-      "end": 8.600000381469727
+      "word": "a",
+      "start": 7.78000020980835,
+      "end": 8.239999771118164
     },
     {
-      "word": "write",
-      "start": 8.600000381469727,
-      "end": 9.359999656677246
+      "word": "section",
+      "start": 8.239999771118164,
+      "end": 8.239999771118164
     },
     {
-      "word": "Network",
-      "start": 10,
-      "end": 10.319999694824219
+      "word": "twice",
+      "start": 8.239999771118164,
+      "end": 8.640000343322754
     },
     {
-      "word": "efficiency",
-      "start": 10.319999694824219,
-      "end": 11.140000343322754
+      "word": "it",
+      "start": 9.119999885559082,
+      "end": 9.319999694824219
+    },
+    {
+      "word": "still",
+      "start": 9.319999694824219,
+      "end": 9.65999984741211
+    },
+    {
+      "word": "only",
+      "start": 9.65999984741211,
+      "end": 10.180000305175781
+    },
+    {
+      "word": "counts",
+      "start": 10.180000305175781,
+      "end": 10.359999656677246
+    },
+    {
+      "word": "once",
+      "start": 10.359999656677246,
+      "end": 10.800000190734863
     }
   ]
 }

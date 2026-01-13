@@ -3,113 +3,103 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Typography. Two font families define our look. Inter for body text—clean and readable. Space Grotesk for headings—bold and modern!",
-  "duration": 11.0600004196167,
+  "text": "Secondary Background. bg-secondary is slightly lighter at hash 12121a. Used for cards and elevated surfaces to create depth.",
+  "duration": 11.25,
   "words": [
     {
-      "word": "Typography",
+      "word": "secondary",
       "start": 0,
-      "end": 0.7400000095367432
+      "end": 0.699999988079071
     },
     {
-      "word": "Two",
-      "start": 1.4600000381469727,
-      "end": 1.559999942779541
+      "word": "background",
+      "start": 0.699999988079071,
+      "end": 1.600000023841858
     },
     {
-      "word": "font",
-      "start": 1.559999942779541,
-      "end": 1.7999999523162842
+      "word": "BG",
+      "start": 2.380000114440918,
+      "end": 2.619999885559082
     },
     {
-      "word": "families",
-      "start": 1.7999999523162842,
-      "end": 2.180000066757202
+      "word": "Secondary",
+      "start": 2.619999885559082,
+      "end": 3.180000066757202
     },
     {
-      "word": "define",
-      "start": 2.180000066757202,
-      "end": 2.700000047683716
+      "word": "is",
+      "start": 3.180000066757202,
+      "end": 3.5799999237060547
     },
     {
-      "word": "our",
-      "start": 2.700000047683716,
-      "end": 2.9600000381469727
+      "word": "slightly",
+      "start": 3.5799999237060547,
+      "end": 4
     },
     {
-      "word": "look",
-      "start": 2.9600000381469727,
-      "end": 3.200000047683716
+      "word": "lighter",
+      "start": 4,
+      "end": 4.400000095367432
     },
     {
-      "word": "Inter",
-      "start": 3.9600000381469727,
-      "end": 3.9600000381469727
+      "word": "at",
+      "start": 4.400000095367432,
+      "end": 4.820000171661377
     },
     {
-      "word": "for",
-      "start": 3.9600000381469727,
-      "end": 4.340000152587891
+      "word": "hash",
+      "start": 4.820000171661377,
+      "end": 5.179999828338623
     },
     {
-      "word": "body",
-      "start": 4.340000152587891,
-      "end": 4.699999809265137
+      "word": "12121A",
+      "start": 5.179999828338623,
+      "end": 7.179999828338623
     },
     {
-      "word": "text",
-      "start": 4.699999809265137,
-      "end": 5.099999904632568
-    },
-    {
-      "word": "clean",
-      "start": 5.480000019073486,
-      "end": 5.739999771118164
-    },
-    {
-      "word": "and",
-      "start": 5.739999771118164,
-      "end": 6.139999866485596
-    },
-    {
-      "word": "readable",
-      "start": 6.139999866485596,
-      "end": 6.440000057220459
-    },
-    {
-      "word": "Space",
-      "start": 7.039999961853027,
-      "end": 7.400000095367432
-    },
-    {
-      "word": "Grotesque",
-      "start": 7.400000095367432,
-      "end": 7.940000057220459
+      "word": "used",
+      "start": 7.78000020980835,
+      "end": 7.78000020980835
     },
     {
       "word": "for",
-      "start": 7.940000057220459,
-      "end": 8.520000457763672
+      "start": 7.78000020980835,
+      "end": 8.079999923706055
     },
     {
-      "word": "headings",
-      "start": 8.520000457763672,
-      "end": 8.760000228881836
-    },
-    {
-      "word": "bold",
-      "start": 9.420000076293945,
-      "end": 9.420000076293945
+      "word": "cards",
+      "start": 8.079999923706055,
+      "end": 8.420000076293945
     },
     {
       "word": "and",
-      "start": 9.420000076293945,
-      "end": 9.899999618530273
+      "start": 8.420000076293945,
+      "end": 8.899999618530273
     },
     {
-      "word": "modern",
-      "start": 9.899999618530273,
-      "end": 10.119999885559082
+      "word": "elevated",
+      "start": 8.899999618530273,
+      "end": 9.239999771118164
+    },
+    {
+      "word": "surfaces",
+      "start": 9.239999771118164,
+      "end": 9.739999771118164
+    },
+    {
+      "word": "to",
+      "start": 9.739999771118164,
+      "end": 10.199999809265137
+    },
+    {
+      "word": "create",
+      "start": 10.199999809265137,
+      "end": 10.539999961853027
+    },
+    {
+      "word": "depth",
+      "start": 10.539999961853027,
+      "end": 11
     }
   ]
 }

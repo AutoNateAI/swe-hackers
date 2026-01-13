@@ -3,103 +3,93 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Analytics Events. Time-series analytics in the analytics subcollection. Student enrollments, cohort completions, revenue—all trackable over time.",
-  "duration": 12.359999656677246,
+  "text": "Attachments Subcollection. Files and documents live in attachments. Proposals, contracts, presentations—linked to partners or specific interactions.",
+  "duration": 12.640000343322754,
   "words": [
     {
-      "word": "Analytics",
+      "word": "Attachments",
       "start": 0,
-      "end": 0.699999988079071
+      "end": 0.7400000095367432
     },
     {
-      "word": "Events",
-      "start": 1.4199999570846558,
-      "end": 1.4199999570846558
+      "word": "subcollection",
+      "start": 0.7400000095367432,
+      "end": 1.4800000190734863
     },
     {
-      "word": "Time",
-      "start": 2.5999999046325684,
-      "end": 2.700000047683716
+      "word": "Files",
+      "start": 2.619999885559082,
+      "end": 2.619999885559082
     },
     {
-      "word": "Series",
-      "start": 2.700000047683716,
-      "end": 3
+      "word": "and",
+      "start": 2.619999885559082,
+      "end": 3.619999885559082
     },
     {
-      "word": "Analytics",
-      "start": 3,
-      "end": 3.4800000190734863
+      "word": "documents",
+      "start": 3.619999885559082,
+      "end": 3.619999885559082
+    },
+    {
+      "word": "live",
+      "start": 3.619999885559082,
+      "end": 4.179999828338623
     },
     {
       "word": "in",
-      "start": 3.4800000190734863,
-      "end": 3.759999990463257
+      "start": 4.179999828338623,
+      "end": 4.5
     },
     {
-      "word": "the",
-      "start": 3.759999990463257,
-      "end": 4.099999904632568
+      "word": "attachments",
+      "start": 4.5,
+      "end": 5.019999980926514
     },
     {
-      "word": "Analytics",
-      "start": 4.099999904632568,
-      "end": 4.420000076293945
+      "word": "Proposals",
+      "start": 6.139999866485596,
+      "end": 6.5
     },
     {
-      "word": "sub",
-      "start": 4.420000076293945,
-      "end": 4.920000076293945
+      "word": "contracts",
+      "start": 7.5,
+      "end": 7.5
     },
     {
-      "word": "collection",
-      "start": 4.920000076293945,
-      "end": 5.699999809265137
+      "word": "presentations",
+      "start": 8.539999961853027,
+      "end": 8.539999961853027
     },
     {
-      "word": "Student",
-      "start": 6.380000114440918,
-      "end": 6.440000057220459
+      "word": "Linked",
+      "start": 9.600000381469727,
+      "end": 9.600000381469727
     },
     {
-      "word": "Enrollments",
-      "start": 6.440000057220459,
-      "end": 7.119999885559082
+      "word": "to",
+      "start": 9.600000381469727,
+      "end": 10.420000076293945
     },
     {
-      "word": "Cohort",
-      "start": 7.880000114440918,
-      "end": 7.920000076293945
+      "word": "partners",
+      "start": 10.420000076293945,
+      "end": 10.420000076293945
     },
     {
-      "word": "Completions",
-      "start": 7.920000076293945,
-      "end": 8.680000305175781
+      "word": "or",
+      "start": 10.420000076293945,
+      "end": 10.979999542236328
     },
     {
-      "word": "Revenue",
-      "start": 9.260000228881836,
-      "end": 9.399999618530273
+      "word": "specific",
+      "start": 10.979999542236328,
+      "end": 11.520000457763672
     },
     {
-      "word": "all",
-      "start": 10.180000305175781,
-      "end": 10.479999542236328
-    },
-    {
-      "word": "trackable",
-      "start": 10.479999542236328,
-      "end": 11
-    },
-    {
-      "word": "over",
-      "start": 11,
-      "end": 11.460000038146973
-    },
-    {
-      "word": "time",
-      "start": 11.460000038146973,
-      "end": 11.800000190734863
+      "word": "interactions",
+      "start": 11.520000457763672,
+      "end": 12.0600004196167
     }
   ]
 }

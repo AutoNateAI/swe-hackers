@@ -3,98 +3,93 @@
   "stepId": "step-3",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Lesson Styles. lesson.css is the richest file. Content sections, code blocks, quizzes, drag-drop zones, progress indicators!",
-  "duration": 13.359999656677246,
+  "text": "Auth Styles. auth.css styles login and registration forms. Centered cards, input fields, validation messages—clean and focused.",
+  "duration": 12.399999618530273,
   "words": [
     {
-      "word": "Lesson",
+      "word": "AuthStyles",
       "start": 0,
-      "end": 0.6600000262260437
+      "end": 1.0800000429153442
     },
     {
-      "word": "styles",
-      "start": 0.6600000262260437,
-      "end": 1.3600000143051147
-    },
-    {
-      "word": "Lesson",
-      "start": 2.700000047683716,
-      "end": 2.819999933242798
+      "word": "Auth",
+      "start": 2.140000104904175,
+      "end": 2.200000047683716
     },
     {
       "word": "css",
-      "start": 2.819999933242798,
-      "end": 3.619999885559082
+      "start": 2.200000047683716,
+      "end": 3.1600000858306885
     },
     {
-      "word": "is",
-      "start": 3.619999885559082,
+      "word": "Styles",
+      "start": 3.859999895095825,
+      "end": 3.859999895095825
+    },
+    {
+      "word": "login",
+      "start": 3.859999895095825,
       "end": 4.28000020980835
     },
     {
-      "word": "the",
+      "word": "and",
       "start": 4.28000020980835,
       "end": 4.599999904632568
     },
     {
-      "word": "richest",
+      "word": "registration",
       "start": 4.599999904632568,
-      "end": 4.980000019073486
+      "end": 5.079999923706055
     },
     {
-      "word": "file",
-      "start": 4.980000019073486,
-      "end": 5.800000190734863
+      "word": "forms",
+      "start": 5.079999923706055,
+      "end": 5.639999866485596
     },
     {
-      "word": "Content",
-      "start": 6.619999885559082,
-      "end": 6.639999866485596
+      "word": "Centred",
+      "start": 6.699999809265137,
+      "end": 6.760000228881836
     },
     {
-      "word": "sections",
-      "start": 6.639999866485596,
-      "end": 7.179999828338623
+      "word": "cards",
+      "start": 6.760000228881836,
+      "end": 7.380000114440918
     },
     {
-      "word": "code",
-      "start": 7.900000095367432,
-      "end": 8.020000457763672
+      "word": "Input",
+      "start": 8.0600004196167,
+      "end": 8.220000267028809
     },
     {
-      "word": "blocks",
-      "start": 8.020000457763672,
-      "end": 8.359999656677246
+      "word": "fields",
+      "start": 8.220000267028809,
+      "end": 8.65999984741211
     },
     {
-      "word": "quizzes",
-      "start": 9.239999771118164,
-      "end": 9.239999771118164
+      "word": "Validation",
+      "start": 9.539999961853027,
+      "end": 9.9399995803833
     },
     {
-      "word": "drag",
-      "start": 10.079999923706055,
-      "end": 10.15999984741211
+      "word": "messages",
+      "start": 9.9399995803833,
+      "end": 10.300000190734863
     },
     {
-      "word": "drop",
-      "start": 10.15999984741211,
-      "end": 10.479999542236328
+      "word": "Clean",
+      "start": 11.100000381469727,
+      "end": 11.100000381469727
     },
     {
-      "word": "zones",
-      "start": 10.479999542236328,
-      "end": 10.880000114440918
+      "word": "and",
+      "start": 11.100000381469727,
+      "end": 11.680000305175781
     },
     {
-      "word": "progress",
-      "start": 11.920000076293945,
-      "end": 12
-    },
-    {
-      "word": "indicators",
-      "start": 12,
-      "end": 12.65999984741211
+      "word": "focused",
+      "start": 11.680000305175781,
+      "end": 12.079999923706055
     }
   ]
 }

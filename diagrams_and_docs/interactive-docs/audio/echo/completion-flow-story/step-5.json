@@ -3,103 +3,78 @@
   "stepId": "step-5",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Streak Updated. Finally, the user's streak is refreshed. Completing a lesson counts as daily activity. Keep that streak alive!",
-  "duration": 9.210000038146973,
+  "text": "Celebration Toast!. A toast notification appears celebrating the achievement. Visual feedback motivates continued learning!",
+  "duration": 7.800000190734863,
   "words": [
     {
-      "word": "Streak",
+      "word": "Celebration",
       "start": 0,
-      "end": 0.5600000023841858
+      "end": 0.8199999928474426
     },
     {
-      "word": "updated",
-      "start": 0.5600000023841858,
-      "end": 1.2400000095367432
+      "word": "Toast",
+      "start": 0.8199999928474426,
+      "end": 1.2000000476837158
     },
     {
-      "word": "Finally",
-      "start": 2.240000009536743,
-      "end": 2.240000009536743
+      "word": "A",
+      "start": 1.600000023841858,
+      "end": 1.7200000286102295
+    },
+    {
+      "word": "toast",
+      "start": 1.7200000286102295,
+      "end": 1.9600000381469727
+    },
+    {
+      "word": "notification",
+      "start": 1.9600000381469727,
+      "end": 2.5999999046325684
+    },
+    {
+      "word": "appears",
+      "start": 2.5999999046325684,
+      "end": 3.0399999618530273
+    },
+    {
+      "word": "celebrating",
+      "start": 3.0399999618530273,
+      "end": 3.700000047683716
     },
     {
       "word": "the",
-      "start": 2.380000114440918,
-      "end": 2.4800000190734863
+      "start": 3.700000047683716,
+      "end": 4
     },
     {
-      "word": "user's",
-      "start": 2.4800000190734863,
-      "end": 3.180000066757202
+      "word": "achievement",
+      "start": 4,
+      "end": 4.440000057220459
     },
     {
-      "word": "streak",
-      "start": 3.180000066757202,
-      "end": 3.180000066757202
+      "word": "Visual",
+      "start": 5.139999866485596,
+      "end": 5.380000114440918
     },
     {
-      "word": "is",
-      "start": 3.180000066757202,
-      "end": 3.4800000190734863
+      "word": "feedback",
+      "start": 5.380000114440918,
+      "end": 5.860000133514404
     },
     {
-      "word": "refreshed",
-      "start": 3.4800000190734863,
-      "end": 4.019999980926514
+      "word": "motivates",
+      "start": 5.860000133514404,
+      "end": 6.480000019073486
     },
     {
-      "word": "Completing",
-      "start": 4.699999809265137,
-      "end": 5.019999980926514
+      "word": "continued",
+      "start": 6.480000019073486,
+      "end": 7.099999904632568
     },
     {
-      "word": "a",
-      "start": 5.019999980926514,
-      "end": 5.559999942779541
-    },
-    {
-      "word": "lesson",
-      "start": 5.559999942779541,
-      "end": 5.559999942779541
-    },
-    {
-      "word": "counts",
-      "start": 5.559999942779541,
-      "end": 6
-    },
-    {
-      "word": "as",
-      "start": 6,
-      "end": 6.340000152587891
-    },
-    {
-      "word": "daily",
-      "start": 6.340000152587891,
-      "end": 6.599999904632568
-    },
-    {
-      "word": "activity",
-      "start": 6.599999904632568,
-      "end": 7.079999923706055
-    },
-    {
-      "word": "Keep",
-      "start": 7.739999771118164,
-      "end": 7.739999771118164
-    },
-    {
-      "word": "that",
-      "start": 7.739999771118164,
-      "end": 8.140000343322754
-    },
-    {
-      "word": "streak",
-      "start": 8.140000343322754,
-      "end": 8.380000114440918
-    },
-    {
-      "word": "alive",
-      "start": 8.380000114440918,
-      "end": 8.920000076293945
+      "word": "learning",
+      "start": 7.099999904632568,
+      "end": 7.440000057220459
     }
   ]
 }

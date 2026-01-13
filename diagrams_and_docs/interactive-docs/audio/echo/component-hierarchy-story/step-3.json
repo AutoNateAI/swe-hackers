@@ -3,108 +3,138 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Button Component. Buttons have a base class with variants. Primary buttons stand out with accent colors. Secondary buttons are subtle.",
-  "duration": 10.75,
+  "text": "Card Footer. Card footers hold actions. Buttons, links, timestamps—everything that lets users take next steps.",
+  "duration": 9.3100004196167,
   "words": [
     {
-      "word": "Button",
+      "word": "Card",
       "start": 0,
-      "end": 0.41999998688697815
+      "end": 0.5600000023841858
     },
     {
-      "word": "Component",
-      "start": 0.41999998688697815,
-      "end": 1.059999942779541
+      "word": "Footer",
+      "start": 0.5600000023841858,
+      "end": 0.8799999952316284
     },
     {
-      "word": "Buttons",
-      "start": 1.3600000143051147,
-      "end": 2.140000104904175
+      "word": "Card",
+      "start": 1.2799999713897705,
+      "end": 2.059999942779541
     },
     {
-      "word": "have",
-      "start": 2.140000104904175,
-      "end": 2.3399999141693115
+      "word": "footers",
+      "start": 2.059999942779541,
+      "end": 2.440000057220459
     },
     {
-      "word": "a",
-      "start": 2.3399999141693115,
-      "end": 2.559999942779541
+      "word": "hold",
+      "start": 2.440000057220459,
+      "end": 2.740000009536743
     },
     {
-      "word": "base",
-      "start": 2.559999942779541,
-      "end": 2.9000000953674316
-    },
-    {
-      "word": "class",
-      "start": 2.9000000953674316,
-      "end": 3.2799999713897705
-    },
-    {
-      "word": "with",
-      "start": 3.2799999713897705,
-      "end": 3.5999999046325684
-    },
-    {
-      "word": "variants",
-      "start": 3.5999999046325684,
-      "end": 4.199999809265137
-    },
-    {
-      "word": "Primary",
-      "start": 5.440000057220459,
-      "end": 5.440000057220459
+      "word": "actions",
+      "start": 2.740000009536743,
+      "end": 3.299999952316284
     },
     {
       "word": "buttons",
-      "start": 5.440000057220459,
-      "end": 5.800000190734863
+      "start": 4.21999979019165,
+      "end": 4.21999979019165
     },
     {
-      "word": "stand",
-      "start": 5.800000190734863,
-      "end": 6.239999771118164
+      "word": "links",
+      "start": 4.920000076293945,
+      "end": 4.920000076293945
     },
     {
-      "word": "out",
-      "start": 6.239999771118164,
-      "end": 6.460000038146973
+      "word": "timestamps—everything",
+      "start": 5.360000133514404,
+      "end": 6.960000038146973
     },
     {
-      "word": "with",
-      "start": 6.460000038146973,
-      "end": 6.880000114440918
+      "word": "that",
+      "start": 6.960000038146973,
+      "end": 7.300000190734863
     },
     {
-      "word": "accent",
-      "start": 6.880000114440918,
-      "end": 7.119999885559082
+      "word": "lets",
+      "start": 7.300000190734863,
+      "end": 7.360000133514404
     },
     {
-      "word": "hellers",
-      "start": 7.119999885559082,
-      "end": 7.519999980926514
+      "word": "users",
+      "start": 7.360000133514404,
+      "end": 7.760000228881836
     },
     {
-      "word": "Secondary",
-      "start": 8.479999542236328,
-      "end": 8.800000190734863
+      "word": "take",
+      "start": 7.760000228881836,
+      "end": 8.140000343322754
     },
     {
-      "word": "buttons",
-      "start": 8.800000190734863,
-      "end": 9.119999885559082
+      "word": "next",
+      "start": 8.140000343322754,
+      "end": 8.5600004196167
     },
     {
-      "word": "are",
+      "word": "steps",
+      "start": 8.5600004196167,
+      "end": 8.859999656677246
+    },
+    {
+      "word": "Card",
       "start": 9.119999885559082,
-      "end": 9.739999771118164
+      "end": 9.279999732971191
     },
     {
-      "word": "subtle",
-      "start": 9.739999771118164,
-      "end": 9.960000038146973
+      "word": "footers",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "hold",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "actions",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "buttons",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "links",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "timestamps—everything",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "that",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "lets",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "users",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "take",
+      "start": 9.279999732971191,
+      "end": 9.279999732971191
     }
   ]
 }

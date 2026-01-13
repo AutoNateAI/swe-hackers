@@ -3,103 +3,108 @@
   "stepId": "step-1",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Course Entity. Courses contain lessons. Apprentice, Junior, Senior—each course has a hierarchy of chapters and lessons to complete.",
-  "duration": 10.239999771118164,
+  "text": "Interaction Entity. Partners have many interactions. Each call, meeting, or email creates a new interaction record linked to the partner.",
+  "duration": 9.720000267028809,
   "words": [
     {
-      "word": "Course",
+      "word": "Interaction",
       "start": 0,
-      "end": 0.5199999809265137
+      "end": 0.6399999856948853
     },
     {
-      "word": "entity",
-      "start": 0.5199999809265137,
-      "end": 1.0800000429153442
+      "word": "Entity",
+      "start": 0.6399999856948853,
+      "end": 1.1200000047683716
     },
     {
-      "word": "Courses",
+      "word": "Partners",
+      "start": 1.1399999856948853,
+      "end": 1.9800000190734863
+    },
+    {
+      "word": "have",
       "start": 1.9800000190734863,
-      "end": 2.0799999237060547
+      "end": 2.2799999713897705
     },
     {
-      "word": "contain",
-      "start": 2.0799999237060547,
-      "end": 2.5399999618530273
+      "word": "many",
+      "start": 2.2799999713897705,
+      "end": 2.700000047683716
     },
     {
-      "word": "lessons",
-      "start": 2.5399999618530273,
-      "end": 3.0999999046325684
-    },
-    {
-      "word": "Apprentice",
-      "start": 4.039999961853027,
-      "end": 4.28000020980835
-    },
-    {
-      "word": "junior",
-      "start": 5.079999923706055,
-      "end": 5.079999923706055
-    },
-    {
-      "word": "senior",
-      "start": 5.679999828338623,
-      "end": 6.059999942779541
+      "word": "interactions",
+      "start": 2.700000047683716,
+      "end": 3.4000000953674316
     },
     {
       "word": "Each",
-      "start": 6.519999980926514,
-      "end": 6.760000228881836
+      "start": 3.9800000190734863,
+      "end": 4.059999942779541
     },
     {
-      "word": "course",
-      "start": 6.760000228881836,
-      "end": 7.039999961853027
+      "word": "call",
+      "start": 4.059999942779541,
+      "end": 4.480000019073486
     },
     {
-      "word": "has",
-      "start": 7.039999961853027,
-      "end": 7.21999979019165
+      "word": "meeting",
+      "start": 5.199999809265137,
+      "end": 5.199999809265137
+    },
+    {
+      "word": "or",
+      "start": 5.380000114440918,
+      "end": 5.659999847412109
+    },
+    {
+      "word": "email",
+      "start": 5.659999847412109,
+      "end": 6.039999961853027
+    },
+    {
+      "word": "creates",
+      "start": 6.039999961853027,
+      "end": 6.579999923706055
     },
     {
       "word": "a",
-      "start": 7.21999979019165,
-      "end": 7.539999961853027
+      "start": 6.579999923706055,
+      "end": 6.820000171661377
     },
     {
-      "word": "hierarchy",
-      "start": 7.539999961853027,
-      "end": 7.820000171661377
+      "word": "new",
+      "start": 6.820000171661377,
+      "end": 7.119999885559082
     },
     {
-      "word": "of",
-      "start": 7.820000171661377,
-      "end": 8.579999923706055
+      "word": "interaction",
+      "start": 7.119999885559082,
+      "end": 7.619999885559082
     },
     {
-      "word": "chapters",
-      "start": 8.579999923706055,
-      "end": 8.579999923706055
+      "word": "record",
+      "start": 7.619999885559082,
+      "end": 8.119999885559082
     },
     {
-      "word": "and",
-      "start": 8.579999923706055,
-      "end": 9.020000457763672
-    },
-    {
-      "word": "lessons",
-      "start": 9.020000457763672,
-      "end": 9.15999984741211
+      "word": "linked",
+      "start": 8.119999885559082,
+      "end": 8.65999984741211
     },
     {
       "word": "to",
-      "start": 9.15999984741211,
-      "end": 9.579999923706055
+      "start": 8.65999984741211,
+      "end": 8.960000038146973
     },
     {
-      "word": "complete",
-      "start": 9.579999923706055,
-      "end": 9.84000015258789
+      "word": "the",
+      "start": 8.960000038146973,
+      "end": 9.239999771118164
+    },
+    {
+      "word": "partner",
+      "start": 9.239999771118164,
+      "end": 9.420000076293945
     }
   ]
 }

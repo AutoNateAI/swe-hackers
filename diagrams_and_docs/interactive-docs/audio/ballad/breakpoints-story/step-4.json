@@ -3,103 +3,98 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Large Screens. Above 1280 pixels, we add max-width containers. Content doesn't stretch infinitely—readable line lengths are maintained.",
-  "duration": 14.0600004196167,
+  "text": "Two Columns. Two-column grids appear on tablets. Course cards side by side, better use of horizontal space.",
+  "duration": 9.260000228881836,
   "words": [
     {
-      "word": "Large",
+      "word": "Two",
       "start": 0,
-      "end": 0.5
+      "end": 0.3199999928474426
     },
     {
-      "word": "screens",
-      "start": 0.5,
-      "end": 1.0399999618530273
+      "word": "columns",
+      "start": 0.3199999928474426,
+      "end": 0.7599999904632568
     },
     {
-      "word": "Above",
-      "start": 1.940000057220459,
-      "end": 1.940000057220459
+      "word": "Two",
+      "start": 1.440000057220459,
+      "end": 1.6799999475479126
     },
     {
-      "word": "1280",
-      "start": 1.940000057220459,
-      "end": 3.7799999713897705
+      "word": "column",
+      "start": 1.6799999475479126,
+      "end": 2.0399999618530273
     },
     {
-      "word": "pixels",
-      "start": 3.7799999713897705,
-      "end": 4.320000171661377
+      "word": "grids",
+      "start": 2.0399999618530273,
+      "end": 2.380000114440918
     },
     {
-      "word": "we",
-      "start": 4.820000171661377,
-      "end": 4.960000038146973
+      "word": "appear",
+      "start": 2.380000114440918,
+      "end": 2.8399999141693115
     },
     {
-      "word": "had",
-      "start": 4.960000038146973,
-      "end": 5.400000095367432
+      "word": "on",
+      "start": 2.8399999141693115,
+      "end": 3.0999999046325684
     },
     {
-      "word": "max",
-      "start": 5.400000095367432,
-      "end": 6.019999980926514
+      "word": "tablets",
+      "start": 3.0999999046325684,
+      "end": 3.5
     },
     {
-      "word": "width",
-      "start": 6.019999980926514,
-      "end": 6.400000095367432
+      "word": "Course",
+      "start": 4.239999771118164,
+      "end": 4.380000114440918
     },
     {
-      "word": "containers",
-      "start": 6.400000095367432,
-      "end": 7.059999942779541
+      "word": "cards",
+      "start": 4.380000114440918,
+      "end": 4.760000228881836
     },
     {
-      "word": "Content",
-      "start": 8.260000228881836,
-      "end": 8.260000228881836
+      "word": "side",
+      "start": 4.760000228881836,
+      "end": 5.420000076293945
     },
     {
-      "word": "doesn't",
-      "start": 8.260000228881836,
-      "end": 8.84000015258789
+      "word": "by",
+      "start": 5.420000076293945,
+      "end": 5.699999809265137
     },
     {
-      "word": "stretch",
-      "start": 8.84000015258789,
-      "end": 9.279999732971191
+      "word": "side",
+      "start": 5.699999809265137,
+      "end": 5.960000038146973
     },
     {
-      "word": "infinitely",
-      "start": 9.279999732971191,
-      "end": 9.979999542236328
+      "word": "Better",
+      "start": 6.960000038146973,
+      "end": 6.960000038146973
     },
     {
-      "word": "Readable",
-      "start": 10.880000114440918,
-      "end": 11.119999885559082
+      "word": "use",
+      "start": 6.960000038146973,
+      "end": 7.320000171661377
     },
     {
-      "word": "line",
-      "start": 11.119999885559082,
-      "end": 11.5
+      "word": "of",
+      "start": 7.320000171661377,
+      "end": 8.300000190734863
     },
     {
-      "word": "lengths",
-      "start": 11.5,
-      "end": 11.699999809265137
+      "word": "horizontal",
+      "start": 8.300000190734863,
+      "end": 8.300000190734863
     },
     {
-      "word": "are",
-      "start": 11.699999809265137,
-      "end": 12.319999694824219
-    },
-    {
-      "word": "maintained",
-      "start": 12.319999694824219,
-      "end": 12.739999771118164
+      "word": "space",
+      "start": 8.300000190734863,
+      "end": 8.779999732971191
     }
   ]
 }

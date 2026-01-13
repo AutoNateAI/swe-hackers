@@ -3,108 +3,68 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Visualizations. Charts bring data to life! Line charts for trends, bar charts for comparisons, pie charts for breakdowns. Visual insights!",
-  "duration": 14.010000228881836,
+  "text": "Revenue Recorded. Revenue events track financial health. Payments, sponsorships, donations—all recorded.",
+  "duration": 10.40999984741211,
   "words": [
     {
-      "word": "Visualisations",
+      "word": "Revenue",
       "start": 0,
-      "end": 1.5
+      "end": 0.5799999833106995
     },
     {
-      "word": "Charts",
-      "start": 2.9600000381469727,
-      "end": 2.9600000381469727
+      "word": "recorded",
+      "start": 0.5799999833106995,
+      "end": 1.440000057220459
     },
     {
-      "word": "bring",
-      "start": 2.9600000381469727,
-      "end": 3.4200000762939453
+      "word": "Revenue",
+      "start": 2.559999942779541,
+      "end": 2.559999942779541
     },
     {
-      "word": "data",
-      "start": 3.4200000762939453,
-      "end": 3.880000114440918
+      "word": "events",
+      "start": 2.559999942779541,
+      "end": 3
     },
     {
-      "word": "to",
-      "start": 3.880000114440918,
-      "end": 4.360000133514404
+      "word": "track",
+      "start": 3,
+      "end": 3.440000057220459
     },
     {
-      "word": "life",
-      "start": 4.360000133514404,
-      "end": 5.099999904632568
+      "word": "financial",
+      "start": 3.440000057220459,
+      "end": 4.179999828338623
     },
     {
-      "word": "Line",
-      "start": 5.739999771118164,
-      "end": 5.820000171661377
+      "word": "health",
+      "start": 4.179999828338623,
+      "end": 4.920000076293945
     },
     {
-      "word": "charts",
-      "start": 5.820000171661377,
-      "end": 6.079999923706055
+      "word": "Payments",
+      "start": 5.599999904632568,
+      "end": 5.880000114440918
     },
     {
-      "word": "for",
-      "start": 6.079999923706055,
-      "end": 7.119999885559082
+      "word": "sponsorships",
+      "start": 6.679999828338623,
+      "end": 7.039999961853027
     },
     {
-      "word": "trends",
-      "start": 7.119999885559082,
-      "end": 7.119999885559082
+      "word": "donations",
+      "start": 8,
+      "end": 8
     },
     {
-      "word": "Bar",
-      "start": 7.760000228881836,
-      "end": 7.820000171661377
+      "word": "all",
+      "start": 8.619999885559082,
+      "end": 9.0600004196167
     },
     {
-      "word": "charts",
-      "start": 7.820000171661377,
-      "end": 7.940000057220459
-    },
-    {
-      "word": "for",
-      "start": 7.940000057220459,
-      "end": 8.420000076293945
-    },
-    {
-      "word": "comparisons",
-      "start": 8.420000076293945,
-      "end": 8.960000038146973
-    },
-    {
-      "word": "Pie",
-      "start": 9.739999771118164,
-      "end": 9.9399995803833
-    },
-    {
-      "word": "charts",
-      "start": 9.9399995803833,
-      "end": 10.239999771118164
-    },
-    {
-      "word": "for",
-      "start": 10.239999771118164,
-      "end": 10.760000228881836
-    },
-    {
-      "word": "breakdowns",
-      "start": 10.760000228881836,
-      "end": 11.84000015258789
-    },
-    {
-      "word": "Visual",
-      "start": 12.300000190734863,
-      "end": 12.680000305175781
-    },
-    {
-      "word": "Insights",
-      "start": 12.680000305175781,
-      "end": 13.239999771118164
+      "word": "recorded",
+      "start": 9.0600004196167,
+      "end": 9.520000457763672
     }
   ]
 }

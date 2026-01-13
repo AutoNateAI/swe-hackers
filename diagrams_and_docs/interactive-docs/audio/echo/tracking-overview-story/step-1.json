@@ -3,98 +3,93 @@
   "stepId": "step-1",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "ProgressTracker. ProgressTracker watches scrolling behavior. It uses IntersectionObserver to detect which sections users have viewed.",
-  "duration": 9.260000228881836,
+  "text": "Quiz Answer. When users answer quiz questions, that interaction is captured. Every answer matters for tracking engagement!",
+  "duration": 8.300000190734863,
   "words": [
     {
-      "word": "Progress",
+      "word": "Quiz",
       "start": 0,
-      "end": 0.6399999856948853
+      "end": 0.36000001430511475
     },
     {
-      "word": "Tracker",
-      "start": 0.6399999856948853,
-      "end": 0.9399999976158142
+      "word": "answer",
+      "start": 0.36000001430511475,
+      "end": 0.7400000095367432
     },
     {
-      "word": "Progress",
-      "start": 1.4600000381469727,
-      "end": 2.359999895095825
-    },
-    {
-      "word": "Tracker",
-      "start": 2.359999895095825,
-      "end": 2.359999895095825
-    },
-    {
-      "word": "watches",
-      "start": 2.359999895095825,
-      "end": 2.8399999141693115
-    },
-    {
-      "word": "scrolling",
-      "start": 2.8399999141693115,
-      "end": 3.2799999713897705
-    },
-    {
-      "word": "behavior",
-      "start": 3.2799999713897705,
-      "end": 3.8399999141693115
-    },
-    {
-      "word": "It",
-      "start": 4.400000095367432,
-      "end": 4.400000095367432
-    },
-    {
-      "word": "uses",
-      "start": 4.400000095367432,
-      "end": 4.71999979019165
-    },
-    {
-      "word": "Intersection",
-      "start": 4.71999979019165,
-      "end": 5.559999942779541
-    },
-    {
-      "word": "Observer",
-      "start": 5.559999942779541,
-      "end": 5.960000038146973
-    },
-    {
-      "word": "to",
-      "start": 5.960000038146973,
-      "end": 6.559999942779541
-    },
-    {
-      "word": "detect",
-      "start": 6.559999942779541,
-      "end": 6.960000038146973
-    },
-    {
-      "word": "which",
-      "start": 6.960000038146973,
-      "end": 7.340000152587891
-    },
-    {
-      "word": "sections",
-      "start": 7.340000152587891,
-      "end": 7.800000190734863
+      "word": "When",
+      "start": 1.2999999523162842,
+      "end": 1.3799999952316284
     },
     {
       "word": "users",
-      "start": 7.800000190734863,
-      "end": 8.279999732971191
+      "start": 1.3799999952316284,
+      "end": 1.7599999904632568
     },
     {
-      "word": "have",
-      "start": 8.279999732971191,
-      "end": 8.600000381469727
+      "word": "answer",
+      "start": 1.7599999904632568,
+      "end": 2.240000009536743
     },
     {
-      "word": "viewed",
-      "start": 8.600000381469727,
-      "end": 8.84000015258789
+      "word": "quiz",
+      "start": 2.240000009536743,
+      "end": 2.5999999046325684
+    },
+    {
+      "word": "questions",
+      "start": 2.5999999046325684,
+      "end": 3.0799999237060547
+    },
+    {
+      "word": "that",
+      "start": 3.4800000190734863,
+      "end": 3.619999885559082
+    },
+    {
+      "word": "interaction",
+      "start": 3.619999885559082,
+      "end": 4.199999809265137
+    },
+    {
+      "word": "is",
+      "start": 4.199999809265137,
+      "end": 4.599999904632568
+    },
+    {
+      "word": "captured",
+      "start": 4.599999904632568,
+      "end": 5.059999942779541
+    },
+    {
+      "word": "Every",
+      "start": 5.699999809265137,
+      "end": 5.920000076293945
+    },
+    {
+      "word": "answer",
+      "start": 5.920000076293945,
+      "end": 6.28000020980835
+    },
+    {
+      "word": "matters",
+      "start": 6.28000020980835,
+      "end": 6.699999809265137
+    },
+    {
+      "word": "for",
+      "start": 6.699999809265137,
+      "end": 7.059999942779541
+    },
+    {
+      "word": "tracking",
+      "start": 7.059999942779541,
+      "end": 7.440000057220459
+    },
+    {
+      "word": "engagement",
+      "start": 7.440000057220459,
+      "end": 8.020000457763672
     }
   ]
 }

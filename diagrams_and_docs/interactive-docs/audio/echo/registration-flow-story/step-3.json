@@ -3,108 +3,123 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Create User Document. With auth complete, we create the Firestore user document. Profile info, default role, creation timestamp—everything initialized!",
-  "duration": 10.84000015258789,
+  "text": "Update Profile. updateProfile sets the display name on the Firebase Auth record. This makes the name available immediately across all Firebase services.",
+  "duration": 10.960000038146973,
   "words": [
     {
-      "word": "Create",
+      "word": "Update",
       "start": 0,
-      "end": 0.5199999809265137
-    },
-    {
-      "word": "user",
-      "start": 0.5199999809265137,
-      "end": 0.9399999976158142
-    },
-    {
-      "word": "document",
-      "start": 0.9399999976158142,
-      "end": 1.399999976158142
-    },
-    {
-      "word": "With",
-      "start": 1.7200000286102295,
-      "end": 1.899999976158142
-    },
-    {
-      "word": "auth",
-      "start": 1.899999976158142,
-      "end": 2.240000009536743
-    },
-    {
-      "word": "complete",
-      "start": 2.240000009536743,
-      "end": 2.6600000858306885
-    },
-    {
-      "word": "we",
-      "start": 2.8399999141693115,
-      "end": 3
-    },
-    {
-      "word": "create",
-      "start": 3,
-      "end": 3.299999952316284
-    },
-    {
-      "word": "the",
-      "start": 3.299999952316284,
-      "end": 3.640000104904175
-    },
-    {
-      "word": "Firestore",
-      "start": 3.640000104904175,
-      "end": 4.21999979019165
-    },
-    {
-      "word": "user",
-      "start": 4.21999979019165,
-      "end": 4.820000171661377
-    },
-    {
-      "word": "document",
-      "start": 4.820000171661377,
-      "end": 5.360000133514404
+      "end": 0.5400000214576721
     },
     {
       "word": "Profile",
-      "start": 6.139999866485596,
-      "end": 6.420000076293945
+      "start": 0.5400000214576721,
+      "end": 1.159999966621399
     },
     {
-      "word": "info",
-      "start": 6.420000076293945,
-      "end": 6.739999771118164
+      "word": "Update",
+      "start": 1.159999966621399,
+      "end": 2
     },
     {
-      "word": "default",
-      "start": 7.21999979019165,
-      "end": 7.440000057220459
+      "word": "Profile",
+      "start": 2,
+      "end": 2.5199999809265137
     },
     {
-      "word": "role",
-      "start": 7.440000057220459,
-      "end": 7.78000020980835
+      "word": "sets",
+      "start": 2.5199999809265137,
+      "end": 2.9200000762939453
     },
     {
-      "word": "creation",
-      "start": 8.4399995803833,
-      "end": 8.5600004196167
+      "word": "the",
+      "start": 2.9200000762939453,
+      "end": 3.2799999713897705
     },
     {
-      "word": "timestamp",
-      "start": 8.5600004196167,
-      "end": 9.180000305175781
+      "word": "display",
+      "start": 3.2799999713897705,
+      "end": 3.5999999046325684
     },
     {
-      "word": "everything",
-      "start": 9.5600004196167,
-      "end": 9.880000114440918
+      "word": "name",
+      "start": 3.5999999046325684,
+      "end": 3.8399999141693115
     },
     {
-      "word": "initialized",
-      "start": 9.880000114440918,
-      "end": 10.640000343322754
+      "word": "on",
+      "start": 3.8399999141693115,
+      "end": 4.099999904632568
+    },
+    {
+      "word": "the",
+      "start": 4.099999904632568,
+      "end": 4.260000228881836
+    },
+    {
+      "word": "Firebase",
+      "start": 4.260000228881836,
+      "end": 4.840000152587891
+    },
+    {
+      "word": "Auth",
+      "start": 4.840000152587891,
+      "end": 5.260000228881836
+    },
+    {
+      "word": "record",
+      "start": 5.260000228881836,
+      "end": 5.71999979019165
+    },
+    {
+      "word": "This",
+      "start": 6.199999809265137,
+      "end": 6.320000171661377
+    },
+    {
+      "word": "makes",
+      "start": 6.320000171661377,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "the",
+      "start": 6.579999923706055,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "name",
+      "start": 6.820000171661377,
+      "end": 7.059999942779541
+    },
+    {
+      "word": "available",
+      "start": 7.059999942779541,
+      "end": 7.599999904632568
+    },
+    {
+      "word": "immediately",
+      "start": 7.599999904632568,
+      "end": 8.460000038146973
+    },
+    {
+      "word": "across",
+      "start": 8.460000038146973,
+      "end": 8.960000038146973
+    },
+    {
+      "word": "all",
+      "start": 8.960000038146973,
+      "end": 9.640000343322754
+    },
+    {
+      "word": "Firebase",
+      "start": 9.640000343322754,
+      "end": 10.0600004196167
+    },
+    {
+      "word": "services",
+      "start": 10.0600004196167,
+      "end": 10.539999961853027
     }
   ]
 }

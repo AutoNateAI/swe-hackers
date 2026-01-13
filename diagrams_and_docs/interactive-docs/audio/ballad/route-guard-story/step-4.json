@@ -3,103 +3,123 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "RBAC Verification. With authentication confirmed, RBAC kicks in. Does this user have permission for this specific page and course?",
-  "duration": 12.359999656677246,
+  "text": "Wait for Auth. waitForAuthState returns a promise. It resolves when Firebase Auth confirms the user's session status. Patient waiting!",
+  "duration": 11.65999984741211,
   "words": [
     {
-      "word": "RBAC",
+      "word": "Wait",
       "start": 0,
-      "end": 0.5600000023841858
-    },
-    {
-      "word": "verification",
-      "start": 0.5600000023841858,
-      "end": 1.3799999952316284
-    },
-    {
-      "word": "With",
-      "start": 2.380000114440918,
-      "end": 2.5
-    },
-    {
-      "word": "authentication",
-      "start": 2.5,
-      "end": 3.4200000762939453
-    },
-    {
-      "word": "confirmed",
-      "start": 3.4200000762939453,
-      "end": 4.199999809265137
-    },
-    {
-      "word": "RBAC",
-      "start": 4.960000038146973,
-      "end": 5.320000171661377
-    },
-    {
-      "word": "kicks",
-      "start": 5.320000171661377,
-      "end": 5.860000133514404
-    },
-    {
-      "word": "in",
-      "start": 5.860000133514404,
-      "end": 6.519999980926514
-    },
-    {
-      "word": "Does",
-      "start": 7.099999904632568,
-      "end": 7.139999866485596
-    },
-    {
-      "word": "this",
-      "start": 7.139999866485596,
-      "end": 7.539999961853027
-    },
-    {
-      "word": "user",
-      "start": 7.539999961853027,
-      "end": 7.800000190734863
-    },
-    {
-      "word": "have",
-      "start": 7.800000190734863,
-      "end": 8.140000343322754
-    },
-    {
-      "word": "permission",
-      "start": 8.140000343322754,
-      "end": 8.600000381469727
+      "end": 0.4000000059604645
     },
     {
       "word": "for",
-      "start": 8.600000381469727,
-      "end": 9.140000343322754
+      "start": 0.4000000059604645,
+      "end": 0.6399999856948853
     },
     {
-      "word": "this",
-      "start": 9.140000343322754,
-      "end": 9.5
+      "word": "Auth",
+      "start": 0.6399999856948853,
+      "end": 0.9599999785423279
     },
     {
-      "word": "specific",
-      "start": 9.5,
-      "end": 10.0600004196167
+      "word": "Wait",
+      "start": 1.8600000143051147,
+      "end": 1.9800000190734863
     },
     {
-      "word": "page",
-      "start": 10.0600004196167,
-      "end": 10.479999542236328
+      "word": "for",
+      "start": 1.9800000190734863,
+      "end": 2.240000009536743
     },
     {
-      "word": "and",
-      "start": 10.479999542236328,
-      "end": 11.079999923706055
+      "word": "the",
+      "start": 2.240000009536743,
+      "end": 2.4600000381469727
     },
     {
-      "word": "course",
-      "start": 11.079999923706055,
-      "end": 11.460000038146973
+      "word": "Auth",
+      "start": 2.4600000381469727,
+      "end": 2.5399999618530273
+    },
+    {
+      "word": "state",
+      "start": 2.5399999618530273,
+      "end": 3
+    },
+    {
+      "word": "returns",
+      "start": 3,
+      "end": 3.680000066757202
+    },
+    {
+      "word": "a",
+      "start": 3.680000066757202,
+      "end": 4.019999980926514
+    },
+    {
+      "word": "promise",
+      "start": 4.019999980926514,
+      "end": 4.380000114440918
+    },
+    {
+      "word": "It",
+      "start": 5.179999828338623,
+      "end": 5.199999809265137
+    },
+    {
+      "word": "resolves",
+      "start": 5.199999809265137,
+      "end": 5.659999847412109
+    },
+    {
+      "word": "when",
+      "start": 5.659999847412109,
+      "end": 5.980000019073486
+    },
+    {
+      "word": "Firebase",
+      "start": 5.980000019073486,
+      "end": 6.519999980926514
+    },
+    {
+      "word": "Auth",
+      "start": 6.519999980926514,
+      "end": 7.019999980926514
+    },
+    {
+      "word": "confirms",
+      "start": 7.059999942779541,
+      "end": 7.820000171661377
+    },
+    {
+      "word": "the",
+      "start": 7.820000171661377,
+      "end": 8.119999885559082
+    },
+    {
+      "word": "user's",
+      "start": 8.119999885559082,
+      "end": 8.640000343322754
+    },
+    {
+      "word": "session",
+      "start": 8.640000343322754,
+      "end": 9
+    },
+    {
+      "word": "status",
+      "start": 9,
+      "end": 9.600000381469727
+    },
+    {
+      "word": "Patient",
+      "start": 10.899999618530273,
+      "end": 10.899999618530273
+    },
+    {
+      "word": "waiting",
+      "start": 10.899999618530273,
+      "end": 11.319999694824219
     }
   ]
 }

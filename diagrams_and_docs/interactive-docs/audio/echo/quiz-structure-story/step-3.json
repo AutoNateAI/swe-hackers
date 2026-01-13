@@ -3,118 +3,93 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Selected State. Clicking an option adds the selected class. Visual feedback with border color and background change—the user knows their choice!",
-  "duration": 10.050000190734863,
+  "text": "Individual Option. Each option has a data-value attribute. Click to select—visual feedback confirms the choice.",
+  "duration": 9.15999984741211,
   "words": [
     {
-      "word": "Selected",
+      "word": "Individual",
       "start": 0,
-      "end": 0.8399999737739563
-    },
-    {
-      "word": "state",
-      "start": 0.8399999737739563,
-      "end": 1.2000000476837158
-    },
-    {
-      "word": "Clicking",
-      "start": 1.7200000286102295,
-      "end": 1.840000033378601
-    },
-    {
-      "word": "an",
-      "start": 1.840000033378601,
-      "end": 2.0199999809265137
+      "end": 0.6800000071525574
     },
     {
       "word": "option",
-      "start": 2.0199999809265137,
-      "end": 2.3399999141693115
+      "start": 0.6800000071525574,
+      "end": 1.2200000286102295
     },
     {
-      "word": "adds",
-      "start": 2.3399999141693115,
-      "end": 2.759999990463257
+      "word": "Each",
+      "start": 1.2200000286102295,
+      "end": 2.059999942779541
     },
     {
-      "word": "the",
-      "start": 2.759999990463257,
-      "end": 3.059999942779541
+      "word": "option",
+      "start": 2.059999942779541,
+      "end": 2.5
     },
     {
-      "word": "selected",
-      "start": 3.059999942779541,
-      "end": 3.4600000381469727
+      "word": "has",
+      "start": 2.5,
+      "end": 2.859999895095825
     },
     {
-      "word": "class",
-      "start": 3.4600000381469727,
-      "end": 4.039999961853027
+      "word": "a",
+      "start": 2.859999895095825,
+      "end": 3.119999885559082
+    },
+    {
+      "word": "data",
+      "start": 3.119999885559082,
+      "end": 3.4200000762939453
+    },
+    {
+      "word": "value",
+      "start": 3.4200000762939453,
+      "end": 3.9200000762939453
+    },
+    {
+      "word": "attribute",
+      "start": 3.9200000762939453,
+      "end": 4.559999942779541
+    },
+    {
+      "word": "Click",
+      "start": 5.28000020980835,
+      "end": 5.300000190734863
+    },
+    {
+      "word": "to",
+      "start": 5.300000190734863,
+      "end": 5.579999923706055
+    },
+    {
+      "word": "select",
+      "start": 5.579999923706055,
+      "end": 5.880000114440918
     },
     {
       "word": "Visual",
-      "start": 4.559999942779541,
-      "end": 4.800000190734863
+      "start": 6.380000114440918,
+      "end": 6.679999828338623
     },
     {
       "word": "feedback",
-      "start": 4.800000190734863,
-      "end": 5.199999809265137
+      "start": 6.679999828338623,
+      "end": 7.239999771118164
     },
     {
-      "word": "with",
-      "start": 5.199999809265137,
-      "end": 5.639999866485596
+      "word": "confirms",
+      "start": 7.239999771118164,
+      "end": 7.900000095367432
     },
     {
-      "word": "border",
-      "start": 5.639999866485596,
-      "end": 5.920000076293945
-    },
-    {
-      "word": "color",
-      "start": 5.920000076293945,
-      "end": 6.239999771118164
-    },
-    {
-      "word": "and",
-      "start": 6.239999771118164,
-      "end": 6.559999942779541
-    },
-    {
-      "word": "background",
-      "start": 6.559999942779541,
-      "end": 6.960000038146973
-    },
-    {
-      "word": "change",
-      "start": 6.960000038146973,
-      "end": 7.460000038146973
-    },
-    {
-      "word": "The",
-      "start": 7.920000076293945,
-      "end": 8.0600004196167
-    },
-    {
-      "word": "user",
-      "start": 8.0600004196167,
-      "end": 8.359999656677246
-    },
-    {
-      "word": "knows",
-      "start": 8.359999656677246,
-      "end": 9
-    },
-    {
-      "word": "their",
-      "start": 9,
-      "end": 9.380000114440918
+      "word": "the",
+      "start": 7.900000095367432,
+      "end": 8.220000267028809
     },
     {
       "word": "choice",
-      "start": 9.380000114440918,
-      "end": 9.779999732971191
+      "start": 8.220000267028809,
+      "end": 8.65999984741211
     }
   ]
 }

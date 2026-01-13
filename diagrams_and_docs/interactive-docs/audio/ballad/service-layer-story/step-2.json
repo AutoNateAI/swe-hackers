@@ -3,88 +3,88 @@
   "stepId": "step-2",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Firestore Backend. All methods ultimately talk to Firestore. Read operations fetch documents, write operations save changes.",
-  "duration": 11.760000228881836,
+  "text": "Partner Forms UI. Forms for adding and editing partners. Clean interfaces for data entry and updates.",
+  "duration": 9.260000228881836,
   "words": [
     {
-      "word": "Firestore",
+      "word": "Partner",
       "start": 0,
-      "end": 0.8600000143051147
+      "end": 0.46000000834465027
     },
     {
-      "word": "Backend",
-      "start": 0.8600000143051147,
-      "end": 1.659999966621399
+      "word": "Forms",
+      "start": 0.46000000834465027,
+      "end": 0.9399999976158142
     },
     {
-      "word": "All",
-      "start": 2.4800000190734863,
-      "end": 2.640000104904175
+      "word": "UI",
+      "start": 0.9399999976158142,
+      "end": 1.5
     },
     {
-      "word": "methods",
-      "start": 2.640000104904175,
-      "end": 3.0799999237060547
+      "word": "Forms",
+      "start": 2.359999895095825,
+      "end": 2.440000057220459
     },
     {
-      "word": "ultimately",
-      "start": 3.0799999237060547,
-      "end": 3.859999895095825
+      "word": "for",
+      "start": 2.440000057220459,
+      "end": 3.0199999809265137
     },
     {
-      "word": "talk",
-      "start": 3.859999895095825,
-      "end": 4.300000190734863
+      "word": "adding",
+      "start": 3.0199999809265137,
+      "end": 3.0199999809265137
     },
     {
-      "word": "to",
-      "start": 4.300000190734863,
-      "end": 4.639999866485596
+      "word": "and",
+      "start": 3.0199999809265137,
+      "end": 3.5399999618530273
     },
     {
-      "word": "Firestore",
-      "start": 4.639999866485596,
-      "end": 5.659999847412109
+      "word": "editing",
+      "start": 3.5399999618530273,
+      "end": 3.9000000953674316
     },
     {
-      "word": "Read",
-      "start": 6.400000095367432,
-      "end": 6.440000057220459
+      "word": "partners",
+      "start": 3.9000000953674316,
+      "end": 4.480000019073486
     },
     {
-      "word": "operations",
-      "start": 6.440000057220459,
-      "end": 7.139999866485596
+      "word": "Clean",
+      "start": 5.619999885559082,
+      "end": 5.619999885559082
     },
     {
-      "word": "fetch",
-      "start": 7.139999866485596,
-      "end": 7.760000228881836
+      "word": "interfaces",
+      "start": 5.619999885559082,
+      "end": 6.159999847412109
     },
     {
-      "word": "documents",
-      "start": 7.760000228881836,
-      "end": 8.5
+      "word": "for",
+      "start": 6.159999847412109,
+      "end": 6.599999904632568
     },
     {
-      "word": "Write",
-      "start": 9.399999618530273,
-      "end": 9.4399995803833
+      "word": "data",
+      "start": 6.599999904632568,
+      "end": 6.960000038146973
     },
     {
-      "word": "operations",
-      "start": 9.4399995803833,
-      "end": 10.100000381469727
+      "word": "entry",
+      "start": 6.960000038146973,
+      "end": 7.300000190734863
     },
     {
-      "word": "save",
-      "start": 10.100000381469727,
-      "end": 10.880000114440918
+      "word": "and",
+      "start": 7.300000190734863,
+      "end": 7.840000152587891
     },
     {
-      "word": "changes",
-      "start": 10.880000114440918,
-      "end": 11.460000038146973
+      "word": "updates",
+      "start": 7.840000152587891,
+      "end": 8.260000228881836
     }
   ]
 }

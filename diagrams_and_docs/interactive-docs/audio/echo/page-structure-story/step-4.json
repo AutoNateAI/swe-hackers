@@ -3,88 +3,103 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Analytics Page. analytics.html provides the big picture. Aggregate metrics across all partnerships, trends, and insights.",
-  "duration": 10.100000381469727,
+  "text": "Add Partner Page. add.html is the partner creation form. Enter all details to start tracking a new partnership!",
+  "duration": 8.4399995803833,
   "words": [
     {
-      "word": "Analytics",
+      "word": "Add",
       "start": 0,
-      "end": 0.6200000047683716
+      "end": 0.4000000059604645
     },
     {
-      "word": "page",
-      "start": 0.6200000047683716,
-      "end": 1.1399999856948853
+      "word": "Partner",
+      "start": 0.4000000059604645,
+      "end": 0.699999988079071
     },
     {
-      "word": "Analytics",
-      "start": 1.9800000190734863,
-      "end": 1.9800000190734863
+      "word": "Page",
+      "start": 0.699999988079071,
+      "end": 1.2400000095367432
+    },
+    {
+      "word": "Add",
+      "start": 1.6799999475479126,
+      "end": 1.6799999475479126
     },
     {
       "word": "html",
-      "start": 1.9800000190734863,
-      "end": 3.119999885559082
+      "start": 1.6799999475479126,
+      "end": 2.759999990463257
     },
     {
-      "word": "provides",
-      "start": 3.119999885559082,
-      "end": 3.940000057220459
+      "word": "is",
+      "start": 2.759999990463257,
+      "end": 3.0399999618530273
     },
     {
       "word": "the",
-      "start": 3.940000057220459,
-      "end": 4.139999866485596
+      "start": 3.0399999618530273,
+      "end": 3.319999933242798
     },
     {
-      "word": "big",
-      "start": 4.139999866485596,
-      "end": 4.579999923706055
+      "word": "partner",
+      "start": 3.319999933242798,
+      "end": 3.6600000858306885
     },
     {
-      "word": "picture",
-      "start": 4.579999923706055,
-      "end": 4.940000057220459
+      "word": "creation",
+      "start": 3.6600000858306885,
+      "end": 4.21999979019165
     },
     {
-      "word": "Aggregate",
-      "start": 5.840000152587891,
-      "end": 6.019999980926514
+      "word": "form",
+      "start": 4.21999979019165,
+      "end": 4.659999847412109
     },
     {
-      "word": "metrics",
-      "start": 6.019999980926514,
-      "end": 6.400000095367432
-    },
-    {
-      "word": "across",
-      "start": 6.400000095367432,
-      "end": 6.900000095367432
+      "word": "Enter",
+      "start": 5.360000133514404,
+      "end": 5.360000133514404
     },
     {
       "word": "all",
-      "start": 6.900000095367432,
-      "end": 7.5
+      "start": 5.360000133514404,
+      "end": 5.78000020980835
     },
     {
-      "word": "partnerships",
-      "start": 7.5,
-      "end": 7.860000133514404
+      "word": "details",
+      "start": 5.78000020980835,
+      "end": 6.179999828338623
     },
     {
-      "word": "trends",
-      "start": 8.680000305175781,
-      "end": 8.680000305175781
+      "word": "to",
+      "start": 6.179999828338623,
+      "end": 6.480000019073486
     },
     {
-      "word": "and",
-      "start": 8.920000076293945,
-      "end": 9.300000190734863
+      "word": "start",
+      "start": 6.480000019073486,
+      "end": 6.78000020980835
     },
     {
-      "word": "insights",
-      "start": 9.300000190734863,
-      "end": 9.5600004196167
+      "word": "tracking",
+      "start": 6.78000020980835,
+      "end": 7.119999885559082
+    },
+    {
+      "word": "a",
+      "start": 7.119999885559082,
+      "end": 7.460000038146973
+    },
+    {
+      "word": "new",
+      "start": 7.460000038146973,
+      "end": 7.739999771118164
+    },
+    {
+      "word": "partnership",
+      "start": 7.739999771118164,
+      "end": 8.0600004196167
     }
   ]
 }

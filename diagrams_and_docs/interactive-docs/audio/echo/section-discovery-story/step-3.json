@@ -3,93 +3,98 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Sections Array. All discovered sections are stored in an array. This becomes the denominator for progress calculation.",
-  "duration": 8.199999809265137,
+  "text": "Query Selectors. querySelectorAll finds all elements with data-section attributes. These are our trackable content sections.",
+  "duration": 10.920000076293945,
   "words": [
     {
-      "word": "Sections",
+      "word": "Query",
       "start": 0,
-      "end": 0.6600000262260437
+      "end": 0.8199999928474426
     },
     {
-      "word": "array",
-      "start": 0.6600000262260437,
-      "end": 1.159999966621399
+      "word": "Selectors",
+      "start": 0.8199999928474426,
+      "end": 1.7400000095367432
+    },
+    {
+      "word": "Query",
+      "start": 1.9800000190734863,
+      "end": 2.940000057220459
+    },
+    {
+      "word": "Selector",
+      "start": 2.940000057220459,
+      "end": 3.4000000953674316
     },
     {
       "word": "All",
-      "start": 1.7400000095367432,
-      "end": 1.8799999952316284
+      "start": 3.4000000953674316,
+      "end": 3.8399999141693115
     },
     {
-      "word": "discovered",
-      "start": 1.8799999952316284,
-      "end": 2.319999933242798
+      "word": "finds",
+      "start": 3.8399999141693115,
+      "end": 4.21999979019165
     },
     {
-      "word": "sections",
-      "start": 2.319999933242798,
-      "end": 2.7200000286102295
+      "word": "all",
+      "start": 4.21999979019165,
+      "end": 4.940000057220459
+    },
+    {
+      "word": "elements",
+      "start": 4.940000057220459,
+      "end": 5.360000133514404
+    },
+    {
+      "word": "with",
+      "start": 5.360000133514404,
+      "end": 5.860000133514404
+    },
+    {
+      "word": "data",
+      "start": 5.860000133514404,
+      "end": 6.360000133514404
+    },
+    {
+      "word": "section",
+      "start": 6.360000133514404,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "attributes",
+      "start": 6.760000228881836,
+      "end": 7.380000114440918
+    },
+    {
+      "word": "These",
+      "start": 8.220000267028809,
+      "end": 8.460000038146973
     },
     {
       "word": "are",
-      "start": 2.7200000286102295,
-      "end": 3.119999885559082
+      "start": 8.460000038146973,
+      "end": 8.619999885559082
     },
     {
-      "word": "stored",
-      "start": 3.119999885559082,
-      "end": 3.440000057220459
+      "word": "our",
+      "start": 8.619999885559082,
+      "end": 9.220000267028809
     },
     {
-      "word": "in",
-      "start": 3.440000057220459,
-      "end": 3.740000009536743
+      "word": "trackable",
+      "start": 9.220000267028809,
+      "end": 9.579999923706055
     },
     {
-      "word": "an",
-      "start": 3.740000009536743,
-      "end": 4.21999979019165
+      "word": "content",
+      "start": 9.579999923706055,
+      "end": 10.199999809265137
     },
     {
-      "word": "array",
-      "start": 4.21999979019165,
-      "end": 4.21999979019165
-    },
-    {
-      "word": "This",
-      "start": 4.880000114440918,
-      "end": 5.039999961853027
-    },
-    {
-      "word": "becomes",
-      "start": 5.039999961853027,
-      "end": 5.400000095367432
-    },
-    {
-      "word": "the",
-      "start": 5.400000095367432,
-      "end": 5.760000228881836
-    },
-    {
-      "word": "denominator",
-      "start": 5.760000228881836,
-      "end": 6.179999828338623
-    },
-    {
-      "word": "for",
-      "start": 6.179999828338623,
-      "end": 6.71999979019165
-    },
-    {
-      "word": "progress",
-      "start": 6.71999979019165,
-      "end": 7.139999866485596
-    },
-    {
-      "word": "calculation",
-      "start": 7.139999866485596,
-      "end": 7.739999771118164
+      "word": "sections",
+      "start": 10.199999809265137,
+      "end": 10.5600004196167
     }
   ]
 }

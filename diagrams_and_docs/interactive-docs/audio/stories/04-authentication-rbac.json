@@ -38,6 +38,14 @@
           "connectsTo": "Firebase Auth"
         },
         {
+          "nodeId": "auth-state",
+          "edges": [{ "from": "firebase-auth", "to": "auth-state" }],
+          "icon": "🔄",
+          "title": "Auth State",
+          "narration": "Auth State manages the user's session. It tracks whether someone is logged in, handles token refresh, and persists across browser tabs.",
+          "connectsTo": "Firebase Auth"
+        },
+        {
           "nodeId": "user-doc",
           "edges": [{ "from": "auth-service", "to": "user-doc" }],
           "icon": "📄",
@@ -76,12 +84,28 @@
           "connectsTo": "Validate Input"
         },
         {
+          "nodeId": "update-profile",
+          "edges": [{ "from": "create-auth", "to": "update-profile" }],
+          "icon": "✏️",
+          "title": "Update Profile",
+          "narration": "updateProfile sets the display name on the Firebase Auth record. This makes the name available immediately across all Firebase services.",
+          "connectsTo": "Create Auth"
+        },
+        {
           "nodeId": "create-doc",
           "edges": [{ "from": "update-profile", "to": "create-doc" }],
           "icon": "📄",
           "title": "Create User Document",
           "narration": "With auth complete, we create the Firestore user document. Profile info, default role, creation timestamp—everything initialized!",
           "connectsTo": "Update Profile"
+        },
+        {
+          "nodeId": "state-change",
+          "edges": [{ "from": "create-doc", "to": "state-change" }],
+          "icon": "🔔",
+          "title": "Auth State Change",
+          "narration": "onAuthStateChanged fires across the app. Every component listening knows a new user just logged in. Time to update the UI!",
+          "connectsTo": "Create Doc"
         },
         {
           "nodeId": "redirect",
@@ -130,12 +154,68 @@
           "connectsTo": "Standard User"
         },
         {
+          "nodeId": "perm-dashboard",
+          "edges": [{ "from": "user", "to": "perm-dashboard" }],
+          "icon": "📊",
+          "title": "Dashboard Access",
+          "narration": "Every user gets a personal dashboard. Track progress, see achievements, pick up where you left off. Your learning command center!",
+          "connectsTo": "Standard User"
+        },
+        {
           "nodeId": "perm-partner",
           "edges": [{ "from": "enterprise", "to": "perm-partner" }],
           "icon": "🤝",
           "title": "Partner Course Access",
           "narration": "Enterprise users unlock partner courses. Organization-specific content tailored to their learning path and requirements.",
           "connectsTo": "Enterprise"
+        },
+        {
+          "nodeId": "perm-admin",
+          "edges": [{ "from": "admin", "to": "perm-admin" }],
+          "icon": "🔧",
+          "title": "Admin Tools",
+          "narration": "Admins get special tools. User management, content administration, analytics dashboards—the backend of the platform.",
+          "connectsTo": "Admin"
+        },
+        {
+          "nodeId": "perm-all",
+          "edges": [{ "from": "admin", "to": "perm-all" }],
+          "icon": "🌟",
+          "title": "All Courses Access",
+          "narration": "Admins can access every course—public, partner, or otherwise. Nothing is hidden from the platform administrators.",
+          "connectsTo": "Admin"
+        },
+        {
+          "nodeId": "res-apprentice",
+          "edges": [{ "from": "perm-public", "to": "res-apprentice" }],
+          "icon": "🌱",
+          "title": "Apprentice Course",
+          "narration": "Apprentice is the first public course. Git fundamentals, command line basics—the foundation for every developer's journey.",
+          "connectsTo": "Public Access"
+        },
+        {
+          "nodeId": "res-junior",
+          "edges": [{ "from": "perm-public", "to": "res-junior" }],
+          "icon": "📗",
+          "title": "Junior Course",
+          "narration": "Junior level builds on Apprentice. More advanced topics, collaborative workflows, professional practices.",
+          "connectsTo": "Public Access"
+        },
+        {
+          "nodeId": "res-eo",
+          "edges": [{ "from": "perm-partner", "to": "res-eo" }],
+          "icon": "🎯",
+          "title": "Endless Opportunities",
+          "narration": "Endless Opportunities is a partner-exclusive course. Custom content for a specific organization's learning needs.",
+          "connectsTo": "Partner Access"
+        },
+        {
+          "nodeId": "res-admin-page",
+          "edges": [{ "from": "perm-admin", "to": "res-admin-page" }],
+          "icon": "⚙️",
+          "title": "Admin Dashboard",
+          "narration": "The admin dashboard is locked tight. User lists, organization management, system metrics—for platform administrators only.",
+          "connectsTo": "Admin Tools"
         }
       ]
     },
@@ -160,12 +240,44 @@
           "connectsTo": "Access Request"
         },
         {
+          "nodeId": "no-auth",
+          "edges": [{ "from": "auth-check", "to": "no-auth" }],
+          "icon": "🚫",
+          "title": "Redirect to Login",
+          "narration": "No authentication found! The user is redirected to the login page. Come back after you've signed in.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "get-perms",
+          "edges": [{ "from": "auth-check", "to": "get-perms" }],
+          "icon": "📋",
+          "title": "Get Permissions",
+          "narration": "User is authenticated! Now we load their RBAC data—role, organizations, granted permissions. What can they do?",
+          "connectsTo": "Auth Check"
+        },
+        {
           "nodeId": "admin-check",
           "edges": [{ "from": "get-perms", "to": "admin-check" }],
           "icon": "👑",
           "title": "Admin Bypass",
           "narration": "Admins get VIP treatment—they bypass all other checks! If role equals admin, access is granted immediately.",
           "connectsTo": "Get Permissions"
+        },
+        {
+          "nodeId": "allow-admin",
+          "edges": [{ "from": "admin-check", "to": "allow-admin" }],
+          "icon": "✅",
+          "title": "Admin Allowed",
+          "narration": "Admin role confirmed! Access granted without further checks. Admins can go anywhere on the platform.",
+          "connectsTo": "Admin Check"
+        },
+        {
+          "nodeId": "course-req",
+          "edges": [{ "from": "admin-check", "to": "course-req" }],
+          "icon": "📝",
+          "title": "Course Requirements",
+          "narration": "Not an admin? Check what the course requires. Is it public? Does it need organization membership? Let's find out.",
+          "connectsTo": "Admin Check"
         },
         {
           "nodeId": "public-check",
@@ -176,6 +288,14 @@
           "connectsTo": "Course Requirements"
         },
         {
+          "nodeId": "allow-public",
+          "edges": [{ "from": "public-check", "to": "allow-public" }],
+          "icon": "✅",
+          "title": "Public Allowed",
+          "narration": "It's a public course! Any logged-in user can access. Welcome to the free content!",
+          "connectsTo": "Public Check"
+        },
+        {
           "nodeId": "org-check",
           "edges": [{ "from": "public-check", "to": "org-check" }],
           "icon": "🏢",
@@ -184,11 +304,35 @@
           "connectsTo": "Public Check"
         },
         {
+          "nodeId": "deny-org",
+          "edges": [{ "from": "org-check", "to": "deny-org" }],
+          "icon": "❌",
+          "title": "Not in Organization",
+          "narration": "User isn't in the required organization. Access denied! Contact your admin to get added to the org.",
+          "connectsTo": "Org Check"
+        },
+        {
+          "nodeId": "course-check",
+          "edges": [{ "from": "org-check", "to": "course-check" }],
+          "icon": "🔍",
+          "title": "Course Access Check",
+          "narration": "User is in the organization! But does their membership include this specific course? One more check to go.",
+          "connectsTo": "Org Check"
+        },
+        {
           "nodeId": "allow-course",
           "edges": [{ "from": "course-check", "to": "allow-course" }],
           "icon": "✅",
           "title": "Access Granted!",
           "narration": "All checks passed! The user has the right role, belongs to the right org, and has course access. Welcome in!",
+          "connectsTo": "Course Check"
+        },
+        {
+          "nodeId": "deny-course",
+          "edges": [{ "from": "course-check", "to": "deny-course" }],
+          "icon": "❌",
+          "title": "Access Denied",
+          "narration": "Organization membership confirmed, but this course isn't included. Ask your organization admin for access.",
           "connectsTo": "Course Check"
         }
       ]
@@ -214,6 +358,14 @@
           "connectsTo": "Page Load"
         },
         {
+          "nodeId": "not-protected",
+          "edges": [{ "from": "is-protected", "to": "not-protected" }],
+          "icon": "🌐",
+          "title": "Public Page",
+          "narration": "This is a public page! No authentication required. Content loads immediately for everyone.",
+          "connectsTo": "Protected Check"
+        },
+        {
           "nodeId": "show-loading",
           "edges": [{ "from": "is-protected", "to": "show-loading" }],
           "icon": "⏳",
@@ -230,6 +382,22 @@
           "connectsTo": "Show Loading"
         },
         {
+          "nodeId": "check-user",
+          "edges": [{ "from": "wait-auth", "to": "check-user" }],
+          "icon": "👤",
+          "title": "Check User",
+          "narration": "Auth state resolved! Now we check—is there a current user? Signed in or anonymous? This decides the next step.",
+          "connectsTo": "Wait Auth"
+        },
+        {
+          "nodeId": "redirect-login",
+          "edges": [{ "from": "check-user", "to": "redirect-login" }],
+          "icon": "🔙",
+          "title": "Redirect to Login",
+          "narration": "No user signed in! Redirect to the login page with a return URL. After login, they'll come right back here.",
+          "connectsTo": "Check User"
+        },
+        {
           "nodeId": "check-rbac",
           "edges": [{ "from": "check-user", "to": "check-rbac" }],
           "icon": "🛡️",
@@ -243,6 +411,14 @@
           "icon": "✅",
           "title": "Show Content",
           "narration": "All checks passed! The loading screen fades, content appears, and the user can interact. RouteGuard's job is done!",
+          "connectsTo": "RBAC Check"
+        },
+        {
+          "nodeId": "deny",
+          "edges": [{ "from": "check-rbac", "to": "deny" }],
+          "icon": "🚫",
+          "title": "Access Denied",
+          "narration": "RBAC check failed! User doesn't have permission. Show an error message and offer navigation alternatives.",
           "connectsTo": "RBAC Check"
         }
       ]
@@ -267,20 +443,11 @@
           "connectsTo": null
         },
         {
-          "nodeId": "org-eo",
-          "edges": [{ "from": "user2", "to": "org-eo" }],
-          "icon": "🤝",
-          "title": "Organization Link",
-          "narration": "Bob's user document lists Endless Opportunities in his organizations array. This unlocks partner-specific content.",
-          "connectsTo": "Bob"
-        },
-        {
-          "nodeId": "course-eo",
-          "edges": [{ "from": "org-eo", "to": "course-eo" }],
-          "icon": "📚",
-          "title": "Partner Course",
-          "narration": "The EO Bootcamp is linked to Endless Opportunities. Only members of that org can access its lessons and activities.",
-          "connectsTo": "Endless Opportunities"
+          "nodeId": "user3",
+          "icon": "🏢",
+          "title": "Carol: Partner X Member",
+          "narration": "Carol is also enterprise, but with Partner X. Different organization means different exclusive content.",
+          "connectsTo": null
         },
         {
           "nodeId": "user4",
@@ -288,6 +455,46 @@
           "title": "Admin: Full Access",
           "narration": "The admin can access everything! Public courses, all partner courses, every piece of content. Ultimate override authority!",
           "connectsTo": null
+        },
+        {
+          "nodeId": "org-eo",
+          "edges": [{ "from": "user2", "to": "org-eo" }],
+          "icon": "🤝",
+          "title": "Endless Opportunities",
+          "narration": "Bob's user document lists Endless Opportunities in his organizations array. This unlocks EO-specific content.",
+          "connectsTo": "Bob"
+        },
+        {
+          "nodeId": "org-x",
+          "edges": [{ "from": "user3", "to": "org-x" }],
+          "icon": "🤝",
+          "title": "Partner X Organization",
+          "narration": "Carol belongs to Partner X. Her organization membership grants access to Partner X's exclusive courses.",
+          "connectsTo": "Carol"
+        },
+        {
+          "nodeId": "course-public",
+          "edges": [{ "from": "user1", "to": "course-public" }, { "from": "user2", "to": "course-public" }, { "from": "user3", "to": "course-public" }, { "from": "user4", "to": "course-public" }],
+          "icon": "📚",
+          "title": "Public Courses",
+          "narration": "The Apprentice course is public—everyone with an account can access it. Alice, Bob, Carol, and Admin all qualify.",
+          "connectsTo": "All Users"
+        },
+        {
+          "nodeId": "course-eo",
+          "edges": [{ "from": "org-eo", "to": "course-eo" }, { "from": "user4", "to": "course-eo" }],
+          "icon": "📘",
+          "title": "EO Bootcamp",
+          "narration": "The EO Bootcamp is linked to Endless Opportunities. Only Bob and Admin can access—Carol and Alice cannot.",
+          "connectsTo": "EO Org, Admin"
+        },
+        {
+          "nodeId": "course-x",
+          "edges": [{ "from": "org-x", "to": "course-x" }, { "from": "user4", "to": "course-x" }],
+          "icon": "📙",
+          "title": "Partner X Course",
+          "narration": "Partner X's course is exclusive to their members. Carol and Admin can access it—Bob and Alice cannot.",
+          "connectsTo": "Partner X, Admin"
         }
       ]
     }

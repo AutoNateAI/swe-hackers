@@ -3,103 +3,113 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Visibility Check. When a section crosses 50 percent visibility, isIntersecting returns true. The section has been meaningfully viewed.",
-  "duration": 9.600000381469727,
+  "text": "Callback Triggered. When a section crosses the visibility threshold, the callback fires. Time to check if this section should be marked!",
+  "duration": 7.650000095367432,
   "words": [
     {
-      "word": "Visibility",
+      "word": "Callback",
       "start": 0,
-      "end": 0.6200000047683716
+      "end": 0.46000000834465027
     },
     {
-      "word": "check",
-      "start": 0.6200000047683716,
-      "end": 1.0399999618530273
+      "word": "triggered",
+      "start": 0.46000000834465027,
+      "end": 0.8600000143051147
     },
     {
       "word": "When",
-      "start": 1.6799999475479126,
-      "end": 1.6799999475479126
+      "start": 1.2999999523162842,
+      "end": 1.340000033378601
     },
     {
       "word": "a",
-      "start": 1.6799999475479126,
-      "end": 2.240000009536743
+      "start": 1.340000033378601,
+      "end": 1.7400000095367432
     },
     {
       "word": "section",
-      "start": 2.240000009536743,
-      "end": 2.240000009536743
+      "start": 1.7400000095367432,
+      "end": 1.7400000095367432
     },
     {
       "word": "crosses",
-      "start": 2.240000009536743,
-      "end": 2.700000047683716
+      "start": 1.7400000095367432,
+      "end": 2.1600000858306885
     },
     {
-      "word": "50",
-      "start": 2.700000047683716,
-      "end": 3.180000066757202
-    },
-    {
-      "word": "",
-      "start": 3.180000066757202,
-      "end": 3.619999885559082
+      "word": "the",
+      "start": 2.1600000858306885,
+      "end": 2.4000000953674316
     },
     {
       "word": "visibility",
-      "start": 3.619999885559082,
-      "end": 4.139999866485596
+      "start": 2.4000000953674316,
+      "end": 2.799999952316284
     },
     {
-      "word": "is",
-      "start": 4.820000171661377,
-      "end": 4.880000114440918
+      "word": "threshold",
+      "start": 2.799999952316284,
+      "end": 3.259999990463257
     },
     {
-      "word": "intersecting",
-      "start": 4.880000114440918,
-      "end": 5.619999885559082
+      "word": "the",
+      "start": 3.5999999046325684,
+      "end": 3.740000009536743
     },
     {
-      "word": "returns",
-      "start": 5.920000076293945,
-      "end": 6.260000228881836
+      "word": "callback",
+      "start": 3.740000009536743,
+      "end": 4.119999885559082
     },
     {
-      "word": "true",
-      "start": 6.260000228881836,
-      "end": 6.739999771118164
+      "word": "fires",
+      "start": 4.119999885559082,
+      "end": 4.519999980926514
     },
     {
-      "word": "The",
-      "start": 7.199999809265137,
-      "end": 7.420000076293945
+      "word": "Time",
+      "start": 5.360000133514404,
+      "end": 5.380000114440918
+    },
+    {
+      "word": "to",
+      "start": 5.380000114440918,
+      "end": 5.800000190734863
+    },
+    {
+      "word": "check",
+      "start": 5.800000190734863,
+      "end": 5.840000152587891
+    },
+    {
+      "word": "if",
+      "start": 5.840000152587891,
+      "end": 6.099999904632568
+    },
+    {
+      "word": "this",
+      "start": 6.099999904632568,
+      "end": 6.320000171661377
     },
     {
       "word": "section",
-      "start": 7.420000076293945,
-      "end": 7.679999828338623
+      "start": 6.320000171661377,
+      "end": 6.599999904632568
     },
     {
-      "word": "has",
-      "start": 7.679999828338623,
-      "end": 8
+      "word": "should",
+      "start": 6.599999904632568,
+      "end": 6.860000133514404
     },
     {
-      "word": "been",
-      "start": 8,
-      "end": 8.279999732971191
+      "word": "be",
+      "start": 6.860000133514404,
+      "end": 7.300000190734863
     },
     {
-      "word": "meaningfully",
-      "start": 8.279999732971191,
-      "end": 8.899999618530273
-    },
-    {
-      "word": "viewed",
-      "start": 8.899999618530273,
-      "end": 9.15999984741211
+      "word": "mocked",
+      "start": 7.300000190734863,
+      "end": 7.380000114440918
     }
   ]
 }

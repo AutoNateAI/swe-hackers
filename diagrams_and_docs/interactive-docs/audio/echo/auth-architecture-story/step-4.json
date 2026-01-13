@@ -3,98 +3,113 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "User Document. After authentication, we sync with Firestore. The user document stores profile info, roles, and organization memberships.",
-  "duration": 11.300000190734863,
+  "text": "Auth State. Auth State manages the user's session. It tracks whether someone is logged in, handles token refresh, and persists across browser tabs.",
+  "duration": 11.15999984741211,
   "words": [
     {
-      "word": "User",
+      "word": "AuthState",
       "start": 0,
-      "end": 0.699999988079071
+      "end": 0.8399999737739563
     },
     {
-      "word": "document",
-      "start": 0.699999988079071,
-      "end": 1.2599999904632568
-    },
-    {
-      "word": "After",
-      "start": 2.059999942779541,
+      "word": "AuthState",
+      "start": 2.200000047683716,
       "end": 2.200000047683716
     },
     {
-      "word": "authentication",
+      "word": "manages",
       "start": 2.200000047683716,
-      "end": 2.940000057220459
+      "end": 2.680000066757202
     },
     {
-      "word": "we",
-      "start": 3.4600000381469727,
-      "end": 3.680000066757202
+      "word": "the",
+      "start": 2.680000066757202,
+      "end": 2.9600000381469727
     },
     {
-      "word": "sync",
-      "start": 3.680000066757202,
-      "end": 3.9200000762939453
+      "word": "user's",
+      "start": 2.9600000381469727,
+      "end": 3.4800000190734863
     },
     {
-      "word": "with",
-      "start": 3.9200000762939453,
-      "end": 4.21999979019165
+      "word": "session",
+      "start": 3.4800000190734863,
+      "end": 3.7799999713897705
     },
     {
-      "word": "Firestore",
-      "start": 4.21999979019165,
-      "end": 4.860000133514404
+      "word": "It",
+      "start": 4.340000152587891,
+      "end": 4.480000019073486
     },
     {
-      "word": "The",
-      "start": 5.599999904632568,
-      "end": 5.78000020980835
+      "word": "tracks",
+      "start": 4.480000019073486,
+      "end": 4.78000020980835
     },
     {
-      "word": "user",
-      "start": 5.78000020980835,
-      "end": 6.139999866485596
+      "word": "whether",
+      "start": 4.78000020980835,
+      "end": 5.059999942779541
     },
     {
-      "word": "document",
-      "start": 6.139999866485596,
-      "end": 6.659999847412109
+      "word": "someone",
+      "start": 5.059999942779541,
+      "end": 5.440000057220459
     },
     {
-      "word": "stores",
-      "start": 6.659999847412109,
-      "end": 7.300000190734863
+      "word": "is",
+      "start": 5.440000057220459,
+      "end": 5.760000228881836
     },
     {
-      "word": "profile",
-      "start": 7.300000190734863,
-      "end": 7.900000095367432
+      "word": "logged",
+      "start": 5.760000228881836,
+      "end": 5.940000057220459
     },
     {
-      "word": "info",
-      "start": 7.900000095367432,
-      "end": 8.34000015258789
+      "word": "in",
+      "start": 5.940000057220459,
+      "end": 6.420000076293945
     },
     {
-      "word": "roles",
-      "start": 9.15999984741211,
-      "end": 9.15999984741211
+      "word": "handles",
+      "start": 7.139999866485596,
+      "end": 7.139999866485596
+    },
+    {
+      "word": "token",
+      "start": 7.139999866485596,
+      "end": 7.519999980926514
+    },
+    {
+      "word": "refresh",
+      "start": 7.519999980926514,
+      "end": 7.980000019073486
     },
     {
       "word": "and",
-      "start": 9.5,
-      "end": 9.779999732971191
+      "start": 8.380000114440918,
+      "end": 8.800000190734863
     },
     {
-      "word": "organization",
-      "start": 9.779999732971191,
-      "end": 10.380000114440918
+      "word": "persists",
+      "start": 8.800000190734863,
+      "end": 9.180000305175781
     },
     {
-      "word": "memberships",
-      "start": 10.380000114440918,
-      "end": 11.140000343322754
+      "word": "across",
+      "start": 9.180000305175781,
+      "end": 9.819999694824219
+    },
+    {
+      "word": "browser",
+      "start": 9.819999694824219,
+      "end": 10.300000190734863
+    },
+    {
+      "word": "tabs",
+      "start": 10.300000190734863,
+      "end": 10.640000343322754
     }
   ]
 }

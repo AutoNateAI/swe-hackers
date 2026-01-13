@@ -3,128 +3,113 @@
   "stepId": "step-0",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "User Entity. The User is at the center of everything. They have progress records, make activity attempts, write notes, and may belong to organizations.",
-  "duration": 14.0600004196167,
+  "text": "Partner Entity. The Partner is the core entity. Everything else—interactions, attachments, courses, analytics—relates back to a partner.",
+  "duration": 11.949999809265137,
   "words": [
     {
-      "word": "User",
+      "word": "Partner",
       "start": 0,
-      "end": 0.7200000286102295
+      "end": 0.4399999976158142
     },
     {
-      "word": "Entity",
-      "start": 0.7200000286102295,
-      "end": 1.2999999523162842
+      "word": "entity",
+      "start": 0.4399999976158142,
+      "end": 0.8799999952316284
     },
     {
       "word": "The",
-      "start": 2.140000104904175,
-      "end": 2.259999990463257
+      "start": 1.5800000429153442,
+      "end": 1.7799999713897705
     },
     {
-      "word": "user",
-      "start": 2.259999990463257,
-      "end": 2.5999999046325684
+      "word": "partner",
+      "start": 1.7799999713897705,
+      "end": 2.0399999618530273
     },
     {
       "word": "is",
-      "start": 2.5999999046325684,
-      "end": 3.059999942779541
-    },
-    {
-      "word": "at",
-      "start": 3.059999942779541,
-      "end": 3.259999990463257
+      "start": 2.0399999618530273,
+      "end": 2.5
     },
     {
       "word": "the",
-      "start": 3.259999990463257,
-      "end": 3.680000066757202
+      "start": 2.5,
+      "end": 2.7799999713897705
     },
     {
-      "word": "centre",
-      "start": 3.680000066757202,
-      "end": 3.799999952316284
+      "word": "core",
+      "start": 2.7799999713897705,
+      "end": 3.2200000286102295
     },
     {
-      "word": "of",
-      "start": 3.799999952316284,
-      "end": 4.360000133514404
+      "word": "entity",
+      "start": 3.2200000286102295,
+      "end": 3.6600000858306885
     },
     {
-      "word": "everything",
-      "start": 4.360000133514404,
-      "end": 4.900000095367432
+      "word": "Everything",
+      "start": 4.559999942779541,
+      "end": 4.920000076293945
     },
     {
-      "word": "They",
-      "start": 5.679999828338623,
-      "end": 5.820000171661377
+      "word": "else",
+      "start": 4.920000076293945,
+      "end": 5.320000171661377
     },
     {
-      "word": "have",
-      "start": 5.820000171661377,
-      "end": 6.139999866485596
+      "word": "–",
+      "start": 5.320000171661377,
+      "end": 6.480000019073486
     },
     {
-      "word": "progress",
-      "start": 6.139999866485596,
-      "end": 6.78000020980835
+      "word": "interactions",
+      "start": 6.480000019073486,
+      "end": 6.480000019073486
     },
     {
-      "word": "records",
-      "start": 6.78000020980835,
-      "end": 7.320000171661377
+      "word": "attachments",
+      "start": 6.900000095367432,
+      "end": 7.300000190734863
     },
     {
-      "word": "make",
-      "start": 8.140000343322754,
-      "end": 8.260000228881836
+      "word": "courses",
+      "start": 8.34000015258789,
+      "end": 8.34000015258789
     },
     {
-      "word": "activity",
-      "start": 8.260000228881836,
-      "end": 8.979999542236328
+      "word": "analytics",
+      "start": 9.380000114440918,
+      "end": 9.380000114440918
     },
     {
-      "word": "attempts",
-      "start": 8.979999542236328,
-      "end": 9.5
+      "word": "–",
+      "start": 9.380000114440918,
+      "end": 10.199999809265137
     },
     {
-      "word": "write",
-      "start": 10.4399995803833,
-      "end": 10.460000038146973
+      "word": "relates",
+      "start": 10.199999809265137,
+      "end": 10.199999809265137
     },
     {
-      "word": "notes",
-      "start": 10.460000038146973,
-      "end": 10.880000114440918
-    },
-    {
-      "word": "and",
-      "start": 11.460000038146973,
-      "end": 11.800000190734863
-    },
-    {
-      "word": "may",
-      "start": 11.800000190734863,
-      "end": 12.0600004196167
-    },
-    {
-      "word": "belong",
-      "start": 12.0600004196167,
-      "end": 12.300000190734863
+      "word": "back",
+      "start": 10.199999809265137,
+      "end": 10.720000267028809
     },
     {
       "word": "to",
-      "start": 12.300000190734863,
-      "end": 12.739999771118164
+      "start": 10.720000267028809,
+      "end": 11.100000381469727
     },
     {
-      "word": "organisations",
-      "start": 12.739999771118164,
-      "end": 13.399999618530273
+      "word": "a",
+      "start": 11.100000381469727,
+      "end": 11.699999809265137
+    },
+    {
+      "word": "partner",
+      "start": 11.699999809265137,
+      "end": 11.699999809265137
     }
   ]
 }

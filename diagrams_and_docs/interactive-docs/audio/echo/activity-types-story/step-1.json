@@ -3,103 +3,88 @@
   "stepId": "step-1",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Quiz Activities. Quizzes use data-answer attributes to define correct answers. ActivityTracker validates user selections and records attempts.",
-  "duration": 11.949999809265137,
+  "text": "Quiz Activities. Quizzes test understanding with multiple choice questions. Select an answer, submit, get instant feedback!",
+  "duration": 10.40999984741211,
   "words": [
     {
       "word": "Quiz",
       "start": 0,
-      "end": 0.5
+      "end": 0.4399999976158142
     },
     {
-      "word": "Activities",
-      "start": 0.5,
-      "end": 1.2599999904632568
+      "word": "activities",
+      "start": 0.4399999976158142,
+      "end": 1.2999999523162842
     },
     {
       "word": "Quizzes",
-      "start": 1.9800000190734863,
-      "end": 2.4800000190734863
+      "start": 2.240000009536743,
+      "end": 2.3399999141693115
     },
     {
-      "word": "use",
-      "start": 2.4800000190734863,
-      "end": 2.799999952316284
+      "word": "test",
+      "start": 2.3399999141693115,
+      "end": 2.759999990463257
     },
     {
-      "word": "data",
-      "start": 2.799999952316284,
-      "end": 3.2799999713897705
+      "word": "understanding",
+      "start": 2.759999990463257,
+      "end": 3.559999942779541
+    },
+    {
+      "word": "with",
+      "start": 3.559999942779541,
+      "end": 4
+    },
+    {
+      "word": "multiple",
+      "start": 4,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "choice",
+      "start": 4.460000038146973,
+      "end": 4.920000076293945
+    },
+    {
+      "word": "questions",
+      "start": 4.920000076293945,
+      "end": 5.559999942779541
+    },
+    {
+      "word": "Select",
+      "start": 6.539999961853027,
+      "end": 6.539999961853027
+    },
+    {
+      "word": "an",
+      "start": 6.539999961853027,
+      "end": 6.78000020980835
     },
     {
       "word": "answer",
-      "start": 3.2799999713897705,
-      "end": 3.740000009536743
+      "start": 6.78000020980835,
+      "end": 7.079999923706055
     },
     {
-      "word": "attributes",
-      "start": 3.740000009536743,
-      "end": 4.300000190734863
+      "word": "Submit",
+      "start": 8.0600004196167,
+      "end": 8.0600004196167
     },
     {
-      "word": "to",
-      "start": 4.300000190734863,
-      "end": 4.659999847412109
+      "word": "Get",
+      "start": 8.800000190734863,
+      "end": 8.800000190734863
     },
     {
-      "word": "define",
-      "start": 4.659999847412109,
-      "end": 5.159999847412109
+      "word": "instant",
+      "start": 8.800000190734863,
+      "end": 9.300000190734863
     },
     {
-      "word": "correct",
-      "start": 5.159999847412109,
-      "end": 5.679999828338623
-    },
-    {
-      "word": "answers",
-      "start": 5.679999828338623,
-      "end": 6.260000228881836
-    },
-    {
-      "word": "Activity",
-      "start": 7.440000057220459,
-      "end": 7.639999866485596
-    },
-    {
-      "word": "Tracker",
-      "start": 7.639999866485596,
-      "end": 8.039999961853027
-    },
-    {
-      "word": "validates",
-      "start": 8.039999961853027,
-      "end": 9.039999961853027
-    },
-    {
-      "word": "user",
-      "start": 9.039999961853027,
-      "end": 9.5600004196167
-    },
-    {
-      "word": "selections",
-      "start": 9.5600004196167,
-      "end": 10.079999923706055
-    },
-    {
-      "word": "and",
-      "start": 10.079999923706055,
-      "end": 10.779999732971191
-    },
-    {
-      "word": "records",
-      "start": 10.779999732971191,
-      "end": 11.119999885559082
-    },
-    {
-      "word": "attempts",
-      "start": 11.119999885559082,
-      "end": 11.600000381469727
+      "word": "feedback",
+      "start": 9.300000190734863,
+      "end": 9.680000305175781
     }
   ]
 }

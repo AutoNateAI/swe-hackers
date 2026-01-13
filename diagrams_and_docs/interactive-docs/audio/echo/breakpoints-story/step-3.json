@@ -3,103 +3,98 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Desktop Layout. 1024 to 1280 pixels is desktop range. Full layouts with visible sidebars, multi-column grids, expanded navigation.",
-  "duration": 14.25,
+  "text": "Tablet Range. 768 to 1024 pixels is tablet territory. More space allows for some side-by-side layouts.",
+  "duration": 9.600000381469727,
   "words": [
     {
-      "word": "Desktop",
+      "word": "Tablet",
       "start": 0,
-      "end": 0.7200000286102295
-    },
-    {
-      "word": "layout",
-      "start": 0.7200000286102295,
-      "end": 1.2200000286102295
-    },
-    {
-      "word": "1024",
-      "start": 2.180000066757202,
-      "end": 3.180000066757202
-    },
-    {
-      "word": "to",
-      "start": 3.180000066757202,
-      "end": 3.5399999618530273
-    },
-    {
-      "word": "1280",
-      "start": 3.5399999618530273,
-      "end": 5.039999961853027
-    },
-    {
-      "word": "pixels",
-      "start": 5.039999961853027,
-      "end": 5.559999942779541
-    },
-    {
-      "word": "is",
-      "start": 5.559999942779541,
-      "end": 5.980000019073486
-    },
-    {
-      "word": "desktop",
-      "start": 5.980000019073486,
-      "end": 6.420000076293945
+      "end": 0.5
     },
     {
       "word": "range",
-      "start": 6.420000076293945,
-      "end": 6.900000095367432
+      "start": 0.5,
+      "end": 0.9200000166893005
     },
     {
-      "word": "Full",
-      "start": 6.940000057220459,
-      "end": 7.940000057220459
+      "word": "768",
+      "start": 1.840000033378601,
+      "end": 2.5199999809265137
     },
     {
-      "word": "layouts",
-      "start": 7.940000057220459,
+      "word": "to",
+      "start": 2.5199999809265137,
+      "end": 2.819999933242798
+    },
+    {
+      "word": "1024",
+      "start": 2.819999933242798,
+      "end": 3.859999895095825
+    },
+    {
+      "word": "pixels",
+      "start": 3.859999895095825,
+      "end": 4.300000190734863
+    },
+    {
+      "word": "is",
+      "start": 4.300000190734863,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "tablet",
+      "start": 4.679999828338623,
+      "end": 5.079999923706055
+    },
+    {
+      "word": "territory",
+      "start": 5.079999923706055,
+      "end": 5.659999847412109
+    },
+    {
+      "word": "More",
+      "start": 6.460000038146973,
+      "end": 6.559999942779541
+    },
+    {
+      "word": "space",
+      "start": 6.559999942779541,
+      "end": 7
+    },
+    {
+      "word": "allows",
+      "start": 7,
+      "end": 7.400000095367432
+    },
+    {
+      "word": "for",
+      "start": 7.400000095367432,
+      "end": 7.659999847412109
+    },
+    {
+      "word": "some",
+      "start": 7.659999847412109,
+      "end": 8.15999984741211
+    },
+    {
+      "word": "side",
+      "start": 8.15999984741211,
+      "end": 8.239999771118164
+    },
+    {
+      "word": "by",
+      "start": 8.239999771118164,
       "end": 8.4399995803833
     },
     {
-      "word": "with",
+      "word": "side",
       "start": 8.4399995803833,
-      "end": 9
+      "end": 8.859999656677246
     },
     {
-      "word": "visible",
-      "start": 9,
-      "end": 9.34000015258789
-    },
-    {
-      "word": "sidebars",
-      "start": 9.34000015258789,
-      "end": 10.180000305175781
-    },
-    {
-      "word": "Multi",
-      "start": 10.180000305175781,
-      "end": 11.0600004196167
-    },
-    {
-      "word": "column",
-      "start": 11.0600004196167,
-      "end": 11.399999618530273
-    },
-    {
-      "word": "grids",
-      "start": 11.399999618530273,
-      "end": 11.880000114440918
-    },
-    {
-      "word": "Expanded",
-      "start": 12.119999885559082,
-      "end": 13.119999885559082
-    },
-    {
-      "word": "navigation",
-      "start": 13.119999885559082,
-      "end": 13.619999885559082
+      "word": "layouts",
+      "start": 8.859999656677246,
+      "end": 9.199999809265137
     }
   ]
 }

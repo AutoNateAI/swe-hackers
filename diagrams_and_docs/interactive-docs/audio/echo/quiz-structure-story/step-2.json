@@ -3,113 +3,88 @@
   "stepId": "step-2",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Options Container. Options are grouped in a container. Each option has a data-value attribute that gets compared against data-answer.",
-  "duration": 9.600000381469727,
+  "text": "Options Container. Options are grouped in a container. Vertical list or grid, depending on content length.",
+  "duration": 8.0600004196167,
   "words": [
     {
       "word": "Options",
       "start": 0,
-      "end": 0.5799999833106995
+      "end": 0.5600000023841858
     },
     {
       "word": "Container",
-      "start": 0.5799999833106995,
-      "end": 1.340000033378601
+      "start": 0.5600000023841858,
+      "end": 1.2999999523162842
     },
     {
       "word": "Options",
-      "start": 1.340000033378601,
-      "end": 2.359999895095825
+      "start": 1.659999966621399,
+      "end": 2.380000114440918
     },
     {
       "word": "are",
-      "start": 2.359999895095825,
-      "end": 2.5399999618530273
+      "start": 2.380000114440918,
+      "end": 2.619999885559082
     },
     {
       "word": "grouped",
-      "start": 2.5399999618530273,
-      "end": 2.740000009536743
+      "start": 2.619999885559082,
+      "end": 2.859999895095825
     },
     {
       "word": "in",
-      "start": 2.740000009536743,
-      "end": 3.0199999809265137
+      "start": 2.859999895095825,
+      "end": 3.0999999046325684
     },
     {
       "word": "a",
-      "start": 3.0199999809265137,
-      "end": 3.180000066757202
+      "start": 3.0999999046325684,
+      "end": 3.2799999713897705
     },
     {
       "word": "container",
-      "start": 3.180000066757202,
-      "end": 3.5
+      "start": 3.2799999713897705,
+      "end": 3.640000104904175
     },
     {
-      "word": "Each",
-      "start": 4.059999942779541,
-      "end": 4.300000190734863
+      "word": "vertical",
+      "start": 4.579999923706055,
+      "end": 4.860000133514404
     },
     {
-      "word": "option",
-      "start": 4.300000190734863,
-      "end": 4.71999979019165
+      "word": "list",
+      "start": 4.860000133514404,
+      "end": 5.21999979019165
     },
     {
-      "word": "has",
-      "start": 4.71999979019165,
-      "end": 5.159999847412109
+      "word": "or",
+      "start": 5.21999979019165,
+      "end": 5.519999980926514
     },
     {
-      "word": "a",
-      "start": 5.159999847412109,
-      "end": 5.440000057220459
+      "word": "grid",
+      "start": 5.519999980926514,
+      "end": 5.840000152587891
     },
     {
-      "word": "data",
-      "start": 5.440000057220459,
-      "end": 5.699999809265137
+      "word": "depending",
+      "start": 6.480000019073486,
+      "end": 6.480000019073486
     },
     {
-      "word": "value",
-      "start": 5.699999809265137,
-      "end": 6.159999847412109
+      "word": "on",
+      "start": 6.480000019073486,
+      "end": 7.019999980926514
     },
     {
-      "word": "attribute",
-      "start": 6.159999847412109,
-      "end": 6.599999904632568
+      "word": "content",
+      "start": 7.019999980926514,
+      "end": 7.28000020980835
     },
     {
-      "word": "that",
-      "start": 6.599999904632568,
-      "end": 7
-    },
-    {
-      "word": "gets",
-      "start": 7,
-      "end": 7.239999771118164
-    },
-    {
-      "word": "compared",
-      "start": 7.239999771118164,
-      "end": 7.739999771118164
-    },
-    {
-      "word": "against",
-      "start": 7.739999771118164,
-      "end": 8.180000305175781
-    },
-    {
-      "word": "data",
-      "start": 8.180000305175781,
-      "end": 8.640000343322754
-    },
-    {
-      "word": "answer",
-      "start": 8.640000343322754,
-      "end": 9.140000343322754
+      "word": "length",
+      "start": 7.28000020980835,
+      "end": 7.639999866485596
     }
   ]
 }

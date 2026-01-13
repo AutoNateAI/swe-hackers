@@ -3,113 +3,88 @@
   "stepId": "step-2",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Options Container. Options are grouped in a container. Each option has a data-value attribute that gets compared against data-answer.",
-  "duration": 11.25,
+  "text": "Options Container. Options are grouped in a container. Vertical list or grid, depending on content length.",
+  "duration": 10.050000190734863,
   "words": [
     {
       "word": "Options",
       "start": 0,
-      "end": 0.46000000834465027
+      "end": 0.6800000071525574
     },
     {
       "word": "container",
-      "start": 0.46000000834465027,
-      "end": 0.9399999976158142
+      "start": 0.6800000071525574,
+      "end": 1.3600000143051147
     },
     {
       "word": "Options",
-      "start": 2.0199999809265137,
-      "end": 2.0199999809265137
+      "start": 2.700000047683716,
+      "end": 2.700000047683716
     },
     {
       "word": "are",
-      "start": 2.0199999809265137,
-      "end": 2.4200000762939453
+      "start": 2.700000047683716,
+      "end": 3.200000047683716
     },
     {
       "word": "grouped",
-      "start": 2.4200000762939453,
-      "end": 2.6600000858306885
+      "start": 3.200000047683716,
+      "end": 3.5
     },
     {
       "word": "in",
-      "start": 2.6600000858306885,
-      "end": 2.9800000190734863
+      "start": 3.5,
+      "end": 3.819999933242798
     },
     {
       "word": "a",
-      "start": 2.9800000190734863,
-      "end": 3.5399999618530273
+      "start": 3.819999933242798,
+      "end": 4.739999771118164
     },
     {
       "word": "container",
-      "start": 3.5399999618530273,
-      "end": 3.5399999618530273
+      "start": 4.739999771118164,
+      "end": 4.880000114440918
     },
     {
-      "word": "Each",
-      "start": 4.340000152587891,
-      "end": 4.440000057220459
+      "word": "vertical",
+      "start": 5.5,
+      "end": 5.78000020980835
     },
     {
-      "word": "option",
-      "start": 4.440000057220459,
-      "end": 4.900000095367432
+      "word": "list",
+      "start": 5.78000020980835,
+      "end": 6.199999809265137
     },
     {
-      "word": "has",
-      "start": 4.900000095367432,
-      "end": 5.340000152587891
+      "word": "or",
+      "start": 6.199999809265137,
+      "end": 6.739999771118164
     },
     {
-      "word": "a",
-      "start": 5.340000152587891,
-      "end": 5.800000190734863
+      "word": "grid",
+      "start": 6.739999771118164,
+      "end": 7.059999942779541
     },
     {
-      "word": "data",
-      "start": 5.800000190734863,
-      "end": 6.019999980926514
+      "word": "depending",
+      "start": 7.059999942779541,
+      "end": 8.039999961853027
     },
     {
-      "word": "value",
-      "start": 6.019999980926514,
-      "end": 6.440000057220459
+      "word": "on",
+      "start": 8.039999961853027,
+      "end": 8.9399995803833
     },
     {
-      "word": "attribute",
-      "start": 6.440000057220459,
-      "end": 7
+      "word": "content",
+      "start": 8.9399995803833,
+      "end": 9.300000190734863
     },
     {
-      "word": "that",
-      "start": 7,
-      "end": 7.739999771118164
-    },
-    {
-      "word": "gets",
-      "start": 7.739999771118164,
-      "end": 8.020000457763672
-    },
-    {
-      "word": "compared",
-      "start": 8.020000457763672,
-      "end": 8.539999961853027
-    },
-    {
-      "word": "against",
-      "start": 8.539999961853027,
-      "end": 9.020000457763672
-    },
-    {
-      "word": "data",
-      "start": 9.020000457763672,
-      "end": 9.739999771118164
-    },
-    {
-      "word": "answer",
-      "start": 9.739999771118164,
-      "end": 10.239999771118164
+      "word": "length",
+      "start": 9.300000190734863,
+      "end": 9.680000305175781
     }
   ]
 }

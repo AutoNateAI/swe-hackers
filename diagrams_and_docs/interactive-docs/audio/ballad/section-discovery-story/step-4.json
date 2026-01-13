@@ -3,93 +3,93 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Observer Setup. Finally, IntersectionObserver is created and attached to each section. Scroll tracking is now active!",
-  "duration": 11.850000381469727,
+  "text": "Sections Array. All discovered sections are stored in an array. This becomes the denominator for progress calculation.",
+  "duration": 11.300000190734863,
   "words": [
     {
-      "word": "Observer",
+      "word": "Sections",
       "start": 0,
-      "end": 0.8399999737739563
+      "end": 0.7799999713897705
     },
     {
-      "word": "setup",
-      "start": 0.8399999737739563,
-      "end": 1.5399999618530273
+      "word": "Array",
+      "start": 0.7799999713897705,
+      "end": 1.3799999952316284
     },
     {
-      "word": "Finally",
-      "start": 3.0199999809265137,
-      "end": 3.0199999809265137
+      "word": "All",
+      "start": 1.3799999952316284,
+      "end": 2.5799999237060547
     },
     {
-      "word": "Intersection",
-      "start": 3.5199999809265137,
-      "end": 4.139999866485596
+      "word": "discovered",
+      "start": 2.5799999237060547,
+      "end": 3.059999942779541
     },
     {
-      "word": "Observer",
-      "start": 4.139999866485596,
-      "end": 4.619999885559082
+      "word": "sections",
+      "start": 3.059999942779541,
+      "end": 3.559999942779541
     },
     {
-      "word": "is",
-      "start": 4.619999885559082,
-      "end": 5.260000228881836
+      "word": "are",
+      "start": 3.559999942779541,
+      "end": 4.300000190734863
     },
     {
-      "word": "created",
-      "start": 5.260000228881836,
-      "end": 5.860000133514404
+      "word": "stored",
+      "start": 4.300000190734863,
+      "end": 4.519999980926514
     },
     {
-      "word": "and",
-      "start": 5.860000133514404,
-      "end": 6.480000019073486
+      "word": "in",
+      "start": 4.519999980926514,
+      "end": 4.820000171661377
     },
     {
-      "word": "attached",
-      "start": 6.480000019073486,
-      "end": 6.820000171661377
+      "word": "an",
+      "start": 4.820000171661377,
+      "end": 5.480000019073486
     },
     {
-      "word": "to",
-      "start": 6.820000171661377,
-      "end": 7.28000020980835
+      "word": "array",
+      "start": 5.480000019073486,
+      "end": 5.739999771118164
     },
     {
-      "word": "each",
-      "start": 7.28000020980835,
-      "end": 7.739999771118164
+      "word": "This",
+      "start": 6.139999866485596,
+      "end": 6.5
     },
     {
-      "word": "section",
-      "start": 7.739999771118164,
-      "end": 8.119999885559082
+      "word": "becomes",
+      "start": 6.5,
+      "end": 7.039999961853027
     },
     {
-      "word": "Scroll",
-      "start": 9.319999694824219,
-      "end": 9.319999694824219
+      "word": "the",
+      "start": 7.039999961853027,
+      "end": 7.460000038146973
     },
     {
-      "word": "tracking",
-      "start": 9.319999694824219,
-      "end": 9.619999885559082
+      "word": "denominator",
+      "start": 7.460000038146973,
+      "end": 7.960000038146973
     },
     {
-      "word": "is",
-      "start": 9.619999885559082,
-      "end": 10.279999732971191
+      "word": "for",
+      "start": 7.960000038146973,
+      "end": 8.5600004196167
     },
     {
-      "word": "now",
-      "start": 10.279999732971191,
-      "end": 11.039999961853027
+      "word": "progress",
+      "start": 8.5600004196167,
+      "end": 9.0600004196167
     },
     {
-      "word": "active",
-      "start": 11.039999961853027,
-      "end": 11.34000015258789
+      "word": "calculation",
+      "start": 9.0600004196167,
+      "end": 9.699999809265137
     }
   ]
 }

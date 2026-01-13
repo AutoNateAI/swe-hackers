@@ -3,98 +3,98 @@
   "stepId": "step-4",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Progress Bar. Progress bars show completion visually. A container with a fill element—width percentage equals progress percentage!",
-  "duration": 10.359999656677246,
+  "text": "Card Hover State. On hover, cards lift slightly and borders brighten. Subtle feedback that says 'this is interactive!'",
+  "duration": 9.210000038146973,
   "words": [
     {
-      "word": "Progress",
+      "word": "Card",
       "start": 0,
-      "end": 0.699999988079071
+      "end": 0.6000000238418579
     },
     {
-      "word": "bar",
-      "start": 0.699999988079071,
-      "end": 1.0199999809265137
+      "word": "Hover",
+      "start": 0.6000000238418579,
+      "end": 0.9399999976158142
     },
     {
-      "word": "Progress",
-      "start": 2.119999885559082,
-      "end": 2.119999885559082
+      "word": "State",
+      "start": 0.9399999976158142,
+      "end": 1.600000023841858
     },
     {
-      "word": "bars",
-      "start": 2.119999885559082,
-      "end": 2.440000057220459
+      "word": "On",
+      "start": 2.2200000286102295,
+      "end": 2.319999933242798
     },
     {
-      "word": "show",
-      "start": 2.440000057220459,
-      "end": 2.819999933242798
+      "word": "hover",
+      "start": 2.319999933242798,
+      "end": 2.5799999237060547
     },
     {
-      "word": "completion",
-      "start": 2.819999933242798,
-      "end": 3.4200000762939453
+      "word": "cards",
+      "start": 3.2200000286102295,
+      "end": 3.2200000286102295
     },
     {
-      "word": "visually",
-      "start": 3.4200000762939453,
-      "end": 3.940000057220459
+      "word": "lift",
+      "start": 3.2200000286102295,
+      "end": 3.619999885559082
     },
     {
-      "word": "A",
-      "start": 4.619999885559082,
-      "end": 4.860000133514404
+      "word": "slightly",
+      "start": 3.619999885559082,
+      "end": 4.099999904632568
     },
     {
-      "word": "container",
-      "start": 4.860000133514404,
-      "end": 5.21999979019165
+      "word": "and",
+      "start": 4.099999904632568,
+      "end": 4.559999942779541
     },
     {
-      "word": "with",
-      "start": 5.21999979019165,
-      "end": 5.519999980926514
+      "word": "borders",
+      "start": 4.559999942779541,
+      "end": 4.920000076293945
     },
     {
-      "word": "a",
-      "start": 5.519999980926514,
-      "end": 5.880000114440918
+      "word": "brighten",
+      "start": 4.920000076293945,
+      "end": 5.5
     },
     {
-      "word": "fill",
-      "start": 5.880000114440918,
-      "end": 5.980000019073486
+      "word": "Subtle",
+      "start": 6.21999979019165,
+      "end": 6.360000133514404
     },
     {
-      "word": "element",
-      "start": 5.980000019073486,
-      "end": 6.460000038146973
+      "word": "feedback",
+      "start": 6.360000133514404,
+      "end": 6.699999809265137
     },
     {
-      "word": "Width",
-      "start": 7.199999809265137,
-      "end": 7.320000171661377
+      "word": "that",
+      "start": 6.699999809265137,
+      "end": 7.079999923706055
     },
     {
-      "word": "percentage",
-      "start": 7.320000171661377,
-      "end": 7.920000076293945
+      "word": "says",
+      "start": 7.079999923706055,
+      "end": 7.340000152587891
     },
     {
-      "word": "equals",
-      "start": 7.920000076293945,
-      "end": 8.680000305175781
+      "word": "this",
+      "start": 7.5,
+      "end": 7.71999979019165
     },
     {
-      "word": "progress",
-      "start": 8.680000305175781,
-      "end": 9.180000305175781
+      "word": "is",
+      "start": 7.71999979019165,
+      "end": 8.140000343322754
     },
     {
-      "word": "percentage",
-      "start": 9.180000305175781,
-      "end": 9.760000228881836
+      "word": "interactive",
+      "start": 8.140000343322754,
+      "end": 8.720000267028809
     }
   ]
 }

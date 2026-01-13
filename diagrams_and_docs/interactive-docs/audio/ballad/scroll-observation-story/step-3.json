@@ -3,133 +3,103 @@
   "stepId": "step-3",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "Mark as Viewed. The section ID is added to the viewedSections Set. Sets prevent duplicates—view a section twice, it still only counts once.",
-  "duration": 12,
+  "text": "Visibility Check. When a section crosses 50 percent visibility, isIntersecting returns true. The section has been meaningfully viewed.",
+  "duration": 10.800000190734863,
   "words": [
     {
-      "word": "Mark",
+      "word": "Visibility",
       "start": 0,
-      "end": 0.5600000023841858
+      "end": 0.6399999856948853
     },
     {
-      "word": "as",
-      "start": 0.5600000023841858,
-      "end": 0.7599999904632568
+      "word": "check",
+      "start": 0.6399999856948853,
+      "end": 1.100000023841858
     },
     {
-      "word": "viewed",
-      "start": 0.7599999904632568,
-      "end": 1.159999966621399
-    },
-    {
-      "word": "The",
-      "start": 2.0199999809265137,
-      "end": 2.140000104904175
-    },
-    {
-      "word": "section",
-      "start": 2.140000104904175,
-      "end": 2.4200000762939453
-    },
-    {
-      "word": "ID",
-      "start": 2.4200000762939453,
-      "end": 2.740000009536743
-    },
-    {
-      "word": "is",
-      "start": 2.740000009536743,
-      "end": 3.200000047683716
-    },
-    {
-      "word": "added",
-      "start": 3.200000047683716,
-      "end": 3.4200000762939453
-    },
-    {
-      "word": "to",
-      "start": 3.4200000762939453,
-      "end": 3.680000066757202
-    },
-    {
-      "word": "the",
-      "start": 3.680000066757202,
-      "end": 3.859999895095825
-    },
-    {
-      "word": "viewed",
-      "start": 3.859999895095825,
-      "end": 4.059999942779541
-    },
-    {
-      "word": "section",
-      "start": 4.059999942779541,
-      "end": 4.519999980926514
-    },
-    {
-      "word": "set",
-      "start": 4.519999980926514,
-      "end": 5
-    },
-    {
-      "word": "Sets",
-      "start": 5.980000019073486,
-      "end": 5.980000019073486
-    },
-    {
-      "word": "prevent",
-      "start": 5.980000019073486,
-      "end": 6.480000019073486
-    },
-    {
-      "word": "duplicates",
-      "start": 6.480000019073486,
-      "end": 7.480000019073486
-    },
-    {
-      "word": "View",
-      "start": 8.020000457763672,
-      "end": 8.020000457763672
+      "word": "When",
+      "start": 1.7999999523162842,
+      "end": 1.840000033378601
     },
     {
       "word": "a",
-      "start": 8.020000457763672,
-      "end": 8.479999542236328
+      "start": 1.840000033378601,
+      "end": 2.5
     },
     {
       "word": "section",
-      "start": 8.479999542236328,
-      "end": 8.479999542236328
+      "start": 2.5,
+      "end": 2.5
     },
     {
-      "word": "twice",
-      "start": 8.479999542236328,
-      "end": 8.9399995803833
+      "word": "crosses",
+      "start": 2.5,
+      "end": 2.9000000953674316
     },
     {
-      "word": "it",
-      "start": 9.319999694824219,
-      "end": 9.479999542236328
+      "word": "50",
+      "start": 2.9000000953674316,
+      "end": 3.4000000953674316
     },
     {
-      "word": "still",
-      "start": 9.479999542236328,
-      "end": 9.899999618530273
+      "word": "",
+      "start": 3.4000000953674316,
+      "end": 3.9000000953674316
     },
     {
-      "word": "only",
-      "start": 9.899999618530273,
-      "end": 10.460000038146973
+      "word": "visibility",
+      "start": 3.9000000953674316,
+      "end": 4.440000057220459
     },
     {
-      "word": "counts",
-      "start": 10.460000038146973,
-      "end": 10.739999771118164
+      "word": "is",
+      "start": 5.260000228881836,
+      "end": 5.380000114440918
     },
     {
-      "word": "once",
-      "start": 10.739999771118164,
-      "end": 11.220000267028809
+      "word": "intersecting",
+      "start": 5.380000114440918,
+      "end": 6.199999809265137
+    },
+    {
+      "word": "returns",
+      "start": 6.199999809265137,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "true",
+      "start": 6.820000171661377,
+      "end": 7.340000152587891
+    },
+    {
+      "word": "The",
+      "start": 7.880000114440918,
+      "end": 8.140000343322754
+    },
+    {
+      "word": "section",
+      "start": 8.140000343322754,
+      "end": 8.520000457763672
+    },
+    {
+      "word": "has",
+      "start": 8.520000457763672,
+      "end": 8.880000114440918
+    },
+    {
+      "word": "been",
+      "start": 8.880000114440918,
+      "end": 9.239999771118164
+    },
+    {
+      "word": "meaningfully",
+      "start": 9.239999771118164,
+      "end": 9.920000076293945
+    },
+    {
+      "word": "viewed",
+      "start": 9.920000076293945,
+      "end": 10.319999694824219
     }
   ]
 }

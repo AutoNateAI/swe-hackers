@@ -3,98 +3,93 @@
   "stepId": "step-4",
   "voice": "ballad",
   "voiceLabel": "Storyteller (Female)",
-  "text": "UI Updates. As data changes, UI updates follow. Progress bars fill, completion indicators appear, toast notifications celebrate achievements!",
-  "duration": 14.25,
+  "text": "ActivityTracker. ActivityTracker handles interactive elements. Quiz answers, drag completions, code challenges—every interaction is captured.",
+  "duration": 14.65999984741211,
   "words": [
     {
-      "word": "UI",
+      "word": "Activity",
       "start": 0,
-      "end": 0.5799999833106995
+      "end": 0.7799999713897705
     },
     {
-      "word": "updates",
-      "start": 0.5799999833106995,
-      "end": 1.100000023841858
+      "word": "Tracker",
+      "start": 0.7799999713897705,
+      "end": 1.0800000429153442
     },
     {
-      "word": "As",
-      "start": 1.9600000381469727,
-      "end": 2.059999942779541
+      "word": "Activity",
+      "start": 3.319999933242798,
+      "end": 3.319999933242798
     },
     {
-      "word": "data",
-      "start": 2.059999942779541,
-      "end": 2.4200000762939453
+      "word": "Tracker",
+      "start": 3.319999933242798,
+      "end": 3.319999933242798
     },
     {
-      "word": "changes",
-      "start": 2.4200000762939453,
-      "end": 3
+      "word": "handles",
+      "start": 3.319999933242798,
+      "end": 3.9600000381469727
     },
     {
-      "word": "UI",
-      "start": 3.819999933242798,
-      "end": 3.9200000762939453
+      "word": "interactive",
+      "start": 3.9600000381469727,
+      "end": 5
     },
     {
-      "word": "updates",
-      "start": 3.9200000762939453,
-      "end": 4.519999980926514
+      "word": "elements",
+      "start": 5,
+      "end": 5.619999885559082
     },
     {
-      "word": "follow",
-      "start": 4.519999980926514,
-      "end": 5.320000171661377
+      "word": "quiz",
+      "start": 6.860000133514404,
+      "end": 6.860000133514404
     },
     {
-      "word": "Progress",
-      "start": 6.159999847412109,
-      "end": 6.159999847412109
+      "word": "answers",
+      "start": 6.860000133514404,
+      "end": 7.380000114440918
     },
     {
-      "word": "bars",
-      "start": 6.159999847412109,
-      "end": 6.519999980926514
+      "word": "drag",
+      "start": 8.0600004196167,
+      "end": 8.319999694824219
     },
     {
-      "word": "fill",
-      "start": 6.519999980926514,
-      "end": 7
+      "word": "completions",
+      "start": 8.319999694824219,
+      "end": 9.039999961853027
     },
     {
-      "word": "Completion",
-      "start": 7.900000095367432,
-      "end": 8.15999984741211
+      "word": "code",
+      "start": 9.779999732971191,
+      "end": 10.020000457763672
     },
     {
-      "word": "indicators",
-      "start": 8.15999984741211,
-      "end": 8.739999771118164
+      "word": "challenges",
+      "start": 10.020000457763672,
+      "end": 10.4399995803833
     },
     {
-      "word": "appear",
-      "start": 8.739999771118164,
-      "end": 9.420000076293945
+      "word": "Every",
+      "start": 11.180000305175781,
+      "end": 11.600000381469727
     },
     {
-      "word": "Toast",
-      "start": 10.460000038146973,
-      "end": 10.600000381469727
+      "word": "interaction",
+      "start": 11.600000381469727,
+      "end": 12.140000343322754
     },
     {
-      "word": "notifications",
-      "start": 10.600000381469727,
-      "end": 11.680000305175781
+      "word": "is",
+      "start": 12.140000343322754,
+      "end": 12.720000267028809
     },
     {
-      "word": "celebrate",
-      "start": 11.680000305175781,
-      "end": 12.65999984741211
-    },
-    {
-      "word": "achievements",
-      "start": 12.65999984741211,
-      "end": 13.239999771118164
+      "word": "captured",
+      "start": 12.720000267028809,
+      "end": 13.0600004196167
     }
   ]
 }

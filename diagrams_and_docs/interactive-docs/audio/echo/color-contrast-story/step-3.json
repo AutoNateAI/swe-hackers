@@ -3,98 +3,128 @@
   "stepId": "step-3",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Accent Colors. Accent colors provide visual interest. Purple primary, teal secondary, green success—each tested for adequate contrast.",
-  "duration": 10.920000076293945,
+  "text": "Primary Text. text-primary is light gray at hash e8e8f0. Against bg-primary, it achieves 15.2:1 contrast—well above WCAG requirements!",
+  "duration": 15.260000228881836,
   "words": [
     {
-      "word": "Accent",
+      "word": "Primary",
       "start": 0,
-      "end": 0.6600000262260437
+      "end": 0.6800000071525574
     },
     {
-      "word": "Colors",
-      "start": 0.6600000262260437,
-      "end": 1.1399999856948853
+      "word": "Text",
+      "start": 0.6800000071525574,
+      "end": 1.2799999713897705
     },
     {
-      "word": "Accent",
-      "start": 1.1399999856948853,
-      "end": 2.180000066757202
-    },
-    {
-      "word": "colors",
-      "start": 2.180000066757202,
-      "end": 2.4600000381469727
-    },
-    {
-      "word": "provide",
-      "start": 2.4600000381469727,
-      "end": 2.940000057220459
-    },
-    {
-      "word": "visual",
-      "start": 2.940000057220459,
-      "end": 3.5
-    },
-    {
-      "word": "interest",
-      "start": 3.5,
-      "end": 4.059999942779541
-    },
-    {
-      "word": "Purple",
-      "start": 4.760000228881836,
-      "end": 4.860000133514404
+      "word": "Text",
+      "start": 1.2799999713897705,
+      "end": 2.119999885559082
     },
     {
       "word": "Primary",
-      "start": 4.860000133514404,
-      "end": 5.460000038146973
+      "start": 2.119999885559082,
+      "end": 2.5399999618530273
     },
     {
-      "word": "Teal",
-      "start": 5.460000038146973,
-      "end": 6.099999904632568
+      "word": "is",
+      "start": 2.5399999618530273,
+      "end": 2.9800000190734863
     },
     {
-      "word": "Secondary",
-      "start": 6.099999904632568,
-      "end": 6.760000228881836
+      "word": "light",
+      "start": 2.9800000190734863,
+      "end": 3.3399999141693115
     },
     {
-      "word": "Green",
-      "start": 6.760000228881836,
-      "end": 7.360000133514404
+      "word": "gray",
+      "start": 3.3399999141693115,
+      "end": 3.559999942779541
     },
     {
-      "word": "Success",
-      "start": 7.360000133514404,
-      "end": 7.940000057220459
+      "word": "at",
+      "start": 3.559999942779541,
+      "end": 3.9600000381469727
     },
     {
-      "word": "Each",
-      "start": 7.940000057220459,
-      "end": 8.760000228881836
+      "word": "hash",
+      "start": 4.619999885559082,
+      "end": 5.579999923706055
     },
     {
-      "word": "tested",
-      "start": 8.760000228881836,
-      "end": 9.079999923706055
+      "word": "E8E8FO",
+      "start": 5.579999923706055,
+      "end": 6.539999961853027
     },
     {
-      "word": "for",
+      "word": "Against",
+      "start": 7.400000095367432,
+      "end": 7.5
+    },
+    {
+      "word": "BG",
+      "start": 7.5,
+      "end": 8
+    },
+    {
+      "word": "Primary",
+      "start": 8,
+      "end": 8.539999961853027
+    },
+    {
+      "word": "it",
       "start": 9.079999923706055,
-      "end": 9.5600004196167
+      "end": 9.15999984741211
     },
     {
-      "word": "adequate",
-      "start": 9.5600004196167,
-      "end": 10.020000457763672
+      "word": "achieves",
+      "start": 9.15999984741211,
+      "end": 9.460000038146973
+    },
+    {
+      "word": "15",
+      "start": 9.460000038146973,
+      "end": 10.119999885559082
+    },
+    {
+      "word": "2",
+      "start": 10.119999885559082,
+      "end": 10.720000267028809
+    },
+    {
+      "word": "to",
+      "start": 10.720000267028809,
+      "end": 10.979999542236328
+    },
+    {
+      "word": "1",
+      "start": 10.979999542236328,
+      "end": 11.260000228881836
     },
     {
       "word": "contrast",
-      "start": 10.020000457763672,
-      "end": 10.680000305175781
+      "start": 11.260000228881836,
+      "end": 11.859999656677246
+    },
+    {
+      "word": "well",
+      "start": 12.399999618530273,
+      "end": 12.539999961853027
+    },
+    {
+      "word": "above",
+      "start": 12.539999961853027,
+      "end": 12.859999656677246
+    },
+    {
+      "word": "WCAG",
+      "start": 12.859999656677246,
+      "end": 13.819999694824219
+    },
+    {
+      "word": "requirements",
+      "start": 13.819999694824219,
+      "end": 14.5
     }
   ]
 }

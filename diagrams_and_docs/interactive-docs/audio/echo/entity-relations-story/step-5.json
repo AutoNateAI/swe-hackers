@@ -3,108 +3,98 @@
   "stepId": "step-5",
   "voice": "echo",
   "voiceLabel": "Storyteller (Male UK)",
-  "text": "Activity Attempts. Users make attempts on activities. A single quiz might have multiple attempts as users retry for better scores.",
-  "duration": 11.300000190734863,
+  "text": "Admin User. Admin users manage partners and create interactions. Every action is tracked with createdBy for accountability.",
+  "duration": 8.65999984741211,
   "words": [
     {
-      "word": "Activity",
+      "word": "Admin",
       "start": 0,
-      "end": 0.800000011920929
+      "end": 0.5
     },
     {
-      "word": "Attempts",
-      "start": 0.800000011920929,
-      "end": 1.6399999856948853
+      "word": "User",
+      "start": 0.5,
+      "end": 0.8999999761581421
     },
     {
-      "word": "Users",
-      "start": 1.6399999856948853,
-      "end": 2.5199999809265137
-    },
-    {
-      "word": "make",
-      "start": 2.5199999809265137,
-      "end": 2.9000000953674316
-    },
-    {
-      "word": "attempts",
-      "start": 2.9000000953674316,
-      "end": 3.359999895095825
-    },
-    {
-      "word": "on",
-      "start": 3.359999895095825,
-      "end": 3.9200000762939453
-    },
-    {
-      "word": "activities",
-      "start": 3.9200000762939453,
-      "end": 4.420000076293945
-    },
-    {
-      "word": "A",
-      "start": 4.940000057220459,
-      "end": 5.159999847412109
-    },
-    {
-      "word": "single",
-      "start": 5.159999847412109,
-      "end": 5.579999923706055
-    },
-    {
-      "word": "quiz",
-      "start": 5.579999923706055,
-      "end": 6.099999904632568
-    },
-    {
-      "word": "might",
-      "start": 6.099999904632568,
-      "end": 6.420000076293945
-    },
-    {
-      "word": "have",
-      "start": 6.420000076293945,
-      "end": 6.71999979019165
-    },
-    {
-      "word": "multiple",
-      "start": 6.71999979019165,
-      "end": 7.159999847412109
-    },
-    {
-      "word": "attempts",
-      "start": 7.159999847412109,
-      "end": 7.679999828338623
-    },
-    {
-      "word": "as",
-      "start": 8.119999885559082,
-      "end": 8.420000076293945
+      "word": "Admin",
+      "start": 0.9800000190734863,
+      "end": 1.7799999713897705
     },
     {
       "word": "users",
-      "start": 8.420000076293945,
-      "end": 8.84000015258789
+      "start": 1.7799999713897705,
+      "end": 2.0999999046325684
     },
     {
-      "word": "retry",
-      "start": 8.84000015258789,
-      "end": 9.739999771118164
+      "word": "manage",
+      "start": 2.0999999046325684,
+      "end": 2.5199999809265137
+    },
+    {
+      "word": "partners",
+      "start": 2.5199999809265137,
+      "end": 3.0199999809265137
+    },
+    {
+      "word": "and",
+      "start": 3.0199999809265137,
+      "end": 3.4000000953674316
+    },
+    {
+      "word": "create",
+      "start": 3.4000000953674316,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "interactions",
+      "start": 3.819999933242798,
+      "end": 4.559999942779541
+    },
+    {
+      "word": "Every",
+      "start": 5.239999771118164,
+      "end": 5.420000076293945
+    },
+    {
+      "word": "action",
+      "start": 5.420000076293945,
+      "end": 5.800000190734863
+    },
+    {
+      "word": "is",
+      "start": 5.800000190734863,
+      "end": 6.139999866485596
+    },
+    {
+      "word": "tracked",
+      "start": 6.139999866485596,
+      "end": 6.380000114440918
+    },
+    {
+      "word": "with",
+      "start": 6.380000114440918,
+      "end": 6.659999847412109
+    },
+    {
+      "word": "Created",
+      "start": 6.659999847412109,
+      "end": 7.139999866485596
+    },
+    {
+      "word": "By",
+      "start": 7.139999866485596,
+      "end": 7.28000020980835
     },
     {
       "word": "for",
-      "start": 9.739999771118164,
-      "end": 10.199999809265137
+      "start": 7.28000020980835,
+      "end": 7.679999828338623
     },
     {
-      "word": "better",
-      "start": 10.199999809265137,
-      "end": 10.479999542236328
-    },
-    {
-      "word": "scores",
-      "start": 10.479999542236328,
-      "end": 10.979999542236328
+      "word": "accountability",
+      "start": 7.679999828338623,
+      "end": 8.260000228881836
     }
   ]
 }
