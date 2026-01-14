@@ -1323,6 +1323,9 @@ span.word.current {
   color: var(--text-primary);
   margin-bottom: 1.25rem;
   line-height: 1.5;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quiz-options {
