@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test: Interactive Story - Chapter 1</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Interactive Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  
+  <style>
+    /* Test page overrides */
+    .test-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .test-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--accent-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .test-header p {
+      color: var(--text-muted);
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .section {
+      margin-bottom: 3rem;
+    }
+    
+    .section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .section > p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="test-header">
+    <h1>🧪 Phase 1 Test: Interactive Story</h1>
+    <p>Testing the interactive storytelling infrastructure for Chapter 1: The Stone Remembers</p>
+  </div>
+
+  <div class="container">
+    <!-- Variables Story Section -->
+    <section class="section" id="variables-section">
+      <h2>📦 Variables: Your Computer's Memory</h2>
+      <p>Watch this animated story to understand how variables give your computer memory. Click Play to begin, or click any progress dot to jump to a specific step.</p>
+      
+      <div class="diagram-container" id="variables-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🧠 From Brain to Code: The Memory Metaphor</span>
+        </div>
+        <div id="variables-story" class="diagram-canvas storytelling"></div>
+        
+        <!-- Live Caption Area -->
+        <div class="diagram-story" id="variables-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playback Controls -->
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="variables-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <!-- Settings Bar -->
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="variables-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle muted" id="variables-audio-toggle" title="Audio not available">
+              <span class="audio-icon">🔇</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="variables-voice-select" class="voice-select" disabled>
+              <option value="">No audio</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="quiz-card" id="variables-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      console.log('=== Phase 1 Test: Initializing ===');
+      
+      // Initialize page animations if available
+      if (typeof DiagramUtils !== 'undefined') {
+        DiagramUtils.initPageAnimations();
+        console.log('✓ DiagramUtils loaded');
+      }
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+      
+      const diagramElements = {
+        'variables': [
+          // Nodes - The core concepts
+          { 
+            data: { 
+              id: 'brain', 
+              label: '🧠 Your Brain', 
+              type: 'external',
+              description: 'Your brain stores memories - names, facts, experiences'
+            } 
+          },
+          { 
+            data: { 
+              id: 'computer', 
+              label: '💻 Computer', 
+              type: 'service',
+              description: 'Computers need memory too - they use variables'
+            } 
+          },
+          { 
+            data: { 
+              id: 'variable', 
+              label: '📦 Variable', 
+              type: 'page',
+              description: 'A labeled box that stores data'
+            } 
+          },
+          
+          // Example variables
+          { 
+            data: { 
+              id: 'player-name', 
+              label: 'player_name\n"Alex"', 
+              type: 'data',
+              description: 'String variable storing text'
+            } 
+          },
+          { 
+            data: { 
+              id: 'score', 
+              label: 'score\n0', 
+              type: 'data',
+              description: 'Integer variable storing a number'
+            } 
+          },
+          { 
+            data: { 
+              id: 'is-playing', 
+              label: 'is_playing\nTrue', 
+              type: 'data',
+              description: 'Boolean variable storing True/False'
+            } 
+          },
+          
+          // Usage
+          { 
+            data: { 
+              id: 'use-variable', 
+              label: '✨ Use in Code', 
+              type: 'auth',
+              description: 'Reference the variable name to get its value'
+            } 
+          },
+
+          // Edges
+          { data: { source: 'brain', target: 'computer' } },
+          { data: { source: 'computer', target: 'variable' } },
+          { data: { source: 'variable', target: 'player-name' } },
+          { data: { source: 'variable', target: 'score' } },
+          { data: { source: 'variable', target: 'is-playing' } },
+          { data: { source: 'player-name', target: 'use-variable' } },
+          { data: { source: 'score', target: 'use-variable' } },
+          { data: { source: 'is-playing', target: 'use-variable' } }
+        ]
+      };
+
+      // ============================================
+      // STORY STEPS
+      // ============================================
+      
+      const storySteps = [
+        {
+          nodeId: 'brain',
+          icon: '🧠',
+          title: "Your Brain's Superpower",
+          narration: "Imagine your brain had no memory. Every second, you'd forget everything—your name, where you are, what you were doing. You couldn't think at all!",
+          connectsTo: null
+        },
+        {
+          nodeId: 'computer',
+          edges: [{ from: 'brain', to: 'computer' }],
+          icon: '💻',
+          title: 'Computers Face the Same Challenge',
+          narration: "Computers are exactly the same. Before they can do anything useful, they need a way to remember things. That's where variables come in.",
+          connectsTo: 'Brain'
+        },
+        {
+          nodeId: 'variable',
+          edges: [{ from: 'computer', to: 'variable' }],
+          icon: '📦',
+          title: 'Variables: Labeled Boxes',
+          narration: "A variable is like a labeled box. You put something in the box, give it a name, and later you can ask 'Hey, what's in the box called score?' and the computer remembers.",
+          connectsTo: 'Computer'
+        },
+        {
+          nodeId: 'player-name',
+          edges: [{ from: 'variable', to: 'player-name' }],
+          icon: '👤',
+          title: 'Example: player_name',
+          narration: "Let's create a variable called player underscore name and store the text 'Alex' inside. Now anytime we need the player's name, we just look in that box!",
+          connectsTo: 'Variable'
+        },
+        {
+          nodeId: 'score',
+          edges: [{ from: 'variable', to: 'score' }],
+          icon: '🎯',
+          title: 'Example: score',
+          narration: "We can also create a variable called score and set it to zero. As the player earns points, we update what's in the box. The computer always remembers the latest value.",
+          connectsTo: 'Variable'
+        },
+        {
+          nodeId: 'is-playing',
+          edges: [{ from: 'variable', to: 'is-playing' }],
+          icon: '🎮',
+          title: 'Example: is_playing',
+          narration: "And here's is underscore playing set to True. This tells the computer whether the game is currently running. Variables can hold text, numbers, or true-false values!",
+          connectsTo: 'Variable'
+        },
+        {
+          nodeId: 'use-variable',
+          edges: [
+            { from: 'player-name', to: 'use-variable' },
+            { from: 'score', to: 'use-variable' },
+            { from: 'is-playing', to: 'use-variable' }
+          ],
+          icon: '✨',
+          title: 'Using Variables',
+          narration: "When you use a variable in your code, Python looks in the box and gets whatever value is stored there. You've just learned the first superpower of programming: giving your computer memory!",
+          connectsTo: 'All Variables'
+        }
+      ];
+
+      // ============================================
+      // QUIZ QUESTIONS
+      // ============================================
+      
+      const quizQuestions = [
+        {
+          question: 'What is a variable in programming?',
+          options: [
+            'A type of computer',
+            'A labeled container that stores data',
+            'A programming language',
+            'A button you click'
+          ],
+          correct: 1,
+          explanation: "A variable is like a labeled box where you store information. You give it a name (the label) and put a value inside."
+        },
+        {
+          question: 'In Python, what does player_name = "Alex" do?',
+          options: [
+            "Deletes the player's name",
+            "Creates a box labeled 'player_name' and stores 'Alex' inside",
+            'Prints Alex to the screen',
+            'Asks the user for their name'
+          ],
+          correct: 1,
+          explanation: "The = sign in Python puts the value on the right into the variable on the left. So player_name = \"Alex\" stores the text 'Alex' in a variable called player_name."
+        },
+        {
+          question: 'Which of these is NOT a valid thing to store in a variable?',
+          options: [
+            'Text like "Hello"',
+            'Numbers like 42',
+            'True or False',
+            'All of these CAN be stored in variables'
+          ],
+          correct: 3,
+          explanation: "Variables can store many types of data including text (strings), numbers (integers and floats), and boolean values (True/False). That's what makes them so powerful!"
+        }
+      ];
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAM
+      // ============================================
+      
+      console.log('Creating StorytellingDiagram...');
+      
+      // Create audio engine (will gracefully fail without audio files)
+      const audioEngine = new AudioNarrationEngine('audio');
+      
+      // Create the diagram
+      const variablesStory = new StorytellingDiagram(
+        'variables-story',
+        diagramElements['variables'],
+        storySteps,
+        { 
+          audioEngine: audioEngine, 
+          storyId: 'variables-story',
+          audioEnabled: false  // No audio files yet
+        }
+      );
+      
+      console.log('✓ StorytellingDiagram created');
+
+      // ============================================
+      // INITIALIZE QUIZ
+      // ============================================
+      
+      console.log('Creating Quiz...');
+      
+      const variablesQuiz = new Quiz('variables-quiz', quizQuestions);
+      
+      console.log('✓ Quiz created');
+      console.log('=== Phase 1 Test: Ready! ===');
+    });
+  </script>
+</body>
+</html>

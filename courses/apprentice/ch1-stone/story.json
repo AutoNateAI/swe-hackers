@@ -1,0 +1,117 @@
+{
+  "pageId": "ch1-stone",
+  "courseId": "apprentice",
+  "chapterMeta": {
+    "title": "The Stone Remembers",
+    "icon": "🪨",
+    "themeColor": "stone"
+  },
+  "stories": [
+    {
+      "id": "variables-story",
+      "diagramId": "variables",
+      "title": "Variables: Your Computer's Memory",
+      "steps": [
+        {
+          "nodeId": "brain",
+          "icon": "🧠",
+          "title": "Your Brain's Superpower",
+          "narration": "Imagine your brain had no memory. Every second, you'd forget everything—your name, where you are, what you were doing. You couldn't think at all!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "computer",
+          "edges": [{ "from": "brain", "to": "computer" }],
+          "icon": "💻",
+          "title": "Computers Face the Same Challenge",
+          "narration": "Computers are exactly the same. Before they can do anything useful, they need a way to remember things. That's where variables come in.",
+          "connectsTo": "Brain"
+        },
+        {
+          "nodeId": "variable",
+          "edges": [{ "from": "computer", "to": "variable" }],
+          "icon": "📦",
+          "title": "Variables: Labeled Boxes",
+          "narration": "A variable is like a labeled box. You put something in the box, give it a name, and later you can ask 'Hey, what's in the box called score?' and the computer remembers.",
+          "connectsTo": "Computer"
+        },
+        {
+          "nodeId": "player-name",
+          "edges": [{ "from": "variable", "to": "player-name" }],
+          "icon": "👤",
+          "title": "Example: player_name",
+          "narration": "Let's create a variable called player underscore name and store the text 'Alex' inside. Now anytime we need the player's name, we just look in that box!",
+          "connectsTo": "Variable"
+        },
+        {
+          "nodeId": "score",
+          "edges": [{ "from": "variable", "to": "score" }],
+          "icon": "🎯",
+          "title": "Example: score",
+          "narration": "We can also create a variable called score and set it to zero. As the player earns points, we update what's in the box. The computer always remembers the latest value.",
+          "connectsTo": "Variable"
+        },
+        {
+          "nodeId": "is-playing",
+          "edges": [{ "from": "variable", "to": "is-playing" }],
+          "icon": "🎮",
+          "title": "Example: is_playing",
+          "narration": "And here's is underscore playing set to True. This tells the computer whether the game is currently running. Variables can hold text, numbers, or true-false values!",
+          "connectsTo": "Variable"
+        },
+        {
+          "nodeId": "use-variable",
+          "edges": [
+            { "from": "player-name", "to": "use-variable" },
+            { "from": "score", "to": "use-variable" },
+            { "from": "is-playing", "to": "use-variable" }
+          ],
+          "icon": "✨",
+          "title": "Using Variables",
+          "narration": "When you use a variable in your code, Python looks in the box and gets whatever value is stored there. You've just learned the first superpower of programming: giving your computer memory!",
+          "connectsTo": "All Variables"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "variables-story",
+      "questions": [
+        {
+          "question": "What is a variable in programming?",
+          "options": [
+            "A type of computer",
+            "A labeled container that stores data",
+            "A programming language",
+            "A button you click"
+          ],
+          "correct": 1,
+          "explanation": "A variable is like a labeled box where you store information. You give it a name (the label) and put a value inside."
+        },
+        {
+          "question": "In Python, what does player_name = \"Alex\" do?",
+          "options": [
+            "Deletes the player's name",
+            "Creates a box labeled 'player_name' and stores 'Alex' inside",
+            "Prints Alex to the screen",
+            "Asks the user for their name"
+          ],
+          "correct": 1,
+          "explanation": "The = sign in Python puts the value on the right into the variable on the left. So player_name = \"Alex\" stores the text 'Alex' in a variable called player_name."
+        },
+        {
+          "question": "Which of these is NOT a valid thing to store in a variable?",
+          "options": [
+            "Text like \"Hello\"",
+            "Numbers like 42",
+            "True or False",
+            "All of these CAN be stored in variables"
+          ],
+          "correct": 3,
+          "explanation": "Variables can store many types of data including text (strings), numbers (integers and floats), and boolean values (True/False). That's what makes them so powerful!"
+        }
+      ]
+    }
+  ]
+}
