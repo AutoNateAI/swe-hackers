@@ -1,0 +1,100 @@
+{
+  "storyId": "auth-architecture-story",
+  "stepId": "step-5",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "User Document. After authentication, we sync with Firestore. The user document stores profile info, roles, and organization memberships.",
+  "duration": 13.239999771118164,
+  "words": [
+    {
+      "word": "User",
+      "start": 0,
+      "end": 0.6399999856948853
+    },
+    {
+      "word": "document",
+      "start": 0.6399999856948853,
+      "end": 1.1200000047683716
+    },
+    {
+      "word": "After",
+      "start": 1.8799999952316284,
+      "end": 2.3399999141693115
+    },
+    {
+      "word": "authentication",
+      "start": 2.3399999141693115,
+      "end": 3.2200000286102295
+    },
+    {
+      "word": "we",
+      "start": 3.2200000286102295,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "sync",
+      "start": 4.059999942779541,
+      "end": 4.340000152587891
+    },
+    {
+      "word": "with",
+      "start": 4.340000152587891,
+      "end": 4.860000133514404
+    },
+    {
+      "word": "Firestore",
+      "start": 4.860000133514404,
+      "end": 5.78000020980835
+    },
+    {
+      "word": "The",
+      "start": 6.159999847412109,
+      "end": 6.340000152587891
+    },
+    {
+      "word": "user",
+      "start": 6.340000152587891,
+      "end": 6.679999828338623
+    },
+    {
+      "word": "document",
+      "start": 6.679999828338623,
+      "end": 7.239999771118164
+    },
+    {
+      "word": "stores",
+      "start": 7.239999771118164,
+      "end": 7.699999809265137
+    },
+    {
+      "word": "profile",
+      "start": 7.699999809265137,
+      "end": 8.520000457763672
+    },
+    {
+      "word": "info",
+      "start": 8.520000457763672,
+      "end": 9.079999923706055
+    },
+    {
+      "word": "roles",
+      "start": 9.84000015258789,
+      "end": 9.84000015258789
+    },
+    {
+      "word": "and",
+      "start": 9.84000015258789,
+      "end": 10.84000015258789
+    },
+    {
+      "word": "organisation",
+      "start": 10.84000015258789,
+      "end": 11.819999694824219
+    },
+    {
+      "word": "memberships",
+      "start": 11.819999694824219,
+      "end": 12.600000381469727
+    }
+  ]
+}

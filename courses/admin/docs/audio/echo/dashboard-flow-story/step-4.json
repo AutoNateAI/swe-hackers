@@ -1,0 +1,115 @@
+{
+  "storyId": "dashboard-flow-story",
+  "stepId": "step-4",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Load User Profile. Auth confirmed! We fetch the user profile—display name, enrolled courses, preferences. This happens in parallel with analytics.",
+  "duration": 10.359999656677246,
+  "words": [
+    {
+      "word": "Load",
+      "start": 0,
+      "end": 0.6000000238418579
+    },
+    {
+      "word": "user",
+      "start": 0.6000000238418579,
+      "end": 0.9200000166893005
+    },
+    {
+      "word": "profile",
+      "start": 0.9200000166893005,
+      "end": 1.3799999952316284
+    },
+    {
+      "word": "Auth",
+      "start": 1.9800000190734863,
+      "end": 2.059999942779541
+    },
+    {
+      "word": "confirmed",
+      "start": 2.059999942779541,
+      "end": 2.5399999618530273
+    },
+    {
+      "word": "We",
+      "start": 3,
+      "end": 3.0999999046325684
+    },
+    {
+      "word": "fetch",
+      "start": 3.0999999046325684,
+      "end": 3.319999933242798
+    },
+    {
+      "word": "the",
+      "start": 3.319999933242798,
+      "end": 3.559999942779541
+    },
+    {
+      "word": "user",
+      "start": 3.559999942779541,
+      "end": 3.880000114440918
+    },
+    {
+      "word": "profile",
+      "start": 3.880000114440918,
+      "end": 4.340000152587891
+    },
+    {
+      "word": "display",
+      "start": 4.800000190734863,
+      "end": 5.079999923706055
+    },
+    {
+      "word": "name",
+      "start": 5.079999923706055,
+      "end": 5.400000095367432
+    },
+    {
+      "word": "enrolled",
+      "start": 5.739999771118164,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "courses",
+      "start": 5.940000057220459,
+      "end": 6.420000076293945
+    },
+    {
+      "word": "preferences",
+      "start": 6.860000133514404,
+      "end": 7.119999885559082
+    },
+    {
+      "word": "This",
+      "start": 7.860000133514404,
+      "end": 8.020000457763672
+    },
+    {
+      "word": "happens",
+      "start": 8.020000457763672,
+      "end": 8.34000015258789
+    },
+    {
+      "word": "in",
+      "start": 8.34000015258789,
+      "end": 8.779999732971191
+    },
+    {
+      "word": "parallel",
+      "start": 8.779999732971191,
+      "end": 8.899999618530273
+    },
+    {
+      "word": "with",
+      "start": 8.899999618530273,
+      "end": 9.34000015258789
+    },
+    {
+      "word": "analytics",
+      "start": 9.34000015258789,
+      "end": 9.699999809265137
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "storyId": "service-deps-story",
+  "stepId": "step-4",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "ProgressTracker. ProgressTracker watches what users scroll past using IntersectionObserver. It saves progress through DataService for the authenticated user.",
+  "duration": 12.039999961853027,
+  "words": [
+    {
+      "word": "Progress",
+      "start": 0,
+      "end": 0.6200000047683716
+    },
+    {
+      "word": "Tracker",
+      "start": 0.6200000047683716,
+      "end": 0.9599999785423279
+    },
+    {
+      "word": "Progress",
+      "start": 2.4800000190734863,
+      "end": 2.4800000190734863
+    },
+    {
+      "word": "Tracker",
+      "start": 2.4800000190734863,
+      "end": 2.7799999713897705
+    },
+    {
+      "word": "watches",
+      "start": 2.7799999713897705,
+      "end": 3.319999933242798
+    },
+    {
+      "word": "what",
+      "start": 3.319999933242798,
+      "end": 3.6600000858306885
+    },
+    {
+      "word": "users",
+      "start": 3.6600000858306885,
+      "end": 4.019999980926514
+    },
+    {
+      "word": "scroll",
+      "start": 4.019999980926514,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "past",
+      "start": 4.460000038146973,
+      "end": 4.960000038146973
+    },
+    {
+      "word": "using",
+      "start": 4.960000038146973,
+      "end": 5.360000133514404
+    },
+    {
+      "word": "Intersection",
+      "start": 5.360000133514404,
+      "end": 6.139999866485596
+    },
+    {
+      "word": "Observer",
+      "start": 6.139999866485596,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "It",
+      "start": 7.440000057220459,
+      "end": 7.559999942779541
+    },
+    {
+      "word": "saves",
+      "start": 7.559999942779541,
+      "end": 7.920000076293945
+    },
+    {
+      "word": "progress",
+      "start": 7.920000076293945,
+      "end": 8.5600004196167
+    },
+    {
+      "word": "through",
+      "start": 8.5600004196167,
+      "end": 8.9399995803833
+    },
+    {
+      "word": "data",
+      "start": 8.9399995803833,
+      "end": 9.4399995803833
+    },
+    {
+      "word": "service",
+      "start": 9.4399995803833,
+      "end": 9.859999656677246
+    },
+    {
+      "word": "for",
+      "start": 10.029999732971191,
+      "end": 10.460000038146973
+    },
+    {
+      "word": "the",
+      "start": 10.460000038146973,
+      "end": 10.779999732971191
+    },
+    {
+      "word": "authenticated",
+      "start": 10.779999732971191,
+      "end": 11.4399995803833
+    },
+    {
+      "word": "user",
+      "start": 11.4399995803833,
+      "end": 11.859999656677246
+    }
+  ]
+}

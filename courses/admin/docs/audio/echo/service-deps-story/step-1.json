@@ -1,0 +1,145 @@
+{
+  "storyId": "service-deps-story",
+  "stepId": "step-1",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "AuthService Layer. AuthService wraps Firebase Auth with a clean API. It manages user sessions, login flows, and broadcasts auth state changes to the entire app.",
+  "duration": 12.210000038146973,
+  "words": [
+    {
+      "word": "Auth",
+      "start": 0,
+      "end": 0.4000000059604645
+    },
+    {
+      "word": "Service",
+      "start": 0.4000000059604645,
+      "end": 0.7400000095367432
+    },
+    {
+      "word": "Layer",
+      "start": 0.7400000095367432,
+      "end": 1.1799999475479126
+    },
+    {
+      "word": "Auth",
+      "start": 1.2200000286102295,
+      "end": 1.940000057220459
+    },
+    {
+      "word": "Service",
+      "start": 1.940000057220459,
+      "end": 2.2200000286102295
+    },
+    {
+      "word": "wraps",
+      "start": 2.2200000286102295,
+      "end": 2.7200000286102295
+    },
+    {
+      "word": "Firebase",
+      "start": 2.7200000286102295,
+      "end": 3.319999933242798
+    },
+    {
+      "word": "Auth",
+      "start": 3.319999933242798,
+      "end": 3.640000104904175
+    },
+    {
+      "word": "with",
+      "start": 3.640000104904175,
+      "end": 3.8399999141693115
+    },
+    {
+      "word": "a",
+      "start": 3.8399999141693115,
+      "end": 4.099999904632568
+    },
+    {
+      "word": "clean",
+      "start": 4.099999904632568,
+      "end": 4.440000057220459
+    },
+    {
+      "word": "API",
+      "start": 4.440000057220459,
+      "end": 5
+    },
+    {
+      "word": "It",
+      "start": 5.800000190734863,
+      "end": 5.800000190734863
+    },
+    {
+      "word": "manages",
+      "start": 5.800000190734863,
+      "end": 6.079999923706055
+    },
+    {
+      "word": "user",
+      "start": 6.079999923706055,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "sessions",
+      "start": 6.579999923706055,
+      "end": 6.960000038146973
+    },
+    {
+      "word": "logging",
+      "start": 7.460000038146973,
+      "end": 7.579999923706055
+    },
+    {
+      "word": "flows",
+      "start": 7.579999923706055,
+      "end": 8.039999961853027
+    },
+    {
+      "word": "and",
+      "start": 8.479999542236328,
+      "end": 9.199999809265137
+    },
+    {
+      "word": "broadcasts",
+      "start": 9.199999809265137,
+      "end": 9.920000076293945
+    },
+    {
+      "word": "all",
+      "start": 9.920000076293945,
+      "end": 10.15999984741211
+    },
+    {
+      "word": "state",
+      "start": 10.15999984741211,
+      "end": 10.5
+    },
+    {
+      "word": "changes",
+      "start": 10.5,
+      "end": 10.819999694824219
+    },
+    {
+      "word": "to",
+      "start": 10.819999694824219,
+      "end": 11.0600004196167
+    },
+    {
+      "word": "the",
+      "start": 11.0600004196167,
+      "end": 11.260000228881836
+    },
+    {
+      "word": "entire",
+      "start": 11.260000228881836,
+      "end": 11.699999809265137
+    },
+    {
+      "word": "app",
+      "start": 11.699999809265137,
+      "end": 12.020000457763672
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "storyId": "auth-service-story",
+  "stepId": "step-5",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "currentUser Property. The currentUser property caches the authenticated user. Any component can check login status instantly without waiting for Firebase.",
+  "duration": 10.84000015258789,
+  "words": [
+    {
+      "word": "Current",
+      "start": 0,
+      "end": 0.4399999976158142
+    },
+    {
+      "word": "User",
+      "start": 0.4399999976158142,
+      "end": 0.8399999737739563
+    },
+    {
+      "word": "Property",
+      "start": 0.8399999737739563,
+      "end": 1.340000033378601
+    },
+    {
+      "word": "The",
+      "start": 1.9199999570846558,
+      "end": 2.319999933242798
+    },
+    {
+      "word": "current",
+      "start": 2.319999933242798,
+      "end": 2.5999999046325684
+    },
+    {
+      "word": "user",
+      "start": 2.5999999046325684,
+      "end": 2.9600000381469727
+    },
+    {
+      "word": "property",
+      "start": 2.9600000381469727,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "caches",
+      "start": 3.380000114440918,
+      "end": 3.740000009536743
+    },
+    {
+      "word": "the",
+      "start": 3.740000009536743,
+      "end": 4.139999866485596
+    },
+    {
+      "word": "authenticated",
+      "start": 4.139999866485596,
+      "end": 4.739999771118164
+    },
+    {
+      "word": "user",
+      "start": 4.739999771118164,
+      "end": 5.119999885559082
+    },
+    {
+      "word": "Any",
+      "start": 5.960000038146973,
+      "end": 6.139999866485596
+    },
+    {
+      "word": "component",
+      "start": 6.139999866485596,
+      "end": 6.599999904632568
+    },
+    {
+      "word": "can",
+      "start": 6.599999904632568,
+      "end": 6.940000057220459
+    },
+    {
+      "word": "check",
+      "start": 6.940000057220459,
+      "end": 7.21999979019165
+    },
+    {
+      "word": "login",
+      "start": 7.21999979019165,
+      "end": 7.679999828338623
+    },
+    {
+      "word": "status",
+      "start": 7.679999828338623,
+      "end": 8.140000343322754
+    },
+    {
+      "word": "instantly",
+      "start": 8.140000343322754,
+      "end": 8.84000015258789
+    },
+    {
+      "word": "without",
+      "start": 8.84000015258789,
+      "end": 9.399999618530273
+    },
+    {
+      "word": "waiting",
+      "start": 9.399999618530273,
+      "end": 9.699999809265137
+    },
+    {
+      "word": "for",
+      "start": 9.699999809265137,
+      "end": 10.020000457763672
+    },
+    {
+      "word": "Firebase",
+      "start": 10.020000457763672,
+      "end": 10.34000015258789
+    }
+  ]
+}

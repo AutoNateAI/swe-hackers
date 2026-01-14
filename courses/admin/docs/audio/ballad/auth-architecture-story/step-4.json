@@ -1,0 +1,115 @@
+{
+  "storyId": "auth-architecture-story",
+  "stepId": "step-4",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Auth State. Auth State manages the user's session. It tracks whether someone is logged in, handles token refresh, and persists across browser tabs.",
+  "duration": 12.859999656677246,
+  "words": [
+    {
+      "word": "AuthState",
+      "start": 0,
+      "end": 0.8199999928474426
+    },
+    {
+      "word": "AuthState",
+      "start": 1.340000033378601,
+      "end": 2.140000104904175
+    },
+    {
+      "word": "manages",
+      "start": 2.140000104904175,
+      "end": 2.700000047683716
+    },
+    {
+      "word": "the",
+      "start": 2.700000047683716,
+      "end": 3
+    },
+    {
+      "word": "user's",
+      "start": 3,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "session",
+      "start": 3.759999990463257,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "It",
+      "start": 4.619999885559082,
+      "end": 4.619999885559082
+    },
+    {
+      "word": "tracks",
+      "start": 4.619999885559082,
+      "end": 4.920000076293945
+    },
+    {
+      "word": "whether",
+      "start": 4.920000076293945,
+      "end": 5.260000228881836
+    },
+    {
+      "word": "someone",
+      "start": 5.260000228881836,
+      "end": 5.599999904632568
+    },
+    {
+      "word": "is",
+      "start": 5.599999904632568,
+      "end": 6
+    },
+    {
+      "word": "logged",
+      "start": 6,
+      "end": 6.159999847412109
+    },
+    {
+      "word": "in",
+      "start": 6.159999847412109,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "handles",
+      "start": 7.460000038146973,
+      "end": 7.460000038146973
+    },
+    {
+      "word": "token",
+      "start": 7.460000038146973,
+      "end": 8
+    },
+    {
+      "word": "refresh",
+      "start": 8,
+      "end": 8.520000457763672
+    },
+    {
+      "word": "and",
+      "start": 8.84000015258789,
+      "end": 9.420000076293945
+    },
+    {
+      "word": "persists",
+      "start": 9.420000076293945,
+      "end": 9.84000015258789
+    },
+    {
+      "word": "across",
+      "start": 9.84000015258789,
+      "end": 10.720000267028809
+    },
+    {
+      "word": "browser",
+      "start": 10.720000267028809,
+      "end": 11.180000305175781
+    },
+    {
+      "word": "tabs",
+      "start": 11.180000305175781,
+      "end": 11.539999961853027
+    }
+  ]
+}

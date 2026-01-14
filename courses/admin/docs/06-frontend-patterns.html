@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Patterns - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="06-frontend-patterns.html" class="active">Frontend</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Frontend Patterns</span>
+      </div>
+      <h1>🎨 Frontend Patterns</h1>
+      <p>CSS architecture, UI components, and animation patterns</p>
+    </div>
+
+    <!-- CSS Architecture -->
+    <section class="section" id="css-mapping-section">
+      <h2>CSS File Organization</h2>
+      <p>Each page type has its own CSS file in <code>/shared/css/</code>. Files are loaded based on page type to minimize unused CSS.</p>
+      
+      <div class="diagram-container" id="css-mapping-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎨 CSS File to Page Mapping</span>
+        </div>
+        <div id="css-mapping-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="css-mapping-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click a CSS file to see which pages use it.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="css-mapping-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="css-mapping-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="css-mapping-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="css-mapping-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design System -->
+    <section class="section" id="design-tokens-section">
+      <h2>Design System Variables</h2>
+      <p>All colors, spacing, and typography are defined as CSS custom properties for consistency.</p>
+      
+      <div class="diagram-container" id="design-tokens-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎨 Design Token Categories</span>
+        </div>
+        <div id="design-tokens-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="design-tokens-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click a category to see its tokens.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="design-tokens-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="design-tokens-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="design-tokens-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="design-tokens-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="design-tokens-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Animation System -->
+    <section class="section" id="animation-flow-section">
+      <h2>Animation System</h2>
+      <p>Animations are powered by Anime.js for complex sequences and CSS transitions for simple interactions.</p>
+      
+      <div class="diagram-container" id="animation-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎬 Animation Trigger Flow</span>
+        </div>
+        <div id="animation-flow-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="animation-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click a trigger to see its animation chain.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="animation-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="animation-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="animation-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="animation-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="animation-flow-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Component Architecture -->
+    <section class="section" id="component-hierarchy-section">
+      <h2>Component Structure</h2>
+      <p>UI components follow a consistent structure with modular CSS classes.</p>
+      
+      <div class="diagram-container" id="component-hierarchy-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🧩 Component Hierarchy</span>
+        </div>
+        <div id="component-hierarchy-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="component-hierarchy-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Hover to see the CSS class names.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="component-hierarchy-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="component-hierarchy-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="component-hierarchy-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="component-hierarchy-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layout Patterns -->
+    <section class="section" id="layout-patterns-section">
+      <h2>Layout Patterns</h2>
+      <p>Common layout patterns used across different page types.</p>
+      
+      <div class="diagram-container" id="layout-patterns-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📐 Page Layout Components</span>
+        </div>
+        <div id="layout-patterns-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="layout-patterns-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click a layout to see its components.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="layout-patterns-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="layout-patterns-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="layout-patterns-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="layout-patterns-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Structure -->
+    <section class="section" id="quiz-structure-section">
+      <h2>Interactive Components</h2>
+      <p>Quiz, drag-drop, and other interactive components follow consistent patterns.</p>
+      
+      <div class="diagram-container" id="quiz-structure-container">
+        <div class="diagram-header">
+          <span class="diagram-title">❓ Quiz Component Structure</span>
+        </div>
+        <div id="quiz-structure-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="quiz-structure-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Learn the quiz component structure.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="quiz-structure-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="quiz-structure-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="quiz-structure-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="quiz-structure-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsive Patterns -->
+    <section class="section" id="breakpoints-section">
+      <h2>Responsive Breakpoints</h2>
+      <p>Mobile-first responsive design with consistent breakpoints.</p>
+      
+      <div class="diagram-container" id="breakpoints-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📱 Breakpoint System</span>
+        </div>
+        <div id="breakpoints-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="breakpoints-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Understand responsive breakpoints.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="breakpoints-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="breakpoints-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="breakpoints-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="breakpoints-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="breakpoints-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Dark Theme -->
+    <section class="section" id="color-contrast-section">
+      <h2>Dark Theme</h2>
+      <p>The platform uses a dark theme by default with carefully chosen contrast ratios for accessibility.</p>
+      
+      <div class="diagram-container" id="color-contrast-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎨 Color Contrast Hierarchy</span>
+        </div>
+        <div id="color-contrast-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="color-contrast-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Hover to see contrast ratios.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="color-contrast-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="color-contrast-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="color-contrast-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="color-contrast-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="info-box success">
+        <h4>✅ WCAG AA Compliance</h4>
+        <p>All text colors meet WCAG AA contrast requirements (4.5:1 for normal text, 3:1 for large text) against their typical backgrounds.</p>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Related Documentation</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="02-page-types.html" class="card">
+          <div class="card-icon">📄</div>
+          <h3>Page Types</h3>
+          <p>See which CSS files each page type loads.</p>
+        </a>
+        <a href="05-progress-tracking.html" class="card">
+          <div class="card-icon">📊</div>
+          <h3>Progress Tracking</h3>
+          <p>How progress UI components are updated.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#css-mapping-section">CSS Files</a></li>
+      <li><a href="#design-tokens-section">Design System</a></li>
+      <li><a href="#animation-flow-section">Animations</a></li>
+      <li><a href="#component-hierarchy-section">Components</a></li>
+      <li><a href="#layout-patterns-section">Layouts</a></li>
+      <li><a href="#quiz-structure-section">Interactive</a></li>
+      <li><a href="#breakpoints-section">Responsive</a></li>
+      <li><a href="#color-contrast-section">Theme</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      const response = await fetch('audio/stories/06-frontend-patterns.json');
+      const pageData = await response.json();
+
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      const diagramElements = {
+        'css-mapping': [
+          { data: { id: 'marketing-css', label: 'marketing.css', type: 'service', description: 'Landing and catalog styles' } },
+          { data: { id: 'auth-css', label: 'auth.css', type: 'service', description: 'Login and register styles' } },
+          { data: { id: 'dashboard-css', label: 'dashboard.css', type: 'service', description: 'Dashboard layout styles' } },
+          { data: { id: 'lesson-css', label: 'lesson.css', type: 'service', description: 'Lesson content styles' } },
+          { data: { id: 'blog-css', label: 'blog.css', type: 'service', description: 'Blog article styles' } },
+          { data: { id: 'landing', label: 'Landing Page', type: 'page', description: '/' } },
+          { data: { id: 'catalog', label: 'Catalog', type: 'page', description: '/catalog/' } },
+          { data: { id: 'login', label: 'Login', type: 'page', description: '/auth/login' } },
+          { data: { id: 'register', label: 'Register', type: 'page', description: '/auth/register' } },
+          { data: { id: 'dashboard', label: 'Dashboard', type: 'page', description: '/dashboard/' } },
+          { data: { id: 'lesson', label: 'Lessons', type: 'page', description: '/apprentice/ch1/' } },
+          { data: { id: 'blog', label: 'Blog', type: 'page', description: '/blog/' } },
+          { data: { source: 'marketing-css', target: 'landing' } },
+          { data: { source: 'marketing-css', target: 'catalog' } },
+          { data: { source: 'auth-css', target: 'login' } },
+          { data: { source: 'auth-css', target: 'register' } },
+          { data: { source: 'dashboard-css', target: 'dashboard' } },
+          { data: { source: 'lesson-css', target: 'lesson' } },
+          { data: { source: 'blog-css', target: 'blog' } },
+        ],
+        'design-tokens': [
+          { data: { id: 'root', label: ':root', type: 'service', description: 'CSS custom properties' } },
+          { data: { id: 'colors', label: 'Colors', type: 'service', description: 'Color palette' } },
+          { data: { id: 'spacing', label: 'Spacing', type: 'service', description: 'Margin/padding scale' } },
+          { data: { id: 'typography', label: 'Typography', type: 'service', description: 'Fonts and sizes' } },
+          { data: { id: 'effects', label: 'Effects', type: 'service', description: 'Shadows and transitions' } },
+          { data: { id: 'bg-primary', label: '--bg-primary', type: 'page', description: '#0a0a0f' } },
+          { data: { id: 'bg-secondary', label: '--bg-secondary', type: 'page', description: '#12121a' } },
+          { data: { id: 'accent-primary', label: '--accent-primary', type: 'page', description: '#7986cb' } },
+          { data: { id: 'accent-success', label: '--accent-success', type: 'page', description: '#66bb6a' } },
+          { data: { id: 'spacing-sm', label: '--spacing-sm', type: 'page', description: '0.5rem' } },
+          { data: { id: 'spacing-md', label: '--spacing-md', type: 'page', description: '1rem' } },
+          { data: { id: 'spacing-lg', label: '--spacing-lg', type: 'page', description: '1.5rem' } },
+          { data: { id: 'font-sans', label: '--font-sans', type: 'page', description: 'Inter' } },
+          { data: { id: 'font-display', label: '--font-display', type: 'page', description: 'Space Grotesk' } },
+          { data: { id: 'shadow-md', label: '--shadow-md', type: 'page', description: 'Medium shadow' } },
+          { data: { id: 'transition', label: '--transition-medium', type: 'page', description: '300ms ease' } },
+          { data: { source: 'root', target: 'colors' } },
+          { data: { source: 'root', target: 'spacing' } },
+          { data: { source: 'root', target: 'typography' } },
+          { data: { source: 'root', target: 'effects' } },
+          { data: { source: 'colors', target: 'bg-primary' } },
+          { data: { source: 'colors', target: 'bg-secondary' } },
+          { data: { source: 'colors', target: 'accent-primary' } },
+          { data: { source: 'colors', target: 'accent-success' } },
+          { data: { source: 'spacing', target: 'spacing-sm' } },
+          { data: { source: 'spacing', target: 'spacing-md' } },
+          { data: { source: 'spacing', target: 'spacing-lg' } },
+          { data: { source: 'typography', target: 'font-sans' } },
+          { data: { source: 'typography', target: 'font-display' } },
+          { data: { source: 'effects', target: 'shadow-md' } },
+          { data: { source: 'effects', target: 'transition' } },
+        ],
+        'animation-flow': [
+          { data: { id: 'page-load', label: 'Page Load', type: 'external', description: 'DOMContentLoaded' } },
+          { data: { id: 'scroll', label: 'Scroll', type: 'external', description: 'IntersectionObserver' } },
+          { data: { id: 'hover', label: 'Hover', type: 'external', description: 'mouseenter/mouseleave' } },
+          { data: { id: 'click', label: 'Click', type: 'external', description: 'User clicks element' } },
+          { data: { id: 'anime-js', label: 'Anime.js', type: 'service', description: 'Complex animations' } },
+          { data: { id: 'css-trans', label: 'CSS Transitions', type: 'service', description: 'Simple transitions' } },
+          { data: { id: 'observer', label: 'IntersectionObserver', type: 'service', description: 'Visibility detection' } },
+          { data: { id: 'fade-in', label: 'Fade In', type: 'page', description: 'opacity 0→1, translateY' } },
+          { data: { id: 'stagger', label: 'Stagger', type: 'page', description: 'Delayed sequence' } },
+          { data: { id: 'scale', label: 'Scale', type: 'page', description: 'transform: scale()' } },
+          { data: { id: 'slide', label: 'Slide', type: 'page', description: 'translateX/Y' } },
+          { data: { id: 'color', label: 'Color Change', type: 'page', description: 'background/border' } },
+          { data: { source: 'page-load', target: 'anime-js' } },
+          { data: { source: 'scroll', target: 'observer' } },
+          { data: { source: 'observer', target: 'anime-js' } },
+          { data: { source: 'hover', target: 'css-trans' } },
+          { data: { source: 'click', target: 'anime-js' } },
+          { data: { source: 'anime-js', target: 'fade-in' } },
+          { data: { source: 'anime-js', target: 'stagger' } },
+          { data: { source: 'anime-js', target: 'slide' } },
+          { data: { source: 'css-trans', target: 'scale' } },
+          { data: { source: 'css-trans', target: 'color' } },
+        ],
+        'component-hierarchy': [
+          { data: { id: 'card', label: '.card', type: 'ui', description: 'Card container' } },
+          { data: { id: 'card-header', label: '.card-header', type: 'service', description: 'Card header area' } },
+          { data: { id: 'card-content', label: '.card-content', type: 'service', description: 'Card main content' } },
+          { data: { id: 'card-footer', label: '.card-footer', type: 'service', description: 'Card actions area' } },
+          { data: { id: 'card-hover', label: ':hover', type: 'page', description: 'Hover state' } },
+          { data: { id: 'btn', label: '.btn', type: 'ui', description: 'Button base' } },
+          { data: { id: 'btn-primary', label: '.btn-primary', type: 'page', description: 'Primary variant' } },
+          { data: { id: 'btn-secondary', label: '.btn-secondary', type: 'page', description: 'Secondary variant' } },
+          { data: { id: 'progress', label: '.progress-bar', type: 'ui', description: 'Progress container' } },
+          { data: { id: 'progress-fill', label: '.progress-fill', type: 'service', description: 'Fill element' } },
+          { data: { source: 'card', target: 'card-header' } },
+          { data: { source: 'card', target: 'card-content' } },
+          { data: { source: 'card', target: 'card-footer' } },
+          { data: { source: 'card', target: 'card-hover' } },
+          { data: { source: 'btn', target: 'btn-primary' } },
+          { data: { source: 'btn', target: 'btn-secondary' } },
+          { data: { source: 'progress', target: 'progress-fill' } },
+        ],
+        'layout-patterns': [
+          { data: { id: 'dashboard-layout', label: 'Dashboard Layout', type: 'ui', description: 'Sidebar + Main' } },
+          { data: { id: 'lesson-layout', label: 'Lesson Layout', type: 'ui', description: 'Content + Progress' } },
+          { data: { id: 'marketing-layout', label: 'Marketing Layout', type: 'ui', description: 'Full-width sections' } },
+          { data: { id: 'auth-layout', label: 'Auth Layout', type: 'ui', description: 'Centered form' } },
+          { data: { id: 'sidebar', label: 'Sidebar', type: 'service', description: 'Fixed 240px navigation' } },
+          { data: { id: 'main-content', label: 'Main Content', type: 'service', description: 'Flex-grow area' } },
+          { data: { id: 'header', label: 'Fixed Header', type: 'service', description: '60px top bar' } },
+          { data: { id: 'progress-nav', label: 'Progress Nav', type: 'service', description: 'Right sidebar tracker' } },
+          { data: { id: 'hero', label: 'Hero Section', type: 'service', description: 'Full-width intro' } },
+          { data: { id: 'card-grid', label: 'Card Grid', type: 'service', description: 'Auto-fill grid' } },
+          { data: { id: 'form-card', label: 'Form Card', type: 'service', description: 'Centered max-width' } },
+          { data: { id: 'pg-dashboard', label: 'Dashboard', type: 'page', description: '/dashboard/' } },
+          { data: { id: 'pg-lesson', label: 'Lessons', type: 'page', description: '/apprentice/*' } },
+          { data: { id: 'pg-landing', label: 'Landing', type: 'page', description: '/' } },
+          { data: { id: 'pg-auth', label: 'Auth Pages', type: 'page', description: '/auth/*' } },
+          { data: { source: 'dashboard-layout', target: 'sidebar' } },
+          { data: { source: 'dashboard-layout', target: 'main-content' } },
+          { data: { source: 'lesson-layout', target: 'header' } },
+          { data: { source: 'lesson-layout', target: 'main-content' } },
+          { data: { source: 'lesson-layout', target: 'progress-nav' } },
+          { data: { source: 'marketing-layout', target: 'hero' } },
+          { data: { source: 'marketing-layout', target: 'card-grid' } },
+          { data: { source: 'auth-layout', target: 'form-card' } },
+          { data: { source: 'dashboard-layout', target: 'pg-dashboard' } },
+          { data: { source: 'lesson-layout', target: 'pg-lesson' } },
+          { data: { source: 'marketing-layout', target: 'pg-landing' } },
+          { data: { source: 'auth-layout', target: 'pg-auth' } },
+        ],
+        'quiz-structure': [
+          { data: { id: 'container', label: '.quiz-container', type: 'ui', description: 'data-answer attribute' } },
+          { data: { id: 'question', label: '.quiz-question', type: 'service', description: 'Question text' } },
+          { data: { id: 'options', label: '.quiz-options', type: 'service', description: 'Options container' } },
+          { data: { id: 'option', label: '.quiz-option', type: 'service', description: 'data-value attribute' } },
+          { data: { id: 'btn', label: '.quiz-btn', type: 'service', description: 'Submit button' } },
+          { data: { id: 'feedback', label: '.quiz-feedback', type: 'service', description: 'Result message' } },
+          { data: { id: 'selected', label: '.selected', type: 'page', description: 'User selected' } },
+          { data: { id: 'correct', label: '.correct', type: 'page', description: 'Correct answer' } },
+          { data: { id: 'incorrect', label: '.incorrect', type: 'page', description: 'Wrong answer' } },
+          { data: { source: 'container', target: 'question' } },
+          { data: { source: 'container', target: 'options' } },
+          { data: { source: 'container', target: 'btn' } },
+          { data: { source: 'container', target: 'feedback' } },
+          { data: { source: 'options', target: 'option' } },
+          { data: { source: 'option', target: 'selected' } },
+          { data: { source: 'option', target: 'correct' } },
+          { data: { source: 'option', target: 'incorrect' } },
+        ],
+        'breakpoints': [
+          { data: { id: 'mobile', label: 'Mobile', type: 'service', description: '< 768px' } },
+          { data: { id: 'tablet', label: 'Tablet', type: 'service', description: '768px - 1024px' } },
+          { data: { id: 'desktop', label: 'Desktop', type: 'service', description: '1024px - 1280px' } },
+          { data: { id: 'large', label: 'Large', type: 'service', description: '> 1280px' } },
+          { data: { id: 'single-col', label: 'Single Column', type: 'page', description: 'Stack content' } },
+          { data: { id: 'hide-sidebar', label: 'Hide Sidebar', type: 'page', description: 'Collapse nav' } },
+          { data: { id: 'two-col', label: 'Two Columns', type: 'page', description: 'Grid layout' } },
+          { data: { id: 'full-layout', label: 'Full Layout', type: 'page', description: 'All visible' } },
+          { data: { id: 'max-width', label: 'Max Width', type: 'page', description: 'Container limit' } },
+          { data: { source: 'mobile', target: 'tablet' } },
+          { data: { source: 'tablet', target: 'desktop' } },
+          { data: { source: 'desktop', target: 'large' } },
+          { data: { source: 'mobile', target: 'single-col' } },
+          { data: { source: 'mobile', target: 'hide-sidebar' } },
+          { data: { source: 'tablet', target: 'two-col' } },
+          { data: { source: 'desktop', target: 'full-layout' } },
+          { data: { source: 'large', target: 'max-width' } },
+        ],
+        'color-contrast': [
+          { data: { id: 'bg-primary', label: 'bg-primary', type: 'data', description: '#0a0a0f (darkest)' } },
+          { data: { id: 'bg-secondary', label: 'bg-secondary', type: 'data', description: '#12121a' } },
+          { data: { id: 'bg-card', label: 'bg-card', type: 'data', description: '#16162a' } },
+          { data: { id: 'text-primary', label: 'text-primary', type: 'service', description: '#e8e8f0 (15.2:1)' } },
+          { data: { id: 'text-secondary', label: 'text-secondary', type: 'service', description: '#a8a8b8 (8.5:1)' } },
+          { data: { id: 'text-muted', label: 'text-muted', type: 'service', description: '#6a6a80 (4.6:1)' } },
+          { data: { id: 'accent-primary', label: 'accent-primary', type: 'page', description: '#7986cb (6.8:1)' } },
+          { data: { id: 'accent-success', label: 'accent-success', type: 'page', description: '#66bb6a (8.1:1)' } },
+          { data: { id: 'accent-error', label: 'accent-error', type: 'page', description: '#ef5350 (5.2:1)' } },
+          { data: { source: 'bg-primary', target: 'text-primary' } },
+          { data: { source: 'bg-primary', target: 'text-secondary' } },
+          { data: { source: 'bg-primary', target: 'text-muted' } },
+          { data: { source: 'bg-card', target: 'accent-primary' } },
+          { data: { source: 'bg-card', target: 'accent-success' } },
+          { data: { source: 'bg-card', target: 'accent-error' } },
+        ]
+      };
+
+      const storyToContainer = {
+        'css-mapping-story': 'css-mapping',
+        'design-tokens-story': 'design-tokens',
+        'animation-flow-story': 'animation-flow',
+        'component-hierarchy-story': 'component-hierarchy',
+        'layout-patterns-story': 'layout-patterns',
+        'quiz-structure-story': 'quiz-structure',
+        'breakpoints-story': 'breakpoints',
+        'color-contrast-story': 'color-contrast'
+      };
+
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId || !diagramElements[containerId]) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          diagramElements[containerId],
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      const storyToQuizContainer = {
+        'design-tokens-story': 'design-tokens-quiz',
+        'animation-flow-story': 'animation-flow-quiz',
+        'breakpoints-story': 'breakpoints-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

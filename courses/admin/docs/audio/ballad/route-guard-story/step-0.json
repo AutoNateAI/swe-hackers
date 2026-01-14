@@ -1,0 +1,105 @@
+{
+  "storyId": "route-guard-story",
+  "stepId": "step-0",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Page Load. A user navigates to a page. RouteGuard intercepts before any content renders. Time for security checks!",
+  "duration": 10.75,
+  "words": [
+    {
+      "word": "Page",
+      "start": 0,
+      "end": 0.46000000834465027
+    },
+    {
+      "word": "load",
+      "start": 0.46000000834465027,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "A",
+      "start": 1.440000057220459,
+      "end": 1.6200000047683716
+    },
+    {
+      "word": "user",
+      "start": 1.6200000047683716,
+      "end": 2.0399999618530273
+    },
+    {
+      "word": "navigates",
+      "start": 2.0399999618530273,
+      "end": 2.740000009536743
+    },
+    {
+      "word": "to",
+      "start": 2.740000009536743,
+      "end": 2.9600000381469727
+    },
+    {
+      "word": "a",
+      "start": 2.9600000381469727,
+      "end": 3.5199999809265137
+    },
+    {
+      "word": "page",
+      "start": 3.5199999809265137,
+      "end": 3.5199999809265137
+    },
+    {
+      "word": "Root",
+      "start": 4.320000171661377,
+      "end": 4.360000133514404
+    },
+    {
+      "word": "guard",
+      "start": 4.360000133514404,
+      "end": 4.760000228881836
+    },
+    {
+      "word": "intercepts",
+      "start": 4.760000228881836,
+      "end": 5.960000038146973
+    },
+    {
+      "word": "before",
+      "start": 5.960000038146973,
+      "end": 5.980000019073486
+    },
+    {
+      "word": "any",
+      "start": 5.980000019073486,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "content",
+      "start": 6.579999923706055,
+      "end": 7.139999866485596
+    },
+    {
+      "word": "renders",
+      "start": 7.139999866485596,
+      "end": 7.71999979019165
+    },
+    {
+      "word": "Time",
+      "start": 8.760000228881836,
+      "end": 8.760000228881836
+    },
+    {
+      "word": "for",
+      "start": 8.760000228881836,
+      "end": 9.680000305175781
+    },
+    {
+      "word": "security",
+      "start": 9.680000305175781,
+      "end": 9.680000305175781
+    },
+    {
+      "word": "checks",
+      "start": 9.680000305175781,
+      "end": 10.100000381469727
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Overview - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html" class="active">Overview</a>
+        <a href="01-service-layer.html">Services</a>
+        <a href="03-data-model.html">Data</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>System Overview</span>
+      </div>
+      <h1>🏗️ System Overview</h1>
+      <p>High-level architecture and how all components connect together</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Self-Narrating Architecture</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Context Diagram -->
+    <section class="section" id="system-context-section">
+      <h2>System Context</h2>
+      <p>The SWE Hackers platform follows a static-first architecture with Firebase powering the backend. All HTML is pre-rendered and served from GitHub Pages, with client-side JavaScript handling dynamic functionality.</p>
+      
+      <div class="diagram-container" id="system-context-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 System Context Diagram</span>
+        </div>
+        <div id="system-context-story" class="diagram-canvas storytelling"></div>
+        
+        <!-- Live Narration Area -->
+        <div class="diagram-story" id="system-context-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playback Controls -->
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="system-context-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+            <button class="diagram-btn small" data-action="export" title="Export PNG">PNG</button>
+          </div>
+        </div>
+
+        <!-- Settings Bar -->
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="system-context-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="system-context-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="system-context-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="quiz-card" id="system-context-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Dependency Graph -->
+    <section class="section" id="service-deps-section">
+      <h2>Service Dependencies</h2>
+      <p>All shared services live in <code>/courses/shared/js/</code> and follow a clear dependency hierarchy. Services are initialized in order to ensure dependencies are available.</p>
+      
+      <div class="diagram-container" id="service-deps-container">
+        <div class="diagram-header">
+          <span class="diagram-title">⚙️ Service Dependency Graph</span>
+        </div>
+        <div id="service-deps-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="service-deps-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="service-deps-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="service-deps-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="service-deps-audio-toggle">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="service-deps-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="service-deps-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">2</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- High-Level Data Flow -->
+    <section class="section" id="data-flow-section">
+      <h2>High-Level Data Flow</h2>
+      <p>Data flows from user interactions through services to Firestore and back. Understanding this flow is key to debugging and extending the platform.</p>
+      
+      <div class="diagram-container" id="data-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔄 Data Flow Architecture</span>
+        </div>
+        <div id="data-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="data-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="data-flow-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="data-flow-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="data-flow-audio-toggle">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="data-flow-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="data-flow-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">2</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Type Overview -->
+    <section class="section" id="page-services-section">
+      <h2>Page Types & Requirements</h2>
+      <p>Different page types have different authentication and service requirements. This diagram shows which services are loaded for each page type.</p>
+      
+      <div class="diagram-container" id="page-services-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📄 Page Type Service Matrix</span>
+        </div>
+        <div id="page-services-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="page-services-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="page-services-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="page-services-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="page-services-audio-toggle">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="page-services-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="page-services-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">2</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Principles -->
+    <section class="section">
+      <h2>Architecture Principles</h2>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Principle</th>
+              <th>Implementation</th>
+              <th>Trade-offs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Static-First</strong></td>
+              <td>All HTML pre-rendered; Firebase handles dynamic data</td>
+              <td>No SSR for SEO (mitigated with meta tags)</td>
+            </tr>
+            <tr>
+              <td><strong>Progressive Enhancement</strong></td>
+              <td>Pages work without JS, enhanced with interactivity</td>
+              <td>Some features require JS</td>
+            </tr>
+            <tr>
+              <td><strong>Shared Services</strong></td>
+              <td>Single JS files in /shared/js/ used across all pages</td>
+              <td>Pages load all services even if not needed</td>
+            </tr>
+            <tr>
+              <td><strong>Firestore-Centric</strong></td>
+              <td>All user data flows through Firestore with real-time sync</td>
+              <td>Vendor lock-in, client-side business logic</td>
+            </tr>
+            <tr>
+              <td><strong>Client-Side RBAC</strong></td>
+              <td>Role-based access control enforced in browser</td>
+              <td>UI can be bypassed (Firestore rules are the real gate)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="01-service-layer.html" class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>Service Layer Deep Dive</h3>
+          <p>Explore each service's API, state management, and internal logic.</p>
+        </a>
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>Understand the Firestore collection structure and relationships.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#system-context-section">System Context</a></li>
+      <li><a href="#service-deps-section">Service Dependencies</a></li>
+      <li><a href="#data-flow-section">Data Flow</a></li>
+      <li><a href="#page-services-section">Page Types</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('audio/stories/00-overview.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'system-context': [
+          // External actors
+          { data: { id: 'user', label: 'User', type: 'external', description: 'Students learning on the platform' } },
+          { data: { id: 'admin', label: 'Admin', type: 'external', description: 'Platform administrators' } },
+          
+          // Hosting
+          { data: { id: 'github', label: 'GitHub Pages', type: 'external', description: 'Static file hosting via CDN' } },
+          
+          // Frontend
+          { data: { id: 'marketing', label: 'Marketing Pages', type: 'page', description: 'Public landing, catalog, pricing' } },
+          { data: { id: 'auth-pages', label: 'Auth Pages', type: 'page', description: 'Login, register, password reset' } },
+          { data: { id: 'dashboard', label: 'Dashboard', type: 'page', description: 'User progress and analytics' } },
+          { data: { id: 'lessons', label: 'Lesson Pages', type: 'page', description: 'Interactive course content' } },
+          { data: { id: 'blog', label: 'Blog', type: 'page', description: 'Articles and tutorials' } },
+          
+          // Services
+          { data: { id: 'shared-js', label: 'Shared JS Services', type: 'service', description: '9 shared JavaScript services' } },
+          
+          // Firebase
+          { data: { id: 'firebase-auth', label: 'Firebase Auth', type: 'auth', description: 'User authentication and sessions' } },
+          { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'NoSQL document database' } },
+          
+          // Edges
+          { data: { source: 'user', target: 'github', label: 'HTTP' } },
+          { data: { source: 'admin', target: 'github', label: 'HTTP' } },
+          { data: { source: 'github', target: 'marketing' } },
+          { data: { source: 'github', target: 'auth-pages' } },
+          { data: { source: 'github', target: 'dashboard' } },
+          { data: { source: 'github', target: 'lessons' } },
+          { data: { source: 'github', target: 'blog' } },
+          { data: { source: 'marketing', target: 'shared-js', type: 'optional' } },
+          { data: { source: 'auth-pages', target: 'shared-js' } },
+          { data: { source: 'dashboard', target: 'shared-js' } },
+          { data: { source: 'lessons', target: 'shared-js' } },
+          { data: { source: 'blog', target: 'shared-js', type: 'optional' } },
+          { data: { source: 'shared-js', target: 'firebase-auth', type: 'auth' } },
+          { data: { source: 'shared-js', target: 'firestore', type: 'data' } },
+        ],
+
+        'service-deps': [
+          // Config layer
+          { data: { id: 'firebase-config', label: 'FirebaseApp', type: 'config', description: 'Initializes Firebase SDK (app, auth, db)' } },
+          
+          // Auth layer
+          { data: { id: 'auth-service', label: 'AuthService', type: 'auth', description: 'User authentication and session management' } },
+          
+          // Core services
+          { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'All Firestore CRUD operations' } },
+          { data: { id: 'rbac', label: 'RBACService', type: 'service', description: 'Role-based access control checks' } },
+          
+          // Feature services
+          { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Lesson progress via IntersectionObserver' } },
+          { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Quiz/activity completion tracking' } },
+          { data: { id: 'analytics', label: 'AnalyticsService', type: 'service', description: 'Learning metrics calculation' } },
+          
+          // UI services
+          { data: { id: 'route-guard', label: 'RouteGuard', type: 'ui', description: 'Page access protection' } },
+          { data: { id: 'lesson-integration', label: 'LessonIntegration', type: 'ui', description: 'Lesson page orchestration' } },
+          
+          // Dependencies
+          { data: { source: 'auth-service', target: 'firebase-config' } },
+          { data: { source: 'data-service', target: 'firebase-config' } },
+          { data: { source: 'data-service', target: 'auth-service' } },
+          { data: { source: 'rbac', target: 'firebase-config' } },
+          { data: { source: 'rbac', target: 'auth-service' } },
+          { data: { source: 'progress-tracker', target: 'data-service' } },
+          { data: { source: 'progress-tracker', target: 'auth-service' } },
+          { data: { source: 'activity-tracker', target: 'data-service' } },
+          { data: { source: 'activity-tracker', target: 'auth-service' } },
+          { data: { source: 'analytics', target: 'data-service' } },
+          { data: { source: 'route-guard', target: 'auth-service' } },
+          { data: { source: 'route-guard', target: 'rbac' } },
+          { data: { source: 'lesson-integration', target: 'auth-service' } },
+          { data: { source: 'lesson-integration', target: 'data-service' } },
+          { data: { source: 'lesson-integration', target: 'progress-tracker' } },
+          { data: { source: 'lesson-integration', target: 'activity-tracker' } },
+        ],
+
+        'data-flow': [
+          // User layer
+          { data: { id: 'browser', label: 'Browser', type: 'external', description: 'User browser client' } },
+          
+          // UI layer
+          { data: { id: 'html-page', label: 'HTML Page', type: 'page', description: 'Static HTML with scripts' } },
+          { data: { id: 'ui-components', label: 'UI Components', type: 'page', description: 'Buttons, forms, progress bars' } },
+          
+          // Service layer
+          { data: { id: 'event-handlers', label: 'Event Handlers', type: 'service', description: 'Click, scroll, input handlers' } },
+          { data: { id: 'services', label: 'Services', type: 'service', description: 'Auth, Data, Progress, Activity' } },
+          { data: { id: 'state-mgmt', label: 'State Management', type: 'service', description: 'Window globals, LocalStorage' } },
+          
+          // Data layer
+          { data: { id: 'firebase-sdk', label: 'Firebase SDK', type: 'auth', description: 'Client-side Firebase library' } },
+          { data: { id: 'firestore-db', label: 'Firestore', type: 'data', description: 'Cloud database' } },
+          { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+          
+          // Edges - Request flow
+          { data: { source: 'browser', target: 'html-page', label: 'Load' } },
+          { data: { source: 'html-page', target: 'ui-components', label: 'Render' } },
+          { data: { source: 'ui-components', target: 'event-handlers', label: 'Events' } },
+          { data: { source: 'event-handlers', target: 'services', label: 'Call' } },
+          { data: { source: 'services', target: 'state-mgmt', label: 'Update' } },
+          { data: { source: 'services', target: 'firebase-sdk', label: 'API' } },
+          { data: { source: 'firebase-sdk', target: 'firestore-db', label: 'Write', type: 'data' } },
+          { data: { source: 'services', target: 'local-storage', label: 'Cache', type: 'data' } },
+          
+          // Response flow
+          { data: { source: 'firestore-db', target: 'firebase-sdk', label: 'Data', type: 'data' } },
+          { data: { source: 'firebase-sdk', target: 'services', label: 'Response' } },
+          { data: { source: 'state-mgmt', target: 'ui-components', label: 'Reactivity' } },
+        ],
+
+        'page-services': [
+          // Page types
+          { data: { id: 'pg-marketing', label: 'Marketing', type: 'page', description: 'Landing, catalog, pricing pages' } },
+          { data: { id: 'pg-auth', label: 'Auth Pages', type: 'page', description: 'Login, register, reset' } },
+          { data: { id: 'pg-dashboard', label: 'Dashboard', type: 'page', description: 'User progress overview' } },
+          { data: { id: 'pg-lesson', label: 'Lessons', type: 'page', description: 'Course content pages' } },
+          { data: { id: 'pg-blog', label: 'Blog', type: 'page', description: 'Articles and tutorials' } },
+          { data: { id: 'pg-partner', label: 'Partner Course', type: 'page', description: 'Organization-specific courses' } },
+          
+          // Services
+          { data: { id: 'svc-navbar', label: 'navbar.js', type: 'ui', description: 'Navigation component' } },
+          { data: { id: 'svc-auth', label: 'auth.js', type: 'auth', description: 'Authentication' } },
+          { data: { id: 'svc-data', label: 'data-service.js', type: 'service', description: 'Firestore operations' } },
+          { data: { id: 'svc-progress', label: 'progress-tracker.js', type: 'service', description: 'Lesson progress' } },
+          { data: { id: 'svc-activity', label: 'activity-tracker.js', type: 'service', description: 'Activity completion' } },
+          { data: { id: 'svc-analytics', label: 'analytics-service.js', type: 'service', description: 'Learning metrics' } },
+          { data: { id: 'svc-rbac', label: 'rbac.js', type: 'service', description: 'Access control' } },
+          { data: { id: 'svc-route', label: 'route-guard.js', type: 'service', description: 'Page protection' } },
+          { data: { id: 'svc-lesson', label: 'lesson-integration.js', type: 'ui', description: 'Lesson orchestration' } },
+          { data: { id: 'svc-blog', label: 'blog.js', type: 'ui', description: 'Blog features' } },
+          
+          // Edges
+          { data: { source: 'pg-marketing', target: 'svc-navbar' } },
+          { data: { source: 'pg-auth', target: 'svc-auth' } },
+          { data: { source: 'pg-dashboard', target: 'svc-auth' } },
+          { data: { source: 'pg-dashboard', target: 'svc-data' } },
+          { data: { source: 'pg-dashboard', target: 'svc-analytics' } },
+          { data: { source: 'pg-dashboard', target: 'svc-route' } },
+          { data: { source: 'pg-lesson', target: 'svc-auth' } },
+          { data: { source: 'pg-lesson', target: 'svc-data' } },
+          { data: { source: 'pg-lesson', target: 'svc-progress' } },
+          { data: { source: 'pg-lesson', target: 'svc-activity' } },
+          { data: { source: 'pg-lesson', target: 'svc-route' } },
+          { data: { source: 'pg-lesson', target: 'svc-lesson' } },
+          { data: { source: 'pg-blog', target: 'svc-blog' } },
+          { data: { source: 'pg-blog', target: 'svc-navbar', type: 'optional' } },
+          { data: { source: 'pg-partner', target: 'svc-auth' } },
+          { data: { source: 'pg-partner', target: 'svc-data' } },
+          { data: { source: 'pg-partner', target: 'svc-progress' } },
+          { data: { source: 'pg-partner', target: 'svc-activity' } },
+          { data: { source: 'pg-partner', target: 'svc-rbac' } },
+          { data: { source: 'pg-partner', target: 'svc-route' } },
+          { data: { source: 'pg-partner', target: 'svc-lesson' } },
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      // Map story IDs to container IDs
+      const storyToContainer = {
+        'system-context-story': 'system-context',
+        'service-deps-story': 'service-deps',
+        'data-flow-story': 'data-flow',
+        'page-services-story': 'page-services'
+      };
+
+      // Create storytelling diagrams for each story in the JSON
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId) return;
+
+        const elements = diagramElements[containerId];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      // Map quiz storyId to quiz container ID
+      const storyToQuizContainer = {
+        'system-context-story': 'system-context-quiz',
+        'service-deps-story': 'service-deps-quiz',
+        'data-flow-story': 'data-flow-quiz',
+        'page-services-story': 'page-services-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

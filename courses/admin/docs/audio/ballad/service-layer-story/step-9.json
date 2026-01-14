@@ -1,0 +1,85 @@
+{
+  "storyId": "service-layer-story",
+  "stepId": "step-9",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "uploadAttachment(). uploadAttachment handles file uploads. Saves to Storage, creates metadata doc in Firestore.",
+  "duration": 10.800000190734863,
+  "words": [
+    {
+      "word": "Upload",
+      "start": 0,
+      "end": 0.6399999856948853
+    },
+    {
+      "word": "Attachment",
+      "start": 0.6399999856948853,
+      "end": 1.0800000429153442
+    },
+    {
+      "word": "Upload",
+      "start": 2.680000066757202,
+      "end": 2.8399999141693115
+    },
+    {
+      "word": "Attachment",
+      "start": 2.8399999141693115,
+      "end": 3.240000009536743
+    },
+    {
+      "word": "handles",
+      "start": 3.240000009536743,
+      "end": 3.940000057220459
+    },
+    {
+      "word": "file",
+      "start": 3.940000057220459,
+      "end": 4.559999942779541
+    },
+    {
+      "word": "uploads",
+      "start": 4.559999942779541,
+      "end": 5.119999885559082
+    },
+    {
+      "word": "saves",
+      "start": 5.980000019073486,
+      "end": 5.980000019073486
+    },
+    {
+      "word": "to",
+      "start": 5.980000019073486,
+      "end": 6.699999809265137
+    },
+    {
+      "word": "storage",
+      "start": 6.699999809265137,
+      "end": 6.699999809265137
+    },
+    {
+      "word": "creates",
+      "start": 7.659999847412109,
+      "end": 7.659999847412109
+    },
+    {
+      "word": "metadata",
+      "start": 7.659999847412109,
+      "end": 8.399999618530273
+    },
+    {
+      "word": "doc",
+      "start": 8.399999618530273,
+      "end": 8.880000114440918
+    },
+    {
+      "word": "in",
+      "start": 8.880000114440918,
+      "end": 9.420000076293945
+    },
+    {
+      "word": "Firestore",
+      "start": 9.420000076293945,
+      "end": 10.079999923706055
+    }
+  ]
+}

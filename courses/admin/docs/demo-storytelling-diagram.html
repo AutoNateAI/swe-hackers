@@ -1,0 +1,2548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storytelling Diagrams Demo - SWE Hackers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+  <style>
+    /* Storytelling Caption Styles */
+    .diagram-story {
+      background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-card));
+      border-top: 1px solid var(--border-color);
+      padding: 1.5rem;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diagram-story::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent-secondary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .diagram-story.active::before {
+      opacity: 1;
+    }
+
+    .story-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .story-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .story-icon.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .story-content {
+      flex: 1;
+    }
+
+    .story-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      margin-bottom: 0.25rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.4s ease;
+    }
+
+    .story-title.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .story-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease 0.1s;
+    }
+
+    .story-text.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-connection {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(77, 182, 172, 0.1);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--accent-secondary);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease 0.2s;
+    }
+
+    .story-connection.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-connection .arrow {
+      color: var(--accent-primary);
+    }
+
+    /* Progress indicator - now clickable */
+    .story-progress {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      border: 2px solid var(--border-light);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-dot:hover {
+      border-color: var(--accent-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot:hover::after {
+      content: attr(data-title);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+      z-index: 100;
+    }
+
+    .progress-dot.active {
+      background: var(--accent-secondary);
+      border-color: var(--accent-secondary);
+      box-shadow: 0 0 12px rgba(77, 182, 172, 0.6);
+      transform: scale(1.1);
+    }
+
+    .progress-dot.completed {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    /* Playback Controls Bar - main controls with progress */
+    .playback-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-tertiary);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .playback-left {
+      flex-shrink: 0;
+    }
+
+    .playback-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .playback-right {
+      flex-shrink: 0;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .diagram-btn.small {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.75rem;
+      min-width: auto;
+    }
+
+    /* Settings Bar - timing, audio, voice */
+    .settings-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .settings-bar label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .settings-bar select {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    /* Audio controls */
+    .audio-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 0.6rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .audio-toggle:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .audio-toggle.muted {
+      opacity: 0.5;
+    }
+
+    .audio-toggle.speaking {
+      border-color: var(--accent-secondary);
+      background: rgba(77, 182, 172, 0.15);
+    }
+
+    .audio-toggle.speaking .audio-icon {
+      animation: pulse-audio 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse-audio {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Voice selector */
+    .voice-select {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      max-width: 180px;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 640px) {
+      .playback-controls {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .playback-left {
+        order: 1;
+      }
+
+      .playback-center {
+        order: 3;
+        flex-basis: 100%;
+        margin-top: 0.25rem;
+      }
+
+      .playback-right {
+        order: 2;
+        margin-left: auto;
+      }
+
+      .diagram-btn.play-btn {
+        padding: 0.5rem 0.75rem;
+        min-width: 85px;
+        font-size: 0.85rem;
+      }
+
+      .diagram-btn.small {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.7rem;
+      }
+
+      .settings-bar {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .settings-bar select {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.75rem;
+      }
+
+      .voice-select {
+        max-width: 140px;
+      }
+
+      .story-progress {
+        gap: 0.35rem !important;
+      }
+
+      .progress-dot {
+        width: 10px !important;
+        height: 10px !important;
+      }
+
+      .diagram-canvas.storytelling {
+        height: 400px;
+      }
+    }
+
+    /* Playback buttons */
+    .diagram-btn.play-btn {
+      background: var(--accent-secondary);
+      color: var(--bg-primary);
+      border-color: var(--accent-secondary);
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      min-width: 100px;
+    }
+
+    .diagram-btn.play-btn:hover {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      transform: scale(1.05);
+    }
+
+    .diagram-btn.play-btn.playing {
+      background: var(--accent-warning);
+      border-color: var(--accent-warning);
+      color: var(--bg-primary);
+    }
+
+    .diagram-btn.play-btn.paused {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    /* Taller canvas for better viewing */
+    .diagram-canvas.storytelling {
+      height: 550px;
+    }
+
+    /* Page-specific styles */
+    .demo-intro {
+      background: linear-gradient(135deg, rgba(121, 134, 203, 0.1), rgba(77, 182, 172, 0.1));
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .demo-intro h2 {
+      border: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .feature-item span:first-child {
+      font-size: 1.25rem;
+    }
+
+    /* Voice info */
+    .voice-info {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background: var(--bg-card);
+      border-radius: 4px;
+    }
+
+    /* Compact Audio Info */
+    .audio-info-section {
+      padding-top: 0 !important;
+      margin-top: -1rem;
+    }
+
+    .info-box.compact {
+      padding: 1rem 1.25rem;
+    }
+
+    .info-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+    }
+
+    .info-header h4 {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .info-header p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .voice-options {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .voice-badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--bg-tertiary);
+      border-radius: 20px;
+      color: var(--text-secondary);
+    }
+
+    /* Quiz Card Styles */
+    .quiz-card {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      overflow: hidden;
+    }
+
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .quiz-header h4 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .quiz-progress {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .quiz-progress .score {
+      color: var(--accent-secondary);
+      font-weight: 600;
+    }
+
+    .quiz-carousel {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .quiz-question {
+      padding: 1.5rem 1.25rem;
+      display: none;
+    }
+
+    .quiz-question.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-text {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .question-number {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quiz-option {
+      padding: 0.75rem 1rem;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      text-align: left;
+      color: var(--text-primary);
+    }
+
+    .quiz-option:hover:not(.selected):not(.correct):not(.incorrect) {
+      border-color: var(--accent-primary);
+      background: rgba(121, 134, 203, 0.1);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--accent-primary);
+      background: rgba(121, 134, 203, 0.15);
+    }
+
+    .quiz-option.correct {
+      border-color: #4caf50;
+      background: rgba(76, 175, 80, 0.15);
+      color: #4caf50;
+    }
+
+    .quiz-option.incorrect {
+      border-color: #f44336;
+      background: rgba(244, 67, 54, 0.1);
+      color: #f44336;
+    }
+
+    .quiz-option.correct::before {
+      content: '✓ ';
+    }
+
+    .quiz-option.incorrect::before {
+      content: '✗ ';
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .quiz-feedback.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .quiz-feedback.correct {
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      color: #81c784;
+    }
+
+    .quiz-feedback.incorrect {
+      background: rgba(244, 67, 54, 0.1);
+      border: 1px solid rgba(244, 67, 54, 0.3);
+      color: #e57373;
+    }
+
+    .quiz-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-tertiary);
+    }
+
+    .quiz-dots {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .quiz-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-dot.active {
+      background: var(--accent-primary);
+      transform: scale(1.2);
+    }
+
+    .quiz-dot.answered {
+      background: var(--accent-secondary);
+    }
+
+    .quiz-dot.correct {
+      background: #4caf50;
+    }
+
+    .quiz-dot.incorrect {
+      background: #f44336;
+    }
+
+    .quiz-nav-btn {
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-nav-btn:hover:not(:disabled) {
+      border-color: var(--accent-primary);
+      background: rgba(121, 134, 203, 0.1);
+    }
+
+    .quiz-nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .quiz-complete {
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .quiz-complete h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-complete .final-score {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      margin: 0.5rem 0;
+    }
+
+    .quiz-complete p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .quiz-reset-btn {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--accent-secondary);
+      border: none;
+      border-radius: 6px;
+      color: var(--bg-primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-reset-btn:hover {
+      background: var(--accent-primary);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 640px) {
+      .quiz-question {
+        padding: 1rem;
+      }
+
+      .question-text {
+        font-size: 0.95rem;
+      }
+
+      .quiz-option {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      .info-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    /* Word highlighting for narration - karaoke effect */
+    span.word {
+      display: inline-block !important;
+      transition: all 0.15s ease-out !important;
+      padding: 4px 8px !important;
+      margin: 2px !important;
+      border-radius: 6px !important;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    span.word.spoken {
+      color: #ffffff !important;
+      background-color: rgba(77, 182, 172, 0.4) !important;
+      border-bottom: 2px solid rgba(77, 182, 172, 0.6) !important;
+    }
+
+    span.word.current {
+      color: #000000 !important;
+      background-color: #4db6ac !important;
+      font-weight: 700 !important;
+      transform: scale(1.08) !important;
+      box-shadow: 0 0 15px rgba(77, 182, 172, 0.6) !important;
+      animation: wordPulse 0.2s ease-out !important;
+    }
+
+    @keyframes wordPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1.08); }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>SWE Hackers Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="demo-storytelling-diagram.html" class="active">Storytelling Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Storytelling Diagrams</span>
+      </div>
+      <h1>🎬 Storytelling Diagrams</h1>
+      <p>Watch diagrams come alive with narrated animations that explain the architecture as it builds</p>
+    </div>
+
+    <!-- Demo Introduction -->
+    <section class="section demo-intro">
+      <h2>✨ Self-Narrating Architecture</h2>
+      <p>These diagrams don't just show you the system—they <strong>tell you the story</strong> of how everything connects. Click any progress dot to jump to that step, or let it play through automatically.</p>
+      
+      <div class="feature-list">
+        <div class="feature-item">
+          <span>🎯</span>
+          <span>Click dots to jump to any step</span>
+        </div>
+        <div class="feature-item">
+          <span>📖</span>
+          <span>Live captions with audio narration</span>
+        </div>
+        <div class="feature-item">
+          <span>✨</span>
+          <span>Glowing nodes & animated edges</span>
+        </div>
+        <div class="feature-item">
+          <span>⏸️</span>
+          <span>Pause & resume anytime</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>High-Energy AI Narration</h4>
+            <p>Powered by OpenAI gpt-4o-mini-tts with Whisper word tracking</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Storytelling Diagram: Service Dependencies -->
+    <section class="section">
+      <h2>Service Dependency Story</h2>
+      <p>Watch how the SWE Hackers service layer is built from the ground up. Each service depends on the ones that came before it.</p>
+      
+      <div class="diagram-container" id="service-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📚 How Services Connect</span>
+        </div>
+        <div id="service-story" class="diagram-canvas storytelling"></div>
+        
+        <!-- Live Narration Area -->
+        <div class="diagram-story" id="service-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible" id="story-icon">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible" id="story-title">Ready to Explore</div>
+              <div class="story-text visible" id="story-text">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" id="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span id="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playback Controls Bar -->
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="service-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+            <button class="diagram-btn small" data-action="export" title="Export PNG">PNG</button>
+          </div>
+        </div>
+
+        <!-- Settings Bar -->
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="service-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="service-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="service-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz: Service Dependencies -->
+      <div class="quiz-card" id="service-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">4</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel">
+          <!-- Questions will be rendered by JS -->
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Flow Story -->
+    <section class="section">
+      <h2>Data Flow Story</h2>
+      <p>Follow a user action from click to database and back. See exactly how data moves through the system.</p>
+      
+      <div class="diagram-container" id="dataflow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔄 Journey of a User Action</span>
+        </div>
+        <div id="dataflow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="dataflow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible" id="dataflow-story-icon">👆</div>
+            <div class="story-content">
+              <div class="story-title visible" id="dataflow-story-title">User Interaction Journey</div>
+              <div class="story-text visible" id="dataflow-story-text">Click any progress dot below to jump to that step, or press Play to follow the complete data flow.</div>
+              <div class="story-connection" id="dataflow-story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span id="dataflow-connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playback Controls Bar -->
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="dataflow-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+            <button class="diagram-btn small" data-action="export" title="Export PNG">PNG</button>
+          </div>
+        </div>
+
+        <!-- Settings Bar -->
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="dataflow-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="dataflow-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="dataflow-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz: Data Flow -->
+      <div class="quiz-card" id="dataflow-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">4</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel">
+          <!-- Questions will be rendered by JS -->
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#service-story">Service Dependencies</a></li>
+      <li><a href="#dataflow-story">Data Flow</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // ============================================
+      // AUDIO ENGINE WITH PRE-GENERATED AUDIO + WORD TIMESTAMPS
+      // ============================================
+
+      class AudioNarrationEngine {
+        constructor(audioBasePath = 'audio') {
+          this.audioBasePath = audioBasePath;
+          this.isMuted = false;
+          this.isSpeaking = false;
+          this.isPaused = false;
+          this.currentAudio = null;
+          this.currentTimestamps = null;
+          this.highlightInterval = null;
+          this.onSpeakingChange = null;
+          this.onWordHighlight = null; // Callback: (wordIndex, word) => void
+          this.resolvePromise = null;
+          this.manifest = null;
+          this.currentVoice = 'ballad'; // Default voice
+          
+          this.loadManifest();
+        }
+
+        async loadManifest() {
+          try {
+            const response = await fetch(`${this.audioBasePath}/manifest.json`);
+            this.manifest = await response.json();
+            this.currentVoice = this.manifest.defaultVoice || 'ballad';
+            console.log('Audio manifest loaded. Voices:', Object.keys(this.manifest.voices || {}));
+          } catch (e) {
+            console.warn('Could not load audio manifest:', e);
+          }
+        }
+
+        getVoices() {
+          if (!this.manifest || !this.manifest.voices) return [];
+          return Object.entries(this.manifest.voices).map(([key, config]) => ({
+            id: key,
+            name: config.name,
+            label: config.label
+          }));
+        }
+
+        setVoice(voiceId) {
+          if (this.manifest && this.manifest[voiceId]) {
+            this.currentVoice = voiceId;
+            console.log('Voice changed to:', voiceId);
+          }
+        }
+
+        getTimestamps(storyId, stepIndex) {
+          if (!this.manifest || !this.manifest[this.currentVoice]) return null;
+          const voiceData = this.manifest[this.currentVoice];
+          if (!voiceData[storyId]) return null;
+          return voiceData[storyId][stepIndex];
+        }
+
+        setMuted(muted) {
+          this.isMuted = muted;
+          if (muted && this.currentAudio) {
+            this.currentAudio.volume = 0;
+          } else if (this.currentAudio) {
+            this.currentAudio.volume = 1;
+          }
+        }
+
+        stop() {
+          if (this.currentAudio) {
+            this.currentAudio.pause();
+            this.currentAudio.currentTime = 0;
+            this.currentAudio = null;
+          }
+          if (this.highlightInterval) {
+            cancelAnimationFrame(this.highlightInterval);
+            this.highlightInterval = null;
+          }
+          this.isSpeaking = false;
+          this.isPaused = false;
+          this.currentTimestamps = null;
+          if (this.onSpeakingChange) this.onSpeakingChange(false);
+          if (this.resolvePromise) {
+            this.resolvePromise();
+            this.resolvePromise = null;
+          }
+        }
+
+        pause() {
+          if (this.currentAudio && this.isSpeaking && !this.isPaused) {
+            this.currentAudio.pause();
+            this.isPaused = true;
+          }
+        }
+
+        resume() {
+          if (this.currentAudio && this.isPaused) {
+            this.currentAudio.play();
+            this.isPaused = false;
+          }
+        }
+
+        get paused() {
+          return this.isPaused;
+        }
+
+        // Play pre-generated audio with word highlighting
+        playStep(storyId, stepIndex) {
+          return new Promise((resolve) => {
+            const timestamps = this.getTimestamps(storyId, stepIndex);
+            
+            if (!timestamps || this.isMuted) {
+              resolve();
+              return;
+            }
+
+            const audioPath = `${this.audioBasePath}/${this.currentVoice}/${storyId}/step-${stepIndex}.mp3`;
+            
+            this.stop(); // Stop any current playback
+            this.resolvePromise = resolve;
+            this.currentTimestamps = timestamps;
+
+            const audio = new Audio(audioPath);
+            this.currentAudio = audio;
+            audio.volume = this.isMuted ? 0 : 1;
+
+            let lastHighlightedIndex = -1;
+
+            // Word highlighting loop using requestAnimationFrame
+            const highlightLoop = () => {
+              if (!this.currentAudio || this.isPaused) {
+                this.highlightInterval = requestAnimationFrame(highlightLoop);
+                return;
+              }
+
+              const currentTime = audio.currentTime;
+              const words = timestamps.words;
+
+              // Find the current word based on timestamp
+              let currentWordIndex = -1;
+              for (let i = 0; i < words.length; i++) {
+                if (currentTime >= words[i].start && currentTime < words[i].end + 0.1) {
+                  currentWordIndex = i;
+                  break;
+                }
+                // If we're past this word but before the next, still highlight it
+                if (currentTime >= words[i].start && (i === words.length - 1 || currentTime < words[i + 1].start)) {
+                  currentWordIndex = i;
+                  break;
+                }
+              }
+
+              // Trigger highlight callback if word changed
+              if (currentWordIndex !== lastHighlightedIndex && currentWordIndex >= 0) {
+                lastHighlightedIndex = currentWordIndex;
+                if (this.onWordHighlight) {
+                  this.onWordHighlight(currentWordIndex, words[currentWordIndex].word);
+                }
+              }
+
+              if (this.isSpeaking && !audio.ended) {
+                this.highlightInterval = requestAnimationFrame(highlightLoop);
+              }
+            };
+
+            audio.onplay = () => {
+              this.isSpeaking = true;
+              this.isPaused = false;
+              if (this.onSpeakingChange) this.onSpeakingChange(true);
+              highlightLoop();
+            };
+
+            audio.onpause = () => {
+              if (!audio.ended) {
+                this.isPaused = true;
+              }
+            };
+
+            audio.onended = () => {
+              this.isSpeaking = false;
+              this.isPaused = false;
+              if (this.highlightInterval) {
+                cancelAnimationFrame(this.highlightInterval);
+                this.highlightInterval = null;
+              }
+              if (this.onSpeakingChange) this.onSpeakingChange(false);
+              
+              // Final highlight - mark all words as spoken
+              if (this.onWordHighlight) {
+                this.onWordHighlight(timestamps.words.length, null); // Signal completion
+              }
+              
+              this.resolvePromise = null;
+              resolve();
+            };
+
+            audio.onerror = (e) => {
+              console.warn('Audio error:', e);
+              this.isSpeaking = false;
+              this.isPaused = false;
+              if (this.onSpeakingChange) this.onSpeakingChange(false);
+              this.resolvePromise = null;
+              resolve();
+            };
+
+            audio.play().catch(e => {
+              console.warn('Audio play failed:', e);
+              resolve();
+            });
+          });
+        }
+      }
+
+      // Global narration engine with pre-generated audio
+      const narrator = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // STORYTELLING ANIMATION ENGINE
+      // ============================================
+      
+      class StorytellingDiagram {
+        constructor(containerId, elements, storySteps, options = {}) {
+          this.containerId = containerId;
+          this.elements = elements;
+          this.storySteps = storySteps;
+          this.options = {
+            stepDuration: 2000,
+            audioEnabled: true,
+            ...options
+          };
+          this.currentStep = -1;
+          this.isPlaying = false;
+          this.isPaused = false;
+          this.shouldStop = false;
+          this.cy = null;
+          this.animationMode = false; // Disable hover effects during animation
+          this.activeEdgeAnimations = [];
+          this.tooltip = null;
+          this.tooltipNode = null;
+          
+          this.init();
+        }
+
+        init() {
+          // Create cytoscape with custom styles for animation
+          this.cy = this.createCustomDiagram();
+          
+          // Show all nodes/edges initially (dimmed)
+          this.showAllDimmed();
+          
+          // Setup controls
+          this.setupControls();
+          this.setupProgressDots();
+          this.setupAudioControls();
+          this.setupCustomInteractivity();
+        }
+
+        createCustomDiagram() {
+          const container = document.getElementById(this.containerId);
+          
+          const cy = cytoscape({
+            container: container,
+            elements: this.elements,
+            style: this.getCustomStylesheet(),
+            layout: DiagramUtils.LAYOUTS.hierarchical,
+            minZoom: 0.3,
+            maxZoom: 3,
+            wheelSensitivity: 0.3,
+            boxSelectionEnabled: false,
+            selectionType: 'single'
+          });
+
+          return cy;
+        }
+
+        getCustomStylesheet() {
+          const baseStyles = DiagramUtils.getBaseStylesheet();
+          
+          // Add animation-specific styles
+          const animationStyles = [
+            {
+              selector: 'node.story-active',
+              style: {
+                'border-width': 4,
+                'border-color': '#4db6ac',
+                'box-shadow': '0 0 20px #4db6ac',
+                'z-index': 999
+              }
+            },
+            {
+              selector: 'node.story-dimmed',
+              style: {
+                'opacity': 0.3
+              }
+            },
+            {
+              selector: 'edge.story-dimmed',
+              style: {
+                'opacity': 0.15
+              }
+            },
+            {
+              selector: 'edge.story-active',
+              style: {
+                'width': 4,
+                'line-color': '#4db6ac',
+                'target-arrow-color': '#4db6ac',
+                'opacity': 1,
+                'line-style': 'dashed',
+                'line-dash-pattern': [8, 4],
+                'z-index': 999
+              }
+            },
+            {
+              selector: 'node.story-complete',
+              style: {
+                'opacity': 1,
+                'border-width': 2
+              }
+            },
+            {
+              selector: 'edge.story-complete',
+              style: {
+                'opacity': 0.7,
+                'width': 2,
+                'line-style': 'solid'
+              }
+            }
+          ];
+
+          return [...baseStyles, ...animationStyles];
+        }
+
+        showAllDimmed() {
+          this.cy.nodes().addClass('story-dimmed').style('opacity', 0.3);
+          this.cy.edges().addClass('story-dimmed').style('opacity', 0.15);
+        }
+
+        showAllFull() {
+          this.cy.elements().removeClass('story-dimmed story-active story-complete');
+          this.cy.nodes().style('opacity', 1);
+          this.cy.edges().style('opacity', 0.7);
+        }
+
+        setupCustomInteractivity() {
+          const container = document.getElementById(this.containerId);
+          this.tooltip = this.createTooltip(container);
+
+          // Custom hover - only when not in animation mode
+          this.cy.on('mouseover', 'node', (e) => {
+            if (this.animationMode) return;
+            const node = e.target;
+            if (node.data('type') === 'group') return;
+            this.showTooltip(node);
+          });
+
+          this.cy.on('mouseout', 'node', () => {
+            if (this.animationMode) return;
+            this.hideTooltip();
+          });
+
+          // Update tooltip position when node is dragged
+          this.cy.on('drag', 'node', (e) => {
+            if (this.tooltipNode && this.tooltipNode.id() === e.target.id()) {
+              this.updateTooltipPosition(e.target);
+            }
+          });
+
+          // Click background to deselect
+          this.cy.on('tap', (e) => {
+            if (e.target === this.cy) {
+              this.hideTooltip();
+            }
+          });
+
+          // Double-tap to fit
+          this.cy.on('dbltap', (e) => {
+            if (e.target === this.cy) {
+              this.cy.fit(50);
+            }
+          });
+        }
+
+        createTooltip(container) {
+          let tooltip = container.querySelector('.node-tooltip');
+          if (!tooltip) {
+            tooltip = document.createElement('div');
+            tooltip.className = 'node-tooltip';
+            container.appendChild(tooltip);
+          }
+          return tooltip;
+        }
+
+        showTooltip(node) {
+          this.tooltipNode = node;
+          const data = node.data();
+          
+          const incomers = node.incomers('node').map(n => n.data('label')).join(', ') || 'None';
+          const outgoers = node.outgoers('node').map(n => n.data('label')).join(', ') || 'None';
+          
+          this.tooltip.innerHTML = `
+            <h4>${data.label}</h4>
+            <p>${data.description || 'No description'}</p>
+            <div class="connections">
+              <strong>← From:</strong> <span>${incomers}</span><br>
+              <strong>→ To:</strong> <span>${outgoers}</span>
+            </div>
+          `;
+          
+          this.updateTooltipPosition(node);
+          this.tooltip.classList.add('visible');
+        }
+
+        updateTooltipPosition(node) {
+          const pos = node.renderedPosition();
+          const container = document.getElementById(this.containerId);
+          const containerRect = container.getBoundingClientRect();
+          
+          let left = pos.x + 20;
+          let top = pos.y - 20;
+          
+          if (left + 300 > containerRect.width) {
+            left = pos.x - 320;
+          }
+          if (top + 150 > containerRect.height) {
+            top = containerRect.height - 160;
+          }
+          if (top < 10) top = 10;
+          if (left < 10) left = 10;
+          
+          this.tooltip.style.left = `${left}px`;
+          this.tooltip.style.top = `${top}px`;
+        }
+
+        hideTooltip() {
+          this.tooltip.classList.remove('visible');
+          this.tooltipNode = null;
+        }
+
+        setupControls() {
+          const container = document.getElementById(this.containerId).closest('.diagram-container');
+          
+          // Play/Pause button
+          this.playBtn = container.querySelector('[data-action="play"]');
+          if (this.playBtn) {
+            this.playBtn.addEventListener('click', () => this.togglePlayPause());
+          }
+
+          // Speed select
+          const speedSelect = container.querySelector('select[id$="speed-select"]');
+          if (speedSelect) {
+            speedSelect.addEventListener('change', (e) => {
+              this.options.stepDuration = parseInt(e.target.value, 10);
+            });
+          }
+
+          // Fit button
+          const fitBtn = container.querySelector('[data-action="fit"]');
+          if (fitBtn) fitBtn.addEventListener('click', () => this.cy.fit(50));
+
+          // Reset button
+          const resetBtn = container.querySelector('[data-action="reset"]');
+          if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+              this.stop();
+              this.cy.layout(DiagramUtils.LAYOUTS.hierarchical).run();
+              setTimeout(() => {
+                this.cy.fit(50);
+                this.showAllDimmed();
+                this.currentStep = -1;
+                this.updateProgressDots();
+                this.resetCaption();
+              }, 100);
+            });
+          }
+
+          // Export button
+          const exportBtn = container.querySelector('[data-action="export"]');
+          if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+              DiagramUtils.exportDiagram(this.cy, this.containerId);
+            });
+          }
+        }
+
+        togglePlayPause() {
+          if (this.isPlaying && !this.isPaused) {
+            this.pause();
+          } else if (this.isPaused) {
+            this.resume();
+          } else {
+            this.play();
+          }
+        }
+
+        pause() {
+          this.isPaused = true;
+          narrator.pause();
+          this.updatePlayButtonUI();
+        }
+
+        resume() {
+          this.isPaused = false;
+          narrator.resume();
+          this.updatePlayButtonUI();
+        }
+
+        stop() {
+          this.shouldStop = true;
+          this.isPlaying = false;
+          this.isPaused = false;
+          this.animationMode = false;
+          narrator.stop();
+          this.clearEdgeAnimations();
+          this.clearWordHighlights();
+          this.updatePlayButtonUI();
+        }
+
+        updatePlayButtonUI() {
+          if (!this.playBtn) return;
+          
+          if (this.isPlaying && !this.isPaused) {
+            this.playBtn.textContent = '⏸ Pause';
+            this.playBtn.classList.add('playing');
+            this.playBtn.classList.remove('paused');
+          } else if (this.isPaused) {
+            this.playBtn.textContent = '▶ Resume';
+            this.playBtn.classList.remove('playing');
+            this.playBtn.classList.add('paused');
+          } else {
+            this.playBtn.textContent = '▶ Play';
+            this.playBtn.classList.remove('playing', 'paused');
+          }
+        }
+
+        setupAudioControls() {
+          const container = document.getElementById(this.containerId).closest('.diagram-container');
+          
+          this.audioToggle = container.querySelector('.audio-toggle');
+          if (this.audioToggle) {
+            this.audioToggle.addEventListener('click', () => {
+              this.options.audioEnabled = !this.options.audioEnabled;
+              this.updateAudioToggleUI();
+              narrator.setMuted(!this.options.audioEnabled);
+              if (!this.options.audioEnabled) narrator.stop();
+            });
+          }
+
+          // Voice select for pre-generated voices
+          this.voiceSelect = container.querySelector('.voice-select');
+          if (this.voiceSelect) {
+            this.populateVoices();
+            this.voiceSelect.addEventListener('change', (e) => {
+              narrator.setVoice(e.target.value);
+            });
+          }
+
+          narrator.onSpeakingChange = (speaking) => {
+            if (this.audioToggle) {
+              this.audioToggle.classList.toggle('speaking', speaking);
+            }
+          };
+        }
+
+        populateVoices() {
+          const tryPopulate = () => {
+            const voices = narrator.getVoices();
+            if (voices.length === 0) {
+              setTimeout(tryPopulate, 100);
+              return;
+            }
+
+            this.voiceSelect.innerHTML = voices
+              .map((v, i) => `<option value="${v.id}" ${i === 0 ? 'selected' : ''}>${v.label}</option>`)
+              .join('');
+          };
+          
+          tryPopulate();
+        }
+
+        updateAudioToggleUI() {
+          if (!this.audioToggle) return;
+          const icon = this.audioToggle.querySelector('.audio-icon');
+          const label = this.audioToggle.querySelector('.audio-label');
+          
+          if (this.options.audioEnabled) {
+            this.audioToggle.classList.remove('muted');
+            icon.textContent = '🔊';
+            label.textContent = 'On';
+          } else {
+            this.audioToggle.classList.add('muted');
+            icon.textContent = '🔇';
+            label.textContent = 'Off';
+          }
+        }
+
+        setupProgressDots() {
+          const progressContainer = document.getElementById(`${this.containerId}-progress`);
+          if (!progressContainer) return;
+
+          progressContainer.innerHTML = this.storySteps.map((step, i) => 
+            `<div class="progress-dot" data-step="${i}" data-title="${step.title}" title="${step.title}"></div>`
+          ).join('');
+
+          // Make dots clickable
+          progressContainer.querySelectorAll('.progress-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+              const stepIndex = parseInt(dot.dataset.step, 10);
+              this.jumpToStep(stepIndex);
+            });
+          });
+        }
+
+        updateProgressDots() {
+          const dots = document.querySelectorAll(`#${this.containerId}-progress .progress-dot`);
+          dots.forEach((dot, i) => {
+            dot.classList.remove('active', 'completed');
+            if (i < this.currentStep) dot.classList.add('completed');
+            if (i === this.currentStep) dot.classList.add('active');
+          });
+        }
+
+        resetCaption() {
+          const captionContainer = document.getElementById(`${this.containerId}-caption`);
+          if (!captionContainer) return;
+
+          const icon = captionContainer.querySelector('[id$="story-icon"]');
+          const title = captionContainer.querySelector('[id$="story-title"]');
+          const text = captionContainer.querySelector('[id$="story-text"]');
+          const connection = captionContainer.querySelector('[id$="story-connection"]');
+
+          if (icon) { icon.textContent = '🚀'; icon.classList.add('visible'); }
+          if (title) { title.textContent = 'Ready to Explore'; title.classList.add('visible'); }
+          if (text) { 
+            text.textContent = 'Click any progress dot below to jump to that step, or press Play to watch the full story.'; 
+            text.classList.add('visible'); 
+          }
+          if (connection) connection.style.display = 'none';
+          captionContainer.classList.remove('active');
+        }
+
+        updateCaption(step) {
+          const captionContainer = document.getElementById(`${this.containerId}-caption`);
+          if (!captionContainer) return;
+
+          const icon = captionContainer.querySelector('[id$="story-icon"]');
+          const title = captionContainer.querySelector('[id$="story-title"]');
+          const text = captionContainer.querySelector('[id$="story-text"]');
+          const connection = captionContainer.querySelector('[id$="story-connection"]');
+          const connectionText = captionContainer.querySelector('[id$="connection-text"]');
+
+          // Quick fade out
+          icon?.classList.remove('visible');
+          title?.classList.remove('visible');
+          text?.classList.remove('visible');
+          connection?.classList.remove('visible');
+
+          // Store current step for word highlighting
+          this.currentNarrationStep = step;
+
+          setTimeout(() => {
+            if (icon) icon.textContent = step.icon;
+            
+            // Wrap title words in spans for highlighting
+            if (title) {
+              title.innerHTML = this.wrapWordsInSpans(step.title);
+            }
+            
+            // Wrap narration words in spans for highlighting
+            if (text) {
+              text.innerHTML = this.wrapWordsInSpans(step.narration);
+            }
+            
+            if (step.connectsTo && connection && connectionText) {
+              connectionText.textContent = `Connects to: ${step.connectsTo}`;
+              connection.style.display = 'inline-flex';
+            } else if (connection) {
+              connection.style.display = 'none';
+            }
+
+            captionContainer.classList.add('active');
+            setTimeout(() => icon?.classList.add('visible'), 50);
+            setTimeout(() => title?.classList.add('visible'), 100);
+            setTimeout(() => text?.classList.add('visible'), 150);
+            setTimeout(() => connection?.classList.add('visible'), 250);
+          }, 100);
+
+          this.updateProgressDots();
+        }
+
+        wrapWordsInSpans(text) {
+          const words = text.split(/\s+/).filter(w => w.length > 0);
+          return words.map((w, i) => 
+            `<span class="word" data-index="${i}">${w}</span>`
+          ).join(' ');
+        }
+
+        clearWordHighlights() {
+          const captionContainer = document.getElementById(`${this.containerId}-caption`);
+          if (!captionContainer) return;
+          
+          captionContainer.querySelectorAll('.word').forEach(el => {
+            el.classList.remove('current', 'spoken');
+          });
+        }
+
+        async jumpToStep(stepIndex) {
+          // Stop any current playback
+          this.stop();
+          narrator.stop();
+          this.clearEdgeAnimations();
+
+          this.animationMode = true;
+          this.currentStep = stepIndex;
+
+          // Build up to this step
+          this.showAllDimmed();
+
+          // Show all completed steps
+          for (let i = 0; i <= stepIndex; i++) {
+            const step = this.storySteps[i];
+            
+            // Show node
+            if (step.nodeId) {
+              const node = this.cy.getElementById(step.nodeId);
+              node.removeClass('story-dimmed').addClass('story-complete');
+              node.style('opacity', 1);
+            }
+
+            // Show edges
+            if (step.edges) {
+              for (const edgeSpec of step.edges) {
+                const edge = this.cy.edges().filter(e => 
+                  e.source().id() === edgeSpec.from && e.target().id() === edgeSpec.to
+                );
+                edge.removeClass('story-dimmed').addClass('story-complete');
+              }
+            }
+          }
+
+          // Highlight current step
+          const currentStepData = this.storySteps[stepIndex];
+          if (currentStepData.nodeId) {
+            const node = this.cy.getElementById(currentStepData.nodeId);
+            node.removeClass('story-complete').addClass('story-active');
+            
+            // Zoom to node
+            this.zoomToNode(node);
+            
+            // Add glow animation
+            this.animateNodeGlow(node);
+          }
+
+          // Animate current edges
+          if (currentStepData.edges) {
+            for (const edgeSpec of currentStepData.edges) {
+              const edge = this.cy.edges().filter(e => 
+                e.source().id() === edgeSpec.from && e.target().id() === edgeSpec.to
+              );
+              edge.removeClass('story-complete').addClass('story-active');
+              this.animateEdgeFlow(edge);
+            }
+          }
+
+          // Update caption and narrate
+          this.updateCaption(currentStepData);
+          
+          if (this.options.audioEnabled) {
+            await this.narrateStep(currentStepData);
+          }
+
+          // Clear active states after narration
+          setTimeout(() => {
+            this.cy.elements().removeClass('story-active');
+            if (currentStepData.nodeId) {
+              const node = this.cy.getElementById(currentStepData.nodeId);
+              node.addClass('story-complete');
+            }
+            if (currentStepData.edges) {
+              for (const edgeSpec of currentStepData.edges) {
+                const edge = this.cy.edges().filter(e => 
+                  e.source().id() === edgeSpec.from && e.target().id() === edgeSpec.to
+                );
+                edge.addClass('story-complete');
+              }
+            }
+            this.clearEdgeAnimations();
+            this.animationMode = false;
+          }, 500);
+        }
+
+        async play() {
+          if (this.isPlaying) return;
+          
+          this.isPlaying = true;
+          this.isPaused = false;
+          this.shouldStop = false;
+          this.animationMode = true;
+          
+          narrator.stop();
+          this.clearEdgeAnimations();
+          this.showAllDimmed();
+          this.currentStep = -1;
+          
+          this.updatePlayButtonUI();
+
+          // Play each step
+          for (let i = 0; i < this.storySteps.length; i++) {
+            if (this.shouldStop) break;
+
+            // Wait while paused
+            while (this.isPaused && !this.shouldStop) {
+              await this.wait(100);
+            }
+            if (this.shouldStop) break;
+            
+            this.currentStep = i;
+            await this.playStep(this.storySteps[i]);
+            
+            if (this.shouldStop) break;
+            
+            // Wait between steps
+            if (i < this.storySteps.length - 1) {
+              await this.waitWithPauseCheck(this.options.stepDuration);
+            }
+          }
+
+          // Finished
+          this.isPlaying = false;
+          this.isPaused = false;
+          this.animationMode = false;
+          this.updatePlayButtonUI();
+          
+          // Zoom out to show all
+          if (!this.shouldStop) {
+            this.cy.animate({
+              fit: { padding: 50 },
+              duration: 800,
+              easing: 'ease-out-cubic'
+            });
+          }
+        }
+
+        async playStep(step) {
+          // Update caption
+          this.updateCaption(step);
+
+          // Animate visuals
+          const visualPromise = this.animateStepVisuals(step);
+
+          // Narrate
+          const narrationPromise = this.options.audioEnabled 
+            ? this.narrateStep(step)
+            : Promise.resolve();
+
+          await Promise.all([visualPromise, narrationPromise]);
+
+          // Clean up step (remove glow, keep visible)
+          this.cleanupStep(step);
+        }
+
+        async animateStepVisuals(step) {
+          // Animate node
+          if (step.nodeId) {
+            const node = this.cy.getElementById(step.nodeId);
+            
+            // Remove dimmed, add active
+            node.removeClass('story-dimmed').addClass('story-active');
+            
+            // Zoom to node
+            await this.zoomToNode(node);
+            
+            // Animate node appearing with glow
+            await this.animateNodeIn(node);
+            this.animateNodeGlow(node);
+          }
+
+          // Animate edges with photon effect
+          if (step.edges && step.edges.length > 0) {
+            for (const edgeSpec of step.edges) {
+              if (this.shouldStop) break;
+              
+              const edge = this.cy.edges().filter(e => 
+                e.source().id() === edgeSpec.from && e.target().id() === edgeSpec.to
+              );
+              
+              if (edge.length) {
+                edge.removeClass('story-dimmed').addClass('story-active');
+                await this.animateEdgeIn(edge);
+                this.animateEdgeFlow(edge);
+                await this.wait(150);
+              }
+            }
+          }
+
+          // Ease out to show more context
+          await this.wait(300);
+          this.cy.animate({
+            fit: { 
+              eles: this.cy.elements().not('.story-dimmed'),
+              padding: 80 
+            },
+            duration: 600,
+            easing: 'ease-out-cubic'
+          });
+        }
+
+        cleanupStep(step) {
+          // Remove active glow, mark as complete
+          if (step.nodeId) {
+            const node = this.cy.getElementById(step.nodeId);
+            node.removeClass('story-active').addClass('story-complete');
+          }
+          
+          if (step.edges) {
+            for (const edgeSpec of step.edges) {
+              const edge = this.cy.edges().filter(e => 
+                e.source().id() === edgeSpec.from && e.target().id() === edgeSpec.to
+              );
+              edge.removeClass('story-active').addClass('story-complete');
+            }
+          }
+
+          this.clearEdgeAnimations();
+          this.clearWordHighlights();
+        }
+
+        zoomToNode(node) {
+          return new Promise(resolve => {
+            this.cy.animate({
+              center: { eles: node },
+              zoom: 1.5,
+              duration: 500,
+              easing: 'ease-out-cubic',
+              complete: resolve
+            });
+          });
+        }
+
+        animateNodeIn(node) {
+          return new Promise(resolve => {
+            node.style('opacity', 0);
+            
+            anime({
+              targets: {},
+              duration: 500,
+              easing: 'easeOutBack',
+              update: (anim) => {
+                const progress = anim.progress / 100;
+                node.style('opacity', progress);
+              },
+              complete: resolve
+            });
+          });
+        }
+
+        animateNodeGlow(node) {
+          // Pulsing border effect
+          let glowIntensity = 0;
+          const glowAnimation = anime({
+            targets: { intensity: 0 },
+            intensity: 1,
+            duration: 800,
+            easing: 'easeInOutSine',
+            direction: 'alternate',
+            loop: true,
+            update: (anim) => {
+              const intensity = anim.animations[0].currentValue;
+              const borderWidth = 3 + (intensity * 3);
+              node.style('border-width', borderWidth);
+            }
+          });
+
+          // Store for cleanup
+          this.activeNodeAnimation = glowAnimation;
+        }
+
+        animateEdgeIn(edge) {
+          return new Promise(resolve => {
+            anime({
+              targets: {},
+              duration: 400,
+              easing: 'easeOutQuad',
+              update: (anim) => {
+                const progress = anim.progress / 100;
+                edge.style('opacity', progress);
+              },
+              complete: resolve
+            });
+          });
+        }
+
+        animateEdgeFlow(edge) {
+          // Photon/particle effect using dash animation
+          let offset = 0;
+          const flowAnimation = setInterval(() => {
+            offset = (offset + 2) % 24;
+            edge.style('line-dash-offset', -offset);
+          }, 50);
+
+          this.activeEdgeAnimations.push(flowAnimation);
+        }
+
+        clearEdgeAnimations() {
+          this.activeEdgeAnimations.forEach(anim => clearInterval(anim));
+          this.activeEdgeAnimations = [];
+          
+          if (this.activeNodeAnimation) {
+            this.activeNodeAnimation.pause();
+            this.activeNodeAnimation = null;
+          }
+        }
+
+        async narrateStep(step) {
+          // Wait for caption DOM to render
+          await this.wait(200);
+          
+          // Get word elements for highlighting
+          const captionContainer = document.getElementById(`${this.containerId}-caption`);
+          const titleWords = captionContainer?.querySelector('.story-title')?.querySelectorAll('.word') || [];
+          const textWords = captionContainer?.querySelector('.story-text')?.querySelectorAll('.word') || [];
+          const allWords = [...titleWords, ...textWords];
+          
+          let lastHighlightedIndex = -1;
+          
+          // Set up word highlight callback
+          narrator.onWordHighlight = (wordIndex, word) => {
+            // Clear previous highlights
+            allWords.forEach((el, i) => {
+              el.classList.remove('current');
+              if (i < wordIndex) {
+                el.classList.add('spoken');
+              }
+            });
+            
+            // Highlight current word
+            if (wordIndex < allWords.length) {
+              allWords[wordIndex].classList.add('current');
+              lastHighlightedIndex = wordIndex;
+            } else {
+              // All done - mark all as spoken
+              allWords.forEach(el => {
+                el.classList.remove('current');
+                el.classList.add('spoken');
+              });
+            }
+          };
+          
+          // Play pre-generated audio with timestamps
+          await narrator.playStep(this.containerId, this.currentStep);
+          
+          // Ensure all words marked as spoken
+          allWords.forEach(el => {
+            el.classList.remove('current');
+            el.classList.add('spoken');
+          });
+          
+          narrator.onWordHighlight = null;
+        }
+
+        wait(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async waitWithPauseCheck(ms) {
+          const interval = 100;
+          let elapsed = 0;
+          
+          while (elapsed < ms) {
+            if (this.shouldStop) return;
+            while (this.isPaused && !this.shouldStop) {
+              await this.wait(100);
+            }
+            await this.wait(interval);
+            elapsed += interval;
+          }
+        }
+      }
+
+      // ============================================
+      // SERVICE DEPENDENCY STORY
+      // ============================================
+      
+      const serviceElements = [
+        { data: { id: 'firebase-config', label: 'FirebaseApp', type: 'config', description: 'Firebase SDK initialization' } },
+        { data: { id: 'auth-service', label: 'AuthService', type: 'auth', description: 'User authentication management' } },
+        { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'Firestore CRUD operations' } },
+        { data: { id: 'rbac', label: 'RBACService', type: 'service', description: 'Role-based access control' } },
+        { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Lesson progress tracking' } },
+        { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Quiz/activity completion' } },
+        { data: { id: 'route-guard', label: 'RouteGuard', type: 'ui', description: 'Page access protection' } },
+        { data: { id: 'lesson-integration', label: 'LessonIntegration', type: 'ui', description: 'Lesson page orchestration' } },
+        
+        { data: { source: 'auth-service', target: 'firebase-config' } },
+        { data: { source: 'data-service', target: 'firebase-config' } },
+        { data: { source: 'data-service', target: 'auth-service' } },
+        { data: { source: 'rbac', target: 'auth-service' } },
+        { data: { source: 'progress-tracker', target: 'data-service' } },
+        { data: { source: 'progress-tracker', target: 'auth-service' } },
+        { data: { source: 'activity-tracker', target: 'data-service' } },
+        { data: { source: 'activity-tracker', target: 'auth-service' } },
+        { data: { source: 'route-guard', target: 'auth-service' } },
+        { data: { source: 'route-guard', target: 'rbac' } },
+        { data: { source: 'lesson-integration', target: 'progress-tracker' } },
+        { data: { source: 'lesson-integration', target: 'activity-tracker' } },
+      ];
+
+      const serviceStory = [
+        {
+          nodeId: 'firebase-config',
+          icon: '🔥',
+          title: 'Foundation: Firebase Config',
+          narration: 'Everything starts here. FirebaseApp initializes the Firebase SDK, establishing connections to Authentication and Firestore. This is loaded first on every page.',
+          connectsTo: null
+        },
+        {
+          nodeId: 'auth-service',
+          edges: [{ from: 'auth-service', to: 'firebase-config' }],
+          icon: '🔐',
+          title: 'Authentication Layer',
+          narration: 'AuthService wraps Firebase Auth, managing user sessions, login flows, and auth state changes. It depends on FirebaseApp for the auth instance.',
+          connectsTo: 'FirebaseApp'
+        },
+        {
+          nodeId: 'data-service',
+          edges: [
+            { from: 'data-service', to: 'firebase-config' },
+            { from: 'data-service', to: 'auth-service' }
+          ],
+          icon: '💾',
+          title: 'Data Access Layer',
+          narration: 'DataService handles all Firestore CRUD operations. It needs FirebaseApp for database access AND AuthService to scope queries to the current user.',
+          connectsTo: 'FirebaseApp, AuthService'
+        },
+        {
+          nodeId: 'rbac',
+          edges: [{ from: 'rbac', to: 'auth-service' }],
+          icon: '🛡️',
+          title: 'Role-Based Access Control',
+          narration: 'RBACService checks user roles and permissions. It queries AuthService to get the current user, then checks their role against required permissions.',
+          connectsTo: 'AuthService'
+        },
+        {
+          nodeId: 'progress-tracker',
+          edges: [
+            { from: 'progress-tracker', to: 'data-service' },
+            { from: 'progress-tracker', to: 'auth-service' }
+          ],
+          icon: '📊',
+          title: 'Progress Tracking',
+          narration: 'ProgressTracker uses IntersectionObserver to detect which content users have viewed. It saves progress via DataService and identifies users via AuthService.',
+          connectsTo: 'DataService, AuthService'
+        },
+        {
+          nodeId: 'activity-tracker',
+          edges: [
+            { from: 'activity-tracker', to: 'data-service' },
+            { from: 'activity-tracker', to: 'auth-service' }
+          ],
+          icon: '✅',
+          title: 'Activity Completion',
+          narration: 'ActivityTracker records quiz answers and exercise completions. Like ProgressTracker, it writes to Firestore via DataService for authenticated users.',
+          connectsTo: 'DataService, AuthService'
+        },
+        {
+          nodeId: 'route-guard',
+          edges: [
+            { from: 'route-guard', to: 'auth-service' },
+            { from: 'route-guard', to: 'rbac' }
+          ],
+          icon: '🚧',
+          title: 'Route Protection',
+          narration: 'RouteGuard runs on page load to check if users can access the current page. It verifies authentication status AND role requirements before showing content.',
+          connectsTo: 'AuthService, RBACService'
+        },
+        {
+          nodeId: 'lesson-integration',
+          edges: [
+            { from: 'lesson-integration', to: 'progress-tracker' },
+            { from: 'lesson-integration', to: 'activity-tracker' }
+          ],
+          icon: '📚',
+          title: 'Lesson Orchestration',
+          narration: 'Finally, LessonIntegration ties it all together on lesson pages. It coordinates ProgressTracker and ActivityTracker to create a seamless learning experience.',
+          connectsTo: 'ProgressTracker, ActivityTracker'
+        }
+      ];
+
+      new StorytellingDiagram('service-story', serviceElements, serviceStory);
+
+      // ============================================
+      // DATA FLOW STORY
+      // ============================================
+
+      const dataflowElements = [
+        { data: { id: 'user-click', label: 'User Click', type: 'external', description: 'User interaction event' } },
+        { data: { id: 'event-handler', label: 'Event Handler', type: 'page', description: 'DOM event listener' } },
+        { data: { id: 'service-call', label: 'Service Method', type: 'service', description: 'Business logic call' } },
+        { data: { id: 'auth-check', label: 'Auth Check', type: 'auth', description: 'User verification' } },
+        { data: { id: 'firestore-write', label: 'Firestore Write', type: 'data', description: 'Database operation' } },
+        { data: { id: 'realtime-update', label: 'Realtime Listener', type: 'data', description: 'Live data sync' } },
+        { data: { id: 'state-update', label: 'State Update', type: 'service', description: 'Local state change' } },
+        { data: { id: 'ui-render', label: 'UI Re-render', type: 'page', description: 'Visual update' } },
+        
+        { data: { source: 'user-click', target: 'event-handler' } },
+        { data: { source: 'event-handler', target: 'service-call' } },
+        { data: { source: 'service-call', target: 'auth-check' } },
+        { data: { source: 'auth-check', target: 'firestore-write' } },
+        { data: { source: 'firestore-write', target: 'realtime-update' } },
+        { data: { source: 'realtime-update', target: 'state-update' } },
+        { data: { source: 'state-update', target: 'ui-render' } },
+      ];
+
+      const dataflowStory = [
+        {
+          nodeId: 'user-click',
+          icon: '👆',
+          title: 'User Initiates Action',
+          narration: 'It all starts with a user interaction—clicking a Complete Quiz button, scrolling past a section, or submitting a form. The browser captures this event.',
+          connectsTo: null
+        },
+        {
+          nodeId: 'event-handler',
+          edges: [{ from: 'user-click', to: 'event-handler' }],
+          icon: '📡',
+          title: 'Event Handler Catches It',
+          narration: 'The DOM event handler fires. This is JavaScript code in the page that responds to user actions and decides what to do next.',
+          connectsTo: 'User Click'
+        },
+        {
+          nodeId: 'service-call',
+          edges: [{ from: 'event-handler', to: 'service-call' }],
+          icon: '⚙️',
+          title: 'Service Method Called',
+          narration: 'The handler calls a service method like ProgressTracker.markComplete or ActivityTracker.submitAnswer. Business logic lives in these services, not in UI code.',
+          connectsTo: 'Event Handler'
+        },
+        {
+          nodeId: 'auth-check',
+          edges: [{ from: 'service-call', to: 'auth-check' }],
+          icon: '🔐',
+          title: 'Authentication Verified',
+          narration: 'Before writing data, the service checks AuthService.getCurrentUser. If no user is logged in, the action may be queued or rejected.',
+          connectsTo: 'Service Method'
+        },
+        {
+          nodeId: 'firestore-write',
+          edges: [{ from: 'auth-check', to: 'firestore-write' }],
+          icon: '💾',
+          title: 'Data Written to Firestore',
+          narration: 'The service calls Firestore to persist the data. This might be updating a progress document, saving quiz answers, or logging activity.',
+          connectsTo: 'Auth Check'
+        },
+        {
+          nodeId: 'realtime-update',
+          edges: [{ from: 'firestore-write', to: 'realtime-update' }],
+          icon: '🔄',
+          title: 'Realtime Listener Triggers',
+          narration: 'Firestores onSnapshot listeners detect the change instantly. Any component subscribed to this data gets notified automatically.',
+          connectsTo: 'Firestore Write'
+        },
+        {
+          nodeId: 'state-update',
+          edges: [{ from: 'realtime-update', to: 'state-update' }],
+          icon: '📦',
+          title: 'Local State Updates',
+          narration: 'The listener callback updates the local state. This keeps the UI in sync with the database.',
+          connectsTo: 'Realtime Listener'
+        },
+        {
+          nodeId: 'ui-render',
+          edges: [{ from: 'state-update', to: 'ui-render' }],
+          icon: '🎨',
+          title: 'UI Reflects the Change',
+          narration: 'Finally, the UI re-renders to show the new state. A progress bar fills, a checkmark appears, or a success toast shows. The cycle is complete!',
+          connectsTo: 'State Update'
+        }
+      ];
+
+      new StorytellingDiagram('dataflow-story', dataflowElements, dataflowStory);
+
+      // ============================================
+      // QUIZ SYSTEM
+      // ============================================
+
+      const quizData = {
+        'service-quiz': {
+          questions: [
+            {
+              question: 'What is the foundational service that all other services depend on?',
+              options: ['AuthService', 'DataService', 'FirebaseApp', 'RBACService'],
+              correct: 2,
+              explanation: 'FirebaseApp initializes the Firebase SDK and is loaded first on every page.'
+            },
+            {
+              question: 'Which service wraps Firebase Auth for managing user sessions?',
+              options: ['RBACService', 'AuthService', 'DataService', 'RouteGuard'],
+              correct: 1,
+              explanation: 'AuthService wraps Firebase Auth, managing user sessions, login flows, and auth state changes.'
+            },
+            {
+              question: 'What does DataService need to scope queries to the current user?',
+              options: ['Only FirebaseApp', 'Only AuthService', 'Both FirebaseApp and AuthService', 'Neither'],
+              correct: 2,
+              explanation: 'DataService needs FirebaseApp for database access AND AuthService to scope queries to the current user.'
+            },
+            {
+              question: 'Which component orchestrates ProgressTracker and ActivityTracker on lesson pages?',
+              options: ['RouteGuard', 'RBACService', 'DataService', 'LessonIntegration'],
+              correct: 3,
+              explanation: 'LessonIntegration ties everything together on lesson pages, coordinating ProgressTracker and ActivityTracker.'
+            }
+          ]
+        },
+        'dataflow-quiz': {
+          questions: [
+            {
+              question: 'What captures the initial user interaction (click, scroll, form submission)?',
+              options: ['Service Method', 'The Browser', 'Firestore', 'AuthService'],
+              correct: 1,
+              explanation: 'The browser captures user interactions like clicking buttons, scrolling, or submitting forms.'
+            },
+            {
+              question: 'Where does business logic live, according to the data flow pattern?',
+              options: ['UI code', 'Event handlers', 'Service methods', 'Firestore'],
+              correct: 2,
+              explanation: 'Business logic lives in service methods like ProgressTracker.markComplete, not in UI code.'
+            },
+            {
+              question: 'What happens if no user is logged in when the service checks authentication?',
+              options: ['The action proceeds anyway', 'The page crashes', 'The action may be queued or rejected', 'Firestore handles it'],
+              correct: 2,
+              explanation: 'If no user is logged in, the action may be queued or rejected by the service.'
+            },
+            {
+              question: 'How do components get notified of database changes instantly?',
+              options: ['Polling every second', 'Page refresh', 'Firestore onSnapshot listeners', 'Manual subscription'],
+              correct: 2,
+              explanation: 'Firestore\'s onSnapshot listeners detect changes instantly and notify subscribed components automatically.'
+            }
+          ]
+        }
+      };
+
+      class Quiz {
+        constructor(containerId, questions) {
+          this.containerId = containerId;
+          this.container = document.getElementById(containerId);
+          this.questions = questions;
+          this.currentIndex = 0;
+          this.answers = this.loadAnswers();
+          
+          this.init();
+        }
+
+        loadAnswers() {
+          const saved = localStorage.getItem(`quiz-${this.containerId}`);
+          return saved ? JSON.parse(saved) : {};
+        }
+
+        saveAnswers() {
+          localStorage.setItem(`quiz-${this.containerId}`, JSON.stringify(this.answers));
+        }
+
+        init() {
+          this.renderQuestions();
+          this.renderDots();
+          this.setupNavigation();
+          this.updateProgress();
+          this.showQuestion(0);
+        }
+
+        renderQuestions() {
+          const carousel = this.container.querySelector('.quiz-carousel');
+          carousel.innerHTML = this.questions.map((q, i) => `
+            <div class="quiz-question" data-index="${i}">
+              <div class="question-number">Question ${i + 1} of ${this.questions.length}</div>
+              <div class="question-text">${q.question}</div>
+              <div class="quiz-options">
+                ${q.options.map((opt, j) => `
+                  <button class="quiz-option" data-option="${j}">${opt}</button>
+                `).join('')}
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+          `).join('');
+
+          // Add click handlers
+          carousel.querySelectorAll('.quiz-option').forEach(btn => {
+            btn.addEventListener('click', (e) => this.selectAnswer(e));
+          });
+
+          // Restore previous answers
+          Object.entries(this.answers).forEach(([qIndex, answer]) => {
+            this.applyAnswer(parseInt(qIndex), answer);
+          });
+        }
+
+        renderDots() {
+          const dotsContainer = this.container.querySelector('.quiz-dots');
+          dotsContainer.innerHTML = this.questions.map((_, i) => 
+            `<div class="quiz-dot" data-index="${i}"></div>`
+          ).join('');
+
+          dotsContainer.querySelectorAll('.quiz-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+              this.showQuestion(parseInt(dot.dataset.index));
+            });
+          });
+
+          this.updateDots();
+        }
+
+        setupNavigation() {
+          const prevBtn = this.container.querySelector('.quiz-nav-btn.prev');
+          const nextBtn = this.container.querySelector('.quiz-nav-btn.next');
+
+          prevBtn.addEventListener('click', () => this.showQuestion(this.currentIndex - 1));
+          nextBtn.addEventListener('click', () => this.showQuestion(this.currentIndex + 1));
+        }
+
+        showQuestion(index) {
+          if (index < 0 || index >= this.questions.length) return;
+          
+          this.currentIndex = index;
+          
+          // Hide all, show current
+          this.container.querySelectorAll('.quiz-question').forEach((q, i) => {
+            q.classList.toggle('active', i === index);
+          });
+
+          // Update nav buttons
+          const prevBtn = this.container.querySelector('.quiz-nav-btn.prev');
+          const nextBtn = this.container.querySelector('.quiz-nav-btn.next');
+          prevBtn.disabled = index === 0;
+          nextBtn.disabled = index === this.questions.length - 1;
+
+          this.updateDots();
+        }
+
+        selectAnswer(e) {
+          const btn = e.target;
+          const questionEl = btn.closest('.quiz-question');
+          const questionIndex = parseInt(questionEl.dataset.index);
+          const selectedOption = parseInt(btn.dataset.option);
+          
+          // If already answered, don't allow changes
+          if (this.answers[questionIndex] !== undefined) return;
+
+          const question = this.questions[questionIndex];
+          const isCorrect = selectedOption === question.correct;
+
+          this.answers[questionIndex] = { selected: selectedOption, correct: isCorrect };
+          this.saveAnswers();
+
+          this.applyAnswer(questionIndex, this.answers[questionIndex]);
+          this.updateProgress();
+          this.updateDots();
+
+          // Auto-advance after a delay
+          if (this.currentIndex < this.questions.length - 1) {
+            setTimeout(() => this.showQuestion(this.currentIndex + 1), 1500);
+          }
+        }
+
+        applyAnswer(questionIndex, answer) {
+          const questionEl = this.container.querySelector(`.quiz-question[data-index="${questionIndex}"]`);
+          if (!questionEl) return;
+
+          const options = questionEl.querySelectorAll('.quiz-option');
+          const feedback = questionEl.querySelector('.quiz-feedback');
+          const question = this.questions[questionIndex];
+
+          options.forEach((opt, i) => {
+            opt.classList.remove('selected', 'correct', 'incorrect');
+            if (i === answer.selected) {
+              opt.classList.add(answer.correct ? 'correct' : 'incorrect');
+            }
+            if (i === question.correct && !answer.correct) {
+              opt.classList.add('correct');
+            }
+          });
+
+          feedback.className = `quiz-feedback show ${answer.correct ? 'correct' : 'incorrect'}`;
+          feedback.textContent = answer.correct 
+            ? '✓ Correct! ' + question.explanation
+            : '✗ ' + question.explanation;
+        }
+
+        updateProgress() {
+          const answered = Object.keys(this.answers).length;
+          const correct = Object.values(this.answers).filter(a => a.correct).length;
+          
+          this.container.querySelector('.quiz-progress .answered').textContent = answered;
+          this.container.querySelector('.quiz-progress .total').textContent = this.questions.length;
+          
+          const scoreEl = this.container.querySelector('.quiz-progress .score');
+          if (answered > 0) {
+            scoreEl.textContent = ` • ${correct}/${answered} correct`;
+          }
+        }
+
+        updateDots() {
+          this.container.querySelectorAll('.quiz-dot').forEach((dot, i) => {
+            dot.classList.remove('active', 'answered', 'correct', 'incorrect');
+            
+            if (i === this.currentIndex) {
+              dot.classList.add('active');
+            }
+            
+            if (this.answers[i]) {
+              dot.classList.add(this.answers[i].correct ? 'correct' : 'incorrect');
+            }
+          });
+        }
+      }
+
+      // Initialize quizzes
+      Object.entries(quizData).forEach(([quizId, data]) => {
+        new Quiz(quizId, data.questions);
+      });
+    });
+  </script>
+</body>
+</html>

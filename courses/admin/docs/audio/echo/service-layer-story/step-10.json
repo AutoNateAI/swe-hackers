@@ -1,0 +1,65 @@
+{
+  "storyId": "service-layer-story",
+  "stepId": "step-10",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "getAnalytics(). getAnalytics fetches time-series events. Supports date ranges and aggregation options.",
+  "duration": 7.460000038146973,
+  "words": [
+    {
+      "word": "GetAnalytics",
+      "start": 0,
+      "end": 1.100000023841858
+    },
+    {
+      "word": "fetches",
+      "start": 1.100000023841858,
+      "end": 1.8600000143051147
+    },
+    {
+      "word": "time",
+      "start": 1.8600000143051147,
+      "end": 2.4600000381469727
+    },
+    {
+      "word": "series",
+      "start": 2.4600000381469727,
+      "end": 2.799999952316284
+    },
+    {
+      "word": "events",
+      "start": 2.799999952316284,
+      "end": 3.319999933242798
+    },
+    {
+      "word": "supports",
+      "start": 4.440000057220459,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "date",
+      "start": 4.460000038146973,
+      "end": 4.980000019073486
+    },
+    {
+      "word": "ranges",
+      "start": 4.980000019073486,
+      "end": 5.440000057220459
+    },
+    {
+      "word": "and",
+      "start": 5.440000057220459,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "aggregation",
+      "start": 5.940000057220459,
+      "end": 6.639999866485596
+    },
+    {
+      "word": "options",
+      "start": 6.639999866485596,
+      "end": 7.139999866485596
+    }
+  ]
+}

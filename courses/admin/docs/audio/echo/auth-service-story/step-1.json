@@ -1,0 +1,130 @@
+{
+  "storyId": "auth-service-story",
+  "stepId": "step-1",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "register() Method. The register method creates new accounts. It validates input, calls Firebase, updates the profile with display name, and creates the user document.",
+  "duration": 11.65999984741211,
+  "words": [
+    {
+      "word": "Register",
+      "start": 0,
+      "end": 0.6399999856948853
+    },
+    {
+      "word": "method",
+      "start": 0.6399999856948853,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "The",
+      "start": 1.0399999618530273,
+      "end": 1.7799999713897705
+    },
+    {
+      "word": "register",
+      "start": 1.7799999713897705,
+      "end": 2.0799999237060547
+    },
+    {
+      "word": "method",
+      "start": 2.0799999237060547,
+      "end": 2.5199999809265137
+    },
+    {
+      "word": "creates",
+      "start": 2.5199999809265137,
+      "end": 2.9800000190734863
+    },
+    {
+      "word": "new",
+      "start": 2.9800000190734863,
+      "end": 3.440000057220459
+    },
+    {
+      "word": "accounts",
+      "start": 3.440000057220459,
+      "end": 3.859999895095825
+    },
+    {
+      "word": "it",
+      "start": 4.119999885559082,
+      "end": 4.480000019073486
+    },
+    {
+      "word": "validates",
+      "start": 4.480000019073486,
+      "end": 4.800000190734863
+    },
+    {
+      "word": "input",
+      "start": 4.800000190734863,
+      "end": 5.300000190734863
+    },
+    {
+      "word": "calls",
+      "start": 5.920000076293945,
+      "end": 5.920000076293945
+    },
+    {
+      "word": "Firebase",
+      "start": 5.920000076293945,
+      "end": 6.360000133514404
+    },
+    {
+      "word": "updates",
+      "start": 7.300000190734863,
+      "end": 7.300000190734863
+    },
+    {
+      "word": "the",
+      "start": 7.300000190734863,
+      "end": 7.539999961853027
+    },
+    {
+      "word": "profile",
+      "start": 7.539999961853027,
+      "end": 8.020000457763672
+    },
+    {
+      "word": "with",
+      "start": 8.020000457763672,
+      "end": 8.380000114440918
+    },
+    {
+      "word": "display",
+      "start": 8.380000114440918,
+      "end": 8.899999618530273
+    },
+    {
+      "word": "name",
+      "start": 8.899999618530273,
+      "end": 9.239999771118164
+    },
+    {
+      "word": "and",
+      "start": 9.34000015258789,
+      "end": 9.819999694824219
+    },
+    {
+      "word": "creates",
+      "start": 9.819999694824219,
+      "end": 10.100000381469727
+    },
+    {
+      "word": "the",
+      "start": 10.100000381469727,
+      "end": 10.380000114440918
+    },
+    {
+      "word": "user",
+      "start": 10.380000114440918,
+      "end": 10.699999809265137
+    },
+    {
+      "word": "document",
+      "start": 10.699999809265137,
+      "end": 11.15999984741211
+    }
+  ]
+}

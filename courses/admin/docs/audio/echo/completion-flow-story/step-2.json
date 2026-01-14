@@ -1,0 +1,95 @@
+{
+  "storyId": "completion-flow-story",
+  "stepId": "step-2",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Mark Complete. markLessonComplete sets the completion flag. This is a one-time operation per lesson.",
+  "duration": 8.399999618530273,
+  "words": [
+    {
+      "word": "Mark",
+      "start": 0,
+      "end": 0.5600000023841858
+    },
+    {
+      "word": "Complete",
+      "start": 0.5600000023841858,
+      "end": 1.399999976158142
+    },
+    {
+      "word": "Mark",
+      "start": 2.3399999141693115,
+      "end": 2.4200000762939453
+    },
+    {
+      "word": "lesson",
+      "start": 2.4200000762939453,
+      "end": 2.759999990463257
+    },
+    {
+      "word": "complete",
+      "start": 2.759999990463257,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "Sets",
+      "start": 4.079999923706055,
+      "end": 4.139999866485596
+    },
+    {
+      "word": "the",
+      "start": 4.139999866485596,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "completion",
+      "start": 4.460000038146973,
+      "end": 4.880000114440918
+    },
+    {
+      "word": "flag",
+      "start": 4.880000114440918,
+      "end": 5.420000076293945
+    },
+    {
+      "word": "This",
+      "start": 5.920000076293945,
+      "end": 6.019999980926514
+    },
+    {
+      "word": "is",
+      "start": 6.019999980926514,
+      "end": 6.179999828338623
+    },
+    {
+      "word": "a",
+      "start": 6.179999828338623,
+      "end": 6.400000095367432
+    },
+    {
+      "word": "one",
+      "start": 6.400000095367432,
+      "end": 6.639999866485596
+    },
+    {
+      "word": "time",
+      "start": 6.639999866485596,
+      "end": 6.920000076293945
+    },
+    {
+      "word": "operation",
+      "start": 6.920000076293945,
+      "end": 7.440000057220459
+    },
+    {
+      "word": "per",
+      "start": 7.440000057220459,
+      "end": 7.920000076293945
+    },
+    {
+      "word": "lesson",
+      "start": 7.920000076293945,
+      "end": 8.140000343322754
+    }
+  ]
+}

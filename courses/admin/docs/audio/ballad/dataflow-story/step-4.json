@@ -1,0 +1,135 @@
+{
+  "storyId": "dataflow-story",
+  "stepId": "step-4",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Data Written to Firestore. The service calls Firestore to persist the data. This might be updating a progress document, saving quiz answers, or logging activity.",
+  "duration": 13.100000381469727,
+  "words": [
+    {
+      "word": "Cater",
+      "start": 0,
+      "end": 0.3799999952316284
+    },
+    {
+      "word": "written",
+      "start": 0.3799999952316284,
+      "end": 0.7599999904632568
+    },
+    {
+      "word": "to",
+      "start": 0.7599999904632568,
+      "end": 1.2599999904632568
+    },
+    {
+      "word": "Firestore",
+      "start": 1.2599999904632568,
+      "end": 1.4800000190734863
+    },
+    {
+      "word": "The",
+      "start": 2.2200000286102295,
+      "end": 2.319999933242798
+    },
+    {
+      "word": "service",
+      "start": 2.319999933242798,
+      "end": 2.700000047683716
+    },
+    {
+      "word": "calls",
+      "start": 2.700000047683716,
+      "end": 3.059999942779541
+    },
+    {
+      "word": "Firestore",
+      "start": 3.059999942779541,
+      "end": 3.559999942779541
+    },
+    {
+      "word": "to",
+      "start": 3.559999942779541,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "persist",
+      "start": 3.819999933242798,
+      "end": 4.21999979019165
+    },
+    {
+      "word": "the",
+      "start": 4.21999979019165,
+      "end": 4.420000076293945
+    },
+    {
+      "word": "data",
+      "start": 4.420000076293945,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "This",
+      "start": 5.579999923706055,
+      "end": 5.639999866485596
+    },
+    {
+      "word": "might",
+      "start": 5.639999866485596,
+      "end": 5.880000114440918
+    },
+    {
+      "word": "be",
+      "start": 5.880000114440918,
+      "end": 6.21999979019165
+    },
+    {
+      "word": "updating",
+      "start": 6.21999979019165,
+      "end": 6.599999904632568
+    },
+    {
+      "word": "a",
+      "start": 6.599999904632568,
+      "end": 6.880000114440918
+    },
+    {
+      "word": "progress",
+      "start": 6.880000114440918,
+      "end": 7.239999771118164
+    },
+    {
+      "word": "document",
+      "start": 7.239999771118164,
+      "end": 7.739999771118164
+    },
+    {
+      "word": "saving",
+      "start": 8.539999961853027,
+      "end": 8.720000267028809
+    },
+    {
+      "word": "quiz",
+      "start": 8.720000267028809,
+      "end": 9.039999961853027
+    },
+    {
+      "word": "answers",
+      "start": 9.039999961853027,
+      "end": 9.4399995803833
+    },
+    {
+      "word": "or",
+      "start": 9.4399995803833,
+      "end": 10.199999809265137
+    },
+    {
+      "word": "logging",
+      "start": 10.199999809265137,
+      "end": 10.619999885559082
+    },
+    {
+      "word": "activity",
+      "start": 10.619999885559082,
+      "end": 11.180000305175781
+    }
+  ]
+}

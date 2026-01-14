@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication & RBAC - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="04-authentication-rbac.html" class="active">Auth</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Authentication & RBAC</span>
+      </div>
+      <h1>🔐 Authentication & RBAC</h1>
+      <p>User authentication flows and role-based access control system</p>
+    </div>
+
+    <!-- Auth Architecture -->
+    <section class="section" id="auth-architecture-section">
+      <h2>Authentication System</h2>
+      <p>The platform uses Firebase Authentication for user management, supporting email/password and Google OAuth login methods.</p>
+      
+      <div class="diagram-container" id="auth-architecture-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔐 Authentication Architecture</span>
+        </div>
+        <div id="auth-architecture-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="auth-architecture-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Discover how authentication flows through the platform.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="auth-architecture-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="auth-architecture-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="auth-architecture-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="auth-architecture-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Flow -->
+    <section class="section" id="registration-flow-section">
+      <h2>Registration Flow</h2>
+      <p>New users can register with email/password or Google OAuth. Both flows create a Firestore user document.</p>
+      
+      <div class="diagram-container" id="registration-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📝 User Registration Sequence</span>
+        </div>
+        <div id="registration-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="registration-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Follow the registration path from form to success.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="registration-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="registration-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="registration-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="registration-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Role Hierarchy -->
+    <section class="section" id="role-hierarchy-section">
+      <h2>Role Hierarchy</h2>
+      <p>The platform has three roles with hierarchical permissions. Higher roles inherit all permissions from lower roles.</p>
+      
+      <div class="diagram-container" id="role-hierarchy-container">
+        <div class="diagram-header">
+          <span class="diagram-title">👑 Role Hierarchy & Permissions</span>
+        </div>
+        <div id="role-hierarchy-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="role-hierarchy-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Understand the permission hierarchy.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="role-hierarchy-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="role-hierarchy-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="role-hierarchy-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="role-hierarchy-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="role-hierarchy-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- RBAC Access Check -->
+    <section class="section" id="access-check-section">
+      <h2>RBAC Access Check Flow</h2>
+      <p>When a user accesses a protected resource, the RBAC service performs a series of checks to determine access.</p>
+      
+      <div class="diagram-container" id="access-check-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔍 Access Decision Flow</span>
+        </div>
+        <div id="access-check-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="access-check-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Trace the access decision path.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="access-check-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="access-check-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="access-check-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="access-check-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="access-check-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>⚠️ Client-Side vs Server-Side</h4>
+        <p>Client-side RBAC provides a good UX by hiding inaccessible content, but the real security gate is Firestore Security Rules. Always assume UI can be bypassed.</p>
+      </div>
+    </section>
+
+    <!-- RouteGuard System -->
+    <section class="section" id="route-guard-section">
+      <h2>RouteGuard System</h2>
+      <p>The RouteGuard service protects pages based on authentication status and RBAC permissions.</p>
+      
+      <div class="diagram-container" id="route-guard-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🛡️ RouteGuard Decision Tree</span>
+        </div>
+        <div id="route-guard-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="route-guard-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Follow the route protection logic.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="route-guard-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="route-guard-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="route-guard-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="route-guard-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="route-guard-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Organization Access -->
+    <section class="section" id="org-access-section">
+      <h2>Organization Access</h2>
+      <p>Enterprise users can be members of organizations that grant access to specific partner courses.</p>
+      
+      <div class="diagram-container" id="org-access-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🏢 Organization Access Model</span>
+        </div>
+        <div id="org-access-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="org-access-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how organizations grant course access.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="org-access-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="org-access-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="org-access-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="org-access-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>See how user and permission data is stored.</p>
+        </a>
+        <a href="05-progress-tracking.html" class="card">
+          <div class="card-icon">📊</div>
+          <h3>Progress Tracking</h3>
+          <p>How authenticated users' progress is tracked.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#auth-architecture-section">Architecture</a></li>
+      <li><a href="#registration-flow-section">Registration</a></li>
+      <li><a href="#role-hierarchy-section">Roles</a></li>
+      <li><a href="#access-check-section">Access Check</a></li>
+      <li><a href="#route-guard-section">RouteGuard</a></li>
+      <li><a href="#org-access-section">Organizations</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      const response = await fetch('audio/stories/04-authentication-rbac.json');
+      const pageData = await response.json();
+
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      const diagramElements = {
+        'auth-architecture': [
+          { data: { id: 'user', label: 'User', type: 'external', description: 'Platform user' } },
+          { data: { id: 'google', label: 'Google OAuth', type: 'external', description: 'Google sign-in provider' } },
+          { data: { id: 'auth-service', label: 'AuthService', type: 'service', description: 'Authentication service' } },
+          { data: { id: 'firebase-auth', label: 'Firebase Auth', type: 'auth', description: 'Firebase Auth SDK' } },
+          { data: { id: 'auth-state', label: 'Auth State', type: 'auth', description: 'Session management' } },
+          { data: { id: 'user-doc', label: 'users/{uid}', type: 'data', description: 'User document in Firestore' } },
+          { data: { source: 'user', target: 'auth-service' } },
+          { data: { source: 'auth-service', target: 'firebase-auth' } },
+          { data: { source: 'firebase-auth', target: 'google' } },
+          { data: { source: 'firebase-auth', target: 'auth-state' } },
+          { data: { source: 'auth-service', target: 'user-doc', type: 'data' } },
+        ],
+        'registration-flow': [
+          { data: { id: 'form', label: 'Registration Form', type: 'external', description: 'User enters details' } },
+          { data: { id: 'validate', label: 'Validate Input', type: 'service', description: 'Check email, password strength' } },
+          { data: { id: 'create-auth', label: 'createUserWithEmailAndPassword', type: 'auth', description: 'Firebase Auth call' } },
+          { data: { id: 'update-profile', label: 'updateProfile()', type: 'auth', description: 'Set display name' } },
+          { data: { id: 'create-doc', label: 'createUserDocument()', type: 'data', description: 'Create Firestore doc' } },
+          { data: { id: 'state-change', label: 'onAuthStateChanged', type: 'service', description: 'Auth state updated' } },
+          { data: { id: 'redirect', label: 'Redirect Dashboard', type: 'page', description: 'Navigate to dashboard' } },
+          { data: { source: 'form', target: 'validate' } },
+          { data: { source: 'validate', target: 'create-auth' } },
+          { data: { source: 'create-auth', target: 'update-profile' } },
+          { data: { source: 'update-profile', target: 'create-doc' } },
+          { data: { source: 'create-doc', target: 'state-change' } },
+          { data: { source: 'state-change', target: 'redirect' } },
+        ],
+        'role-hierarchy': [
+          { data: { id: 'admin', label: 'admin', type: 'auth', description: 'Full platform access' } },
+          { data: { id: 'enterprise', label: 'enterprise', type: 'auth', description: 'Organization user' } },
+          { data: { id: 'user', label: 'user', type: 'auth', description: 'Standard user' } },
+          { data: { id: 'perm-public', label: 'Access Public Courses', type: 'service', description: 'View public content' } },
+          { data: { id: 'perm-dashboard', label: 'View Dashboard', type: 'service', description: 'See own progress' } },
+          { data: { id: 'perm-partner', label: 'Access Partner Courses', type: 'service', description: 'Org-specific content' } },
+          { data: { id: 'perm-admin', label: 'Admin Tools', type: 'service', description: 'User management' } },
+          { data: { id: 'perm-all', label: 'All Courses', type: 'service', description: 'Access everything' } },
+          { data: { id: 'res-apprentice', label: 'Apprentice Course', type: 'page', description: 'Public course' } },
+          { data: { id: 'res-junior', label: 'Junior Course', type: 'page', description: 'Public course' } },
+          { data: { id: 'res-eo', label: 'Endless Opportunities', type: 'page', description: 'Partner course' } },
+          { data: { id: 'res-admin-page', label: 'Admin Dashboard', type: 'page', description: 'Admin only' } },
+          { data: { source: 'admin', target: 'enterprise' } },
+          { data: { source: 'enterprise', target: 'user' } },
+          { data: { source: 'user', target: 'perm-public' } },
+          { data: { source: 'user', target: 'perm-dashboard' } },
+          { data: { source: 'enterprise', target: 'perm-partner' } },
+          { data: { source: 'admin', target: 'perm-admin' } },
+          { data: { source: 'admin', target: 'perm-all' } },
+          { data: { source: 'perm-public', target: 'res-apprentice' } },
+          { data: { source: 'perm-public', target: 'res-junior' } },
+          { data: { source: 'perm-partner', target: 'res-eo' } },
+          { data: { source: 'perm-admin', target: 'res-admin-page' } },
+        ],
+        'access-check': [
+          { data: { id: 'request', label: 'Access Request', type: 'external', description: 'User wants resource' } },
+          { data: { id: 'auth-check', label: 'Authenticated?', type: 'service', description: 'Check auth state' } },
+          { data: { id: 'no-auth', label: 'Redirect Login', type: 'external', description: 'Not authenticated' } },
+          { data: { id: 'get-perms', label: 'Get Permissions', type: 'service', description: 'Load user RBAC data' } },
+          { data: { id: 'admin-check', label: 'Is Admin?', type: 'service', description: 'Admins bypass all' } },
+          { data: { id: 'allow-admin', label: 'Allow (Admin)', type: 'data', description: 'Admin access granted' } },
+          { data: { id: 'course-req', label: 'Get Requirements', type: 'service', description: 'What does course need?' } },
+          { data: { id: 'public-check', label: 'Is Public?', type: 'service', description: 'Check if public course' } },
+          { data: { id: 'allow-public', label: 'Allow (Public)', type: 'data', description: 'Public course access' } },
+          { data: { id: 'org-check', label: 'In Org?', type: 'service', description: 'Check org membership' } },
+          { data: { id: 'deny-org', label: 'Deny (No Org)', type: 'external', description: 'Not in required org' } },
+          { data: { id: 'course-check', label: 'Has Course?', type: 'service', description: 'Check course access' } },
+          { data: { id: 'allow-course', label: 'Allow', type: 'data', description: 'Course access granted' } },
+          { data: { id: 'deny-course', label: 'Deny', type: 'external', description: 'No course access' } },
+          { data: { source: 'request', target: 'auth-check' } },
+          { data: { source: 'auth-check', target: 'no-auth', type: 'optional' } },
+          { data: { source: 'auth-check', target: 'get-perms' } },
+          { data: { source: 'get-perms', target: 'admin-check' } },
+          { data: { source: 'admin-check', target: 'allow-admin' } },
+          { data: { source: 'admin-check', target: 'course-req' } },
+          { data: { source: 'course-req', target: 'public-check' } },
+          { data: { source: 'public-check', target: 'allow-public' } },
+          { data: { source: 'public-check', target: 'org-check' } },
+          { data: { source: 'org-check', target: 'deny-org', type: 'optional' } },
+          { data: { source: 'org-check', target: 'course-check' } },
+          { data: { source: 'course-check', target: 'allow-course' } },
+          { data: { source: 'course-check', target: 'deny-course', type: 'optional' } },
+        ],
+        'route-guard': [
+          { data: { id: 'page-load', label: 'Page Load', type: 'external', description: 'User navigates to page' } },
+          { data: { id: 'is-protected', label: 'isProtectedPage()', type: 'service', description: 'Check if protected' } },
+          { data: { id: 'not-protected', label: 'Allow (Public)', type: 'page', description: 'Public page loads' } },
+          { data: { id: 'show-loading', label: 'Show Loading', type: 'service', description: 'Hide content' } },
+          { data: { id: 'wait-auth', label: 'waitForAuthState()', type: 'auth', description: 'Wait for auth ready' } },
+          { data: { id: 'check-user', label: 'Check User', type: 'auth', description: 'Is user signed in?' } },
+          { data: { id: 'redirect-login', label: 'Redirect Login', type: 'external', description: 'Not authenticated' } },
+          { data: { id: 'check-rbac', label: 'checkRBACAccess()', type: 'service', description: 'Check RBAC rules' } },
+          { data: { id: 'allow', label: 'Show Content', type: 'page', description: 'Reveal page content' } },
+          { data: { id: 'deny', label: 'Access Denied', type: 'external', description: 'Show error' } },
+          { data: { source: 'page-load', target: 'is-protected' } },
+          { data: { source: 'is-protected', target: 'not-protected' } },
+          { data: { source: 'is-protected', target: 'show-loading' } },
+          { data: { source: 'show-loading', target: 'wait-auth' } },
+          { data: { source: 'wait-auth', target: 'check-user' } },
+          { data: { source: 'check-user', target: 'redirect-login', type: 'optional' } },
+          { data: { source: 'check-user', target: 'check-rbac' } },
+          { data: { source: 'check-rbac', target: 'allow' } },
+          { data: { source: 'check-rbac', target: 'deny', type: 'optional' } },
+        ],
+        'org-access': [
+          { data: { id: 'user1', label: 'Alice (user)', type: 'auth', description: 'Standard user' } },
+          { data: { id: 'user2', label: 'Bob (enterprise)', type: 'auth', description: 'Endless Opportunities member' } },
+          { data: { id: 'user3', label: 'Carol (enterprise)', type: 'auth', description: 'Partner X member' } },
+          { data: { id: 'user4', label: 'Admin', type: 'auth', description: 'Platform admin' } },
+          { data: { id: 'org-eo', label: 'Endless Opportunities', type: 'service', description: 'Partner organization' } },
+          { data: { id: 'org-x', label: 'Partner X', type: 'service', description: 'Another partner' } },
+          { data: { id: 'course-public', label: 'Apprentice (public)', type: 'page', description: 'Public course' } },
+          { data: { id: 'course-eo', label: 'EO Bootcamp', type: 'page', description: 'EO-only course' } },
+          { data: { id: 'course-x', label: 'Partner X Course', type: 'page', description: 'Partner X course' } },
+          { data: { source: 'user2', target: 'org-eo' } },
+          { data: { source: 'user3', target: 'org-x' } },
+          { data: { source: 'org-eo', target: 'course-eo' } },
+          { data: { source: 'org-x', target: 'course-x' } },
+          { data: { source: 'user1', target: 'course-public' } },
+          { data: { source: 'user2', target: 'course-public' } },
+          { data: { source: 'user3', target: 'course-public' } },
+          { data: { source: 'user4', target: 'course-public' } },
+          { data: { source: 'user4', target: 'course-eo' } },
+          { data: { source: 'user4', target: 'course-x' } },
+        ]
+      };
+
+      const storyToContainer = {
+        'auth-architecture-story': 'auth-architecture',
+        'registration-flow-story': 'registration-flow',
+        'role-hierarchy-story': 'role-hierarchy',
+        'access-check-story': 'access-check',
+        'route-guard-story': 'route-guard',
+        'org-access-story': 'org-access'
+      };
+
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId || !diagramElements[containerId]) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          diagramElements[containerId],
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      const storyToQuizContainer = {
+        'role-hierarchy-story': 'role-hierarchy-quiz',
+        'access-check-story': 'access-check-quiz',
+        'route-guard-story': 'route-guard-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

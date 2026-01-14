@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership Portal - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="07-partnership-portal.html" class="active">Partners</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Partnership Portal</span>
+      </div>
+      <h1>🤝 Partnership Portal</h1>
+      <p>Admin-only portal for managing educational partnerships with organizations, schools, churches, foundations, and businesses</p>
+    </div>
+
+    <!-- Feature Overview -->
+    <section class="section" id="feature-overview-section">
+      <h2>Feature Overview</h2>
+      <p>The Partnership Portal enables AutoNateAI admins to manage relationships with educational partners, track interactions, and monitor partnership analytics.</p>
+      
+      <div class="diagram-container" id="feature-overview-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🤝 Partnership Portal Architecture</span>
+        </div>
+        <div id="feature-overview-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="feature-overview-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Drag nodes to explore the partnership ecosystem.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="feature-overview-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="feature-overview-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="feature-overview-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="feature-overview-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="feature-overview-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Data Model -->
+    <section class="section" id="data-model-section">
+      <h2>Data Model</h2>
+      <p>Partners are stored as top-level documents with subcollections for interactions, attachments, courses, and analytics.</p>
+      
+      <div class="diagram-container" id="data-model-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🗄️ Firestore Collection Structure</span>
+        </div>
+        <div id="data-model-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="data-model-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click a collection to see its schema.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="data-model-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="data-model-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="data-model-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="data-model-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Entity Relationships -->
+    <section class="section" id="entity-relations-section">
+      <h2>Entity Relationships</h2>
+      <p>How partners, interactions, attachments, and analytics relate to each other.</p>
+      
+      <div class="diagram-container" id="entity-relations-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔗 Entity Relationship Diagram</span>
+        </div>
+        <div id="entity-relations-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="entity-relations-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Discover how entities relate.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="entity-relations-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="entity-relations-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="entity-relations-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="entity-relations-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Status Flow -->
+    <section class="section" id="status-flow-section">
+      <h2>Partner Status Flow</h2>
+      <p>Partners move through different statuses as the relationship evolves.</p>
+      
+      <div class="diagram-container" id="status-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔄 Partner Status State Machine</span>
+        </div>
+        <div id="status-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="status-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Understand the partner lifecycle.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="status-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="status-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="status-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="status-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="status-flow-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Interaction Flow -->
+    <section class="section" id="interaction-flow-section">
+      <h2>Interaction Recording Flow</h2>
+      <p>Every touchpoint with a partner is recorded as an interaction for tracking and analytics.</p>
+      
+      <div class="diagram-container" id="interaction-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">💬 Add Interaction Flow</span>
+        </div>
+        <div id="interaction-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="interaction-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Follow the data path from user action to storage.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="interaction-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="interaction-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="interaction-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="interaction-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Layer -->
+    <section class="section" id="service-layer-section">
+      <h2>Service Layer Architecture</h2>
+      <p>The PartnerService handles all CRUD operations, file uploads, and analytics recording.</p>
+      
+      <div class="diagram-container" id="service-layer-container">
+        <div class="diagram-header">
+          <span class="diagram-title">⚙️ PartnerService Architecture</span>
+        </div>
+        <div id="service-layer-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="service-layer-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how UI components connect to services.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="service-layer-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="service-layer-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="service-layer-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="service-layer-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="service-layer-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Analytics Dashboard -->
+    <section class="section" id="analytics-flow-section">
+      <h2>Analytics Dashboard</h2>
+      <p>Time-series analytics for tracking partner engagement and measuring success.</p>
+      
+      <div class="diagram-container" id="analytics-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📈 Analytics Data Flow</span>
+        </div>
+        <div id="analytics-flow-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="analytics-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how analytics events flow to visualizations.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="analytics-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="analytics-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="analytics-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="analytics-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Architecture -->
+    <section class="section" id="page-structure-section">
+      <h2>Frontend Page Architecture</h2>
+      <p>The partnership portal consists of multiple pages within the admin section.</p>
+      
+      <div class="diagram-container" id="page-structure-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📄 Page Structure</span>
+        </div>
+        <div id="page-structure-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="page-structure-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Understand the admin page hierarchy.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="page-structure-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="page-structure-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="page-structure-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="page-structure-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>🔐 Access Control</h4>
+        <p>All partnership pages require <code>admin</code> role. The RouteGuard will:</p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <li>Check authentication status</li>
+          <li>Verify user has <code>role: 'admin'</code> in their user document</li>
+          <li>Redirect unauthorized users to dashboard with error</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Related Documentation</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>Firestore patterns used in the platform.</p>
+        </a>
+        <a href="04-authentication-rbac.html" class="card">
+          <div class="card-icon">🔐</div>
+          <h3>Authentication & RBAC</h3>
+          <p>Admin role and access control system.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#feature-overview-section">Overview</a></li>
+      <li><a href="#data-model-section">Data Model</a></li>
+      <li><a href="#entity-relations-section">Relationships</a></li>
+      <li><a href="#status-flow-section">Status Flow</a></li>
+      <li><a href="#interaction-flow-section">Interactions</a></li>
+      <li><a href="#service-layer-section">Service Layer</a></li>
+      <li><a href="#analytics-flow-section">Analytics</a></li>
+      <li><a href="#page-structure-section">Pages</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      const response = await fetch('audio/stories/07-partnership-portal.json');
+      const pageData = await response.json();
+
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      const diagramElements = {
+        'feature-overview': [
+          { data: { id: 'portal', label: 'Partnership Portal', type: 'auth', description: 'Admin-only partnership management' } },
+          { data: { id: 'list', label: 'Partner List', type: 'auth', description: 'View all partners' } },
+          { data: { id: 'detail', label: 'Partner Detail', type: 'auth', description: 'Individual partner view' } },
+          { data: { id: 'add', label: 'Add Partner', type: 'auth', description: 'Create new partner' } },
+          { data: { id: 'interact', label: 'Interactions', type: 'auth', description: 'Track touchpoints' } },
+          { data: { id: 'attach', label: 'Attachments', type: 'auth', description: 'Files and media' } },
+          { data: { id: 'analytics', label: 'Analytics', type: 'auth', description: 'Time-series data' } },
+          { data: { id: 'schools', label: '🏫 Schools', type: 'service', description: 'K-12 and districts' } },
+          { data: { id: 'churches', label: '⛪ Churches', type: 'service', description: 'Religious orgs' } },
+          { data: { id: 'foundations', label: '🏛️ Foundations', type: 'service', description: 'Non-profits' } },
+          { data: { id: 'business', label: '🏢 Businesses', type: 'service', description: 'Corporate partners' } },
+          { data: { id: 'community', label: '👥 Community', type: 'service', description: 'Community orgs' } },
+          { data: { id: 'free-courses', label: '📚 4 Free Courses', type: 'page', description: 'Evergreen curriculum' } },
+          { data: { id: 'custom', label: '🎨 Custom Courses', type: 'page', description: 'Tailored curriculum' } },
+          { data: { id: 'cohort', label: '👨‍🏫 Live Cohorts', type: 'page', description: 'Live teaching' } },
+          { data: { id: 'digital', label: '💻 Digital Access', type: 'page', description: 'Interactive lessons' } },
+          { data: { source: 'portal', target: 'list' } },
+          { data: { source: 'portal', target: 'detail' } },
+          { data: { source: 'portal', target: 'add' } },
+          { data: { source: 'portal', target: 'interact' } },
+          { data: { source: 'portal', target: 'attach' } },
+          { data: { source: 'portal', target: 'analytics' } },
+          { data: { source: 'list', target: 'schools' } },
+          { data: { source: 'list', target: 'churches' } },
+          { data: { source: 'list', target: 'foundations' } },
+          { data: { source: 'list', target: 'business' } },
+          { data: { source: 'list', target: 'community' } },
+          { data: { source: 'detail', target: 'free-courses' } },
+          { data: { source: 'detail', target: 'custom' } },
+          { data: { source: 'detail', target: 'cohort' } },
+          { data: { source: 'detail', target: 'digital' } },
+        ],
+        'data-model': [
+          { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'Root database' } },
+          { data: { id: 'partners-col', label: 'partners', type: 'data', description: 'Partners collection' } },
+          { data: { id: 'partner-doc', label: '{partnerId}', type: 'service', description: 'Partner document' } },
+          { data: { id: 'interactions', label: 'interactions', type: 'page', description: 'Partner touchpoints' } },
+          { data: { id: 'attachments', label: 'attachments', type: 'page', description: 'Files and media' } },
+          { data: { id: 'courses', label: 'courses', type: 'page', description: 'Partner courses' } },
+          { data: { id: 'analytics', label: 'analytics', type: 'page', description: 'Time-series events' } },
+          { data: { id: 'inter-doc', label: '{interactionId}', type: 'service', description: 'Interaction record' } },
+          { data: { id: 'attach-doc', label: '{attachmentId}', type: 'service', description: 'Attachment record' } },
+          { data: { id: 'course-doc', label: '{courseId}', type: 'service', description: 'Course offering' } },
+          { data: { id: 'event-doc', label: '{eventId}', type: 'service', description: 'Analytics event' } },
+          { data: { source: 'firestore', target: 'partners-col' } },
+          { data: { source: 'partners-col', target: 'partner-doc' } },
+          { data: { source: 'partner-doc', target: 'interactions' } },
+          { data: { source: 'partner-doc', target: 'attachments' } },
+          { data: { source: 'partner-doc', target: 'courses' } },
+          { data: { source: 'partner-doc', target: 'analytics' } },
+          { data: { source: 'interactions', target: 'inter-doc' } },
+          { data: { source: 'attachments', target: 'attach-doc' } },
+          { data: { source: 'courses', target: 'course-doc' } },
+          { data: { source: 'analytics', target: 'event-doc' } },
+        ],
+        'entity-relations': [
+          { data: { id: 'partner', label: 'Partner', type: 'auth', description: 'Organization record' } },
+          { data: { id: 'interaction', label: 'Interaction', type: 'service', description: 'Touchpoint record' } },
+          { data: { id: 'attachment', label: 'Attachment', type: 'page', description: 'File or media' } },
+          { data: { id: 'course', label: 'PartnerCourse', type: 'service', description: 'Course offering' } },
+          { data: { id: 'analytics', label: 'AnalyticsEvent', type: 'page', description: 'Time-series event' } },
+          { data: { id: 'admin', label: 'Admin User', type: 'auth', description: 'Platform admin' } },
+          { data: { source: 'partner', target: 'interaction', label: 'has many' } },
+          { data: { source: 'partner', target: 'attachment', label: 'has many' } },
+          { data: { source: 'partner', target: 'course', label: 'offers' } },
+          { data: { source: 'partner', target: 'analytics', label: 'generates' } },
+          { data: { source: 'interaction', target: 'attachment', label: 'may have' } },
+          { data: { source: 'admin', target: 'partner', label: 'manages' } },
+          { data: { source: 'admin', target: 'interaction', label: 'creates' } },
+        ],
+        'status-flow': [
+          { data: { id: 'start', label: 'Start', type: 'external', description: 'Initial contact' } },
+          { data: { id: 'prospect', label: 'Prospect', type: 'prospect', description: 'Discovery phase' } },
+          { data: { id: 'active', label: 'Active', type: 'active', description: 'Partnership running' } },
+          { data: { id: 'paused', label: 'Paused', type: 'paused', description: 'Temporary hold' } },
+          { data: { id: 'churned', label: 'Churned', type: 'churned', description: 'Partnership ended' } },
+          { data: { source: 'start', target: 'prospect', label: 'Initial outreach' } },
+          { data: { source: 'prospect', target: 'active', label: 'Agreement signed' } },
+          { data: { source: 'prospect', target: 'churned', label: 'Lost opportunity' } },
+          { data: { source: 'active', target: 'paused', label: 'Temporary hold' } },
+          { data: { source: 'paused', target: 'active', label: 'Reactivated' } },
+          { data: { source: 'active', target: 'churned', label: 'Partnership ended' } },
+          { data: { source: 'churned', target: 'prospect', label: 'Re-engaged' } },
+        ],
+        'interaction-flow': [
+          { data: { id: 'admin', label: 'Admin', type: 'external', description: 'Admin user' } },
+          { data: { id: 'form', label: 'Interaction Form', type: 'service', description: 'Input interaction details' } },
+          { data: { id: 'service', label: 'PartnerService', type: 'service', description: 'createInteraction()' } },
+          { data: { id: 'inter-col', label: 'interactions.add()', type: 'data', description: 'Create interaction doc' } },
+          { data: { id: 'partner-update', label: 'partner.update()', type: 'data', description: 'Update lastInteraction' } },
+          { data: { id: 'analytics', label: 'recordAnalyticsEvent()', type: 'data', description: 'Log analytics event' } },
+          { data: { id: 'timeline', label: 'Update Timeline', type: 'service', description: 'Show in UI' } },
+          { data: { source: 'admin', target: 'form' } },
+          { data: { source: 'form', target: 'service' } },
+          { data: { source: 'service', target: 'inter-col' } },
+          { data: { source: 'service', target: 'partner-update' } },
+          { data: { source: 'service', target: 'analytics' } },
+          { data: { source: 'inter-col', target: 'timeline' } },
+        ],
+        'service-layer': [
+          { data: { id: 'list-ui', label: 'Partner List', type: 'ui', description: 'List view page' } },
+          { data: { id: 'detail-ui', label: 'Partner Detail', type: 'ui', description: 'Detail view page' } },
+          { data: { id: 'form-ui', label: 'Partner Forms', type: 'ui', description: 'Add/Edit forms' } },
+          { data: { id: 'timeline-ui', label: 'Timeline', type: 'ui', description: 'Interaction timeline' } },
+          { data: { id: 'analytics-ui', label: 'Analytics', type: 'ui', description: 'Charts dashboard' } },
+          { data: { id: 'get-partners', label: 'getPartners()', type: 'service', description: 'List partners' } },
+          { data: { id: 'get-partner', label: 'getPartner()', type: 'service', description: 'Get one partner' } },
+          { data: { id: 'create-partner', label: 'createPartner()', type: 'service', description: 'Add partner' } },
+          { data: { id: 'create-interaction', label: 'createInteraction()', type: 'service', description: 'Add interaction' } },
+          { data: { id: 'upload-attachment', label: 'uploadAttachment()', type: 'service', description: 'Upload file' } },
+          { data: { id: 'get-analytics', label: 'getAnalytics()', type: 'service', description: 'Get events' } },
+          { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'Database' } },
+          { data: { id: 'storage', label: 'Storage', type: 'data', description: 'File storage' } },
+          { data: { source: 'list-ui', target: 'get-partners' } },
+          { data: { source: 'detail-ui', target: 'get-partner' } },
+          { data: { source: 'form-ui', target: 'create-partner' } },
+          { data: { source: 'timeline-ui', target: 'create-interaction' } },
+          { data: { source: 'detail-ui', target: 'upload-attachment' } },
+          { data: { source: 'analytics-ui', target: 'get-analytics' } },
+          { data: { source: 'get-partners', target: 'firestore', type: 'data' } },
+          { data: { source: 'get-partner', target: 'firestore', type: 'data' } },
+          { data: { source: 'create-partner', target: 'firestore', type: 'data' } },
+          { data: { source: 'create-interaction', target: 'firestore', type: 'data' } },
+          { data: { source: 'upload-attachment', target: 'storage', type: 'data' } },
+          { data: { source: 'upload-attachment', target: 'firestore', type: 'data' } },
+          { data: { source: 'get-analytics', target: 'firestore', type: 'data' } },
+        ],
+        'analytics-flow': [
+          { data: { id: 'enroll', label: 'Student Enrolled', type: 'page', description: 'New enrollment' } },
+          { data: { id: 'cohort-start', label: 'Cohort Started', type: 'page', description: 'Cohort begins' } },
+          { data: { id: 'cohort-end', label: 'Cohort Completed', type: 'page', description: 'Cohort ends' } },
+          { data: { id: 'interaction', label: 'Interaction Logged', type: 'page', description: 'Touchpoint' } },
+          { data: { id: 'revenue', label: 'Revenue Recorded', type: 'page', description: 'Payment' } },
+          { data: { id: 'store', label: 'analytics/{eventId}', type: 'service', description: 'Store event' } },
+          { data: { id: 'aggregate', label: 'Aggregate by Date', type: 'service', description: 'Group events' } },
+          { data: { id: 'calculate', label: 'Calculate Trends', type: 'service', description: 'Compute metrics' } },
+          { data: { id: 'line-chart', label: 'Activity Line Chart', type: 'ui', description: 'Over time' } },
+          { data: { id: 'bar-chart', label: 'Status Bar Chart', type: 'ui', description: 'By status' } },
+          { data: { id: 'pie-chart', label: 'Type Pie Chart', type: 'ui', description: 'By type' } },
+          { data: { id: 'table', label: 'Top Partners Table', type: 'ui', description: 'Rankings' } },
+          { data: { source: 'enroll', target: 'store' } },
+          { data: { source: 'cohort-start', target: 'store' } },
+          { data: { source: 'cohort-end', target: 'store' } },
+          { data: { source: 'interaction', target: 'store' } },
+          { data: { source: 'revenue', target: 'store' } },
+          { data: { source: 'store', target: 'aggregate' } },
+          { data: { source: 'aggregate', target: 'calculate' } },
+          { data: { source: 'calculate', target: 'line-chart' } },
+          { data: { source: 'calculate', target: 'bar-chart' } },
+          { data: { source: 'calculate', target: 'pie-chart' } },
+          { data: { source: 'calculate', target: 'table' } },
+        ],
+        'page-structure': [
+          { data: { id: 'admin', label: 'admin/', type: 'data', description: 'Admin section' } },
+          { data: { id: 'partnerships', label: 'partnerships/', type: 'page', description: 'Partnership pages' } },
+          { data: { id: 'index', label: 'index.html', type: 'service', description: 'Partner list dashboard' } },
+          { data: { id: 'partner', label: 'partner.html', type: 'service', description: 'Partner detail view' } },
+          { data: { id: 'add', label: 'add.html', type: 'service', description: 'Add new partner' } },
+          { data: { id: 'analytics', label: 'analytics.html', type: 'service', description: 'Analytics dashboard' } },
+          { data: { source: 'admin', target: 'partnerships' } },
+          { data: { source: 'partnerships', target: 'index' } },
+          { data: { source: 'partnerships', target: 'partner' } },
+          { data: { source: 'partnerships', target: 'add' } },
+          { data: { source: 'partnerships', target: 'analytics' } },
+        ]
+      };
+
+      const storyToContainer = {
+        'feature-overview-story': 'feature-overview',
+        'data-model-story': 'data-model',
+        'entity-relations-story': 'entity-relations',
+        'status-flow-story': 'status-flow',
+        'interaction-flow-story': 'interaction-flow',
+        'service-layer-story': 'service-layer',
+        'analytics-flow-story': 'analytics-flow',
+        'page-structure-story': 'page-structure'
+      };
+
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId || !diagramElements[containerId]) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          diagramElements[containerId],
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      const storyToQuizContainer = {
+        'feature-overview-story': 'feature-overview-quiz',
+        'status-flow-story': 'status-flow-quiz',
+        'service-layer-story': 'service-layer-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

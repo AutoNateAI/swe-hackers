@@ -1,0 +1,5105 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T00:21:12.234Z",
+  "stories": [
+    "three-forces-story",
+    "binary-story",
+    "navigation-story"
+  ],
+  "ballad": {
+    "three-forces-story": [
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Ancient Problem. Long before computers existed, humans faced a simple challenge: How do we calculate things faster? From counting sheep to tracking stars, we needed tools to extend our minds.",
+        "duration": 16.149999618530273,
+        "words": [
+          {
+            "word": "the",
+            "start": 0,
+            "end": 0.2800000011920929
+          },
+          {
+            "word": "ancient",
+            "start": 0.2800000011920929,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "problem",
+            "start": 0.800000011920929,
+            "end": 1.3200000524520874
+          },
+          {
+            "word": "Long",
+            "start": 2.319999933242798,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "before",
+            "start": 2.319999933242798,
+            "end": 2.619999885559082
+          },
+          {
+            "word": "computers",
+            "start": 2.619999885559082,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "existed",
+            "start": 3.200000047683716,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "humans",
+            "start": 4.320000171661377,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "faced",
+            "start": 4.760000228881836,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "a",
+            "start": 5.079999923706055,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "simple",
+            "start": 5.340000152587891,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "challenge",
+            "start": 5.739999771118164,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "How",
+            "start": 6.760000228881836,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "do",
+            "start": 6.820000171661377,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "we",
+            "start": 7.019999980926514,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "calculate",
+            "start": 7.380000114440918,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "things",
+            "start": 7.659999847412109,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "faster",
+            "start": 8.100000381469727,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "From",
+            "start": 9.4399995803833,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "counting",
+            "start": 9.600000381469727,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "sheep",
+            "start": 10.0600004196167,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "to",
+            "start": 10.579999923706055,
+            "end": 11.0600004196167
+          },
+          {
+            "word": "tracking",
+            "start": 11.0600004196167,
+            "end": 11.399999618530273
+          },
+          {
+            "word": "stars",
+            "start": 11.399999618530273,
+            "end": 12.039999961853027
+          },
+          {
+            "word": "we",
+            "start": 12.600000381469727,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "needed",
+            "start": 12.739999771118164,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "tools",
+            "start": 12.9399995803833,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "to",
+            "start": 13.420000076293945,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "extend",
+            "start": 14.039999961853027,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "our",
+            "start": 14.34000015258789,
+            "end": 15.0600004196167
+          },
+          {
+            "word": "minds",
+            "start": 15.0600004196167,
+            "end": 15.279999732971191
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Stone: The Foundation. The first computers were made of stone—the abacus! Today, we still use stone. Silicon, refined from sand and rock, forms the foundation of every computer chip in existence.",
+        "duration": 19.200000762939453,
+        "words": [
+          {
+            "word": "Stone",
+            "start": 0,
+            "end": 0.7200000286102295
+          },
+          {
+            "word": "the",
+            "start": 1.0399999618530273,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "foundation",
+            "start": 1.3600000143051147,
+            "end": 1.9600000381469727
+          },
+          {
+            "word": "The",
+            "start": 2.9600000381469727,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "first",
+            "start": 3.059999942779541,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "computers",
+            "start": 3.440000057220459,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "were",
+            "start": 3.9200000762939453,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "made",
+            "start": 4.179999828338623,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "of",
+            "start": 4.360000133514404,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "stone",
+            "start": 4.699999809265137,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "the",
+            "start": 5.440000057220459,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "abacus",
+            "start": 5.840000152587891,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "Today",
+            "start": 7.199999809265137,
+            "end": 7.5
+          },
+          {
+            "word": "we",
+            "start": 7.800000190734863,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "still",
+            "start": 7.940000057220459,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "use",
+            "start": 8.539999961853027,
+            "end": 9
+          },
+          {
+            "word": "stone",
+            "start": 9,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "Silicon",
+            "start": 10.640000343322754,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "refined",
+            "start": 11.520000457763672,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "from",
+            "start": 11.520000457763672,
+            "end": 11.920000076293945
+          },
+          {
+            "word": "sand",
+            "start": 11.920000076293945,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "and",
+            "start": 12.180000305175781,
+            "end": 12.680000305175781
+          },
+          {
+            "word": "rock",
+            "start": 12.680000305175781,
+            "end": 12.680000305175781
+          },
+          {
+            "word": "forms",
+            "start": 13.520000457763672,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "the",
+            "start": 13.520000457763672,
+            "end": 14.0600004196167
+          },
+          {
+            "word": "foundation",
+            "start": 14.0600004196167,
+            "end": 14.380000114440918
+          },
+          {
+            "word": "of",
+            "start": 14.380000114440918,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "every",
+            "start": 14.899999618530273,
+            "end": 15.420000076293945
+          },
+          {
+            "word": "computer",
+            "start": 15.420000076293945,
+            "end": 15.859999656677246
+          },
+          {
+            "word": "chip",
+            "start": 15.859999656677246,
+            "end": 16.219999313354492
+          },
+          {
+            "word": "in",
+            "start": 16.219999313354492,
+            "end": 16.84000015258789
+          },
+          {
+            "word": "existence",
+            "start": 16.84000015258789,
+            "end": 17.139999389648438
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Lightning: The Power. From Benjamin Franklin's kite to modern power grids, we learned to harness electricity. This same lightning-force now flows through every circuit, bringing machines to life.",
+        "duration": 17.950000762939453,
+        "words": [
+          {
+            "word": "Lightning",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "The",
+            "start": 1.0199999809265137,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "power",
+            "start": 1.4600000381469727,
+            "end": 1.7999999523162842
+          },
+          {
+            "word": "From",
+            "start": 2.7799999713897705,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "Benjamin",
+            "start": 2.9200000762939453,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "Franklin's",
+            "start": 3.380000114440918,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "kite",
+            "start": 4.480000019073486,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "to",
+            "start": 4.480000019073486,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "modern",
+            "start": 5.300000190734863,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "power",
+            "start": 5.679999828338623,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "grids",
+            "start": 6.119999885559082,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "we",
+            "start": 6.940000057220459,
+            "end": 7.179999828338623
+          },
+          {
+            "word": "learned",
+            "start": 7.179999828338623,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "to",
+            "start": 7.539999961853027,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "harness",
+            "start": 8.34000015258789,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "electricity",
+            "start": 8.34000015258789,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "This",
+            "start": 9.9399995803833,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "same",
+            "start": 10.180000305175781,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "lightning",
+            "start": 10.9399995803833,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "force",
+            "start": 11.260000228881836,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "now",
+            "start": 11.800000190734863,
+            "end": 12.720000267028809
+          },
+          {
+            "word": "flows",
+            "start": 12.720000267028809,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "through",
+            "start": 13.039999961853027,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "every",
+            "start": 13.520000457763672,
+            "end": 14.199999809265137
+          },
+          {
+            "word": "circuit",
+            "start": 14.199999809265137,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "bringing",
+            "start": 15.4399995803833,
+            "end": 15.640000343322754
+          },
+          {
+            "word": "machines",
+            "start": 15.640000343322754,
+            "end": 16.399999618530273
+          },
+          {
+            "word": "to",
+            "start": 16.399999618530273,
+            "end": 17
+          },
+          {
+            "word": "life",
+            "start": 17,
+            "end": 17.31999969482422
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Magnetism: The Memory. Magnets have a superpower—they remember which way they're pointing! North or south, on or off. This simple property became the foundation of all digital storage.",
+        "duration": 16.649999618530273,
+        "words": [
+          {
+            "word": "Magnetism",
+            "start": 0,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "the",
+            "start": 1.1200000047683716,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "memory",
+            "start": 1.3600000143051147,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "Magnets",
+            "start": 2.9000000953674316,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "have",
+            "start": 2.9000000953674316,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "a",
+            "start": 3.140000104904175,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "superpower",
+            "start": 3.359999895095825,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "They",
+            "start": 4.539999961853027,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "remember",
+            "start": 4.699999809265137,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "which",
+            "start": 5.300000190734863,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "way",
+            "start": 5.840000152587891,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "they're",
+            "start": 6.099999904632568,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "pointing",
+            "start": 6.400000095367432,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "North",
+            "start": 8.039999961853027,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "or",
+            "start": 8.039999961853027,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "south",
+            "start": 8.600000381469727,
+            "end": 8.960000038146973
+          },
+          {
+            "word": "on",
+            "start": 9.680000305175781,
+            "end": 9.680000305175781
+          },
+          {
+            "word": "or",
+            "start": 9.680000305175781,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "off",
+            "start": 10.300000190734863,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "This",
+            "start": 11.180000305175781,
+            "end": 11.720000267028809
+          },
+          {
+            "word": "simple",
+            "start": 11.720000267028809,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "property",
+            "start": 12.180000305175781,
+            "end": 12.640000343322754
+          },
+          {
+            "word": "became",
+            "start": 12.640000343322754,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "the",
+            "start": 13.15999984741211,
+            "end": 13.640000343322754
+          },
+          {
+            "word": "foundation",
+            "start": 13.640000343322754,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "of",
+            "start": 14.039999961853027,
+            "end": 14.579999923706055
+          },
+          {
+            "word": "all",
+            "start": 14.579999923706055,
+            "end": 15.15999984741211
+          },
+          {
+            "word": "digital",
+            "start": 15.15999984741211,
+            "end": 15.5600004196167
+          },
+          {
+            "word": "storage",
+            "start": 15.5600004196167,
+            "end": 16.100000381469727
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Transistor Revolution. In 1947, scientists combined silicon and electricity to create the transistor—a tiny switch smaller than a grain of sand. It turns on and off billions of times per second!",
+        "duration": 20.350000381469727,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.36000001430511475
+          },
+          {
+            "word": "transistor",
+            "start": 0.36000001430511475,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "revolution",
+            "start": 1.059999942779541,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "In",
+            "start": 2.759999990463257,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "1947",
+            "start": 2.9000000953674316,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "scientists",
+            "start": 4.960000038146973,
+            "end": 5.519999980926514
+          },
+          {
+            "word": "combined",
+            "start": 5.519999980926514,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "silicon",
+            "start": 6.199999809265137,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "and",
+            "start": 6.699999809265137,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "electricity",
+            "start": 7.400000095367432,
+            "end": 8
+          },
+          {
+            "word": "to",
+            "start": 8,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "create",
+            "start": 8.739999771118164,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "the",
+            "start": 9.039999961853027,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "transistor",
+            "start": 9.399999618530273,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "a",
+            "start": 10.819999694824219,
+            "end": 11.0600004196167
+          },
+          {
+            "word": "tiny",
+            "start": 11.0600004196167,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "switch",
+            "start": 11.65999984741211,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "smaller",
+            "start": 12.079999923706055,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "than",
+            "start": 12.880000114440918,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "a",
+            "start": 13.140000343322754,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "grain",
+            "start": 13.720000267028809,
+            "end": 13.760000228881836
+          },
+          {
+            "word": "of",
+            "start": 13.760000228881836,
+            "end": 14.680000305175781
+          },
+          {
+            "word": "sand",
+            "start": 14.680000305175781,
+            "end": 14.680000305175781
+          },
+          {
+            "word": "It",
+            "start": 15.640000343322754,
+            "end": 15.640000343322754
+          },
+          {
+            "word": "turns",
+            "start": 15.640000343322754,
+            "end": 15.979999542236328
+          },
+          {
+            "word": "on",
+            "start": 15.979999542236328,
+            "end": 16.5
+          },
+          {
+            "word": "and",
+            "start": 16.5,
+            "end": 16.920000076293945
+          },
+          {
+            "word": "off",
+            "start": 16.920000076293945,
+            "end": 17.440000534057617
+          },
+          {
+            "word": "billions",
+            "start": 17.440000534057617,
+            "end": 18.079999923706055
+          },
+          {
+            "word": "of",
+            "start": 18.079999923706055,
+            "end": 18.420000076293945
+          },
+          {
+            "word": "times",
+            "start": 18.420000076293945,
+            "end": 18.84000015258789
+          },
+          {
+            "word": "per",
+            "start": 18.84000015258789,
+            "end": 19.520000457763672
+          },
+          {
+            "word": "second",
+            "start": 19.520000457763672,
+            "end": 19.979999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-5",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Modern Computing. Today, your phone has 15 billion transistors, each smaller than a virus. The three ancient forces—stone, lightning, and magnetism—work together in your pocket!",
+        "duration": 16.920000076293945,
+        "words": [
+          {
+            "word": "modern",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "computing",
+            "start": 0.5799999833106995,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "Today",
+            "start": 2.4000000953674316,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "your",
+            "start": 2.640000104904175,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "phone",
+            "start": 3.119999885559082,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "has",
+            "start": 3.359999895095825,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "15",
+            "start": 3.740000009536743,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "billion",
+            "start": 4.440000057220459,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "transistors",
+            "start": 5.079999923706055,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "each",
+            "start": 6.199999809265137,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "smaller",
+            "start": 6.659999847412109,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "than",
+            "start": 7.139999866485596,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "a",
+            "start": 7.300000190734863,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "virus",
+            "start": 7.940000057220459,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "The",
+            "start": 8.859999656677246,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "three",
+            "start": 9.020000457763672,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "ancient",
+            "start": 9.5600004196167,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "forces",
+            "start": 10.180000305175781,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "stone",
+            "start": 11.819999694824219,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "lightning",
+            "start": 12.680000305175781,
+            "end": 12.680000305175781
+          },
+          {
+            "word": "and",
+            "start": 12.680000305175781,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "magnetism",
+            "start": 13.199999809265137,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "work",
+            "start": 14.739999771118164,
+            "end": 14.859999656677246
+          },
+          {
+            "word": "together",
+            "start": 14.859999656677246,
+            "end": 15.34000015258789
+          },
+          {
+            "word": "in",
+            "start": 15.34000015258789,
+            "end": 15.600000381469727
+          },
+          {
+            "word": "your",
+            "start": 15.600000381469727,
+            "end": 15.819999694824219
+          },
+          {
+            "word": "pocket",
+            "start": 15.819999694824219,
+            "end": 16.059999465942383
+          }
+        ]
+      }
+    ],
+    "binary-story": [
+      {
+        "storyId": "binary-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Humble Switch. A transistor is just a tiny switch. It can be ON or OFF. That's it! But here's the magic—with enough switches working together, we can represent anything.",
+        "duration": 16.31999969482422,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.2800000011920929
+          },
+          {
+            "word": "humble",
+            "start": 0.2800000011920929,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "switch",
+            "start": 0.6399999856948853,
+            "end": 1.100000023841858
+          },
+          {
+            "word": "A",
+            "start": 2.299999952316284,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "transistor",
+            "start": 2.4800000190734863,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "is",
+            "start": 2.880000114440918,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "just",
+            "start": 3.5399999618530273,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "a",
+            "start": 3.8399999141693115,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "tiny",
+            "start": 4.199999809265137,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "switch",
+            "start": 4.599999904632568,
+            "end": 5
+          },
+          {
+            "word": "It",
+            "start": 5.78000020980835,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "can",
+            "start": 5.860000133514404,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "be",
+            "start": 6.019999980926514,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "on",
+            "start": 6.440000057220459,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "or",
+            "start": 6.639999866485596,
+            "end": 7.179999828338623
+          },
+          {
+            "word": "off",
+            "start": 7.179999828338623,
+            "end": 7.480000019073486
+          },
+          {
+            "word": "That's",
+            "start": 8.180000305175781,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "it",
+            "start": 8.460000038146973,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "But",
+            "start": 9.539999961853027,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "here's",
+            "start": 9.880000114440918,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "the",
+            "start": 10.220000267028809,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "magic",
+            "start": 10.800000190734863,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "With",
+            "start": 11.699999809265137,
+            "end": 11.84000015258789
+          },
+          {
+            "word": "enough",
+            "start": 11.84000015258789,
+            "end": 12.279999732971191
+          },
+          {
+            "word": "switches",
+            "start": 12.279999732971191,
+            "end": 12.779999732971191
+          },
+          {
+            "word": "working",
+            "start": 12.779999732971191,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "together",
+            "start": 13.279999732971191,
+            "end": 13.739999771118164
+          },
+          {
+            "word": "we",
+            "start": 14.220000267028809,
+            "end": 14.5
+          },
+          {
+            "word": "can",
+            "start": 14.5,
+            "end": 14.84000015258789
+          },
+          {
+            "word": "represent",
+            "start": 14.84000015258789,
+            "end": 15.260000228881836
+          },
+          {
+            "word": "anything",
+            "start": 15.260000228881836,
+            "end": 16.040000915527344
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Binary: Zeros and Ones. We call ON a 'one' and OFF a 'zero'. This two-symbol system is called binary. It's the only language computers truly understand.",
+        "duration": 13.75,
+        "words": [
+          {
+            "word": "Binary",
+            "start": 0,
+            "end": 0.47999998927116394
+          },
+          {
+            "word": "Zeros",
+            "start": 1.600000023841858,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "and",
+            "start": 1.600000023841858,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "ones",
+            "start": 2.140000104904175,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "We",
+            "start": 3.319999933242798,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "call",
+            "start": 3.4800000190734863,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "on",
+            "start": 3.7799999713897705,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "and",
+            "start": 4.119999885559082,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "off",
+            "start": 4.639999866485596,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "a",
+            "start": 4.980000019073486,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "zero",
+            "start": 5.460000038146973,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "This",
+            "start": 6.400000095367432,
+            "end": 6.519999980926514
+          },
+          {
+            "word": "two",
+            "start": 6.519999980926514,
+            "end": 6.960000038146973
+          },
+          {
+            "word": "symbol",
+            "start": 6.960000038146973,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "system",
+            "start": 7.21999979019165,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "is",
+            "start": 7.699999809265137,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "called",
+            "start": 8.15999984741211,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "binary",
+            "start": 8.579999923706055,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "It's",
+            "start": 9.800000190734863,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "the",
+            "start": 10.0600004196167,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "only",
+            "start": 10.460000038146973,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "language",
+            "start": 10.9399995803833,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "computers",
+            "start": 11.380000114440918,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "truly",
+            "start": 11.979999542236328,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "understand",
+            "start": 12.65999984741211,
+            "end": 13.34000015258789
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Position Matters. In binary, each position represents a power of two. From right to left: 1, 2, 4, 8, 16, and so on. The position of each 1 determines its value!",
+        "duration": 18.549999237060547,
+        "words": [
+          {
+            "word": "Position",
+            "start": 0,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "matters",
+            "start": 0.699999988079071,
+            "end": 1.6799999475479126
+          },
+          {
+            "word": "In",
+            "start": 2.5199999809265137,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "binary",
+            "start": 2.700000047683716,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "each",
+            "start": 3.5999999046325684,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "position",
+            "start": 3.8399999141693115,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "represents",
+            "start": 4.300000190734863,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "a",
+            "start": 4.980000019073486,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "power",
+            "start": 5.340000152587891,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "of",
+            "start": 5.639999866485596,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "two",
+            "start": 5.980000019073486,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "From",
+            "start": 7.099999904632568,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "right",
+            "start": 7.159999847412109,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "to",
+            "start": 7.519999980926514,
+            "end": 7.880000114440918
+          },
+          {
+            "word": "left",
+            "start": 7.880000114440918,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "1",
+            "start": 9,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "2",
+            "start": 9.4399995803833,
+            "end": 10
+          },
+          {
+            "word": "4",
+            "start": 10.359999656677246,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "8",
+            "start": 11.199999809265137,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "16",
+            "start": 12,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "and",
+            "start": 12.899999618530273,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "so",
+            "start": 13.119999885559082,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "on",
+            "start": 13.319999694824219,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "The",
+            "start": 14.319999694824219,
+            "end": 14.579999923706055
+          },
+          {
+            "word": "position",
+            "start": 14.579999923706055,
+            "end": 14.880000114440918
+          },
+          {
+            "word": "of",
+            "start": 14.880000114440918,
+            "end": 15.380000114440918
+          },
+          {
+            "word": "each",
+            "start": 15.380000114440918,
+            "end": 15.819999694824219
+          },
+          {
+            "word": "one",
+            "start": 15.819999694824219,
+            "end": 16.34000015258789
+          },
+          {
+            "word": "determines",
+            "start": 16.34000015258789,
+            "end": 16.979999542236328
+          },
+          {
+            "word": "its",
+            "start": 16.979999542236328,
+            "end": 17.399999618530273
+          },
+          {
+            "word": "value",
+            "start": 17.399999618530273,
+            "end": 17.780000686645508
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Converting Binary. To convert binary to decimal, just add up the positions with 1s. For example, 1010 means 8 plus 0 plus 2 plus 0, which equals 10!",
+        "duration": 17.610000610351562,
+        "words": [
+          {
+            "word": "Converting",
+            "start": 0,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "binary",
+            "start": 0.8600000143051147,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "To",
+            "start": 2.640000104904175,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "convert",
+            "start": 2.680000066757202,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "binary",
+            "start": 3.119999885559082,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "to",
+            "start": 3.5999999046325684,
+            "end": 4.099999904632568
+          },
+          {
+            "word": "decimal",
+            "start": 4.099999904632568,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "just",
+            "start": 5.059999942779541,
+            "end": 5.320000171661377
+          },
+          {
+            "word": "add",
+            "start": 5.320000171661377,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "up",
+            "start": 5.579999923706055,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "the",
+            "start": 5.800000190734863,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "positions",
+            "start": 6.059999942779541,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "with",
+            "start": 6.400000095367432,
+            "end": 6.760000228881836
+          },
+          {
+            "word": "ones",
+            "start": 6.760000228881836,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "For",
+            "start": 7.940000057220459,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "example",
+            "start": 8.15999984741211,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "1",
+            "start": 9.260000228881836,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "0",
+            "start": 9.520000457763672,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "1",
+            "start": 9.880000114440918,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "0",
+            "start": 10.180000305175781,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "means",
+            "start": 10.579999923706055,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "8",
+            "start": 11.119999885559082,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "plus",
+            "start": 11.619999885559082,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "0",
+            "start": 12.300000190734863,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "plus",
+            "start": 12.739999771118164,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "2",
+            "start": 13.260000228881836,
+            "end": 13.779999732971191
+          },
+          {
+            "word": "plus",
+            "start": 13.779999732971191,
+            "end": 14.220000267028809
+          },
+          {
+            "word": "0",
+            "start": 14.220000267028809,
+            "end": 14.720000267028809
+          },
+          {
+            "word": "which",
+            "start": 15.420000076293945,
+            "end": 15.5600004196167
+          },
+          {
+            "word": "equals",
+            "start": 15.5600004196167,
+            "end": 16.040000915527344
+          },
+          {
+            "word": "10",
+            "start": 16.040000915527344,
+            "end": 16.760000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Everything is Binary. Text, images, music, videos—everything on your computer is stored as patterns of ones and zeros. This lesson you're reading right now? Just a very long binary number!",
+        "duration": 15.720000267028809,
+        "words": [
+          {
+            "word": "Everything",
+            "start": 0,
+            "end": 0.5199999809265137
+          },
+          {
+            "word": "is",
+            "start": 0.5199999809265137,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "binary",
+            "start": 0.8399999737739563,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "Text",
+            "start": 2.319999933242798,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "images",
+            "start": 3,
+            "end": 3
+          },
+          {
+            "word": "music",
+            "start": 3.359999895095825,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "videos",
+            "start": 4.139999866485596,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "everything",
+            "start": 4.940000057220459,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "on",
+            "start": 5.440000057220459,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "your",
+            "start": 5.800000190734863,
+            "end": 6
+          },
+          {
+            "word": "computer",
+            "start": 6,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "is",
+            "start": 6.440000057220459,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "stored",
+            "start": 6.940000057220459,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "as",
+            "start": 7.119999885559082,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "patterns",
+            "start": 7.539999961853027,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "of",
+            "start": 7.900000095367432,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "ones",
+            "start": 8.359999656677246,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "and",
+            "start": 8.600000381469727,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "zeros",
+            "start": 9.520000457763672,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "This",
+            "start": 10.100000381469727,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "lesson",
+            "start": 10.739999771118164,
+            "end": 11.0600004196167
+          },
+          {
+            "word": "you're",
+            "start": 11.0600004196167,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "reading",
+            "start": 11.359999656677246,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "right",
+            "start": 11.600000381469727,
+            "end": 12.039999961853027
+          },
+          {
+            "word": "now",
+            "start": 12.039999961853027,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "just",
+            "start": 12.9399995803833,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "a",
+            "start": 13.079999923706055,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "very",
+            "start": 13.319999694824219,
+            "end": 13.680000305175781
+          },
+          {
+            "word": "long",
+            "start": 13.680000305175781,
+            "end": 14.119999885559082
+          },
+          {
+            "word": "binary",
+            "start": 14.119999885559082,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "number",
+            "start": 14.5600004196167,
+            "end": 14.960000038146973
+          }
+        ]
+      }
+    ],
+    "navigation-story": [
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Library Analogy. Imagine a library with millions of books but no organization—just books scattered everywhere. Finding anything would be impossible! Computers face the same challenge.",
+        "duration": 17.950000762939453,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.36000001430511475
+          },
+          {
+            "word": "library",
+            "start": 0.36000001430511475,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "analogy",
+            "start": 0.9800000190734863,
+            "end": 1.7000000476837158
+          },
+          {
+            "word": "Imagine",
+            "start": 3.119999885559082,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "a",
+            "start": 3.119999885559082,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "library",
+            "start": 3.9800000190734863,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "with",
+            "start": 3.9800000190734863,
+            "end": 4.5
+          },
+          {
+            "word": "millions",
+            "start": 4.5,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "of",
+            "start": 4.920000076293945,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "books",
+            "start": 5.599999904632568,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "but",
+            "start": 6.159999847412109,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "no",
+            "start": 6.320000171661377,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "organisation",
+            "start": 6.78000020980835,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "Just",
+            "start": 8.5600004196167,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "books",
+            "start": 8.979999542236328,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "scattered",
+            "start": 9.380000114440918,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "everywhere",
+            "start": 10.140000343322754,
+            "end": 11
+          },
+          {
+            "word": "Finding",
+            "start": 12.380000114440918,
+            "end": 12.380000114440918
+          },
+          {
+            "word": "anything",
+            "start": 12.380000114440918,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "would",
+            "start": 13.119999885559082,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "be",
+            "start": 13.319999694824219,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "impossible",
+            "start": 13.600000381469727,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "Computers",
+            "start": 15.420000076293945,
+            "end": 15.680000305175781
+          },
+          {
+            "word": "face",
+            "start": 15.680000305175781,
+            "end": 16.219999313354492
+          },
+          {
+            "word": "the",
+            "start": 16.219999313354492,
+            "end": 16.479999542236328
+          },
+          {
+            "word": "same",
+            "start": 16.479999542236328,
+            "end": 17.059999465942383
+          },
+          {
+            "word": "challenge",
+            "start": 17.059999465942383,
+            "end": 17.540000915527344
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Folders Organize Everything. The solution? Folders! Just like a filing cabinet, computers organize files into folders. Folders can contain other folders, creating a tree-like structure.",
+        "duration": 15.039999961853027,
+        "words": [
+          {
+            "word": "Folders",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "organize",
+            "start": 0.6000000238418579,
+            "end": 1.2599999904632568
+          },
+          {
+            "word": "everything",
+            "start": 1.2599999904632568,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "The",
+            "start": 2.5799999237060547,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "solution",
+            "start": 2.700000047683716,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "Folders",
+            "start": 4.099999904632568,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "Just",
+            "start": 4.860000133514404,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "like",
+            "start": 5.039999961853027,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "a",
+            "start": 5.21999979019165,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "filing",
+            "start": 5.739999771118164,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "cabinet",
+            "start": 5.739999771118164,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "computers",
+            "start": 6.760000228881836,
+            "end": 6.760000228881836
+          },
+          {
+            "word": "organize",
+            "start": 6.760000228881836,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "files",
+            "start": 7.380000114440918,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "into",
+            "start": 7.760000228881836,
+            "end": 8.319999694824219
+          },
+          {
+            "word": "folders",
+            "start": 8.319999694824219,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "Folders",
+            "start": 9.779999732971191,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "can",
+            "start": 9.920000076293945,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "contain",
+            "start": 10.199999809265137,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "other",
+            "start": 10.579999923706055,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "folders",
+            "start": 11.140000343322754,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "creating",
+            "start": 12.239999771118164,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "a",
+            "start": 12.239999771118164,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "tree",
+            "start": 12.65999984741211,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "like",
+            "start": 12.920000076293945,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "structure",
+            "start": 13.239999771118164,
+            "end": 13.640000343322754
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Paths: File Addresses. Every file has an address called a path. Like slash Users slash YourName slash Projects slash hello.py. It tells the computer exactly where to find your file.",
+        "duration": 17.850000381469727,
+        "words": [
+          {
+            "word": "Paths",
+            "start": 0,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "File",
+            "start": 1.559999942779541,
+            "end": 1.6399999856948853
+          },
+          {
+            "word": "addresses",
+            "start": 1.6399999856948853,
+            "end": 2.0399999618530273
+          },
+          {
+            "word": "Every",
+            "start": 3.059999942779541,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "file",
+            "start": 3.380000114440918,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "has",
+            "start": 3.680000066757202,
+            "end": 4
+          },
+          {
+            "word": "an",
+            "start": 4,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "address",
+            "start": 4.659999847412109,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "called",
+            "start": 4.659999847412109,
+            "end": 5.179999828338623
+          },
+          {
+            "word": "a",
+            "start": 5.179999828338623,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "path",
+            "start": 5.940000057220459,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "like",
+            "start": 6.119999885559082,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "slash",
+            "start": 6.639999866485596,
+            "end": 7.440000057220459
+          },
+          {
+            "word": "users",
+            "start": 7.440000057220459,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "slash",
+            "start": 8.220000267028809,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "your",
+            "start": 8.920000076293945,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "name",
+            "start": 9.520000457763672,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "slash",
+            "start": 9.819999694824219,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "projects",
+            "start": 10.5600004196167,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "slash",
+            "start": 11.180000305175781,
+            "end": 12.140000343322754
+          },
+          {
+            "word": "hello",
+            "start": 12.140000343322754,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "py",
+            "start": 12.479999542236328,
+            "end": 13.180000305175781
+          },
+          {
+            "word": "It",
+            "start": 13.720000267028809,
+            "end": 14.239999771118164
+          },
+          {
+            "word": "tells",
+            "start": 14.239999771118164,
+            "end": 14.479999542236328
+          },
+          {
+            "word": "the",
+            "start": 14.479999542236328,
+            "end": 14.819999694824219
+          },
+          {
+            "word": "computer",
+            "start": 14.819999694824219,
+            "end": 15.140000343322754
+          },
+          {
+            "word": "exactly",
+            "start": 15.140000343322754,
+            "end": 16.059999465942383
+          },
+          {
+            "word": "where",
+            "start": 16.059999465942383,
+            "end": 16.31999969482422
+          },
+          {
+            "word": "to",
+            "start": 16.31999969482422,
+            "end": 16.780000686645508
+          },
+          {
+            "word": "find",
+            "start": 16.780000686645508,
+            "end": 16.780000686645508
+          },
+          {
+            "word": "your",
+            "start": 16.780000686645508,
+            "end": 17.100000381469727
+          },
+          {
+            "word": "file",
+            "start": 17.100000381469727,
+            "end": 17.360000610351562
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Terminal. Before pretty icons, there was only the terminal—a text-based interface where you type commands directly to the computer. Every developer uses it daily!",
+        "duration": 14.199999809265137,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "Terminal",
+            "start": 0.46000000834465027,
+            "end": 1.100000023841858
+          },
+          {
+            "word": "Before",
+            "start": 1.6799999475479126,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "pretty",
+            "start": 1.7200000286102295,
+            "end": 2.2799999713897705
+          },
+          {
+            "word": "icons",
+            "start": 2.2799999713897705,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "there",
+            "start": 3.140000104904175,
+            "end": 3.2200000286102295
+          },
+          {
+            "word": "was",
+            "start": 3.2200000286102295,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "only",
+            "start": 3.4800000190734863,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "the",
+            "start": 3.9800000190734863,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "Terminal",
+            "start": 4.360000133514404,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "A",
+            "start": 5.300000190734863,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "text",
+            "start": 5.420000076293945,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "based",
+            "start": 5.71999979019165,
+            "end": 6.079999923706055
+          },
+          {
+            "word": "interface",
+            "start": 6.079999923706055,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "where",
+            "start": 6.619999885559082,
+            "end": 7.059999942779541
+          },
+          {
+            "word": "you",
+            "start": 7.059999942779541,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "type",
+            "start": 7.300000190734863,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "commands",
+            "start": 7.579999923706055,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "directly",
+            "start": 8.020000457763672,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "to",
+            "start": 8.739999771118164,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "the",
+            "start": 8.979999542236328,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "computer",
+            "start": 9.180000305175781,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "Every",
+            "start": 10.420000076293945,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "developer",
+            "start": 10.779999732971191,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "uses",
+            "start": 11.220000267028809,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "it",
+            "start": 11.680000305175781,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "daily",
+            "start": 12.020000457763672,
+            "end": 12.359999656677246
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Essential Commands. With just a few commands, you can navigate anywhere! 'pwd' shows where you are, 'ls' lists what's here, and 'cd' moves you to a new folder. You're in control!",
+        "duration": 16,
+        "words": [
+          {
+            "word": "essential",
+            "start": 0,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "commands",
+            "start": 0.7799999713897705,
+            "end": 1.2200000286102295
+          },
+          {
+            "word": "With",
+            "start": 1.9800000190734863,
+            "end": 2.1600000858306885
+          },
+          {
+            "word": "just",
+            "start": 2.1600000858306885,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "a",
+            "start": 2.5399999618530273,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "few",
+            "start": 3.140000104904175,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "commands",
+            "start": 3.140000104904175,
+            "end": 3.5
+          },
+          {
+            "word": "you",
+            "start": 3.5,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "can",
+            "start": 3.9200000762939453,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "navigate",
+            "start": 4.679999828338623,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "anywhere",
+            "start": 4.679999828338623,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "PWD",
+            "start": 6.440000057220459,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "shows",
+            "start": 7.199999809265137,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "where",
+            "start": 7.699999809265137,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "you",
+            "start": 8.039999961853027,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "are",
+            "start": 8.279999732971191,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "LS",
+            "start": 9.260000228881836,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "lists",
+            "start": 9.579999923706055,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "what's",
+            "start": 10.180000305175781,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "here",
+            "start": 10.640000343322754,
+            "end": 10.960000038146973
+          },
+          {
+            "word": "and",
+            "start": 10.960000038146973,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "CD",
+            "start": 11.619999885559082,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "moves",
+            "start": 12.079999923706055,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "you",
+            "start": 12.579999923706055,
+            "end": 12.760000228881836
+          },
+          {
+            "word": "to",
+            "start": 12.760000228881836,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "a",
+            "start": 12.880000114440918,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "new",
+            "start": 13.079999923706055,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "folder",
+            "start": 13.399999618530273,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "You're",
+            "start": 14.380000114440918,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "in",
+            "start": 14.699999809265137,
+            "end": 15.0600004196167
+          },
+          {
+            "word": "control",
+            "start": 15.0600004196167,
+            "end": 15.380000114440918
+          }
+        ]
+      }
+    ]
+  },
+  "echo": {
+    "three-forces-story": [
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Ancient Problem. Long before computers existed, humans faced a simple challenge: How do we calculate things faster? From counting sheep to tracking stars, we needed tools to extend our minds.",
+        "duration": 14.800000190734863,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.2800000011920929
+          },
+          {
+            "word": "ancient",
+            "start": 0.2800000011920929,
+            "end": 0.7200000286102295
+          },
+          {
+            "word": "problem",
+            "start": 0.7200000286102295,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "Long",
+            "start": 2.140000104904175,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "before",
+            "start": 2.140000104904175,
+            "end": 2.5
+          },
+          {
+            "word": "computers",
+            "start": 2.5,
+            "end": 3
+          },
+          {
+            "word": "existed",
+            "start": 3,
+            "end": 3.6600000858306885
+          },
+          {
+            "word": "humans",
+            "start": 4.059999942779541,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "faced",
+            "start": 4.360000133514404,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "a",
+            "start": 4.679999828338623,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "simple",
+            "start": 5.039999961853027,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "challenge",
+            "start": 5.300000190734863,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "How",
+            "start": 6.380000114440918,
+            "end": 6.420000076293945
+          },
+          {
+            "word": "do",
+            "start": 6.420000076293945,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "we",
+            "start": 6.619999885559082,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "calculate",
+            "start": 7.260000228881836,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "things",
+            "start": 7.260000228881836,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "faster",
+            "start": 7.639999866485596,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "From",
+            "start": 8.720000267028809,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "counting",
+            "start": 8.920000076293945,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "sheep",
+            "start": 9.279999732971191,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "to",
+            "start": 9.800000190734863,
+            "end": 10.399999618530273
+          },
+          {
+            "word": "tracking",
+            "start": 10.399999618530273,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "stars",
+            "start": 10.739999771118164,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "we",
+            "start": 11.819999694824219,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "needed",
+            "start": 11.9399995803833,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "tools",
+            "start": 12.239999771118164,
+            "end": 12.760000228881836
+          },
+          {
+            "word": "to",
+            "start": 12.760000228881836,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "extend",
+            "start": 13.520000457763672,
+            "end": 13.819999694824219
+          },
+          {
+            "word": "our",
+            "start": 13.819999694824219,
+            "end": 14.600000381469727
+          },
+          {
+            "word": "minds",
+            "start": 14.600000381469727,
+            "end": 14.600000381469727
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Stone: The Foundation. The first computers were made of stone—the abacus! Today, we still use stone. Silicon, refined from sand and rock, forms the foundation of every computer chip in existence.",
+        "duration": 17.059999465942383,
+        "words": [
+          {
+            "word": "Stone",
+            "start": 0,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "The",
+            "start": 1.2400000095367432,
+            "end": 1.4199999570846558
+          },
+          {
+            "word": "foundation",
+            "start": 1.4199999570846558,
+            "end": 2.059999942779541
+          },
+          {
+            "word": "The",
+            "start": 2.6600000858306885,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "first",
+            "start": 2.819999933242798,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "computers",
+            "start": 3.1600000858306885,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "were",
+            "start": 3.640000104904175,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "made",
+            "start": 3.9600000381469727,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "of",
+            "start": 4.139999866485596,
+            "end": 4.820000171661377
+          },
+          {
+            "word": "stone",
+            "start": 4.820000171661377,
+            "end": 4.820000171661377
+          },
+          {
+            "word": "The",
+            "start": 5.360000133514404,
+            "end": 5.619999885559082
+          },
+          {
+            "word": "abacus",
+            "start": 5.619999885559082,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "Today",
+            "start": 6.980000019073486,
+            "end": 6.980000019073486
+          },
+          {
+            "word": "we",
+            "start": 7.320000171661377,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "still",
+            "start": 7.519999980926514,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "use",
+            "start": 8.0600004196167,
+            "end": 8.5
+          },
+          {
+            "word": "stone",
+            "start": 8.5,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "Silicon",
+            "start": 9.9399995803833,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "refined",
+            "start": 10.800000190734863,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "from",
+            "start": 10.800000190734863,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "sand",
+            "start": 11.260000228881836,
+            "end": 11.640000343322754
+          },
+          {
+            "word": "and",
+            "start": 11.640000343322754,
+            "end": 12
+          },
+          {
+            "word": "rock",
+            "start": 12,
+            "end": 12.319999694824219
+          },
+          {
+            "word": "forms",
+            "start": 12.899999618530273,
+            "end": 12.899999618530273
+          },
+          {
+            "word": "the",
+            "start": 12.899999618530273,
+            "end": 13.380000114440918
+          },
+          {
+            "word": "foundation",
+            "start": 13.380000114440918,
+            "end": 13.760000228881836
+          },
+          {
+            "word": "of",
+            "start": 13.760000228881836,
+            "end": 14.460000038146973
+          },
+          {
+            "word": "every",
+            "start": 14.460000038146973,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "computer",
+            "start": 15.020000457763672,
+            "end": 15.5
+          },
+          {
+            "word": "chip",
+            "start": 15.5,
+            "end": 15.800000190734863
+          },
+          {
+            "word": "in",
+            "start": 15.800000190734863,
+            "end": 16.280000686645508
+          },
+          {
+            "word": "existence",
+            "start": 16.280000686645508,
+            "end": 16.559999465942383
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Lightning: The Power. From Benjamin Franklin's kite to modern power grids, we learned to harness electricity. This same lightning-force now flows through every circuit, bringing machines to life.",
+        "duration": 14.399999618530273,
+        "words": [
+          {
+            "word": "Lightning",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "the",
+            "start": 0.8199999928474426,
+            "end": 1
+          },
+          {
+            "word": "power",
+            "start": 1,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "From",
+            "start": 2.119999885559082,
+            "end": 2.259999990463257
+          },
+          {
+            "word": "Benjamin",
+            "start": 2.259999990463257,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "Franklin's",
+            "start": 2.700000047683716,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "kite",
+            "start": 3.619999885559082,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "to",
+            "start": 3.619999885559082,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "modern",
+            "start": 4.039999961853027,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "power",
+            "start": 4.440000057220459,
+            "end": 4.960000038146973
+          },
+          {
+            "word": "grids",
+            "start": 4.960000038146973,
+            "end": 5.179999828338623
+          },
+          {
+            "word": "we",
+            "start": 5.519999980926514,
+            "end": 5.659999847412109
+          },
+          {
+            "word": "learned",
+            "start": 5.659999847412109,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "to",
+            "start": 6.099999904632568,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "harness",
+            "start": 6.820000171661377,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "electricity",
+            "start": 6.820000171661377,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "This",
+            "start": 8.199999809265137,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "same",
+            "start": 8.380000114440918,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "lightning",
+            "start": 8.920000076293945,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "force",
+            "start": 9.180000305175781,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "now",
+            "start": 9.699999809265137,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "flows",
+            "start": 10.15999984741211,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "through",
+            "start": 10.479999542236328,
+            "end": 10.960000038146973
+          },
+          {
+            "word": "every",
+            "start": 10.960000038146973,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "circuit",
+            "start": 11.5600004196167,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "bringing",
+            "start": 12.5600004196167,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "machines",
+            "start": 12.5600004196167,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "to",
+            "start": 13.199999809265137,
+            "end": 13.779999732971191
+          },
+          {
+            "word": "life",
+            "start": 13.779999732971191,
+            "end": 14.079999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Magnetism: The Memory. Magnets have a superpower—they remember which way they're pointing! North or south, on or off. This simple property became the foundation of all digital storage.",
+        "duration": 13.5600004196167,
+        "words": [
+          {
+            "word": "Magnetism",
+            "start": 0,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "The",
+            "start": 1.2599999904632568,
+            "end": 1.3799999952316284
+          },
+          {
+            "word": "memory",
+            "start": 1.3799999952316284,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "Magnets",
+            "start": 2.5399999618530273,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "have",
+            "start": 2.559999942779541,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "a",
+            "start": 2.740000009536743,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "superpower",
+            "start": 2.9600000381469727,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "They",
+            "start": 3.940000057220459,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "remember",
+            "start": 4.039999961853027,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "which",
+            "start": 4.360000133514404,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "way",
+            "start": 4.78000020980835,
+            "end": 5
+          },
+          {
+            "word": "they're",
+            "start": 5,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "pointing",
+            "start": 5.599999904632568,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "North",
+            "start": 6.340000152587891,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "or",
+            "start": 6.340000152587891,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "south",
+            "start": 6.820000171661377,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "On",
+            "start": 7.739999771118164,
+            "end": 7.739999771118164
+          },
+          {
+            "word": "or",
+            "start": 7.739999771118164,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "off",
+            "start": 8.15999984741211,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "This",
+            "start": 8.739999771118164,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "simple",
+            "start": 8.920000076293945,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "property",
+            "start": 9.34000015258789,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "became",
+            "start": 9.779999732971191,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "the",
+            "start": 10.300000190734863,
+            "end": 10.65999984741211
+          },
+          {
+            "word": "foundation",
+            "start": 10.65999984741211,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "of",
+            "start": 11.079999923706055,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "all",
+            "start": 11.619999885559082,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "digital",
+            "start": 12.0600004196167,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "storage",
+            "start": 12.359999656677246,
+            "end": 12.800000190734863
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Transistor Revolution. In 1947, scientists combined silicon and electricity to create the transistor—a tiny switch smaller than a grain of sand. It turns on and off billions of times per second!",
+        "duration": 16.920000076293945,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "transistor",
+            "start": 0.5,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "revolution",
+            "start": 0.8199999928474426,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "In",
+            "start": 2.0799999237060547,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "1947",
+            "start": 2.180000066757202,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "scientists",
+            "start": 3.819999933242798,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "combined",
+            "start": 4.260000228881836,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "silicon",
+            "start": 4.940000057220459,
+            "end": 5.519999980926514
+          },
+          {
+            "word": "and",
+            "start": 5.519999980926514,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "electricity",
+            "start": 6.119999885559082,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "to",
+            "start": 6.639999866485596,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "create",
+            "start": 7.320000171661377,
+            "end": 7.679999828338623
+          },
+          {
+            "word": "the",
+            "start": 7.679999828338623,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "transistor",
+            "start": 8.119999885559082,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "a",
+            "start": 9.239999771118164,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "tiny",
+            "start": 9.380000114440918,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "switch",
+            "start": 9.800000190734863,
+            "end": 10.239999771118164
+          },
+          {
+            "word": "smaller",
+            "start": 10.239999771118164,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "than",
+            "start": 11.079999923706055,
+            "end": 11.539999961853027
+          },
+          {
+            "word": "a",
+            "start": 11.539999961853027,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "grain",
+            "start": 11.880000114440918,
+            "end": 11.920000076293945
+          },
+          {
+            "word": "of",
+            "start": 11.920000076293945,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "sand",
+            "start": 12.4399995803833,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "It",
+            "start": 12.960000038146973,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "turns",
+            "start": 13.119999885559082,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "on",
+            "start": 13.420000076293945,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "and",
+            "start": 13.84000015258789,
+            "end": 14.279999732971191
+          },
+          {
+            "word": "off",
+            "start": 14.279999732971191,
+            "end": 14.680000305175781
+          },
+          {
+            "word": "billions",
+            "start": 14.680000305175781,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "of",
+            "start": 15.479999542236328,
+            "end": 15.739999771118164
+          },
+          {
+            "word": "times",
+            "start": 15.739999771118164,
+            "end": 16.020000457763672
+          },
+          {
+            "word": "per",
+            "start": 16.020000457763672,
+            "end": 16.360000610351562
+          },
+          {
+            "word": "second",
+            "start": 16.360000610351562,
+            "end": 16.65999984741211
+          }
+        ]
+      },
+      {
+        "storyId": "three-forces-story",
+        "stepId": "step-5",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Modern Computing. Today, your phone has 15 billion transistors, each smaller than a virus. The three ancient forces—stone, lightning, and magnetism—work together in your pocket!",
+        "duration": 13.5600004196167,
+        "words": [
+          {
+            "word": "Modern",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "computing",
+            "start": 0.5799999833106995,
+            "end": 1.0800000429153442
+          },
+          {
+            "word": "Today",
+            "start": 2.119999885559082,
+            "end": 2.119999885559082
+          },
+          {
+            "word": "your",
+            "start": 2.440000057220459,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "phone",
+            "start": 2.680000066757202,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "has",
+            "start": 2.9000000953674316,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "15",
+            "start": 3.200000047683716,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "billion",
+            "start": 3.7799999713897705,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "transistors",
+            "start": 4.320000171661377,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "each",
+            "start": 5.440000057220459,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "smaller",
+            "start": 5.699999809265137,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "than",
+            "start": 6.039999961853027,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "a",
+            "start": 6.21999979019165,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "virus",
+            "start": 6.78000020980835,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "The",
+            "start": 7.360000133514404,
+            "end": 7.5
+          },
+          {
+            "word": "three",
+            "start": 7.5,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "ancient",
+            "start": 7.900000095367432,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "forces",
+            "start": 8.260000228881836,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "stone",
+            "start": 9.5,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "lightning",
+            "start": 10.220000267028809,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "and",
+            "start": 10.479999542236328,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "magmatism",
+            "start": 10.760000228881836,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "work",
+            "start": 11.84000015258789,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "together",
+            "start": 11.9399995803833,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "in",
+            "start": 12.34000015258789,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "your",
+            "start": 12.619999885559082,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "pocket",
+            "start": 12.880000114440918,
+            "end": 13.180000305175781
+          }
+        ]
+      }
+    ],
+    "binary-story": [
+      {
+        "storyId": "binary-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Humble Switch. A transistor is just a tiny switch. It can be ON or OFF. That's it! But here's the magic—with enough switches working together, we can represent anything.",
+        "duration": 13.75,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.2800000011920929
+          },
+          {
+            "word": "humble",
+            "start": 0.2800000011920929,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "switch",
+            "start": 0.6399999856948853,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "A",
+            "start": 1.7799999713897705,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "transistor",
+            "start": 1.940000057220459,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "is",
+            "start": 2.319999933242798,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "just",
+            "start": 2.740000009536743,
+            "end": 3.0199999809265137
+          },
+          {
+            "word": "a",
+            "start": 3.0199999809265137,
+            "end": 3.3399999141693115
+          },
+          {
+            "word": "tiny",
+            "start": 3.3399999141693115,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "switch",
+            "start": 3.7799999713897705,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "It",
+            "start": 4.739999771118164,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "can",
+            "start": 4.880000114440918,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "be",
+            "start": 5.039999961853027,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "on",
+            "start": 5.340000152587891,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "or",
+            "start": 5.739999771118164,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "off",
+            "start": 6.199999809265137,
+            "end": 6.599999904632568
+          },
+          {
+            "word": "That's",
+            "start": 6.960000038146973,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "it",
+            "start": 7.239999771118164,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "But",
+            "start": 7.880000114440918,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "here's",
+            "start": 8.0600004196167,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "the",
+            "start": 8.34000015258789,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "magic",
+            "start": 8.880000114440918,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "With",
+            "start": 9.4399995803833,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "enough",
+            "start": 9.5600004196167,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "switches",
+            "start": 10.0600004196167,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "working",
+            "start": 10.460000038146973,
+            "end": 10.84000015258789
+          },
+          {
+            "word": "together",
+            "start": 10.84000015258789,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "we",
+            "start": 11.520000457763672,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "can",
+            "start": 11.779999732971191,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "represent",
+            "start": 12.100000381469727,
+            "end": 12.520000457763672
+          },
+          {
+            "word": "anything",
+            "start": 12.520000457763672,
+            "end": 13.199999809265137
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Binary: Zeros and Ones. We call ON a 'one' and OFF a 'zero'. This two-symbol system is called binary. It's the only language computers truly understand.",
+        "duration": 12.260000228881836,
+        "words": [
+          {
+            "word": "Binary",
+            "start": 0,
+            "end": 0.5400000214576721
+          },
+          {
+            "word": "Zeros",
+            "start": 1.600000023841858,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "and",
+            "start": 1.600000023841858,
+            "end": 2
+          },
+          {
+            "word": "ones",
+            "start": 2,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "We",
+            "start": 2.799999952316284,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "call",
+            "start": 2.9800000190734863,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "on",
+            "start": 3.299999952316284,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "a",
+            "start": 3.7200000286102295,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "one",
+            "start": 4.059999942779541,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "and",
+            "start": 4.28000020980835,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "off",
+            "start": 4.78000020980835,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "a",
+            "start": 5.099999904632568,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "zero",
+            "start": 5.440000057220459,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "This",
+            "start": 6.039999961853027,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "two",
+            "start": 6.199999809265137,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "symbol",
+            "start": 6.639999866485596,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "system",
+            "start": 6.739999771118164,
+            "end": 7.179999828338623
+          },
+          {
+            "word": "is",
+            "start": 7.179999828338623,
+            "end": 7.5
+          },
+          {
+            "word": "called",
+            "start": 7.5,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "binary",
+            "start": 7.860000133514404,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "It's",
+            "start": 8.760000228881836,
+            "end": 8.960000038146973
+          },
+          {
+            "word": "the",
+            "start": 8.960000038146973,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "only",
+            "start": 9.239999771118164,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "language",
+            "start": 9.619999885559082,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "computers",
+            "start": 10.039999961853027,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "truly",
+            "start": 10.680000305175781,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "understand",
+            "start": 11.359999656677246,
+            "end": 11.960000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Position Matters. In binary, each position represents a power of two. From right to left: 1, 2, 4, 8, 16, and so on. The position of each 1 determines its value!",
+        "duration": 15.3100004196167,
+        "words": [
+          {
+            "word": "Position",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "matters",
+            "start": 0.5799999833106995,
+            "end": 1.0800000429153442
+          },
+          {
+            "word": "In",
+            "start": 1.6799999475479126,
+            "end": 1.899999976158142
+          },
+          {
+            "word": "binary",
+            "start": 1.899999976158142,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "each",
+            "start": 2.7799999713897705,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "position",
+            "start": 2.9800000190734863,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "represents",
+            "start": 3.4200000762939453,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "a",
+            "start": 4.019999980926514,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "power",
+            "start": 4.360000133514404,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "of",
+            "start": 4.760000228881836,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "2",
+            "start": 5.159999847412109,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "From",
+            "start": 6.079999923706055,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "right",
+            "start": 6.21999979019165,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "to",
+            "start": 6.559999942779541,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "left",
+            "start": 6.78000020980835,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "1",
+            "start": 7.079999923706055,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "2",
+            "start": 8.020000457763672,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "4",
+            "start": 9.020000457763672,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "8",
+            "start": 9.9399995803833,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "16",
+            "start": 10.680000305175781,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "and",
+            "start": 11.520000457763672,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "so",
+            "start": 11.699999809265137,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "on",
+            "start": 11.9399995803833,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "The",
+            "start": 12.520000457763672,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "position",
+            "start": 12.800000190734863,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "of",
+            "start": 13.039999961853027,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "each",
+            "start": 13.34000015258789,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "one",
+            "start": 13.579999923706055,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "determines",
+            "start": 13.920000076293945,
+            "end": 14.420000076293945
+          },
+          {
+            "word": "its",
+            "start": 14.420000076293945,
+            "end": 14.739999771118164
+          },
+          {
+            "word": "value",
+            "start": 14.739999771118164,
+            "end": 15.079999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Converting Binary. To convert binary to decimal, just add up the positions with 1s. For example, 1010 means 8 plus 0 plus 2 plus 0, which equals 10!",
+        "duration": 15.550000190734863,
+        "words": [
+          {
+            "word": "Converting",
+            "start": 0,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "binary",
+            "start": 0.7400000095367432,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "To",
+            "start": 1.809999942779541,
+            "end": 2.2200000286102295
+          },
+          {
+            "word": "convert",
+            "start": 2.2200000286102295,
+            "end": 2.619999885559082
+          },
+          {
+            "word": "binary",
+            "start": 2.619999885559082,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "to",
+            "start": 3.0399999618530273,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "decimal",
+            "start": 3.440000057220459,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "just",
+            "start": 4.179999828338623,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "add",
+            "start": 4.480000019073486,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "up",
+            "start": 4.78000020980835,
+            "end": 5
+          },
+          {
+            "word": "the",
+            "start": 5,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "positions",
+            "start": 5.21999979019165,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "with",
+            "start": 5.579999923706055,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "ones",
+            "start": 5.940000057220459,
+            "end": 6.260000228881836
+          },
+          {
+            "word": "For",
+            "start": 6.739999771118164,
+            "end": 6.960000038146973
+          },
+          {
+            "word": "example",
+            "start": 6.960000038146973,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "1",
+            "start": 7.900000095367432,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "0",
+            "start": 8.15999984741211,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "1",
+            "start": 8.520000457763672,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "0",
+            "start": 8.859999656677246,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "means",
+            "start": 9.279999732971191,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "8",
+            "start": 9.779999732971191,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "plus",
+            "start": 10.279999732971191,
+            "end": 11
+          },
+          {
+            "word": "0",
+            "start": 11,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "plus",
+            "start": 11.520000457763672,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "2",
+            "start": 12.079999923706055,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "plus",
+            "start": 12.65999984741211,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "0",
+            "start": 13.199999809265137,
+            "end": 13.680000305175781
+          },
+          {
+            "word": "which",
+            "start": 14.220000267028809,
+            "end": 14.359999656677246
+          },
+          {
+            "word": "equals",
+            "start": 14.359999656677246,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "10",
+            "start": 14.760000228881836,
+            "end": 15.220000267028809
+          }
+        ]
+      },
+      {
+        "storyId": "binary-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Everything is Binary. Text, images, music, videos—everything on your computer is stored as patterns of ones and zeros. This lesson you're reading right now? Just a very long binary number!",
+        "duration": 14.109999656677246,
+        "words": [
+          {
+            "word": "Everything",
+            "start": 0,
+            "end": 0.5400000214576721
+          },
+          {
+            "word": "is",
+            "start": 0.5400000214576721,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "binary",
+            "start": 0.8799999952316284,
+            "end": 1.3200000524520874
+          },
+          {
+            "word": "Text",
+            "start": 2.240000009536743,
+            "end": 2.240000009536743
+          },
+          {
+            "word": "images",
+            "start": 3,
+            "end": 3
+          },
+          {
+            "word": "music",
+            "start": 3.640000104904175,
+            "end": 3.6600000858306885
+          },
+          {
+            "word": "videos",
+            "start": 4.360000133514404,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "everything",
+            "start": 4.679999828338623,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "on",
+            "start": 5.239999771118164,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "your",
+            "start": 5.480000019073486,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "computer",
+            "start": 5.639999866485596,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "is",
+            "start": 6.019999980926514,
+            "end": 6.420000076293945
+          },
+          {
+            "word": "stored",
+            "start": 6.420000076293945,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "as",
+            "start": 6.659999847412109,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "patterns",
+            "start": 7.139999866485596,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "of",
+            "start": 7.539999961853027,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "ones",
+            "start": 7.960000038146973,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "and",
+            "start": 8.180000305175781,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "zeros",
+            "start": 8.680000305175781,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "This",
+            "start": 9.680000305175781,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "lesson",
+            "start": 9.960000038146973,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "you're",
+            "start": 10.279999732971191,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "reading",
+            "start": 10.619999885559082,
+            "end": 10.84000015258789
+          },
+          {
+            "word": "right",
+            "start": 10.84000015258789,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "now",
+            "start": 11.180000305175781,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "just",
+            "start": 12.020000457763672,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "a",
+            "start": 12.119999885559082,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "very",
+            "start": 12.359999656677246,
+            "end": 12.779999732971191
+          },
+          {
+            "word": "long",
+            "start": 12.779999732971191,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "binary",
+            "start": 13.119999885559082,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "number",
+            "start": 13.520000457763672,
+            "end": 13.859999656677246
+          }
+        ]
+      }
+    ],
+    "navigation-story": [
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Library Analogy. Imagine a library with millions of books but no organization—just books scattered everywhere. Finding anything would be impossible! Computers face the same challenge.",
+        "duration": 15.640000343322754,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.30000001192092896
+          },
+          {
+            "word": "library",
+            "start": 0.30000001192092896,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "analogy",
+            "start": 0.800000011920929,
+            "end": 1.5
+          },
+          {
+            "word": "Imagine",
+            "start": 2.4200000762939453,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "a",
+            "start": 2.4200000762939453,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "library",
+            "start": 3.119999885559082,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "with",
+            "start": 3.119999885559082,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "millions",
+            "start": 3.5799999237060547,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "of",
+            "start": 3.940000057220459,
+            "end": 4.5
+          },
+          {
+            "word": "books",
+            "start": 4.5,
+            "end": 4.5
+          },
+          {
+            "word": "but",
+            "start": 4.800000190734863,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "no",
+            "start": 4.860000133514404,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "organization",
+            "start": 5.28000020980835,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "just",
+            "start": 6.539999961853027,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "books",
+            "start": 6.739999771118164,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "scattered",
+            "start": 7.21999979019165,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "everywhere",
+            "start": 7.760000228881836,
+            "end": 8.5
+          },
+          {
+            "word": "Finding",
+            "start": 9.380000114440918,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "anything",
+            "start": 9.380000114440918,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "would",
+            "start": 10.0600004196167,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "be",
+            "start": 10.460000038146973,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "impossible",
+            "start": 10.739999771118164,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "Computers",
+            "start": 12.380000114440918,
+            "end": 12.600000381469727
+          },
+          {
+            "word": "face",
+            "start": 12.600000381469727,
+            "end": 13.0600004196167
+          },
+          {
+            "word": "the",
+            "start": 13.0600004196167,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "same",
+            "start": 13.34000015258789,
+            "end": 13.739999771118164
+          },
+          {
+            "word": "challenge",
+            "start": 13.739999771118164,
+            "end": 14.199999809265137
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Folders Organize Everything. The solution? Folders! Just like a filing cabinet, computers organize files into folders. Folders can contain other folders, creating a tree-like structure.",
+        "duration": 14.520000457763672,
+        "words": [
+          {
+            "word": "Folders",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "organize",
+            "start": 0.5600000023841858,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "everything",
+            "start": 1.1200000047683716,
+            "end": 1.899999976158142
+          },
+          {
+            "word": "The",
+            "start": 2.380000114440918,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "solution",
+            "start": 2.5399999618530273,
+            "end": 3
+          },
+          {
+            "word": "Folders",
+            "start": 4.019999980926514,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "Just",
+            "start": 4.5,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "like",
+            "start": 4.760000228881836,
+            "end": 5
+          },
+          {
+            "word": "a",
+            "start": 5,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "filing",
+            "start": 5.300000190734863,
+            "end": 5.619999885559082
+          },
+          {
+            "word": "cabinet",
+            "start": 5.619999885559082,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "computers",
+            "start": 6.519999980926514,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "organize",
+            "start": 6.940000057220459,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "files",
+            "start": 7.579999923706055,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "into",
+            "start": 8.0600004196167,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "folders",
+            "start": 8.600000381469727,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "Folders",
+            "start": 10.0600004196167,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "can",
+            "start": 10.220000267028809,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "contain",
+            "start": 10.539999961853027,
+            "end": 11
+          },
+          {
+            "word": "other",
+            "start": 11,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "folders",
+            "start": 11.699999809265137,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "creating",
+            "start": 12.84000015258789,
+            "end": 12.84000015258789
+          },
+          {
+            "word": "a",
+            "start": 12.84000015258789,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "tree",
+            "start": 13.15999984741211,
+            "end": 13.4399995803833
+          },
+          {
+            "word": "like",
+            "start": 13.4399995803833,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "structure",
+            "start": 13.720000267028809,
+            "end": 14.260000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Paths: File Addresses. Every file has an address called a path. Like slash Users slash YourName slash Projects slash hello.py. It tells the computer exactly where to find your file.",
+        "duration": 14.800000190734863,
+        "words": [
+          {
+            "word": "Paths",
+            "start": 0,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "file",
+            "start": 1.2000000476837158,
+            "end": 1.2599999904632568
+          },
+          {
+            "word": "addresses",
+            "start": 1.2599999904632568,
+            "end": 1.8600000143051147
+          },
+          {
+            "word": "Every",
+            "start": 2.559999942779541,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "file",
+            "start": 2.740000009536743,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "has",
+            "start": 3.059999942779541,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "an",
+            "start": 3.299999952316284,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "address",
+            "start": 3.700000047683716,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "called",
+            "start": 3.940000057220459,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "a",
+            "start": 4.260000228881836,
+            "end": 4.820000171661377
+          },
+          {
+            "word": "path",
+            "start": 4.820000171661377,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "like",
+            "start": 5.400000095367432,
+            "end": 5.539999961853027
+          },
+          {
+            "word": "slash",
+            "start": 5.539999961853027,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "users",
+            "start": 6.199999809265137,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "slash",
+            "start": 6.820000171661377,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "your",
+            "start": 7.400000095367432,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "name",
+            "start": 7.760000228881836,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "slash",
+            "start": 8.140000343322754,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "projects",
+            "start": 8.779999732971191,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "slash",
+            "start": 9.399999618530273,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "hello",
+            "start": 10.039999961853027,
+            "end": 10.399999618530273
+          },
+          {
+            "word": "dot",
+            "start": 10.399999618530273,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "pi",
+            "start": 10.760000228881836,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "It",
+            "start": 11.359999656677246,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "tells",
+            "start": 11.779999732971191,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "the",
+            "start": 11.960000038146973,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "computer",
+            "start": 12.239999771118164,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "exactly",
+            "start": 12.579999923706055,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "where",
+            "start": 13.399999618530273,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "to",
+            "start": 13.65999984741211,
+            "end": 14.100000381469727
+          },
+          {
+            "word": "find",
+            "start": 14.100000381469727,
+            "end": 14.100000381469727
+          },
+          {
+            "word": "your",
+            "start": 14.100000381469727,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "file",
+            "start": 14.34000015258789,
+            "end": 14.640000343322754
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Terminal. Before pretty icons, there was only the terminal—a text-based interface where you type commands directly to the computer. Every developer uses it daily!",
+        "duration": 11.109999656677246,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.3400000035762787
+          },
+          {
+            "word": "Terminal",
+            "start": 0.3400000035762787,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "Before",
+            "start": 1.559999942779541,
+            "end": 1.5800000429153442
+          },
+          {
+            "word": "pretty",
+            "start": 1.5800000429153442,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "icons",
+            "start": 2.0199999809265137,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "there",
+            "start": 2.640000104904175,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "was",
+            "start": 2.700000047683716,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "only",
+            "start": 2.9200000762939453,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "the",
+            "start": 3.299999952316284,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "Terminal",
+            "start": 3.619999885559082,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "a",
+            "start": 4.380000114440918,
+            "end": 4.5
+          },
+          {
+            "word": "text",
+            "start": 4.5,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "based",
+            "start": 4.78000020980835,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "interface",
+            "start": 5.079999923706055,
+            "end": 5.5
+          },
+          {
+            "word": "where",
+            "start": 5.5,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "you",
+            "start": 5.739999771118164,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "type",
+            "start": 5.960000038146973,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "commands",
+            "start": 6.28000020980835,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "directly",
+            "start": 6.800000190734863,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "to",
+            "start": 7.460000038146973,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "the",
+            "start": 7.699999809265137,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "computer",
+            "start": 7.900000095367432,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "Every",
+            "start": 8.920000076293945,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "developer",
+            "start": 9.199999809265137,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "uses",
+            "start": 9.699999809265137,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "it",
+            "start": 10.140000343322754,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "daily",
+            "start": 10.479999542236328,
+            "end": 10.779999732971191
+          }
+        ]
+      },
+      {
+        "storyId": "navigation-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Essential Commands. With just a few commands, you can navigate anywhere! 'pwd' shows where you are, 'ls' lists what's here, and 'cd' moves you to a new folder. You're in control!",
+        "duration": 13.960000038146973,
+        "words": [
+          {
+            "word": "Essential",
+            "start": 0,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "Commands",
+            "start": 0.9200000166893005,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "With",
+            "start": 1.4800000190734863,
+            "end": 2.0999999046325684
+          },
+          {
+            "word": "just",
+            "start": 2.0999999046325684,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "a",
+            "start": 2.380000114440918,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "few",
+            "start": 2.640000104904175,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "commands",
+            "start": 2.9200000762939453,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "you",
+            "start": 3.7200000286102295,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "can",
+            "start": 3.740000009536743,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "navigate",
+            "start": 4.039999961853027,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "anywhere",
+            "start": 4.320000171661377,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "Key",
+            "start": 5.539999961853027,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "WD",
+            "start": 5.71999979019165,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "shows",
+            "start": 6.320000171661377,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "where",
+            "start": 6.800000190734863,
+            "end": 7.059999942779541
+          },
+          {
+            "word": "you",
+            "start": 7.059999942779541,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "are",
+            "start": 7.260000228881836,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "LS",
+            "start": 8.0600004196167,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "lists",
+            "start": 8.420000076293945,
+            "end": 9
+          },
+          {
+            "word": "what's",
+            "start": 9,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "here",
+            "start": 9.319999694824219,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "and",
+            "start": 9.979999542236328,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "CD",
+            "start": 10.199999809265137,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "moves",
+            "start": 10.600000381469727,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "you",
+            "start": 10.979999542236328,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "to",
+            "start": 11.220000267028809,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "a",
+            "start": 11.380000114440918,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "new",
+            "start": 11.579999923706055,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "folder",
+            "start": 11.819999694824219,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "You're",
+            "start": 12.739999771118164,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "in",
+            "start": 13.039999961853027,
+            "end": 13.300000190734863
+          },
+          {
+            "word": "control",
+            "start": 13.300000190734863,
+            "end": 13.600000381469727
+          }
+        ]
+      }
+    ]
+  }
+}

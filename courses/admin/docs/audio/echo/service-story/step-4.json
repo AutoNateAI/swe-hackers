@@ -1,0 +1,140 @@
+{
+  "storyId": "service-story",
+  "stepId": "step-4",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Progress Tracking. ProgressTracker uses IntersectionObserver to detect which content users have viewed. It saves progress via DataService and identifies users via AuthService.",
+  "duration": 13.100000381469727,
+  "words": [
+    {
+      "word": "Progress",
+      "start": 0,
+      "end": 0.6399999856948853
+    },
+    {
+      "word": "Tracking",
+      "start": 0.6399999856948853,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "Progress",
+      "start": 1.3200000524520874,
+      "end": 2.200000047683716
+    },
+    {
+      "word": "Tracker",
+      "start": 2.200000047683716,
+      "end": 2.4800000190734863
+    },
+    {
+      "word": "uses",
+      "start": 2.4800000190734863,
+      "end": 2.9200000762939453
+    },
+    {
+      "word": "Intersection",
+      "start": 2.9200000762939453,
+      "end": 3.700000047683716
+    },
+    {
+      "word": "Observer",
+      "start": 3.700000047683716,
+      "end": 4.139999866485596
+    },
+    {
+      "word": "to",
+      "start": 4.139999866485596,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "detect",
+      "start": 4.679999828338623,
+      "end": 5.059999942779541
+    },
+    {
+      "word": "which",
+      "start": 5.059999942779541,
+      "end": 5.5
+    },
+    {
+      "word": "content",
+      "start": 5.5,
+      "end": 6.039999961853027
+    },
+    {
+      "word": "users",
+      "start": 6.039999961853027,
+      "end": 6.5
+    },
+    {
+      "word": "have",
+      "start": 6.5,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "viewed",
+      "start": 6.820000171661377,
+      "end": 7.059999942779541
+    },
+    {
+      "word": "It",
+      "start": 7.880000114440918,
+      "end": 7.880000114440918
+    },
+    {
+      "word": "saves",
+      "start": 7.880000114440918,
+      "end": 8.15999984741211
+    },
+    {
+      "word": "progress",
+      "start": 8.15999984741211,
+      "end": 8.720000267028809
+    },
+    {
+      "word": "via",
+      "start": 8.720000267028809,
+      "end": 9
+    },
+    {
+      "word": "Data",
+      "start": 9,
+      "end": 9.479999542236328
+    },
+    {
+      "word": "Service",
+      "start": 9.479999542236328,
+      "end": 9.84000015258789
+    },
+    {
+      "word": "and",
+      "start": 9.84000015258789,
+      "end": 10.300000190734863
+    },
+    {
+      "word": "identifies",
+      "start": 10.300000190734863,
+      "end": 10.920000076293945
+    },
+    {
+      "word": "users",
+      "start": 10.920000076293945,
+      "end": 11.420000076293945
+    },
+    {
+      "word": "via",
+      "start": 11.420000076293945,
+      "end": 11.800000190734863
+    },
+    {
+      "word": "Auth",
+      "start": 11.800000190734863,
+      "end": 12.15999984741211
+    },
+    {
+      "word": "Service",
+      "start": 12.15999984741211,
+      "end": 12.520000457763672
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "storyId": "activity-types-story",
+  "stepId": "step-10",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "LocalStorage Backup. LocalStorage provides offline resilience. If Firestore is unreachable, attempts queue locally until sync.",
+  "duration": 9.399999618530273,
+  "words": [
+    {
+      "word": "Local",
+      "start": 0,
+      "end": 0.46000000834465027
+    },
+    {
+      "word": "Storage",
+      "start": 0.46000000834465027,
+      "end": 0.7799999713897705
+    },
+    {
+      "word": "Backup",
+      "start": 0.7799999713897705,
+      "end": 1.6200000047683716
+    },
+    {
+      "word": "Local",
+      "start": 1.6200000047683716,
+      "end": 2.180000066757202
+    },
+    {
+      "word": "storage",
+      "start": 2.180000066757202,
+      "end": 2.5
+    },
+    {
+      "word": "provides",
+      "start": 2.5,
+      "end": 3.0199999809265137
+    },
+    {
+      "word": "offline",
+      "start": 3.0199999809265137,
+      "end": 3.680000066757202
+    },
+    {
+      "word": "resilience",
+      "start": 3.680000066757202,
+      "end": 4.320000171661377
+    },
+    {
+      "word": "If",
+      "start": 4.820000171661377,
+      "end": 4.900000095367432
+    },
+    {
+      "word": "Firestore",
+      "start": 4.900000095367432,
+      "end": 5.420000076293945
+    },
+    {
+      "word": "is",
+      "start": 5.420000076293945,
+      "end": 5.840000152587891
+    },
+    {
+      "word": "unreachable",
+      "start": 5.840000152587891,
+      "end": 6.440000057220459
+    },
+    {
+      "word": "attents",
+      "start": 7.21999979019165,
+      "end": 7.239999771118164
+    },
+    {
+      "word": "queue",
+      "start": 7.239999771118164,
+      "end": 7.659999847412109
+    },
+    {
+      "word": "locally",
+      "start": 7.659999847412109,
+      "end": 8.0600004196167
+    },
+    {
+      "word": "until",
+      "start": 8.0600004196167,
+      "end": 8.640000343322754
+    },
+    {
+      "word": "sync",
+      "start": 8.640000343322754,
+      "end": 9.039999961853027
+    }
+  ]
+}

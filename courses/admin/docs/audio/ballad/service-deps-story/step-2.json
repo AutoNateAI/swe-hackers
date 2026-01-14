@@ -1,0 +1,145 @@
+{
+  "storyId": "service-deps-story",
+  "stepId": "step-2",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "DataService Operations. DataService is the workhorse. It needs both FirebaseApp for database access AND AuthService to scope every query to the current user.",
+  "duration": 13.800000190734863,
+  "words": [
+    {
+      "word": "Data",
+      "start": 0,
+      "end": 0.46000000834465027
+    },
+    {
+      "word": "service",
+      "start": 0.46000000834465027,
+      "end": 0.7200000286102295
+    },
+    {
+      "word": "operations",
+      "start": 0.7200000286102295,
+      "end": 1.6399999856948853
+    },
+    {
+      "word": "Data",
+      "start": 2.799999952316284,
+      "end": 2.799999952316284
+    },
+    {
+      "word": "service",
+      "start": 2.799999952316284,
+      "end": 3.0999999046325684
+    },
+    {
+      "word": "is",
+      "start": 3.0999999046325684,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "the",
+      "start": 3.759999990463257,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "workhorse",
+      "start": 4.059999942779541,
+      "end": 4.71999979019165
+    },
+    {
+      "word": "It",
+      "start": 5.579999923706055,
+      "end": 5.679999828338623
+    },
+    {
+      "word": "needs",
+      "start": 5.679999828338623,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "both",
+      "start": 5.940000057220459,
+      "end": 6.519999980926514
+    },
+    {
+      "word": "Firebase",
+      "start": 6.519999980926514,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "app",
+      "start": 6.820000171661377,
+      "end": 7.400000095367432
+    },
+    {
+      "word": "for",
+      "start": 7.400000095367432,
+      "end": 7.820000171661377
+    },
+    {
+      "word": "database",
+      "start": 7.820000171661377,
+      "end": 8.180000305175781
+    },
+    {
+      "word": "access",
+      "start": 8.180000305175781,
+      "end": 8.800000190734863
+    },
+    {
+      "word": "and",
+      "start": 8.960000038146973,
+      "end": 9.720000267028809
+    },
+    {
+      "word": "auth",
+      "start": 9.720000267028809,
+      "end": 10.079999923706055
+    },
+    {
+      "word": "service",
+      "start": 10.079999923706055,
+      "end": 10.4399995803833
+    },
+    {
+      "word": "to",
+      "start": 10.4399995803833,
+      "end": 11
+    },
+    {
+      "word": "scope",
+      "start": 11,
+      "end": 11.100000381469727
+    },
+    {
+      "word": "every",
+      "start": 11.100000381469727,
+      "end": 11.760000228881836
+    },
+    {
+      "word": "query",
+      "start": 11.760000228881836,
+      "end": 12.0600004196167
+    },
+    {
+      "word": "to",
+      "start": 12.0600004196167,
+      "end": 12.5
+    },
+    {
+      "word": "the",
+      "start": 12.5,
+      "end": 12.720000267028809
+    },
+    {
+      "word": "current",
+      "start": 12.720000267028809,
+      "end": 13.039999961853027
+    },
+    {
+      "word": "user",
+      "start": 13.039999961853027,
+      "end": 13.420000076293945
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "storyId": "quiz-structure-story",
+  "stepId": "step-0",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Quiz Container. Every quiz starts with a container. The data-answer attribute holds the correct answer—hidden from the UI but accessible to JavaScript.",
+  "duration": 11.4399995803833,
+  "words": [
+    {
+      "word": "Quiz",
+      "start": 0,
+      "end": 0.4000000059604645
+    },
+    {
+      "word": "container",
+      "start": 0.4000000059604645,
+      "end": 0.8399999737739563
+    },
+    {
+      "word": "Every",
+      "start": 0.8399999737739563,
+      "end": 1.9800000190734863
+    },
+    {
+      "word": "quiz",
+      "start": 1.9800000190734863,
+      "end": 2.3399999141693115
+    },
+    {
+      "word": "starts",
+      "start": 2.3399999141693115,
+      "end": 2.7200000286102295
+    },
+    {
+      "word": "with",
+      "start": 2.7200000286102295,
+      "end": 2.9200000762939453
+    },
+    {
+      "word": "a",
+      "start": 2.9200000762939453,
+      "end": 3.5199999809265137
+    },
+    {
+      "word": "container",
+      "start": 3.5199999809265137,
+      "end": 3.5199999809265137
+    },
+    {
+      "word": "The",
+      "start": 4.059999942779541,
+      "end": 4.21999979019165
+    },
+    {
+      "word": "DataAnswer",
+      "start": 4.21999979019165,
+      "end": 4.920000076293945
+    },
+    {
+      "word": "attribute",
+      "start": 4.920000076293945,
+      "end": 5.539999961853027
+    },
+    {
+      "word": "holds",
+      "start": 5.539999961853027,
+      "end": 6.079999923706055
+    },
+    {
+      "word": "the",
+      "start": 6.079999923706055,
+      "end": 6.320000171661377
+    },
+    {
+      "word": "correct",
+      "start": 6.320000171661377,
+      "end": 6.800000190734863
+    },
+    {
+      "word": "answer",
+      "start": 6.800000190734863,
+      "end": 7.28000020980835
+    },
+    {
+      "word": "hidden",
+      "start": 7.940000057220459,
+      "end": 7.940000057220459
+    },
+    {
+      "word": "from",
+      "start": 7.940000057220459,
+      "end": 8.380000114440918
+    },
+    {
+      "word": "the",
+      "start": 8.380000114440918,
+      "end": 8.600000381469727
+    },
+    {
+      "word": "UI",
+      "start": 8.600000381469727,
+      "end": 8.979999542236328
+    },
+    {
+      "word": "but",
+      "start": 8.979999542236328,
+      "end": 9.479999542236328
+    },
+    {
+      "word": "accessible",
+      "start": 9.479999542236328,
+      "end": 9.960000038146973
+    },
+    {
+      "word": "to",
+      "start": 9.960000038146973,
+      "end": 10.359999656677246
+    },
+    {
+      "word": "JavaScript",
+      "start": 10.359999656677246,
+      "end": 10.760000228881836
+    }
+  ]
+}

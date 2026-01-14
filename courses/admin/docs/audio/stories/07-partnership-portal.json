@@ -1,0 +1,700 @@
+{
+  "pageId": "07-partnership-portal",
+  "stories": [
+    {
+      "id": "feature-overview-story",
+      "diagramId": "feature-overview",
+      "title": "Partnership Portal Overview",
+      "steps": [
+        {
+          "nodeId": "portal",
+          "icon": "🤝",
+          "title": "Partnership Portal",
+          "narration": "Welcome to the Partnership Portal! This admin-only system helps manage relationships with educational organizations, churches, foundations, and businesses.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "list",
+          "edges": [{ "from": "portal", "to": "list" }],
+          "icon": "📋",
+          "title": "Partner List",
+          "narration": "The partner list shows all organizations at a glance. Filter by type, status, or search by name. Your partnership CRM!",
+          "connectsTo": "Portal"
+        },
+        {
+          "nodeId": "detail",
+          "edges": [{ "from": "portal", "to": "detail" }],
+          "icon": "📊",
+          "title": "Partner Details",
+          "narration": "Each partner has a detailed view. Contact info, interaction history, attached documents, courses offered, and analytics.",
+          "connectsTo": "Portal"
+        },
+        {
+          "nodeId": "add",
+          "edges": [{ "from": "portal", "to": "add" }],
+          "icon": "➕",
+          "title": "Add Partner",
+          "narration": "Adding new partners is easy. Fill out the form, select type and status, and the relationship tracking begins!",
+          "connectsTo": "Portal"
+        },
+        {
+          "nodeId": "interact",
+          "edges": [{ "from": "portal", "to": "interact" }],
+          "icon": "💬",
+          "title": "Interactions",
+          "narration": "Every touchpoint is recorded. Calls, meetings, emails, demos—complete history of the relationship journey.",
+          "connectsTo": "Portal"
+        },
+        {
+          "nodeId": "attach",
+          "edges": [{ "from": "portal", "to": "attach" }],
+          "icon": "📎",
+          "title": "Attachments",
+          "narration": "Attach files to any partner. Proposals, contracts, presentations—all organized and easily accessible.",
+          "connectsTo": "Portal"
+        },
+        {
+          "nodeId": "analytics",
+          "edges": [{ "from": "portal", "to": "analytics" }],
+          "icon": "📈",
+          "title": "Analytics Dashboard",
+          "narration": "Time-series analytics track partnership health. Enrollments, revenue, engagement—data-driven decisions!",
+          "connectsTo": "Portal"
+        },
+        {
+          "nodeId": "schools",
+          "edges": [{ "from": "list", "to": "schools" }],
+          "icon": "🏫",
+          "title": "Schools",
+          "narration": "School partners include K-12 districts, individual schools, and after-school programs. Education at scale!",
+          "connectsTo": "Partner List"
+        },
+        {
+          "nodeId": "churches",
+          "edges": [{ "from": "list", "to": "churches" }],
+          "icon": "⛪",
+          "title": "Churches",
+          "narration": "Churches and religious organizations partner to serve their communities with tech education opportunities.",
+          "connectsTo": "Partner List"
+        },
+        {
+          "nodeId": "foundations",
+          "edges": [{ "from": "list", "to": "foundations" }],
+          "icon": "🏛️",
+          "title": "Foundations",
+          "narration": "Non-profit foundations and community organizations bring funding and mission alignment to partnerships.",
+          "connectsTo": "Partner List"
+        },
+        {
+          "nodeId": "business",
+          "edges": [{ "from": "list", "to": "business" }],
+          "icon": "🏢",
+          "title": "Businesses",
+          "narration": "Corporate partners invest in workforce development. Training pipelines for future employees!",
+          "connectsTo": "Partner List"
+        },
+        {
+          "nodeId": "community",
+          "edges": [{ "from": "list", "to": "community" }],
+          "icon": "👥",
+          "title": "Community Orgs",
+          "narration": "Community organizations provide grassroots connections. Local impact, trusted relationships!",
+          "connectsTo": "Partner List"
+        },
+        {
+          "nodeId": "free-courses",
+          "edges": [{ "from": "detail", "to": "free-courses" }],
+          "icon": "📚",
+          "title": "Free Courses",
+          "narration": "Partners can offer our four free evergreen courses. Apprentice through Senior—foundational curriculum!",
+          "connectsTo": "Partner Details"
+        },
+        {
+          "nodeId": "custom",
+          "edges": [{ "from": "detail", "to": "custom" }],
+          "icon": "🎨",
+          "title": "Custom Courses",
+          "narration": "Custom curriculum tailored to partner needs. Industry-specific content, branded experiences!",
+          "connectsTo": "Partner Details"
+        },
+        {
+          "nodeId": "cohort",
+          "edges": [{ "from": "detail", "to": "cohort" }],
+          "icon": "👨‍🏫",
+          "title": "Live Cohorts",
+          "narration": "Live cohort teaching with instructors. Scheduled classes, real-time interaction, guided learning!",
+          "connectsTo": "Partner Details"
+        },
+        {
+          "nodeId": "digital",
+          "edges": [{ "from": "detail", "to": "digital" }],
+          "icon": "💻",
+          "title": "Digital Access",
+          "narration": "Self-paced digital access for partner members. Interactive lessons available anytime, anywhere!",
+          "connectsTo": "Partner Details"
+        }
+      ]
+    },
+    {
+      "id": "data-model-story",
+      "diagramId": "data-model",
+      "title": "Data Model",
+      "steps": [
+        {
+          "nodeId": "firestore",
+          "icon": "🔥",
+          "title": "Firestore Root",
+          "narration": "Partnership data lives in Firestore with a hierarchical structure. Top-level partners collection with nested subcollections.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "partners-col",
+          "edges": [{ "from": "firestore", "to": "partners-col" }],
+          "icon": "📁",
+          "title": "Partners Collection",
+          "narration": "The partners collection holds all partner documents. Each organization gets one document identified by a unique ID.",
+          "connectsTo": "Firestore"
+        },
+        {
+          "nodeId": "partner-doc",
+          "edges": [{ "from": "partners-col", "to": "partner-doc" }],
+          "icon": "📄",
+          "title": "Partner Document",
+          "narration": "Each partner document contains organization details, contact info, status, and metrics. But wait—there's more in subcollections!",
+          "connectsTo": "Partners Collection"
+        },
+        {
+          "nodeId": "interactions",
+          "edges": [{ "from": "partner-doc", "to": "interactions" }],
+          "icon": "💬",
+          "title": "Interactions Subcollection",
+          "narration": "Every touchpoint is recorded in the interactions subcollection. Calls, meetings, emails, demos—complete relationship history.",
+          "connectsTo": "Partner Document"
+        },
+        {
+          "nodeId": "attachments",
+          "edges": [{ "from": "partner-doc", "to": "attachments" }],
+          "icon": "📎",
+          "title": "Attachments Subcollection",
+          "narration": "Files and documents live in attachments. Proposals, contracts, presentations—linked to partners or specific interactions.",
+          "connectsTo": "Partner Document"
+        },
+        {
+          "nodeId": "courses",
+          "edges": [{ "from": "partner-doc", "to": "courses" }],
+          "icon": "📚",
+          "title": "Courses Subcollection",
+          "narration": "Partner course offerings are tracked in courses. Which courses they offer, enrollment counts, completion rates.",
+          "connectsTo": "Partner Document"
+        },
+        {
+          "nodeId": "analytics",
+          "edges": [{ "from": "partner-doc", "to": "analytics" }],
+          "icon": "📈",
+          "title": "Analytics Subcollection",
+          "narration": "Time-series analytics in the analytics subcollection. Student enrollments, cohort completions, revenue—all trackable over time.",
+          "connectsTo": "Partner Document"
+        },
+        {
+          "nodeId": "inter-doc",
+          "edges": [{ "from": "interactions", "to": "inter-doc" }],
+          "icon": "📝",
+          "title": "Interaction Document",
+          "narration": "Each interaction document has type, notes, outcome, next steps. A complete record of every touchpoint!",
+          "connectsTo": "Interactions"
+        },
+        {
+          "nodeId": "attach-doc",
+          "edges": [{ "from": "attachments", "to": "attach-doc" }],
+          "icon": "📄",
+          "title": "Attachment Document",
+          "narration": "Attachment documents store metadata and Storage URLs. File name, type, upload date, who uploaded it.",
+          "connectsTo": "Attachments"
+        },
+        {
+          "nodeId": "course-doc",
+          "edges": [{ "from": "courses", "to": "course-doc" }],
+          "icon": "📘",
+          "title": "Course Document",
+          "narration": "Course documents link partners to curriculum. Course ID, start date, pricing, enrollment cap, current enrollment.",
+          "connectsTo": "Courses"
+        },
+        {
+          "nodeId": "event-doc",
+          "edges": [{ "from": "analytics", "to": "event-doc" }],
+          "icon": "📊",
+          "title": "Analytics Event",
+          "narration": "Analytics events capture moments. Student enrolled, cohort started, revenue recorded—timestamped for trending!",
+          "connectsTo": "Analytics"
+        }
+      ]
+    },
+    {
+      "id": "entity-relations-story",
+      "diagramId": "entity-relations",
+      "title": "Entity Relationships",
+      "steps": [
+        {
+          "nodeId": "partner",
+          "icon": "🏢",
+          "title": "Partner Entity",
+          "narration": "The Partner is the core entity. Everything else—interactions, attachments, courses, analytics—relates back to a partner.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "interaction",
+          "edges": [{ "from": "partner", "to": "interaction" }],
+          "icon": "💬",
+          "title": "Interaction Entity",
+          "narration": "Partners have many interactions. Each call, meeting, or email creates a new interaction record linked to the partner.",
+          "connectsTo": "Partner"
+        },
+        {
+          "nodeId": "attachment",
+          "edges": [{ "from": "partner", "to": "attachment" }, { "from": "interaction", "to": "attachment" }],
+          "icon": "📎",
+          "title": "Attachment Entity",
+          "narration": "Attachments can belong to partners or specific interactions. Proposals, contracts, presentations—all linked to context.",
+          "connectsTo": "Partner, Interaction"
+        },
+        {
+          "nodeId": "course",
+          "edges": [{ "from": "partner", "to": "course" }],
+          "icon": "📚",
+          "title": "Partner Course",
+          "narration": "Partners offer courses to their members. Each course relationship tracks pricing, enrollment, and completion metrics.",
+          "connectsTo": "Partner"
+        },
+        {
+          "nodeId": "analytics",
+          "edges": [{ "from": "partner", "to": "analytics" }],
+          "icon": "📈",
+          "title": "Analytics Events",
+          "narration": "Partners generate analytics events. Every enrollment, completion, and interaction becomes a data point for insights.",
+          "connectsTo": "Partner"
+        },
+        {
+          "nodeId": "admin",
+          "edges": [{ "from": "admin", "to": "partner" }, { "from": "admin", "to": "interaction" }],
+          "icon": "👑",
+          "title": "Admin User",
+          "narration": "Admin users manage partners and create interactions. Every action is tracked with createdBy for accountability.",
+          "connectsTo": "Partner, Interaction"
+        }
+      ]
+    },
+    {
+      "id": "status-flow-story",
+      "diagramId": "status-flow",
+      "title": "Partner Status Flow",
+      "steps": [
+        {
+          "nodeId": "start",
+          "icon": "🚀",
+          "title": "Initial Contact",
+          "narration": "Every partnership begins with initial contact. A lead comes in, we add them to the system, and the journey begins!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "prospect",
+          "edges": [{ "from": "start", "to": "prospect" }],
+          "icon": "🔍",
+          "title": "Prospect Status",
+          "narration": "New partners start as prospects. Discovery calls, evaluating fit, understanding their needs. Building the relationship foundation.",
+          "connectsTo": "Initial Contact"
+        },
+        {
+          "nodeId": "active",
+          "edges": [{ "from": "prospect", "to": "active" }],
+          "icon": "✅",
+          "title": "Active Partnership",
+          "narration": "Agreement signed! Active partners have courses running, students enrolled, cohorts in progress. The partnership is live!",
+          "connectsTo": "Prospect"
+        },
+        {
+          "nodeId": "paused",
+          "edges": [{ "from": "active", "to": "paused" }],
+          "icon": "⏸️",
+          "title": "Paused Status",
+          "narration": "Sometimes partnerships pause. Between cohorts, budget reviews, organizational changes. Not ended—just on hold.",
+          "connectsTo": "Active"
+        },
+        {
+          "nodeId": "churned",
+          "edges": [{ "from": "active", "to": "churned" }, { "from": "prospect", "to": "churned" }, { "from": "paused", "to": "active" }, { "from": "churned", "to": "prospect" }],
+          "icon": "❌",
+          "title": "Churned Status",
+          "narration": "Churned means the partnership ended. Lost opportunity or completed engagement. But re-engagement is always possible!",
+          "connectsTo": "Active, Prospect"
+        }
+      ]
+    },
+    {
+      "id": "interaction-flow-story",
+      "diagramId": "interaction-flow",
+      "title": "Recording Interactions",
+      "steps": [
+        {
+          "nodeId": "admin",
+          "icon": "👤",
+          "title": "Admin User",
+          "narration": "An admin just had a call with a partner. Time to record it! Every touchpoint deserves documentation.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "form",
+          "edges": [{ "from": "admin", "to": "form" }],
+          "icon": "📝",
+          "title": "Interaction Form",
+          "narration": "The form captures details—type, title, description, outcome, next steps. Structured data for consistent tracking.",
+          "connectsTo": "Admin"
+        },
+        {
+          "nodeId": "service",
+          "edges": [{ "from": "form", "to": "service" }],
+          "icon": "⚙️",
+          "title": "PartnerService",
+          "narration": "createInteraction in PartnerService handles the save. It updates multiple documents in a coordinated operation.",
+          "connectsTo": "Interaction Form"
+        },
+        {
+          "nodeId": "inter-col",
+          "edges": [{ "from": "service", "to": "inter-col" }],
+          "icon": "📄",
+          "title": "Save Interaction",
+          "narration": "The interaction document is created in the subcollection. Timestamp, admin ID, all details preserved.",
+          "connectsTo": "PartnerService"
+        },
+        {
+          "nodeId": "partner-update",
+          "edges": [{ "from": "service", "to": "partner-update" }],
+          "icon": "🔄",
+          "title": "Update Partner",
+          "narration": "The parent partner document updates too—lastInteractionAt, totalInteractions count. Quick dashboard metrics!",
+          "connectsTo": "PartnerService"
+        },
+        {
+          "nodeId": "analytics",
+          "edges": [{ "from": "service", "to": "analytics" }],
+          "icon": "📈",
+          "title": "Record Analytics",
+          "narration": "An analytics event is also recorded. This interaction becomes a data point in the partnership timeline!",
+          "connectsTo": "PartnerService"
+        },
+        {
+          "nodeId": "timeline",
+          "edges": [{ "from": "inter-col", "to": "timeline" }],
+          "icon": "📜",
+          "title": "Update Timeline",
+          "narration": "The UI timeline updates to show the new interaction. Visual history of all touchpoints with this partner!",
+          "connectsTo": "Interaction Doc"
+        }
+      ]
+    },
+    {
+      "id": "service-layer-story",
+      "diagramId": "service-layer",
+      "title": "Service Architecture",
+      "steps": [
+        {
+          "nodeId": "list-ui",
+          "icon": "📋",
+          "title": "Partner List UI",
+          "narration": "The partner list page shows all partners. Filter, search, sort—find any partner quickly!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "detail-ui",
+          "icon": "📄",
+          "title": "Partner Detail UI",
+          "narration": "The detail page shows everything about one partner. Profile, interactions, attachments, courses, analytics.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "form-ui",
+          "icon": "📝",
+          "title": "Partner Forms UI",
+          "narration": "Forms for adding and editing partners. Clean interfaces for data entry and updates.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "timeline-ui",
+          "icon": "📜",
+          "title": "Timeline UI",
+          "narration": "The interaction timeline shows chronological history. Every touchpoint visualized on a scrollable timeline!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "analytics-ui",
+          "icon": "📊",
+          "title": "Analytics Dashboard UI",
+          "narration": "Charts and metrics for partnership health. Trends, comparisons, insights—data visualization!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "get-partners",
+          "edges": [{ "from": "list-ui", "to": "get-partners" }],
+          "icon": "📡",
+          "title": "getPartners()",
+          "narration": "getPartners fetches the partner list. Supports filters for type, status, search term.",
+          "connectsTo": "Partner List UI"
+        },
+        {
+          "nodeId": "get-partner",
+          "edges": [{ "from": "detail-ui", "to": "get-partner" }],
+          "icon": "📡",
+          "title": "getPartner()",
+          "narration": "getPartner fetches one partner by ID. Includes subcollection data for the full picture.",
+          "connectsTo": "Partner Detail UI"
+        },
+        {
+          "nodeId": "create-partner",
+          "edges": [{ "from": "form-ui", "to": "create-partner" }],
+          "icon": "➕",
+          "title": "createPartner()",
+          "narration": "createPartner adds a new partner document. Initializes all fields, sets creation timestamp.",
+          "connectsTo": "Partner Forms UI"
+        },
+        {
+          "nodeId": "create-interaction",
+          "edges": [{ "from": "timeline-ui", "to": "create-interaction" }],
+          "icon": "💬",
+          "title": "createInteraction()",
+          "narration": "createInteraction records a new touchpoint. Updates partner doc and creates analytics event too.",
+          "connectsTo": "Timeline UI"
+        },
+        {
+          "nodeId": "upload-attachment",
+          "edges": [{ "from": "detail-ui", "to": "upload-attachment" }],
+          "icon": "📤",
+          "title": "uploadAttachment()",
+          "narration": "uploadAttachment handles file uploads. Saves to Storage, creates metadata doc in Firestore.",
+          "connectsTo": "Partner Detail UI"
+        },
+        {
+          "nodeId": "get-analytics",
+          "edges": [{ "from": "analytics-ui", "to": "get-analytics" }],
+          "icon": "📊",
+          "title": "getAnalytics()",
+          "narration": "getAnalytics fetches time-series events. Supports date ranges and aggregation options.",
+          "connectsTo": "Analytics Dashboard UI"
+        },
+        {
+          "nodeId": "firestore",
+          "edges": [{ "from": "get-partners", "to": "firestore" }, { "from": "get-partner", "to": "firestore" }, { "from": "create-partner", "to": "firestore" }, { "from": "create-interaction", "to": "firestore" }, { "from": "get-analytics", "to": "firestore" }],
+          "icon": "🗄️",
+          "title": "Firestore Database",
+          "narration": "All data flows to and from Firestore. The central database for partnership information.",
+          "connectsTo": "All Service Methods"
+        },
+        {
+          "nodeId": "storage",
+          "edges": [{ "from": "upload-attachment", "to": "storage" }],
+          "icon": "📁",
+          "title": "Firebase Storage",
+          "narration": "File uploads go to Firebase Storage. The URL is then saved in Firestore with metadata. Best of both!",
+          "connectsTo": "Upload Method"
+        }
+      ]
+    },
+    {
+      "id": "analytics-flow-story",
+      "diagramId": "analytics-flow",
+      "title": "Analytics Dashboard",
+      "steps": [
+        {
+          "nodeId": "enroll",
+          "icon": "👥",
+          "title": "Student Enrolled",
+          "narration": "Student enrollment triggers an analytics event. A new learner joins through this partner!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "cohort-start",
+          "icon": "🎬",
+          "title": "Cohort Started",
+          "narration": "Cohort start is a major milestone. A new group begins their learning journey with this partner!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "cohort-end",
+          "icon": "🎉",
+          "title": "Cohort Completed",
+          "narration": "Cohort completion celebrates success. Students graduated, skills gained, outcomes achieved!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "interaction",
+          "icon": "💬",
+          "title": "Interaction Logged",
+          "narration": "Every interaction with the partner is an event. Relationship health requires consistent touchpoints!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "revenue",
+          "icon": "💰",
+          "title": "Revenue Recorded",
+          "narration": "Revenue events track financial health. Payments, sponsorships, donations—all recorded.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "store",
+          "edges": [{ "from": "enroll", "to": "store" }, { "from": "cohort-start", "to": "store" }, { "from": "cohort-end", "to": "store" }, { "from": "interaction", "to": "store" }, { "from": "revenue", "to": "store" }],
+          "icon": "💾",
+          "title": "Store Events",
+          "narration": "All events are stored with timestamps in the analytics subcollection. Time-series data ready for analysis!",
+          "connectsTo": "All Event Types"
+        },
+        {
+          "nodeId": "aggregate",
+          "edges": [{ "from": "store", "to": "aggregate" }],
+          "icon": "📊",
+          "title": "Aggregate Data",
+          "narration": "Events are grouped by date, type, and partner. Daily, weekly, monthly rollups enable trend analysis.",
+          "connectsTo": "Event Storage"
+        },
+        {
+          "nodeId": "calculate",
+          "edges": [{ "from": "aggregate", "to": "calculate" }],
+          "icon": "🧮",
+          "title": "Calculate Trends",
+          "narration": "Calculations reveal insights. Growth rates, completion percentages, revenue trends—metrics that drive decisions.",
+          "connectsTo": "Aggregation"
+        },
+        {
+          "nodeId": "line-chart",
+          "edges": [{ "from": "calculate", "to": "line-chart" }],
+          "icon": "📈",
+          "title": "Activity Line Chart",
+          "narration": "Line charts show trends over time. Activity spikes, seasonal patterns, growth trajectories!",
+          "connectsTo": "Calculate Trends"
+        },
+        {
+          "nodeId": "bar-chart",
+          "edges": [{ "from": "calculate", "to": "bar-chart" }],
+          "icon": "📊",
+          "title": "Status Bar Chart",
+          "narration": "Bar charts compare categories. Partners by status, revenue by type, enrollments by month!",
+          "connectsTo": "Calculate Trends"
+        },
+        {
+          "nodeId": "pie-chart",
+          "edges": [{ "from": "calculate", "to": "pie-chart" }],
+          "icon": "🥧",
+          "title": "Type Pie Chart",
+          "narration": "Pie charts show composition. Partner types, course distribution, revenue breakdown—parts of a whole!",
+          "connectsTo": "Calculate Trends"
+        },
+        {
+          "nodeId": "table",
+          "edges": [{ "from": "calculate", "to": "table" }],
+          "icon": "📋",
+          "title": "Top Partners Table",
+          "narration": "Tables rank partners by metrics. Top enrollers, highest revenue, most engaged—leaderboard style!",
+          "connectsTo": "Calculate Trends"
+        }
+      ]
+    },
+    {
+      "id": "page-structure-story",
+      "diagramId": "page-structure",
+      "title": "Page Structure",
+      "steps": [
+        {
+          "nodeId": "admin",
+          "icon": "👑",
+          "title": "Admin Section",
+          "narration": "Partnership pages live under the admin section. Only users with admin role can access any of these features.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "partnerships",
+          "edges": [{ "from": "admin", "to": "partnerships" }],
+          "icon": "📁",
+          "title": "Partnerships Folder",
+          "narration": "The partnerships folder contains all portal pages. A logical grouping within the admin area.",
+          "connectsTo": "Admin Section"
+        },
+        {
+          "nodeId": "index",
+          "edges": [{ "from": "partnerships", "to": "index" }],
+          "icon": "📋",
+          "title": "Partner List Page",
+          "narration": "index.html is the main dashboard. All partners listed with filters, search, and quick actions.",
+          "connectsTo": "Partnerships Folder"
+        },
+        {
+          "nodeId": "partner",
+          "edges": [{ "from": "partnerships", "to": "partner" }],
+          "icon": "📄",
+          "title": "Partner Detail Page",
+          "narration": "partner.html shows individual partner details. Timeline, attachments, courses, metrics—the complete picture.",
+          "connectsTo": "Partnerships Folder"
+        },
+        {
+          "nodeId": "add",
+          "edges": [{ "from": "partnerships", "to": "add" }],
+          "icon": "➕",
+          "title": "Add Partner Page",
+          "narration": "add.html is the partner creation form. Enter all details to start tracking a new partnership!",
+          "connectsTo": "Partnerships Folder"
+        },
+        {
+          "nodeId": "analytics",
+          "edges": [{ "from": "partnerships", "to": "analytics" }],
+          "icon": "📈",
+          "title": "Analytics Page",
+          "narration": "analytics.html provides the big picture. Aggregate metrics across all partnerships, trends, and insights.",
+          "connectsTo": "Partnerships Folder"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "feature-overview-story",
+      "questions": [
+        {
+          "question": "Who can access the Partnership Portal?",
+          "options": ["All users", "Enterprise users", "Admin users only", "Partner contacts"],
+          "correct": 2,
+          "explanation": "The Partnership Portal is admin-only—requires the admin role to access any features."
+        },
+        {
+          "question": "What types of organizations can be partners?",
+          "options": ["Only schools", "Schools and churches", "Schools, churches, foundations, businesses, and more", "Only nonprofits"],
+          "correct": 2,
+          "explanation": "Partners include schools, churches, foundations, businesses, community organizations, and government entities."
+        }
+      ]
+    },
+    {
+      "storyId": "status-flow-story",
+      "questions": [
+        {
+          "question": "What is the initial status for a new partner?",
+          "options": ["Active", "Paused", "Prospect", "Pending"],
+          "correct": 2,
+          "explanation": "New partners start as prospects during the discovery and evaluation phase."
+        },
+        {
+          "question": "What does 'churned' status mean?",
+          "options": ["Partnership is active", "Partnership is on hold", "Partnership has ended", "Partner is evaluating"],
+          "correct": 2,
+          "explanation": "Churned means the partnership has ended—either a lost opportunity or completed engagement."
+        }
+      ]
+    },
+    {
+      "storyId": "service-layer-story",
+      "questions": [
+        {
+          "question": "Where are partner file attachments stored?",
+          "options": ["Firestore only", "Firebase Storage", "LocalStorage", "S3 bucket"],
+          "correct": 1,
+          "explanation": "File attachments use Firebase Storage, with metadata and URLs saved in Firestore."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Model - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="03-data-model.html" class="active">Data</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Data Model</span>
+      </div>
+      <h1>🗄️ Firestore Data Model</h1>
+      <p>Collection hierarchy, schemas, and entity relationships</p>
+    </div>
+
+    <!-- Collection Hierarchy -->
+    <section class="section" id="collection-hierarchy-section">
+      <h2>Collection Hierarchy</h2>
+      <p>Firestore uses a hierarchical structure with top-level collections and nested subcollections. User data is organized under the user's document.</p>
+      
+      <div class="diagram-container" id="collection-hierarchy-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 Firestore Collection Structure</span>
+        </div>
+        <div id="collection-hierarchy-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="collection-hierarchy-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="collection-hierarchy-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="collection-hierarchy-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="collection-hierarchy-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="collection-hierarchy-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="collection-hierarchy-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Entity Relationships -->
+    <section class="section" id="entity-relations-section">
+      <h2>Entity Relationships</h2>
+      <p>How different data entities relate to each other across the platform.</p>
+      
+      <div class="diagram-container" id="entity-relations-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔗 Entity Relationship Diagram</span>
+        </div>
+        <div id="entity-relations-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="entity-relations-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Discover how platform entities connect to each other.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="entity-relations-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="entity-relations-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="entity-relations-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="entity-relations-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Data Flow -->
+    <section class="section" id="progress-flow-section">
+      <h2>Progress Data Flow</h2>
+      <p>Progress data flows from lesson pages through the service layer to Firestore, with a dual-write pattern for dashboard optimization.</p>
+      
+      <div class="diagram-container" id="progress-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 Progress Save Flow</span>
+        </div>
+        <div id="progress-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="progress-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Follow the data path from user action to storage.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="progress-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="progress-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="progress-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="progress-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="progress-flow-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>⚠️ Critical: Dual-Write Pattern</h4>
+        <p>Progress is written to BOTH:</p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+          <li><code>courseProgress/{courseId}/lessonProgress/{lessonId}</code> (subcollection - detailed data)</li>
+          <li><code>courseProgress/{courseId}.lessons</code> (parent field - summary for dashboard)</li>
+        </ul>
+        <p style="margin-top: 0.5rem;">If the parent field is empty, dashboard falls back to reading subcollections.</p>
+      </div>
+    </section>
+
+    <!-- Dashboard Data Requirements -->
+    <section class="section" id="dashboard-data-section">
+      <h2>Dashboard Data Sources</h2>
+      <p>The dashboard needs data from multiple collections to render all its components.</p>
+      
+      <div class="diagram-container" id="dashboard-data-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 Dashboard Data Sources</span>
+        </div>
+        <div id="dashboard-data-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="dashboard-data-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how dashboard components get their data.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="dashboard-data-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="dashboard-data-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="dashboard-data-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="dashboard-data-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collection Reference Table -->
+    <section class="section">
+      <h2>Collection Reference</h2>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Collection Path</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>users/{uid}</code></td>
+              <td>Document</td>
+              <td>User profile, role, organizations</td>
+            </tr>
+            <tr>
+              <td><code>users/{uid}/courseProgress/{courseId}</code></td>
+              <td>Subcollection</td>
+              <td>Course-level progress summary</td>
+            </tr>
+            <tr>
+              <td><code>users/{uid}/courseProgress/{courseId}/lessonProgress/{lessonId}</code></td>
+              <td>Subcollection</td>
+              <td>Detailed lesson progress</td>
+            </tr>
+            <tr>
+              <td><code>users/{uid}/courseProgress/{courseId}/activityAttempts/{attemptId}</code></td>
+              <td>Subcollection</td>
+              <td>Individual activity attempts</td>
+            </tr>
+            <tr>
+              <td><code>users/{uid}/dailyChallenges/{date}</code></td>
+              <td>Subcollection</td>
+              <td>Daily challenge completions</td>
+            </tr>
+            <tr>
+              <td><code>users/{uid}/notes/{noteId}</code></td>
+              <td>Subcollection</td>
+              <td>User notes per lesson</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="04-authentication-rbac.html" class="card">
+          <div class="card-icon">🔐</div>
+          <h3>Authentication & RBAC</h3>
+          <p>How user data relates to access control.</p>
+        </a>
+        <a href="05-progress-tracking.html" class="card">
+          <div class="card-icon">📊</div>
+          <h3>Progress Tracking</h3>
+          <p>Deep dive into how progress data is collected.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#collection-hierarchy-section">Hierarchy</a></li>
+      <li><a href="#entity-relations-section">Relationships</a></li>
+      <li><a href="#progress-flow-section">Progress Flow</a></li>
+      <li><a href="#dashboard-data-section">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data
+      const response = await fetch('audio/stories/03-data-model.json');
+      const pageData = await response.json();
+
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // Diagram elements
+      const diagramElements = {
+        'collection-hierarchy': [
+          { data: { id: 'firestore', label: 'Firestore', type: 'data', description: 'Root database' } },
+          { data: { id: 'users-col', label: 'users', type: 'data', description: 'User documents collection' } },
+          { data: { id: 'courses-col', label: 'courses', type: 'data', description: 'Course metadata (optional)' } },
+          { data: { id: 'user-doc', label: '{uid}', type: 'service', description: 'Individual user document' } },
+          { data: { id: 'course-progress', label: 'courseProgress', type: 'page', description: 'Per-course progress' } },
+          { data: { id: 'daily-challenges', label: 'dailyChallenges', type: 'page', description: 'Challenge completions' } },
+          { data: { id: 'notes', label: 'notes', type: 'page', description: 'User notes' } },
+          { data: { id: 'course-doc', label: '{courseId}', type: 'service', description: 'Course progress document' } },
+          { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'page', description: 'Per-lesson progress' } },
+          { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'page', description: 'Activity attempts' } },
+          { data: { id: 'lesson-doc', label: '{lessonId}', type: 'service', description: 'Lesson progress doc' } },
+          { data: { id: 'attempt-doc', label: '{attemptId}', type: 'service', description: 'Activity attempt doc' } },
+          { data: { source: 'firestore', target: 'users-col' } },
+          { data: { source: 'firestore', target: 'courses-col' } },
+          { data: { source: 'users-col', target: 'user-doc' } },
+          { data: { source: 'user-doc', target: 'course-progress' } },
+          { data: { source: 'user-doc', target: 'daily-challenges' } },
+          { data: { source: 'user-doc', target: 'notes' } },
+          { data: { source: 'course-progress', target: 'course-doc' } },
+          { data: { source: 'course-doc', target: 'lesson-progress' } },
+          { data: { source: 'course-doc', target: 'activity-attempts' } },
+          { data: { source: 'lesson-progress', target: 'lesson-doc' } },
+          { data: { source: 'activity-attempts', target: 'attempt-doc' } },
+        ],
+        'entity-relations': [
+          { data: { id: 'user', label: 'User', type: 'auth', description: 'Platform user account' } },
+          { data: { id: 'course', label: 'Course', type: 'data', description: 'Learning course (apprentice, junior, etc)' } },
+          { data: { id: 'lesson', label: 'Lesson', type: 'data', description: 'Individual lesson in a course' } },
+          { data: { id: 'activity', label: 'Activity', type: 'data', description: 'Quiz, drag-drop, code challenge' } },
+          { data: { id: 'progress', label: 'Progress', type: 'service', description: 'User progress on a lesson' } },
+          { data: { id: 'attempt', label: 'Attempt', type: 'page', description: 'Single activity attempt' } },
+          { data: { id: 'organization', label: 'Organization', type: 'auth', description: 'Partner organization' } },
+          { data: { id: 'note', label: 'Note', type: 'page', description: 'User note on a lesson' } },
+          { data: { source: 'user', target: 'progress', label: 'has many' } },
+          { data: { source: 'user', target: 'attempt', label: 'makes' } },
+          { data: { source: 'user', target: 'note', label: 'writes' } },
+          { data: { source: 'user', target: 'organization', label: 'belongs to' } },
+          { data: { source: 'course', target: 'lesson', label: 'contains' } },
+          { data: { source: 'lesson', target: 'activity', label: 'contains' } },
+          { data: { source: 'progress', target: 'course', label: 'for' } },
+          { data: { source: 'progress', target: 'lesson', label: 'for' } },
+          { data: { source: 'attempt', target: 'activity', label: 'for' } },
+          { data: { source: 'note', target: 'lesson', label: 'about' } },
+          { data: { source: 'organization', target: 'course', label: 'sponsors', type: 'optional' } },
+        ],
+        'progress-flow': [
+          { data: { id: 'scroll', label: 'User Scrolls', type: 'external', description: 'User scrolls to new section' } },
+          { data: { id: 'observer', label: 'IntersectionObserver', type: 'service', description: 'Detects section visibility' } },
+          { data: { id: 'tracker', label: 'ProgressTracker', type: 'service', description: 'Updates viewed sections' } },
+          { data: { id: 'calc-progress', label: 'Calculate %', type: 'service', description: 'viewedSections / totalSections' } },
+          { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'saveLessonProgress()' } },
+          { data: { id: 'subcol', label: 'lessonProgress/{id}', type: 'data', description: 'Subcollection document' } },
+          { data: { id: 'parent', label: 'courseProgress.lessons', type: 'data', description: 'Parent document field' } },
+          { data: { source: 'scroll', target: 'observer' } },
+          { data: { source: 'observer', target: 'tracker' } },
+          { data: { source: 'tracker', target: 'calc-progress' } },
+          { data: { source: 'calc-progress', target: 'data-service' } },
+          { data: { source: 'data-service', target: 'subcol', type: 'data' } },
+          { data: { source: 'data-service', target: 'parent', type: 'data' } },
+        ],
+        'dashboard-data': [
+          { data: { id: 'stats-cards', label: 'Stats Cards', type: 'ui', description: 'Velocity, Mastery, Streak' } },
+          { data: { id: 'course-grid', label: 'Course Grid', type: 'ui', description: 'Enrolled courses with progress' } },
+          { data: { id: 'activity-feed', label: 'Activity Feed', type: 'ui', description: 'Recent activity list' } },
+          { data: { id: 'profile-bar', label: 'Profile Bar', type: 'ui', description: 'User name and photo' } },
+          { data: { id: 'calc-velocity', label: 'calcVelocity()', type: 'service', description: 'Lessons per week' } },
+          { data: { id: 'calc-mastery', label: 'calcMastery()', type: 'service', description: 'Quiz score average' } },
+          { data: { id: 'calc-streak', label: 'calcStreak()', type: 'service', description: 'Consecutive days' } },
+          { data: { id: 'calc-progress', label: 'calcProgress()', type: 'service', description: 'Course completion %' } },
+          { data: { id: 'user-doc', label: 'users/{uid}', type: 'data', description: 'User profile' } },
+          { data: { id: 'progress-col', label: 'courseProgress', type: 'data', description: 'Course progress docs' } },
+          { data: { id: 'lesson-col', label: 'lessonProgress', type: 'data', description: 'Lesson progress docs' } },
+          { data: { id: 'activity-col', label: 'activityAttempts', type: 'data', description: 'Activity attempts' } },
+          { data: { id: 'challenge-col', label: 'dailyChallenges', type: 'data', description: 'Daily challenges' } },
+          { data: { source: 'stats-cards', target: 'calc-velocity' } },
+          { data: { source: 'stats-cards', target: 'calc-mastery' } },
+          { data: { source: 'stats-cards', target: 'calc-streak' } },
+          { data: { source: 'course-grid', target: 'calc-progress' } },
+          { data: { source: 'activity-feed', target: 'activity-col' } },
+          { data: { source: 'profile-bar', target: 'user-doc' } },
+          { data: { source: 'calc-velocity', target: 'lesson-col', type: 'data' } },
+          { data: { source: 'calc-mastery', target: 'activity-col', type: 'data' } },
+          { data: { source: 'calc-streak', target: 'challenge-col', type: 'data' } },
+          { data: { source: 'calc-streak', target: 'user-doc', type: 'data' } },
+          { data: { source: 'calc-progress', target: 'progress-col', type: 'data' } },
+          { data: { source: 'calc-progress', target: 'lesson-col', type: 'data' } },
+        ]
+      };
+
+      // Map story IDs to container IDs
+      const storyToContainer = {
+        'collection-hierarchy-story': 'collection-hierarchy',
+        'entity-relations-story': 'entity-relations',
+        'progress-flow-story': 'progress-flow',
+        'dashboard-data-story': 'dashboard-data'
+      };
+
+      // Create storytelling diagrams
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId || !diagramElements[containerId]) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          diagramElements[containerId],
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // Map quiz story IDs to quiz container IDs
+      const storyToQuizContainer = {
+        'collection-hierarchy-story': 'collection-hierarchy-quiz',
+        'progress-flow-story': 'progress-flow-quiz'
+      };
+
+      // Initialize quizzes
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

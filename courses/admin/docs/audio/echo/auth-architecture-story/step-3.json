@@ -1,0 +1,100 @@
+{
+  "storyId": "auth-architecture-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Google OAuth. For Google login, Firebase connects to Google's OAuth servers. One-click authentication using existing Google accounts!",
+  "duration": 10,
+  "words": [
+    {
+      "word": "Google",
+      "start": 0,
+      "end": 0.6000000238418579
+    },
+    {
+      "word": "OAuth",
+      "start": 0.6000000238418579,
+      "end": 1.100000023841858
+    },
+    {
+      "word": "For",
+      "start": 1.100000023841858,
+      "end": 1.7999999523162842
+    },
+    {
+      "word": "Google",
+      "start": 1.7999999523162842,
+      "end": 2.180000066757202
+    },
+    {
+      "word": "login",
+      "start": 2.180000066757202,
+      "end": 2.680000066757202
+    },
+    {
+      "word": "Firebase",
+      "start": 3.440000057220459,
+      "end": 3.440000057220459
+    },
+    {
+      "word": "connects",
+      "start": 3.440000057220459,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "to",
+      "start": 3.819999933242798,
+      "end": 4.199999809265137
+    },
+    {
+      "word": "Google's",
+      "start": 4.199999809265137,
+      "end": 4.760000228881836
+    },
+    {
+      "word": "OAuth",
+      "start": 4.760000228881836,
+      "end": 5.159999847412109
+    },
+    {
+      "word": "servers",
+      "start": 5.159999847412109,
+      "end": 5.699999809265137
+    },
+    {
+      "word": "One",
+      "start": 6.320000171661377,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "click",
+      "start": 6.579999923706055,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "authentication",
+      "start": 6.760000228881836,
+      "end": 7.519999980926514
+    },
+    {
+      "word": "using",
+      "start": 7.519999980926514,
+      "end": 8.199999809265137
+    },
+    {
+      "word": "existing",
+      "start": 8.199999809265137,
+      "end": 8.880000114440918
+    },
+    {
+      "word": "Google",
+      "start": 8.880000114440918,
+      "end": 9.260000228881836
+    },
+    {
+      "word": "accounts",
+      "start": 9.260000228881836,
+      "end": 9.65999984741211
+    }
+  ]
+}

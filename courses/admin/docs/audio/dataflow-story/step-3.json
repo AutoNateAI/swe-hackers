@@ -1,0 +1,128 @@
+{
+  "storyId": "dataflow-story",
+  "stepId": "step-3",
+  "text": "Authentication Verified. Before writing data, the service checks AuthService.getCurrentUser. If no user is logged in, the action may be queued or rejected.",
+  "duration": 9.670000076293945,
+  "words": [
+    {
+      "word": "Authentication",
+      "start": 0,
+      "end": 0.7400000095367432
+    },
+    {
+      "word": "verified",
+      "start": 0.7400000095367432,
+      "end": 1.340000033378601
+    },
+    {
+      "word": "Before",
+      "start": 2.259999990463257,
+      "end": 2.2799999713897705
+    },
+    {
+      "word": "writing",
+      "start": 2.2799999713897705,
+      "end": 2.5799999237060547
+    },
+    {
+      "word": "data",
+      "start": 2.5799999237060547,
+      "end": 2.9200000762939453
+    },
+    {
+      "word": "the",
+      "start": 3.1600000858306885,
+      "end": 3.240000009536743
+    },
+    {
+      "word": "service",
+      "start": 3.240000009536743,
+      "end": 3.4800000190734863
+    },
+    {
+      "word": "checks",
+      "start": 3.4800000190734863,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "auth",
+      "start": 3.759999990463257,
+      "end": 4.159999847412109
+    },
+    {
+      "word": "service",
+      "start": 4.159999847412109,
+      "end": 4.440000057220459
+    },
+    {
+      "word": "getCurrentUser",
+      "start": 4.440000057220459,
+      "end": 5.679999828338623
+    },
+    {
+      "word": "If",
+      "start": 6.119999885559082,
+      "end": 6.380000114440918
+    },
+    {
+      "word": "no",
+      "start": 6.380000114440918,
+      "end": 6.639999866485596
+    },
+    {
+      "word": "user",
+      "start": 6.639999866485596,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "is",
+      "start": 6.820000171661377,
+      "end": 7.199999809265137
+    },
+    {
+      "word": "logged",
+      "start": 7.199999809265137,
+      "end": 7.199999809265137
+    },
+    {
+      "word": "in",
+      "start": 7.199999809265137,
+      "end": 7.440000057220459
+    },
+    {
+      "word": "the",
+      "start": 7.579999923706055,
+      "end": 7.760000228881836
+    },
+    {
+      "word": "action",
+      "start": 7.760000228881836,
+      "end": 7.920000076293945
+    },
+    {
+      "word": "may",
+      "start": 7.920000076293945,
+      "end": 8.119999885559082
+    },
+    {
+      "word": "be",
+      "start": 8.119999885559082,
+      "end": 8.5
+    },
+    {
+      "word": "queued",
+      "start": 8.5,
+      "end": 8.5
+    },
+    {
+      "word": "or",
+      "start": 8.5,
+      "end": 8.739999771118164
+    },
+    {
+      "word": "rejected",
+      "start": 8.739999771118164,
+      "end": 9.0600004196167
+    }
+  ]
+}

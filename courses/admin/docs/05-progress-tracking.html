@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Tracking - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="05-progress-tracking.html" class="active">Progress</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Progress Tracking</span>
+      </div>
+      <h1>📊 Progress Tracking</h1>
+      <p>How lesson progress and activity completion is tracked and analyzed</p>
+    </div>
+
+    <!-- Progress System Overview -->
+    <section class="section" id="tracking-overview-section">
+      <h2>Tracking System Overview</h2>
+      <p>The platform uses two complementary services to track user engagement: ProgressTracker for scroll-based section visibility, and ActivityTracker for interactive element completion.</p>
+      
+      <div class="diagram-container" id="tracking-overview-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 Tracking System Components</span>
+        </div>
+        <div id="tracking-overview-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="tracking-overview-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Drag to explore the tracking architecture.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="tracking-overview-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="tracking-overview-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="tracking-overview-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="tracking-overview-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Discovery -->
+    <section class="section" id="section-discovery-section">
+      <h2>Section Discovery</h2>
+      <p>ProgressTracker discovers trackable sections on page load by looking for elements with <code>data-section</code> attributes.</p>
+      
+      <div class="diagram-container" id="section-discovery-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔍 Section Discovery Flow</span>
+        </div>
+        <div id="section-discovery-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="section-discovery-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how sections are discovered.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="section-discovery-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="section-discovery-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="section-discovery-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="section-discovery-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll Observation -->
+    <section class="section" id="scroll-observation-section">
+      <h2>Scroll Observation</h2>
+      <p>The IntersectionObserver API monitors which sections are visible in the viewport. When 50% of a section is visible, it's marked as "viewed".</p>
+      
+      <div class="diagram-container" id="scroll-observation-container">
+        <div class="diagram-header">
+          <span class="diagram-title">👁️ IntersectionObserver Flow</span>
+        </div>
+        <div id="scroll-observation-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="scroll-observation-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Watch how scroll triggers progress updates.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="scroll-observation-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="scroll-observation-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="scroll-observation-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="scroll-observation-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="scroll-observation-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+
+      <div class="info-box success">
+        <h4>✅ Why IntersectionObserver?</h4>
+        <p>Unlike scroll event listeners, IntersectionObserver is performant and doesn't fire constantly during scrolling. It only triggers when visibility thresholds are crossed.</p>
+      </div>
+    </section>
+
+    <!-- Activity Tracking -->
+    <section class="section" id="activity-types-section">
+      <h2>Activity Tracking</h2>
+      <p>ActivityTracker monitors quizzes, drag-drop activities, code challenges, and interactive demos.</p>
+      
+      <div class="diagram-container" id="activity-types-container">
+        <div class="diagram-header">
+          <span class="diagram-title">✅ Activity Types and Tracking</span>
+        </div>
+        <div id="activity-types-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="activity-types-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click an activity type to see its tracking flow.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="activity-types-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="activity-types-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="activity-types-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="activity-types-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offline Support -->
+    <section class="section" id="offline-flow-section">
+      <h2>Offline Support</h2>
+      <p>ActivityTracker caches attempts in LocalStorage when offline and syncs when connection is restored.</p>
+      
+      <div class="diagram-container" id="offline-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📴 Offline Queue Flow</span>
+        </div>
+        <div id="offline-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="offline-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how offline data is queued and synced.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="offline-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="offline-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="offline-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="offline-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="offline-flow-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Analytics Calculation -->
+    <section class="section" id="analytics-metrics-section">
+      <h2>Analytics Metrics</h2>
+      <p>The AnalyticsService calculates learning metrics from raw progress and activity data.</p>
+      
+      <div class="diagram-container" id="analytics-metrics-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📈 Analytics Metrics Pipeline</span>
+        </div>
+        <div id="analytics-metrics-story" class="diagram-canvas storytelling large"></div>
+        
+        <div class="diagram-story" id="analytics-metrics-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Hover over metrics to see their formulas.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="analytics-metrics-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="analytics-metrics-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="analytics-metrics-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="analytics-metrics-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="analytics-metrics-quiz">
+        <div class="quiz-header"><h4>📝 Check Your Understanding</h4><div class="quiz-progress"></div></div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav"><button class="quiz-nav-btn prev" disabled>← Prev</button><div class="quiz-dots"></div><button class="quiz-nav-btn next">Next →</button></div>
+      </div>
+    </section>
+
+    <!-- Completion Flow -->
+    <section class="section" id="completion-flow-section">
+      <h2>Lesson Completion Flow</h2>
+      <p>When a lesson reaches 90%+ progress, a series of events fires to update the UI and persist completion.</p>
+      
+      <div class="diagram-container" id="completion-flow-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎉 Completion Event Chain</span>
+        </div>
+        <div id="completion-flow-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="completion-flow-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Follow the completion event chain.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="completion-flow-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="completion-flow-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="completion-flow-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="completion-flow-voice-select" class="voice-select"><option value="echo">Storyteller (Female)</option><option value="alloy">Narrator (Neutral)</option><option value="fable">Professor (British)</option><option value="onyx">Guide (Male)</option><option value="nova">Coach (Energetic)</option><option value="shimmer">Mentor (Warm)</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>See the Firestore schema for progress data.</p>
+        </a>
+        <a href="06-frontend-patterns.html" class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Frontend Patterns</h3>
+          <p>UI patterns for progress indicators.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#tracking-overview-section">Overview</a></li>
+      <li><a href="#section-discovery-section">Discovery</a></li>
+      <li><a href="#scroll-observation-section">Scroll</a></li>
+      <li><a href="#activity-types-section">Activities</a></li>
+      <li><a href="#offline-flow-section">Offline</a></li>
+      <li><a href="#analytics-metrics-section">Analytics</a></li>
+      <li><a href="#completion-flow-section">Completion</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      const response = await fetch('audio/stories/05-progress-tracking.json');
+      const pageData = await response.json();
+
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      const diagramElements = {
+        'tracking-overview': [
+          { data: { id: 'scroll', label: 'User Scrolls', type: 'external', description: 'User scrolls through lesson' } },
+          { data: { id: 'quiz', label: 'Quiz Answer', type: 'external', description: 'User answers quiz' } },
+          { data: { id: 'drag', label: 'Drag & Drop', type: 'external', description: 'User completes drag activity' } },
+          { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Tracks section visibility' } },
+          { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Tracks activity completion' } },
+          { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'Persists to Firestore' } },
+          { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'data', description: 'Subcollection' } },
+          { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'data', description: 'Subcollection' } },
+          { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+          { data: { id: 'progress-bar', label: 'Progress Bar', type: 'ui', description: 'Visual progress indicator' } },
+          { data: { id: 'quiz-feedback', label: 'Quiz Feedback', type: 'ui', description: 'Correct/incorrect UI' } },
+          { data: { id: 'toast', label: 'Completion Toast', type: 'ui', description: 'Lesson complete notification' } },
+          { data: { source: 'scroll', target: 'progress-tracker' } },
+          { data: { source: 'quiz', target: 'activity-tracker' } },
+          { data: { source: 'drag', target: 'activity-tracker' } },
+          { data: { source: 'progress-tracker', target: 'data-service' } },
+          { data: { source: 'activity-tracker', target: 'data-service' } },
+          { data: { source: 'activity-tracker', target: 'local-storage', type: 'data' } },
+          { data: { source: 'data-service', target: 'lesson-progress', type: 'data' } },
+          { data: { source: 'data-service', target: 'activity-attempts', type: 'data' } },
+          { data: { source: 'progress-tracker', target: 'progress-bar' } },
+          { data: { source: 'activity-tracker', target: 'quiz-feedback' } },
+          { data: { source: 'progress-tracker', target: 'toast' } },
+        ],
+        'section-discovery': [
+          { data: { id: 'page-load', label: 'Page Load', type: 'external', description: 'Lesson page loads' } },
+          { data: { id: 'init', label: 'ProgressTracker.init()', type: 'service', description: 'Initialize tracker' } },
+          { data: { id: 'discover', label: 'discoverSections()', type: 'service', description: 'Find all sections' } },
+          { data: { id: 'query', label: 'querySelectorAll', type: 'service', description: '[data-section] elements' } },
+          { data: { id: 'sections', label: 'sections Array', type: 'data', description: 'All trackable sections' } },
+          { data: { id: 'observer', label: 'Setup Observer', type: 'service', description: 'IntersectionObserver' } },
+          { data: { source: 'page-load', target: 'init' } },
+          { data: { source: 'init', target: 'discover' } },
+          { data: { source: 'discover', target: 'query' } },
+          { data: { source: 'query', target: 'sections' } },
+          { data: { source: 'sections', target: 'observer' } },
+        ],
+        'scroll-observation': [
+          { data: { id: 'scroll', label: 'User Scrolls', type: 'external', description: 'Page scroll event' } },
+          { data: { id: 'observer', label: 'IntersectionObserver', type: 'service', description: 'Monitors visibility' } },
+          { data: { id: 'callback', label: 'Callback Triggered', type: 'service', description: 'Section entered/exited' } },
+          { data: { id: 'check', label: 'isIntersecting?', type: 'service', description: 'Check visibility ratio' } },
+          { data: { id: 'add-viewed', label: 'Add to viewedSections', type: 'service', description: 'Mark as viewed' } },
+          { data: { id: 'calc', label: 'Calculate Progress', type: 'service', description: 'Update percentage' } },
+          { data: { id: 'save', label: 'Save Progress', type: 'data', description: 'Debounced save to Firestore' } },
+          { data: { source: 'scroll', target: 'observer' } },
+          { data: { source: 'observer', target: 'callback' } },
+          { data: { source: 'callback', target: 'check' } },
+          { data: { source: 'check', target: 'add-viewed' } },
+          { data: { source: 'add-viewed', target: 'calc' } },
+          { data: { source: 'calc', target: 'save' } },
+        ],
+        'activity-types': [
+          { data: { id: 'tracker', label: 'ActivityTracker', type: 'service', description: 'Activity tracking service' } },
+          { data: { id: 'quiz', label: 'Quiz', type: 'page', description: 'Multiple choice questions' } },
+          { data: { id: 'drag', label: 'Drag & Drop', type: 'page', description: 'Match items to targets' } },
+          { data: { id: 'code', label: 'Code Challenge', type: 'page', description: 'Write/complete code' } },
+          { data: { id: 'demo', label: 'Interactive Demo', type: 'page', description: 'Hands-on exploration' } },
+          { data: { id: 'quiz-attr', label: 'data-answer', type: 'service', description: 'Correct answer value' } },
+          { data: { id: 'drag-attr', label: 'data-target', type: 'service', description: 'Drop zone mapping' } },
+          { data: { id: 'code-attr', label: 'data-solution', type: 'service', description: 'Expected output' } },
+          { data: { id: 'demo-attr', label: 'data-complete', type: 'service', description: 'Completion criteria' } },
+          { data: { id: 'firestore', label: 'activityAttempts', type: 'data', description: 'Firestore subcollection' } },
+          { data: { id: 'local', label: 'LocalStorage', type: 'data', description: 'Offline cache' } },
+          { data: { source: 'tracker', target: 'quiz' } },
+          { data: { source: 'tracker', target: 'drag' } },
+          { data: { source: 'tracker', target: 'code' } },
+          { data: { source: 'tracker', target: 'demo' } },
+          { data: { source: 'quiz', target: 'quiz-attr' } },
+          { data: { source: 'drag', target: 'drag-attr' } },
+          { data: { source: 'code', target: 'code-attr' } },
+          { data: { source: 'demo', target: 'demo-attr' } },
+          { data: { source: 'tracker', target: 'firestore', type: 'data' } },
+          { data: { source: 'tracker', target: 'local', type: 'data' } },
+        ],
+        'offline-flow': [
+          { data: { id: 'attempt', label: 'Activity Attempt', type: 'external', description: 'User completes activity' } },
+          { data: { id: 'check-online', label: 'navigator.onLine?', type: 'service', description: 'Check connection' } },
+          { data: { id: 'save-firestore', label: 'Save to Firestore', type: 'data', description: 'Direct save' } },
+          { data: { id: 'queue', label: 'Add to Queue', type: 'service', description: 'Queue for later' } },
+          { data: { id: 'local-storage', label: 'LocalStorage', type: 'data', description: 'Persist queue' } },
+          { data: { id: 'online-event', label: 'online Event', type: 'external', description: 'Connection restored' } },
+          { data: { id: 'sync', label: 'syncQueuedAttempts()', type: 'service', description: 'Process queue' } },
+          { data: { id: 'clear-queue', label: 'Clear Queue', type: 'service', description: 'Remove synced items' } },
+          { data: { source: 'attempt', target: 'check-online' } },
+          { data: { source: 'check-online', target: 'save-firestore' } },
+          { data: { source: 'check-online', target: 'queue' } },
+          { data: { source: 'queue', target: 'local-storage' } },
+          { data: { source: 'online-event', target: 'sync' } },
+          { data: { source: 'local-storage', target: 'sync' } },
+          { data: { source: 'sync', target: 'save-firestore' } },
+          { data: { source: 'sync', target: 'clear-queue' } },
+        ],
+        'analytics-metrics': [
+          { data: { id: 'lesson-data', label: 'lessonProgress', type: 'data', description: 'Lesson completion records' } },
+          { data: { id: 'activity-data', label: 'activityAttempts', type: 'data', description: 'Quiz attempts and scores' } },
+          { data: { id: 'challenge-data', label: 'dailyChallenges', type: 'data', description: 'Daily challenge records' } },
+          { data: { id: 'user-data', label: 'users/{uid}', type: 'data', description: 'User streak data' } },
+          { data: { id: 'calc-velocity', label: 'calcVelocity()', type: 'service', description: 'lessons/week × 20' } },
+          { data: { id: 'calc-mastery', label: 'calcMastery()', type: 'service', description: 'avg correct × 100' } },
+          { data: { id: 'calc-streak', label: 'calcStreak()', type: 'service', description: 'consecutive days' } },
+          { data: { id: 'calc-cognitive', label: 'calcCognitive()', type: 'service', description: 'weighted composite' } },
+          { data: { id: 'velocity', label: 'Learning Velocity', type: 'page', description: '0-100 score' } },
+          { data: { id: 'mastery', label: 'Quiz Mastery', type: 'page', description: '0-100%' } },
+          { data: { id: 'streak', label: 'Active Streak', type: 'page', description: 'days count' } },
+          { data: { id: 'cognitive', label: 'Cognitive Score', type: 'page', description: '0-100 composite' } },
+          { data: { source: 'lesson-data', target: 'calc-velocity' } },
+          { data: { source: 'activity-data', target: 'calc-mastery' } },
+          { data: { source: 'challenge-data', target: 'calc-streak' } },
+          { data: { source: 'user-data', target: 'calc-streak' } },
+          { data: { source: 'calc-velocity', target: 'velocity' } },
+          { data: { source: 'calc-mastery', target: 'mastery' } },
+          { data: { source: 'calc-streak', target: 'streak' } },
+          { data: { source: 'velocity', target: 'calc-cognitive' } },
+          { data: { source: 'mastery', target: 'calc-cognitive' } },
+          { data: { source: 'streak', target: 'calc-cognitive' } },
+          { data: { source: 'calc-cognitive', target: 'cognitive' } },
+        ],
+        'completion-flow': [
+          { data: { id: 'progress-90', label: 'Progress >= 90%', type: 'service', description: 'Threshold reached' } },
+          { data: { id: 'check-complete', label: 'Already Complete?', type: 'service', description: 'Prevent duplicate' } },
+          { data: { id: 'mark-complete', label: 'markLessonComplete()', type: 'service', description: 'Set completed flag' } },
+          { data: { id: 'dispatch', label: 'Dispatch Event', type: 'service', description: 'lessonComplete event' } },
+          { data: { id: 'save', label: 'Save to Firestore', type: 'data', description: 'Persist completion' } },
+          { data: { id: 'toast', label: 'Show Toast', type: 'ui', description: 'Completion notification' } },
+          { data: { id: 'update-course', label: 'Update Course', type: 'data', description: 'Increment completedLessons' } },
+          { data: { id: 'update-streak', label: 'Update Streak', type: 'data', description: 'Refresh user streak' } },
+          { data: { source: 'progress-90', target: 'check-complete' } },
+          { data: { source: 'check-complete', target: 'mark-complete' } },
+          { data: { source: 'mark-complete', target: 'dispatch' } },
+          { data: { source: 'dispatch', target: 'save' } },
+          { data: { source: 'dispatch', target: 'toast' } },
+          { data: { source: 'save', target: 'update-course' } },
+          { data: { source: 'save', target: 'update-streak' } },
+        ]
+      };
+
+      const storyToContainer = {
+        'tracking-overview-story': 'tracking-overview',
+        'section-discovery-story': 'section-discovery',
+        'scroll-observation-story': 'scroll-observation',
+        'activity-types-story': 'activity-types',
+        'offline-flow-story': 'offline-flow',
+        'analytics-metrics-story': 'analytics-metrics',
+        'completion-flow-story': 'completion-flow'
+      };
+
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId || !diagramElements[containerId]) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          diagramElements[containerId],
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      const storyToQuizContainer = {
+        'scroll-observation-story': 'scroll-observation-quiz',
+        'offline-flow-story': 'offline-flow-quiz',
+        'analytics-metrics-story': 'analytics-metrics-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

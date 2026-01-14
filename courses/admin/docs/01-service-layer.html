@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Layer - SWE Hackers Interactive Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <span>Team Docs</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../partnerships/">← Admin</a>
+        <a href="index.html">Docs</a>
+        <a href="00-overview.html">Overview</a>
+        <a href="01-service-layer.html" class="active">Services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Docs</a>
+        <span>/</span>
+        <span>Service Layer</span>
+      </div>
+      <h1>⚙️ Service Layer Architecture</h1>
+      <p>Deep dive into the shared JavaScript services that power the platform</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Self-Narrating Architecture</h4>
+            <p>Watch service interactions come alive with AI narration • Click dots to jump • Test understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Initialization Order -->
+    <section class="section" id="init-sequence-section">
+      <h2>Service Initialization Order</h2>
+      <p>Services must be initialized in a specific order to ensure dependencies are available. The initialization chain flows from config to auth to data services.</p>
+      
+      <div class="diagram-container" id="init-sequence-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔄 Initialization Sequence</span>
+        </div>
+        <div id="init-sequence-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="init-sequence-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot to jump, or press Play to watch the initialization flow.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="init-sequence-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="init-sequence-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="init-sequence-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="init-sequence-voice-select" class="voice-select"><option value="">Loading...</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="init-sequence-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress"><span class="answered">0</span>/<span class="total">2</span> answered<span class="score"></span></div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AuthService -->
+    <section class="section" id="auth-service-section">
+      <h2>AuthService (auth.js)</h2>
+      <p>Handles all user authentication: registration, login (email/Google), logout, password reset, and session state.</p>
+      
+      <div class="diagram-container" id="auth-service-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔐 AuthService Architecture</span>
+        </div>
+        <div id="auth-service-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="auth-service-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Watch how AuthService manages user authentication.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="auth-service-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="auth-service-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="auth-service-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="auth-service-voice-select" class="voice-select"><option value="">Loading...</option></select></div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead><tr><th>Method</th><th>Parameters</th><th>Returns</th></tr></thead>
+          <tbody>
+            <tr><td><code>init()</code></td><td>-</td><td>Sets up auth state listener</td></tr>
+            <tr><td><code>register(email, password, displayName)</code></td><td>string, string, string</td><td>Promise&lt;UserCredential&gt;</td></tr>
+            <tr><td><code>loginWithEmail(email, password)</code></td><td>string, string</td><td>Promise&lt;UserCredential&gt;</td></tr>
+            <tr><td><code>loginWithGoogle()</code></td><td>-</td><td>Promise&lt;UserCredential&gt;</td></tr>
+            <tr><td><code>logout()</code></td><td>-</td><td>Promise&lt;void&gt;</td></tr>
+            <tr><td><code>getUser()</code></td><td>-</td><td>User | null</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DataService -->
+    <section class="section" id="data-service-section">
+      <h2>DataService (data-service.js)</h2>
+      <p>Central hub for all Firestore operations: progress, activities, notes, enrollments, and more.</p>
+      
+      <div class="diagram-container" id="data-service-container">
+        <div class="diagram-header">
+          <span class="diagram-title">💾 DataService Operations Map</span>
+        </div>
+        <div id="data-service-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="data-service-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">See how DataService routes operations to Firestore collections.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="data-service-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="data-service-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="data-service-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="data-service-voice-select" class="voice-select"><option value="">Loading...</option></select></div>
+        </div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>⚠️ Critical Pattern: Dual-Write for Progress</h4>
+        <p>Lesson progress is written to both a subcollection (<code>lessonProgress/{lessonId}</code>) AND the parent document's <code>lessons</code> field. The dashboard reads from the parent field, but falls back to subcollection if empty.</p>
+      </div>
+    </section>
+
+    <!-- Progress & Activity Tracking -->
+    <section class="section" id="tracking-services-section">
+      <h2>ProgressTracker & ActivityTracker</h2>
+      <p>These two services work together to track user engagement with lesson content.</p>
+      
+      <div class="diagram-container" id="tracking-services-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 Tracking Services Interaction</span>
+        </div>
+        <div id="tracking-services-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="tracking-services-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Watch how browser APIs feed data to tracking services.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="tracking-services-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="tracking-services-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="tracking-services-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="tracking-services-voice-select" class="voice-select"><option value="">Loading...</option></select></div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead><tr><th>Service</th><th>Tracks</th><th>Mechanism</th><th>Storage</th></tr></thead>
+          <tbody>
+            <tr><td><code>ProgressTracker</code></td><td>Section visibility</td><td>IntersectionObserver</td><td>lessonProgress subcollection</td></tr>
+            <tr><td><code>ActivityTracker</code></td><td>Quiz/activity completion</td><td>Event listeners</td><td>activityAttempts subcollection</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Analytics Pipeline -->
+    <section class="section" id="analytics-pipeline-section">
+      <h2>AnalyticsService (analytics-service.js)</h2>
+      <p>Calculates learning metrics from raw progress and activity data.</p>
+      
+      <div class="diagram-container" id="analytics-pipeline-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📈 Analytics Calculation Pipeline</span>
+        </div>
+        <div id="analytics-pipeline-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="analytics-pipeline-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Watch raw data transform into learning metrics.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="analytics-pipeline-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="analytics-pipeline-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="analytics-pipeline-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="analytics-pipeline-voice-select" class="voice-select"><option value="">Loading...</option></select></div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="analytics-pipeline-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress"><span class="answered">0</span>/<span class="total">2</span> answered<span class="score"></span></div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+
+      <div class="info-box success">
+        <h4>📊 Cognitive Score Formula</h4>
+        <p><code>CognitiveScore = (0.4 × QuizMastery) + (0.3 × LearningVelocity) + (0.2 × Streak) + (0.1 × Completion)</code></p>
+      </div>
+    </section>
+
+    <!-- Access Control -->
+    <section class="section" id="access-control-section">
+      <h2>RBAC & RouteGuard</h2>
+      <p>Access control services that protect pages and features based on user roles and organization membership.</p>
+      
+      <div class="diagram-container" id="access-control-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🛡️ Access Control Flow</span>
+        </div>
+        <div id="access-control-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="access-control-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Follow a request through auth and permission checks.</div>
+              <div class="story-connection" style="display: none;"><span class="arrow">→</span><span class="connection-text"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left"><button class="diagram-btn play-btn" data-action="play">▶ Play</button></div>
+          <div class="playback-center"><div class="story-progress" id="access-control-story-progress"></div></div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit">Fit</button>
+            <button class="diagram-btn small" data-action="reset">Reset</button>
+            <button class="diagram-btn small" data-action="export">PNG</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group"><label>⏱️</label><select id="access-control-speed-select"><option value="1000">1s</option><option value="2000" selected>2s</option><option value="5000">5s</option><option value="10000">10s</option></select></div>
+          <div class="control-group"><button class="audio-toggle" id="access-control-audio-toggle"><span class="audio-icon">🔊</span></button></div>
+          <div class="control-group"><label>🎤</label><select id="access-control-voice-select" class="voice-select"><option value="">Loading...</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+      <h2>Next Steps</h2>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="00-overview.html" class="card">
+          <div class="card-icon">🏗️</div>
+          <h3>Back to Overview</h3>
+          <p>See how services fit into the overall architecture.</p>
+        </a>
+        <a href="03-data-model.html" class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Data Model</h3>
+          <p>Explore the Firestore collections these services interact with.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#init-sequence-section">Initialization</a></li>
+      <li><a href="#auth-service-section">AuthService</a></li>
+      <li><a href="#data-service-section">DataService</a></li>
+      <li><a href="#tracking-services-section">Trackers</a></li>
+      <li><a href="#analytics-pipeline-section">Analytics</a></li>
+      <li><a href="#access-control-section">RBAC</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  <script src="shared/diagram-utils.js"></script>
+  <script src="shared/audio-engine.js"></script>
+  <script src="shared/storytelling-diagram.js"></script>
+  <script src="shared/quiz-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) { window.FirebaseApp.init(); }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) { setTimeout(checkAuth, 100); return; }
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((u) => {
+            if (resolved) return;
+            if (u) { resolved = true; unsubscribe(); resolve(u); }
+            else { setTimeout(() => { if (!resolved) { resolved = true; unsubscribe(); resolve(auth.currentUser); } }, 500); }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) { sessionStorage.setItem('redirectAfterLogin', window.location.href); window.location.href = '../../auth/login.html'; return; }
+      
+      // Check admin access
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      if (!SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase())) { window.location.href = '../../catalog.html?access=denied'; return; }
+
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data
+      const response = await fetch('audio/stories/01-service-layer.json');
+      const pageData = await response.json();
+
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // Diagram elements
+      const diagramElements = {
+        'init-sequence': [
+          { data: { id: 'firebase-config', label: 'FirebaseApp.init()', type: 'config', description: 'Initialize Firebase SDK' } },
+          { data: { id: 'auth-init', label: 'AuthService.init()', type: 'auth', description: 'Setup auth state listener' } },
+          { data: { id: 'data-ready', label: 'DataService ready', type: 'service', description: 'Uses FirebaseApp.getDb()' } },
+          { data: { id: 'rbac-ready', label: 'RBACService ready', type: 'service', description: 'Uses auth + db' } },
+          { data: { id: 'route-guard', label: 'RouteGuard.init()', type: 'ui', description: 'Check page access' } },
+          { data: { id: 'progress-init', label: 'ProgressTracker.init()', type: 'ui', description: 'Setup scroll observer' } },
+          { data: { id: 'activity-init', label: 'ActivityTracker.init()', type: 'ui', description: 'Discover activities' } },
+          { data: { source: 'firebase-config', target: 'auth-init' } },
+          { data: { source: 'auth-init', target: 'data-ready' } },
+          { data: { source: 'auth-init', target: 'rbac-ready' } },
+          { data: { source: 'data-ready', target: 'route-guard' } },
+          { data: { source: 'rbac-ready', target: 'route-guard' } },
+          { data: { source: 'route-guard', target: 'progress-init' } },
+          { data: { source: 'route-guard', target: 'activity-init' } },
+        ],
+        'auth-service': [
+          { data: { id: 'auth-service', label: 'AuthService', type: 'auth', description: 'Main authentication service' } },
+          { data: { id: 'register', label: 'register()', type: 'auth', description: 'Create new user account' } },
+          { data: { id: 'login-email', label: 'loginWithEmail()', type: 'auth', description: 'Email/password login' } },
+          { data: { id: 'login-google', label: 'loginWithGoogle()', type: 'auth', description: 'Google OAuth login' } },
+          { data: { id: 'logout', label: 'logout()', type: 'auth', description: 'Sign out user' } },
+          { data: { id: 'current-user', label: 'currentUser', type: 'service', description: 'Cached user object' } },
+          { data: { id: 'state-changed', label: 'onAuthStateChanged()', type: 'service', description: 'Register state listeners' } },
+          { data: { id: 'firebase-auth', label: 'Firebase Auth', type: 'external', description: 'Firebase Auth backend' } },
+          { data: { id: 'user-doc', label: 'users/{uid}', type: 'data', description: 'User profile document' } },
+          { data: { source: 'auth-service', target: 'register' } },
+          { data: { source: 'auth-service', target: 'login-email' } },
+          { data: { source: 'auth-service', target: 'login-google' } },
+          { data: { source: 'auth-service', target: 'logout' } },
+          { data: { source: 'auth-service', target: 'current-user' } },
+          { data: { source: 'auth-service', target: 'state-changed' } },
+          { data: { source: 'register', target: 'firebase-auth' } },
+          { data: { source: 'login-google', target: 'firebase-auth' } },
+          { data: { source: 'register', target: 'user-doc', type: 'data' } },
+          { data: { source: 'firebase-auth', target: 'current-user' } },
+        ],
+        'data-service': [
+          { data: { id: 'data-service', label: 'DataService', type: 'service', description: 'Central data operations hub' } },
+          { data: { id: 'progress-ops', label: 'Progress Ops', type: 'page', description: 'Lesson and course progress' } },
+          { data: { id: 'activity-ops', label: 'Activity Ops', type: 'page', description: 'Quiz and activity attempts' } },
+          { data: { id: 'enrollment-ops', label: 'Enrollment Ops', type: 'page', description: 'Course enrollments' } },
+          { data: { id: 'course-progress', label: 'courseProgress', type: 'data', description: 'Course-level progress' } },
+          { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'data', description: 'Lesson-level progress' } },
+          { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'data', description: 'Activity attempt records' } },
+          { data: { source: 'data-service', target: 'progress-ops' } },
+          { data: { source: 'data-service', target: 'activity-ops' } },
+          { data: { source: 'data-service', target: 'enrollment-ops' } },
+          { data: { source: 'progress-ops', target: 'course-progress', type: 'data' } },
+          { data: { source: 'progress-ops', target: 'lesson-progress', type: 'data' } },
+          { data: { source: 'activity-ops', target: 'activity-attempts', type: 'data' } },
+        ],
+        'tracking-services': [
+          { data: { id: 'intersection', label: 'IntersectionObserver', type: 'external', description: 'Browser visibility API' } },
+          { data: { id: 'dom-events', label: 'DOM Events', type: 'external', description: 'Click, change events' } },
+          { data: { id: 'progress-tracker', label: 'ProgressTracker', type: 'service', description: 'Tracks section visibility' } },
+          { data: { id: 'activity-tracker', label: 'ActivityTracker', type: 'service', description: 'Tracks activity completion' } },
+          { data: { id: 'viewed-sections', label: 'viewedSections Set', type: 'service', description: 'Sections user has scrolled to' } },
+          { data: { id: 'activity-state', label: 'completedActivities', type: 'service', description: 'Completed activity IDs' } },
+          { data: { id: 'lesson-progress', label: 'lessonProgress', type: 'data', description: 'Firestore subcollection' } },
+          { data: { id: 'activity-attempts', label: 'activityAttempts', type: 'data', description: 'Firestore subcollection' } },
+          { data: { source: 'intersection', target: 'progress-tracker' } },
+          { data: { source: 'dom-events', target: 'activity-tracker' } },
+          { data: { source: 'progress-tracker', target: 'viewed-sections' } },
+          { data: { source: 'activity-tracker', target: 'activity-state' } },
+          { data: { source: 'viewed-sections', target: 'lesson-progress', type: 'data' } },
+          { data: { source: 'activity-state', target: 'activity-attempts', type: 'data' } },
+        ],
+        'analytics-pipeline': [
+          { data: { id: 'progress-data', label: 'Progress Data', type: 'data', description: 'Lesson completion records' } },
+          { data: { id: 'activity-data', label: 'Activity Data', type: 'data', description: 'Quiz attempts and scores' } },
+          { data: { id: 'calc-velocity', label: 'calculateVelocity()', type: 'service', description: 'Lessons per week rate' } },
+          { data: { id: 'calc-mastery', label: 'calculateMastery()', type: 'service', description: 'Quiz score average' } },
+          { data: { id: 'calc-cognitive', label: 'calculateCognitive()', type: 'service', description: 'Weighted composite score' } },
+          { data: { id: 'velocity', label: 'Learning Velocity', type: 'page', description: 'lessons/week × 20' } },
+          { data: { id: 'mastery', label: 'Quiz Mastery', type: 'page', description: 'avg score as %' } },
+          { data: { id: 'cognitive', label: 'Cognitive Score', type: 'page', description: 'weighted composite' } },
+          { data: { source: 'progress-data', target: 'calc-velocity' } },
+          { data: { source: 'activity-data', target: 'calc-mastery' } },
+          { data: { source: 'calc-velocity', target: 'velocity' } },
+          { data: { source: 'calc-mastery', target: 'mastery' } },
+          { data: { source: 'velocity', target: 'calc-cognitive' } },
+          { data: { source: 'mastery', target: 'calc-cognitive' } },
+          { data: { source: 'calc-cognitive', target: 'cognitive' } },
+        ],
+        'access-control': [
+          { data: { id: 'request', label: 'Page Request', type: 'external', description: 'User navigates to page' } },
+          { data: { id: 'auth-check', label: 'Auth Check', type: 'auth', description: 'Is user signed in?' } },
+          { data: { id: 'role-check', label: 'hasRole()', type: 'service', description: 'Check user role' } },
+          { data: { id: 'org-check', label: 'belongsToOrg()', type: 'service', description: 'Check org membership' } },
+          { data: { id: 'course-check', label: 'canAccessCourse()', type: 'service', description: 'Check course access' } },
+          { data: { id: 'allow', label: 'Allow Access', type: 'page', description: 'Render page content' } },
+          { data: { id: 'login-redirect', label: 'Redirect: Login', type: 'external', description: 'Send to login page' } },
+          { data: { source: 'request', target: 'auth-check' } },
+          { data: { source: 'auth-check', target: 'role-check' } },
+          { data: { source: 'auth-check', target: 'login-redirect', type: 'optional' } },
+          { data: { source: 'role-check', target: 'org-check' } },
+          { data: { source: 'org-check', target: 'course-check' } },
+          { data: { source: 'course-check', target: 'allow' } },
+        ]
+      };
+
+      // Map story IDs to container IDs
+      const storyToContainer = {
+        'init-sequence-story': 'init-sequence',
+        'auth-service-story': 'auth-service',
+        'data-service-story': 'data-service',
+        'tracking-services-story': 'tracking-services',
+        'analytics-pipeline-story': 'analytics-pipeline',
+        'access-control-story': 'access-control'
+      };
+
+      // Initialize storytelling diagrams
+      pageData.stories.forEach(story => {
+        const containerId = storyToContainer[story.id];
+        if (!containerId || !diagramElements[containerId]) return;
+
+        new StorytellingDiagram(
+          `${containerId}-story`,
+          diagramElements[containerId],
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // Map quiz storyId to container
+      const storyToQuizContainer = {
+        'init-sequence-story': 'init-sequence-quiz',
+        'analytics-pipeline-story': 'analytics-pipeline-quiz'
+      };
+
+      // Initialize quizzes
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuizContainer[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

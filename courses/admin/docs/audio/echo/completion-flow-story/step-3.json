@@ -1,0 +1,110 @@
+{
+  "storyId": "completion-flow-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Event Dispatch. A lessonComplete event broadcasts to the app. Other components can react—update UI, show notifications, unlock content.",
+  "duration": 11.609999656677246,
+  "words": [
+    {
+      "word": "Event",
+      "start": 0,
+      "end": 0.7200000286102295
+    },
+    {
+      "word": "Dispatch",
+      "start": 0.7200000286102295,
+      "end": 1.3799999952316284
+    },
+    {
+      "word": "A",
+      "start": 1.840000033378601,
+      "end": 1.940000057220459
+    },
+    {
+      "word": "lesson",
+      "start": 1.940000057220459,
+      "end": 2.319999933242798
+    },
+    {
+      "word": "complete",
+      "start": 2.319999933242798,
+      "end": 2.859999895095825
+    },
+    {
+      "word": "event",
+      "start": 2.859999895095825,
+      "end": 3.2200000286102295
+    },
+    {
+      "word": "broadcasts",
+      "start": 3.2200000286102295,
+      "end": 4.159999847412109
+    },
+    {
+      "word": "to",
+      "start": 4.159999847412109,
+      "end": 4.300000190734863
+    },
+    {
+      "word": "the",
+      "start": 4.300000190734863,
+      "end": 4.619999885559082
+    },
+    {
+      "word": "app",
+      "start": 4.619999885559082,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "Other",
+      "start": 5.380000114440918,
+      "end": 5.420000076293945
+    },
+    {
+      "word": "components",
+      "start": 5.420000076293945,
+      "end": 5.880000114440918
+    },
+    {
+      "word": "can",
+      "start": 5.880000114440918,
+      "end": 6.300000190734863
+    },
+    {
+      "word": "react",
+      "start": 6.300000190734863,
+      "end": 6.800000190734863
+    },
+    {
+      "word": "Update",
+      "start": 7.699999809265137,
+      "end": 7.699999809265137
+    },
+    {
+      "word": "UI",
+      "start": 7.699999809265137,
+      "end": 8.199999809265137
+    },
+    {
+      "word": "Show",
+      "start": 8.899999618530273,
+      "end": 8.899999618530273
+    },
+    {
+      "word": "notifications",
+      "start": 8.899999618530273,
+      "end": 9.579999923706055
+    },
+    {
+      "word": "Unlock",
+      "start": 10.619999885559082,
+      "end": 10.619999885559082
+    },
+    {
+      "word": "content",
+      "start": 10.619999885559082,
+      "end": 11.039999961853027
+    }
+  ]
+}

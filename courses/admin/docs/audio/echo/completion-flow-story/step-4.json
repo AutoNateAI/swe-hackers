@@ -1,0 +1,95 @@
+{
+  "storyId": "completion-flow-story",
+  "stepId": "step-4",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Save to Firestore. Completion is persisted to Firestore. The lessonProgress document updates with completedAt timestamp.",
+  "duration": 8.949999809265137,
+  "words": [
+    {
+      "word": "Save",
+      "start": 0,
+      "end": 0.5199999809265137
+    },
+    {
+      "word": "to",
+      "start": 0.5199999809265137,
+      "end": 0.7599999904632568
+    },
+    {
+      "word": "Firestore",
+      "start": 0.7599999904632568,
+      "end": 1.340000033378601
+    },
+    {
+      "word": "Completion",
+      "start": 2.299999952316284,
+      "end": 2.440000057220459
+    },
+    {
+      "word": "is",
+      "start": 2.440000057220459,
+      "end": 2.759999990463257
+    },
+    {
+      "word": "persisted",
+      "start": 2.759999990463257,
+      "end": 3.359999895095825
+    },
+    {
+      "word": "to",
+      "start": 3.359999895095825,
+      "end": 3.640000104904175
+    },
+    {
+      "word": "Firestore",
+      "start": 3.640000104904175,
+      "end": 4.179999828338623
+    },
+    {
+      "word": "The",
+      "start": 4.960000038146973,
+      "end": 5.099999904632568
+    },
+    {
+      "word": "lesson",
+      "start": 5.099999904632568,
+      "end": 5.440000057220459
+    },
+    {
+      "word": "progress",
+      "start": 5.440000057220459,
+      "end": 5.900000095367432
+    },
+    {
+      "word": "document",
+      "start": 5.900000095367432,
+      "end": 6.440000057220459
+    },
+    {
+      "word": "updates",
+      "start": 6.440000057220459,
+      "end": 6.860000133514404
+    },
+    {
+      "word": "with",
+      "start": 6.860000133514404,
+      "end": 7.199999809265137
+    },
+    {
+      "word": "completed",
+      "start": 7.199999809265137,
+      "end": 7.559999942779541
+    },
+    {
+      "word": "at",
+      "start": 7.559999942779541,
+      "end": 7.960000038146973
+    },
+    {
+      "word": "timestamp",
+      "start": 7.960000038146973,
+      "end": 8.619999885559082
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "storyId": "access-check-story",
+  "stepId": "step-1",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Authentication Check. First gate: Is there a valid user session? No login means no access. Redirect to the login page immediately.",
+  "duration": 9.600000381469727,
+  "words": [
+    {
+      "word": "Authentication",
+      "start": 0,
+      "end": 0.8199999928474426
+    },
+    {
+      "word": "check",
+      "start": 0.8199999928474426,
+      "end": 1.2400000095367432
+    },
+    {
+      "word": "First",
+      "start": 1.7400000095367432,
+      "end": 1.9600000381469727
+    },
+    {
+      "word": "gate",
+      "start": 1.9600000381469727,
+      "end": 2.180000066757202
+    },
+    {
+      "word": "Is",
+      "start": 2.700000047683716,
+      "end": 2.759999990463257
+    },
+    {
+      "word": "there",
+      "start": 2.759999990463257,
+      "end": 2.880000114440918
+    },
+    {
+      "word": "a",
+      "start": 2.880000114440918,
+      "end": 3.2200000286102295
+    },
+    {
+      "word": "valid",
+      "start": 3.2200000286102295,
+      "end": 3.3399999141693115
+    },
+    {
+      "word": "user",
+      "start": 3.3399999141693115,
+      "end": 3.7200000286102295
+    },
+    {
+      "word": "session",
+      "start": 3.7200000286102295,
+      "end": 4.099999904632568
+    },
+    {
+      "word": "No",
+      "start": 4.739999771118164,
+      "end": 4.960000038146973
+    },
+    {
+      "word": "login",
+      "start": 4.960000038146973,
+      "end": 5.260000228881836
+    },
+    {
+      "word": "means",
+      "start": 5.260000228881836,
+      "end": 5.619999885559082
+    },
+    {
+      "word": "no",
+      "start": 5.619999885559082,
+      "end": 6.019999980926514
+    },
+    {
+      "word": "access",
+      "start": 6.019999980926514,
+      "end": 6.519999980926514
+    },
+    {
+      "word": "Redirect",
+      "start": 7.380000114440918,
+      "end": 7.440000057220459
+    },
+    {
+      "word": "to",
+      "start": 7.440000057220459,
+      "end": 7.679999828338623
+    },
+    {
+      "word": "the",
+      "start": 7.679999828338623,
+      "end": 7.960000038146973
+    },
+    {
+      "word": "login",
+      "start": 7.960000038146973,
+      "end": 8.140000343322754
+    },
+    {
+      "word": "page",
+      "start": 8.140000343322754,
+      "end": 8.5
+    },
+    {
+      "word": "immediately",
+      "start": 8.5,
+      "end": 9.140000343322754
+    }
+  ]
+}

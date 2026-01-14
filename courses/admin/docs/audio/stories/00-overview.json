@@ -1,0 +1,470 @@
+{
+  "pageId": "00-overview",
+  "stories": [
+    {
+      "id": "system-context-story",
+      "diagramId": "system-context",
+      "title": "System Context",
+      "steps": [
+        {
+          "nodeId": "user",
+          "icon": "👤",
+          "title": "Students: The Users",
+          "narration": "Meet our users—students eager to learn software engineering. They access everything through a simple browser, connecting to our platform over standard HTTP.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "admin",
+          "icon": "👑",
+          "title": "Admins: The Managers",
+          "narration": "Admins manage the platform—creating courses, managing organizations, and monitoring learner progress. Same browser access, elevated permissions!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "github",
+          "edges": [{ "from": "user", "to": "github" }, { "from": "admin", "to": "github" }],
+          "icon": "🌐",
+          "title": "GitHub Pages Hosting",
+          "narration": "All requests flow through GitHub Pages. This CDN serves our static HTML files lightning-fast from edge locations worldwide. No server to manage!",
+          "connectsTo": "User, Admin"
+        },
+        {
+          "nodeId": "marketing",
+          "edges": [{ "from": "github", "to": "marketing" }],
+          "icon": "📢",
+          "title": "Marketing Pages",
+          "narration": "Marketing pages are public—landing pages, course catalog, and pricing. No login required! Anyone can browse and discover what we offer.",
+          "connectsTo": "GitHub Pages"
+        },
+        {
+          "nodeId": "auth-pages",
+          "edges": [{ "from": "github", "to": "auth-pages" }],
+          "icon": "🔑",
+          "title": "Auth Pages",
+          "narration": "Auth pages handle login, registration, and password reset. This is where users become authenticated members of the platform.",
+          "connectsTo": "GitHub Pages"
+        },
+        {
+          "nodeId": "dashboard",
+          "edges": [{ "from": "github", "to": "dashboard" }],
+          "icon": "📊",
+          "title": "Dashboard",
+          "narration": "The dashboard shows personalized progress—courses enrolled, completion percentages, learning velocity, and the cognitive score.",
+          "connectsTo": "GitHub Pages"
+        },
+        {
+          "nodeId": "lessons",
+          "edges": [{ "from": "github", "to": "lessons" }],
+          "icon": "📚",
+          "title": "Lesson Pages",
+          "narration": "Lesson pages are where the magic happens. These interactive course content pages include quizzes, drag-drop activities, and progress tracking.",
+          "connectsTo": "GitHub Pages"
+        },
+        {
+          "nodeId": "blog",
+          "edges": [{ "from": "github", "to": "blog" }],
+          "icon": "✍️",
+          "title": "Blog",
+          "narration": "The blog features articles and tutorials. Some content is public, some requires login. A mix of marketing and education!",
+          "connectsTo": "GitHub Pages"
+        },
+        {
+          "nodeId": "shared-js",
+          "edges": [
+            { "from": "marketing", "to": "shared-js" },
+            { "from": "auth-pages", "to": "shared-js" },
+            { "from": "dashboard", "to": "shared-js" },
+            { "from": "lessons", "to": "shared-js" },
+            { "from": "blog", "to": "shared-js" }
+          ],
+          "icon": "⚙️",
+          "title": "Shared JavaScript Services",
+          "narration": "All pages tap into our nine shared JavaScript services. These handle authentication, data storage, progress tracking, and more.",
+          "connectsTo": "All Pages"
+        },
+        {
+          "nodeId": "firebase-auth",
+          "edges": [{ "from": "shared-js", "to": "firebase-auth" }],
+          "icon": "🔐",
+          "title": "Firebase Authentication",
+          "narration": "Firebase Auth manages all user sessions. Email and password login, Google OAuth, password resets—it's all handled securely by Firebase.",
+          "connectsTo": "Shared JS Services"
+        },
+        {
+          "nodeId": "firestore",
+          "edges": [{ "from": "shared-js", "to": "firestore" }],
+          "icon": "🗄️",
+          "title": "Firestore Database",
+          "narration": "Finally, Firestore stores all user data—progress, quiz answers, notes, and more. Real-time sync keeps everything instantly up to date!",
+          "connectsTo": "Shared JS Services"
+        }
+      ]
+    },
+    {
+      "id": "service-deps-story",
+      "diagramId": "service-dependencies",
+      "title": "Service Dependencies",
+      "steps": [
+        {
+          "nodeId": "firebase-config",
+          "icon": "🔥",
+          "title": "FirebaseApp: The Foundation",
+          "narration": "Everything starts with FirebaseApp. This service initializes the Firebase SDK, giving all other services access to authentication and database.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "auth-service",
+          "edges": [{ "from": "auth-service", "to": "firebase-config" }],
+          "icon": "🔐",
+          "title": "AuthService Layer",
+          "narration": "AuthService wraps Firebase Auth with a clean API. It manages user sessions, login flows, and broadcasts auth state changes to the entire app.",
+          "connectsTo": "FirebaseApp"
+        },
+        {
+          "nodeId": "data-service",
+          "edges": [{ "from": "data-service", "to": "firebase-config" }, { "from": "data-service", "to": "auth-service" }],
+          "icon": "💾",
+          "title": "DataService Operations",
+          "narration": "DataService is the workhorse. It needs both FirebaseApp for database access AND AuthService to scope every query to the current user.",
+          "connectsTo": "FirebaseApp, AuthService"
+        },
+        {
+          "nodeId": "rbac",
+          "edges": [{ "from": "rbac", "to": "firebase-config" }, { "from": "rbac", "to": "auth-service" }],
+          "icon": "👑",
+          "title": "RBACService",
+          "narration": "RBACService handles role-based access control. It checks if users have the right role and organization membership to access content.",
+          "connectsTo": "FirebaseApp, AuthService"
+        },
+        {
+          "nodeId": "progress-tracker",
+          "edges": [{ "from": "progress-tracker", "to": "data-service" }, { "from": "progress-tracker", "to": "auth-service" }],
+          "icon": "📊",
+          "title": "ProgressTracker",
+          "narration": "ProgressTracker watches what users scroll past using IntersectionObserver. It saves progress through DataService for the authenticated user.",
+          "connectsTo": "DataService, AuthService"
+        },
+        {
+          "nodeId": "activity-tracker",
+          "edges": [{ "from": "activity-tracker", "to": "data-service" }, { "from": "activity-tracker", "to": "auth-service" }],
+          "icon": "✅",
+          "title": "ActivityTracker",
+          "narration": "ActivityTracker captures quiz answers and activity completions. Like ProgressTracker, it needs DataService and AuthService.",
+          "connectsTo": "DataService, AuthService"
+        },
+        {
+          "nodeId": "analytics",
+          "edges": [{ "from": "analytics", "to": "data-service" }],
+          "icon": "📈",
+          "title": "AnalyticsService",
+          "narration": "AnalyticsService calculates learning metrics—velocity, mastery, cognitive score. It reads data through DataService to compute these stats.",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "route-guard",
+          "edges": [{ "from": "route-guard", "to": "auth-service" }, { "from": "route-guard", "to": "rbac" }],
+          "icon": "🚧",
+          "title": "RouteGuard",
+          "narration": "RouteGuard protects pages that require login. It checks authentication status AND role permissions before showing any content.",
+          "connectsTo": "AuthService, RBACService"
+        },
+        {
+          "nodeId": "lesson-integration",
+          "edges": [
+            { "from": "lesson-integration", "to": "auth-service" },
+            { "from": "lesson-integration", "to": "data-service" },
+            { "from": "lesson-integration", "to": "progress-tracker" },
+            { "from": "lesson-integration", "to": "activity-tracker" }
+          ],
+          "icon": "🎯",
+          "title": "LessonIntegration",
+          "narration": "LessonIntegration orchestrates everything on lesson pages. It coordinates AuthService, DataService, ProgressTracker, and ActivityTracker together!",
+          "connectsTo": "All Services"
+        }
+      ]
+    },
+    {
+      "id": "data-flow-story",
+      "diagramId": "data-flow",
+      "title": "Data Flow Architecture",
+      "steps": [
+        {
+          "nodeId": "browser",
+          "icon": "🌐",
+          "title": "Browser: The Starting Point",
+          "narration": "Every journey begins in the browser. The user loads a page and starts interacting with buttons, forms, and scrollable content.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "html-page",
+          "edges": [{ "from": "browser", "to": "html-page" }],
+          "icon": "📄",
+          "title": "HTML Page Loads",
+          "narration": "The browser loads a static HTML page. This includes all the structure, styles, and JavaScript files needed to make it interactive.",
+          "connectsTo": "Browser"
+        },
+        {
+          "nodeId": "ui-components",
+          "edges": [{ "from": "html-page", "to": "ui-components" }],
+          "icon": "🎨",
+          "title": "UI Components Render",
+          "narration": "The HTML page renders interactive UI components—buttons, progress bars, quiz options. These are the touchpoints users interact with.",
+          "connectsTo": "HTML Page"
+        },
+        {
+          "nodeId": "event-handlers",
+          "edges": [{ "from": "ui-components", "to": "event-handlers" }],
+          "icon": "📡",
+          "title": "Event Handlers Fire",
+          "narration": "When users click, scroll, or type, event handlers spring into action. These JavaScript functions decide what happens next.",
+          "connectsTo": "UI Components"
+        },
+        {
+          "nodeId": "services",
+          "edges": [{ "from": "event-handlers", "to": "services" }],
+          "icon": "⚙️",
+          "title": "Services Process",
+          "narration": "Event handlers call service methods. This is where business logic lives—never in UI code. Services validate, transform, and route data.",
+          "connectsTo": "Event Handlers"
+        },
+        {
+          "nodeId": "state-mgmt",
+          "edges": [{ "from": "services", "to": "state-mgmt" }],
+          "icon": "📦",
+          "title": "State Management",
+          "narration": "Services update local state—window globals and component state. This triggers UI re-renders to show the latest data.",
+          "connectsTo": "Services"
+        },
+        {
+          "nodeId": "firebase-sdk",
+          "edges": [{ "from": "services", "to": "firebase-sdk" }],
+          "icon": "🔥",
+          "title": "Firebase SDK",
+          "narration": "Services communicate with Firebase through the client-side SDK. It handles authentication tokens and database connections automatically.",
+          "connectsTo": "Services"
+        },
+        {
+          "nodeId": "firestore-db",
+          "edges": [{ "from": "firebase-sdk", "to": "firestore-db" }],
+          "icon": "💾",
+          "title": "Firestore Database",
+          "narration": "The Firebase SDK writes to Firestore in the cloud. Progress saved, quiz answers recorded, notes stored—all persisted permanently.",
+          "connectsTo": "Firebase SDK"
+        },
+        {
+          "nodeId": "local-storage",
+          "edges": [{ "from": "services", "to": "local-storage" }],
+          "icon": "💿",
+          "title": "LocalStorage Cache",
+          "narration": "Some data is cached in LocalStorage for offline access and faster loading. This reduces database reads and improves performance!",
+          "connectsTo": "Services"
+        }
+      ]
+    },
+    {
+      "id": "page-services-story",
+      "diagramId": "page-services",
+      "title": "Page Type Services",
+      "steps": [
+        {
+          "nodeId": "pg-marketing",
+          "icon": "📢",
+          "title": "Marketing Pages",
+          "narration": "Marketing pages are the lightest. They only load the navbar script for basic navigation. No authentication needed—anyone can browse!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "svc-navbar",
+          "edges": [{ "from": "pg-marketing", "to": "svc-navbar" }],
+          "icon": "🧭",
+          "title": "navbar.js",
+          "narration": "navbar.js is the simplest service—just navigation handling. It's the only script marketing pages need to load!",
+          "connectsTo": "Marketing"
+        },
+        {
+          "nodeId": "pg-auth",
+          "icon": "🔑",
+          "title": "Auth Pages",
+          "narration": "Login and register pages need more than navigation. They load AuthService for credential validation and account creation.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "svc-auth",
+          "edges": [{ "from": "pg-auth", "to": "svc-auth" }],
+          "icon": "🔐",
+          "title": "auth.js",
+          "narration": "auth.js handles all authentication—email login, Google OAuth, password reset, and session management. Many pages depend on it!",
+          "connectsTo": "Auth Pages"
+        },
+        {
+          "nodeId": "pg-dashboard",
+          "icon": "📊",
+          "title": "Dashboard",
+          "narration": "The dashboard is where users see their progress. It needs auth, data, analytics, and route protection—four services!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "svc-data",
+          "edges": [{ "from": "pg-dashboard", "to": "svc-data" }],
+          "icon": "💾",
+          "title": "data-service.js",
+          "narration": "data-service.js handles all Firestore operations. Progress, activities, notes—anything that needs to persist goes through here.",
+          "connectsTo": "Dashboard"
+        },
+        {
+          "nodeId": "svc-analytics",
+          "edges": [{ "from": "pg-dashboard", "to": "svc-analytics" }],
+          "icon": "📈",
+          "title": "analytics-service.js",
+          "narration": "analytics-service.js calculates learning metrics. Velocity, mastery, cognitive score—all the numbers on your dashboard!",
+          "connectsTo": "Dashboard"
+        },
+        {
+          "nodeId": "svc-route",
+          "edges": [{ "from": "pg-dashboard", "to": "svc-route" }],
+          "icon": "🚧",
+          "title": "route-guard.js",
+          "narration": "route-guard.js protects pages requiring login. If you're not authenticated, you get redirected before seeing anything.",
+          "connectsTo": "Dashboard"
+        },
+        {
+          "nodeId": "pg-lesson",
+          "icon": "📚",
+          "title": "Lesson Pages",
+          "narration": "Lesson pages are feature-rich! They need the most services—progress tracking, activity tracking, lesson orchestration, and more.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "svc-progress",
+          "edges": [{ "from": "pg-lesson", "to": "svc-progress" }],
+          "icon": "📊",
+          "title": "progress-tracker.js",
+          "narration": "progress-tracker.js uses IntersectionObserver to track what sections you've scrolled past. It auto-saves your reading progress!",
+          "connectsTo": "Lessons"
+        },
+        {
+          "nodeId": "svc-activity",
+          "edges": [{ "from": "pg-lesson", "to": "svc-activity" }],
+          "icon": "✅",
+          "title": "activity-tracker.js",
+          "narration": "activity-tracker.js captures quiz answers and activity completions. Every interaction is logged for learning analytics.",
+          "connectsTo": "Lessons"
+        },
+        {
+          "nodeId": "svc-lesson",
+          "edges": [{ "from": "pg-lesson", "to": "svc-lesson" }],
+          "icon": "🎯",
+          "title": "lesson-integration.js",
+          "narration": "lesson-integration.js orchestrates everything on lesson pages. It coordinates all the trackers and services together!",
+          "connectsTo": "Lessons"
+        },
+        {
+          "nodeId": "pg-blog",
+          "icon": "✍️",
+          "title": "Blog Pages",
+          "narration": "Blog pages are mostly public but can have some interactive features. They load navbar and the blog-specific service.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "svc-blog",
+          "edges": [{ "from": "pg-blog", "to": "svc-blog" }],
+          "icon": "📝",
+          "title": "blog.js",
+          "narration": "blog.js handles blog-specific features—interactive elements, code highlighting, and optional auth for premium content.",
+          "connectsTo": "Blog"
+        },
+        {
+          "nodeId": "pg-partner",
+          "icon": "🤝",
+          "title": "Partner Courses",
+          "narration": "Partner courses are like lesson pages plus access control. Users must belong to the right organization to view content.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "svc-rbac",
+          "edges": [{ "from": "pg-partner", "to": "svc-rbac" }],
+          "icon": "👑",
+          "title": "rbac.js",
+          "narration": "rbac.js checks organization membership and course access. Without the right permissions, you can't see partner content!",
+          "connectsTo": "Partner Course"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "system-context-story",
+      "questions": [
+        {
+          "question": "Where is the SWE Hackers static HTML hosted?",
+          "options": ["AWS S3", "GitHub Pages", "Vercel", "Firebase Hosting"],
+          "correct": 1,
+          "explanation": "GitHub Pages serves all static HTML files via CDN from edge locations worldwide."
+        },
+        {
+          "question": "What does Firebase Auth handle?",
+          "options": ["Database storage", "User authentication and sessions", "File uploads", "Static hosting"],
+          "correct": 1,
+          "explanation": "Firebase Auth manages user sessions, including email/password login, Google OAuth, and password resets."
+        },
+        {
+          "question": "How many shared JavaScript services power the platform?",
+          "options": ["3", "5", "9", "12"],
+          "correct": 2,
+          "explanation": "Nine shared JavaScript services handle authentication, data storage, progress tracking, and more."
+        }
+      ]
+    },
+    {
+      "storyId": "service-deps-story",
+      "questions": [
+        {
+          "question": "Which service must initialize first?",
+          "options": ["AuthService", "DataService", "FirebaseApp", "RouteGuard"],
+          "correct": 2,
+          "explanation": "FirebaseApp initializes the Firebase SDK first, enabling all other services to access authentication and database."
+        },
+        {
+          "question": "What does ProgressTracker use to detect scrolling?",
+          "options": ["scroll event listener", "IntersectionObserver", "MutationObserver", "ResizeObserver"],
+          "correct": 1,
+          "explanation": "ProgressTracker uses IntersectionObserver to efficiently detect which sections users have scrolled past."
+        }
+      ]
+    },
+    {
+      "storyId": "data-flow-story",
+      "questions": [
+        {
+          "question": "Where should business logic live according to the architecture?",
+          "options": ["In UI components", "In event handlers", "In service methods", "In CSS"],
+          "correct": 2,
+          "explanation": "Business logic lives in service methods, never in UI code. Services validate, transform, and route data."
+        },
+        {
+          "question": "What triggers UI re-renders when data changes?",
+          "options": ["Direct DOM manipulation", "State updates", "Page refresh", "Firebase notifications"],
+          "correct": 1,
+          "explanation": "State updates trigger UI re-renders, keeping the interface in sync with the underlying data."
+        }
+      ]
+    },
+    {
+      "storyId": "page-services-story",
+      "questions": [
+        {
+          "question": "Which page type loads the fewest services?",
+          "options": ["Dashboard", "Lesson pages", "Marketing pages", "Partner courses"],
+          "correct": 2,
+          "explanation": "Marketing pages only load the navbar script—no authentication needed for public browsing."
+        },
+        {
+          "question": "What extra service do partner courses require compared to regular lessons?",
+          "options": ["ProgressTracker", "DataService", "RBACService", "AnalyticsService"],
+          "correct": 2,
+          "explanation": "Partner courses add RBACService to verify users belong to the right organization and have course access."
+        }
+      ]
+    }
+  ]
+}

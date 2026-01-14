@@ -1,0 +1,115 @@
+{
+  "storyId": "init-sequence-story",
+  "stepId": "step-5",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "ProgressTracker.init(). ProgressTracker.init sets up scroll observation using IntersectionObserver. It tracks which sections the user has viewed.",
+  "duration": 13.149999618530273,
+  "words": [
+    {
+      "word": "Progress",
+      "start": 0,
+      "end": 0.6800000071525574
+    },
+    {
+      "word": "Tracker",
+      "start": 0.6800000071525574,
+      "end": 1.0199999809265137
+    },
+    {
+      "word": "INIT",
+      "start": 1.0199999809265137,
+      "end": 1.7799999713897705
+    },
+    {
+      "word": "Progress",
+      "start": 3.0399999618530273,
+      "end": 3.3399999141693115
+    },
+    {
+      "word": "Tracker",
+      "start": 3.3399999141693115,
+      "end": 3.680000066757202
+    },
+    {
+      "word": "INIT",
+      "start": 3.680000066757202,
+      "end": 4.119999885559082
+    },
+    {
+      "word": "sets",
+      "start": 4.119999885559082,
+      "end": 4.920000076293945
+    },
+    {
+      "word": "up",
+      "start": 4.920000076293945,
+      "end": 5.360000133514404
+    },
+    {
+      "word": "scroll",
+      "start": 5.360000133514404,
+      "end": 5.860000133514404
+    },
+    {
+      "word": "observation",
+      "start": 5.860000133514404,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "using",
+      "start": 6.579999923706055,
+      "end": 7.380000114440918
+    },
+    {
+      "word": "Intersection",
+      "start": 7.440000057220459,
+      "end": 8.319999694824219
+    },
+    {
+      "word": "Observer",
+      "start": 8.319999694824219,
+      "end": 8.779999732971191
+    },
+    {
+      "word": "It",
+      "start": 9.739999771118164,
+      "end": 9.920000076293945
+    },
+    {
+      "word": "tracks",
+      "start": 9.920000076293945,
+      "end": 10.279999732971191
+    },
+    {
+      "word": "which",
+      "start": 10.279999732971191,
+      "end": 10.979999542236328
+    },
+    {
+      "word": "sections",
+      "start": 10.979999542236328,
+      "end": 11.420000076293945
+    },
+    {
+      "word": "the",
+      "start": 11.420000076293945,
+      "end": 11.779999732971191
+    },
+    {
+      "word": "user",
+      "start": 11.779999732971191,
+      "end": 12.079999923706055
+    },
+    {
+      "word": "has",
+      "start": 12.079999923706055,
+      "end": 12.479999542236328
+    },
+    {
+      "word": "viewed",
+      "start": 12.479999542236328,
+      "end": 12.739999771118164
+    }
+  ]
+}

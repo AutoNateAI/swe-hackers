@@ -1,0 +1,125 @@
+{
+  "storyId": "registration-flow-story",
+  "stepId": "step-3",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Update Profile. updateProfile sets the display name on the Firebase Auth record. This makes the name available immediately across all Firebase services.",
+  "duration": 12.720000267028809,
+  "words": [
+    {
+      "word": "Update",
+      "start": 0,
+      "end": 0.5799999833106995
+    },
+    {
+      "word": "Profile",
+      "start": 0.5799999833106995,
+      "end": 1.1200000047683716
+    },
+    {
+      "word": "Update",
+      "start": 2.0199999809265137,
+      "end": 2.319999933242798
+    },
+    {
+      "word": "Profile",
+      "start": 2.319999933242798,
+      "end": 2.7799999713897705
+    },
+    {
+      "word": "sets",
+      "start": 2.7799999713897705,
+      "end": 3.259999990463257
+    },
+    {
+      "word": "the",
+      "start": 3.259999990463257,
+      "end": 3.5999999046325684
+    },
+    {
+      "word": "display",
+      "start": 3.5999999046325684,
+      "end": 3.940000057220459
+    },
+    {
+      "word": "name",
+      "start": 3.940000057220459,
+      "end": 4.21999979019165
+    },
+    {
+      "word": "on",
+      "start": 4.21999979019165,
+      "end": 4.559999942779541
+    },
+    {
+      "word": "the",
+      "start": 4.559999942779541,
+      "end": 4.78000020980835
+    },
+    {
+      "word": "Firebase",
+      "start": 4.78000020980835,
+      "end": 5.340000152587891
+    },
+    {
+      "word": "Auth",
+      "start": 5.340000152587891,
+      "end": 5.840000152587891
+    },
+    {
+      "word": "record",
+      "start": 5.840000152587891,
+      "end": 6.320000171661377
+    },
+    {
+      "word": "This",
+      "start": 7.239999771118164,
+      "end": 7.5
+    },
+    {
+      "word": "makes",
+      "start": 7.5,
+      "end": 7.900000095367432
+    },
+    {
+      "word": "the",
+      "start": 7.900000095367432,
+      "end": 8.119999885559082
+    },
+    {
+      "word": "name",
+      "start": 8.119999885559082,
+      "end": 8.300000190734863
+    },
+    {
+      "word": "available",
+      "start": 8.300000190734863,
+      "end": 8.9399995803833
+    },
+    {
+      "word": "immediately",
+      "start": 8.9399995803833,
+      "end": 9.960000038146973
+    },
+    {
+      "word": "across",
+      "start": 9.960000038146973,
+      "end": 10.600000381469727
+    },
+    {
+      "word": "all",
+      "start": 10.600000381469727,
+      "end": 11.359999656677246
+    },
+    {
+      "word": "Firebase",
+      "start": 11.359999656677246,
+      "end": 11.720000267028809
+    },
+    {
+      "word": "services",
+      "start": 11.720000267028809,
+      "end": 12.279999732971191
+    }
+  ]
+}

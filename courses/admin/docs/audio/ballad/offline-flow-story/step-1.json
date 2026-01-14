@@ -1,0 +1,100 @@
+{
+  "storyId": "offline-flow-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Connection Check. navigator.onLine tells us the connection status. Online? Save directly. Offline? Time for the queue!",
+  "duration": 11.710000038146973,
+  "words": [
+    {
+      "word": "Connection",
+      "start": 0,
+      "end": 0.6399999856948853
+    },
+    {
+      "word": "check",
+      "start": 0.6399999856948853,
+      "end": 0.9800000190734863
+    },
+    {
+      "word": "Navigator",
+      "start": 1.840000033378601,
+      "end": 2.180000066757202
+    },
+    {
+      "word": "dot",
+      "start": 2.180000066757202,
+      "end": 2.680000066757202
+    },
+    {
+      "word": "online",
+      "start": 2.680000066757202,
+      "end": 3.180000066757202
+    },
+    {
+      "word": "tells",
+      "start": 3.180000066757202,
+      "end": 3.8399999141693115
+    },
+    {
+      "word": "us",
+      "start": 3.8399999141693115,
+      "end": 4.019999980926514
+    },
+    {
+      "word": "the",
+      "start": 4.019999980926514,
+      "end": 4.239999771118164
+    },
+    {
+      "word": "connection",
+      "start": 4.239999771118164,
+      "end": 4.599999904632568
+    },
+    {
+      "word": "status",
+      "start": 4.599999904632568,
+      "end": 5.639999866485596
+    },
+    {
+      "word": "Online",
+      "start": 6.199999809265137,
+      "end": 6.519999980926514
+    },
+    {
+      "word": "save",
+      "start": 7.119999885559082,
+      "end": 7.440000057220459
+    },
+    {
+      "word": "directly",
+      "start": 7.440000057220459,
+      "end": 8.020000457763672
+    },
+    {
+      "word": "Offline",
+      "start": 8.880000114440918,
+      "end": 9.119999885559082
+    },
+    {
+      "word": "time",
+      "start": 9.760000228881836,
+      "end": 10.180000305175781
+    },
+    {
+      "word": "for",
+      "start": 10.180000305175781,
+      "end": 10.380000114440918
+    },
+    {
+      "word": "the",
+      "start": 10.380000114440918,
+      "end": 10.600000381469727
+    },
+    {
+      "word": "queue",
+      "start": 10.600000381469727,
+      "end": 10.819999694824219
+    }
+  ]
+}

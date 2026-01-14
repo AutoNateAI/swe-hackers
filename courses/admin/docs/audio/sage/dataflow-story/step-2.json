@@ -1,0 +1,135 @@
+{
+  "storyId": "dataflow-story",
+  "stepId": "step-2",
+  "voice": "sage",
+  "voiceLabel": "Sage (Wise Mentor)",
+  "text": "Service Method Called. The handler calls a service method like ProgressTracker.markComplete or ActivityTracker.submitAnswer. Business logic lives in these services, not in UI code.",
+  "duration": 21,
+  "words": [
+    {
+      "word": "Service",
+      "start": 0,
+      "end": 0.8199999928474426
+    },
+    {
+      "word": "method",
+      "start": 0.8199999928474426,
+      "end": 1.2400000095367432
+    },
+    {
+      "word": "called",
+      "start": 1.2400000095367432,
+      "end": 2.059999942779541
+    },
+    {
+      "word": "The",
+      "start": 2.9000000953674316,
+      "end": 3.059999942779541
+    },
+    {
+      "word": "handler",
+      "start": 3.059999942779541,
+      "end": 3.4800000190734863
+    },
+    {
+      "word": "calls",
+      "start": 3.4800000190734863,
+      "end": 4.119999885559082
+    },
+    {
+      "word": "a",
+      "start": 4.119999885559082,
+      "end": 4.599999904632568
+    },
+    {
+      "word": "service",
+      "start": 4.599999904632568,
+      "end": 5
+    },
+    {
+      "word": "method",
+      "start": 5,
+      "end": 5.440000057220459
+    },
+    {
+      "word": "like",
+      "start": 5.440000057220459,
+      "end": 6.239999771118164
+    },
+    {
+      "word": "progressTracker",
+      "start": 6.239999771118164,
+      "end": 7.380000114440918
+    },
+    {
+      "word": "markComplete",
+      "start": 7.380000114440918,
+      "end": 9.460000038146973
+    },
+    {
+      "word": "or",
+      "start": 9.460000038146973,
+      "end": 10.479999542236328
+    },
+    {
+      "word": "activityTracker",
+      "start": 10.479999542236328,
+      "end": 11.680000305175781
+    },
+    {
+      "word": "submitAnswer",
+      "start": 11.680000305175781,
+      "end": 13.619999885559082
+    },
+    {
+      "word": "Business",
+      "start": 14.680000305175781,
+      "end": 15.180000305175781
+    },
+    {
+      "word": "logic",
+      "start": 15.180000305175781,
+      "end": 15.739999771118164
+    },
+    {
+      "word": "lives",
+      "start": 15.739999771118164,
+      "end": 16.399999618530273
+    },
+    {
+      "word": "in",
+      "start": 16.399999618530273,
+      "end": 17
+    },
+    {
+      "word": "these",
+      "start": 17,
+      "end": 17.780000686645508
+    },
+    {
+      "word": "services",
+      "start": 17.780000686645508,
+      "end": 18.459999084472656
+    },
+    {
+      "word": "not",
+      "start": 19.1200008392334,
+      "end": 19.479999542236328
+    },
+    {
+      "word": "in",
+      "start": 19.479999542236328,
+      "end": 20.1200008392334
+    },
+    {
+      "word": "UI",
+      "start": 20.1200008392334,
+      "end": 20.459999084472656
+    },
+    {
+      "word": "code",
+      "start": 20.459999084472656,
+      "end": 20.799999237060547
+    }
+  ]
+}

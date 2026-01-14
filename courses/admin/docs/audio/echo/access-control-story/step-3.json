@@ -1,0 +1,135 @@
+{
+  "storyId": "access-control-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "hasRole() Check. If authenticated, we check the user's role using hasRole(). Are they admin, enterprise, or standard user? Different roles unlock different resources.",
+  "duration": 11.850000381469727,
+  "words": [
+    {
+      "word": "Has",
+      "start": 0,
+      "end": 0.47999998927116394
+    },
+    {
+      "word": "Role",
+      "start": 0.47999998927116394,
+      "end": 0.6600000262260437
+    },
+    {
+      "word": "check",
+      "start": 0.6600000262260437,
+      "end": 1.159999966621399
+    },
+    {
+      "word": "If",
+      "start": 1.7799999713897705,
+      "end": 1.8600000143051147
+    },
+    {
+      "word": "authenticated",
+      "start": 1.8600000143051147,
+      "end": 2.559999942779541
+    },
+    {
+      "word": "we",
+      "start": 2.9600000381469727,
+      "end": 3.119999885559082
+    },
+    {
+      "word": "check",
+      "start": 3.119999885559082,
+      "end": 3.319999933242798
+    },
+    {
+      "word": "the",
+      "start": 3.319999933242798,
+      "end": 3.5399999618530273
+    },
+    {
+      "word": "user's",
+      "start": 3.5399999618530273,
+      "end": 4.239999771118164
+    },
+    {
+      "word": "role",
+      "start": 4.239999771118164,
+      "end": 4.239999771118164
+    },
+    {
+      "word": "using",
+      "start": 4.239999771118164,
+      "end": 4.639999866485596
+    },
+    {
+      "word": "Has",
+      "start": 4.639999866485596,
+      "end": 5.039999961853027
+    },
+    {
+      "word": "Role",
+      "start": 5.039999961853027,
+      "end": 5.380000114440918
+    },
+    {
+      "word": "Are",
+      "start": 5.960000038146973,
+      "end": 6
+    },
+    {
+      "word": "they",
+      "start": 6,
+      "end": 6.239999771118164
+    },
+    {
+      "word": "admin",
+      "start": 6.239999771118164,
+      "end": 6.619999885559082
+    },
+    {
+      "word": "enterprise",
+      "start": 7.539999961853027,
+      "end": 7.539999961853027
+    },
+    {
+      "word": "or",
+      "start": 7.659999847412109,
+      "end": 8
+    },
+    {
+      "word": "standard",
+      "start": 8,
+      "end": 8.300000190734863
+    },
+    {
+      "word": "user",
+      "start": 8.300000190734863,
+      "end": 8.720000267028809
+    },
+    {
+      "word": "Different",
+      "start": 9.34000015258789,
+      "end": 9.579999923706055
+    },
+    {
+      "word": "roles",
+      "start": 9.579999923706055,
+      "end": 10.039999961853027
+    },
+    {
+      "word": "unlock",
+      "start": 10.039999961853027,
+      "end": 10.539999961853027
+    },
+    {
+      "word": "different",
+      "start": 10.539999961853027,
+      "end": 10.9399995803833
+    },
+    {
+      "word": "resources",
+      "start": 10.9399995803833,
+      "end": 11.399999618530273
+    }
+  ]
+}

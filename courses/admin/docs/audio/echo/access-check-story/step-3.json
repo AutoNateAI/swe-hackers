@@ -1,0 +1,105 @@
+{
+  "storyId": "access-check-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Get Permissions. User is authenticated! Now we load their RBAC data—role, organizations, granted permissions. What can they do?",
+  "duration": 9.8100004196167,
+  "words": [
+    {
+      "word": "Get",
+      "start": 0,
+      "end": 0.30000001192092896
+    },
+    {
+      "word": "permissions",
+      "start": 0.30000001192092896,
+      "end": 0.9200000166893005
+    },
+    {
+      "word": "User",
+      "start": 1.4800000190734863,
+      "end": 1.659999966621399
+    },
+    {
+      "word": "is",
+      "start": 1.659999966621399,
+      "end": 2.0799999237060547
+    },
+    {
+      "word": "authenticated",
+      "start": 2.0799999237060547,
+      "end": 2.740000009536743
+    },
+    {
+      "word": "Now",
+      "start": 3.3399999141693115,
+      "end": 3.440000057220459
+    },
+    {
+      "word": "we",
+      "start": 3.440000057220459,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "load",
+      "start": 3.819999933242798,
+      "end": 4.019999980926514
+    },
+    {
+      "word": "their",
+      "start": 4.019999980926514,
+      "end": 4.360000133514404
+    },
+    {
+      "word": "RBAC",
+      "start": 4.360000133514404,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "data",
+      "start": 4.679999828338623,
+      "end": 5.179999828338623
+    },
+    {
+      "word": "Role",
+      "start": 5.800000190734863,
+      "end": 5.960000038146973
+    },
+    {
+      "word": "Organizations",
+      "start": 6.539999961853027,
+      "end": 7
+    },
+    {
+      "word": "Granted",
+      "start": 7.800000190734863,
+      "end": 7.800000190734863
+    },
+    {
+      "word": "permissions",
+      "start": 7.800000190734863,
+      "end": 8.319999694824219
+    },
+    {
+      "word": "What",
+      "start": 8.920000076293945,
+      "end": 9.020000457763672
+    },
+    {
+      "word": "can",
+      "start": 9.020000457763672,
+      "end": 9.239999771118164
+    },
+    {
+      "word": "they",
+      "start": 9.239999771118164,
+      "end": 9.420000076293945
+    },
+    {
+      "word": "do",
+      "start": 9.420000076293945,
+      "end": 9.640000343322754
+    }
+  ]
+}

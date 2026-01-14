@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Story Definition Schema",
+  "description": "Schema for storytelling diagram stories used to generate audio narration",
+  "type": "object",
+  "required": ["pageId", "stories"],
+  "properties": {
+    "pageId": {
+      "type": "string",
+      "description": "Unique identifier for the page (e.g., '00-overview', 'service-layer')"
+    },
+    "stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "diagramId", "title", "steps"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique story identifier used in audio file paths (e.g., 'service-story')"
+          },
+          "diagramId": {
+            "type": "string",
+            "description": "ID of the Cytoscape diagram container element"
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable story title"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["icon", "title", "narration"],
+              "properties": {
+                "nodeId": {
+                  "type": "string",
+                  "description": "ID of the node to highlight in this step"
+                },
+                "edges": {
+                  "type": "array",
+                  "description": "Edges to animate in this step",
+                  "items": {
+                    "type": "object",
+                    "required": ["from", "to"],
+                    "properties": {
+                      "from": { "type": "string" },
+                      "to": { "type": "string" }
+                    }
+                  }
+                },
+                "icon": {
+                  "type": "string",
+                  "description": "Emoji icon for this step"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Step title displayed in caption"
+                },
+                "narration": {
+                  "type": "string",
+                  "description": "Text to be narrated (used for audio generation)"
+                },
+                "connectsTo": {
+                  "type": ["string", "null"],
+                  "description": "Optional label showing what this step connects to"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quizzes": {
+      "type": "array",
+      "description": "Quiz questions associated with stories",
+      "items": {
+        "type": "object",
+        "required": ["storyId", "questions"],
+        "properties": {
+          "storyId": {
+            "type": "string",
+            "description": "ID of the story this quiz is for"
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["question", "options", "correct", "explanation"],
+              "properties": {
+                "question": {
+                  "type": "string"
+                },
+                "options": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "minItems": 2
+                },
+                "correct": {
+                  "type": "integer",
+                  "description": "Zero-based index of the correct option"
+                },
+                "explanation": {
+                  "type": "string",
+                  "description": "Explanation shown after answering"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

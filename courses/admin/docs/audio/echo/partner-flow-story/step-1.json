@@ -1,0 +1,95 @@
+{
+  "storyId": "partner-flow-story",
+  "stepId": "step-1",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Auth Check Gate. First gate—authentication. Is the user logged in? If not, we redirect to login.",
+  "duration": 7.960000038146973,
+  "words": [
+    {
+      "word": "Auth",
+      "start": 0,
+      "end": 0.47999998927116394
+    },
+    {
+      "word": "check",
+      "start": 0.47999998927116394,
+      "end": 0.7400000095367432
+    },
+    {
+      "word": "gate",
+      "start": 0.7400000095367432,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "first",
+      "start": 1.559999942779541,
+      "end": 1.8799999952316284
+    },
+    {
+      "word": "gate",
+      "start": 1.8799999952316284,
+      "end": 2.200000047683716
+    },
+    {
+      "word": "authentication",
+      "start": 2.819999933242798,
+      "end": 3.1600000858306885
+    },
+    {
+      "word": "Is",
+      "start": 3.759999990463257,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "the",
+      "start": 3.759999990463257,
+      "end": 3.9800000190734863
+    },
+    {
+      "word": "user",
+      "start": 3.9800000190734863,
+      "end": 4.300000190734863
+    },
+    {
+      "word": "logged",
+      "start": 4.300000190734863,
+      "end": 4.699999809265137
+    },
+    {
+      "word": "in",
+      "start": 4.699999809265137,
+      "end": 5.019999980926514
+    },
+    {
+      "word": "If",
+      "start": 5.360000133514404,
+      "end": 5.519999980926514
+    },
+    {
+      "word": "not",
+      "start": 5.519999980926514,
+      "end": 5.860000133514404
+    },
+    {
+      "word": "we",
+      "start": 6.21999979019165,
+      "end": 6.460000038146973
+    },
+    {
+      "word": "redirect",
+      "start": 6.460000038146973,
+      "end": 6.940000057220459
+    },
+    {
+      "word": "to",
+      "start": 6.940000057220459,
+      "end": 7.440000057220459
+    },
+    {
+      "word": "login",
+      "start": 7.440000057220459,
+      "end": 7.760000228881836
+    }
+  ]
+}

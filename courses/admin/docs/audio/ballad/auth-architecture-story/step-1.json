@@ -1,0 +1,95 @@
+{
+  "storyId": "auth-architecture-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "AuthService. AuthService is the gateway. It provides clean methods for login, registration, and logout—wrapping Firebase's complexity.",
+  "duration": 11.949999809265137,
+  "words": [
+    {
+      "word": "AuthService",
+      "start": 0,
+      "end": 0.9599999785423279
+    },
+    {
+      "word": "AuthService",
+      "start": 1.7599999904632568,
+      "end": 2.3399999141693115
+    },
+    {
+      "word": "is",
+      "start": 2.3399999141693115,
+      "end": 2.8399999141693115
+    },
+    {
+      "word": "the",
+      "start": 2.8399999141693115,
+      "end": 3.140000104904175
+    },
+    {
+      "word": "gateway",
+      "start": 3.140000104904175,
+      "end": 3.5
+    },
+    {
+      "word": "It",
+      "start": 4.239999771118164,
+      "end": 4.300000190734863
+    },
+    {
+      "word": "provides",
+      "start": 4.300000190734863,
+      "end": 4.739999771118164
+    },
+    {
+      "word": "clean",
+      "start": 4.739999771118164,
+      "end": 5.320000171661377
+    },
+    {
+      "word": "methods",
+      "start": 5.320000171661377,
+      "end": 5.699999809265137
+    },
+    {
+      "word": "for",
+      "start": 5.699999809265137,
+      "end": 6.139999866485596
+    },
+    {
+      "word": "login",
+      "start": 6.139999866485596,
+      "end": 6.480000019073486
+    },
+    {
+      "word": "registration",
+      "start": 7.460000038146973,
+      "end": 7.5
+    },
+    {
+      "word": "and",
+      "start": 7.5,
+      "end": 8.020000457763672
+    },
+    {
+      "word": "lockout",
+      "start": 8.020000457763672,
+      "end": 8.65999984741211
+    },
+    {
+      "word": "Wrapping",
+      "start": 9.319999694824219,
+      "end": 9.399999618530273
+    },
+    {
+      "word": "Firebase's",
+      "start": 9.399999618530273,
+      "end": 10.5
+    },
+    {
+      "word": "complexity",
+      "start": 10.5,
+      "end": 10.859999656677246
+    }
+  ]
+}

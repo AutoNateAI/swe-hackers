@@ -1,0 +1,100 @@
+{
+  "storyId": "route-guard-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Protected Check. First, isProtectedPage checks the URL. Marketing pages pass through. Dashboard and lessons require authentication.",
+  "duration": 13.319999694824219,
+  "words": [
+    {
+      "word": "Protected",
+      "start": 0,
+      "end": 0.9200000166893005
+    },
+    {
+      "word": "check",
+      "start": 0.9200000166893005,
+      "end": 1.2599999904632568
+    },
+    {
+      "word": "first",
+      "start": 1.2599999904632568,
+      "end": 2.640000104904175
+    },
+    {
+      "word": "Is",
+      "start": 3.200000047683716,
+      "end": 3.259999990463257
+    },
+    {
+      "word": "protected",
+      "start": 3.259999990463257,
+      "end": 3.6600000858306885
+    },
+    {
+      "word": "page",
+      "start": 3.6600000858306885,
+      "end": 4.340000152587891
+    },
+    {
+      "word": "checks",
+      "start": 4.340000152587891,
+      "end": 4.860000133514404
+    },
+    {
+      "word": "the",
+      "start": 4.860000133514404,
+      "end": 5.21999979019165
+    },
+    {
+      "word": "URL",
+      "start": 5.21999979019165,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "Marketing",
+      "start": 6.820000171661377,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "pages",
+      "start": 6.820000171661377,
+      "end": 7.360000133514404
+    },
+    {
+      "word": "pass",
+      "start": 7.360000133514404,
+      "end": 8.079999923706055
+    },
+    {
+      "word": "through",
+      "start": 8.079999923706055,
+      "end": 8.579999923706055
+    },
+    {
+      "word": "Dashboard",
+      "start": 9.4399995803833,
+      "end": 9.859999656677246
+    },
+    {
+      "word": "and",
+      "start": 9.859999656677246,
+      "end": 10.319999694824219
+    },
+    {
+      "word": "lessons",
+      "start": 10.319999694824219,
+      "end": 10.760000228881836
+    },
+    {
+      "word": "require",
+      "start": 10.760000228881836,
+      "end": 11.640000343322754
+    },
+    {
+      "word": "authentication",
+      "start": 11.640000343322754,
+      "end": 12.539999961853027
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "pageId": "01-service-layer",
+  "stories": [
+    {
+      "id": "init-sequence-story",
+      "diagramId": "init-sequence",
+      "title": "Service Initialization",
+      "steps": [
+        {
+          "nodeId": "firebase-config",
+          "icon": "🔥",
+          "title": "FirebaseApp.init()",
+          "narration": "The initialization chain begins! FirebaseApp.init runs first, setting up the Firebase SDK and making the database available to all other services.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "auth-init",
+          "edges": [{ "from": "firebase-config", "to": "auth-init" }],
+          "icon": "🔐",
+          "title": "AuthService.init()",
+          "narration": "Next, AuthService.init sets up the auth state listener. This tracks login status and notifies the app when users sign in or out.",
+          "connectsTo": "FirebaseApp"
+        },
+        {
+          "nodeId": "data-ready",
+          "edges": [{ "from": "auth-init", "to": "data-ready" }],
+          "icon": "💾",
+          "title": "DataService Ready",
+          "narration": "With auth ready, DataService becomes available. It can now query the database using FirebaseApp.getDb() for the authenticated user.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "rbac-ready",
+          "edges": [{ "from": "auth-init", "to": "rbac-ready" }],
+          "icon": "👑",
+          "title": "RBACService Ready",
+          "narration": "RBACService initializes in parallel with DataService. It needs both auth and database access to check user roles and permissions.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "route-guard",
+          "edges": [{ "from": "data-ready", "to": "route-guard" }, { "from": "rbac-ready", "to": "route-guard" }],
+          "icon": "🚧",
+          "title": "RouteGuard.init()",
+          "narration": "RouteGuard waits for both DataService and RBACService. It checks page access permissions and redirects unauthorized users.",
+          "connectsTo": "DataService, RBACService"
+        },
+        {
+          "nodeId": "progress-init",
+          "edges": [{ "from": "route-guard", "to": "progress-init" }],
+          "icon": "📊",
+          "title": "ProgressTracker.init()",
+          "narration": "ProgressTracker.init sets up scroll observation using IntersectionObserver. It tracks which sections the user has viewed.",
+          "connectsTo": "RouteGuard"
+        },
+        {
+          "nodeId": "activity-init",
+          "edges": [{ "from": "route-guard", "to": "activity-init" }],
+          "icon": "✅",
+          "title": "ActivityTracker.init()",
+          "narration": "ActivityTracker.init discovers interactive activities on the page—quizzes, drag-drops, code challenges. Ready to capture user interactions!",
+          "connectsTo": "RouteGuard"
+        }
+      ]
+    },
+    {
+      "id": "auth-service-story",
+      "diagramId": "auth-service-detail",
+      "title": "AuthService Architecture",
+      "steps": [
+        {
+          "nodeId": "auth-service",
+          "icon": "🔐",
+          "title": "AuthService: The Hub",
+          "narration": "AuthService is the authentication hub. It wraps Firebase Auth with a clean, consistent API for the rest of the application to use.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "register",
+          "edges": [{ "from": "auth-service", "to": "register" }],
+          "icon": "📝",
+          "title": "register() Method",
+          "narration": "The register method creates new accounts. It validates input, calls Firebase, updates the profile with display name, and creates the user document.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "login-email",
+          "edges": [{ "from": "auth-service", "to": "login-email" }],
+          "icon": "📧",
+          "title": "loginWithEmail() Method",
+          "narration": "loginWithEmail handles traditional email and password authentication. Users enter their credentials and Firebase validates them securely.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "login-google",
+          "edges": [{ "from": "auth-service", "to": "login-google" }],
+          "icon": "🔵",
+          "title": "loginWithGoogle() Method",
+          "narration": "loginWithGoogle opens the OAuth popup. One click and users are authenticated with their Google account. Fast and secure!",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "logout",
+          "edges": [{ "from": "auth-service", "to": "logout" }],
+          "icon": "🚪",
+          "title": "logout() Method",
+          "narration": "The logout method signs the user out of Firebase and clears all cached authentication state. Clean and simple!",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "current-user",
+          "edges": [{ "from": "auth-service", "to": "current-user" }],
+          "icon": "👤",
+          "title": "currentUser Property",
+          "narration": "The currentUser property caches the authenticated user. Any component can check login status instantly without waiting for Firebase.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "state-changed",
+          "edges": [{ "from": "auth-service", "to": "state-changed" }],
+          "icon": "📡",
+          "title": "onAuthStateChanged()",
+          "narration": "onAuthStateChanged broadcasts login and logout events. Components subscribe to react when authentication status changes.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "firebase-auth",
+          "edges": [{ "from": "register", "to": "firebase-auth" }, { "from": "login-google", "to": "firebase-auth" }],
+          "icon": "🔥",
+          "title": "Firebase Auth Backend",
+          "narration": "Firebase Auth is the backend service that handles all the heavy lifting—password hashing, token generation, OAuth flows, and secure session management.",
+          "connectsTo": "register, loginWithGoogle"
+        },
+        {
+          "nodeId": "user-doc",
+          "edges": [{ "from": "register", "to": "user-doc" }],
+          "icon": "📄",
+          "title": "User Document",
+          "narration": "After registration, a user document is created in Firestore. This stores profile data, roles, and organization membership for the app to use.",
+          "connectsTo": "register"
+        }
+      ]
+    },
+    {
+      "id": "data-service-story",
+      "diagramId": "data-service-detail",
+      "title": "DataService Operations",
+      "steps": [
+        {
+          "nodeId": "data-service",
+          "icon": "💾",
+          "title": "DataService: Central Hub",
+          "narration": "DataService is the central data hub. All Firestore operations flow through here—progress, activities, notes, enrollments, and more.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "progress-ops",
+          "edges": [{ "from": "data-service", "to": "progress-ops" }],
+          "icon": "📊",
+          "title": "Progress Operations",
+          "narration": "Progress ops handle lesson and course completion. saveLessonProgress, getCourseProgress—everything about tracking what users have learned.",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "activity-ops",
+          "edges": [{ "from": "data-service", "to": "activity-ops" }],
+          "icon": "✅",
+          "title": "Activity Operations",
+          "narration": "Activity ops record quiz answers, drag-drop completions, and code challenges. Every attempt is logged for analytics.",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "enrollment-ops",
+          "edges": [{ "from": "data-service", "to": "enrollment-ops" }],
+          "icon": "📋",
+          "title": "Enrollment Operations",
+          "narration": "Enrollment ops manage course registrations. Users enroll in courses, and the system tracks their enrollment status and access dates.",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "course-progress",
+          "edges": [{ "from": "progress-ops", "to": "course-progress" }],
+          "icon": "🗄️",
+          "title": "courseProgress Collection",
+          "narration": "courseProgress stores high-level course completion data. Percentage complete, last accessed timestamp, and overall course status.",
+          "connectsTo": "Progress Ops"
+        },
+        {
+          "nodeId": "lesson-progress",
+          "edges": [{ "from": "progress-ops", "to": "lesson-progress" }],
+          "icon": "📖",
+          "title": "lessonProgress Collection",
+          "narration": "lessonProgress tracks individual lessons. Which sections were viewed, time spent, scroll position, and completion status.",
+          "connectsTo": "Progress Ops"
+        },
+        {
+          "nodeId": "activity-attempts",
+          "edges": [{ "from": "activity-ops", "to": "activity-attempts" }],
+          "icon": "📝",
+          "title": "activityAttempts Collection",
+          "narration": "activityAttempts records every quiz answer and activity interaction. Timestamps, answers, scores—all preserved for learning analytics.",
+          "connectsTo": "Activity Ops"
+        }
+      ]
+    },
+    {
+      "id": "tracking-services-story",
+      "diagramId": "tracking-services",
+      "title": "Tracking Services",
+      "steps": [
+        {
+          "nodeId": "intersection",
+          "icon": "👁️",
+          "title": "IntersectionObserver API",
+          "narration": "The browser's IntersectionObserver API powers scroll tracking. It efficiently detects when sections enter or leave the viewport.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "dom-events",
+          "icon": "🖱️",
+          "title": "DOM Events",
+          "narration": "DOM Events trigger activity tracking. Clicks, changes, and other user interactions fire events that ActivityTracker listens for.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "progress-tracker",
+          "edges": [{ "from": "intersection", "to": "progress-tracker" }],
+          "icon": "📊",
+          "title": "ProgressTracker Service",
+          "narration": "ProgressTracker uses IntersectionObserver to watch sections. When 50 percent of a section is visible, it's marked as viewed.",
+          "connectsTo": "IntersectionObserver"
+        },
+        {
+          "nodeId": "activity-tracker",
+          "edges": [{ "from": "dom-events", "to": "activity-tracker" }],
+          "icon": "✅",
+          "title": "ActivityTracker Service",
+          "narration": "ActivityTracker listens for DOM events—clicks on quiz options, drops in drag zones. Every interaction is captured and scored.",
+          "connectsTo": "DOM Events"
+        },
+        {
+          "nodeId": "viewed-sections",
+          "edges": [{ "from": "progress-tracker", "to": "viewed-sections" }],
+          "icon": "👀",
+          "title": "viewedSections Set",
+          "narration": "viewedSections is a Set that stores which sections have been scrolled to. It prevents duplicate tracking and enables efficient lookups.",
+          "connectsTo": "ProgressTracker"
+        },
+        {
+          "nodeId": "activity-state",
+          "edges": [{ "from": "activity-tracker", "to": "activity-state" }],
+          "icon": "🎯",
+          "title": "completedActivities State",
+          "narration": "completedActivities tracks which activities the user has finished. It stores activity IDs and their completion states in memory.",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "lesson-progress",
+          "edges": [{ "from": "viewed-sections", "to": "lesson-progress" }],
+          "icon": "💾",
+          "title": "lessonProgress Firestore",
+          "narration": "viewedSections data persists to Firestore's lessonProgress collection. Even if you close the browser, your progress is saved!",
+          "connectsTo": "viewedSections"
+        },
+        {
+          "nodeId": "activity-attempts",
+          "edges": [{ "from": "activity-state", "to": "activity-attempts" }],
+          "icon": "📝",
+          "title": "activityAttempts Firestore",
+          "narration": "Activity completion data flows to Firestore's activityAttempts collection. Every quiz answer and interaction is permanently recorded.",
+          "connectsTo": "completedActivities"
+        }
+      ]
+    },
+    {
+      "id": "analytics-pipeline-story",
+      "diagramId": "analytics-pipeline",
+      "title": "Analytics Pipeline",
+      "steps": [
+        {
+          "nodeId": "progress-data",
+          "icon": "📈",
+          "title": "Progress Data Input",
+          "narration": "Analytics starts with raw data—lesson completion records from Firestore. This tells us how much content users have consumed.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "activity-data",
+          "icon": "📊",
+          "title": "Activity Data Input",
+          "narration": "Quiz attempts and scores feed into the pipeline separately. This measures how well users understand the material, not just consumption.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "calc-velocity",
+          "edges": [{ "from": "progress-data", "to": "calc-velocity" }],
+          "icon": "⚡",
+          "title": "calculateVelocity()",
+          "narration": "calculateVelocity computes learning speed. Lessons completed divided by weeks active, scaled to a 0-100 score. Fast learners score high!",
+          "connectsTo": "Progress Data"
+        },
+        {
+          "nodeId": "calc-mastery",
+          "edges": [{ "from": "activity-data", "to": "calc-mastery" }],
+          "icon": "🎯",
+          "title": "calculateMastery()",
+          "narration": "calculateMastery averages quiz scores. Correct answers divided by total attempts gives us a mastery percentage.",
+          "connectsTo": "Activity Data"
+        },
+        {
+          "nodeId": "velocity",
+          "edges": [{ "from": "calc-velocity", "to": "velocity" }],
+          "icon": "🚀",
+          "title": "Learning Velocity Score",
+          "narration": "Learning Velocity is the final speed metric. Lessons per week times 20, capped at 100. It shows how quickly a learner is progressing.",
+          "connectsTo": "calculateVelocity"
+        },
+        {
+          "nodeId": "mastery",
+          "edges": [{ "from": "calc-mastery", "to": "mastery" }],
+          "icon": "🏆",
+          "title": "Quiz Mastery Score",
+          "narration": "Quiz Mastery shows understanding depth. High scores mean the learner truly grasps concepts, not just skimming through content.",
+          "connectsTo": "calculateMastery"
+        },
+        {
+          "nodeId": "calc-cognitive",
+          "edges": [{ "from": "velocity", "to": "calc-cognitive" }, { "from": "mastery", "to": "calc-cognitive" }],
+          "icon": "🧠",
+          "title": "calculateCognitive()",
+          "narration": "calculateCognitive combines all metrics! 40 percent mastery, 30 percent velocity, 20 percent streak, 10 percent completion. The formula for learning excellence!",
+          "connectsTo": "Velocity, Mastery"
+        },
+        {
+          "nodeId": "cognitive",
+          "edges": [{ "from": "calc-cognitive", "to": "cognitive" }],
+          "icon": "💡",
+          "title": "Final Cognitive Score",
+          "narration": "The Cognitive Score is the ultimate learning metric. One number that represents overall learning effectiveness. Higher is better!",
+          "connectsTo": "calculateCognitive"
+        }
+      ]
+    },
+    {
+      "id": "access-control-story",
+      "diagramId": "access-control",
+      "title": "Access Control Flow",
+      "steps": [
+        {
+          "nodeId": "request",
+          "icon": "🚪",
+          "title": "Page Request",
+          "narration": "A user wants to access a protected resource. Maybe a partner course or the admin dashboard. Let's see if they're allowed!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "auth-check",
+          "edges": [{ "from": "request", "to": "auth-check" }],
+          "icon": "🔐",
+          "title": "Authentication Check",
+          "narration": "First checkpoint—is the user signed in? No authentication means redirect to login. Can't proceed without credentials!",
+          "connectsTo": "Page Request"
+        },
+        {
+          "nodeId": "login-redirect",
+          "edges": [{ "from": "auth-check", "to": "login-redirect" }],
+          "icon": "↩️",
+          "title": "Redirect to Login",
+          "narration": "If the user isn't authenticated, they're redirected to the login page. After signing in, they'll return to where they wanted to go.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "role-check",
+          "edges": [{ "from": "auth-check", "to": "role-check" }],
+          "icon": "👑",
+          "title": "hasRole() Check",
+          "narration": "If authenticated, we check the user's role using hasRole(). Are they admin, enterprise, or standard user? Different roles unlock different resources.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "org-check",
+          "edges": [{ "from": "role-check", "to": "org-check" }],
+          "icon": "🏢",
+          "title": "belongsToOrg() Check",
+          "narration": "belongsToOrg() verifies organization membership. For partner courses, users must belong to the sponsoring organization.",
+          "connectsTo": "Role Check"
+        },
+        {
+          "nodeId": "course-check",
+          "edges": [{ "from": "org-check", "to": "course-check" }],
+          "icon": "📚",
+          "title": "canAccessCourse() Check",
+          "narration": "canAccessCourse() is the final gate. It verifies the user has permission to access this specific course content.",
+          "connectsTo": "Org Check"
+        },
+        {
+          "nodeId": "allow",
+          "edges": [{ "from": "course-check", "to": "allow" }],
+          "icon": "✅",
+          "title": "Access Granted!",
+          "narration": "All checks passed! The user can access the content. Page renders, learning begins. The flow is complete!",
+          "connectsTo": "Course Check"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "init-sequence-story",
+      "questions": [
+        {
+          "question": "Which service must initialize first in the chain?",
+          "options": ["AuthService", "DataService", "FirebaseApp", "RouteGuard"],
+          "correct": 2,
+          "explanation": "FirebaseApp.init runs first, setting up the Firebase SDK that all other services depend on."
+        },
+        {
+          "question": "What does RouteGuard do during initialization?",
+          "options": ["Initialize Firebase", "Set up scroll tracking", "Check page access permissions", "Load user data"],
+          "correct": 2,
+          "explanation": "RouteGuard checks page access permissions and redirects unauthorized users."
+        }
+      ]
+    },
+    {
+      "storyId": "analytics-pipeline-story",
+      "questions": [
+        {
+          "question": "What is the largest weight in the Cognitive Score formula?",
+          "options": ["Velocity (30%)", "Mastery (40%)", "Streak (20%)", "Completion (10%)"],
+          "correct": 1,
+          "explanation": "Mastery has the highest weight at 40%, followed by velocity at 30%."
+        },
+        {
+          "question": "How is Learning Velocity calculated?",
+          "options": ["Quiz scores average", "Lessons per week × 20", "Consecutive active days", "Total completion percentage"],
+          "correct": 1,
+          "explanation": "Velocity is lessons completed divided by weeks active, then scaled to 0-100."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "pageId": "03-data-model",
+  "stories": [
+    {
+      "id": "collection-hierarchy-story",
+      "diagramId": "collection-hierarchy",
+      "title": "Collection Hierarchy",
+      "steps": [
+        {
+          "nodeId": "firestore",
+          "icon": "🔥",
+          "title": "Firestore Root",
+          "narration": "Welcome to Firestore—our cloud database! It uses a hierarchical structure with collections, documents, and nested subcollections.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "users-col",
+          "edges": [{ "from": "firestore", "to": "users-col" }],
+          "icon": "👥",
+          "title": "Users Collection",
+          "narration": "The users collection is our main entry point. Every registered user gets a document here, identified by their Firebase Auth UID.",
+          "connectsTo": "Firestore"
+        },
+        {
+          "nodeId": "courses-col",
+          "edges": [{ "from": "firestore", "to": "courses-col" }],
+          "icon": "📚",
+          "title": "Courses Collection",
+          "narration": "The courses collection stores course metadata. This is optional—mainly used for admin features and catalog displays.",
+          "connectsTo": "Firestore"
+        },
+        {
+          "nodeId": "user-doc",
+          "edges": [{ "from": "users-col", "to": "user-doc" }],
+          "icon": "👤",
+          "title": "User Document",
+          "narration": "Each user document stores profile info, role, and organization memberships. But that's just the start—subcollections hold the real data!",
+          "connectsTo": "Users Collection"
+        },
+        {
+          "nodeId": "course-progress",
+          "edges": [{ "from": "user-doc", "to": "course-progress" }],
+          "icon": "📊",
+          "title": "Course Progress",
+          "narration": "The courseProgress subcollection tracks progress per course. Each course the user enrolls in gets its own document here.",
+          "connectsTo": "User Document"
+        },
+        {
+          "nodeId": "daily-challenges",
+          "edges": [{ "from": "user-doc", "to": "daily-challenges" }],
+          "icon": "🏆",
+          "title": "Daily Challenges",
+          "narration": "dailyChallenges tracks completed challenges by date. This powers the streak calculation and daily engagement metrics.",
+          "connectsTo": "User Document"
+        },
+        {
+          "nodeId": "notes",
+          "edges": [{ "from": "user-doc", "to": "notes" }],
+          "icon": "📝",
+          "title": "User Notes",
+          "narration": "The notes subcollection stores user notes per lesson. Personal annotations that persist across sessions.",
+          "connectsTo": "User Document"
+        },
+        {
+          "nodeId": "course-doc",
+          "edges": [{ "from": "course-progress", "to": "course-doc" }],
+          "icon": "🎯",
+          "title": "Course Document",
+          "narration": "Each course progress document contains summary data plus nested subcollections for detailed tracking.",
+          "connectsTo": "Course Progress"
+        },
+        {
+          "nodeId": "lesson-progress",
+          "edges": [{ "from": "course-doc", "to": "lesson-progress" }],
+          "icon": "📖",
+          "title": "Lesson Progress",
+          "narration": "Nested even deeper—lessonProgress tracks individual lessons. Viewed sections, completion status, last visit time. Granular tracking!",
+          "connectsTo": "Course Document"
+        },
+        {
+          "nodeId": "activity-attempts",
+          "edges": [{ "from": "course-doc", "to": "activity-attempts" }],
+          "icon": "✅",
+          "title": "Activity Attempts",
+          "narration": "Every quiz answer, drag-drop completion, and code challenge is recorded in activityAttempts. Complete history of engagement!",
+          "connectsTo": "Course Document"
+        },
+        {
+          "nodeId": "lesson-doc",
+          "edges": [{ "from": "lesson-progress", "to": "lesson-doc" }],
+          "icon": "📄",
+          "title": "Lesson Document",
+          "narration": "Each lesson document stores detailed progress—viewed sections array, timestamps, scroll position, and completion percentage.",
+          "connectsTo": "Lesson Progress"
+        },
+        {
+          "nodeId": "attempt-doc",
+          "edges": [{ "from": "activity-attempts", "to": "attempt-doc" }],
+          "icon": "🎲",
+          "title": "Attempt Document",
+          "narration": "Individual attempt documents record each interaction—timestamp, answer given, whether it was correct, and score earned.",
+          "connectsTo": "Activity Attempts"
+        }
+      ]
+    },
+    {
+      "id": "entity-relations-story",
+      "diagramId": "entity-relations",
+      "title": "Entity Relationships",
+      "steps": [
+        {
+          "nodeId": "user",
+          "icon": "👤",
+          "title": "User Entity",
+          "narration": "The User is at the center of everything. They have progress records, make activity attempts, write notes, and may belong to organizations.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "course",
+          "icon": "📚",
+          "title": "Course Entity",
+          "narration": "Courses contain lessons. Apprentice, Junior, Senior—each course has a hierarchy of chapters and lessons to complete.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "lesson",
+          "edges": [{ "from": "course", "to": "lesson" }],
+          "icon": "📖",
+          "title": "Lesson Entity",
+          "narration": "Lessons are the core learning units. Each lesson contains multiple activities—quizzes, drag-drops, code challenges.",
+          "connectsTo": "Course"
+        },
+        {
+          "nodeId": "activity",
+          "edges": [{ "from": "lesson", "to": "activity" }],
+          "icon": "🎯",
+          "title": "Activity Entity",
+          "narration": "Activities are interactive elements within lessons. Quizzes test knowledge, drag-drops build mental models, code challenges apply skills.",
+          "connectsTo": "Lesson"
+        },
+        {
+          "nodeId": "progress",
+          "edges": [{ "from": "user", "to": "progress" }, { "from": "progress", "to": "course" }, { "from": "progress", "to": "lesson" }],
+          "icon": "📊",
+          "title": "Progress Records",
+          "narration": "Progress connects users to courses and lessons. Each user has many progress records—one for each course and lesson they've touched.",
+          "connectsTo": "User, Course, Lesson"
+        },
+        {
+          "nodeId": "attempt",
+          "edges": [{ "from": "user", "to": "attempt" }, { "from": "attempt", "to": "activity" }],
+          "icon": "✅",
+          "title": "Activity Attempts",
+          "narration": "Users make attempts on activities. A single quiz might have multiple attempts as users retry for better scores.",
+          "connectsTo": "User, Activity"
+        },
+        {
+          "nodeId": "note",
+          "edges": [{ "from": "user", "to": "note" }, { "from": "note", "to": "lesson" }],
+          "icon": "📝",
+          "title": "User Notes",
+          "narration": "Users write notes on lessons. Personal annotations help with review and retention. Notes link users to specific lessons.",
+          "connectsTo": "User, Lesson"
+        },
+        {
+          "nodeId": "organization",
+          "edges": [{ "from": "user", "to": "organization" }, { "from": "organization", "to": "course" }],
+          "icon": "🏢",
+          "title": "Organizations",
+          "narration": "Enterprise users belong to organizations. Organizations sponsor courses and grant access to their members.",
+          "connectsTo": "User, Course"
+        }
+      ]
+    },
+    {
+      "id": "progress-flow-story",
+      "diagramId": "progress-flow",
+      "title": "Progress Save Flow",
+      "steps": [
+        {
+          "nodeId": "scroll",
+          "icon": "📜",
+          "title": "User Scrolls",
+          "narration": "The journey begins with a scroll. The user moves through lesson content, triggering the progress tracking system.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "observer",
+          "edges": [{ "from": "scroll", "to": "observer" }],
+          "icon": "👁️",
+          "title": "Observer Detects",
+          "narration": "IntersectionObserver fires when sections cross visibility thresholds. No expensive scroll listeners—just efficient threshold callbacks!",
+          "connectsTo": "User Scrolls"
+        },
+        {
+          "nodeId": "tracker",
+          "edges": [{ "from": "observer", "to": "tracker" }],
+          "icon": "📊",
+          "title": "ProgressTracker",
+          "narration": "ProgressTracker maintains the viewedSections set. Each visible section gets added, tracking exactly what's been seen.",
+          "connectsTo": "Observer"
+        },
+        {
+          "nodeId": "calc-progress",
+          "edges": [{ "from": "tracker", "to": "calc-progress" }],
+          "icon": "🧮",
+          "title": "Calculate Percentage",
+          "narration": "Progress percentage is calculated. Viewed sections divided by total sections equals completion. Simple math, powerful tracking!",
+          "connectsTo": "ProgressTracker"
+        },
+        {
+          "nodeId": "data-service",
+          "edges": [{ "from": "calc-progress", "to": "data-service" }],
+          "icon": "💾",
+          "title": "DataService Saves",
+          "narration": "DataService receives the progress update and initiates the dual-write pattern. Two writes ensure dashboard optimization!",
+          "connectsTo": "Calculate Progress"
+        },
+        {
+          "nodeId": "subcol",
+          "edges": [{ "from": "data-service", "to": "subcol" }],
+          "icon": "📄",
+          "title": "Subcollection Write",
+          "narration": "First write goes to the lessonProgress subcollection. Detailed data—viewed sections, timestamps, completion status.",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "parent",
+          "edges": [{ "from": "data-service", "to": "parent" }],
+          "icon": "📊",
+          "title": "Parent Field Write",
+          "narration": "Second write updates the parent courseProgress document. The lessons field gives dashboard a quick summary without deep queries!",
+          "connectsTo": "DataService"
+        }
+      ]
+    },
+    {
+      "id": "dashboard-data-story",
+      "diagramId": "dashboard-data",
+      "title": "Dashboard Data Sources",
+      "steps": [
+        {
+          "nodeId": "stats-cards",
+          "icon": "📊",
+          "title": "Stats Cards",
+          "narration": "The dashboard's stats cards show velocity, mastery, and streak. Each metric pulls from different data sources and calculations.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "calc-velocity",
+          "edges": [{ "from": "stats-cards", "to": "calc-velocity" }],
+          "icon": "⚡",
+          "title": "Velocity Calculation",
+          "narration": "Learning Velocity comes from lesson completion records. Lessons completed per week, scaled to a 0-100 score.",
+          "connectsTo": "Stats Cards"
+        },
+        {
+          "nodeId": "calc-mastery",
+          "edges": [{ "from": "stats-cards", "to": "calc-mastery" }],
+          "icon": "🎯",
+          "title": "Mastery Calculation",
+          "narration": "Quiz Mastery averages scores from activityAttempts. Higher correct rates mean higher mastery percentages.",
+          "connectsTo": "Stats Cards"
+        },
+        {
+          "nodeId": "calc-streak",
+          "edges": [{ "from": "stats-cards", "to": "calc-streak" }],
+          "icon": "🔥",
+          "title": "Streak Calculation",
+          "narration": "Streak counts consecutive active days. Data comes from dailyChallenges and user document's lastActive timestamp.",
+          "connectsTo": "Stats Cards"
+        },
+        {
+          "nodeId": "lesson-col",
+          "edges": [{ "from": "calc-velocity", "to": "lesson-col" }],
+          "icon": "📖",
+          "title": "Lesson Progress Data",
+          "narration": "Velocity reads from lessonProgress collection. Completion timestamps let us calculate lessons per week.",
+          "connectsTo": "Velocity"
+        },
+        {
+          "nodeId": "activity-col",
+          "edges": [{ "from": "calc-mastery", "to": "activity-col" }],
+          "icon": "✅",
+          "title": "Activity Attempts Data",
+          "narration": "Mastery reads from activityAttempts. Each attempt's score contributes to the average.",
+          "connectsTo": "Mastery"
+        },
+        {
+          "nodeId": "challenge-col",
+          "edges": [{ "from": "calc-streak", "to": "challenge-col" }],
+          "icon": "🏆",
+          "title": "Daily Challenges Data",
+          "narration": "Streak calculation uses dailyChallenges. Each dated document proves that day's activity.",
+          "connectsTo": "Streak"
+        },
+        {
+          "nodeId": "course-grid",
+          "icon": "📚",
+          "title": "Course Grid",
+          "narration": "The course grid shows enrolled courses with progress bars. Data flows from courseProgress documents.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "calc-progress",
+          "edges": [{ "from": "course-grid", "to": "calc-progress" }],
+          "icon": "📈",
+          "title": "Progress Calculation",
+          "narration": "Course progress percentages come from the lessons summary field. Quick reads, no deep queries needed.",
+          "connectsTo": "Course Grid"
+        },
+        {
+          "nodeId": "progress-col",
+          "edges": [{ "from": "calc-progress", "to": "progress-col" }],
+          "icon": "🗄️",
+          "title": "Course Progress Data",
+          "narration": "The courseProgress collection provides course-level summaries. Each enrolled course has a document here.",
+          "connectsTo": "Progress Calculation"
+        },
+        {
+          "nodeId": "activity-feed",
+          "edges": [{ "from": "activity-feed", "to": "activity-col" }],
+          "icon": "📰",
+          "title": "Activity Feed",
+          "narration": "The activity feed shows recent actions. Recent quiz attempts, lesson completions, and achievements.",
+          "connectsTo": "Activity Attempts"
+        },
+        {
+          "nodeId": "profile-bar",
+          "icon": "👤",
+          "title": "Profile Bar",
+          "narration": "The profile bar displays user name and photo. Simple read from the user document.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "user-doc",
+          "edges": [{ "from": "profile-bar", "to": "user-doc" }, { "from": "calc-streak", "to": "user-doc" }],
+          "icon": "📋",
+          "title": "User Document",
+          "narration": "The user document provides profile data and lastActive timestamp. Foundation for personalization!",
+          "connectsTo": "Profile Bar, Streak"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "collection-hierarchy-story",
+      "questions": [
+        {
+          "question": "What identifies a user document in Firestore?",
+          "options": ["Email address", "Username", "Firebase Auth UID", "Auto-generated ID"],
+          "correct": 2,
+          "explanation": "User documents are identified by their Firebase Auth UID, creating a 1:1 mapping with auth accounts."
+        },
+        {
+          "question": "Where is detailed lesson progress stored?",
+          "options": ["users/{uid}", "courseProgress/{courseId}", "lessonProgress subcollection", "activities collection"],
+          "correct": 2,
+          "explanation": "Detailed lesson progress is stored in the lessonProgress subcollection under each course document."
+        }
+      ]
+    },
+    {
+      "storyId": "progress-flow-story",
+      "questions": [
+        {
+          "question": "What is the 'dual-write pattern' in progress saving?",
+          "options": ["Writing to two databases", "Writing to subcollection AND parent field", "Writing locally and remotely", "Writing twice for redundancy"],
+          "correct": 1,
+          "explanation": "Progress is written to both the lessonProgress subcollection (detailed) and the parent document's lessons field (summary for dashboard)."
+        },
+        {
+          "question": "Why is the dual-write pattern used?",
+          "options": ["Backup purposes", "Dashboard can read summary without deep queries", "Required by Firestore", "Better security"],
+          "correct": 1,
+          "explanation": "The parent field gives dashboard a quick summary without needing to query deep subcollections."
+        }
+      ]
+    }
+  ]
+}

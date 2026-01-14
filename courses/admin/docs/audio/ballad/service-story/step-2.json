@@ -1,0 +1,135 @@
+{
+  "storyId": "service-story",
+  "stepId": "step-2",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Data Access Layer. DataService handles all Firestore CRUD operations. It needs FirebaseApp for database access AND AuthService to scope queries to the current user.",
+  "duration": 14.65999984741211,
+  "words": [
+    {
+      "word": "Data",
+      "start": 0,
+      "end": 0.5400000214576721
+    },
+    {
+      "word": "access",
+      "start": 0.5400000214576721,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "layer",
+      "start": 1.0399999618530273,
+      "end": 1.4199999570846558
+    },
+    {
+      "word": "DataService",
+      "start": 2.440000057220459,
+      "end": 2.819999933242798
+    },
+    {
+      "word": "handles",
+      "start": 2.819999933242798,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "all",
+      "start": 3.380000114440918,
+      "end": 3.9000000953674316
+    },
+    {
+      "word": "Firestore",
+      "start": 3.9000000953674316,
+      "end": 4.539999961853027
+    },
+    {
+      "word": "CRUD",
+      "start": 4.539999961853027,
+      "end": 5.019999980926514
+    },
+    {
+      "word": "operations",
+      "start": 5.019999980926514,
+      "end": 5.840000152587891
+    },
+    {
+      "word": "It",
+      "start": 6.460000038146973,
+      "end": 6.579999923706055
+    },
+    {
+      "word": "needs",
+      "start": 6.579999923706055,
+      "end": 6.980000019073486
+    },
+    {
+      "word": "Firebase",
+      "start": 6.980000019073486,
+      "end": 7.920000076293945
+    },
+    {
+      "word": "app",
+      "start": 7.920000076293945,
+      "end": 8.34000015258789
+    },
+    {
+      "word": "for",
+      "start": 8.34000015258789,
+      "end": 8.819999694824219
+    },
+    {
+      "word": "database",
+      "start": 8.819999694824219,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "access",
+      "start": 9.279999732971191,
+      "end": 9.859999656677246
+    },
+    {
+      "word": "and",
+      "start": 9.859999656677246,
+      "end": 10.899999618530273
+    },
+    {
+      "word": "AuthService",
+      "start": 10.899999618530273,
+      "end": 11.619999885559082
+    },
+    {
+      "word": "to",
+      "start": 11.619999885559082,
+      "end": 12.34000015258789
+    },
+    {
+      "word": "scope",
+      "start": 12.34000015258789,
+      "end": 12.680000305175781
+    },
+    {
+      "word": "queries",
+      "start": 12.680000305175781,
+      "end": 13.100000381469727
+    },
+    {
+      "word": "to",
+      "start": 13.100000381469727,
+      "end": 13.479999542236328
+    },
+    {
+      "word": "the",
+      "start": 13.479999542236328,
+      "end": 13.779999732971191
+    },
+    {
+      "word": "current",
+      "start": 13.779999732971191,
+      "end": 14
+    },
+    {
+      "word": "user",
+      "start": 14,
+      "end": 14.399999618530273
+    }
+  ]
+}

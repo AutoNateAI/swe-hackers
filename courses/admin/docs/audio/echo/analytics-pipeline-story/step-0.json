@@ -1,0 +1,120 @@
+{
+  "storyId": "analytics-pipeline-story",
+  "stepId": "step-0",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Progress Data Input. Analytics starts with raw data—lesson completion records from Firestore. This tells us how much content users have consumed.",
+  "duration": 10.920000076293945,
+  "words": [
+    {
+      "word": "Progress",
+      "start": 0,
+      "end": 0.5600000023841858
+    },
+    {
+      "word": "Data",
+      "start": 0.5600000023841858,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "Input",
+      "start": 1.0399999618530273,
+      "end": 1.5399999618530273
+    },
+    {
+      "word": "Analytics",
+      "start": 1.6799999475479126,
+      "end": 2.5399999618530273
+    },
+    {
+      "word": "starts",
+      "start": 2.5399999618530273,
+      "end": 2.9800000190734863
+    },
+    {
+      "word": "with",
+      "start": 2.9800000190734863,
+      "end": 3.359999895095825
+    },
+    {
+      "word": "raw",
+      "start": 3.359999895095825,
+      "end": 3.640000104904175
+    },
+    {
+      "word": "data",
+      "start": 3.640000104904175,
+      "end": 4
+    },
+    {
+      "word": "Lesson",
+      "start": 4.639999866485596,
+      "end": 4.940000057220459
+    },
+    {
+      "word": "completion",
+      "start": 4.940000057220459,
+      "end": 5.360000133514404
+    },
+    {
+      "word": "records",
+      "start": 5.360000133514404,
+      "end": 5.71999979019165
+    },
+    {
+      "word": "from",
+      "start": 5.71999979019165,
+      "end": 6.059999942779541
+    },
+    {
+      "word": "Firestore",
+      "start": 6.059999942779541,
+      "end": 6.699999809265137
+    },
+    {
+      "word": "This",
+      "start": 7.480000019073486,
+      "end": 7.480000019073486
+    },
+    {
+      "word": "tells",
+      "start": 7.480000019073486,
+      "end": 7.760000228881836
+    },
+    {
+      "word": "us",
+      "start": 7.760000228881836,
+      "end": 8.039999961853027
+    },
+    {
+      "word": "how",
+      "start": 8.039999961853027,
+      "end": 8.539999961853027
+    },
+    {
+      "word": "much",
+      "start": 8.539999961853027,
+      "end": 8.859999656677246
+    },
+    {
+      "word": "content",
+      "start": 8.859999656677246,
+      "end": 9.359999656677246
+    },
+    {
+      "word": "users",
+      "start": 9.359999656677246,
+      "end": 9.84000015258789
+    },
+    {
+      "word": "have",
+      "start": 9.84000015258789,
+      "end": 10.180000305175781
+    },
+    {
+      "word": "consumed",
+      "start": 10.180000305175781,
+      "end": 10.680000305175781
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "storyId": "lesson-architecture-story",
+  "stepId": "step-2",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "ProgressTracker Service. ProgressTracker uses IntersectionObserver for efficient scroll detection. When 50 percent of a section is visible, it counts as viewed.",
+  "duration": 12.640000343322754,
+  "words": [
+    {
+      "word": "Progress",
+      "start": 0,
+      "end": 0.6200000047683716
+    },
+    {
+      "word": "Tracker",
+      "start": 0.6200000047683716,
+      "end": 0.8399999737739563
+    },
+    {
+      "word": "Service",
+      "start": 0.8399999737739563,
+      "end": 1.5199999809265137
+    },
+    {
+      "word": "Progress",
+      "start": 2.6600000858306885,
+      "end": 2.6600000858306885
+    },
+    {
+      "word": "Tracker",
+      "start": 2.6600000858306885,
+      "end": 2.880000114440918
+    },
+    {
+      "word": "uses",
+      "start": 2.880000114440918,
+      "end": 3.359999895095825
+    },
+    {
+      "word": "Intersection",
+      "start": 3.359999895095825,
+      "end": 4.099999904632568
+    },
+    {
+      "word": "Observer",
+      "start": 4.099999904632568,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "for",
+      "start": 4.460000038146973,
+      "end": 5.039999961853027
+    },
+    {
+      "word": "efficient",
+      "start": 5.039999961853027,
+      "end": 5.71999979019165
+    },
+    {
+      "word": "scroll",
+      "start": 5.71999979019165,
+      "end": 6.079999923706055
+    },
+    {
+      "word": "detection",
+      "start": 6.079999923706055,
+      "end": 6.559999942779541
+    },
+    {
+      "word": "When",
+      "start": 7.619999885559082,
+      "end": 7.760000228881836
+    },
+    {
+      "word": "50",
+      "start": 7.760000228881836,
+      "end": 8.300000190734863
+    },
+    {
+      "word": "",
+      "start": 8.300000190734863,
+      "end": 8.640000343322754
+    },
+    {
+      "word": "of",
+      "start": 8.640000343322754,
+      "end": 8.859999656677246
+    },
+    {
+      "word": "a",
+      "start": 8.859999656677246,
+      "end": 9.15999984741211
+    },
+    {
+      "word": "section",
+      "start": 9.15999984741211,
+      "end": 9.15999984741211
+    },
+    {
+      "word": "is",
+      "start": 9.15999984741211,
+      "end": 9.4399995803833
+    },
+    {
+      "word": "visible",
+      "start": 9.4399995803833,
+      "end": 9.760000228881836
+    },
+    {
+      "word": "it",
+      "start": 10.239999771118164,
+      "end": 10.420000076293945
+    },
+    {
+      "word": "counts",
+      "start": 10.420000076293945,
+      "end": 10.800000190734863
+    },
+    {
+      "word": "as",
+      "start": 10.800000190734863,
+      "end": 11.399999618530273
+    },
+    {
+      "word": "viewed",
+      "start": 11.399999618530273,
+      "end": 11.699999809265137
+    }
+  ]
+}

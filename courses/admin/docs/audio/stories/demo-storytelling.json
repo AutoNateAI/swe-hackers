@@ -1,0 +1,220 @@
+{
+  "pageId": "demo-storytelling",
+  "stories": [
+    {
+      "id": "service-story",
+      "diagramId": "service-story",
+      "title": "Service Dependencies",
+      "steps": [
+        {
+          "nodeId": "firebase-config",
+          "icon": "🔥",
+          "title": "Foundation: Firebase Config",
+          "narration": "Everything starts here. FirebaseApp initializes the Firebase SDK, establishing connections to Authentication and Firestore. This is loaded first on every page.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "auth-service",
+          "edges": [{ "from": "auth-service", "to": "firebase-config" }],
+          "icon": "🔐",
+          "title": "Authentication Layer",
+          "narration": "AuthService wraps Firebase Auth, managing user sessions, login flows, and auth state changes. It depends on FirebaseApp for the auth instance.",
+          "connectsTo": "FirebaseApp"
+        },
+        {
+          "nodeId": "data-service",
+          "edges": [
+            { "from": "data-service", "to": "firebase-config" },
+            { "from": "data-service", "to": "auth-service" }
+          ],
+          "icon": "💾",
+          "title": "Data Access Layer",
+          "narration": "DataService handles all Firestore CRUD operations. It needs FirebaseApp for database access AND AuthService to scope queries to the current user.",
+          "connectsTo": "FirebaseApp, AuthService"
+        },
+        {
+          "nodeId": "rbac",
+          "edges": [{ "from": "rbac", "to": "auth-service" }],
+          "icon": "🛡️",
+          "title": "Role-Based Access Control",
+          "narration": "RBACService checks user roles and permissions. It queries AuthService to get the current user, then checks their role against required permissions.",
+          "connectsTo": "AuthService"
+        },
+        {
+          "nodeId": "progress-tracker",
+          "edges": [
+            { "from": "progress-tracker", "to": "data-service" },
+            { "from": "progress-tracker", "to": "auth-service" }
+          ],
+          "icon": "📊",
+          "title": "Progress Tracking",
+          "narration": "ProgressTracker uses IntersectionObserver to detect which content users have viewed. It saves progress via DataService and identifies users via AuthService.",
+          "connectsTo": "DataService, AuthService"
+        },
+        {
+          "nodeId": "activity-tracker",
+          "edges": [
+            { "from": "activity-tracker", "to": "data-service" },
+            { "from": "activity-tracker", "to": "auth-service" }
+          ],
+          "icon": "✅",
+          "title": "Activity Completion",
+          "narration": "ActivityTracker records quiz answers and exercise completions. Like ProgressTracker, it writes to Firestore via DataService for authenticated users.",
+          "connectsTo": "DataService, AuthService"
+        },
+        {
+          "nodeId": "route-guard",
+          "edges": [
+            { "from": "route-guard", "to": "auth-service" },
+            { "from": "route-guard", "to": "rbac" }
+          ],
+          "icon": "🚧",
+          "title": "Route Protection",
+          "narration": "RouteGuard runs on page load to check if users can access the current page. It verifies authentication status AND role requirements before showing content.",
+          "connectsTo": "AuthService, RBACService"
+        },
+        {
+          "nodeId": "lesson-integration",
+          "edges": [
+            { "from": "lesson-integration", "to": "progress-tracker" },
+            { "from": "lesson-integration", "to": "activity-tracker" }
+          ],
+          "icon": "📚",
+          "title": "Lesson Orchestration",
+          "narration": "Finally, LessonIntegration ties it all together on lesson pages. It coordinates ProgressTracker and ActivityTracker to create a seamless learning experience.",
+          "connectsTo": "ProgressTracker, ActivityTracker"
+        }
+      ]
+    },
+    {
+      "id": "dataflow-story",
+      "diagramId": "dataflow-story",
+      "title": "Data Flow Journey",
+      "steps": [
+        {
+          "nodeId": "user-click",
+          "icon": "👆",
+          "title": "User Initiates Action",
+          "narration": "It all starts with a user interaction—clicking a Complete Quiz button, scrolling past a section, or submitting a form. The browser captures this event.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "event-handler",
+          "edges": [{ "from": "user-click", "to": "event-handler" }],
+          "icon": "📡",
+          "title": "Event Handler Catches It",
+          "narration": "The DOM event handler fires. This is JavaScript code in the page that responds to user actions and decides what to do next.",
+          "connectsTo": "User Click"
+        },
+        {
+          "nodeId": "service-call",
+          "edges": [{ "from": "event-handler", "to": "service-call" }],
+          "icon": "⚙️",
+          "title": "Service Method Called",
+          "narration": "The handler calls a service method like ProgressTracker.markComplete or ActivityTracker.submitAnswer. Business logic lives in these services, not in UI code.",
+          "connectsTo": "Event Handler"
+        },
+        {
+          "nodeId": "auth-check",
+          "edges": [{ "from": "service-call", "to": "auth-check" }],
+          "icon": "🔐",
+          "title": "Authentication Verified",
+          "narration": "Before writing data, the service checks AuthService.getCurrentUser. If no user is logged in, the action may be queued or rejected.",
+          "connectsTo": "Service Method"
+        },
+        {
+          "nodeId": "firestore-write",
+          "edges": [{ "from": "auth-check", "to": "firestore-write" }],
+          "icon": "💾",
+          "title": "Data Written to Firestore",
+          "narration": "The service calls Firestore to persist the data. This might be updating a progress document, saving quiz answers, or logging activity.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "realtime-update",
+          "edges": [{ "from": "firestore-write", "to": "realtime-update" }],
+          "icon": "🔄",
+          "title": "Realtime Listener Triggers",
+          "narration": "Firestores onSnapshot listeners detect the change instantly. Any component subscribed to this data gets notified automatically.",
+          "connectsTo": "Firestore Write"
+        },
+        {
+          "nodeId": "state-update",
+          "edges": [{ "from": "realtime-update", "to": "state-update" }],
+          "icon": "📦",
+          "title": "Local State Updates",
+          "narration": "The listener callback updates the local state. This keeps the UI in sync with the database.",
+          "connectsTo": "Realtime Listener"
+        },
+        {
+          "nodeId": "ui-render",
+          "edges": [{ "from": "state-update", "to": "ui-render" }],
+          "icon": "🎨",
+          "title": "UI Reflects the Change",
+          "narration": "Finally, the UI re-renders to show the new state. A progress bar fills, a checkmark appears, or a success toast shows. The cycle is complete!",
+          "connectsTo": "State Update"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "service-story",
+      "questions": [
+        {
+          "question": "What is the foundational service that all other services depend on?",
+          "options": ["AuthService", "DataService", "FirebaseApp", "RBACService"],
+          "correct": 2,
+          "explanation": "FirebaseApp initializes the Firebase SDK and is loaded first on every page."
+        },
+        {
+          "question": "Which service wraps Firebase Auth for managing user sessions?",
+          "options": ["RBACService", "AuthService", "DataService", "RouteGuard"],
+          "correct": 1,
+          "explanation": "AuthService wraps Firebase Auth, managing user sessions, login flows, and auth state changes."
+        },
+        {
+          "question": "What does DataService need to scope queries to the current user?",
+          "options": ["Only FirebaseApp", "Only AuthService", "Both FirebaseApp and AuthService", "Neither"],
+          "correct": 2,
+          "explanation": "DataService needs FirebaseApp for database access AND AuthService to scope queries to the current user."
+        },
+        {
+          "question": "Which component orchestrates ProgressTracker and ActivityTracker on lesson pages?",
+          "options": ["RouteGuard", "RBACService", "DataService", "LessonIntegration"],
+          "correct": 3,
+          "explanation": "LessonIntegration ties everything together on lesson pages, coordinating ProgressTracker and ActivityTracker."
+        }
+      ]
+    },
+    {
+      "storyId": "dataflow-story",
+      "questions": [
+        {
+          "question": "What captures the initial user interaction (click, scroll, form submission)?",
+          "options": ["Service Method", "The Browser", "Firestore", "AuthService"],
+          "correct": 1,
+          "explanation": "The browser captures user interactions like clicking buttons, scrolling, or submitting forms."
+        },
+        {
+          "question": "Where does business logic live, according to the data flow pattern?",
+          "options": ["UI code", "Event handlers", "Service methods", "Firestore"],
+          "correct": 2,
+          "explanation": "Business logic lives in service methods like ProgressTracker.markComplete, not in UI code."
+        },
+        {
+          "question": "What happens if no user is logged in when the service checks authentication?",
+          "options": ["The action proceeds anyway", "The page crashes", "The action may be queued or rejected", "Firestore handles it"],
+          "correct": 2,
+          "explanation": "If no user is logged in, the action may be queued or rejected by the service."
+        },
+        {
+          "question": "How do components get notified of database changes instantly?",
+          "options": ["Polling every second", "Page refresh", "Firestore onSnapshot listeners", "Manual subscription"],
+          "correct": 2,
+          "explanation": "Firestore's onSnapshot listeners detect changes instantly and notify subscribed components automatically."
+        }
+      ]
+    }
+  ]
+}

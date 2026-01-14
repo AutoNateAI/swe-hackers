@@ -1,0 +1,279 @@
+{
+  "pageId": "ch0-origins",
+  "courseId": "apprentice",
+  "chapterMeta": {
+    "title": "The Origins",
+    "icon": "🏛️",
+    "themeColor": "origins"
+  },
+  "stories": [
+    {
+      "id": "three-forces-story",
+      "diagramId": "three-forces",
+      "title": "The Three Ancient Forces",
+      "steps": [
+        {
+          "nodeId": "ancient-problem",
+          "icon": "🤔",
+          "title": "The Ancient Problem",
+          "narration": "Long before computers existed, humans faced a simple challenge: How do we calculate things faster? From counting sheep to tracking stars, we needed tools to extend our minds.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "stone-silicon",
+          "edges": [{ "from": "ancient-problem", "to": "stone-silicon" }],
+          "icon": "🪨",
+          "title": "Stone: The Foundation",
+          "narration": "The first computers were made of stone—the abacus! Today, we still use stone. Silicon, refined from sand and rock, forms the foundation of every computer chip in existence.",
+          "connectsTo": "Ancient Problem"
+        },
+        {
+          "nodeId": "lightning-electricity",
+          "edges": [{ "from": "ancient-problem", "to": "lightning-electricity" }],
+          "icon": "⚡",
+          "title": "Lightning: The Power",
+          "narration": "From Benjamin Franklin's kite to modern power grids, we learned to harness electricity. This same lightning-force now flows through every circuit, bringing machines to life.",
+          "connectsTo": "Ancient Problem"
+        },
+        {
+          "nodeId": "magnetism-memory",
+          "edges": [{ "from": "ancient-problem", "to": "magnetism-memory" }],
+          "icon": "🧲",
+          "title": "Magnetism: The Memory",
+          "narration": "Magnets have a superpower—they remember which way they're pointing! North or south, on or off. This simple property became the foundation of all digital storage.",
+          "connectsTo": "Ancient Problem"
+        },
+        {
+          "nodeId": "transistor",
+          "edges": [
+            { "from": "stone-silicon", "to": "transistor" },
+            { "from": "lightning-electricity", "to": "transistor" }
+          ],
+          "icon": "🔬",
+          "title": "The Transistor Revolution",
+          "narration": "In 1947, scientists combined silicon and electricity to create the transistor—a tiny switch smaller than a grain of sand. It turns on and off billions of times per second!",
+          "connectsTo": "Stone + Lightning"
+        },
+        {
+          "nodeId": "modern-computing",
+          "edges": [
+            { "from": "transistor", "to": "modern-computing" },
+            { "from": "magnetism-memory", "to": "modern-computing" }
+          ],
+          "icon": "📱",
+          "title": "Modern Computing",
+          "narration": "Today, your phone has 15 billion transistors, each smaller than a virus. The three ancient forces—stone, lightning, and magnetism—work together in your pocket!",
+          "connectsTo": "All Three Forces"
+        }
+      ]
+    },
+    {
+      "id": "binary-story",
+      "diagramId": "binary",
+      "title": "The Language of Machines",
+      "steps": [
+        {
+          "nodeId": "switch",
+          "icon": "💡",
+          "title": "The Humble Switch",
+          "narration": "A transistor is just a tiny switch. It can be ON or OFF. That's it! But here's the magic—with enough switches working together, we can represent anything.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "binary-intro",
+          "edges": [{ "from": "switch", "to": "binary-intro" }],
+          "icon": "0️⃣",
+          "title": "Binary: Zeros and Ones",
+          "narration": "We call ON a 'one' and OFF a 'zero'. This two-symbol system is called binary. It's the only language computers truly understand.",
+          "connectsTo": "Switch"
+        },
+        {
+          "nodeId": "positions",
+          "edges": [{ "from": "binary-intro", "to": "positions" }],
+          "icon": "📊",
+          "title": "Position Matters",
+          "narration": "In binary, each position represents a power of two. From right to left: 1, 2, 4, 8, 16, and so on. The position of each 1 determines its value!",
+          "connectsTo": "Binary"
+        },
+        {
+          "nodeId": "conversion",
+          "edges": [{ "from": "positions", "to": "conversion" }],
+          "icon": "🔄",
+          "title": "Converting Binary",
+          "narration": "To convert binary to decimal, just add up the positions with 1s. For example, 1010 means 8 plus 0 plus 2 plus 0, which equals 10!",
+          "connectsTo": "Positions"
+        },
+        {
+          "nodeId": "everything-binary",
+          "edges": [{ "from": "conversion", "to": "everything-binary" }],
+          "icon": "🌐",
+          "title": "Everything is Binary",
+          "narration": "Text, images, music, videos—everything on your computer is stored as patterns of ones and zeros. This lesson you're reading right now? Just a very long binary number!",
+          "connectsTo": "Conversion"
+        }
+      ]
+    },
+    {
+      "id": "navigation-story",
+      "diagramId": "navigation",
+      "title": "Navigating Your Computer",
+      "steps": [
+        {
+          "nodeId": "library",
+          "icon": "📚",
+          "title": "The Library Analogy",
+          "narration": "Imagine a library with millions of books but no organization—just books scattered everywhere. Finding anything would be impossible! Computers face the same challenge.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "folders",
+          "edges": [{ "from": "library", "to": "folders" }],
+          "icon": "📁",
+          "title": "Folders Organize Everything",
+          "narration": "The solution? Folders! Just like a filing cabinet, computers organize files into folders. Folders can contain other folders, creating a tree-like structure.",
+          "connectsTo": "Library"
+        },
+        {
+          "nodeId": "paths",
+          "edges": [{ "from": "folders", "to": "paths" }],
+          "icon": "🛤️",
+          "title": "Paths: File Addresses",
+          "narration": "Every file has an address called a path. Like slash Users slash YourName slash Projects slash hello.py. It tells the computer exactly where to find your file.",
+          "connectsTo": "Folders"
+        },
+        {
+          "nodeId": "terminal",
+          "edges": [{ "from": "paths", "to": "terminal" }],
+          "icon": "🖥️",
+          "title": "The Terminal",
+          "narration": "Before pretty icons, there was only the terminal—a text-based interface where you type commands directly to the computer. Every developer uses it daily!",
+          "connectsTo": "Paths"
+        },
+        {
+          "nodeId": "commands",
+          "edges": [{ "from": "terminal", "to": "commands" }],
+          "icon": "⌨️",
+          "title": "Essential Commands",
+          "narration": "With just a few commands, you can navigate anywhere! 'pwd' shows where you are, 'ls' lists what's here, and 'cd' moves you to a new folder. You're in control!",
+          "connectsTo": "Terminal"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "three-forces-story",
+      "questions": [
+        {
+          "question": "What are the three ancient forces that power modern computing?",
+          "options": [
+            "Fire, Water, and Wind",
+            "Stone (Silicon), Lightning (Electricity), and Magnetism",
+            "Gold, Silver, and Copper",
+            "Gravity, Light, and Sound"
+          ],
+          "correct": 1,
+          "explanation": "Stone (silicon) forms computer chips, lightning (electricity) powers them, and magnetism stores data. These three forces work together in every device!"
+        },
+        {
+          "question": "What is a transistor?",
+          "options": [
+            "A type of battery",
+            "A tiny switch made of silicon that turns on and off",
+            "A magnetic storage device",
+            "A programming language"
+          ],
+          "correct": 1,
+          "explanation": "A transistor is a microscopic switch made from silicon. Modern chips have billions of them, switching on and off billions of times per second!"
+        },
+        {
+          "question": "When was the transistor invented?",
+          "options": [
+            "1847",
+            "1901",
+            "1947",
+            "1984"
+          ],
+          "correct": 2,
+          "explanation": "The transistor was invented at Bell Labs in 1947, revolutionizing electronics and making modern computers possible."
+        }
+      ]
+    },
+    {
+      "storyId": "binary-story",
+      "questions": [
+        {
+          "question": "What does binary mean?",
+          "options": [
+            "A system with 10 digits (0-9)",
+            "A system with only two symbols (0 and 1)",
+            "A type of computer virus",
+            "A programming language"
+          ],
+          "correct": 1,
+          "explanation": "Binary is a number system with only two symbols: 0 (off) and 1 (on). It's the fundamental language of all computers!"
+        },
+        {
+          "question": "What decimal number does binary 1100 represent?",
+          "options": [
+            "6",
+            "10",
+            "12",
+            "14"
+          ],
+          "correct": 2,
+          "explanation": "In binary 1100: 8×1 + 4×1 + 2×0 + 1×0 = 8 + 4 + 0 + 0 = 12"
+        },
+        {
+          "question": "What can be represented in binary?",
+          "options": [
+            "Only numbers",
+            "Only text",
+            "Only images",
+            "Everything—numbers, text, images, videos, and more"
+          ],
+          "correct": 3,
+          "explanation": "Binary can represent anything! All digital data—text, images, music, videos—is ultimately stored as patterns of ones and zeros."
+        }
+      ]
+    },
+    {
+      "storyId": "navigation-story",
+      "questions": [
+        {
+          "question": "What is a file path?",
+          "options": [
+            "A cable that connects files",
+            "The address that tells a computer where to find a file",
+            "A type of folder",
+            "A programming command"
+          ],
+          "correct": 1,
+          "explanation": "A path is like a file's address. It shows the exact location from the root folder down to the file, like /Users/YourName/Documents/report.pdf"
+        },
+        {
+          "question": "What does the 'pwd' command do in the terminal?",
+          "options": [
+            "Creates a new password",
+            "Prints the current working directory (where you are)",
+            "Powers down the computer",
+            "Deletes a file"
+          ],
+          "correct": 1,
+          "explanation": "'pwd' stands for 'print working directory'. It shows you exactly where you are in the file system—super helpful when navigating!"
+        },
+        {
+          "question": "What command lists the files and folders in your current location?",
+          "options": [
+            "cd",
+            "pwd",
+            "ls",
+            "rm"
+          ],
+          "correct": 2,
+          "explanation": "'ls' stands for 'list'. It shows you all the files and folders in your current directory. Add '-la' to see hidden files too!"
+        }
+      ]
+    }
+  ]
+}

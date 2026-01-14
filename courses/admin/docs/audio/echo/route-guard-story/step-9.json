@@ -1,0 +1,95 @@
+{
+  "storyId": "route-guard-story",
+  "stepId": "step-9",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Access Denied. RBAC check failed! User doesn't have permission. Show an error message and offer navigation alternatives.",
+  "duration": 8.949999809265137,
+  "words": [
+    {
+      "word": "Access",
+      "start": 0,
+      "end": 0.6200000047683716
+    },
+    {
+      "word": "denied",
+      "start": 0.6200000047683716,
+      "end": 1.2000000476837158
+    },
+    {
+      "word": "RBAC",
+      "start": 1.840000033378601,
+      "end": 2.0799999237060547
+    },
+    {
+      "word": "check",
+      "start": 2.0799999237060547,
+      "end": 2.4800000190734863
+    },
+    {
+      "word": "failed",
+      "start": 2.4800000190734863,
+      "end": 2.880000114440918
+    },
+    {
+      "word": "User",
+      "start": 3.5999999046325684,
+      "end": 3.5999999046325684
+    },
+    {
+      "word": "doesn't",
+      "start": 3.5999999046325684,
+      "end": 4.119999885559082
+    },
+    {
+      "word": "have",
+      "start": 4.119999885559082,
+      "end": 4.440000057220459
+    },
+    {
+      "word": "permission",
+      "start": 4.440000057220459,
+      "end": 4.840000152587891
+    },
+    {
+      "word": "Show",
+      "start": 5.71999979019165,
+      "end": 5.739999771118164
+    },
+    {
+      "word": "an",
+      "start": 5.739999771118164,
+      "end": 6.039999961853027
+    },
+    {
+      "word": "error",
+      "start": 6.039999961853027,
+      "end": 6.119999885559082
+    },
+    {
+      "word": "message",
+      "start": 6.119999885559082,
+      "end": 6.539999961853027
+    },
+    {
+      "word": "and",
+      "start": 6.539999961853027,
+      "end": 7
+    },
+    {
+      "word": "offer",
+      "start": 7,
+      "end": 7.300000190734863
+    },
+    {
+      "word": "navigation",
+      "start": 7.300000190734863,
+      "end": 7.960000038146973
+    },
+    {
+      "word": "alternatives",
+      "start": 7.960000038146973,
+      "end": 8.520000457763672
+    }
+  ]
+}

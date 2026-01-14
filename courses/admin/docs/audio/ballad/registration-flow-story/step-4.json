@@ -1,0 +1,110 @@
+{
+  "storyId": "registration-flow-story",
+  "stepId": "step-4",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Create User Document. With auth complete, we create the Firestore user document. Profile info, default role, creation timestamp—everything initialized!",
+  "duration": 14.300000190734863,
+  "words": [
+    {
+      "word": "Create",
+      "start": 0,
+      "end": 0.5400000214576721
+    },
+    {
+      "word": "user",
+      "start": 0.5400000214576721,
+      "end": 1
+    },
+    {
+      "word": "document",
+      "start": 1,
+      "end": 1.4800000190734863
+    },
+    {
+      "word": "With",
+      "start": 2.200000047683716,
+      "end": 2.4000000953674316
+    },
+    {
+      "word": "auth",
+      "start": 2.4000000953674316,
+      "end": 2.759999990463257
+    },
+    {
+      "word": "complete",
+      "start": 2.759999990463257,
+      "end": 3.240000009536743
+    },
+    {
+      "word": "we",
+      "start": 3.5199999809265137,
+      "end": 3.9000000953674316
+    },
+    {
+      "word": "create",
+      "start": 3.9000000953674316,
+      "end": 4.199999809265137
+    },
+    {
+      "word": "the",
+      "start": 4.199999809265137,
+      "end": 4.699999809265137
+    },
+    {
+      "word": "Firestore",
+      "start": 4.699999809265137,
+      "end": 5.179999828338623
+    },
+    {
+      "word": "user",
+      "start": 5.179999828338623,
+      "end": 5.619999885559082
+    },
+    {
+      "word": "document",
+      "start": 5.619999885559082,
+      "end": 6.099999904632568
+    },
+    {
+      "word": "Profile",
+      "start": 7.300000190734863,
+      "end": 7.480000019073486
+    },
+    {
+      "word": "info",
+      "start": 7.480000019073486,
+      "end": 7.820000171661377
+    },
+    {
+      "word": "default",
+      "start": 8.640000343322754,
+      "end": 8.819999694824219
+    },
+    {
+      "word": "role",
+      "start": 8.819999694824219,
+      "end": 9.199999809265137
+    },
+    {
+      "word": "creation",
+      "start": 10.119999885559082,
+      "end": 10.260000228881836
+    },
+    {
+      "word": "timestamp",
+      "start": 10.260000228881836,
+      "end": 11.140000343322754
+    },
+    {
+      "word": "everything",
+      "start": 12.039999961853027,
+      "end": 12.479999542236328
+    },
+    {
+      "word": "initialized",
+      "start": 12.479999542236328,
+      "end": 13.479999542236328
+    }
+  ]
+}

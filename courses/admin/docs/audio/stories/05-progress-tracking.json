@@ -1,0 +1,606 @@
+{
+  "pageId": "05-progress-tracking",
+  "stories": [
+    {
+      "id": "tracking-overview-story",
+      "diagramId": "tracking-overview",
+      "title": "Tracking System Overview",
+      "steps": [
+        {
+          "nodeId": "scroll",
+          "icon": "📜",
+          "title": "User Scrolls",
+          "narration": "Progress tracking starts with user actions. Scrolling through content triggers the ProgressTracker to monitor visibility.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "quiz",
+          "icon": "❓",
+          "title": "Quiz Answer",
+          "narration": "When users answer quiz questions, that interaction is captured. Every answer matters for tracking engagement!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "drag",
+          "icon": "🎯",
+          "title": "Drag & Drop",
+          "narration": "Completing drag and drop activities signals active learning. These hands-on interactions are especially valuable to track.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "progress-tracker",
+          "edges": [{ "from": "scroll", "to": "progress-tracker" }],
+          "icon": "📊",
+          "title": "ProgressTracker",
+          "narration": "ProgressTracker watches scrolling behavior. It uses IntersectionObserver to detect which sections users have viewed.",
+          "connectsTo": "User Scrolls"
+        },
+        {
+          "nodeId": "activity-tracker",
+          "edges": [{ "from": "quiz", "to": "activity-tracker" }, { "from": "drag", "to": "activity-tracker" }],
+          "icon": "✅",
+          "title": "ActivityTracker",
+          "narration": "ActivityTracker handles interactive elements. Quiz answers, drag completions, code challenges—every interaction is captured.",
+          "connectsTo": "Quiz, Drag"
+        },
+        {
+          "nodeId": "data-service",
+          "edges": [{ "from": "progress-tracker", "to": "data-service" }, { "from": "activity-tracker", "to": "data-service" }],
+          "icon": "💾",
+          "title": "DataService",
+          "narration": "Both trackers feed into DataService. Progress and activity data flows to Firestore for permanent storage.",
+          "connectsTo": "ProgressTracker, ActivityTracker"
+        },
+        {
+          "nodeId": "lesson-progress",
+          "edges": [{ "from": "data-service", "to": "lesson-progress" }],
+          "icon": "📚",
+          "title": "Lesson Progress",
+          "narration": "The lessonProgress subcollection stores completion data. Which sections viewed, percentage complete, completion timestamp.",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "activity-attempts",
+          "edges": [{ "from": "data-service", "to": "activity-attempts" }],
+          "icon": "📝",
+          "title": "Activity Attempts",
+          "narration": "Every quiz attempt lands in activityAttempts. Score, timestamp, correct answers—full history preserved!",
+          "connectsTo": "DataService"
+        },
+        {
+          "nodeId": "local-storage",
+          "edges": [{ "from": "activity-tracker", "to": "local-storage" }],
+          "icon": "💾",
+          "title": "LocalStorage Cache",
+          "narration": "LocalStorage provides offline backup. If the network fails, attempts queue locally until connection returns.",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "progress-bar",
+          "edges": [{ "from": "progress-tracker", "to": "progress-bar" }],
+          "icon": "📈",
+          "title": "Progress Bar",
+          "narration": "The progress bar updates in real-time as users scroll. Visual feedback shows exactly how much content remains.",
+          "connectsTo": "ProgressTracker"
+        },
+        {
+          "nodeId": "quiz-feedback",
+          "edges": [{ "from": "activity-tracker", "to": "quiz-feedback" }],
+          "icon": "💬",
+          "title": "Quiz Feedback",
+          "narration": "Instant feedback appears after quiz submission. Correct answers highlighted, explanations shown. Learn from every attempt!",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "toast",
+          "edges": [{ "from": "progress-tracker", "to": "toast" }],
+          "icon": "🎉",
+          "title": "Completion Toast",
+          "narration": "Hit 90 percent? A celebration toast appears! Positive reinforcement keeps learners motivated to continue.",
+          "connectsTo": "ProgressTracker"
+        }
+      ]
+    },
+    {
+      "id": "section-discovery-story",
+      "diagramId": "section-discovery",
+      "title": "Section Discovery",
+      "steps": [
+        {
+          "nodeId": "page-load",
+          "icon": "🚀",
+          "title": "Page Load",
+          "narration": "The lesson page loads. ProgressTracker needs to know what sections exist before it can track them.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "init",
+          "edges": [{ "from": "page-load", "to": "init" }],
+          "icon": "⚙️",
+          "title": "Tracker Initializes",
+          "narration": "ProgressTracker.init kicks off the discovery process. Time to find all trackable sections on the page!",
+          "connectsTo": "Page Load"
+        },
+        {
+          "nodeId": "discover",
+          "edges": [{ "from": "init", "to": "discover" }],
+          "icon": "🔍",
+          "title": "Discover Sections",
+          "narration": "discoverSections scans the DOM for trackable content. It looks for specific attributes marking important sections.",
+          "connectsTo": "Init"
+        },
+        {
+          "nodeId": "query",
+          "edges": [{ "from": "discover", "to": "query" }],
+          "icon": "🔎",
+          "title": "Query Selectors",
+          "narration": "querySelectorAll finds all elements with data-section attributes. These are our trackable content sections.",
+          "connectsTo": "discoverSections()"
+        },
+        {
+          "nodeId": "sections",
+          "edges": [{ "from": "query", "to": "sections" }],
+          "icon": "📋",
+          "title": "Sections Array",
+          "narration": "All discovered sections are stored in an array. This becomes the denominator for progress calculation.",
+          "connectsTo": "querySelectorAll"
+        },
+        {
+          "nodeId": "observer",
+          "edges": [{ "from": "sections", "to": "observer" }],
+          "icon": "👁️",
+          "title": "Observer Setup",
+          "narration": "Finally, IntersectionObserver is created and attached to each section. Scroll tracking is now active!",
+          "connectsTo": "Sections Array"
+        }
+      ]
+    },
+    {
+      "id": "scroll-observation-story",
+      "diagramId": "scroll-observation",
+      "title": "Scroll Observation",
+      "steps": [
+        {
+          "nodeId": "scroll",
+          "icon": "📜",
+          "title": "User Scrolls",
+          "narration": "The user scrolls through lesson content. Every movement could reveal new sections and advance progress.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "observer",
+          "edges": [{ "from": "scroll", "to": "observer" }],
+          "icon": "👁️",
+          "title": "Observer Monitors",
+          "narration": "IntersectionObserver watches visibility changes. Unlike scroll events, it only fires when thresholds are crossed. Efficient!",
+          "connectsTo": "User Scrolls"
+        },
+        {
+          "nodeId": "callback",
+          "edges": [{ "from": "observer", "to": "callback" }],
+          "icon": "🔔",
+          "title": "Callback Triggered",
+          "narration": "When a section crosses the visibility threshold, the callback fires. Time to check if this section should be marked!",
+          "connectsTo": "Observer"
+        },
+        {
+          "nodeId": "check",
+          "edges": [{ "from": "callback", "to": "check" }],
+          "icon": "🔍",
+          "title": "Visibility Check",
+          "narration": "When a section crosses 50 percent visibility, isIntersecting returns true. The section has been meaningfully viewed.",
+          "connectsTo": "Callback Triggered"
+        },
+        {
+          "nodeId": "add-viewed",
+          "edges": [{ "from": "check", "to": "add-viewed" }],
+          "icon": "✅",
+          "title": "Mark as Viewed",
+          "narration": "The section ID is added to the viewedSections Set. Sets prevent duplicates—view a section twice, it still only counts once.",
+          "connectsTo": "isIntersecting?"
+        },
+        {
+          "nodeId": "calc",
+          "edges": [{ "from": "add-viewed", "to": "calc" }],
+          "icon": "🧮",
+          "title": "Calculate Progress",
+          "narration": "Progress percentage is recalculated. Viewed sections divided by total sections times 100. Simple but powerful!",
+          "connectsTo": "Add to Viewed"
+        },
+        {
+          "nodeId": "save",
+          "edges": [{ "from": "calc", "to": "save" }],
+          "icon": "💾",
+          "title": "Debounced Save",
+          "narration": "Progress is saved with debouncing—multiple rapid views trigger just one Firestore write. Network efficiency!",
+          "connectsTo": "Calculate Progress"
+        }
+      ]
+    },
+    {
+      "id": "activity-types-story",
+      "diagramId": "activity-types",
+      "title": "Activity Types",
+      "steps": [
+        {
+          "nodeId": "tracker",
+          "icon": "✅",
+          "title": "ActivityTracker Hub",
+          "narration": "ActivityTracker is the hub for all interactive elements. It discovers activities on page load and tracks their completion.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "quiz",
+          "edges": [{ "from": "tracker", "to": "quiz" }],
+          "icon": "❓",
+          "title": "Quiz Activities",
+          "narration": "Quizzes test understanding with multiple choice questions. Select an answer, submit, get instant feedback!",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "drag",
+          "edges": [{ "from": "tracker", "to": "drag" }],
+          "icon": "🎯",
+          "title": "Drag & Drop",
+          "narration": "Drag and drop activities teach through interaction. Match items to targets, sort sequences, build connections.",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "code",
+          "edges": [{ "from": "tracker", "to": "code" }],
+          "icon": "💻",
+          "title": "Code Challenges",
+          "narration": "Code challenges test real programming skills. Write or complete code, run it, check the output!",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "demo",
+          "edges": [{ "from": "tracker", "to": "demo" }],
+          "icon": "🎮",
+          "title": "Interactive Demos",
+          "narration": "Interactive demos let users explore concepts hands-on. Click, experiment, discover—learning by doing!",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "quiz-attr",
+          "edges": [{ "from": "quiz", "to": "quiz-attr" }],
+          "icon": "📋",
+          "title": "data-answer Attribute",
+          "narration": "Quizzes use data-answer to define correct answers. Hidden from users but accessible to JavaScript for validation.",
+          "connectsTo": "Quiz"
+        },
+        {
+          "nodeId": "drag-attr",
+          "edges": [{ "from": "drag", "to": "drag-attr" }],
+          "icon": "📋",
+          "title": "data-target Attribute",
+          "narration": "Drag activities use data-target to map items to zones. Drop in the right zone to complete the activity.",
+          "connectsTo": "Drag"
+        },
+        {
+          "nodeId": "code-attr",
+          "edges": [{ "from": "code", "to": "code-attr" }],
+          "icon": "📋",
+          "title": "data-solution Attribute",
+          "narration": "Code challenges have data-solution for expected output. User code is compared against this for validation.",
+          "connectsTo": "Code"
+        },
+        {
+          "nodeId": "demo-attr",
+          "edges": [{ "from": "demo", "to": "demo-attr" }],
+          "icon": "📋",
+          "title": "data-complete Attribute",
+          "narration": "Demos use data-complete to define completion criteria. Reach the goal state and the activity is done!",
+          "connectsTo": "Demo"
+        },
+        {
+          "nodeId": "firestore",
+          "edges": [{ "from": "tracker", "to": "firestore" }],
+          "icon": "🗄️",
+          "title": "Firestore Storage",
+          "narration": "Every attempt is saved to Firestore's activityAttempts subcollection. Complete history of engagement!",
+          "connectsTo": "ActivityTracker"
+        },
+        {
+          "nodeId": "local",
+          "edges": [{ "from": "tracker", "to": "local" }],
+          "icon": "💾",
+          "title": "LocalStorage Backup",
+          "narration": "LocalStorage provides offline resilience. If Firestore is unreachable, attempts queue locally until sync.",
+          "connectsTo": "ActivityTracker"
+        }
+      ]
+    },
+    {
+      "id": "offline-flow-story",
+      "diagramId": "offline-flow",
+      "title": "Offline Support",
+      "steps": [
+        {
+          "nodeId": "attempt",
+          "icon": "✅",
+          "title": "Activity Attempt",
+          "narration": "A user completes an activity. But wait—what if they're offline? The internet isn't always reliable!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "check-online",
+          "edges": [{ "from": "attempt", "to": "check-online" }],
+          "icon": "📶",
+          "title": "Connection Check",
+          "narration": "navigator.onLine tells us the connection status. Online? Save directly. Offline? Time for the queue!",
+          "connectsTo": "Activity Attempt"
+        },
+        {
+          "nodeId": "save-firestore",
+          "edges": [{ "from": "check-online", "to": "save-firestore" }],
+          "icon": "🔥",
+          "title": "Save to Firestore",
+          "narration": "Online path: the attempt goes directly to Firestore. Quick, reliable, permanent storage in the cloud.",
+          "connectsTo": "Connection Check"
+        },
+        {
+          "nodeId": "queue",
+          "edges": [{ "from": "check-online", "to": "queue" }],
+          "icon": "📋",
+          "title": "Queue for Later",
+          "narration": "Offline path: attempts go into a queue. The activity is stored locally, waiting for reconnection.",
+          "connectsTo": "Connection Check"
+        },
+        {
+          "nodeId": "local-storage",
+          "edges": [{ "from": "queue", "to": "local-storage" }],
+          "icon": "💾",
+          "title": "LocalStorage Backup",
+          "narration": "The queue persists in LocalStorage. Even if the browser closes, queued attempts survive.",
+          "connectsTo": "Add to Queue"
+        },
+        {
+          "nodeId": "online-event",
+          "icon": "🌐",
+          "title": "Connection Restored",
+          "narration": "The online event fires when connection returns. Time to sync those queued attempts!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "sync",
+          "edges": [{ "from": "online-event", "to": "sync" }, { "from": "local-storage", "to": "sync" }],
+          "icon": "🔄",
+          "title": "Sync Process",
+          "narration": "syncQueuedAttempts processes the queue. Each pending attempt is saved to Firestore in order.",
+          "connectsTo": "Online Event, LocalStorage"
+        },
+        {
+          "nodeId": "clear-queue",
+          "edges": [{ "from": "sync", "to": "clear-queue" }],
+          "icon": "🗑️",
+          "title": "Clear Queue",
+          "narration": "After successful sync, the queue is cleared. No duplicates, no data loss. Offline support complete!",
+          "connectsTo": "Sync"
+        }
+      ]
+    },
+    {
+      "id": "analytics-metrics-story",
+      "diagramId": "analytics-metrics",
+      "title": "Analytics Metrics",
+      "steps": [
+        {
+          "nodeId": "lesson-data",
+          "icon": "📚",
+          "title": "Lesson Progress Data",
+          "narration": "Analytics starts with raw data from Firestore. Lesson completion records tell us what content users have consumed.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "activity-data",
+          "icon": "📝",
+          "title": "Activity Attempts Data",
+          "narration": "Quiz attempts and scores provide mastery signals. How well are users understanding the material?",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "challenge-data",
+          "icon": "🏆",
+          "title": "Daily Challenges",
+          "narration": "Daily challenge completions show consistency. Regular engagement builds lasting learning habits.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "user-data",
+          "icon": "👤",
+          "title": "User Profile Data",
+          "narration": "The user document stores streak information. Current streak, longest streak, last active date.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "calc-velocity",
+          "edges": [{ "from": "lesson-data", "to": "calc-velocity" }],
+          "icon": "⚡",
+          "title": "Calculate Velocity",
+          "narration": "calcVelocity computes learning speed. Lessons completed per week, multiplied by 20, gives a 0-100 velocity score.",
+          "connectsTo": "Lesson Data"
+        },
+        {
+          "nodeId": "calc-mastery",
+          "edges": [{ "from": "activity-data", "to": "calc-mastery" }],
+          "icon": "🎯",
+          "title": "Calculate Mastery",
+          "narration": "calcMastery averages quiz performance. Correct answers divided by total attempts—expressed as a percentage.",
+          "connectsTo": "Activity Data"
+        },
+        {
+          "nodeId": "calc-streak",
+          "edges": [{ "from": "challenge-data", "to": "calc-streak" }, { "from": "user-data", "to": "calc-streak" }],
+          "icon": "🔥",
+          "title": "Calculate Streak",
+          "narration": "calcStreak counts consecutive days with activity. Miss a day? Streak resets. Consistency is rewarded!",
+          "connectsTo": "Challenge Data, User Data"
+        },
+        {
+          "nodeId": "velocity",
+          "edges": [{ "from": "calc-velocity", "to": "velocity" }],
+          "icon": "📊",
+          "title": "Learning Velocity",
+          "narration": "Learning Velocity is displayed as a 0-100 score. Higher means faster progression through content.",
+          "connectsTo": "Calculate Velocity"
+        },
+        {
+          "nodeId": "mastery",
+          "edges": [{ "from": "calc-mastery", "to": "mastery" }],
+          "icon": "📊",
+          "title": "Quiz Mastery",
+          "narration": "Quiz Mastery shows as a percentage. 80 percent or higher means strong understanding!",
+          "connectsTo": "Calculate Mastery"
+        },
+        {
+          "nodeId": "streak",
+          "edges": [{ "from": "calc-streak", "to": "streak" }],
+          "icon": "📊",
+          "title": "Active Streak",
+          "narration": "Active Streak displays as a day count. Keep it going—consistency builds knowledge!",
+          "connectsTo": "Calculate Streak"
+        },
+        {
+          "nodeId": "calc-cognitive",
+          "edges": [{ "from": "velocity", "to": "calc-cognitive" }, { "from": "mastery", "to": "calc-cognitive" }, { "from": "streak", "to": "calc-cognitive" }],
+          "icon": "🧠",
+          "title": "Calculate Cognitive",
+          "narration": "The Cognitive Score combines all metrics with weights: 40 percent mastery, 30 percent velocity, 20 percent streak, 10 percent completion.",
+          "connectsTo": "Velocity, Mastery, Streak"
+        },
+        {
+          "nodeId": "cognitive",
+          "edges": [{ "from": "calc-cognitive", "to": "cognitive" }],
+          "icon": "🧠",
+          "title": "Cognitive Score",
+          "narration": "The final Cognitive Score is a holistic measure of learning progress. One number to track overall growth!",
+          "connectsTo": "Calculate Cognitive"
+        }
+      ]
+    },
+    {
+      "id": "completion-flow-story",
+      "diagramId": "completion-flow",
+      "title": "Lesson Completion",
+      "steps": [
+        {
+          "nodeId": "progress-90",
+          "icon": "📊",
+          "title": "90% Threshold",
+          "narration": "Progress hits 90 percent! This is the magic threshold—the lesson is essentially complete when this milestone is reached.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "check-complete",
+          "edges": [{ "from": "progress-90", "to": "check-complete" }],
+          "icon": "🔍",
+          "title": "Already Complete?",
+          "narration": "Before celebrating, we check if the lesson was already marked complete. No duplicate celebrations!",
+          "connectsTo": "Progress >= 90%"
+        },
+        {
+          "nodeId": "mark-complete",
+          "edges": [{ "from": "check-complete", "to": "mark-complete" }],
+          "icon": "✅",
+          "title": "Mark Complete",
+          "narration": "markLessonComplete sets the completion flag. This is a one-time operation per lesson.",
+          "connectsTo": "Already Complete?"
+        },
+        {
+          "nodeId": "dispatch",
+          "edges": [{ "from": "mark-complete", "to": "dispatch" }],
+          "icon": "📡",
+          "title": "Event Dispatch",
+          "narration": "A lessonComplete event broadcasts to the app. Other components can react—update UI, show notifications, unlock content.",
+          "connectsTo": "Mark Complete"
+        },
+        {
+          "nodeId": "save",
+          "edges": [{ "from": "dispatch", "to": "save" }],
+          "icon": "💾",
+          "title": "Save to Firestore",
+          "narration": "Completion is persisted to Firestore. The lessonProgress document updates with completedAt timestamp.",
+          "connectsTo": "Dispatch"
+        },
+        {
+          "nodeId": "toast",
+          "edges": [{ "from": "dispatch", "to": "toast" }],
+          "icon": "🎉",
+          "title": "Celebration Toast!",
+          "narration": "A toast notification appears celebrating the achievement. Visual feedback motivates continued learning!",
+          "connectsTo": "Dispatch Event"
+        },
+        {
+          "nodeId": "update-course",
+          "edges": [{ "from": "save", "to": "update-course" }],
+          "icon": "📈",
+          "title": "Update Course Progress",
+          "narration": "The course document increments completedLessons. Course-level progress reflects individual lesson completions.",
+          "connectsTo": "Save"
+        },
+        {
+          "nodeId": "update-streak",
+          "edges": [{ "from": "save", "to": "update-streak" }],
+          "icon": "🔥",
+          "title": "Streak Updated",
+          "narration": "Finally, the user's streak is refreshed. Completing a lesson counts as daily activity. Keep that streak alive!",
+          "connectsTo": "Save to Firestore"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "scroll-observation-story",
+      "questions": [
+        {
+          "question": "Why is IntersectionObserver better than scroll event listeners?",
+          "options": ["It's newer", "It only fires when thresholds are crossed", "It works offline", "It's required by browsers"],
+          "correct": 1,
+          "explanation": "IntersectionObserver is efficient because it only fires callbacks when visibility thresholds are crossed, unlike scroll events which fire continuously."
+        },
+        {
+          "question": "What visibility percentage marks a section as 'viewed'?",
+          "options": ["25%", "50%", "75%", "100%"],
+          "correct": 1,
+          "explanation": "When 50% of a section is visible, isIntersecting returns true and the section is marked as viewed."
+        }
+      ]
+    },
+    {
+      "storyId": "offline-flow-story",
+      "questions": [
+        {
+          "question": "Where are offline activity attempts stored?",
+          "options": ["IndexedDB", "SessionStorage", "LocalStorage", "Cookies"],
+          "correct": 2,
+          "explanation": "Queued attempts persist in LocalStorage, surviving browser closes until connection is restored."
+        },
+        {
+          "question": "What triggers the sync of queued attempts?",
+          "options": ["Manual refresh", "The 'online' window event", "Timer interval", "Page navigation"],
+          "correct": 1,
+          "explanation": "The 'online' window event fires when connection is restored, triggering syncQueuedAttempts."
+        }
+      ]
+    },
+    {
+      "storyId": "analytics-metrics-story",
+      "questions": [
+        {
+          "question": "What is the formula for Learning Velocity?",
+          "options": ["lessons × 10", "lessons / weeks × 20", "lessons × weeks", "lessons / total × 100"],
+          "correct": 1,
+          "explanation": "Learning Velocity is calculated as lessons completed per week, multiplied by 20, giving a 0-100 score."
+        },
+        {
+          "question": "What weight does Mastery have in the Cognitive Score?",
+          "options": ["10%", "20%", "30%", "40%"],
+          "correct": 3,
+          "explanation": "Mastery has the highest weight at 40% in the Cognitive Score formula."
+        }
+      ]
+    }
+  ]
+}

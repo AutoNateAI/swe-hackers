@@ -1,0 +1,125 @@
+{
+  "storyId": "init-sequence-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "AuthService.init(). Next, AuthService.init sets up the auth state listener. This tracks login status and notifies the app when users sign in or out.",
+  "duration": 17.399999618530273,
+  "words": [
+    {
+      "word": "AuthService",
+      "start": 0,
+      "end": 1.059999942779541
+    },
+    {
+      "word": "init",
+      "start": 1.059999942779541,
+      "end": 1.9600000381469727
+    },
+    {
+      "word": "Next",
+      "start": 2.940000057220459,
+      "end": 3.2200000286102295
+    },
+    {
+      "word": "AuthService",
+      "start": 3.619999885559082,
+      "end": 4.71999979019165
+    },
+    {
+      "word": "init",
+      "start": 4.71999979019165,
+      "end": 5.380000114440918
+    },
+    {
+      "word": "sets",
+      "start": 5.380000114440918,
+      "end": 6.320000171661377
+    },
+    {
+      "word": "up",
+      "start": 6.320000171661377,
+      "end": 6.78000020980835
+    },
+    {
+      "word": "the",
+      "start": 6.78000020980835,
+      "end": 7.21999979019165
+    },
+    {
+      "word": "AuthStateListener",
+      "start": 7.21999979019165,
+      "end": 9.119999885559082
+    },
+    {
+      "word": "This",
+      "start": 9.920000076293945,
+      "end": 10.5
+    },
+    {
+      "word": "tracks",
+      "start": 10.5,
+      "end": 11.0600004196167
+    },
+    {
+      "word": "login",
+      "start": 11.0600004196167,
+      "end": 11.640000343322754
+    },
+    {
+      "word": "status",
+      "start": 11.640000343322754,
+      "end": 12.15999984741211
+    },
+    {
+      "word": "and",
+      "start": 12.15999984741211,
+      "end": 12.979999542236328
+    },
+    {
+      "word": "notifies",
+      "start": 12.979999542236328,
+      "end": 13.520000457763672
+    },
+    {
+      "word": "the",
+      "start": 13.520000457763672,
+      "end": 14.020000457763672
+    },
+    {
+      "word": "app",
+      "start": 14.020000457763672,
+      "end": 14.0600004196167
+    },
+    {
+      "word": "when",
+      "start": 14.0600004196167,
+      "end": 14.720000267028809
+    },
+    {
+      "word": "users",
+      "start": 14.720000267028809,
+      "end": 15.260000228881836
+    },
+    {
+      "word": "sign",
+      "start": 15.260000228881836,
+      "end": 15.920000076293945
+    },
+    {
+      "word": "in",
+      "start": 15.920000076293945,
+      "end": 16.260000228881836
+    },
+    {
+      "word": "or",
+      "start": 16.260000228881836,
+      "end": 16.700000762939453
+    },
+    {
+      "word": "out",
+      "start": 16.700000762939453,
+      "end": 17.020000457763672
+    }
+  ]
+}

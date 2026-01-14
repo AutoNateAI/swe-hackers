@@ -1,0 +1,346 @@
+{
+  "pageId": "02-page-types",
+  "stories": [
+    {
+      "id": "page-hierarchy-story",
+      "diagramId": "page-hierarchy",
+      "title": "Page Type Hierarchy",
+      "steps": [
+        {
+          "nodeId": "all-pages",
+          "icon": "📄",
+          "title": "All Page Types",
+          "narration": "The SWE Hackers platform has ten distinct page types. They're organized by access requirements—from fully public to highly restricted.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "public",
+          "edges": [{ "from": "all-pages", "to": "public" }],
+          "icon": "🌐",
+          "title": "Public Pages Category",
+          "narration": "Public pages need no authentication. Anyone can browse these without signing in.",
+          "connectsTo": "All Pages"
+        },
+        {
+          "nodeId": "marketing",
+          "edges": [{ "from": "public", "to": "marketing" }],
+          "icon": "📢",
+          "title": "Marketing Pages",
+          "narration": "Marketing includes landing pages, course catalog, and pricing. These attract new users with no barriers to entry.",
+          "connectsTo": "Public"
+        },
+        {
+          "nodeId": "auth-pages",
+          "edges": [{ "from": "public", "to": "auth-pages" }],
+          "icon": "🔑",
+          "title": "Auth Pages",
+          "narration": "Auth pages handle login, registration, and password reset. They're public so users can create accounts and sign in.",
+          "connectsTo": "Public"
+        },
+        {
+          "nodeId": "protected",
+          "edges": [{ "from": "all-pages", "to": "protected" }],
+          "icon": "🔐",
+          "title": "Protected Pages Category",
+          "narration": "Protected pages require authentication. You must be logged in to see these!",
+          "connectsTo": "All Pages"
+        },
+        {
+          "nodeId": "dashboard",
+          "edges": [{ "from": "protected", "to": "dashboard" }],
+          "icon": "📊",
+          "title": "Dashboard",
+          "narration": "The dashboard is your personal hub. It shows enrolled courses, progress metrics, and learning analytics.",
+          "connectsTo": "Protected"
+        },
+        {
+          "nodeId": "lessons",
+          "edges": [{ "from": "protected", "to": "lessons" }],
+          "icon": "📚",
+          "title": "Lesson Pages",
+          "narration": "Lesson pages are where the actual learning happens. Interactive content, quizzes, and progress tracking.",
+          "connectsTo": "Protected"
+        },
+        {
+          "nodeId": "rbac",
+          "edges": [{ "from": "all-pages", "to": "rbac" }],
+          "icon": "🛡️",
+          "title": "RBAC Protected Category",
+          "narration": "RBAC pages add role and organization checks on top of authentication. Extra security layers!",
+          "connectsTo": "All Pages"
+        },
+        {
+          "nodeId": "partner",
+          "edges": [{ "from": "rbac", "to": "partner" }],
+          "icon": "🤝",
+          "title": "Partner Courses",
+          "narration": "Partner courses are organization-specific. You must belong to the sponsoring organization AND have course access.",
+          "connectsTo": "RBAC"
+        },
+        {
+          "nodeId": "admin",
+          "edges": [{ "from": "rbac", "to": "admin" }],
+          "icon": "👑",
+          "title": "Admin Pages",
+          "narration": "Admin pages require the admin role. Only platform administrators can access user management and system settings.",
+          "connectsTo": "RBAC"
+        }
+      ]
+    },
+    {
+      "id": "dashboard-flow-story",
+      "diagramId": "dashboard-flow",
+      "title": "Dashboard Loading",
+      "steps": [
+        {
+          "nodeId": "request",
+          "icon": "🚀",
+          "title": "Page Load Begins",
+          "narration": "User navigates to the dashboard. The browser requests the page, and our loading sequence kicks into gear.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "loading",
+          "edges": [{ "from": "request", "to": "loading" }],
+          "icon": "⏳",
+          "title": "Show Loading Screen",
+          "narration": "First, we show a loading screen. Content is hidden until we confirm the user is authenticated. No flashing of unauthorized content!",
+          "connectsTo": "Page Request"
+        },
+        {
+          "nodeId": "init-services",
+          "edges": [{ "from": "loading", "to": "init-services" }],
+          "icon": "⚙️",
+          "title": "Init Services",
+          "narration": "While the loading screen shows, services initialize—Firebase SDK, AuthService, and DataService get ready.",
+          "connectsTo": "Loading"
+        },
+        {
+          "nodeId": "auth-check",
+          "edges": [{ "from": "init-services", "to": "auth-check" }],
+          "icon": "🔐",
+          "title": "Auth Check",
+          "narration": "Services are ready! Now we check authentication. Is there a valid user session? If not, redirect to login.",
+          "connectsTo": "Init Services"
+        },
+        {
+          "nodeId": "load-user",
+          "edges": [{ "from": "auth-check", "to": "load-user" }],
+          "icon": "👤",
+          "title": "Load User Profile",
+          "narration": "Auth confirmed! We fetch the user profile—display name, enrolled courses, preferences. This happens in parallel with analytics.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "load-analytics",
+          "edges": [{ "from": "auth-check", "to": "load-analytics" }],
+          "icon": "📊",
+          "title": "Load Analytics",
+          "narration": "Simultaneously, we calculate learning metrics—velocity, mastery, streak, cognitive score. All computed from progress data.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "stats-cards",
+          "edges": [{ "from": "load-analytics", "to": "stats-cards" }],
+          "icon": "📈",
+          "title": "Stats Cards Render",
+          "narration": "Analytics flow to the stats cards. Velocity, mastery, and streak scores render with animated progress indicators.",
+          "connectsTo": "Load Analytics"
+        },
+        {
+          "nodeId": "course-grid",
+          "edges": [{ "from": "load-user", "to": "course-grid" }],
+          "icon": "📚",
+          "title": "Course Grid Render",
+          "narration": "User profile data populates the course grid. Each enrolled course shows progress percentage and last activity date.",
+          "connectsTo": "Load User"
+        }
+      ]
+    },
+    {
+      "id": "lesson-architecture-story",
+      "diagramId": "lesson-architecture",
+      "title": "Lesson Page Architecture",
+      "steps": [
+        {
+          "nodeId": "lesson-integration",
+          "icon": "🎯",
+          "title": "LessonIntegration Orchestrator",
+          "narration": "LessonIntegration orchestrates everything on lesson pages. It coordinates progress tracking, activity handling, and UI updates.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "scroll",
+          "icon": "📜",
+          "title": "Scroll Events",
+          "narration": "As users scroll, browser events fire. These scroll events trigger the progress tracking system.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "progress-tracker",
+          "edges": [{ "from": "scroll", "to": "progress-tracker" }, { "from": "lesson-integration", "to": "progress-tracker" }],
+          "icon": "📊",
+          "title": "ProgressTracker Service",
+          "narration": "ProgressTracker uses IntersectionObserver for efficient scroll detection. When 50 percent of a section is visible, it counts as viewed.",
+          "connectsTo": "Scroll Events, LessonIntegration"
+        },
+        {
+          "nodeId": "save-progress",
+          "edges": [{ "from": "progress-tracker", "to": "save-progress" }],
+          "icon": "💾",
+          "title": "Save Progress",
+          "narration": "Progress changes trigger Firestore writes. Your reading progress is persisted so you can pick up where you left off.",
+          "connectsTo": "ProgressTracker"
+        },
+        {
+          "nodeId": "progress-bar",
+          "edges": [{ "from": "progress-tracker", "to": "progress-bar" }],
+          "icon": "📶",
+          "title": "Progress Bar Updates",
+          "narration": "The progress bar updates in real-time as you scroll. Visual feedback shows exactly how much of the lesson you've covered.",
+          "connectsTo": "ProgressTracker"
+        },
+        {
+          "nodeId": "quiz-click",
+          "icon": "❓",
+          "title": "Quiz Click Events",
+          "narration": "When you click a quiz answer, interaction events fire. Time to validate your knowledge!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "lesson-js",
+          "edges": [{ "from": "quiz-click", "to": "lesson-js" }],
+          "icon": "🖱️",
+          "title": "lesson.js UI Handler",
+          "narration": "lesson.js handles the UI side of interactions—showing feedback, highlighting correct answers, playing animations.",
+          "connectsTo": "Quiz Click"
+        },
+        {
+          "nodeId": "activity-tracker",
+          "edges": [{ "from": "lesson-js", "to": "activity-tracker" }, { "from": "lesson-integration", "to": "activity-tracker" }],
+          "icon": "✅",
+          "title": "ActivityTracker Service",
+          "narration": "ActivityTracker handles all interactive elements—quizzes, drag-drop, code challenges. Every completion is saved to Firestore.",
+          "connectsTo": "lesson.js, LessonIntegration"
+        },
+        {
+          "nodeId": "completion",
+          "edges": [{ "from": "progress-tracker", "to": "completion" }],
+          "icon": "🎉",
+          "title": "Lesson Complete Toast",
+          "narration": "When progress hits 90 percent, the lesson is marked complete. A celebration toast appears, and the next lesson unlocks!",
+          "connectsTo": "ProgressTracker"
+        }
+      ]
+    },
+    {
+      "id": "partner-flow-story",
+      "diagramId": "partner-flow",
+      "title": "Partner Course Access",
+      "steps": [
+        {
+          "nodeId": "request",
+          "icon": "🚀",
+          "title": "Course Request",
+          "narration": "A user tries to access a partner course. These are organization-specific—not everyone can get in. Let's check the credentials!",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "auth-check",
+          "edges": [{ "from": "request", "to": "auth-check" }],
+          "icon": "🔐",
+          "title": "Auth Check Gate",
+          "narration": "First gate—authentication. Is the user logged in? If not, we redirect to login.",
+          "connectsTo": "Page Request"
+        },
+        {
+          "nodeId": "no-auth",
+          "edges": [{ "from": "auth-check", "to": "no-auth" }],
+          "icon": "↩️",
+          "title": "Redirect to Login",
+          "narration": "No authentication? Redirect to login! After signing in, the user will return to try again.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "load-perms",
+          "edges": [{ "from": "auth-check", "to": "load-perms" }],
+          "icon": "📋",
+          "title": "Load Permissions",
+          "narration": "User is authenticated! Now we fetch their RBAC data—roles, organization memberships, and course access lists.",
+          "connectsTo": "Auth Check"
+        },
+        {
+          "nodeId": "org-check",
+          "edges": [{ "from": "load-perms", "to": "org-check" }],
+          "icon": "🏢",
+          "title": "Organization Check",
+          "narration": "Second gate—organization membership. The user must belong to the organization that sponsors this course.",
+          "connectsTo": "Load Permissions"
+        },
+        {
+          "nodeId": "course-check",
+          "edges": [{ "from": "org-check", "to": "course-check" }],
+          "icon": "📚",
+          "title": "Course Access Check",
+          "narration": "Final gate—course access. Does the user have this specific course in their access list? All gates cleared means access granted!",
+          "connectsTo": "Org Check"
+        },
+        {
+          "nodeId": "allowed",
+          "edges": [{ "from": "course-check", "to": "allowed" }],
+          "icon": "✅",
+          "title": "Access Granted - Render",
+          "narration": "All checks passed! The lesson content renders. Learning begins. The multi-layer security keeps content protected.",
+          "connectsTo": "Course Access"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "page-hierarchy-story",
+      "questions": [
+        {
+          "question": "How many distinct page types does SWE Hackers have?",
+          "options": ["4", "6", "8", "10"],
+          "correct": 3,
+          "explanation": "The platform has 10 distinct page types organized by access level."
+        },
+        {
+          "question": "What additional check do RBAC pages require beyond authentication?",
+          "options": ["Email verification", "Payment status", "Role and organization membership", "Age verification"],
+          "correct": 2,
+          "explanation": "RBAC pages add role checks and organization membership verification on top of authentication."
+        }
+      ]
+    },
+    {
+      "storyId": "lesson-architecture-story",
+      "questions": [
+        {
+          "question": "What percentage of a section must be visible to count as 'viewed'?",
+          "options": ["25%", "50%", "75%", "100%"],
+          "correct": 1,
+          "explanation": "When 50% of a section is visible in the viewport, ProgressTracker marks it as viewed."
+        },
+        {
+          "question": "At what progress percentage is a lesson marked complete?",
+          "options": ["75%", "85%", "90%", "100%"],
+          "correct": 2,
+          "explanation": "When progress reaches 90%, the lesson is marked complete and a celebration toast appears."
+        }
+      ]
+    },
+    {
+      "storyId": "partner-flow-story",
+      "questions": [
+        {
+          "question": "How many gates must a user pass to access a partner course?",
+          "options": ["1 - just login", "2 - login and role", "3 - login, org, and course", "4 - login, role, org, and course"],
+          "correct": 2,
+          "explanation": "Three gates: authentication, organization membership, and specific course access."
+        }
+      ]
+    }
+  ]
+}

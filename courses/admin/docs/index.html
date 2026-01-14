@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Docs | AutoNateAI Admin</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  
+  <style>
+    .admin-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .admin-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .admin-badge {
+      background: linear-gradient(135deg, #7986cb, #5c6bc0);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+    
+    .docs-intro {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .docs-intro h2 {
+      font-family: var(--font-display);
+      margin-bottom: 1rem;
+    }
+    
+    .docs-intro p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    
+    .feature-badge {
+      background: rgba(121, 134, 203, 0.15);
+      color: #a5b4fc;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      border: 1px solid rgba(121, 134, 203, 0.3);
+    }
+    
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .doc-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      display: block;
+    }
+    
+    .doc-card:hover {
+      border-color: rgba(121, 134, 203, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    
+    .doc-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .doc-icon {
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(121, 134, 203, 0.15);
+      border-radius: var(--radius-md);
+    }
+    
+    .doc-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    
+    .doc-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .doc-meta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .doc-meta span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .loading-state {
+      text-align: center;
+      padding: 4rem;
+      color: var(--text-muted);
+    }
+    
+    .loading-state .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.2);
+      border-top-color: #7986cb;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading State -->
+  <div id="loading-state" class="loading-state">
+    <div class="spinner"></div>
+    <p>Verifying admin access...</p>
+  </div>
+
+  <!-- Main Content (hidden until auth verified) -->
+  <div id="main-content" class="hidden">
+    <div class="admin-container">
+      <header class="admin-header">
+        <div>
+          <a href="../partnerships/" class="back-link">← Back to Admin</a>
+          <h1 class="admin-title">📚 Team Documentation</h1>
+        </div>
+        <div class="header-actions">
+          <span class="admin-badge">🔐 Admin Only</span>
+        </div>
+      </header>
+
+      <div class="docs-intro">
+        <h2>🎙️ AI-Narrated Architecture Docs</h2>
+        <p>
+          Welcome to the SWE Hackers interactive documentation! These self-narrating diagrams explain 
+          our platform architecture, services, data models, and frontend patterns. Each page features:
+        </p>
+        <div class="feature-badges">
+          <span class="feature-badge">🎬 Animated Diagrams</span>
+          <span class="feature-badge">🎙️ AI Voice Narration</span>
+          <span class="feature-badge">📊 Step-by-Step Stories</span>
+          <span class="feature-badge">📝 Knowledge Quizzes</span>
+          <span class="feature-badge">🎤 6 Voice Options</span>
+        </div>
+      </div>
+
+      <div class="docs-grid">
+        <a href="00-overview.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">🏗️</div>
+            <h3>System Overview</h3>
+          </div>
+          <p>High-level architecture showing how GitHub Pages, Firebase, and services connect. Start here!</p>
+          <div class="doc-meta">
+            <span>📊 4 diagrams</span>
+            <span>🎙️ 31 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="01-service-layer.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">⚙️</div>
+            <h3>Service Layer</h3>
+          </div>
+          <p>Deep dive into all 13 JavaScript services: Auth, Data, RBAC, Progress, Activity tracking.</p>
+          <div class="doc-meta">
+            <span>📊 5 diagrams</span>
+            <span>🎙️ 42 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="02-page-types.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">📄</div>
+            <h3>Page Types</h3>
+          </div>
+          <p>Marketing, auth, dashboard, lesson, and blog pages - their structure and service requirements.</p>
+          <div class="doc-meta">
+            <span>📊 4 diagrams</span>
+            <span>🎙️ 28 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="03-data-model.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">🗄️</div>
+            <h3>Data Model</h3>
+          </div>
+          <p>Firestore collection structure: users, courseProgress, activityAttempts, and relationships.</p>
+          <div class="doc-meta">
+            <span>📊 5 diagrams</span>
+            <span>🎙️ 38 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="04-authentication-rbac.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">🔐</div>
+            <h3>Authentication & RBAC</h3>
+          </div>
+          <p>Login flows, role hierarchy (user/enterprise/admin), organization access, and route protection.</p>
+          <div class="doc-meta">
+            <span>📊 6 diagrams</span>
+            <span>🎙️ 57 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="05-progress-tracking.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">📊</div>
+            <h3>Progress Tracking</h3>
+          </div>
+          <p>IntersectionObserver for scroll tracking, activity completion, offline queuing, and analytics.</p>
+          <div class="doc-meta">
+            <span>📊 7 diagrams</span>
+            <span>🎙️ 60 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="06-frontend-patterns.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">🎨</div>
+            <h3>Frontend Patterns</h3>
+          </div>
+          <p>CSS architecture, design tokens, animations with Anime.js, component hierarchy, responsive breakpoints.</p>
+          <div class="doc-meta">
+            <span>📊 8 diagrams</span>
+            <span>🎙️ 87 narrated steps</span>
+          </div>
+        </a>
+
+        <a href="07-partnership-portal.html" class="doc-card">
+          <div class="doc-card-header">
+            <div class="doc-icon">🤝</div>
+            <h3>Partnership Portal</h3>
+          </div>
+          <p>Partner CRM architecture: data model, status flows, interactions, attachments, and analytics.</p>
+          <div class="doc-meta">
+            <span>📊 8 diagrams</span>
+            <span>🎙️ 74 narrated steps</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Auth Services -->
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+  <script src="../../shared/js/rbac.js"></script>
+  <script src="../../shared/js/route-guard.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Wait for Firebase auth to fully restore session
+      const user = await new Promise((resolve) => {
+        const checkAuth = () => {
+          // Initialize Firebase if not done
+          if (window.FirebaseApp && !window.FirebaseApp.getAuth()) {
+            window.FirebaseApp.init();
+          }
+          const auth = window.FirebaseApp?.getAuth();
+          if (!auth) {
+            setTimeout(checkAuth, 100);
+            return;
+          }
+          
+          // Listen for auth state - Firebase fires this after checking persisted session
+          let resolved = false;
+          const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (resolved) return;
+            
+            if (user) {
+              // User found, resolve immediately
+              resolved = true;
+              unsubscribe();
+              resolve(user);
+            } else {
+              // No user yet - wait a bit for session restoration
+              setTimeout(() => {
+                if (resolved) return;
+                resolved = true;
+                unsubscribe();
+                resolve(auth.currentUser); // Check one more time
+              }, 500);
+            }
+          });
+        };
+        checkAuth();
+      });
+      
+      if (!user) {
+        sessionStorage.setItem('redirectAfterLogin', window.location.href);
+        window.location.href = '../../auth/login.html';
+        return;
+      }
+      
+      console.log('👤 Team Docs - User authenticated:', user.email);
+      
+      // Check if user is admin (super admin list check)
+      const SUPER_ADMIN_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+      const isAdmin = SUPER_ADMIN_EMAILS.includes(user.email?.toLowerCase());
+      
+      if (!isAdmin) {
+        console.warn('Admin access denied for:', user.email);
+        window.location.href = '../../catalog.html?access=denied';
+        return;
+      }
+      
+      // Show main content
+      document.getElementById('loading-state').classList.add('hidden');
+      document.getElementById('main-content').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

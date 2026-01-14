@@ -1,0 +1,80 @@
+{
+  "storyId": "animation-flow-story",
+  "stepId": "step-3",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Click Trigger. Clicks trigger action animations. Ripples, expansions, state transitions. Confirming user actions visually!",
+  "duration": 12.5,
+  "words": [
+    {
+      "word": "Click",
+      "start": 0,
+      "end": 0.4399999976158142
+    },
+    {
+      "word": "Trigger",
+      "start": 0.4399999976158142,
+      "end": 1
+    },
+    {
+      "word": "clicks",
+      "start": 1,
+      "end": 2.299999952316284
+    },
+    {
+      "word": "trigger",
+      "start": 2.299999952316284,
+      "end": 2.9000000953674316
+    },
+    {
+      "word": "action",
+      "start": 2.9000000953674316,
+      "end": 3.559999942779541
+    },
+    {
+      "word": "animations",
+      "start": 3.559999942779541,
+      "end": 4.400000095367432
+    },
+    {
+      "word": "ripples",
+      "start": 5.239999771118164,
+      "end": 5.679999828338623
+    },
+    {
+      "word": "expansions",
+      "start": 6.760000228881836,
+      "end": 7.079999923706055
+    },
+    {
+      "word": "state",
+      "start": 7.71999979019165,
+      "end": 8.15999984741211
+    },
+    {
+      "word": "transitions",
+      "start": 8.15999984741211,
+      "end": 8.920000076293945
+    },
+    {
+      "word": "confirming",
+      "start": 9.960000038146973,
+      "end": 10.319999694824219
+    },
+    {
+      "word": "user",
+      "start": 10.319999694824219,
+      "end": 10.899999618530273
+    },
+    {
+      "word": "actions",
+      "start": 10.899999618530273,
+      "end": 11.4399995803833
+    },
+    {
+      "word": "visually",
+      "start": 11.4399995803833,
+      "end": 12.260000228881836
+    }
+  ]
+}
