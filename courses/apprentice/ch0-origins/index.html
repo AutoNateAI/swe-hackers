@@ -4,1560 +4,445 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 0: The Origins | The Apprentice's Path</title>
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <style>
-    /* Chapter 0 Specific Styles */
-    .origin-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%);
-    }
-    
-    .stars-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-    }
-    
-    .star {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 2rem;
-    }
-    
-    .chapter-badge {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background: rgba(139, 69, 19, 0.2);
-      border: 1px solid rgba(139, 69, 19, 0.4);
-      border-radius: 30px;
-      color: #d4a574;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 2rem;
-    }
-    
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #d4a574, #8b7355, #d4a574);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-    
-    .scroll-indicator {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    
-    .scroll-arrow {
-      width: 24px;
-      height: 24px;
-      border-right: 2px solid var(--text-muted);
-      border-bottom: 2px solid var(--text-muted);
-      transform: rotate(45deg);
-      animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-      0%, 100% { transform: rotate(45deg) translateY(0); }
-      50% { transform: rotate(45deg) translateY(10px); }
-    }
-    
-    /* Timeline */
-    .timeline-section {
-      padding: 4rem 0;
-      background: var(--bg-secondary);
-    }
-    
-    .timeline {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 0;
-    }
-    
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(180deg, #8b4513, #ffd700, #7986cb, #4db6ac);
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-    
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.6s ease;
-    }
-    
-    .timeline-item:nth-child(odd) {
-      padding-right: calc(50% + 40px);
-      text-align: right;
-    }
-    
-    .timeline-item:nth-child(even) {
-      padding-left: calc(50% + 40px);
-    }
-    
-    .timeline-dot {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 20px;
-      height: 20px;
-      background: var(--bg-primary);
-      border: 4px solid #ffd700;
-      border-radius: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
-    }
-    
-    .timeline-content {
-      background: var(--bg-card);
-      padding: 1.5rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .timeline-year {
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      color: #ffd700;
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-desc {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    
-    /* Circuit Animation */
-    .circuit-demo {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: 3rem;
-      margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .circuit-svg {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      display: block;
-    }
-    
-    .circuit-path {
-      fill: none;
-      stroke: #333;
-      stroke-width: 4;
-      stroke-linecap: round;
-    }
-    
-    .circuit-glow {
-      fill: none;
-      stroke: #ffd700;
-      stroke-width: 6;
-      stroke-linecap: round;
-      filter: drop-shadow(0 0 8px #ffd700);
-      stroke-dasharray: 20 200;
-      stroke-dashoffset: 0;
-    }
-    
-    .transistor {
-      fill: #1a1a2e;
-      stroke: #4db6ac;
-      stroke-width: 2;
-    }
-    
-    .transistor-active {
-      fill: rgba(77, 182, 172, 0.3);
-    }
-    
-    .bit-display {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .bit {
-      width: 60px;
-      height: 60px;
-      background: var(--bg-tertiary);
-      border: 2px solid #333;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      transition: all 0.3s ease;
-    }
-    
-    .bit.on {
-      background: rgba(255, 215, 0, 0.2);
-      border-color: #ffd700;
-      color: #ffd700;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-    }
-    
-    .circuit-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .circuit-btn {
-      padding: 0.75rem 1.5rem;
-      background: var(--bg-tertiary);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .circuit-btn:hover {
-      background: var(--accent-primary);
-      border-color: var(--accent-primary);
-    }
-    
-    /* File System Visualization */
-    .filesystem-demo {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
-    
-    .fs-tree {
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      padding: 1.5rem;
-      background: #0d0d14;
-      border-radius: var(--radius-md);
-      overflow-x: auto;
-    }
-    
-    .fs-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0;
-      cursor: pointer;
-      transition: all 0.2s;
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    
-    .fs-item.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .fs-item:hover {
-      color: var(--accent-primary);
-    }
-    
-    .fs-item.folder { color: #ffd700; }
-    .fs-item.file { color: var(--text-secondary); }
-    .fs-item.python { color: #4db6ac; }
-    
-    .fs-indent-1 { padding-left: 1.5rem; }
-    .fs-indent-2 { padding-left: 3rem; }
-    .fs-indent-3 { padding-left: 4.5rem; }
-    
-    /* Terminal Demo */
-    .terminal-window {
-      background: #0d0d14;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin: 2rem 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .terminal-header {
-      background: #1a1a2e;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .terminal-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    
-    .terminal-dot.red { background: #ff5f56; }
-    .terminal-dot.yellow { background: #ffbd2e; }
-    .terminal-dot.green { background: #27ca40; }
-    
-    .terminal-title {
-      margin-left: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    
-    .terminal-body {
-      padding: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      min-height: 200px;
-    }
-    
-    .terminal-line {
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    
-    .terminal-line.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.3s ease;
-    }
-    
-    .terminal-prompt {
-      color: #4db6ac;
-    }
-    
-    .terminal-command {
-      color: var(--text-primary);
-    }
-    
-    .terminal-output {
-      color: var(--text-secondary);
-    }
-    
-    .terminal-cursor {
-      display: inline-block;
-      width: 8px;
-      height: 1.2em;
-      background: var(--accent-primary);
-      animation: blink 1s step-end infinite;
-      vertical-align: text-bottom;
-    }
-    
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    
-    /* GUI Evolution */
-    .gui-timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .gui-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.5s ease;
-    }
-    
-    .gui-card.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    .gui-preview {
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-    
-    .gui-preview.cli { background: #0d0d14; font-family: var(--font-mono); font-size: 1rem; color: #4db6ac; }
-    .gui-preview.early { background: linear-gradient(135deg, #c0c0c0, #808080); }
-    .gui-preview.modern { background: linear-gradient(135deg, #667eea, #764ba2); }
-    .gui-preview.mobile { background: linear-gradient(135deg, #11998e, #38ef7d); }
-    
-    .gui-info {
-      padding: 1.25rem;
-    }
-    
-    .gui-era {
-      font-size: 0.8rem;
-      color: var(--accent-primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .gui-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .gui-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-    
-    /* Interactive Quiz */
-    .origin-quiz {
-      background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(255, 215, 0, 0.05));
-      border: 1px solid rgba(139, 69, 19, 0.3);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
-    
-    .quiz-question {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    
-    .quiz-option {
-      padding: 1rem 1.5rem;
-      background: var(--bg-card);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: left;
-    }
-    
-    .quiz-option:hover {
-      border-color: var(--accent-primary);
-      background: rgba(121, 134, 203, 0.1);
-    }
-    
-    .quiz-option.correct {
-      border-color: var(--accent-success);
-      background: rgba(102, 187, 106, 0.15);
-    }
-    
-    .quiz-option.incorrect {
-      border-color: var(--accent-error);
-      background: rgba(239, 83, 80, 0.15);
-    }
-    
-    /* Python Install Section */
-    .install-steps {
-      display: grid;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .install-step {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1.5rem;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    
-    .install-step.visible {
-      opacity: 1;
-      transform: translateX(0);
-      transition: all 0.5s ease;
-    }
-    
-    .step-number {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    
-    .step-content h4 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .step-content p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    
-    .step-content code {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      background: #0d0d14;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: #4db6ac;
-      margin-top: 0.5rem;
-    }
-    
-    /* Energy Flow Animation */
-    .energy-demo {
-      position: relative;
-      height: 300px;
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      margin: 2rem 0;
-      overflow: hidden;
-    }
-    
-    .energy-wire {
-      position: absolute;
-      height: 4px;
-      background: #333;
-      border-radius: 2px;
-    }
-    
-    .energy-particle {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #ffd700;
-      border-radius: 50%;
-      filter: blur(2px);
-      box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
-    }
-    
-    .energy-node {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background: var(--bg-tertiary);
-      border: 3px solid #333;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      transition: all 0.3s ease;
-    }
-    
-    .energy-node.active {
-      border-color: #ffd700;
-      background: rgba(255, 215, 0, 0.1);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-    }
-    
-    /* Continue Button */
-    .continue-section {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
-    }
-    
-    .continue-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1.25rem 2.5rem;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
-      text-decoration: none;
-      border-radius: var(--radius-lg);
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(121, 134, 203, 0.3);
-    }
-    
-    .continue-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(121, 134, 203, 0.4);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .timeline::before {
-        left: 20px;
-      }
-      
-      .timeline-item:nth-child(odd),
-      .timeline-item:nth-child(even) {
-        padding-left: 60px;
-        padding-right: 0;
-        text-align: left;
-      }
-      
-      .timeline-dot {
-        left: 20px;
-      }
-      
-      .gui-timeline {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  
-  <!-- Anime.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  
-  <!-- Mermaid -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
 </head>
-<body>
-  
-  <!-- Hero Section -->
-  <section class="origin-hero">
-    <div class="stars-container" id="stars"></div>
-    
-    <div class="hero-content">
-      <span class="chapter-badge">🏛️ Pre-Quest</span>
-      <h1 class="hero-title">The Origins</h1>
-      <p class="hero-subtitle">
-        Before you write your first line of code, journey back to where it all began.
-        Discover how humanity learned to harness rocks, electricity, and magnetism
-        to create the thinking machines we use today.
-      </p>
-    </div>
-    
-    <div class="scroll-indicator">
-      <span>Scroll to begin</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
-  
-  <!-- Main Content -->
-  <div class="lesson-container">
-    
-    <!-- Section 1: The Story Begins -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🌍</span>
-        In The Beginning...
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Long before smartphones, before the internet, before computers themselves—humans
-          faced a simple problem: <strong>How do we calculate things faster?</strong>
-        </p>
-        
-        <p>
-          From ancient counting stones to modern supercomputers, our story is one of
-          turning simple elements into extraordinary tools. The same forces that power
-          lightning storms and make compasses point north now power the device you're
-          reading this on.
-        </p>
-        
-        <div class="callout callout-story">
-          <div class="callout-title">🎭 The Three Ancient Forces</div>
-          <p>
-            Everything in computing comes down to three forces our ancestors discovered:
-          </p>
-          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-            <li><strong>🪨 Stone (Silicon)</strong> — The foundation of all computer chips</li>
-            <li><strong>⚡ Lightning (Electricity)</strong> — The energy that powers computation</li>
-            <li><strong>🧲 Magnetism</strong> — How we store and retrieve information</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Timeline Section -->
-    <section class="timeline-section">
-      <div class="lesson-container">
-        <h2 class="section-title" style="text-align: center;">
-          <span class="title-icon">📜</span>
-          The Timeline of Computing
-        </h2>
-        
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-year">~3000 BCE</div>
-              <div class="timeline-title">🧮 The Abacus</div>
-              <div class="timeline-desc">
-                Humans create the first "computer" — beads on rods for counting. 
-                No electricity needed, just clever arrangement of stones.
-              </div>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-year">1600s</div>
-              <div class="timeline-title">🧲 Magnetism Understood</div>
-              <div class="timeline-desc">
-                Scientists discover that magnets can store "state" — pointing north or south.
-                This simple on/off will become the foundation of digital memory.
-              </div>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-year">1800s</div>
-              <div class="timeline-title">⚡ Electricity Harnessed</div>
-              <div class="timeline-desc">
-                From Benjamin Franklin's kite to Edison's light bulb, humans learn 
-                to control lightning. The age of electrical machines begins.
-              </div>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-year">1947</div>
-              <div class="timeline-title">🔬 The Transistor</div>
-              <div class="timeline-desc">
-                Bell Labs creates the transistor from silicon (refined sand/rock).
-                A tiny switch that can turn on and off billions of times per second.
-              </div>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-year">1970s</div>
-              <div class="timeline-title">💻 Personal Computers</div>
-              <div class="timeline-desc">
-                Computers shrink from room-sized to desktop-sized. The terminal becomes
-                the window into the machine's mind.
-              </div>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-year">Today</div>
-              <div class="timeline-title">🌐 Everywhere Computing</div>
-              <div class="timeline-desc">
-                Billions of transistors fit on a chip smaller than your fingernail.
-                The Three Forces work together in your pocket.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 2: How Electricity Thinks -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">⚡</span>
-        How Electricity "Thinks"
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Here's the mind-blowing truth: <strong>Computers don't actually "think"</strong> — 
-          they just flip tiny switches really, really fast. Billions of times per second.
-        </p>
-        
-        <p>
-          Each switch (called a <strong>transistor</strong>) can be either ON or OFF. 
-          We represent this as <code>1</code> (on, electricity flowing) or <code>0</code> 
-          (off, no electricity). This is called <strong>binary</strong> — the language of machines.
-        </p>
-        
-        <div 
-          class="demo-container circuit-demo"
-          data-activity="demo-ch0-circuit"
-          data-type="demo"
-          data-points="10"
-          data-interactions="4"
-        >
-          <div class="demo-title">⚡ Watch Electricity Flow Through Transistors</div>
-          <span class="demo-status">Toggle 4 transistors</span>
-          
-          <div class="demo-area">
-            <svg class="circuit-svg" viewBox="0 0 700 200">
-              <!-- Main wire path -->
-              <path class="circuit-path" d="M 50 100 L 150 100 L 200 100 L 300 100 L 350 100 L 450 100 L 500 100 L 600 100 L 650 100" />
-              
-              <!-- Glowing electricity -->
-              <path class="circuit-glow" id="electricity" d="M 50 100 L 150 100 L 200 100 L 300 100 L 350 100 L 450 100 L 500 100 L 600 100 L 650 100" />
-              
-              <!-- Transistors -->
-              <rect class="transistor" id="t1" x="140" y="75" width="40" height="50" rx="5" />
-              <rect class="transistor" id="t2" x="290" y="75" width="40" height="50" rx="5" />
-              <rect class="transistor" id="t3" x="440" y="75" width="40" height="50" rx="5" />
-              <rect class="transistor" id="t4" x="590" y="75" width="40" height="50" rx="5" />
-              
-              <!-- Labels -->
-              <text x="160" y="150" fill="#666" font-size="12" text-anchor="middle">T1</text>
-              <text x="310" y="150" fill="#666" font-size="12" text-anchor="middle">T2</text>
-              <text x="460" y="150" fill="#666" font-size="12" text-anchor="middle">T3</text>
-              <text x="610" y="150" fill="#666" font-size="12" text-anchor="middle">T4</text>
-              
-              <!-- Power source -->
-              <circle cx="50" cy="100" r="15" fill="#ffd700" />
-              <text x="50" y="55" fill="#ffd700" font-size="12" text-anchor="middle">POWER</text>
-            </svg>
-            
-            <div class="bit-display">
-              <div class="bit" id="bit1">0</div>
-              <div class="bit" id="bit2">0</div>
-              <div class="bit" id="bit3">0</div>
-              <div class="bit" id="bit4">0</div>
-            </div>
-            
-            <div class="circuit-controls">
-              <button class="circuit-btn" data-interact="t1" onclick="toggleBit(0)">Toggle T1</button>
-              <button class="circuit-btn" data-interact="t2" onclick="toggleBit(1)">Toggle T2</button>
-              <button class="circuit-btn" data-interact="t3" onclick="toggleBit(2)">Toggle T3</button>
-              <button class="circuit-btn" data-interact="t4" onclick="toggleBit(3)">Toggle T4</button>
-              <button class="circuit-btn" onclick="runSequence()" style="background: var(--accent-primary);">
-                ▶ Run Demo
-              </button>
-            </div>
-          </div>
-          
-          <div class="demo-progress">
-            <div class="demo-progress-dot"></div>
-            <div class="demo-progress-dot"></div>
-            <div class="demo-progress-dot"></div>
-            <div class="demo-progress-dot"></div>
-          </div>
-          
-          <p style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
-            Click the buttons to toggle transistors on/off, or run the demo to see electricity flow!
-          </p>
-        </div>
-        
-        <div class="callout callout-insight">
-          <div class="callout-title">💡 Mind-Blowing Fact</div>
-          <p>
-            The chip in your phone has about <strong>15 billion transistors</strong>. 
-            Each one is smaller than a virus. They switch on and off about 
-            <strong>3 billion times per second</strong>. That's how fast your phone "thinks"!
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 3: Binary Math -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🔢</span>
-        The Language of Machines: Binary
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          With just 1s and 0s, computers can represent <em>anything</em> — numbers, letters, 
-          images, music, even this lesson you're reading right now.
-        </p>
-        
-        <div class="diagram-container">
-          <pre class="mermaid">
-graph LR
-    subgraph "Binary to Decimal"
-        B1["1 0 1 0"] --> D["= 10"]
-        B2["1 1 1 1"] --> D2["= 15"]
-        B3["0 1 0 1"] --> D3["= 5"]
-    end
-    
-    subgraph "How it works"
-        P["Each position = power of 2"]
-        P --> P1["8 4 2 1"]
-        P1 --> EX["1010 = 8+0+2+0 = 10"]
-    end
-    
-    style B1 fill:#1a1a2e,stroke:#ffd700
-    style B2 fill:#1a1a2e,stroke:#ffd700
-    style B3 fill:#1a1a2e,stroke:#ffd700
-    style D fill:#1a1a2e,stroke:#4db6ac
-    style D2 fill:#1a1a2e,stroke:#4db6ac
-    style D3 fill:#1a1a2e,stroke:#4db6ac
-          </pre>
-        </div>
-        
-        <div 
-          class="quiz-container origin-quiz" 
-          id="binary-quiz"
-          data-activity="quiz-ch0-binary"
-          data-type="quiz"
-          data-points="10"
-          data-answer="C"
-        >
-          <div class="quiz-header">
-            <span class="quiz-icon">🧠</span>
-            <h3 class="quiz-title">Quick Check</h3>
-          </div>
-          <p class="quiz-question">
-            What decimal number does binary <code>1100</code> represent?
-          </p>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-            Hint: 8 + 4 + 0 + 0 = ?
-          </p>
-          <div class="quiz-options">
-            <div class="quiz-option" data-value="A">
-              <span class="quiz-option-letter">A</span>
-              <span>6</span>
-            </div>
-            <div class="quiz-option" data-value="B">
-              <span class="quiz-option-letter">B</span>
-              <span>10</span>
-            </div>
-            <div class="quiz-option" data-value="C">
-              <span class="quiz-option-letter">C</span>
-              <span>12</span>
-            </div>
-            <div class="quiz-option" data-value="D">
-              <span class="quiz-option-letter">D</span>
-              <span>14</span>
-            </div>
-          </div>
-          <div class="quiz-feedback"
-            data-correct-msg="Correct! 1100 = 8 + 4 + 0 + 0 = 12"
-            data-incorrect-msg="Not quite. Remember: each position is a power of 2 (8, 4, 2, 1)."
-          ></div>
-          <button class="quiz-btn" disabled>Check Answer</button>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 4: The File System -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">📁</span>
-        Organizing the Machine: File Systems
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Imagine a massive library with millions of books, but no shelves, no organization, 
-          just books scattered everywhere. Finding anything would be impossible!
-        </p>
-        
-        <p>
-          Computers face the same challenge. They store billions of files, and they need 
-          a way to organize them. Enter the <strong>file system</strong> — a hierarchy of 
-          folders (directories) and files.
-        </p>
-        
-        <div class="filesystem-demo">
-          <h3 style="margin-bottom: 1rem; font-family: var(--font-display);">
-            🗂️ A Computer's File Structure
-          </h3>
-          
-          <div class="fs-tree" id="fs-demo">
-            <div class="fs-item folder">📁 / (root - everything starts here)</div>
-            <div class="fs-item folder fs-indent-1">📁 Users</div>
-            <div class="fs-item folder fs-indent-2">📁 YourName</div>
-            <div class="fs-item folder fs-indent-3">📁 Documents</div>
-            <div class="fs-item file fs-indent-3">📄 notes.txt</div>
-            <div class="fs-item folder fs-indent-3">📁 Projects</div>
-            <div class="fs-item python fs-indent-3">🐍 hello.py</div>
-            <div class="fs-item folder fs-indent-1">📁 Applications</div>
-            <div class="fs-item file fs-indent-2">⚙️ Python</div>
-            <div class="fs-item file fs-indent-2">⚙️ Terminal</div>
-            <div class="fs-item folder fs-indent-1">📁 System</div>
-            <div class="fs-item file fs-indent-2">🔒 (protected files)</div>
-          </div>
-        </div>
-        
-        <div class="callout callout-tip">
-          <div class="callout-title">🎯 Key Concept: Paths</div>
-          <p>
-            Every file has an "address" called a <strong>path</strong>. For example:
-          </p>
-          <code style="display: block; margin-top: 0.5rem; padding: 0.75rem; background: #0d0d14; border-radius: 6px;">
-            /Users/YourName/Projects/hello.py
-          </code>
-          <p style="margin-top: 0.5rem;">
-            This tells the computer: "Start at root (/), go to Users, then YourName, 
-            then Projects, and find hello.py"
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 5: The Terminal -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🖥️</span>
-        The Terminal: Talking Directly to the Machine
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Before pretty icons and mouse clicks, there was only one way to talk to a computer: 
-          <strong>typing commands</strong>. This text-based interface is called the 
-          <strong>terminal</strong> (or command line).
-        </p>
-        
-        <p>
-          The terminal might look intimidating, but it's actually the most powerful way to 
-          control your computer. Every developer uses it daily!
-        </p>
-        
-        <div class="terminal-window">
-          <div class="terminal-header">
-            <div class="terminal-dot red"></div>
-            <div class="terminal-dot yellow"></div>
-            <div class="terminal-dot green"></div>
-            <span class="terminal-title">Terminal — Learning Commands</span>
-          </div>
-          <div class="terminal-body" id="terminal-demo">
-            <div class="terminal-line">
-              <span class="terminal-prompt">$ </span>
-              <span class="terminal-command">pwd</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">/Users/YourName</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-prompt">$ </span>
-              <span class="terminal-command">ls</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">Documents  Downloads  Projects  Desktop</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-prompt">$ </span>
-              <span class="terminal-command">cd Projects</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-prompt">$ </span>
-              <span class="terminal-command">python --version</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-output">Python 3.12.0</span>
-            </div>
-            <div class="terminal-line">
-              <span class="terminal-prompt">$ </span>
-              <span class="terminal-cursor"></span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="diagram-container">
-          <h4 style="text-align: center; margin-bottom: 1rem;">Essential Terminal Commands</h4>
-          <pre class="mermaid">
-graph LR
-    subgraph "Navigation"
-        PWD["pwd<br/>Where am I?"]
-        LS["ls<br/>What's here?"]
-        CD["cd folder<br/>Go to folder"]
-    end
-    
-    subgraph "Files"
-        MKDIR["mkdir name<br/>Create folder"]
-        TOUCH["touch file.py<br/>Create file"]
-        RM["rm file<br/>Delete file"]
-    end
-    
-    subgraph "Python"
-        PY["python file.py<br/>Run code"]
-        PYV["python --version<br/>Check version"]
-    end
-    
-    style PWD fill:#1a1a2e,stroke:#4db6ac
-    style LS fill:#1a1a2e,stroke:#4db6ac
-    style CD fill:#1a1a2e,stroke:#4db6ac
-    style MKDIR fill:#1a1a2e,stroke:#ffd700
-    style TOUCH fill:#1a1a2e,stroke:#ffd700
-    style RM fill:#1a1a2e,stroke:#ffd700
-    style PY fill:#1a1a2e,stroke:#7986cb
-    style PYV fill:#1a1a2e,stroke:#7986cb
-          </pre>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 6: Installing Python -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🐍</span>
-        Installing Python: Your First Tool
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Python is a programming language — a way to write instructions that computers 
-          can understand. It's known for being easy to read and learn, which is why 
-          it's perfect for beginners.
-        </p>
-        
-        <div class="callout callout-info">
-          <div class="callout-title">🤔 Why "Python"?</div>
-          <p>
-            The creator, Guido van Rossum, named it after the comedy group 
-            <strong>Monty Python</strong>, not the snake! He wanted programming to be fun.
-          </p>
-        </div>
-        
-        <h3 style="margin: 2rem 0 1rem;">Installation Steps</h3>
-        
-        <div class="install-steps" id="install-steps">
-          <div class="install-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h4>Download Python</h4>
-              <p>
-                Go to <a href="https://python.org/downloads" target="_blank" style="color: var(--accent-primary);">python.org/downloads</a> 
-                and download the latest version for your operating system (Windows, Mac, or Linux).
-              </p>
-            </div>
-          </div>
-          
-          <div class="install-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h4>Run the Installer</h4>
-              <p>
-                Open the downloaded file. <strong>Important:</strong> Check the box that says 
-                "Add Python to PATH" before clicking Install!
-              </p>
-            </div>
-          </div>
-          
-          <div class="install-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h4>Verify Installation</h4>
-              <p>
-                Open your terminal and type this command to make sure Python is installed:
-              </p>
-              <code>python --version</code>
-            </div>
-          </div>
-          
-          <div class="install-step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h4>Try It Out!</h4>
-              <p>
-                Type <code>python</code> to enter the Python interpreter, then try:
-              </p>
-              <code>print("Hello, World!")</code>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 7: From Terminal to GUI -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🎨</span>
-        The Evolution: From Text to Touch
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          While the terminal is powerful, it's not very friendly to new users. 
-          So engineers created <strong>Graphical User Interfaces (GUIs)</strong> — 
-          the visual interfaces with windows, buttons, and icons we use today.
-        </p>
-        
-        <div class="gui-timeline">
-          <div class="gui-card">
-            <div class="gui-preview cli">$ █</div>
-            <div class="gui-info">
-              <div class="gui-era">1970s - 1980s</div>
-              <div class="gui-title">Command Line Only</div>
-              <div class="gui-desc">Text commands only. Memorize everything or you're lost!</div>
-            </div>
-          </div>
-          
-          <div class="gui-card">
-            <div class="gui-preview early">🖼️</div>
-            <div class="gui-info">
-              <div class="gui-era">1984 - 1990s</div>
-              <div class="gui-title">Early GUIs</div>
-              <div class="gui-desc">Windows, icons, and a mouse! Click instead of type.</div>
-            </div>
-          </div>
-          
-          <div class="gui-card">
-            <div class="gui-preview modern">✨</div>
-            <div class="gui-info">
-              <div class="gui-era">2000s - 2010s</div>
-              <div class="gui-title">Modern Interfaces</div>
-              <div class="gui-desc">Rich graphics, animations, and intuitive design.</div>
-            </div>
-          </div>
-          
-          <div class="gui-card">
-            <div class="gui-preview mobile">📱</div>
-            <div class="gui-info">
-              <div class="gui-era">2010s - Today</div>
-              <div class="gui-title">Touch & Voice</div>
-              <div class="gui-desc">Swipe, tap, and talk to your devices. AI assistants!</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="callout callout-insight">
-          <div class="callout-title">🎯 Why Learn Both?</div>
-          <p>
-            As a developer, you'll use <strong>both</strong> the terminal and GUIs:
-          </p>
-          <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-            <li><strong>Terminal:</strong> Running code, managing files, using developer tools</li>
-            <li><strong>GUI:</strong> Code editors, designing interfaces, everyday computing</li>
-          </ul>
-          <p style="margin-top: 0.5rem;">
-            The best developers are fluent in both worlds!
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 8: What's Next -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🚀</span>
-        You're Ready!
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          You now understand the foundations that took humanity thousands of years to discover:
-        </p>
-        
-        <div class="diagram-container">
-          <pre class="mermaid">
-mindmap
-  root((Your Foundation))
-    🪨 Stone/Silicon
-      Transistors
-      Computer chips
-      Binary switches
-    ⚡ Electricity
-      Powers everything
-      1s and 0s
-      Speed of light
-    🧲 Magnetism
-      Memory storage
-      Hard drives
-      Data persistence
-    🖥️ Interfaces
-      Terminal commands
-      File systems
-      GUIs
-          </pre>
-        </div>
-        
-        <p>
-          In <strong>Chapter 1: The Force of Stone</strong>, we'll dive deep into how 
-          computers remember things — variables, data types, and your first Python programs!
-        </p>
-        
-        <div class="callout callout-success">
-          <div class="callout-title">✅ Pre-Quest Complete!</div>
-          <p>
-            You've learned the history, the science, and the tools. Now it's time 
-            to start writing code. The adventure truly begins...
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Continue Section -->
-    <section class="continue-section">
-      <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
-        Ready for Chapter 1?
-      </h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-        The foundation is set. Now let's learn how computers remember things 
-        and write your first Python program!
-      </p>
-      <a href="../ch1-stone/" class="continue-btn">
-        Continue to Chapter 1: The Force of Stone →
+<body data-course="apprentice" data-lesson="ch0-origins">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🏛️</div>
+        <span>The Origins</span>
       </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Apprentice</a>
+        <a href="index.html" class="active">Ch 0</a>
+        <a href="../ch1-stone/">Ch 1: Stone</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Apprentice</a>
+        <span>/</span>
+        <span>Chapter 0: The Origins</span>
+      </div>
+      <h1>🏛️ The Origins</h1>
+      <p>Before you write your first line of code, journey back to where it all began. Discover how humanity learned to harness rocks, electricity, and magnetism to create the thinking machines we use today.</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
     </section>
-    
-  </div>
-  
-  <!-- Bottom Navigation -->
-  <nav class="lesson-nav">
-    <a class="nav-btn" href="../ch6-capstone2/">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7" />
-      </svg>
-      ← Capstone II (Loop)
-    </a>
-    <a class="nav-btn primary" href="../ch1-stone/">
-      Chapter 1: Stone →
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7" />
-      </svg>
-    </a>
+
+    <!-- Story 1: The Three Forces -->
+    <section class="section" id="three-forces-section">
+      <h2>The Three Ancient Forces</h2>
+      <p>Everything in computing comes down to three forces our ancestors discovered: Stone (Silicon), Lightning (Electricity), and Magnetism. Watch how these ancient elements combined to create modern computing.</p>
+      
+      <div class="diagram-container" id="three-forces-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🏛️ From Ancient Forces to Modern Computing</span>
+        </div>
+        <div id="three-forces-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="three-forces-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="three-forces-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="three-forces-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="three-forces-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="three-forces-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="three-forces-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 2: Binary Language -->
+    <section class="section" id="binary-section">
+      <h2>The Language of Machines</h2>
+      <p>With just 1s and 0s, computers can represent anything — numbers, letters, images, music, even this lesson you're reading right now. Learn how switches become the universal language of computing.</p>
+      
+      <div class="diagram-container" id="binary-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔢 Binary: The Universal Language</span>
+        </div>
+        <div id="binary-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="binary-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="binary-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="binary-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="binary-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="binary-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="binary-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 3: Navigating Your Computer -->
+    <section class="section" id="navigation-section">
+      <h2>Navigating Your Computer</h2>
+      <p>Computers store billions of files and need a way to organize them. Learn about file systems, paths, and the powerful terminal interface that every developer uses daily.</p>
+      
+      <div class="diagram-container" id="navigation-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🧭 File Systems & The Terminal</span>
+        </div>
+        <div id="navigation-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="navigation-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="navigation-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="navigation-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="navigation-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="navigation-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="navigation-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready for Chapter 1?</h2>
+      <p>You've learned the foundations that took humanity thousands of years to discover. Now let's dive into how computers remember things — variables, data types, and your first Python programs!</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch1-stone/" class="card">
+          <div class="card-icon">🪨</div>
+          <h3>Chapter 1: The Stone Remembers</h3>
+          <p>Learn about variables, data types, and write your first Python code.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in The Apprentice's Path.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#three-forces-section">The Three Forces</a></li>
+      <li><a href="#binary-section">Binary Language</a></li>
+      <li><a href="#navigation-section">Navigation</a></li>
+    </ul>
   </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
   
-  <!-- Scripts -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
   
   <script>
-    // Initialize Mermaid
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'dark',
-      themeVariables: {
-        primaryColor: '#7986cb',
-        primaryTextColor: '#e8e8f0',
-        primaryBorderColor: '#3f51b5',
-        lineColor: '#6a6a80',
-        secondaryColor: '#1a1a2e',
-        tertiaryColor: '#12121a',
-        background: '#16162a',
-        mainBkg: '#16162a',
-        nodeBorder: '#3f51b5',
-        clusterBkg: '#1a1a2e',
-        clusterBorder: '#3f51b5',
-        titleColor: '#e8e8f0',
-        edgeLabelBackground: '#1a1a2e'
-      },
-      flowchart: {
-        curve: 'basis',
-        padding: 20,
-        htmlLabels: true,
-        nodeSpacing: 50,
-        rankSpacing: 50
-      }
-    });
-    
-    // Create stars
-    function createStars() {
-      const container = document.getElementById('stars');
-      for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        container.appendChild(star);
-      }
-      
-      anime({
-        targets: '.star',
-        opacity: [0, 1],
-        scale: [0, 1],
-        delay: anime.stagger(30, { from: 'random' }),
-        duration: 1000,
-        easing: 'easeOutQuad'
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'three-forces': [
+          // Central problem
+          { data: { id: 'ancient-problem', label: '🤔 The Problem', type: 'external', description: 'How do we calculate things faster?' } },
+          // The three forces
+          { data: { id: 'stone-silicon', label: '🪨 Stone\n(Silicon)', type: 'concept', description: 'From abacus to silicon chips - the foundation' } },
+          { data: { id: 'lightning-electricity', label: '⚡ Lightning\n(Electricity)', type: 'auth', description: 'The power source that brings machines to life' } },
+          { data: { id: 'magnetism-memory', label: '🧲 Magnetism\n(Memory)', type: 'data', description: 'North or south, on or off - digital storage' } },
+          // The breakthrough
+          { data: { id: 'transistor', label: '🔬 Transistor\n(1947)', type: 'service', description: 'Tiny silicon switch - billions per chip' } },
+          // Modern result
+          { data: { id: 'modern-computing', label: '📱 Modern\nComputing', type: 'page', description: '15 billion transistors in your pocket' } },
+          // Edges
+          { data: { source: 'ancient-problem', target: 'stone-silicon' } },
+          { data: { source: 'ancient-problem', target: 'lightning-electricity' } },
+          { data: { source: 'ancient-problem', target: 'magnetism-memory' } },
+          { data: { source: 'stone-silicon', target: 'transistor' } },
+          { data: { source: 'lightning-electricity', target: 'transistor' } },
+          { data: { source: 'transistor', target: 'modern-computing' } },
+          { data: { source: 'magnetism-memory', target: 'modern-computing' } }
+        ],
+
+        'binary': [
+          { data: { id: 'switch', label: '💡 Switch\nON / OFF', type: 'external', description: 'A transistor is just a tiny switch' } },
+          { data: { id: 'binary-intro', label: '0️⃣ Binary\n0 and 1', type: 'concept', description: 'ON = 1, OFF = 0 - two symbols only' } },
+          { data: { id: 'positions', label: '📊 Positions\n8 4 2 1', type: 'data', description: 'Each position is a power of 2' } },
+          { data: { id: 'conversion', label: '🔄 Convert\n1010 = 10', type: 'service', description: 'Add up positions with 1s' } },
+          { data: { id: 'everything-binary', label: '🌐 Everything\nis Binary', type: 'page', description: 'Text, images, music - all 0s and 1s' } },
+          // Edges
+          { data: { source: 'switch', target: 'binary-intro' } },
+          { data: { source: 'binary-intro', target: 'positions' } },
+          { data: { source: 'positions', target: 'conversion' } },
+          { data: { source: 'conversion', target: 'everything-binary' } }
+        ],
+
+        'navigation': [
+          { data: { id: 'library', label: '📚 Library\nProblem', type: 'external', description: 'Millions of files need organization' } },
+          { data: { id: 'folders', label: '📁 Folders\n& Files', type: 'concept', description: 'Tree-like structure organizes everything' } },
+          { data: { id: 'paths', label: '🛤️ Paths\n/Users/You', type: 'data', description: 'Every file has an address' } },
+          { data: { id: 'terminal', label: '🖥️ Terminal\n$ _', type: 'service', description: 'Text interface to control your computer' } },
+          { data: { id: 'commands', label: '⌨️ Commands\npwd ls cd', type: 'auth', description: 'Essential navigation commands' } },
+          // Edges
+          { data: { source: 'library', target: 'folders' } },
+          { data: { source: 'folders', target: 'paths' } },
+          { data: { source: 'paths', target: 'terminal' } },
+          { data: { source: 'terminal', target: 'commands' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      // Map story IDs to diagram element keys
+      const storyToDiagram = {
+        'three-forces-story': 'three-forces',
+        'binary-story': 'binary',
+        'navigation-story': 'navigation'
+      };
+
+      // Create storytelling diagrams for each story in the JSON
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
       });
-    }
-    
-    // Circuit demo state
-    let bits = [0, 0, 0, 0];
-    
-    function toggleBit(index) {
-      bits[index] = bits[index] ? 0 : 1;
-      updateBitDisplay();
-    }
-    
-    function updateBitDisplay() {
-      bits.forEach((bit, i) => {
-        const el = document.getElementById(`bit${i + 1}`);
-        const transistor = document.getElementById(`t${i + 1}`);
-        
-        el.textContent = bit;
-        el.classList.toggle('on', bit === 1);
-        transistor.classList.toggle('transistor-active', bit === 1);
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      // Map story IDs to quiz container IDs
+      const storyToQuiz = {
+        'three-forces-story': 'three-forces-quiz',
+        'binary-story': 'binary-quiz',
+        'navigation-story': 'navigation-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
       });
-    }
-    
-    function runSequence() {
-      bits = [0, 0, 0, 0];
-      updateBitDisplay();
-      
-      // Animate electricity flow
-      anime({
-        targets: '#electricity',
-        strokeDashoffset: [220, -220],
-        duration: 2000,
-        easing: 'linear',
-        loop: false
-      });
-      
-      // Toggle bits sequentially
-      [0, 1, 2, 3].forEach((i, idx) => {
-        setTimeout(() => {
-          bits[i] = 1;
-          updateBitDisplay();
-        }, 400 * (idx + 1));
-      });
-    }
-    
-    // Quiz is now handled by ActivityTracker
-    
-    // Animate on scroll
-    function setupScrollAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      // Timeline items
-      document.querySelectorAll('.timeline-item').forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.15}s`;
-        observer.observe(item);
-      });
-      
-      // File system items
-      document.querySelectorAll('.fs-item').forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.08}s`;
-        observer.observe(item);
-      });
-      
-      // Terminal lines
-      document.querySelectorAll('.terminal-line').forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.15}s`;
-        observer.observe(item);
-      });
-      
-      // GUI cards
-      document.querySelectorAll('.gui-card').forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.15}s`;
-        observer.observe(item);
-      });
-      
-      // Install steps
-      document.querySelectorAll('.install-step').forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.15}s`;
-        observer.observe(item);
-      });
-    }
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      createStars();
-      setupScrollAnimations();
-      
-      // Hero animation
-      anime({
-        targets: '.hero-content > *',
-        opacity: [0, 1],
-        translateY: [30, 0],
-        delay: anime.stagger(200, { start: 500 }),
-        duration: 800,
-        easing: 'easeOutQuad'
-      });
-      
-      // Initialize lesson integration (handles Firebase, auth, and header)
-      if (window.LessonIntegration) {
-        window.LessonIntegration.init('apprentice', 'ch0-origins');
-      }
-      
-      // Initialize progress tracker
-      if (window.ProgressTracker) {
-        window.ProgressTracker.init('apprentice', 'ch0-origins');
-      }
-      
-      // Initialize activity tracker
-      if (window.ActivityTracker) {
-        window.ActivityTracker.init('apprentice', 'ch0-origins');
-      }
     });
   </script>
 </body>
 </html>
-
