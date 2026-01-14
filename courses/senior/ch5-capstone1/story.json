@@ -1,0 +1,281 @@
+{
+  "pageId": "ch5-capstone1",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "Lead a Major Initiative",
+    "icon": "🔥",
+    "themeColor": "fire"
+  },
+  "stories": [
+    {
+      "id": "initiative-scale-story",
+      "diagramId": "initiative-scale",
+      "title": "What Qualifies as Major?",
+      "steps": [
+        {
+          "nodeId": "not-a-feature",
+          "icon": "📝",
+          "title": "Not Just a Feature",
+          "narration": "This isn't about building a feature. This is about leading something that would normally take a team three plus months. Something with stakeholders, dependencies, and organizational impact.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "scale-feature",
+          "edges": [{ "from": "not-a-feature", "to": "scale-feature" }],
+          "icon": "📦",
+          "title": "Feature vs Project",
+          "narration": "A feature takes one to two weeks with contained scope. A project takes one to two months with a small team and defined boundaries. These are valuable, but they're not what we're after here.",
+          "connectsTo": "Not a Feature"
+        },
+        {
+          "nodeId": "scale-initiative",
+          "edges": [{ "from": "scale-feature", "to": "scale-initiative" }],
+          "icon": "🚀",
+          "title": "Initiative Scale",
+          "narration": "An initiative is three plus months, cross-team, with organizational impact. Platform migrations, architecture transformations, security overhauls. This is your target — something that moves the needle for the entire organization.",
+          "connectsTo": "Feature vs Project"
+        },
+        {
+          "nodeId": "ai-advantage",
+          "edges": [{ "from": "scale-initiative", "to": "ai-advantage" }],
+          "icon": "🤖",
+          "title": "The AI Advantage",
+          "narration": "Here's your unfair advantage: with AI, you can take on initiatives that would traditionally require a dedicated team. Your amplified skills let you move at team speed as an individual contributor.",
+          "connectsTo": "Initiative Scale"
+        },
+        {
+          "nodeId": "examples",
+          "edges": [{ "from": "ai-advantage", "to": "examples" }],
+          "icon": "💡",
+          "title": "Real Examples",
+          "narration": "Think platform migrations, monolith to microservices, system-wide performance overhauls, security initiatives, infrastructure modernization, developer experience transformations. Pick something that matters.",
+          "connectsTo": "AI Advantage"
+        }
+      ]
+    },
+    {
+      "id": "process-story",
+      "diagramId": "process",
+      "title": "The Initiative Process",
+      "steps": [
+        {
+          "nodeId": "day-one",
+          "icon": "📋",
+          "title": "Day 1: Problem Definition",
+          "narration": "Start with the problem, not the solution. What exactly are we solving? What's the impact of solving it? What's the cost of NOT solving it? Who are the stakeholders? Get crystal clear before moving forward.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "day-two",
+          "edges": [{ "from": "day-one", "to": "day-two" }],
+          "icon": "🎨",
+          "title": "Day 2: AI-Augmented Design",
+          "narration": "Now design — but supercharged with AI. Use your chapter four process for rapid design exploration. Generate options, analyze trade-offs, create a detailed design doc. What took teams weeks, you do in a day.",
+          "connectsTo": "Problem Definition"
+        },
+        {
+          "nodeId": "day-three",
+          "edges": [{ "from": "day-two", "to": "day-three" }],
+          "icon": "🤝",
+          "title": "Day 3: Socialization",
+          "narration": "Present to key stakeholders. Gather feedback. This is crucial — great designs fail without buy-in. Listen more than you talk. Iterate on the design based on real input from people who have context you lack.",
+          "connectsTo": "AI-Augmented Design"
+        },
+        {
+          "nodeId": "day-four",
+          "edges": [{ "from": "day-three", "to": "day-four" }],
+          "icon": "📊",
+          "title": "Day 4: Planning",
+          "narration": "Break the initiative into workstreams. Identify dependencies and blockers. Resource requirements. Timeline and milestones. Make the path forward concrete and actionable.",
+          "connectsTo": "Socialization"
+        },
+        {
+          "nodeId": "day-five",
+          "edges": [{ "from": "day-four", "to": "day-five" }],
+          "icon": "🚀",
+          "title": "Day 5: Kickoff",
+          "narration": "Get official buy-in. Assign responsibilities. Start execution on phase one. The initiative is now real — people are committed, work is happening, momentum is building.",
+          "connectsTo": "Planning"
+        },
+        {
+          "nodeId": "execute",
+          "edges": [{ "from": "day-five", "to": "execute" }],
+          "icon": "⚡",
+          "title": "Execute & Iterate",
+          "narration": "Execute the first phase. Demonstrate early progress. Validate your approach with real work. Document learnings. Then retrospect and iterate — the cycle continues until the initiative is complete.",
+          "connectsTo": "Kickoff"
+        }
+      ]
+    },
+    {
+      "id": "leadership-story",
+      "diagramId": "leadership",
+      "title": "Technical Leadership Skills",
+      "steps": [
+        {
+          "nodeId": "beyond-technical",
+          "icon": "👑",
+          "title": "Beyond Technical Work",
+          "narration": "Leading an initiative is more than technical work. It requires leadership skills that AI can't do for you. These are human skills — communication, alignment, relationship building.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "vision",
+          "edges": [{ "from": "beyond-technical", "to": "vision" }],
+          "icon": "🎯",
+          "title": "Vision Communication",
+          "narration": "Can you explain WHY this matters in terms stakeholders care about? Business impact, not technical elegance. Executives don't care about clean architecture — they care about revenue, risk, and velocity.",
+          "connectsTo": "Beyond Technical"
+        },
+        {
+          "nodeId": "stakeholders",
+          "edges": [{ "from": "vision", "to": "stakeholders" }],
+          "icon": "🤝",
+          "title": "Stakeholder Management",
+          "narration": "Who needs to buy in? What are their concerns? How do you address them proactively? Map your stakeholders, understand their motivations, and bring them along on the journey.",
+          "connectsTo": "Vision Communication"
+        },
+        {
+          "nodeId": "visibility",
+          "edges": [{ "from": "stakeholders", "to": "visibility" }],
+          "icon": "📊",
+          "title": "Progress Visibility",
+          "narration": "How do others know the initiative is on track? Clear milestones, regular updates, visible metrics. If stakeholders have to ask how things are going, you're not communicating enough.",
+          "connectsTo": "Stakeholder Management"
+        },
+        {
+          "nodeId": "risk-adaptation",
+          "edges": [{ "from": "visibility", "to": "risk-adaptation" }],
+          "icon": "🚧",
+          "title": "Risk & Adaptation",
+          "narration": "What could go wrong? How are you mitigating? When do you escalate? Plans will change — can you adjust scope, timeline, or approach while maintaining momentum? Flexibility is survival.",
+          "connectsTo": "Progress Visibility"
+        },
+        {
+          "nodeId": "ai-plus-leadership",
+          "edges": [{ "from": "risk-adaptation", "to": "ai-plus-leadership" }],
+          "icon": "🤖",
+          "title": "AI + Leadership",
+          "narration": "Here's the secret: AI helps you move faster on technical work, freeing time for the human work. Use that time for communication, alignment, and relationship building. That's what makes initiatives succeed.",
+          "connectsTo": "Risk & Adaptation"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "initiative-scale-story",
+      "questions": [
+        {
+          "question": "What distinguishes an 'initiative' from a 'project' in scale?",
+          "options": [
+            "Initiatives are smaller and faster",
+            "Initiatives are 3+ months, cross-team, with organizational impact",
+            "Projects require more documentation",
+            "There's no real difference"
+          ],
+          "correct": 1,
+          "explanation": "An initiative is 3+ months scope, involves cross-team coordination, and has organizational impact. Projects are smaller (1-2 months) with defined boundaries."
+        },
+        {
+          "question": "What's the 'AI Advantage' for leading major initiatives?",
+          "options": [
+            "AI writes all the code for you",
+            "AI replaces the need for stakeholders",
+            "You can move at team speed as an individual, taking on larger scope",
+            "AI eliminates the need for planning"
+          ],
+          "correct": 2,
+          "explanation": "AI amplifies your capabilities so you can take on initiatives that would traditionally require a dedicated team. You move at team speed while remaining an individual contributor."
+        },
+        {
+          "question": "Which of these is a good example of a 'major initiative'?",
+          "options": [
+            "Adding a button to the UI",
+            "Fixing a bug in production",
+            "Platform migration from one cloud provider to another",
+            "Writing unit tests for a module"
+          ],
+          "correct": 2,
+          "explanation": "Platform migrations are classic major initiatives — 3+ months, cross-team coordination, organizational impact. The other options are features or tasks."
+        }
+      ]
+    },
+    {
+      "storyId": "process-story",
+      "questions": [
+        {
+          "question": "What should happen on Day 1 of an initiative kickoff?",
+          "options": [
+            "Start coding immediately",
+            "Problem definition — get crystal clear on what you're solving and why",
+            "Assign tasks to the team",
+            "Present to executives"
+          ],
+          "correct": 1,
+          "explanation": "Day 1 is about problem definition: What are we solving? What's the impact? What's the cost of NOT solving it? Who are stakeholders? Clarity here prevents wasted effort later."
+        },
+        {
+          "question": "Why is 'socialization' a critical step in the process?",
+          "options": [
+            "It's required by company policy",
+            "Great designs fail without buy-in; you need stakeholder feedback",
+            "It gives you time to rest",
+            "Socialization is optional for good engineers"
+          ],
+          "correct": 1,
+          "explanation": "Even the best technical design fails without organizational buy-in. Socialization gathers feedback, builds support, and catches blind spots you couldn't see alone."
+        },
+        {
+          "question": "What's the purpose of executing Phase 1 during the kickoff week?",
+          "options": [
+            "To complete the entire initiative",
+            "To demonstrate early progress and validate the approach",
+            "To avoid planning",
+            "To skip the design phase"
+          ],
+          "correct": 1,
+          "explanation": "Phase 1 demonstrates early progress, validates your approach with real work, and builds momentum. It proves the initiative is real and moving forward."
+        }
+      ]
+    },
+    {
+      "storyId": "leadership-story",
+      "questions": [
+        {
+          "question": "What do executives care about when you present an initiative?",
+          "options": [
+            "Clean architecture and elegant code",
+            "Business impact: revenue, risk, and velocity",
+            "The specific programming languages used",
+            "How many lines of code will be written"
+          ],
+          "correct": 1,
+          "explanation": "Executives care about business outcomes — revenue, risk reduction, and velocity. Translate your technical work into business impact to get buy-in."
+        },
+        {
+          "question": "What's the key insight about 'AI + Leadership'?",
+          "options": [
+            "AI can do the leadership work for you",
+            "AI eliminates the need for stakeholder communication",
+            "AI frees time from technical work, which you invest in human skills",
+            "Leadership is no longer needed with AI"
+          ],
+          "correct": 2,
+          "explanation": "AI accelerates the technical work, which frees up your time. Invest that time in communication, alignment, and relationship building — the human skills that make initiatives succeed."
+        },
+        {
+          "question": "If stakeholders have to ask 'how is the initiative going?', what does that indicate?",
+          "options": [
+            "The initiative is going well",
+            "You're not communicating enough about progress",
+            "Stakeholders are too involved",
+            "Everything is on track"
+          ],
+          "correct": 1,
+          "explanation": "If stakeholders have to ask, you're not communicating enough. Clear milestones, regular updates, and visible metrics should proactively answer this question."
+        }
+      ]
+    }
+  ]
+}

@@ -4,475 +4,442 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capstone I: Lead a Major Initiative | Senior Amplifier</title>
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--accent-fire);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(255, 87, 34, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(244, 81, 30, 0.15) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--accent-fire);
-    }
-    
-    .story-block::before {
-      color: var(--accent-fire);
-    }
-
-    .initiative-scale {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .scale-level {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-      opacity: 0.6;
-      transition: all 0.3s ease;
-    }
-
-    .scale-level.highlight {
-      opacity: 1;
-      border: 2px solid var(--accent-fire);
-      box-shadow: 0 0 30px rgba(255, 87, 34, 0.2);
-    }
-
-    .scale-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .scale-level h4 {
-      margin-bottom: 0.5rem;
-    }
-
-    .scale-level p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    .week-schedule {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .schedule-day {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .schedule-day:last-child {
-      border-bottom: none;
-    }
-
-    .day-label {
-      min-width: 80px;
-      font-weight: 600;
-      color: var(--accent-fire);
-    }
-
-    .day-tasks {
-      flex: 1;
-    }
-
-    .day-tasks li {
-      margin-bottom: 0.25rem;
-    }
-
-    .leadership-traits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .trait-card {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      border-left: 3px solid var(--accent-fire);
-    }
-
-    .trait-card h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
 </head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+<body data-course="senior" data-lesson="ch5-capstone1">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🔥</div>
+        <span>Lead an Initiative</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Senior</a>
+        <a href="../ch4-architect/">Ch 4</a>
+        <a href="index.html" class="active">Capstone I</a>
+        <a href="../ch6-capstone2/">Capstone II</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="scale" title="Initiative Scale"></div>
-    <div class="progress-dot" data-section="process" title="The Process"></div>
-    <div class="progress-dot" data-section="leadership" title="Leadership"></div>
-    <div class="progress-dot" data-section="project" title="Your Initiative"></div>
-  </nav>
-
-  <main class="lesson-container">
-    
-    <!-- HERO SECTION -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Capstone I • Week 5</span>
-        <div class="hero-icon">🔥</div>
-        <h1>Lead a Major Initiative</h1>
-        <p class="hero-subtitle">
-          You've learned rapid acquisition, system-wide debugging, platform thinking, and 
-          AI-augmented design. Now <strong>lead something big</strong>.
-        </p>
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Senior Amplifier</a>
+        <span>/</span>
+        <span>Capstone I: Lead a Major Initiative</span>
       </div>
+      <h1>🔥 Lead a Major Initiative</h1>
+      <p>You've learned rapid acquisition, system-wide debugging, platform thinking, and AI-augmented design. Now <strong>lead something big</strong> — an initiative that would traditionally take a team 3+ months.</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 1: Initiative Scale -->
+    <section class="section" id="initiative-scale-section">
+      <h2>What Qualifies as "Major"?</h2>
+      <p>This isn't about building a feature. It's about leading something with stakeholders, dependencies, and organizational impact. Something that moves the needle for the entire organization.</p>
       
-      <div class="scroll-indicator">
-        <span>Step into technical leadership</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- INITIATIVE SCALE -->
-    <section class="section" data-section="scale">
-      <div class="section-content">
-        <h2 class="fade-in">📊 What Qualifies as "Major"?</h2>
-        
-        <div class="story-block fade-in">
-          <p>
-            This isn't about building a feature. This is about leading something that would 
-            normally take <strong>a team 3+ months</strong>. Something with stakeholders, 
-            dependencies, and organizational impact.
-          </p>
+      <div class="diagram-container" id="initiative-scale-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📊 The Initiative Scale</span>
         </div>
-
-        <div class="initiative-scale fade-in">
-          <div class="scale-level">
-            <div class="scale-icon">📝</div>
-            <h4>Feature</h4>
-            <p>1-2 weeks, 1 person, contained scope</p>
-          </div>
-          <div class="scale-level">
-            <div class="scale-icon">📦</div>
-            <h4>Project</h4>
-            <p>1-2 months, small team, defined boundaries</p>
-          </div>
-          <div class="scale-level highlight">
-            <div class="scale-icon">🚀</div>
-            <h4>Initiative</h4>
-            <p>3+ months, cross-team, organizational impact</p>
-          </div>
-          <div class="scale-level">
-            <div class="scale-icon">🌐</div>
-            <h4>Program</h4>
-            <p>6+ months, multiple initiatives, strategic</p>
+        <div id="initiative-scale-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="initiative-scale-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="fade-in">Examples of Major Initiatives</h3>
-        
-        <ul class="fade-in">
-          <li><strong>Platform Migration</strong> — Moving from one cloud/framework/database to another</li>
-          <li><strong>Architecture Transformation</strong> — Monolith to microservices, or vice versa</li>
-          <li><strong>Performance Overhaul</strong> — System-wide latency or cost reduction</li>
-          <li><strong>Security Initiative</strong> — Zero-trust implementation, compliance achievement</li>
-          <li><strong>Infrastructure Modernization</strong> — Kubernetes adoption, serverless migration</li>
-          <li><strong>Developer Experience</strong> — CI/CD transformation, tooling standardization</li>
-        </ul>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="initiative-scale-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-        <div class="callout callout-insight fade-in">
-          <span class="callout-icon">💡</span>
-          <strong>The Amplified Advantage:</strong> With AI, you can take on initiatives that would 
-          traditionally require a dedicated team. Your amplified skills let you move at team speed as an individual.
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="initiative-scale-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="initiative-scale-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="initiative-scale-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- THE PROCESS -->
-    <section class="section" data-section="process">
-      <div class="section-content">
-        <h2 class="fade-in">📋 Week 5 Schedule</h2>
-        
-        <p class="fade-in">
-          One week to kickoff a major initiative. Here's how to use your amplified skills:
-        </p>
-
-        <div class="week-schedule fade-in">
-          <div class="schedule-day">
-            <span class="day-label">Day 1</span>
-            <div class="day-tasks">
-              <strong>Problem Definition</strong>
-              <ul>
-                <li>What exactly are we solving?</li>
-                <li>What's the impact of solving it?</li>
-                <li>What's the cost of NOT solving it?</li>
-                <li>Who are the stakeholders?</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="schedule-day">
-            <span class="day-label">Day 2</span>
-            <div class="day-tasks">
-              <strong>Design (AI-Augmented)</strong>
-              <ul>
-                <li>Use your Ch4 process for rapid design</li>
-                <li>Generate options, analyze trade-offs</li>
-                <li>Create detailed design doc</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="schedule-day">
-            <span class="day-label">Day 3</span>
-            <div class="day-tasks">
-              <strong>Socialization</strong>
-              <ul>
-                <li>Present to key stakeholders</li>
-                <li>Gather feedback</li>
-                <li>Iterate on design based on input</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="schedule-day">
-            <span class="day-label">Day 4</span>
-            <div class="day-tasks">
-              <strong>Planning</strong>
-              <ul>
-                <li>Break into workstreams</li>
-                <li>Identify dependencies and blockers</li>
-                <li>Resource requirements</li>
-                <li>Timeline and milestones</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="schedule-day">
-            <span class="day-label">Day 5</span>
-            <div class="day-tasks">
-              <strong>Kickoff</strong>
-              <ul>
-                <li>Get official buy-in</li>
-                <li>Assign responsibilities</li>
-                <li>Start execution on Phase 1</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="schedule-day">
-            <span class="day-label">Day 6-7</span>
-            <div class="day-tasks">
-              <strong>Execute First Phase</strong>
-              <ul>
-                <li>Demonstrate early progress</li>
-                <li>Validate approach with real work</li>
-                <li>Document learnings</li>
-              </ul>
-            </div>
+      <div class="quiz-card" id="initiative-scale-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
           </div>
         </div>
-
-        <div class="diagram-container fade-in">
-          <div class="diagram-title">Initiative Lifecycle</div>
-          <div class="mermaid">
-flowchart LR
-    A[Problem Definition] --> B[Design]
-    B --> C[Socialization]
-    C --> D[Planning]
-    D --> E[Kickoff]
-    E --> F[Execute Phase 1]
-    F --> G[Retrospective]
-    
-    G -.->|"Iterate"| B
-    
-    style A fill:#ff572220,stroke:#ff5722
-    style E fill:#ff572220,stroke:#ff5722
-    style G fill:#66bb6a20,stroke:#66bb6a
-          </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- TECHNICAL LEADERSHIP -->
-    <section class="section" data-section="leadership">
-      <div class="section-content">
-        <h2 class="fade-in">👑 Technical Leadership Skills</h2>
+    <!-- Story 2: The Process -->
+    <section class="section" id="process-section">
+      <h2>The Initiative Process</h2>
+      <p>One week to kickoff a major initiative. Problem definition, AI-augmented design, stakeholder socialization, planning, and execution. Here's how to use your amplified skills.</p>
+      
+      <div class="diagram-container" id="process-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📋 Week 5 Schedule</span>
+        </div>
+        <div id="process-story" class="diagram-canvas storytelling"></div>
         
-        <p class="fade-in">
-          Leading an initiative is more than technical work. It requires leadership skills 
-          that AI can't do for you:
-        </p>
-
-        <div class="leadership-traits fade-in">
-          <div class="trait-card">
-            <h4>🎯 Vision Communication</h4>
-            <p>Can you explain WHY this matters in terms stakeholders care about? Business impact, not technical elegance.</p>
-          </div>
-          
-          <div class="trait-card">
-            <h4>🤝 Stakeholder Management</h4>
-            <p>Who needs to buy in? What are their concerns? How do you address them proactively?</p>
-          </div>
-          
-          <div class="trait-card">
-            <h4>📊 Progress Visibility</h4>
-            <p>How do others know the initiative is on track? Clear milestones, regular updates, visible metrics.</p>
-          </div>
-          
-          <div class="trait-card">
-            <h4>🚧 Risk Management</h4>
-            <p>What could go wrong? How are you mitigating? When do you escalate?</p>
-          </div>
-          
-          <div class="trait-card">
-            <h4>🔄 Adaptation</h4>
-            <p>Plans will change. Can you adjust scope, timeline, or approach while maintaining momentum?</p>
-          </div>
-          
-          <div class="trait-card">
-            <h4>📝 Documentation</h4>
-            <p>Are decisions documented? Can someone else understand the initiative if you're unavailable?</p>
+        <div class="diagram-story" id="process-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="callout callout-insight fade-in">
-          <span class="callout-icon">💡</span>
-          <strong>AI + Leadership:</strong> AI helps you move faster on the technical work, freeing 
-          time for the human work: communication, alignment, and relationship building.
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="process-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="process-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="process-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="process-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="process-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- PROJECT -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🔥 Your Initiative</h2>
-        
-        <div class="story-block fade-in">
-          <p>
-            Pick a real initiative at your company (or propose one). Lead it through 
-            problem definition, design, socialization, planning, and kickoff this week.
-          </p>
+    <!-- Story 3: Technical Leadership -->
+    <section class="section" id="leadership-section">
+      <h2>Technical Leadership Skills</h2>
+      <p>Leading an initiative is more than technical work. It requires vision communication, stakeholder management, and the human skills that AI can't do for you.</p>
+      
+      <div class="diagram-container" id="leadership-container">
+        <div class="diagram-header">
+          <span class="diagram-title">👑 Leadership Beyond Code</span>
         </div>
-
-        <h3 class="fade-in">Requirements</h3>
+        <div id="leadership-story" class="diagram-canvas storytelling"></div>
         
-        <ul class="fade-in">
-          <li>Must be a <strong>real initiative</strong>, not a toy project</li>
-          <li>Must have <strong>stakeholders</strong> (PM, leadership, other teams)</li>
-          <li>Must be <strong>3+ months scope</strong> if done traditionally</li>
-          <li>Must demonstrate <strong>AI amplification</strong> in your process</li>
-        </ul>
-
-        <div class="terminal-demo fade-in">
-          <div class="terminal-header">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span>Deliverables</span>
-          </div>
-          <div class="terminal-content">
-            <div class="terminal-line">your-folder/capstone-1/</div>
-            <div class="terminal-line">├── PROBLEM_STATEMENT.md      # What we're solving and why</div>
-            <div class="terminal-line">├── DESIGN.md                 # Technical design (AI-assisted)</div>
-            <div class="terminal-line">├── STAKEHOLDER_FEEDBACK.md   # Input from key people</div>
-            <div class="terminal-line">├── PROJECT_PLAN.md           # Workstreams, milestones</div>
-            <div class="terminal-line">├── WEEK_1_PROGRESS.md        # What you accomplished</div>
-            <div class="terminal-line">└── RETROSPECTIVE.md          # What you learned</div>
+        <div class="diagram-story" id="leadership-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="fade-in">Success Criteria</h3>
-        
-        <ul class="fade-in">
-          <li>Initiative approved by stakeholders</li>
-          <li>Design doc reviewed and accepted</li>
-          <li>Project plan with clear milestones</li>
-          <li>Phase 1 started with visible progress</li>
-          <li>Learnings documented for future initiatives</li>
-        </ul>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="leadership-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-        <div class="project-footer fade-in">
-          <h3>📦 Save Your Work!</h3>
-          <p>Commit your initiative documentation to your repository.</p>
-          
-          <a href="../ch6-capstone2/index.html" class="nav-link next">
-            <span>Continue to Capstone II</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="leadership-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="leadership-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="leadership-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="leadership-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready for Capstone II?</h2>
+      <p>You've learned how to lead a major initiative — from problem definition through execution. In Capstone II, you'll mentor others and multiply your impact across the organization.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch6-capstone2/" class="card">
+          <div class="card-icon">🌟</div>
+          <h3>Capstone II: Mentor & Multiply</h3>
+          <p>Multiply your impact by teaching others to be amplified engineers.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in the Senior Amplifier.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
-  <!-- Chapter Navigation -->
-  <nav class="chapter-nav">
-    <a href="../ch4-architect/index.html" class="nav-btn prev">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      <span>Chapter 4</span>
-    </a>
-    <a href="../ch6-capstone2/index.html" class="nav-btn next">
-      <span>Capstone II</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#initiative-scale-section">Initiative Scale</a></li>
+      <li><a href="#process-section">The Process</a></li>
+      <li><a href="#leadership-section">Technical Leadership</a></li>
+    </ul>
   </nav>
 
-  <script src="../../shared/js/lesson.js"></script>
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
   
-  <!-- Lesson Integration -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      window.LessonIntegration.init("senior", "ch5-capstone1");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("senior", "ch5-capstone1");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("senior", "ch5-capstone1");
-        }
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'initiative-scale': [
+          // Scale progression
+          { data: { id: 'not-a-feature', label: '📝 Not Just\na Feature', type: 'external', description: 'Beyond small scope' } },
+          { data: { id: 'scale-feature', label: '📦 Feature vs\nProject', type: 'concept', description: '1-2 weeks vs 1-2 months' } },
+          { data: { id: 'scale-initiative', label: '🚀 Initiative\nScale', type: 'service', description: '3+ months, cross-team' } },
+          { data: { id: 'ai-advantage', label: '🤖 AI\nAdvantage', type: 'auth', description: 'Team speed as individual' } },
+          { data: { id: 'examples', label: '💡 Real\nExamples', type: 'page', description: 'Migrations, transformations' } },
+          // Edges
+          { data: { source: 'not-a-feature', target: 'scale-feature' } },
+          { data: { source: 'scale-feature', target: 'scale-initiative' } },
+          { data: { source: 'scale-initiative', target: 'ai-advantage' } },
+          { data: { source: 'ai-advantage', target: 'examples' } }
+        ],
+
+        'process': [
+          // Week schedule
+          { data: { id: 'day-one', label: '📋 Day 1\nProblem', type: 'external', description: 'Define what we solve' } },
+          { data: { id: 'day-two', label: '🎨 Day 2\nDesign', type: 'concept', description: 'AI-augmented design' } },
+          { data: { id: 'day-three', label: '🤝 Day 3\nSocialize', type: 'service', description: 'Stakeholder feedback' } },
+          { data: { id: 'day-four', label: '📊 Day 4\nPlanning', type: 'data', description: 'Workstreams, milestones' } },
+          { data: { id: 'day-five', label: '🚀 Day 5\nKickoff', type: 'auth', description: 'Official buy-in' } },
+          { data: { id: 'execute', label: '⚡ Execute\n& Iterate', type: 'page', description: 'Phase 1, validate' } },
+          // Edges
+          { data: { source: 'day-one', target: 'day-two' } },
+          { data: { source: 'day-two', target: 'day-three' } },
+          { data: { source: 'day-three', target: 'day-four' } },
+          { data: { source: 'day-four', target: 'day-five' } },
+          { data: { source: 'day-five', target: 'execute' } }
+        ],
+
+        'leadership': [
+          // Leadership skills
+          { data: { id: 'beyond-technical', label: '👑 Beyond\nTechnical', type: 'external', description: 'Human skills required' } },
+          { data: { id: 'vision', label: '🎯 Vision\nComm', type: 'concept', description: 'Business impact focus' } },
+          { data: { id: 'stakeholders', label: '🤝 Stakeholder\nMgmt', type: 'service', description: 'Map and engage' } },
+          { data: { id: 'visibility', label: '📊 Progress\nVisibility', type: 'data', description: 'Updates, metrics' } },
+          { data: { id: 'risk-adaptation', label: '🚧 Risk &\nAdaptation', type: 'auth', description: 'Flexibility is survival' } },
+          { data: { id: 'ai-plus-leadership', label: '🤖 AI +\nLeadership', type: 'page', description: 'Time for human work' } },
+          // Edges
+          { data: { source: 'beyond-technical', target: 'vision' } },
+          { data: { source: 'vision', target: 'stakeholders' } },
+          { data: { source: 'stakeholders', target: 'visibility' } },
+          { data: { source: 'visibility', target: 'risk-adaptation' } },
+          { data: { source: 'risk-adaptation', target: 'ai-plus-leadership' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      const storyToDiagram = {
+        'initiative-scale-story': 'initiative-scale',
+        'process-story': 'process',
+        'leadership-story': 'leadership'
+      };
+
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      const storyToQuiz = {
+        'initiative-scale-story': 'initiative-scale-quiz',
+        'process-story': 'process-quiz',
+        'leadership-story': 'leadership-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
     });
   </script>
 </body>
 </html>
-

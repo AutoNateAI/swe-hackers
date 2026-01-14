@@ -1,0 +1,273 @@
+{
+  "pageId": "ch4-architect",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "The Age of Architects",
+    "icon": "🏛️",
+    "themeColor": "architect"
+  },
+  "stories": [
+    {
+      "id": "acceleration-story",
+      "diagramId": "acceleration",
+      "title": "Design at Speed",
+      "steps": [
+        {
+          "nodeId": "traditional-design",
+          "icon": "📅",
+          "title": "Traditional Design: 8 Weeks",
+          "narration": "You know how to design systems. Requirements gathering, trade-off analysis, documentation, reviews, iteration. The problem? It's painfully slow. Eight weeks for a solid design is normal.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "bottlenecks",
+          "edges": [{ "from": "traditional-design", "to": "bottlenecks" }],
+          "icon": "🐌",
+          "title": "Where Time Goes",
+          "narration": "Most time is spent on mechanical work: synthesizing requirements from scattered sources, researching prior art, drafting documentation. Your unique value—judgment—gets only a fraction of the time.",
+          "connectsTo": "Traditional Design"
+        },
+        {
+          "nodeId": "ai-acceleration",
+          "edges": [{ "from": "bottlenecks", "to": "ai-acceleration" }],
+          "icon": "⚡",
+          "title": "AI Accelerates the Mechanical",
+          "narration": "AI excels at exactly what slows you down: synthesizing scattered inputs, generating options, drafting documentation. Let AI do the heavy lifting on mechanical work.",
+          "connectsTo": "Bottlenecks"
+        },
+        {
+          "nodeId": "your-judgment",
+          "edges": [{ "from": "ai-acceleration", "to": "your-judgment" }],
+          "icon": "🧠",
+          "title": "You Focus on Judgment",
+          "narration": "While AI handles the mechanical, you focus on what only you can do: applying context, making decisions, adding organizational knowledge. Your judgment is irreplaceable.",
+          "connectsTo": "AI Acceleration"
+        },
+        {
+          "nodeId": "amplified-result",
+          "edges": [{ "from": "your-judgment", "to": "amplified-result" }],
+          "icon": "🚀",
+          "title": "Amplified: 5 Weeks Total",
+          "narration": "The result? Eight weeks compressed to five. Same quality, faster delivery. You're not cutting corners—you're eliminating waste. That's the amplified architect!",
+          "connectsTo": "Your Judgment"
+        }
+      ]
+    },
+    {
+      "id": "process-story",
+      "diagramId": "process",
+      "title": "The AI-Augmented Process",
+      "steps": [
+        {
+          "nodeId": "phase-requirements",
+          "icon": "📋",
+          "title": "Phase 1: Requirements Synthesis",
+          "narration": "Feed AI your meeting notes, Slack threads, tickets, stakeholder emails. Ask it to synthesize requirements, identify ambiguities, and suggest clarifying questions. AI-heavy phase.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "phase-research",
+          "edges": [{ "from": "phase-requirements", "to": "phase-research" }],
+          "icon": "🔍",
+          "title": "Phase 2: Prior Art Research",
+          "narration": "Ask AI how others have solved similar problems. What patterns exist? What are the known pitfalls? AI can survey the landscape faster than you can read documentation.",
+          "connectsTo": "Requirements"
+        },
+        {
+          "nodeId": "phase-generation",
+          "edges": [{ "from": "phase-research", "to": "phase-generation" }],
+          "icon": "🎨",
+          "title": "Phase 3: Design Generation",
+          "narration": "Have AI propose two or three architectures with trade-offs. You're not accepting AI's design—you're using AI to rapidly explore the solution space.",
+          "connectsTo": "Research"
+        },
+        {
+          "nodeId": "phase-tradeoffs",
+          "edges": [{ "from": "phase-generation", "to": "phase-tradeoffs" }],
+          "icon": "⚖️",
+          "title": "Phase 4: Trade-off Analysis",
+          "narration": "This is YOU-heavy. Apply your judgment to AI's options. What does AI not know about your org, team, and constraints? What would you regret in two years?",
+          "connectsTo": "Generation"
+        },
+        {
+          "nodeId": "phase-documentation",
+          "edges": [{ "from": "phase-tradeoffs", "to": "phase-documentation" }],
+          "icon": "📝",
+          "title": "Phase 5: Documentation",
+          "narration": "Let AI draft the design doc from your decisions. You refine and correct inaccuracies. AI generates diagrams from your descriptions. Draft fast, polish carefully.",
+          "connectsTo": "Trade-offs"
+        },
+        {
+          "nodeId": "phase-review",
+          "edges": [{ "from": "phase-documentation", "to": "phase-review" }],
+          "icon": "🎯",
+          "title": "Phase 6: Review Preparation",
+          "narration": "Ask AI to anticipate reviewer questions. What are the weakest parts of this design? How would a skeptic critique it? Walk into reviews prepared for anything.",
+          "connectsTo": "Documentation"
+        }
+      ]
+    },
+    {
+      "id": "prompts-story",
+      "diagramId": "prompts",
+      "title": "The Art of Design Prompts",
+      "steps": [
+        {
+          "nodeId": "prompt-quality",
+          "icon": "🎯",
+          "title": "Output Quality = Prompt Quality",
+          "narration": "AI output quality depends entirely on prompt quality. A vague prompt like 'design a payment system' gets you generic, unhelpful output. Garbage in, garbage out.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "context-first",
+          "edges": [{ "from": "prompt-quality", "to": "context-first" }],
+          "icon": "📍",
+          "title": "Pattern 1: Context First",
+          "narration": "Always explain your situation before asking for solutions. Current scale, expected growth, tech stack, team expertise. Context transforms generic advice into specific guidance.",
+          "connectsTo": "Prompt Quality"
+        },
+        {
+          "nodeId": "constraints-explicit",
+          "edges": [{ "from": "context-first", "to": "constraints-explicit" }],
+          "icon": "📏",
+          "title": "Pattern 2: Constraints Explicit",
+          "narration": "Team size, timeline, budget, compliance requirements—all constrain solutions. Make them explicit. A solution perfect for a ten-person team fails with four engineers.",
+          "connectsTo": "Context First"
+        },
+        {
+          "nodeId": "specific-questions",
+          "edges": [{ "from": "constraints-explicit", "to": "specific-questions" }],
+          "icon": "❓",
+          "title": "Pattern 3: Specific Questions",
+          "narration": "Ask the exact questions you need answered. Not 'what should I do?' but 'should we use Stripe or build our own gateway, given these constraints?'",
+          "connectsTo": "Constraints"
+        },
+        {
+          "nodeId": "request-options",
+          "edges": [{ "from": "specific-questions", "to": "request-options" }],
+          "icon": "🔢",
+          "title": "Pattern 4: Request Options",
+          "narration": "Ask for two or three alternatives with trade-offs, not one 'best' answer. You make the decision—AI shows you the landscape. That's the architect's advantage!",
+          "connectsTo": "Specific Questions"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "acceleration-story",
+      "questions": [
+        {
+          "question": "What's the main reason AI accelerates design work?",
+          "options": [
+            "AI makes better decisions than humans",
+            "AI handles mechanical work (synthesis, drafting) so you focus on judgment",
+            "AI eliminates the need for design reviews",
+            "AI writes better code than humans"
+          ],
+          "correct": 1,
+          "explanation": "AI excels at mechanical tasks—synthesizing inputs, generating options, drafting docs. You excel at judgment and context. Combining them eliminates waste without cutting quality."
+        },
+        {
+          "question": "In the amplified timeline, what happens in Days 1-2?",
+          "options": [
+            "Implementation begins immediately",
+            "AI synthesizes requirements from scattered inputs",
+            "Design reviews are conducted",
+            "The team takes planning meetings"
+          ],
+          "correct": 1,
+          "explanation": "AI quickly synthesizes requirements from meeting notes, Slack threads, and tickets—work that traditionally takes a week of human effort."
+        },
+        {
+          "question": "What's the key insight about AI and judgment?",
+          "options": [
+            "AI should make all the important decisions",
+            "AI is amazing at generating options; you're amazing at judgment—combine them",
+            "Human judgment is no longer needed",
+            "AI replaces the need for senior engineers"
+          ],
+          "correct": 1,
+          "explanation": "AI generates options and documentation rapidly. You apply irreplaceable judgment and organizational context. Together, you're faster than either alone."
+        }
+      ]
+    },
+    {
+      "storyId": "process-story",
+      "questions": [
+        {
+          "question": "Which phase should be 'YOU-heavy' (your judgment dominant)?",
+          "options": [
+            "Requirements synthesis",
+            "Prior art research",
+            "Trade-off analysis and decisions",
+            "Documentation generation"
+          ],
+          "correct": 2,
+          "explanation": "Trade-off analysis requires YOUR judgment—what AI doesn't know about your org, team, constraints, and what you'd regret in 2 years. This is irreplaceable human insight."
+        },
+        {
+          "question": "What should you ask AI during Review Preparation?",
+          "options": [
+            "What's the best programming language?",
+            "What questions will reviewers ask? What are the weakest parts?",
+            "How much will this cost?",
+            "Who should attend the review meeting?"
+          ],
+          "correct": 1,
+          "explanation": "AI can anticipate reviewer questions and identify weak points in your design. Walk into reviews prepared for tough questions and skeptical critique."
+        },
+        {
+          "question": "In Phase 3 (Design Generation), what should you ask AI for?",
+          "options": [
+            "The single best architecture",
+            "2-3 architecture options with trade-offs",
+            "Complete implementation code",
+            "A list of team members to assign"
+          ],
+          "correct": 1,
+          "explanation": "Ask for multiple options with trade-offs. You're not accepting AI's design—you're using AI to rapidly explore the solution space, then applying your judgment."
+        }
+      ]
+    },
+    {
+      "storyId": "prompts-story",
+      "questions": [
+        {
+          "question": "Why does 'Design a payment system' produce poor AI output?",
+          "options": [
+            "Payment systems are too complex for AI",
+            "The prompt lacks context, constraints, and specific questions",
+            "AI doesn't understand payments",
+            "You should never ask AI about payments"
+          ],
+          "correct": 1,
+          "explanation": "Vague prompts get generic output. Effective prompts include context (your situation), constraints (team, budget, timeline), and specific questions to answer."
+        },
+        {
+          "question": "What makes constraints 'explicit' in a prompt?",
+          "options": [
+            "Listing them in bullet points",
+            "Stating team size, timeline, budget, tech stack, and compliance requirements",
+            "Using technical jargon",
+            "Making the prompt longer"
+          ],
+          "correct": 1,
+          "explanation": "Explicit constraints tell AI about your real-world limitations. A solution perfect for a 10-person team fails with 4 engineers. Make constraints concrete."
+        },
+        {
+          "question": "Why request 2-3 options instead of asking for 'the best' solution?",
+          "options": [
+            "AI can't determine what's best",
+            "More options means more work for you",
+            "You make the decision—AI shows you the landscape of possibilities",
+            "It's just a convention"
+          ],
+          "correct": 2,
+          "explanation": "Requesting options with trade-offs lets YOU make the informed decision. AI explores the solution space; you apply judgment to choose. That's the architect's advantage!"
+        }
+      ]
+    }
+  ]
+}

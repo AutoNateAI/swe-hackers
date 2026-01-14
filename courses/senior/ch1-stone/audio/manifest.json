@@ -1,0 +1,6085 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T02:22:33.423Z",
+  "stories": [
+    "plateau-story",
+    "amplified-story",
+    "protocol-story"
+  ],
+  "ballad": {
+    "plateau-story": {
+      "0": {
+        "storyId": "plateau-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Domain-Locked Expertise. You've been a senior engineer for a while. You know your service inside out, can navigate your codebase with your eyes closed. But here's the uncomfortable truth: your expertise is domain-locked.",
+        "duration": 15.039999961853027,
+        "words": [
+          {
+            "word": "Domain",
+            "start": 0,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "locked",
+            "start": 0.800000011920929,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "expertise",
+            "start": 1.440000057220459,
+            "end": 2.0399999618530273
+          },
+          {
+            "word": "You've",
+            "start": 3,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "been",
+            "start": 3.119999885559082,
+            "end": 3.2200000286102295
+          },
+          {
+            "word": "a",
+            "start": 3.2200000286102295,
+            "end": 3.5
+          },
+          {
+            "word": "senior",
+            "start": 3.5,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "engineer",
+            "start": 3.7799999713897705,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "for",
+            "start": 4.139999866485596,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "a",
+            "start": 4.480000019073486,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "while",
+            "start": 4.599999904632568,
+            "end": 5.139999866485596
+          },
+          {
+            "word": "You",
+            "start": 5.460000038146973,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "know",
+            "start": 5.579999923706055,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "your",
+            "start": 5.739999771118164,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "service",
+            "start": 5.960000038146973,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "inside",
+            "start": 6.28000020980835,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "out",
+            "start": 6.820000171661377,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "can",
+            "start": 7.699999809265137,
+            "end": 7.880000114440918
+          },
+          {
+            "word": "navigate",
+            "start": 7.880000114440918,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "your",
+            "start": 8.119999885559082,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "code",
+            "start": 8.399999618530273,
+            "end": 8.640000343322754
+          },
+          {
+            "word": "base",
+            "start": 8.640000343322754,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "with",
+            "start": 8.84000015258789,
+            "end": 9
+          },
+          {
+            "word": "your",
+            "start": 9,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "eyes",
+            "start": 9.460000038146973,
+            "end": 9.5
+          },
+          {
+            "word": "closed",
+            "start": 9.5,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "But",
+            "start": 10.239999771118164,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "here's",
+            "start": 10.699999809265137,
+            "end": 11
+          },
+          {
+            "word": "the",
+            "start": 11,
+            "end": 11.34000015258789
+          },
+          {
+            "word": "uncomfortable",
+            "start": 11.34000015258789,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "truth",
+            "start": 11.699999809265137,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "Your",
+            "start": 12.84000015258789,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "expertise",
+            "start": 13.119999885559082,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "is",
+            "start": 13.600000381469727,
+            "end": 14.180000305175781
+          },
+          {
+            "word": "domain",
+            "start": 14.180000305175781,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "locked",
+            "start": 14.5600004196167,
+            "end": 14.880000114440918
+          }
+        ]
+      },
+      "1": {
+        "storyId": "plateau-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Back to Square One. When you need to review a PR in an unfamiliar service, integrate with a legacy system, or evaluate an acquisition target's code—you're back to square one. All that expertise doesn't transfer automatically.",
+        "duration": 16.200000762939453,
+        "words": [
+          {
+            "word": "Back",
+            "start": 0,
+            "end": 0.8999999761581421
+          },
+          {
+            "word": "to",
+            "start": 0.8999999761581421,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "square",
+            "start": 1.1200000047683716,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "one",
+            "start": 1.3600000143051147,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "When",
+            "start": 2.4200000762939453,
+            "end": 2.440000057220459
+          },
+          {
+            "word": "you",
+            "start": 2.440000057220459,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "need",
+            "start": 2.680000066757202,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "to",
+            "start": 2.8399999141693115,
+            "end": 3.259999990463257
+          },
+          {
+            "word": "review",
+            "start": 3.259999990463257,
+            "end": 3.259999990463257
+          },
+          {
+            "word": "a",
+            "start": 3.259999990463257,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "PR",
+            "start": 3.440000057220459,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "in",
+            "start": 3.759999990463257,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "an",
+            "start": 4.019999980926514,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "unfamiliar",
+            "start": 4.320000171661377,
+            "end": 4.619999885559082
+          },
+          {
+            "word": "service",
+            "start": 4.619999885559082,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "integrate",
+            "start": 5.900000095367432,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "with",
+            "start": 6.059999942779541,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "a",
+            "start": 6.28000020980835,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "legacy",
+            "start": 6.440000057220459,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "system",
+            "start": 6.659999847412109,
+            "end": 7.099999904632568
+          },
+          {
+            "word": "or",
+            "start": 7.440000057220459,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "evaluate",
+            "start": 7.920000076293945,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "an",
+            "start": 8.359999656677246,
+            "end": 8.619999885559082
+          },
+          {
+            "word": "acquisition",
+            "start": 8.619999885559082,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "targets",
+            "start": 8.979999542236328,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "code",
+            "start": 9.420000076293945,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "you're",
+            "start": 10.279999732971191,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "back",
+            "start": 10.800000190734863,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "to",
+            "start": 11.100000381469727,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "square",
+            "start": 11.460000038146973,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "one",
+            "start": 11.65999984741211,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "All",
+            "start": 12.779999732971191,
+            "end": 13.0600004196167
+          },
+          {
+            "word": "that",
+            "start": 13.0600004196167,
+            "end": 13.359999656677246
+          },
+          {
+            "word": "expertise",
+            "start": 13.359999656677246,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "doesn't",
+            "start": 13.920000076293945,
+            "end": 14.600000381469727
+          },
+          {
+            "word": "transfer",
+            "start": 14.600000381469727,
+            "end": 15.180000305175781
+          },
+          {
+            "word": "automatically",
+            "start": 15.180000305175781,
+            "end": 15.899999618530273
+          }
+        ]
+      },
+      "2": {
+        "storyId": "plateau-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Traditional Timeline. The traditional approach takes 2 to 4 weeks to get productive in a new codebase. Week one for setup and exploration, week two for breaking things, week three for understanding flows, week four for finally being productive.",
+        "duration": 20.110000610351562,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.3400000035762787
+          },
+          {
+            "word": "traditional",
+            "start": 0.3400000035762787,
+            "end": 1
+          },
+          {
+            "word": "timeline",
+            "start": 1,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "The",
+            "start": 2.5799999237060547,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "traditional",
+            "start": 2.6600000858306885,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "approach",
+            "start": 3.1600000858306885,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "takes",
+            "start": 3.619999885559082,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "two",
+            "start": 4.360000133514404,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "to",
+            "start": 4.679999828338623,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "four",
+            "start": 4.980000019073486,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "weeks",
+            "start": 5.159999847412109,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "to",
+            "start": 5.400000095367432,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "get",
+            "start": 5.760000228881836,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "productive",
+            "start": 5.960000038146973,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "in",
+            "start": 6.460000038146973,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "a",
+            "start": 6.880000114440918,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "new",
+            "start": 7.019999980926514,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "code",
+            "start": 7.320000171661377,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "base",
+            "start": 7.519999980926514,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "Week",
+            "start": 8.84000015258789,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "one",
+            "start": 8.84000015258789,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "for",
+            "start": 9.119999885559082,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "setup",
+            "start": 9.720000267028809,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "and",
+            "start": 10.039999961853027,
+            "end": 10.4399995803833
+          },
+          {
+            "word": "exploration",
+            "start": 10.4399995803833,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "Week",
+            "start": 11.880000114440918,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "two",
+            "start": 11.880000114440918,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "for",
+            "start": 12.300000190734863,
+            "end": 12.899999618530273
+          },
+          {
+            "word": "breaking",
+            "start": 12.899999618530273,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "things",
+            "start": 13.199999809265137,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "Week",
+            "start": 14.460000038146973,
+            "end": 14.460000038146973
+          },
+          {
+            "word": "three",
+            "start": 14.460000038146973,
+            "end": 14.859999656677246
+          },
+          {
+            "word": "for",
+            "start": 14.859999656677246,
+            "end": 15.460000038146973
+          },
+          {
+            "word": "understanding",
+            "start": 15.460000038146973,
+            "end": 15.9399995803833
+          },
+          {
+            "word": "flows",
+            "start": 15.9399995803833,
+            "end": 16.440000534057617
+          },
+          {
+            "word": "Week",
+            "start": 17.34000015258789,
+            "end": 17.34000015258789
+          },
+          {
+            "word": "four",
+            "start": 17.34000015258789,
+            "end": 18.040000915527344
+          },
+          {
+            "word": "for",
+            "start": 18.040000915527344,
+            "end": 18.399999618530273
+          },
+          {
+            "word": "finally",
+            "start": 18.399999618530273,
+            "end": 18.84000015258789
+          },
+          {
+            "word": "being",
+            "start": 18.84000015258789,
+            "end": 19.280000686645508
+          },
+          {
+            "word": "productive",
+            "start": 19.280000686645508,
+            "end": 19.700000762939453
+          }
+        ]
+      },
+      "3": {
+        "storyId": "plateau-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Amplified Timeline. But what if you could compress that to hours? Hours one and two for AI architecture overview, three and four for entry points and flows, five and six for patterns and risks. Day two: making contributions.",
+        "duration": 19.799999237060547,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "Amplified",
+            "start": 0.46000000834465027,
+            "end": 1.2000000476837158
+          },
+          {
+            "word": "Timeline",
+            "start": 1.2000000476837158,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "But",
+            "start": 2.880000114440918,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "what",
+            "start": 2.9200000762939453,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "if",
+            "start": 3.2799999713897705,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "you",
+            "start": 3.440000057220459,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "could",
+            "start": 3.700000047683716,
+            "end": 4
+          },
+          {
+            "word": "compress",
+            "start": 4,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "that",
+            "start": 4.420000076293945,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "to",
+            "start": 4.840000152587891,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "hours",
+            "start": 5.460000038146973,
+            "end": 5.920000076293945
+          },
+          {
+            "word": "Hours",
+            "start": 7.28000020980835,
+            "end": 7.28000020980835
+          },
+          {
+            "word": "1",
+            "start": 7.28000020980835,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "and",
+            "start": 7.579999923706055,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "2",
+            "start": 7.71999979019165,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "for",
+            "start": 7.980000019073486,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "AI",
+            "start": 8.460000038146973,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "Architecture",
+            "start": 8.880000114440918,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "Overview",
+            "start": 9.579999923706055,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "3",
+            "start": 11.079999923706055,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "and",
+            "start": 11.079999923706055,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "4",
+            "start": 11.260000228881836,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "for",
+            "start": 11.579999923706055,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "Entry",
+            "start": 12.15999984741211,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "Points",
+            "start": 12.4399995803833,
+            "end": 12.680000305175781
+          },
+          {
+            "word": "and",
+            "start": 12.680000305175781,
+            "end": 13.180000305175781
+          },
+          {
+            "word": "Flows",
+            "start": 13.180000305175781,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "5",
+            "start": 14.380000114440918,
+            "end": 14.4399995803833
+          },
+          {
+            "word": "and",
+            "start": 14.4399995803833,
+            "end": 14.619999885559082
+          },
+          {
+            "word": "6",
+            "start": 14.619999885559082,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "for",
+            "start": 14.899999618530273,
+            "end": 15.65999984741211
+          },
+          {
+            "word": "Patterns",
+            "start": 15.65999984741211,
+            "end": 15.760000228881836
+          },
+          {
+            "word": "and",
+            "start": 15.760000228881836,
+            "end": 16.3799991607666
+          },
+          {
+            "word": "Risks",
+            "start": 16.3799991607666,
+            "end": 16.81999969482422
+          },
+          {
+            "word": "Day",
+            "start": 17.260000228881836,
+            "end": 17.479999542236328
+          },
+          {
+            "word": "2",
+            "start": 17.479999542236328,
+            "end": 17.799999237060547
+          },
+          {
+            "word": "Making",
+            "start": 18.420000076293945,
+            "end": 18.639999389648438
+          },
+          {
+            "word": "Contributions",
+            "start": 18.639999389648438,
+            "end": 19.3799991607666
+          }
+        ]
+      },
+      "4": {
+        "storyId": "plateau-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Key Insight. AI doesn't replace your expertise—it lets you acquire expertise faster. You're still the judge, the decision-maker, the one who knows what matters. AI is your research assistant, not your replacement.",
+        "duration": 17.059999465942383,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.2800000011920929
+          },
+          {
+            "word": "key",
+            "start": 0.2800000011920929,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "insight",
+            "start": 0.6399999856948853,
+            "end": 1.2200000286102295
+          },
+          {
+            "word": "AI",
+            "start": 2.4200000762939453,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "doesn't",
+            "start": 2.4200000762939453,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "replace",
+            "start": 2.9200000762939453,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "your",
+            "start": 3.319999933242798,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "expertise",
+            "start": 4.28000020980835,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "It",
+            "start": 5.059999942779541,
+            "end": 5.139999866485596
+          },
+          {
+            "word": "lets",
+            "start": 5.139999866485596,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "you",
+            "start": 5.380000114440918,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "acquire",
+            "start": 5.699999809265137,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "expertise",
+            "start": 6.039999961853027,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "faster",
+            "start": 6.820000171661377,
+            "end": 7.340000152587891
+          },
+          {
+            "word": "You're",
+            "start": 8.380000114440918,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "still",
+            "start": 8.600000381469727,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "the",
+            "start": 8.819999694824219,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "judge",
+            "start": 9.34000015258789,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "the",
+            "start": 9.859999656677246,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "decision",
+            "start": 10.0600004196167,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "maker",
+            "start": 10.359999656677246,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "the",
+            "start": 11.239999771118164,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "one",
+            "start": 11.359999656677246,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "who",
+            "start": 11.579999923706055,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "knows",
+            "start": 11.880000114440918,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "what",
+            "start": 12.15999984741211,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "matters",
+            "start": 12.579999923706055,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "AI",
+            "start": 13.699999809265137,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "is",
+            "start": 13.84000015258789,
+            "end": 14.119999885559082
+          },
+          {
+            "word": "your",
+            "start": 14.119999885559082,
+            "end": 14.479999542236328
+          },
+          {
+            "word": "research",
+            "start": 14.479999542236328,
+            "end": 14.720000267028809
+          },
+          {
+            "word": "assistant",
+            "start": 14.720000267028809,
+            "end": 15.199999809265137
+          },
+          {
+            "word": "not",
+            "start": 15.819999694824219,
+            "end": 15.960000038146973
+          },
+          {
+            "word": "your",
+            "start": 15.960000038146973,
+            "end": 16.239999771118164
+          },
+          {
+            "word": "replacement",
+            "start": 16.239999771118164,
+            "end": 16.579999923706055
+          }
+        ]
+      }
+    },
+    "amplified-story": {
+      "0": {
+        "storyId": "amplified-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Facing a New Codebase. You're dropped into an unfamiliar codebase. Thousands of files, unknown patterns, undocumented decisions. Instead of manually reading everything, let AI do the initial reconnaissance.",
+        "duration": 15.15999984741211,
+        "words": [
+          {
+            "word": "facing",
+            "start": 0,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "a",
+            "start": 0.6200000047683716,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "new",
+            "start": 0.9599999785423279,
+            "end": 1.2999999523162842
+          },
+          {
+            "word": "code",
+            "start": 1.2999999523162842,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "base",
+            "start": 1.4600000381469727,
+            "end": 1.840000033378601
+          },
+          {
+            "word": "You're",
+            "start": 2.819999933242798,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "dropped",
+            "start": 3.180000066757202,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "into",
+            "start": 3.180000066757202,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "an",
+            "start": 3.4600000381469727,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "unfamiliar",
+            "start": 3.819999933242798,
+            "end": 4.159999847412109
+          },
+          {
+            "word": "code",
+            "start": 4.159999847412109,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "base",
+            "start": 4.559999942779541,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "Thousands",
+            "start": 5.78000020980835,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "of",
+            "start": 5.78000020980835,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "files",
+            "start": 6.360000133514404,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "unknown",
+            "start": 7.019999980926514,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "patterns",
+            "start": 7.019999980926514,
+            "end": 7.5
+          },
+          {
+            "word": "undocumented",
+            "start": 8.15999984741211,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "decisions",
+            "start": 8.539999961853027,
+            "end": 9.15999984741211
+          },
+          {
+            "word": "Instead",
+            "start": 10.180000305175781,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "of",
+            "start": 10.220000267028809,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "manually",
+            "start": 10.600000381469727,
+            "end": 10.960000038146973
+          },
+          {
+            "word": "reading",
+            "start": 10.960000038146973,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "everything",
+            "start": 11.420000076293945,
+            "end": 12
+          },
+          {
+            "word": "let",
+            "start": 12.65999984741211,
+            "end": 12.779999732971191
+          },
+          {
+            "word": "AI",
+            "start": 12.779999732971191,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "do",
+            "start": 13.239999771118164,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "the",
+            "start": 13.579999923706055,
+            "end": 14.100000381469727
+          },
+          {
+            "word": "initial",
+            "start": 14.100000381469727,
+            "end": 14.100000381469727
+          },
+          {
+            "word": "reconnaissance",
+            "start": 14.100000381469727,
+            "end": 14.720000267028809
+          }
+        ]
+      },
+      "1": {
+        "storyId": "amplified-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "AI Analysis. Feed the codebase to AI and ask for structure, not details. Architecture summary, entry points, core data models, repeated patterns, areas of complexity, external integrations. Understand the shape before the substance.",
+        "duration": 18.5,
+        "words": [
+          {
+            "word": "AI",
+            "start": 0,
+            "end": 0.6600000262260437
+          },
+          {
+            "word": "analysis",
+            "start": 0.6600000262260437,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "Feed",
+            "start": 2.3399999141693115,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "the",
+            "start": 2.3399999141693115,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "code",
+            "start": 2.5399999618530273,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "base",
+            "start": 2.819999933242798,
+            "end": 3.0199999809265137
+          },
+          {
+            "word": "to",
+            "start": 3.0199999809265137,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "AI",
+            "start": 3.299999952316284,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "and",
+            "start": 3.619999885559082,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "ask",
+            "start": 4.059999942779541,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "for",
+            "start": 4.360000133514404,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "structure",
+            "start": 5.119999885559082,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "not",
+            "start": 5.639999866485596,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "details",
+            "start": 5.78000020980835,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "Architecture",
+            "start": 7.639999866485596,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "summary",
+            "start": 7.639999866485596,
+            "end": 8
+          },
+          {
+            "word": "entry",
+            "start": 8.539999961853027,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "points",
+            "start": 8.680000305175781,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "core",
+            "start": 9.619999885559082,
+            "end": 9.760000228881836
+          },
+          {
+            "word": "data",
+            "start": 9.760000228881836,
+            "end": 10.079999923706055
+          },
+          {
+            "word": "models",
+            "start": 10.079999923706055,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "repeated",
+            "start": 11.100000381469727,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "patterns",
+            "start": 11.100000381469727,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "areas",
+            "start": 12.420000076293945,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "of",
+            "start": 12.420000076293945,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "complexity",
+            "start": 13.239999771118164,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "external",
+            "start": 13.880000114440918,
+            "end": 14.279999732971191
+          },
+          {
+            "word": "integrations",
+            "start": 14.279999732971191,
+            "end": 15.039999961853027
+          },
+          {
+            "word": "Understand",
+            "start": 16.34000015258789,
+            "end": 16.34000015258789
+          },
+          {
+            "word": "the",
+            "start": 16.34000015258789,
+            "end": 16.860000610351562
+          },
+          {
+            "word": "shape",
+            "start": 16.860000610351562,
+            "end": 16.860000610351562
+          },
+          {
+            "word": "before",
+            "start": 16.860000610351562,
+            "end": 17.459999084472656
+          },
+          {
+            "word": "the",
+            "start": 17.459999084472656,
+            "end": 17.799999237060547
+          },
+          {
+            "word": "substance",
+            "start": 17.799999237060547,
+            "end": 18.1200008392334
+          }
+        ]
+      },
+      "2": {
+        "storyId": "amplified-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "What AI Produces. AI gives you an architecture summary, maps the entry points, identifies patterns, and flags risk areas. All in about two hours of conversation instead of weeks of manual exploration.",
+        "duration": 15.720000267028809,
+        "words": [
+          {
+            "word": "What",
+            "start": 0,
+            "end": 0.3799999952316284
+          },
+          {
+            "word": "AI",
+            "start": 0.3799999952316284,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "produces",
+            "start": 0.9599999785423279,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "AI",
+            "start": 3.140000104904175,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "gives",
+            "start": 3.140000104904175,
+            "end": 3.4000000953674316
+          },
+          {
+            "word": "you",
+            "start": 3.4000000953674316,
+            "end": 3.559999942779541
+          },
+          {
+            "word": "an",
+            "start": 3.559999942779541,
+            "end": 3.9000000953674316
+          },
+          {
+            "word": "architecture",
+            "start": 3.9000000953674316,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "summary",
+            "start": 4.28000020980835,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "maps",
+            "start": 5.659999847412109,
+            "end": 5.659999847412109
+          },
+          {
+            "word": "the",
+            "start": 5.659999847412109,
+            "end": 6
+          },
+          {
+            "word": "entry",
+            "start": 6,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "points",
+            "start": 6.21999979019165,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "identifies",
+            "start": 7.699999809265137,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "patterns",
+            "start": 7.699999809265137,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "and",
+            "start": 8.15999984741211,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "flags",
+            "start": 8.760000228881836,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "risk",
+            "start": 9.0600004196167,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "areas",
+            "start": 9.460000038146973,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "All",
+            "start": 10.359999656677246,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "in",
+            "start": 10.760000228881836,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "about",
+            "start": 10.979999542236328,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "two",
+            "start": 11.300000190734863,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "hours",
+            "start": 11.5600004196167,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "of",
+            "start": 11.760000228881836,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "conversation",
+            "start": 12.619999885559082,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "instead",
+            "start": 12.619999885559082,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "of",
+            "start": 13.15999984741211,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "weeks",
+            "start": 13.720000267028809,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "of",
+            "start": 13.720000267028809,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "manual",
+            "start": 14.34000015258789,
+            "end": 14.619999885559082
+          },
+          {
+            "word": "exploration",
+            "start": 14.619999885559082,
+            "end": 15.319999694824219
+          }
+        ]
+      },
+      "3": {
+        "storyId": "amplified-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Senior Verification. Now YOU apply your judgment. Verify AI's claims against actual code—AI makes mistakes. You know what matters for YOUR situation. Decide what to trust, what to investigate deeper, what to skip.",
+        "duration": 18.760000228881836,
+        "words": [
+          {
+            "word": "Senior",
+            "start": 0,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "verification",
+            "start": 0.699999988079071,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "Now",
+            "start": 2.640000104904175,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "you",
+            "start": 2.640000104904175,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "apply",
+            "start": 3.0799999237060547,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "your",
+            "start": 3.4800000190734863,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "judgment",
+            "start": 3.880000114440918,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "Verify",
+            "start": 5.400000095367432,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "AI's",
+            "start": 5.599999904632568,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "claims",
+            "start": 6.699999809265137,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "against",
+            "start": 6.699999809265137,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "actual",
+            "start": 7.320000171661377,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "code",
+            "start": 7.960000038146973,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "AI",
+            "start": 9.420000076293945,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "makes",
+            "start": 9.479999542236328,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "mistakes",
+            "start": 10.0600004196167,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "You",
+            "start": 11.359999656677246,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "know",
+            "start": 11.600000381469727,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "what",
+            "start": 11.880000114440918,
+            "end": 12.460000038146973
+          },
+          {
+            "word": "matters",
+            "start": 12.460000038146973,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "for",
+            "start": 12.5600004196167,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "your",
+            "start": 12.880000114440918,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "situation",
+            "start": 13.239999771118164,
+            "end": 13.760000228881836
+          },
+          {
+            "word": "Decide",
+            "start": 14.859999656677246,
+            "end": 14.880000114440918
+          },
+          {
+            "word": "what",
+            "start": 14.880000114440918,
+            "end": 15.100000381469727
+          },
+          {
+            "word": "to",
+            "start": 15.100000381469727,
+            "end": 15.520000457763672
+          },
+          {
+            "word": "trust",
+            "start": 15.520000457763672,
+            "end": 15.619999885559082
+          },
+          {
+            "word": "what",
+            "start": 16.15999984741211,
+            "end": 16.280000686645508
+          },
+          {
+            "word": "to",
+            "start": 16.280000686645508,
+            "end": 16.959999084472656
+          },
+          {
+            "word": "investigate",
+            "start": 16.959999084472656,
+            "end": 16.959999084472656
+          },
+          {
+            "word": "deeper",
+            "start": 16.959999084472656,
+            "end": 17.34000015258789
+          },
+          {
+            "word": "what",
+            "start": 17.940000534057617,
+            "end": 18.059999465942383
+          },
+          {
+            "word": "to",
+            "start": 18.059999465942383,
+            "end": 18.559999465942383
+          },
+          {
+            "word": "skip",
+            "start": 18.559999465942383,
+            "end": 18.559999465942383
+          }
+        ]
+      },
+      "4": {
+        "storyId": "amplified-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Productive in Hours. Deep dive only where needed based on AI's map. By day two, you're making meaningful contributions. What took weeks now takes hours. Your expertise transfers across codebases.",
+        "duration": 16.239999771118164,
+        "words": [
+          {
+            "word": "Productive",
+            "start": 0,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "in",
+            "start": 0.9200000166893005,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "hours",
+            "start": 1.5399999618530273,
+            "end": 1.8200000524520874
+          },
+          {
+            "word": "Deep",
+            "start": 2.559999942779541,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "dive",
+            "start": 2.640000104904175,
+            "end": 3.0199999809265137
+          },
+          {
+            "word": "only",
+            "start": 3.0199999809265137,
+            "end": 3.4000000953674316
+          },
+          {
+            "word": "where",
+            "start": 3.4000000953674316,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "needed",
+            "start": 3.680000066757202,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "based",
+            "start": 3.9600000381469727,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "on",
+            "start": 4.340000152587891,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "AI's",
+            "start": 4.599999904632568,
+            "end": 5
+          },
+          {
+            "word": "map",
+            "start": 5,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "By",
+            "start": 5.880000114440918,
+            "end": 6
+          },
+          {
+            "word": "day",
+            "start": 6,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "two",
+            "start": 6.340000152587891,
+            "end": 6.599999904632568
+          },
+          {
+            "word": "you're",
+            "start": 6.940000057220459,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "making",
+            "start": 7.239999771118164,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "meaningful",
+            "start": 7.559999942779541,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "contributions",
+            "start": 8.180000305175781,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "What",
+            "start": 9.739999771118164,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "took",
+            "start": 9.880000114440918,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "weeks",
+            "start": 10.220000267028809,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "now",
+            "start": 10.600000381469727,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "takes",
+            "start": 11.260000228881836,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "hours",
+            "start": 11.579999923706055,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "Your",
+            "start": 12.819999694824219,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "expertise",
+            "start": 13.020000457763672,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "transfers",
+            "start": 13.619999885559082,
+            "end": 14.579999923706055
+          },
+          {
+            "word": "across",
+            "start": 14.579999923706055,
+            "end": 15.15999984741211
+          },
+          {
+            "word": "codebases",
+            "start": 15.15999984741211,
+            "end": 15.800000190734863
+          }
+        ]
+      }
+    },
+    "protocol-story": {
+      "0": {
+        "storyId": "protocol-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "A Repeatable Process. This isn't magic—it's a repeatable 6-step protocol for mastering any codebase quickly. Each step builds on the previous, creating a systematic approach to rapid acquisition.",
+        "duration": 16.31999969482422,
+        "words": [
+          {
+            "word": "A",
+            "start": 0,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "repeatable",
+            "start": 0.7799999713897705,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "process",
+            "start": 1.4600000381469727,
+            "end": 2.059999942779541
+          },
+          {
+            "word": "This",
+            "start": 3.0199999809265137,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "isn't",
+            "start": 3.0799999237060547,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "magic",
+            "start": 3.380000114440918,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "it's",
+            "start": 4.260000228881836,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "a",
+            "start": 4.400000095367432,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "repeatable",
+            "start": 4.579999923706055,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "six",
+            "start": 5.28000020980835,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "step",
+            "start": 5.739999771118164,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "protocol",
+            "start": 5.880000114440918,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "for",
+            "start": 6.360000133514404,
+            "end": 6.960000038146973
+          },
+          {
+            "word": "mastering",
+            "start": 6.960000038146973,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "any",
+            "start": 7.380000114440918,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "code",
+            "start": 7.920000076293945,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "base",
+            "start": 8.140000343322754,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "quickly",
+            "start": 8.4399995803833,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "Each",
+            "start": 9.800000190734863,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "step",
+            "start": 9.84000015258789,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "builds",
+            "start": 10.199999809265137,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "on",
+            "start": 10.579999923706055,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "the",
+            "start": 10.739999771118164,
+            "end": 11.34000015258789
+          },
+          {
+            "word": "previous",
+            "start": 11.34000015258789,
+            "end": 11.34000015258789
+          },
+          {
+            "word": "creating",
+            "start": 12.279999732971191,
+            "end": 12.279999732971191
+          },
+          {
+            "word": "a",
+            "start": 12.279999732971191,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "systematic",
+            "start": 12.579999923706055,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "approach",
+            "start": 13.020000457763672,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "to",
+            "start": 13.460000038146973,
+            "end": 14
+          },
+          {
+            "word": "rapid",
+            "start": 14,
+            "end": 14.300000190734863
+          },
+          {
+            "word": "acquisition",
+            "start": 14.300000190734863,
+            "end": 14.800000190734863
+          }
+        ]
+      },
+      "1": {
+        "storyId": "protocol-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Initial Reconnaissance. Step one: Feed AI the codebase and ask for structure, not details. Understand the shape before the substance. What are the major components? How do they relate?",
+        "duration": 14.800000190734863,
+        "words": [
+          {
+            "word": "Initial",
+            "start": 0,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "reconnaissance",
+            "start": 0.8799999952316284,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "Step",
+            "start": 2.380000114440918,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "1",
+            "start": 2.4000000953674316,
+            "end": 3.0199999809265137
+          },
+          {
+            "word": "Feed",
+            "start": 3.7799999713897705,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "AI",
+            "start": 3.7799999713897705,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "the",
+            "start": 4.199999809265137,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "code",
+            "start": 4.480000019073486,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "base",
+            "start": 4.699999809265137,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "and",
+            "start": 4.980000019073486,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "ask",
+            "start": 5.400000095367432,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "the",
+            "start": 5.739999771118164,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "structure",
+            "start": 6.380000114440918,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "not",
+            "start": 6.880000114440918,
+            "end": 7
+          },
+          {
+            "word": "details",
+            "start": 7,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "Understand",
+            "start": 8.800000190734863,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "the",
+            "start": 8.800000190734863,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "shape",
+            "start": 9.100000381469727,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "before",
+            "start": 9.34000015258789,
+            "end": 10.020000457763672
+          },
+          {
+            "word": "the",
+            "start": 10.020000457763672,
+            "end": 10.65999984741211
+          },
+          {
+            "word": "substance",
+            "start": 10.65999984741211,
+            "end": 10.65999984741211
+          },
+          {
+            "word": "What",
+            "start": 11.479999542236328,
+            "end": 11.640000343322754
+          },
+          {
+            "word": "are",
+            "start": 11.640000343322754,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "the",
+            "start": 11.880000114440918,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "major",
+            "start": 12.119999885559082,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "components",
+            "start": 12.4399995803833,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "How",
+            "start": 13.600000381469727,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "do",
+            "start": 13.84000015258789,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "they",
+            "start": 14.039999961853027,
+            "end": 14.220000267028809
+          },
+          {
+            "word": "relate",
+            "start": 14.220000267028809,
+            "end": 14.579999923706055
+          }
+        ]
+      },
+      "2": {
+        "storyId": "protocol-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Entry Point Mapping. Step two: Where does execution start? API routes, CLI commands, job schedulers. These are your map's landmarks—the places where external requests enter the system.",
+        "duration": 15.600000381469727,
+        "words": [
+          {
+            "word": "Entry",
+            "start": 0,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "point",
+            "start": 0.6800000071525574,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "mapping",
+            "start": 0.9800000190734863,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "Step",
+            "start": 2.299999952316284,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "2",
+            "start": 2.3399999141693115,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "Where",
+            "start": 3.5399999618530273,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "does",
+            "start": 3.5399999618530273,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "execution",
+            "start": 3.940000057220459,
+            "end": 4.5
+          },
+          {
+            "word": "start",
+            "start": 4.5,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "API",
+            "start": 6.019999980926514,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "routes",
+            "start": 6.28000020980835,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "CLI",
+            "start": 7.28000020980835,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "commands",
+            "start": 7.619999885559082,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "job",
+            "start": 8.640000343322754,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "schedulers",
+            "start": 8.739999771118164,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "These",
+            "start": 9.880000114440918,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "are",
+            "start": 10.199999809265137,
+            "end": 10.399999618530273
+          },
+          {
+            "word": "your",
+            "start": 10.399999618530273,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "MATS",
+            "start": 10.680000305175781,
+            "end": 11.020000457763672
+          },
+          {
+            "word": "landmarks",
+            "start": 11.020000457763672,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "The",
+            "start": 11.960000038146973,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "places",
+            "start": 12.180000305175781,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "where",
+            "start": 12.479999542236328,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "external",
+            "start": 12.880000114440918,
+            "end": 13.479999542236328
+          },
+          {
+            "word": "requests",
+            "start": 13.479999542236328,
+            "end": 14.020000457763672
+          },
+          {
+            "word": "enter",
+            "start": 14.020000457763672,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "the",
+            "start": 14.5600004196167,
+            "end": 15.079999923706055
+          },
+          {
+            "word": "system",
+            "start": 15.079999923706055,
+            "end": 15.359999656677246
+          }
+        ]
+      },
+      "3": {
+        "storyId": "protocol-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Data Model Analysis. Step three: What are the nouns? Database schemas, domain objects, API types. Understanding data means understanding the system. Data shapes behavior.",
+        "duration": 13.319999694824219,
+        "words": [
+          {
+            "word": "Data",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "model",
+            "start": 0.6399999856948853,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "analysis",
+            "start": 1.1200000047683716,
+            "end": 1.7799999713897705
+          },
+          {
+            "word": "Step",
+            "start": 2.440000057220459,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "3",
+            "start": 2.4600000381469727,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "What",
+            "start": 3.6600000858306885,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "are",
+            "start": 3.7200000286102295,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "the",
+            "start": 4.039999961853027,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "nouns",
+            "start": 4.760000228881836,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "Database",
+            "start": 5.739999771118164,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "schemas",
+            "start": 5.940000057220459,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "domain",
+            "start": 7.239999771118164,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "objects",
+            "start": 7.239999771118164,
+            "end": 7.78000020980835
+          },
+          {
+            "word": "API",
+            "start": 8.420000076293945,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "types",
+            "start": 8.720000267028809,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "Understanding",
+            "start": 10.600000381469727,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "data",
+            "start": 10.600000381469727,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "means",
+            "start": 11.079999923706055,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "understanding",
+            "start": 11.65999984741211,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "the",
+            "start": 12.399999618530273,
+            "end": 12.720000267028809
+          },
+          {
+            "word": "system",
+            "start": 12.720000267028809,
+            "end": 12.979999542236328
+          }
+        ]
+      },
+      "4": {
+        "storyId": "protocol-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Pattern Recognition. Step four: How do they do things? Naming conventions, error handling, testing approaches. Learn the local dialect so your code fits in and follows established conventions.",
+        "duration": 14.109999656677246,
+        "words": [
+          {
+            "word": "Pattern",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "recognition",
+            "start": 0.6000000238418579,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "Step",
+            "start": 1.659999966621399,
+            "end": 1.7599999904632568
+          },
+          {
+            "word": "four",
+            "start": 1.7599999904632568,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "How",
+            "start": 2.619999885559082,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "do",
+            "start": 2.6600000858306885,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "they",
+            "start": 2.880000114440918,
+            "end": 3
+          },
+          {
+            "word": "do",
+            "start": 3,
+            "end": 3.2200000286102295
+          },
+          {
+            "word": "things",
+            "start": 3.2200000286102295,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "Maming",
+            "start": 4.440000057220459,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "conventions",
+            "start": 4.559999942779541,
+            "end": 5.139999866485596
+          },
+          {
+            "word": "error",
+            "start": 5.579999923706055,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "handling",
+            "start": 5.820000171661377,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "testing",
+            "start": 6.820000171661377,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "approaches",
+            "start": 6.860000133514404,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "Learn",
+            "start": 8.420000076293945,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "the",
+            "start": 8.420000076293945,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "local",
+            "start": 8.739999771118164,
+            "end": 9.079999923706055
+          },
+          {
+            "word": "dialect",
+            "start": 9.079999923706055,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "so",
+            "start": 9.5600004196167,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "your",
+            "start": 10.199999809265137,
+            "end": 10.5
+          },
+          {
+            "word": "code",
+            "start": 10.5,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "fits",
+            "start": 10.819999694824219,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "in",
+            "start": 11.140000343322754,
+            "end": 11.640000343322754
+          },
+          {
+            "word": "and",
+            "start": 11.640000343322754,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "follows",
+            "start": 12.079999923706055,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "established",
+            "start": 12.359999656677246,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "conventions",
+            "start": 13.039999961853027,
+            "end": 13.539999961853027
+          }
+        ]
+      },
+      "5": {
+        "storyId": "protocol-story",
+        "stepId": "step-5",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Risk Assessment. Step five: Where are the landmines? Complex areas, tech debt, missing tests, security concerns. Know what to avoid touching until you understand it deeply.",
+        "duration": 14.010000228881836,
+        "words": [
+          {
+            "word": "Risk",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "assessment",
+            "start": 0.5799999833106995,
+            "end": 1.2000000476837158
+          },
+          {
+            "word": "Step",
+            "start": 2.200000047683716,
+            "end": 2.2200000286102295
+          },
+          {
+            "word": "5",
+            "start": 2.2200000286102295,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "Where",
+            "start": 3.5799999237060547,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "are",
+            "start": 3.5799999237060547,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "the",
+            "start": 3.759999990463257,
+            "end": 4
+          },
+          {
+            "word": "landmines",
+            "start": 4,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "Complex",
+            "start": 5.539999961853027,
+            "end": 5.539999961853027
+          },
+          {
+            "word": "areas",
+            "start": 5.539999961853027,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "tech",
+            "start": 6.619999885559082,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "debt",
+            "start": 6.619999885559082,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "missing",
+            "start": 7.559999942779541,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "tests",
+            "start": 7.619999885559082,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "security",
+            "start": 8.800000190734863,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "concerns",
+            "start": 8.880000114440918,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "Know",
+            "start": 10.4399995803833,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "what",
+            "start": 10.479999542236328,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "to",
+            "start": 10.760000228881836,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "avoid",
+            "start": 11.300000190734863,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "touching",
+            "start": 11.300000190734863,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "until",
+            "start": 11.680000305175781,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "you",
+            "start": 12.220000267028809,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "understand",
+            "start": 12.479999542236328,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "it",
+            "start": 12.920000076293945,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "deeply",
+            "start": 13.239999771118164,
+            "end": 13.520000457763672
+          }
+        ]
+      },
+      "6": {
+        "storyId": "protocol-story",
+        "stepId": "step-6",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Documentation Generation. Step six: What's missing? Have AI draft docs you wish existed—architecture diagrams, API documentation, onboarding guides. Then verify, refine, and contribute back.",
+        "duration": 16.31999969482422,
+        "words": [
+          {
+            "word": "Documentation",
+            "start": 0,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "generation",
+            "start": 1.2400000095367432,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "Step",
+            "start": 2.7799999713897705,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "six",
+            "start": 2.799999952316284,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "What's",
+            "start": 3.759999990463257,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "missing",
+            "start": 4.340000152587891,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "Have",
+            "start": 5.119999885559082,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "AI",
+            "start": 5.21999979019165,
+            "end": 5.619999885559082
+          },
+          {
+            "word": "draft",
+            "start": 5.619999885559082,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "docs",
+            "start": 6.019999980926514,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "you",
+            "start": 6.340000152587891,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "wish",
+            "start": 6.559999942779541,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "existed",
+            "start": 6.78000020980835,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "Architecture",
+            "start": 8.520000457763672,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "diagrams",
+            "start": 8.520000457763672,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "API",
+            "start": 10.15999984741211,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "documentation",
+            "start": 10.15999984741211,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "Onboarding",
+            "start": 11.739999771118164,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "guides",
+            "start": 12.020000457763672,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "Then",
+            "start": 13.140000343322754,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "verify",
+            "start": 13.34000015258789,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "refine",
+            "start": 14.680000305175781,
+            "end": 14.680000305175781
+          },
+          {
+            "word": "and",
+            "start": 14.880000114440918,
+            "end": 15.4399995803833
+          },
+          {
+            "word": "contribute",
+            "start": 15.4399995803833,
+            "end": 15.720000267028809
+          },
+          {
+            "word": "back",
+            "start": 15.720000267028809,
+            "end": 16.1200008392334
+          }
+        ]
+      },
+      "7": {
+        "storyId": "protocol-story",
+        "stepId": "step-7",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Codebase Mastery. Follow the protocol and you go from stranger to contributor in a day or two. This isn't about shortcuts—it's about systematic, AI-augmented learning that scales across any codebase.",
+        "duration": 15.550000190734863,
+        "words": [
+          {
+            "word": "Codebase",
+            "start": 0,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "mastery",
+            "start": 0.8799999952316284,
+            "end": 1.5
+          },
+          {
+            "word": "Follow",
+            "start": 2.6600000858306885,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "the",
+            "start": 2.6600000858306885,
+            "end": 3
+          },
+          {
+            "word": "protocol",
+            "start": 3,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "and",
+            "start": 3.299999952316284,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "you",
+            "start": 4.039999961853027,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "go",
+            "start": 4.199999809265137,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "from",
+            "start": 4.400000095367432,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "stranger",
+            "start": 4.699999809265137,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "to",
+            "start": 5.119999885559082,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "contributor",
+            "start": 5.71999979019165,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "in",
+            "start": 6.059999942779541,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "a",
+            "start": 6.559999942779541,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "day",
+            "start": 6.820000171661377,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "or",
+            "start": 6.820000171661377,
+            "end": 7
+          },
+          {
+            "word": "two",
+            "start": 7,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "This",
+            "start": 7.980000019073486,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "isn't",
+            "start": 8.15999984741211,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "about",
+            "start": 8.520000457763672,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "shortcuts",
+            "start": 8.859999656677246,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "It's",
+            "start": 10.119999885559082,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "about",
+            "start": 10.279999732971191,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "systematic",
+            "start": 10.640000343322754,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "AI",
+            "start": 11.279999732971191,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "augmented",
+            "start": 12.119999885559082,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "learning",
+            "start": 12.579999923706055,
+            "end": 13
+          },
+          {
+            "word": "that",
+            "start": 13,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "scales",
+            "start": 13.899999618530273,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "across",
+            "start": 13.899999618530273,
+            "end": 14.279999732971191
+          },
+          {
+            "word": "any",
+            "start": 14.279999732971191,
+            "end": 14.779999732971191
+          },
+          {
+            "word": "codebase",
+            "start": 14.779999732971191,
+            "end": 15.220000267028809
+          }
+        ]
+      }
+    }
+  },
+  "echo": {
+    "plateau-story": {
+      "0": {
+        "storyId": "plateau-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Domain-Locked Expertise. You've been a senior engineer for a while. You know your service inside out, can navigate your codebase with your eyes closed. But here's the uncomfortable truth: your expertise is domain-locked.",
+        "duration": 16.360000610351562,
+        "words": [
+          {
+            "word": "Domain",
+            "start": 0,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "locked",
+            "start": 0.7400000095367432,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "expertise",
+            "start": 1.340000033378601,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "You've",
+            "start": 2.7200000286102295,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "been",
+            "start": 2.859999895095825,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "a",
+            "start": 2.9200000762939453,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "senior",
+            "start": 3.2799999713897705,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "engineer",
+            "start": 3.4800000190734863,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "for",
+            "start": 3.940000057220459,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "a",
+            "start": 4.380000114440918,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "while",
+            "start": 4.559999942779541,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "You",
+            "start": 5.619999885559082,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "know",
+            "start": 5.739999771118164,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "your",
+            "start": 5.940000057220459,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "service",
+            "start": 6.179999828338623,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "inside",
+            "start": 6.559999942779541,
+            "end": 7.059999942779541
+          },
+          {
+            "word": "out",
+            "start": 7.059999942779541,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "can",
+            "start": 7.900000095367432,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "navigate",
+            "start": 8.180000305175781,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "your",
+            "start": 8.420000076293945,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "codebase",
+            "start": 8.699999809265137,
+            "end": 9.15999984741211
+          },
+          {
+            "word": "with",
+            "start": 9.15999984741211,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "your",
+            "start": 9.359999656677246,
+            "end": 9.899999618530273
+          },
+          {
+            "word": "eyes",
+            "start": 9.899999618530273,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "closed",
+            "start": 9.9399995803833,
+            "end": 10.5
+          },
+          {
+            "word": "But",
+            "start": 10.880000114440918,
+            "end": 11.5
+          },
+          {
+            "word": "here's",
+            "start": 11.5,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "the",
+            "start": 11.779999732971191,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "uncomfortable",
+            "start": 12.100000381469727,
+            "end": 12.460000038146973
+          },
+          {
+            "word": "truth",
+            "start": 12.460000038146973,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "Your",
+            "start": 13.640000343322754,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "expertise",
+            "start": 13.899999618530273,
+            "end": 14.460000038146973
+          },
+          {
+            "word": "is",
+            "start": 14.460000038146973,
+            "end": 15.140000343322754
+          },
+          {
+            "word": "domain",
+            "start": 15.140000343322754,
+            "end": 15.579999923706055
+          },
+          {
+            "word": "locked",
+            "start": 15.579999923706055,
+            "end": 16
+          }
+        ]
+      },
+      "1": {
+        "storyId": "plateau-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Back to Square One. When you need to review a PR in an unfamiliar service, integrate with a legacy system, or evaluate an acquisition target's code—you're back to square one. All that expertise doesn't transfer automatically.",
+        "duration": 15.260000228881836,
+        "words": [
+          {
+            "word": "Back",
+            "start": 0,
+            "end": 0.5400000214576721
+          },
+          {
+            "word": "to",
+            "start": 0.5400000214576721,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "square",
+            "start": 0.9200000166893005,
+            "end": 1.1799999475479126
+          },
+          {
+            "word": "one",
+            "start": 1.1799999475479126,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "When",
+            "start": 2.359999895095825,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "you",
+            "start": 2.380000114440918,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "need",
+            "start": 2.5799999237060547,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "to",
+            "start": 2.700000047683716,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "review",
+            "start": 3.0799999237060547,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "a",
+            "start": 3.0799999237060547,
+            "end": 3.259999990463257
+          },
+          {
+            "word": "PR",
+            "start": 3.259999990463257,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "in",
+            "start": 3.640000104904175,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "an",
+            "start": 3.9200000762939453,
+            "end": 4.21999979019165
+          },
+          {
+            "word": "unfamiliar",
+            "start": 4.21999979019165,
+            "end": 4.5
+          },
+          {
+            "word": "service",
+            "start": 4.5,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "integrate",
+            "start": 5.840000152587891,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "with",
+            "start": 5.840000152587891,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "a",
+            "start": 6.059999942779541,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "legacy",
+            "start": 6.239999771118164,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "system",
+            "start": 6.480000019073486,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "or",
+            "start": 7.139999866485596,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "evaluate",
+            "start": 7.599999904632568,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "an",
+            "start": 8.039999961853027,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "acquisition",
+            "start": 8.4399995803833,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "target's",
+            "start": 8.84000015258789,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "code",
+            "start": 9.720000267028809,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "you're",
+            "start": 10.239999771118164,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "back",
+            "start": 10.579999923706055,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "to",
+            "start": 10.739999771118164,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "square",
+            "start": 11.220000267028809,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "one",
+            "start": 11.279999732971191,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "All",
+            "start": 12.34000015258789,
+            "end": 12.520000457763672
+          },
+          {
+            "word": "that",
+            "start": 12.520000457763672,
+            "end": 12.779999732971191
+          },
+          {
+            "word": "expertise",
+            "start": 12.779999732971191,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "doesn't",
+            "start": 13.319999694824219,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "transfer",
+            "start": 13.920000076293945,
+            "end": 14.359999656677246
+          },
+          {
+            "word": "automatically",
+            "start": 14.359999656677246,
+            "end": 14.9399995803833
+          }
+        ]
+      },
+      "2": {
+        "storyId": "plateau-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Traditional Timeline. The traditional approach takes 2 to 4 weeks to get productive in a new codebase. Week one for setup and exploration, week two for breaking things, week three for understanding flows, week four for finally being productive.",
+        "duration": 17.299999237060547,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.3400000035762787
+          },
+          {
+            "word": "Traditional",
+            "start": 0.3400000035762787,
+            "end": 1
+          },
+          {
+            "word": "Timeline",
+            "start": 1,
+            "end": 1.7799999713897705
+          },
+          {
+            "word": "The",
+            "start": 1.7799999713897705,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "traditional",
+            "start": 2.319999933242798,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "approach",
+            "start": 2.9000000953674316,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "takes",
+            "start": 3.380000114440918,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "two",
+            "start": 3.8399999141693115,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "to",
+            "start": 4.179999828338623,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "four",
+            "start": 4.480000019073486,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "weeks",
+            "start": 4.699999809265137,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "to",
+            "start": 4.940000057220459,
+            "end": 5.179999828338623
+          },
+          {
+            "word": "get",
+            "start": 5.179999828338623,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "productive",
+            "start": 5.380000114440918,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "in",
+            "start": 5.940000057220459,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "a",
+            "start": 6.21999979019165,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "new",
+            "start": 6.400000095367432,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "codebase",
+            "start": 6.619999885559082,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "Week",
+            "start": 7.940000057220459,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "1",
+            "start": 7.940000057220459,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "for",
+            "start": 8.239999771118164,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "setup",
+            "start": 8.760000228881836,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "and",
+            "start": 9.039999961853027,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "exploration",
+            "start": 9.319999694824219,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "Week",
+            "start": 10.5600004196167,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "2",
+            "start": 10.5600004196167,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "for",
+            "start": 10.859999656677246,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "breaking",
+            "start": 11.180000305175781,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "things",
+            "start": 11.520000457763672,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "Week",
+            "start": 12.699999809265137,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "3",
+            "start": 12.699999809265137,
+            "end": 13
+          },
+          {
+            "word": "for",
+            "start": 13,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "understanding",
+            "start": 13.460000038146973,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "flows",
+            "start": 13.9399995803833,
+            "end": 14.4399995803833
+          },
+          {
+            "word": "Week",
+            "start": 15.15999984741211,
+            "end": 15.15999984741211
+          },
+          {
+            "word": "4",
+            "start": 15.15999984741211,
+            "end": 15.5
+          },
+          {
+            "word": "for",
+            "start": 15.5,
+            "end": 15.84000015258789
+          },
+          {
+            "word": "finally",
+            "start": 15.84000015258789,
+            "end": 16.219999313354492
+          },
+          {
+            "word": "being",
+            "start": 16.219999313354492,
+            "end": 16.579999923706055
+          },
+          {
+            "word": "productive",
+            "start": 16.579999923706055,
+            "end": 16.920000076293945
+          }
+        ]
+      },
+      "3": {
+        "storyId": "plateau-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Amplified Timeline. But what if you could compress that to hours? Hours one and two for AI architecture overview, three and four for entry points and flows, five and six for patterns and risks. Day two: making contributions.",
+        "duration": 18.260000228881836,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "Amplified",
+            "start": 0.5,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "Timeline",
+            "start": 1.2400000095367432,
+            "end": 2.0999999046325684
+          },
+          {
+            "word": "But",
+            "start": 3.140000104904175,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "what",
+            "start": 3.200000047683716,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "if",
+            "start": 3.299999952316284,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "you",
+            "start": 3.440000057220459,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "could",
+            "start": 3.5999999046325684,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "compress",
+            "start": 3.859999895095825,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "that",
+            "start": 4.239999771118164,
+            "end": 4.5
+          },
+          {
+            "word": "to",
+            "start": 4.5,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "hours",
+            "start": 4.880000114440918,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "Hours",
+            "start": 6.260000228881836,
+            "end": 6.260000228881836
+          },
+          {
+            "word": "one",
+            "start": 6.260000228881836,
+            "end": 6.5
+          },
+          {
+            "word": "and",
+            "start": 6.5,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "two",
+            "start": 6.699999809265137,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "for",
+            "start": 6.880000114440918,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "AI",
+            "start": 7.199999809265137,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "Architecture",
+            "start": 7.619999885559082,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "Overview",
+            "start": 8.239999771118164,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "Three",
+            "start": 9.920000076293945,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "and",
+            "start": 9.920000076293945,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "four",
+            "start": 10.199999809265137,
+            "end": 10.420000076293945
+          },
+          {
+            "word": "for",
+            "start": 10.420000076293945,
+            "end": 10.899999618530273
+          },
+          {
+            "word": "Entry",
+            "start": 10.899999618530273,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "Points",
+            "start": 11.239999771118164,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "and",
+            "start": 11.479999542236328,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "Flows",
+            "start": 12.100000381469727,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "Five",
+            "start": 13,
+            "end": 13
+          },
+          {
+            "word": "and",
+            "start": 13,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "six",
+            "start": 13.34000015258789,
+            "end": 13.5
+          },
+          {
+            "word": "for",
+            "start": 13.5,
+            "end": 14.319999694824219
+          },
+          {
+            "word": "Patterns",
+            "start": 14.319999694824219,
+            "end": 14.380000114440918
+          },
+          {
+            "word": "and",
+            "start": 14.380000114440918,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "Risks",
+            "start": 14.760000228881836,
+            "end": 14.979999542236328
+          },
+          {
+            "word": "Day",
+            "start": 15.420000076293945,
+            "end": 15.680000305175781
+          },
+          {
+            "word": "two",
+            "start": 15.680000305175781,
+            "end": 16.040000915527344
+          },
+          {
+            "word": "Making",
+            "start": 16.84000015258789,
+            "end": 16.959999084472656
+          },
+          {
+            "word": "Contributions",
+            "start": 16.959999084472656,
+            "end": 17.84000015258789
+          }
+        ]
+      },
+      "4": {
+        "storyId": "plateau-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Key Insight. AI doesn't replace your expertise—it lets you acquire expertise faster. You're still the judge, the decision-maker, the one who knows what matters. AI is your research assistant, not your replacement.",
+        "duration": 15.760000228881836,
+        "words": [
+          {
+            "word": "The",
+            "start": 0.9399999976158142,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "key",
+            "start": 1.5399999618530273,
+            "end": 1.7999999523162842
+          },
+          {
+            "word": "insight",
+            "start": 1.7999999523162842,
+            "end": 2.2799999713897705
+          },
+          {
+            "word": "AI",
+            "start": 2.9600000381469727,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "doesn't",
+            "start": 2.9600000381469727,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "replace",
+            "start": 3.319999933242798,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "your",
+            "start": 3.759999990463257,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "expertise",
+            "start": 4.539999961853027,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "it",
+            "start": 5.079999923706055,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "lets",
+            "start": 5.099999904632568,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "you",
+            "start": 5.260000228881836,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "acquire",
+            "start": 5.559999942779541,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "expertise",
+            "start": 5.860000133514404,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "faster",
+            "start": 6.579999923706055,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "You're",
+            "start": 8,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "still",
+            "start": 8.239999771118164,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "the",
+            "start": 8.4399995803833,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "judge",
+            "start": 8.920000076293945,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "the",
+            "start": 9.300000190734863,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "decision",
+            "start": 9.479999542236328,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "maker",
+            "start": 9.779999732971191,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "the",
+            "start": 10.539999961853027,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "one",
+            "start": 10.619999885559082,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "who",
+            "start": 10.760000228881836,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "knows",
+            "start": 10.979999542236328,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "what",
+            "start": 11.220000267028809,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "matters",
+            "start": 11.619999885559082,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "AI",
+            "start": 12.640000343322754,
+            "end": 12.84000015258789
+          },
+          {
+            "word": "is",
+            "start": 12.84000015258789,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "your",
+            "start": 13.079999923706055,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "research",
+            "start": 13.420000076293945,
+            "end": 13.640000343322754
+          },
+          {
+            "word": "assistant",
+            "start": 13.640000343322754,
+            "end": 14.140000343322754
+          },
+          {
+            "word": "not",
+            "start": 14.760000228881836,
+            "end": 14.880000114440918
+          },
+          {
+            "word": "your",
+            "start": 14.880000114440918,
+            "end": 15.119999885559082
+          },
+          {
+            "word": "replacement",
+            "start": 15.119999885559082,
+            "end": 15.460000038146973
+          }
+        ]
+      }
+    },
+    "amplified-story": {
+      "0": {
+        "storyId": "amplified-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Facing a New Codebase. You're dropped into an unfamiliar codebase. Thousands of files, unknown patterns, undocumented decisions. Instead of manually reading everything, let AI do the initial reconnaissance.",
+        "duration": 14.300000190734863,
+        "words": [
+          {
+            "word": "Facing",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "a",
+            "start": 0.5,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "new",
+            "start": 0.8199999928474426,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "codebase",
+            "start": 1.159999966621399,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "You're",
+            "start": 2.380000114440918,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "dropped",
+            "start": 2.799999952316284,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "into",
+            "start": 2.799999952316284,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "an",
+            "start": 3.119999885559082,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "unfamiliar",
+            "start": 3.440000057220459,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "codebase",
+            "start": 3.819999933242798,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "Thousands",
+            "start": 5.380000114440918,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "of",
+            "start": 5.380000114440918,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "files",
+            "start": 6.019999980926514,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "unknown",
+            "start": 6.659999847412109,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "patterns",
+            "start": 6.659999847412109,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "undocumented",
+            "start": 7.78000020980835,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "decisions",
+            "start": 8.15999984741211,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "Instead",
+            "start": 9.739999771118164,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "of",
+            "start": 9.739999771118164,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "manually",
+            "start": 10.039999961853027,
+            "end": 10.420000076293945
+          },
+          {
+            "word": "reading",
+            "start": 10.420000076293945,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "everything",
+            "start": 10.739999771118164,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "let",
+            "start": 11.920000076293945,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "AI",
+            "start": 12.020000457763672,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "do",
+            "start": 12.479999542236328,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "the",
+            "start": 12.819999694824219,
+            "end": 13.4399995803833
+          },
+          {
+            "word": "initial",
+            "start": 13.4399995803833,
+            "end": 13.4399995803833
+          },
+          {
+            "word": "reconnaissance",
+            "start": 13.4399995803833,
+            "end": 14.140000343322754
+          }
+        ]
+      },
+      "1": {
+        "storyId": "amplified-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "AI Analysis. Feed the codebase to AI and ask for structure, not details. Architecture summary, entry points, core data models, repeated patterns, areas of complexity, external integrations. Understand the shape before the substance.",
+        "duration": 22.049999237060547,
+        "words": [
+          {
+            "word": "AI",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "analysis",
+            "start": 0.5600000023841858,
+            "end": 1.3200000524520874
+          },
+          {
+            "word": "Feed",
+            "start": 2.180000066757202,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "the",
+            "start": 2.180000066757202,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "code",
+            "start": 2.380000114440918,
+            "end": 2.5999999046325684
+          },
+          {
+            "word": "base",
+            "start": 2.5999999046325684,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "to",
+            "start": 2.8399999141693115,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "AI",
+            "start": 3.119999885559082,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "and",
+            "start": 3.440000057220459,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "ask",
+            "start": 4.019999980926514,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "for",
+            "start": 4.320000171661377,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "structure",
+            "start": 4.679999828338623,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "not",
+            "start": 5.5,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "details",
+            "start": 5.679999828338623,
+            "end": 6.139999866485596
+          },
+          {
+            "word": "Architecture",
+            "start": 7.300000190734863,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "summary",
+            "start": 7.300000190734863,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "entry",
+            "start": 8.5,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "points",
+            "start": 8.539999961853027,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "core",
+            "start": 9.479999542236328,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "data",
+            "start": 9.600000381469727,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "models",
+            "start": 9.84000015258789,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "repeated",
+            "start": 10.979999542236328,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "patterns",
+            "start": 10.979999542236328,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "areas",
+            "start": 12.0600004196167,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "of",
+            "start": 12.0600004196167,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "complexity",
+            "start": 12.800000190734863,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "external",
+            "start": 13.479999542236328,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "integrations",
+            "start": 13.720000267028809,
+            "end": 14.4399995803833
+          },
+          {
+            "word": "Understand",
+            "start": 15.5,
+            "end": 15.5
+          },
+          {
+            "word": "the",
+            "start": 15.5,
+            "end": 16.100000381469727
+          },
+          {
+            "word": "shape",
+            "start": 16.100000381469727,
+            "end": 16.100000381469727
+          },
+          {
+            "word": "before",
+            "start": 16.100000381469727,
+            "end": 16.68000030517578
+          },
+          {
+            "word": "the",
+            "start": 16.68000030517578,
+            "end": 17.420000076293945
+          },
+          {
+            "word": "substance",
+            "start": 17.420000076293945,
+            "end": 17.420000076293945
+          }
+        ]
+      },
+      "2": {
+        "storyId": "amplified-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "What AI Produces. AI gives you an architecture summary, maps the entry points, identifies patterns, and flags risk areas. All in about two hours of conversation instead of weeks of manual exploration.",
+        "duration": 15.15999984741211,
+        "words": [
+          {
+            "word": "What",
+            "start": 0,
+            "end": 0.47999998927116394
+          },
+          {
+            "word": "AI",
+            "start": 0.47999998927116394,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "produces",
+            "start": 1.0199999809265137,
+            "end": 1.6399999856948853
+          },
+          {
+            "word": "AI",
+            "start": 2.640000104904175,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "gives",
+            "start": 2.640000104904175,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "you",
+            "start": 2.9800000190734863,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "an",
+            "start": 3.119999885559082,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "architecture",
+            "start": 3.5199999809265137,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "summary",
+            "start": 3.940000057220459,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "maps",
+            "start": 5.21999979019165,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "the",
+            "start": 5.21999979019165,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "entry",
+            "start": 5.679999828338623,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "points",
+            "start": 5.699999809265137,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "identifies",
+            "start": 7.139999866485596,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "patterns",
+            "start": 7.139999866485596,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "and",
+            "start": 7.980000019073486,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "flags",
+            "start": 8.479999542236328,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "risk",
+            "start": 8.479999542236328,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "areas",
+            "start": 8.880000114440918,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "all",
+            "start": 9.65999984741211,
+            "end": 10
+          },
+          {
+            "word": "in",
+            "start": 10,
+            "end": 10.399999618530273
+          },
+          {
+            "word": "about",
+            "start": 10.399999618530273,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "two",
+            "start": 10.699999809265137,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "hours",
+            "start": 10.979999542236328,
+            "end": 11.15999984741211
+          },
+          {
+            "word": "of",
+            "start": 11.15999984741211,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "conversation",
+            "start": 12.100000381469727,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "instead",
+            "start": 12.100000381469727,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "of",
+            "start": 12.699999809265137,
+            "end": 13.359999656677246
+          },
+          {
+            "word": "weeks",
+            "start": 13.359999656677246,
+            "end": 13.359999656677246
+          },
+          {
+            "word": "of",
+            "start": 13.359999656677246,
+            "end": 14
+          },
+          {
+            "word": "manual",
+            "start": 14,
+            "end": 14.260000228881836
+          },
+          {
+            "word": "exploration",
+            "start": 14.260000228881836,
+            "end": 14.859999656677246
+          }
+        ]
+      },
+      "3": {
+        "storyId": "amplified-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Senior Verification. Now YOU apply your judgment. Verify AI's claims against actual code—AI makes mistakes. You know what matters for YOUR situation. Decide what to trust, what to investigate deeper, what to skip.",
+        "duration": 16.360000610351562,
+        "words": [
+          {
+            "word": "Senior",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "verification",
+            "start": 0.6399999856948853,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "Now",
+            "start": 2.2799999713897705,
+            "end": 2.2799999713897705
+          },
+          {
+            "word": "you",
+            "start": 2.2799999713897705,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "apply",
+            "start": 2.819999933242798,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "your",
+            "start": 3.2799999713897705,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "judgment",
+            "start": 3.5799999237060547,
+            "end": 3.9000000953674316
+          },
+          {
+            "word": "Verify",
+            "start": 4.800000190734863,
+            "end": 4.960000038146973
+          },
+          {
+            "word": "AI's",
+            "start": 4.960000038146973,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "claims",
+            "start": 5.880000114440918,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "against",
+            "start": 5.880000114440918,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "actual",
+            "start": 6.21999979019165,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "code",
+            "start": 6.820000171661377,
+            "end": 7.179999828338623
+          },
+          {
+            "word": "AI",
+            "start": 7.78000020980835,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "makes",
+            "start": 7.980000019073486,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "mistakes",
+            "start": 8.260000228881836,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "You",
+            "start": 9.359999656677246,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "know",
+            "start": 9.479999542236328,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "what",
+            "start": 9.699999809265137,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "matters",
+            "start": 10.039999961853027,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "for",
+            "start": 10.180000305175781,
+            "end": 10.520000457763672
+          },
+          {
+            "word": "your",
+            "start": 10.520000457763672,
+            "end": 10.880000114440918
+          },
+          {
+            "word": "situation",
+            "start": 10.880000114440918,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "Decide",
+            "start": 12.319999694824219,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "what",
+            "start": 12.579999923706055,
+            "end": 12.760000228881836
+          },
+          {
+            "word": "to",
+            "start": 12.760000228881836,
+            "end": 12.979999542236328
+          },
+          {
+            "word": "trust",
+            "start": 12.979999542236328,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "what",
+            "start": 13.720000267028809,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "to",
+            "start": 13.84000015258789,
+            "end": 14.5
+          },
+          {
+            "word": "investigate",
+            "start": 14.5,
+            "end": 14.5
+          },
+          {
+            "word": "deeper",
+            "start": 14.5,
+            "end": 14.920000076293945
+          },
+          {
+            "word": "what",
+            "start": 15.520000457763672,
+            "end": 15.619999885559082
+          },
+          {
+            "word": "to",
+            "start": 15.619999885559082,
+            "end": 16.139999389648438
+          },
+          {
+            "word": "skip",
+            "start": 16.139999389648438,
+            "end": 16.139999389648438
+          }
+        ]
+      },
+      "4": {
+        "storyId": "amplified-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Productive in Hours. Deep dive only where needed based on AI's map. By day two, you're making meaningful contributions. What took weeks now takes hours. Your expertise transfers across codebases.",
+        "duration": 15.5,
+        "words": [
+          {
+            "word": "Productive",
+            "start": 0,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "in",
+            "start": 0.8199999928474426,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "hours",
+            "start": 1.2400000095367432,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "Deep",
+            "start": 2.4200000762939453,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "dive",
+            "start": 2.4800000190734863,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "only",
+            "start": 2.799999952316284,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "where",
+            "start": 3.200000047683716,
+            "end": 3.5
+          },
+          {
+            "word": "needed",
+            "start": 3.5,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "based",
+            "start": 3.819999933242798,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "on",
+            "start": 4.400000095367432,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "AI's",
+            "start": 4.699999809265137,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "map",
+            "start": 5.300000190734863,
+            "end": 5.539999961853027
+          },
+          {
+            "word": "By",
+            "start": 6.21999979019165,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "day",
+            "start": 6.21999979019165,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "two",
+            "start": 6.579999923706055,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "you're",
+            "start": 7.199999809265137,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "making",
+            "start": 7.659999847412109,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "meaningful",
+            "start": 7.659999847412109,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "contributions",
+            "start": 8.220000267028809,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "What",
+            "start": 9.760000228881836,
+            "end": 9.859999656677246
+          },
+          {
+            "word": "took",
+            "start": 9.859999656677246,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "weeks",
+            "start": 10.15999984741211,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "now",
+            "start": 10.479999542236328,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "takes",
+            "start": 11.100000381469727,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "hours",
+            "start": 11.420000076293945,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "Your",
+            "start": 12.600000381469727,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "expertise",
+            "start": 12.859999656677246,
+            "end": 13.359999656677246
+          },
+          {
+            "word": "transfers",
+            "start": 13.359999656677246,
+            "end": 14.0600004196167
+          },
+          {
+            "word": "across",
+            "start": 14.0600004196167,
+            "end": 14.5
+          },
+          {
+            "word": "code",
+            "start": 14.5,
+            "end": 14.819999694824219
+          },
+          {
+            "word": "bases",
+            "start": 14.819999694824219,
+            "end": 15.140000343322754
+          }
+        ]
+      }
+    },
+    "protocol-story": {
+      "0": {
+        "storyId": "protocol-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "A Repeatable Process. This isn't magic—it's a repeatable 6-step protocol for mastering any codebase quickly. Each step builds on the previous, creating a systematic approach to rapid acquisition.",
+        "duration": 14.010000228881836,
+        "words": [
+          {
+            "word": "A",
+            "start": 0,
+            "end": 0.36000001430511475
+          },
+          {
+            "word": "repeatable",
+            "start": 0.36000001430511475,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "process",
+            "start": 0.9200000166893005,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "This",
+            "start": 2.259999990463257,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "isn't",
+            "start": 2.319999933242798,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "magic",
+            "start": 2.559999942779541,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "It's",
+            "start": 3.5799999237060547,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "a",
+            "start": 3.680000066757202,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "repeatable",
+            "start": 3.940000057220459,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "six",
+            "start": 4.480000019073486,
+            "end": 4.900000095367432
+          },
+          {
+            "word": "step",
+            "start": 4.900000095367432,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "protocol",
+            "start": 5.059999942779541,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "for",
+            "start": 5.559999942779541,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "mastering",
+            "start": 6.239999771118164,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "any",
+            "start": 6.659999847412109,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "code",
+            "start": 7.21999979019165,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "base",
+            "start": 7.400000095367432,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "quickly",
+            "start": 7.659999847412109,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "Each",
+            "start": 8.819999694824219,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "step",
+            "start": 8.880000114440918,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "builds",
+            "start": 9.220000267028809,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "on",
+            "start": 9.5600004196167,
+            "end": 9.760000228881836
+          },
+          {
+            "word": "the",
+            "start": 9.760000228881836,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "previous",
+            "start": 10.359999656677246,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "creating",
+            "start": 11.119999885559082,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "a",
+            "start": 11.119999885559082,
+            "end": 11.399999618530273
+          },
+          {
+            "word": "systematic",
+            "start": 11.399999618530273,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "approach",
+            "start": 11.859999656677246,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "to",
+            "start": 12.359999656677246,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "rapid",
+            "start": 12.739999771118164,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "acquisition",
+            "start": 13.039999961853027,
+            "end": 13.539999961853027
+          }
+        ]
+      },
+      "1": {
+        "storyId": "protocol-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Initial Reconnaissance. Step one: Feed AI the codebase and ask for structure, not details. Understand the shape before the substance. What are the major components? How do they relate?",
+        "duration": 14.850000381469727,
+        "words": [
+          {
+            "word": "Initial",
+            "start": 0,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "reconnaissance",
+            "start": 0.9599999785423279,
+            "end": 1.7799999713897705
+          },
+          {
+            "word": "Step",
+            "start": 2.819999933242798,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "1",
+            "start": 2.819999933242798,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "Feed",
+            "start": 4.059999942779541,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "AI",
+            "start": 4.059999942779541,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "the",
+            "start": 4.400000095367432,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "code",
+            "start": 4.639999866485596,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "base",
+            "start": 4.880000114440918,
+            "end": 5.179999828338623
+          },
+          {
+            "word": "and",
+            "start": 5.179999828338623,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "ask",
+            "start": 5.860000133514404,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "for",
+            "start": 6.159999847412109,
+            "end": 6.5
+          },
+          {
+            "word": "structure",
+            "start": 6.5,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "not",
+            "start": 7.420000076293945,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "details",
+            "start": 7.519999980926514,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "Understand",
+            "start": 9.239999771118164,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "the",
+            "start": 9.239999771118164,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "shape",
+            "start": 9.5600004196167,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "before",
+            "start": 9.779999732971191,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "the",
+            "start": 10.460000038146973,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "substance",
+            "start": 11.119999885559082,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "What",
+            "start": 11.9399995803833,
+            "end": 12.039999961853027
+          },
+          {
+            "word": "are",
+            "start": 12.039999961853027,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "the",
+            "start": 12.220000267028809,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "major",
+            "start": 12.399999618530273,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "components",
+            "start": 12.699999809265137,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "How",
+            "start": 13.920000076293945,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "do",
+            "start": 14.039999961853027,
+            "end": 14.239999771118164
+          },
+          {
+            "word": "they",
+            "start": 14.239999771118164,
+            "end": 14.359999656677246
+          },
+          {
+            "word": "relate",
+            "start": 14.359999656677246,
+            "end": 14.720000267028809
+          }
+        ]
+      },
+      "2": {
+        "storyId": "protocol-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Entry Point Mapping. Step two: Where does execution start? API routes, CLI commands, job schedulers. These are your map's landmarks—the places where external requests enter the system.",
+        "duration": 15.119999885559082,
+        "words": [
+          {
+            "word": "Entry",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "point",
+            "start": 0.6000000238418579,
+            "end": 1
+          },
+          {
+            "word": "mapping",
+            "start": 1,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "step",
+            "start": 2.200000047683716,
+            "end": 2.2200000286102295
+          },
+          {
+            "word": "two",
+            "start": 2.2200000286102295,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "Where",
+            "start": 3.299999952316284,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "does",
+            "start": 3.319999933242798,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "execution",
+            "start": 3.700000047683716,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "start",
+            "start": 4.239999771118164,
+            "end": 4.820000171661377
+          },
+          {
+            "word": "API",
+            "start": 5.679999828338623,
+            "end": 5.920000076293945
+          },
+          {
+            "word": "routes",
+            "start": 5.920000076293945,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "CLI",
+            "start": 7.039999961853027,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "commands",
+            "start": 7.380000114440918,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "job",
+            "start": 8.399999618530273,
+            "end": 8.5
+          },
+          {
+            "word": "schedulers",
+            "start": 8.5,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "These",
+            "start": 9.779999732971191,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "are",
+            "start": 9.960000038146973,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "your",
+            "start": 10.100000381469727,
+            "end": 10.34000015258789
+          },
+          {
+            "word": "map's",
+            "start": 10.34000015258789,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "landmarks",
+            "start": 10.979999542236328,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "the",
+            "start": 11.84000015258789,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "places",
+            "start": 12.020000457763672,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "where",
+            "start": 12.239999771118164,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "external",
+            "start": 12.579999923706055,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "requests",
+            "start": 13.020000457763672,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "enter",
+            "start": 13.600000381469727,
+            "end": 14.199999809265137
+          },
+          {
+            "word": "the",
+            "start": 14.199999809265137,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "system",
+            "start": 14.5600004196167,
+            "end": 14.760000228881836
+          }
+        ]
+      },
+      "3": {
+        "storyId": "protocol-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Data Model Analysis. Step three: What are the nouns? Database schemas, domain objects, API types. Understanding data means understanding the system. Data shapes behavior.",
+        "duration": 13.40999984741211,
+        "words": [
+          {
+            "word": "Data",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "model",
+            "start": 0.6000000238418579,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "analysis",
+            "start": 0.9800000190734863,
+            "end": 1.7400000095367432
+          },
+          {
+            "word": "step",
+            "start": 2.4600000381469727,
+            "end": 2.5
+          },
+          {
+            "word": "three",
+            "start": 2.5,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "What",
+            "start": 3.4200000762939453,
+            "end": 3.5
+          },
+          {
+            "word": "are",
+            "start": 3.5,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "the",
+            "start": 3.5799999237060547,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "nouns",
+            "start": 4.139999866485596,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "Database",
+            "start": 4.980000019073486,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "schemas",
+            "start": 5.099999904632568,
+            "end": 5.619999885559082
+          },
+          {
+            "word": "domain",
+            "start": 6.239999771118164,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "objects",
+            "start": 6.239999771118164,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "API",
+            "start": 7.400000095367432,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "types",
+            "start": 7.519999980926514,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "Understanding",
+            "start": 9.020000457763672,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "data",
+            "start": 9.020000457763672,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "means",
+            "start": 9.479999542236328,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "understanding",
+            "start": 9.960000038146973,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "the",
+            "start": 10.600000381469727,
+            "end": 10.899999618530273
+          },
+          {
+            "word": "system",
+            "start": 10.899999618530273,
+            "end": 11.15999984741211
+          },
+          {
+            "word": "Data",
+            "start": 12.300000190734863,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "shapes",
+            "start": 12.300000190734863,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "behavior",
+            "start": 12.739999771118164,
+            "end": 13.140000343322754
+          }
+        ]
+      },
+      "4": {
+        "storyId": "protocol-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Pattern Recognition. Step four: How do they do things? Naming conventions, error handling, testing approaches. Learn the local dialect so your code fits in and follows established conventions.",
+        "duration": 14.800000190734863,
+        "words": [
+          {
+            "word": "Pattern",
+            "start": 0,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "Recognition",
+            "start": 0.7400000095367432,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "Step",
+            "start": 1.4800000190734863,
+            "end": 2.440000057220459
+          },
+          {
+            "word": "4",
+            "start": 2.440000057220459,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "How",
+            "start": 3.0399999618530273,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "do",
+            "start": 3.9200000762939453,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "they",
+            "start": 4.059999942779541,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "do",
+            "start": 4.199999809265137,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "things",
+            "start": 4.420000076293945,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "Naming",
+            "start": 5.71999979019165,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "conventions",
+            "start": 5.71999979019165,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "error",
+            "start": 7.059999942779541,
+            "end": 7.099999904632568
+          },
+          {
+            "word": "handling",
+            "start": 7.099999904632568,
+            "end": 7.5
+          },
+          {
+            "word": "testing",
+            "start": 8.260000228881836,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "approaches",
+            "start": 8.300000190734863,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "Learn",
+            "start": 9.680000305175781,
+            "end": 9.680000305175781
+          },
+          {
+            "word": "the",
+            "start": 9.680000305175781,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "local",
+            "start": 9.960000038146973,
+            "end": 10.260000228881836
+          },
+          {
+            "word": "dialect",
+            "start": 10.260000228881836,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "so",
+            "start": 10.739999771118164,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "your",
+            "start": 11.239999771118164,
+            "end": 11.5
+          },
+          {
+            "word": "code",
+            "start": 11.5,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "fits",
+            "start": 11.760000228881836,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "in",
+            "start": 12.100000381469727,
+            "end": 12.460000038146973
+          },
+          {
+            "word": "and",
+            "start": 12.460000038146973,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "follows",
+            "start": 13.260000228881836,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "established",
+            "start": 13.260000228881836,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "conventions",
+            "start": 13.9399995803833,
+            "end": 14.380000114440918
+          }
+        ]
+      },
+      "5": {
+        "storyId": "protocol-story",
+        "stepId": "step-5",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Risk Assessment. Step five: Where are the landmines? Complex areas, tech debt, missing tests, security concerns. Know what to avoid touching until you understand it deeply.",
+        "duration": 14.300000190734863,
+        "words": [
+          {
+            "word": "Risk",
+            "start": 0,
+            "end": 0.5400000214576721
+          },
+          {
+            "word": "assessment",
+            "start": 0.5400000214576721,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "step",
+            "start": 2.140000104904175,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "five",
+            "start": 2.180000066757202,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "Where",
+            "start": 3.5399999618530273,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "are",
+            "start": 3.5799999237060547,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "the",
+            "start": 3.7799999713897705,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "landmines",
+            "start": 4.079999923706055,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "Complex",
+            "start": 5.579999923706055,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "areas",
+            "start": 5.579999923706055,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "tech",
+            "start": 6.599999904632568,
+            "end": 6.599999904632568
+          },
+          {
+            "word": "debt",
+            "start": 6.599999904632568,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "missing",
+            "start": 7.519999980926514,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "tests",
+            "start": 7.539999961853027,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "security",
+            "start": 8.880000114440918,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "concerns",
+            "start": 8.880000114440918,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "Know",
+            "start": 10.579999923706055,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "what",
+            "start": 10.619999885559082,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "to",
+            "start": 10.800000190734863,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "avoid",
+            "start": 11.300000190734863,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "touching",
+            "start": 11.300000190734863,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "until",
+            "start": 11.619999885559082,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "you",
+            "start": 11.979999542236328,
+            "end": 12.279999732971191
+          },
+          {
+            "word": "understand",
+            "start": 12.279999732971191,
+            "end": 12.600000381469727
+          },
+          {
+            "word": "it",
+            "start": 12.600000381469727,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "deeply",
+            "start": 13.15999984741211,
+            "end": 13.15999984741211
+          }
+        ]
+      },
+      "6": {
+        "storyId": "protocol-story",
+        "stepId": "step-6",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Documentation Generation. Step six: What's missing? Have AI draft docs you wish existed—architecture diagrams, API documentation, onboarding guides. Then verify, refine, and contribute back.",
+        "duration": 15,
+        "words": [
+          {
+            "word": "Documentation",
+            "start": 0,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "generation",
+            "start": 1.059999942779541,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "Step",
+            "start": 2.2200000286102295,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "6",
+            "start": 2.319999933242798,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "What's",
+            "start": 3.359999895095825,
+            "end": 3.559999942779541
+          },
+          {
+            "word": "missing",
+            "start": 3.559999942779541,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "Have",
+            "start": 4.519999980926514,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "AI",
+            "start": 4.639999866485596,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "draft",
+            "start": 5.099999904632568,
+            "end": 5.519999980926514
+          },
+          {
+            "word": "docs",
+            "start": 5.519999980926514,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "you",
+            "start": 5.820000171661377,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "wish",
+            "start": 6.059999942779541,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "existed",
+            "start": 6.28000020980835,
+            "end": 6.71999979019165
+          },
+          {
+            "word": "architecture",
+            "start": 7.659999847412109,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "diagrams",
+            "start": 7.760000228881836,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "API",
+            "start": 8.9399995803833,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "documentation",
+            "start": 9.199999809265137,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "onboarding",
+            "start": 10.579999923706055,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "guides",
+            "start": 11.300000190734863,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "Then",
+            "start": 11.640000343322754,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "verify",
+            "start": 12.4399995803833,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "refine",
+            "start": 13.579999923706055,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "and",
+            "start": 13.739999771118164,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "contribute",
+            "start": 14.039999961853027,
+            "end": 14.279999732971191
+          },
+          {
+            "word": "back",
+            "start": 14.279999732971191,
+            "end": 14.699999809265137
+          }
+        ]
+      },
+      "7": {
+        "storyId": "protocol-story",
+        "stepId": "step-7",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Codebase Mastery. Follow the protocol and you go from stranger to contributor in a day or two. This isn't about shortcuts—it's about systematic, AI-augmented learning that scales across any codebase.",
+        "duration": 14.760000228881836,
+        "words": [
+          {
+            "word": "Codebase",
+            "start": 0,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "mastery",
+            "start": 1.3600000143051147,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "Follow",
+            "start": 3.0999999046325684,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "the",
+            "start": 3.0999999046325684,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "protocol",
+            "start": 3.740000009536743,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "and",
+            "start": 3.740000009536743,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "you",
+            "start": 4.300000190734863,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "go",
+            "start": 4.440000057220459,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "from",
+            "start": 4.599999904632568,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "stranger",
+            "start": 4.860000133514404,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "to",
+            "start": 5.159999847412109,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "contributor",
+            "start": 5.579999923706055,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "in",
+            "start": 5.800000190734863,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "a",
+            "start": 6.239999771118164,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "day",
+            "start": 6.480000019073486,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "or",
+            "start": 6.480000019073486,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "two",
+            "start": 6.659999847412109,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "This",
+            "start": 7.880000114440918,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "isn't",
+            "start": 7.980000019073486,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "about",
+            "start": 8.199999809265137,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "shortcuts",
+            "start": 8.520000457763672,
+            "end": 9
+          },
+          {
+            "word": "It's",
+            "start": 9.479999542236328,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "about",
+            "start": 9.579999923706055,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "systematic",
+            "start": 9.880000114440918,
+            "end": 10.5
+          },
+          {
+            "word": "AI",
+            "start": 10.5,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "augmented",
+            "start": 11.260000228881836,
+            "end": 11.739999771118164
+          },
+          {
+            "word": "learning",
+            "start": 11.739999771118164,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "that",
+            "start": 12.119999885559082,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "scales",
+            "start": 13.020000457763672,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "across",
+            "start": 13.020000457763672,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "any",
+            "start": 13.460000038146973,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "codebase",
+            "start": 13.9399995803833,
+            "end": 14.380000114440918
+          }
+        ]
+      }
+    }
+  }
+}

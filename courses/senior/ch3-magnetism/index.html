@@ -4,514 +4,441 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 3: The Pull Between | Senior Amplifier</title>
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--accent-magnetism);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(156, 39, 176, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(103, 58, 183, 0.15) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--accent-magnetism);
-    }
-    
-    .story-block::before {
-      color: var(--accent-magnetism);
-    }
-
-    .strategy-pillar {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border-top: 3px solid var(--accent-magnetism);
-    }
-
-    .strategy-pillar h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .pillar-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(156, 39, 176, 0.15);
-      border-radius: 50%;
-      font-size: 1.2rem;
-    }
-
-    .checklist-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .checklist-section {
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-    }
-
-    .checklist-section h5 {
-      color: var(--accent-magnetism);
-      margin-bottom: 0.75rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.9rem;
-    }
-
-    .checklist-item:last-child {
-      border-bottom: none;
-    }
-
-    .checklist-item::before {
-      content: '□';
-      color: var(--accent-magnetism);
-      font-weight: bold;
-    }
-
-    .impact-comparison {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 1rem;
-      align-items: center;
-      margin: 2rem 0;
-    }
-
-    .impact-side {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .impact-side h4 {
-      margin-bottom: 0.5rem;
-    }
-
-    .impact-arrow {
-      font-size: 2rem;
-      color: var(--accent-magnetism);
-    }
-
-    .impact-side.before {
-      opacity: 0.7;
-    }
-
-    .impact-side.after {
-      border: 1px solid var(--accent-magnetism);
-    }
-
-    @media (max-width: 768px) {
-      .impact-comparison {
-        grid-template-columns: 1fr;
-      }
-      
-      .impact-arrow {
-        transform: rotate(90deg);
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
 </head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+<body data-course="senior" data-lesson="ch3-magnetism">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🧲</div>
+        <span>The Pull Between</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Senior</a>
+        <a href="../ch2-lightning/">Ch 2</a>
+        <a href="index.html" class="active">Ch 3</a>
+        <a href="../ch4-architect/">Ch 4: Architects</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="scale" title="Platform Scale"></div>
-    <div class="progress-dot" data-section="strategy" title="Integration Strategy"></div>
-    <div class="progress-dot" data-section="toolkit" title="Toolkit"></div>
-    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
-    <div class="progress-dot" data-section="project" title="Project"></div>
-  </nav>
-
-  <main class="lesson-container">
-    
-    <!-- HERO SECTION -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Chapter 3 • Week 3</span>
-        <div class="hero-icon">🧲</div>
-        <h1>The Pull Between</h1>
-        <p class="hero-subtitle">
-          Senior engineers design integrations. <strong>Amplified</strong> engineers architect 
-          integration strategies for entire platforms.
-        </p>
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Senior Amplifier</a>
+        <span>/</span>
+        <span>Chapter 3: The Pull Between</span>
       </div>
+      <h1>🧲 The Pull Between</h1>
+      <p>Senior engineers design integrations. <strong>Amplified</strong> engineers architect integration strategies for entire platforms.</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 1: Platform Scale -->
+    <section class="section" id="platform-scale-section">
+      <h2>Thinking at Platform Scale</h2>
+      <p>You know all the patterns. But your impact is limited to what you personally touch. What if your expertise could scale across the entire organization?</p>
       
-      <div class="scroll-indicator">
-        <span>Think at platform scale</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- PLATFORM SCALE -->
-    <section class="section" data-section="scale">
-      <div class="section-content">
-        <h2 class="fade-in">🌐 Thinking at Platform Scale</h2>
+      <div class="diagram-container" id="platform-scale-container">
+        <div class="diagram-header">
+          <span class="diagram-title">👤 Traditional → ⚡ Amplified Senior</span>
+        </div>
+        <div id="platform-scale-story" class="diagram-canvas storytelling"></div>
         
-        <div class="story-block fade-in">
-          <p>
-            You can design a solid integration. Retries, circuit breakers, idempotency — 
-            you know all the patterns. But your impact is limited to integrations you 
-            <strong>personally</strong> build and review.
-          </p>
-        </div>
-
-        <div class="impact-comparison fade-in">
-          <div class="impact-side before">
-            <h4>Traditional Senior</h4>
-            <p>Designs great integrations, one at a time</p>
-            <p><strong>Impact:</strong> Your team</p>
-          </div>
-          <div class="impact-arrow">→</div>
-          <div class="impact-side after">
-            <h4>Amplified Senior</h4>
-            <p>Defines patterns, AI generates compliant code</p>
-            <p><strong>Impact:</strong> Entire organization</p>
-          </div>
-        </div>
-
-        <p class="fade-in">
-          What if you could define integration patterns once, and have AI generate compliant 
-          implementations across all teams? Your expertise scales beyond what you can 
-          personally touch.
-        </p>
-
-        <div class="diagram-container fade-in">
-          <div class="diagram-title">Pattern-Based Integration Strategy</div>
-          <div class="mermaid">
-flowchart TB
-    subgraph You ["Your Work (Once)"]
-        P1[Define Patterns]
-        P2[Create Templates]
-        P3[Write Validation Rules]
-    end
-    
-    subgraph AI ["AI Work (Many Times)"]
-        A1[Generate Code]
-        A2[Generate Docs]
-        A3[Check Compliance]
-    end
-    
-    subgraph Teams ["All Teams"]
-        T1[Team A Integration]
-        T2[Team B Integration]
-        T3[Team C Integration]
-        T4[Team D Integration]
-    end
-    
-    P1 --> A1
-    P2 --> A1
-    P3 --> A3
-    A1 --> T1 & T2 & T3 & T4
-    A2 --> T1 & T2 & T3 & T4
-    A3 --> T1 & T2 & T3 & T4
-    
-    style You fill:#9c27b020,stroke:#9c27b0
-    style AI fill:#7986cb20,stroke:#7986cb
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INTEGRATION STRATEGY -->
-    <section class="section" data-section="strategy">
-      <div class="section-content">
-        <h2 class="fade-in">📋 The Integration Strategy Framework</h2>
-        
-        <p class="fade-in">
-          Move from designing individual integrations to defining organizational strategy:
-        </p>
-
-        <div class="strategy-pillar fade-in">
-          <h4><span class="pillar-icon">📐</span> Patterns</h4>
-          <p>What are the standard ways we connect systems?</p>
-          <ul>
-            <li>When do we use sync vs async?</li>
-            <li>What's our retry/backoff standard?</li>
-            <li>How do we handle partial failures?</li>
-            <li>What's our circuit breaker pattern?</li>
-          </ul>
-        </div>
-
-        <div class="strategy-pillar fade-in">
-          <h4><span class="pillar-icon">📝</span> Contracts</h4>
-          <p>How do we define what services expect from each other?</p>
-          <ul>
-            <li>OpenAPI/AsyncAPI specification requirements</li>
-            <li>Versioning strategy (semantic versioning? URL versioning?)</li>
-            <li>Breaking change policy</li>
-            <li>Required documentation standards</li>
-          </ul>
-        </div>
-
-        <div class="strategy-pillar fade-in">
-          <h4><span class="pillar-icon">📊</span> Observability</h4>
-          <p>How do we know integrations are healthy?</p>
-          <ul>
-            <li>Required metrics for all integrations</li>
-            <li>Distributed tracing strategy</li>
-            <li>Alerting thresholds and escalation</li>
-            <li>Dashboard standards</li>
-          </ul>
-        </div>
-
-        <div class="strategy-pillar fade-in">
-          <h4><span class="pillar-icon">🔐</span> Governance</h4>
-          <p>Who decides what and when?</p>
-          <ul>
-            <li>New integration approval process</li>
-            <li>Deprecation and sunset procedures</li>
-            <li>Security review requirements</li>
-            <li>Ownership and responsibility matrix</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- AI TOOLKIT -->
-    <section class="section" data-section="toolkit">
-      <div class="section-content">
-        <h2 class="fade-in">🛠️ The AI Integration Toolkit</h2>
-        
-        <p class="fade-in">
-          Once you define the strategy, AI becomes your implementation multiplier:
-        </p>
-
-        <div class="code-demo fade-in">
-          <div class="code-header">
-            <span>AI Code Generation Prompt</span>
-          </div>
-          <pre class="code-content"><code>Generate an integration client for the Payment Service API.
-
-Follow these standards:
-- Retry pattern: exponential backoff, max 3 retries
-- Circuit breaker: 5 failures in 60 seconds triggers
-- Timeout: 10 seconds for all calls
-- Authentication: OAuth2 client credentials
-- Metrics: emit latency, success rate, error breakdown
-- Logging: structured JSON, redact sensitive fields
-
-API Spec: [paste OpenAPI spec]
-
-Code style: Follow our existing patterns from [reference file]
-
-Generate:
-1. Client class with all endpoints
-2. Unit tests for happy path and error cases
-3. Integration test template
-4. README with usage examples</code></pre>
-        </div>
-
-        <h3 class="fade-in">The Integration Checklist</h3>
-        
-        <div class="checklist-grid fade-in">
-          <div class="checklist-section">
-            <h5>Authentication</h5>
-            <div class="checklist-item">API key rotation plan</div>
-            <div class="checklist-item">Secrets in vault, not code</div>
-            <div class="checklist-item">Auth error handling</div>
-          </div>
-          
-          <div class="checklist-section">
-            <h5>Error Handling</h5>
-            <div class="checklist-item">Retry with exponential backoff</div>
-            <div class="checklist-item">Circuit breaker configured</div>
-            <div class="checklist-item">Graceful degradation plan</div>
-          </div>
-          
-          <div class="checklist-section">
-            <h5>Rate Limiting</h5>
-            <div class="checklist-item">Know provider's limits</div>
-            <div class="checklist-item">Client-side throttling</div>
-            <div class="checklist-item">Queue for burst handling</div>
-          </div>
-          
-          <div class="checklist-section">
-            <h5>Observability</h5>
-            <div class="checklist-item">Latency tracking</div>
-            <div class="checklist-item">Error rate alerts</div>
-            <div class="checklist-item">Business metric correlation</div>
-          </div>
-        </div>
-
-        <div class="callout callout-insight fade-in">
-          <span class="callout-icon">💡</span>
-          <strong>Amplified Impact:</strong> Define the checklist once. AI ensures every integration 
-          meets the standard. Your patterns scale across the organization.
-        </div>
-      </div>
-    </section>
-
-    <!-- QUIZ -->
-    <section class="section" data-section="quiz">
-      <div class="section-content">
-        <div class="quiz-container fade-in" data-activity="quiz-senior-ch3-strategy" data-type="quiz" data-points="10" data-answer="D">
-          <div class="quiz-header">
-            <span class="quiz-icon">🧠</span>
-            <h3>Knowledge Check</h3>
-          </div>
-          
-          <p class="quiz-question">
-            What's the key shift from "senior" to "amplified" integration thinking?
-          </p>
-          
-          <div class="quiz-options">
-            <div class="quiz-option" data-correct="false">
-              <span class="option-letter">A</span>
-              <span class="option-text">Let AI design all integrations</span>
-            </div>
-            <div class="quiz-option" data-correct="false">
-              <span class="option-letter">B</span>
-              <span class="option-text">Write more code faster</span>
-            </div>
-            <div class="quiz-option" data-correct="true">
-              <span class="option-letter">C</span>
-              <span class="option-text">Define patterns that AI can implement consistently</span>
-            </div>
-            <div class="quiz-option" data-correct="false">
-              <span class="option-letter">D</span>
-              <span class="option-text">Skip the strategy, focus on individual integrations</span>
+        <div class="diagram-story" id="platform-scale-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
             </div>
           </div>
-          
-          <button class="quiz-submit" disabled>Check Answer</button>
-          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="platform-scale-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="platform-scale-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="platform-scale-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="platform-scale-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="platform-scale-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- PROJECT -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🔨 Chapter Project: Platform Integration Strategy</h2>
-        
-        <div class="story-block fade-in">
-          <p>
-            Create an integration strategy document for your platform. Audit existing integrations, 
-            define standards, and create templates that AI can use to generate compliant code.
-          </p>
+    <!-- Story 2: Integration Strategy Framework -->
+    <section class="section" id="strategy-framework-section">
+      <h2>The Integration Strategy Framework</h2>
+      <p>Move from designing individual integrations to defining organizational strategy. Four pillars shape how your entire company connects systems.</p>
+      
+      <div class="diagram-container" id="strategy-framework-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🏛️ The Four Strategic Pillars</span>
         </div>
-
-        <div class="terminal-demo fade-in">
-          <div class="terminal-header">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span>Project Structure</span>
-          </div>
-          <div class="terminal-content">
-            <div class="terminal-line">your-folder/ch3-magnetism/</div>
-            <div class="terminal-line">├── CURRENT_STATE.md          # Audit of existing integrations</div>
-            <div class="terminal-line">├── PROPOSED_STANDARDS.md     # Your recommended patterns</div>
-            <div class="terminal-line">├── templates/                # Code templates</div>
-            <div class="terminal-line">│   ├── sync_client.py</div>
-            <div class="terminal-line">│   ├── async_client.py</div>
-            <div class="terminal-line">│   └── README.md</div>
-            <div class="terminal-line">├── AI_PROMPTS.md             # Prompts for generating code</div>
-            <div class="terminal-line">└── GOVERNANCE.md             # Process recommendations</div>
+        <div id="strategy-framework-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="strategy-framework-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="fade-in">Success Criteria</h3>
-        
-        <ul class="fade-in">
-          <li>Existing integrations audited with AI assistance</li>
-          <li>Standard patterns defined for sync and async</li>
-          <li>Code templates created and tested</li>
-          <li>AI prompts documented that generate compliant code</li>
-          <li>Governance process proposed</li>
-        </ul>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="strategy-framework-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-        <div class="project-footer fade-in">
-          <h3>📦 Save Your Work!</h3>
-          <p>Commit your strategy document and templates to your repository.</p>
-          
-          <a href="../ch4-architect/index.html" class="nav-link next">
-            <span>Continue to Chapter 4</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="strategy-framework-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="strategy-framework-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="strategy-framework-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="strategy-framework-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
+    <!-- Story 3: AI Integration Toolkit -->
+    <section class="section" id="ai-toolkit-section">
+      <h2>The AI Integration Toolkit</h2>
+      <p>Once you define the strategy, AI becomes your implementation multiplier. Your patterns become prompts. Your expertise generates code across every team.</p>
+      
+      <div class="diagram-container" id="ai-toolkit-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🛠️ AI as Your Multiplier</span>
+        </div>
+        <div id="ai-toolkit-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="ai-toolkit-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="ai-toolkit-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="ai-toolkit-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="ai-toolkit-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="ai-toolkit-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="ai-toolkit-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready to Architect?</h2>
+      <p>You've learned to think at platform scale, define integration strategy, and leverage AI as your multiplier. Next: system architecture and technical leadership.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch4-architect/" class="card">
+          <div class="card-icon">🏛️</div>
+          <h3>Chapter 4: The Architects</h3>
+          <p>System design and technical leadership at scale.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in the Senior Amplifier.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
-  <!-- Chapter Navigation -->
-  <nav class="chapter-nav">
-    <a href="../ch2-lightning/index.html" class="nav-btn prev">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      <span>Chapter 2</span>
-    </a>
-    <a href="../ch4-architect/index.html" class="nav-btn next">
-      <span>Chapter 4: Architects</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#platform-scale-section">Thinking at Platform Scale</a></li>
+      <li><a href="#strategy-framework-section">Integration Strategy Framework</a></li>
+      <li><a href="#ai-toolkit-section">AI Integration Toolkit</a></li>
+    </ul>
   </nav>
 
-  <script src="../../shared/js/lesson.js"></script>
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
   
-  <!-- Lesson Integration -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      window.LessonIntegration.init("senior", "ch3-magnetism");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("senior", "ch3-magnetism");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("senior", "ch3-magnetism");
-        }
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'platform-scale': [
+          // Nodes
+          { data: { id: 'traditional-senior', label: '👤 Traditional\nSenior', type: 'external', description: 'Knows all the patterns' } },
+          { data: { id: 'impact-limit', label: '📍 Impact\nCeiling', type: 'concept', description: 'Limited to personal touch' } },
+          { data: { id: 'amplified-shift', label: '⚡ Amplified\nShift', type: 'auth', description: 'Define patterns once' } },
+          { data: { id: 'pattern-definition', label: '📐 Define\nPatterns', type: 'data', description: 'Templates and rules' } },
+          { data: { id: 'ai-multiplies', label: '🤖 AI\nMultiplies', type: 'page', description: 'Organization-wide impact' } },
+          // Edges
+          { data: { source: 'traditional-senior', target: 'impact-limit' } },
+          { data: { source: 'impact-limit', target: 'amplified-shift' } },
+          { data: { source: 'amplified-shift', target: 'pattern-definition' } },
+          { data: { source: 'pattern-definition', target: 'ai-multiplies' } }
+        ],
+
+        'strategy-framework': [
+          // Nodes
+          { data: { id: 'four-pillars', label: '🏛️ Four\nPillars', type: 'concept', description: 'Organizational strategy' } },
+          { data: { id: 'patterns-pillar', label: '📐 Patterns\nHow We Connect', type: 'service', description: 'Sync, async, retry' } },
+          { data: { id: 'contracts-pillar', label: '📝 Contracts\nExpectations', type: 'data', description: 'OpenAPI, versioning' } },
+          { data: { id: 'observability-pillar', label: '📊 Observability\nVisibility', type: 'auth', description: 'Metrics, tracing' } },
+          { data: { id: 'governance-pillar', label: '🔐 Governance\nOwnership', type: 'external', description: 'Approval, security' } },
+          // Edges
+          { data: { source: 'four-pillars', target: 'patterns-pillar' } },
+          { data: { source: 'four-pillars', target: 'contracts-pillar' } },
+          { data: { source: 'four-pillars', target: 'observability-pillar' } },
+          { data: { source: 'four-pillars', target: 'governance-pillar' } }
+        ],
+
+        'ai-toolkit': [
+          // Nodes
+          { data: { id: 'ai-multiplier', label: '🛠️ AI\nMultiplier', type: 'concept', description: 'Strategy becomes code' } },
+          { data: { id: 'prompt-engineering', label: '💬 Prompt\nEngineering', type: 'service', description: 'Encode your standards' } },
+          { data: { id: 'the-checklist', label: '✅ Integration\nChecklist', type: 'data', description: 'Auth, errors, limits' } },
+          { data: { id: 'template-library', label: '📚 Template\nLibrary', type: 'example', description: 'Reference implementations' } },
+          { data: { id: 'amplified-impact', label: '🚀 Amplified\nImpact', type: 'page', description: 'Platform-wide influence' } },
+          // Edges
+          { data: { source: 'ai-multiplier', target: 'prompt-engineering' } },
+          { data: { source: 'prompt-engineering', target: 'the-checklist' } },
+          { data: { source: 'the-checklist', target: 'template-library' } },
+          { data: { source: 'template-library', target: 'amplified-impact' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      // Map story IDs to diagram element keys
+      const storyToDiagram = {
+        'platform-scale-story': 'platform-scale',
+        'strategy-framework-story': 'strategy-framework',
+        'ai-toolkit-story': 'ai-toolkit'
+      };
+
+      // Create storytelling diagrams for each story in the JSON
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      // Map story IDs to quiz container IDs
+      const storyToQuiz = {
+        'platform-scale-story': 'platform-scale-quiz',
+        'strategy-framework-story': 'strategy-framework-quiz',
+        'ai-toolkit-story': 'ai-toolkit-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
     });
   </script>
 </body>
 </html>
-

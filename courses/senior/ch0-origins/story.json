@@ -1,0 +1,269 @@
+{
+  "pageId": "ch0-origins",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "The Amplification Point",
+    "icon": "⚡",
+    "themeColor": "amplification"
+  },
+  "stories": [
+    {
+      "id": "multiplier-story",
+      "diagramId": "multiplier",
+      "title": "The Multiplier Effect",
+      "steps": [
+        {
+          "nodeId": "junior-ai",
+          "icon": "👶",
+          "title": "Junior + AI",
+          "narration": "A junior with AI is a faster junior. They ask AI how to do X. They debug AI output line by line. The AI helps, but it's still a junior working faster.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "senior-experience",
+          "edges": [{ "from": "junior-ai", "to": "senior-experience" }],
+          "icon": "🧠",
+          "title": "Your Experience",
+          "narration": "But you have something juniors don't: years of pattern recognition. System design intuition. The ability to spot architectural problems at a glance. This changes everything.",
+          "connectsTo": "Junior + AI"
+        },
+        {
+          "nodeId": "multiplier-effect",
+          "edges": [{ "from": "senior-experience", "to": "multiplier-effect" }],
+          "icon": "⚡",
+          "title": "The Multiplier",
+          "narration": "AI doesn't replace senior engineers—it multiplies them. Experience times AI amplification equals unprecedented capability. Ten years of experience times AI equals 100x impact.",
+          "connectsTo": "Your Experience"
+        },
+        {
+          "nodeId": "senior-ai",
+          "edges": [{ "from": "multiplier-effect", "to": "senior-ai" }],
+          "icon": "🏛️",
+          "title": "Senior + AI",
+          "narration": "You don't ask AI how to code. You direct AI to implement your design. You validate AI output instantly because you've seen these patterns thousands of times before.",
+          "connectsTo": "The Multiplier"
+        },
+        {
+          "nodeId": "new-category",
+          "edges": [{ "from": "senior-ai", "to": "new-category" }],
+          "icon": "🚀",
+          "title": "A New Category",
+          "narration": "A senior with AI is an entirely different category of engineer. Your years of experience become superpowers when combined with AI velocity. This is your unfair advantage.",
+          "connectsTo": "Senior + AI"
+        }
+      ]
+    },
+    {
+      "id": "paradigm-story",
+      "diagramId": "paradigm",
+      "title": "The Paradigm Shift",
+      "steps": [
+        {
+          "nodeId": "old-model",
+          "icon": "📝",
+          "title": "Traditional Senior Role",
+          "narration": "In the traditional model, senior engineers create value through doing. Write the most complex code. Be the bottleneck for hard problems. Review code line by line.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "individual-output",
+          "edges": [{ "from": "old-model", "to": "individual-output" }],
+          "icon": "👤",
+          "title": "Individual Output",
+          "narration": "Value equals individual output. How much code can you write? How many bugs can you fix? This model is about to become obsolete.",
+          "connectsTo": "Traditional Role"
+        },
+        {
+          "nodeId": "new-model",
+          "edges": [{ "from": "individual-output", "to": "new-model" }],
+          "icon": "🏛️",
+          "title": "AI-Amplified Senior",
+          "narration": "The new paradigm: value through directing. You design systems, AI implements. You review at the architectural level while AI catches the details.",
+          "connectsTo": "Individual Output"
+        },
+        {
+          "nodeId": "team-amplification",
+          "edges": [{ "from": "new-model", "to": "team-amplification" }],
+          "icon": "👥",
+          "title": "Team Amplification",
+          "narration": "Value equals team amplification. How many problems can you multiply your solving across the team? Mentoring becomes teaching AI leverage. Your impact scales.",
+          "connectsTo": "AI-Amplified Senior"
+        },
+        {
+          "nodeId": "architect-role",
+          "edges": [{ "from": "team-amplification", "to": "architect-role" }],
+          "icon": "🎯",
+          "title": "The Architect Role",
+          "narration": "This is the evolution: from senior engineer who does, to senior architect who directs. Your experience becomes the compass. AI becomes the velocity.",
+          "connectsTo": "Team Amplification"
+        }
+      ]
+    },
+    {
+      "id": "strategy-story",
+      "diagramId": "strategy",
+      "title": "Strategic AI Integration",
+      "steps": [
+        {
+          "nodeId": "four-strategies",
+          "icon": "🗺️",
+          "title": "Four Strategies",
+          "narration": "This course teaches four strategic approaches to multiply your impact. These aren't about using AI—they're about leveraging AI with your experience.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "rapid-acquisition",
+          "edges": [{ "from": "four-strategies", "to": "rapid-acquisition" }],
+          "icon": "🗺️",
+          "title": "Rapid Acquisition",
+          "narration": "Strategy one: Understand any codebase in hours, not weeks. AI maps dependencies, traces data flows, identifies patterns—with you as the navigator. Chapter 1.",
+          "connectsTo": "Four Strategies"
+        },
+        {
+          "nodeId": "system-debugging",
+          "edges": [{ "from": "four-strategies", "to": "system-debugging" }],
+          "icon": "🐛",
+          "title": "System-Wide Debugging",
+          "narration": "Strategy two: Trace bugs across service boundaries. Root cause analysis at scale. Turn days of investigation into hours. Chapter 2.",
+          "connectsTo": "Four Strategies"
+        },
+        {
+          "nodeId": "platform-integration",
+          "edges": [{ "from": "four-strategies", "to": "platform-integration" }],
+          "icon": "🔌",
+          "title": "Platform Integration",
+          "narration": "Strategy three: Design robust integration points. AI generates the glue code while you focus on contracts and error handling strategies. Chapter 3.",
+          "connectsTo": "Four Strategies"
+        },
+        {
+          "nodeId": "architectural-direction",
+          "edges": [
+            { "from": "rapid-acquisition", "to": "architectural-direction" },
+            { "from": "system-debugging", "to": "architectural-direction" },
+            { "from": "platform-integration", "to": "architectural-direction" }
+          ],
+          "icon": "📐",
+          "title": "Architectural Direction",
+          "narration": "Strategy four: Express architectural intent, let AI draft implementation. Your design decisions, AI's execution speed. This is the amplification point. Chapter 4.",
+          "connectsTo": "All Strategies"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "multiplier-story",
+      "questions": [
+        {
+          "question": "What's the key difference between a junior with AI and a senior with AI?",
+          "options": [
+            "Seniors use more expensive AI tools",
+            "Juniors ask AI 'how'; seniors direct AI with architectural intent",
+            "Seniors don't need AI because they know everything",
+            "Juniors get faster results from AI"
+          ],
+          "correct": 1,
+          "explanation": "Juniors ask AI how to do X and debug output line-by-line. Seniors direct AI to implement their design and validate output instantly from years of pattern recognition."
+        },
+        {
+          "question": "According to the multiplier effect, what happens when you combine experience with AI?",
+          "options": [
+            "They cancel each other out",
+            "AI replaces the need for experience",
+            "Experience becomes exponentially more valuable",
+            "You get slightly faster results"
+          ],
+          "correct": 2,
+          "explanation": "AI doesn't replace senior engineers—it multiplies them. Your years of experience become superpowers when combined with AI velocity, creating unprecedented capability."
+        },
+        {
+          "question": "Why can seniors validate AI output faster than juniors?",
+          "options": [
+            "They have faster computers",
+            "They've seen these patterns thousands of times before",
+            "They use special prompts",
+            "AI gives seniors better output"
+          ],
+          "correct": 1,
+          "explanation": "Seniors have years of pattern recognition built up. They can spot architectural problems at a glance because they've encountered similar patterns many times before."
+        }
+      ]
+    },
+    {
+      "storyId": "paradigm-story",
+      "questions": [
+        {
+          "question": "In the traditional senior model, how is value measured?",
+          "options": [
+            "Team amplification",
+            "Individual output (code written, bugs fixed)",
+            "AI tools used",
+            "Meetings attended"
+          ],
+          "correct": 1,
+          "explanation": "The traditional model values individual output—how much complex code can you write, how many bugs can you fix. This model is being transformed by AI."
+        },
+        {
+          "question": "In the AI-amplified model, what becomes the new measure of value?",
+          "options": [
+            "Lines of code generated",
+            "Hours worked",
+            "Team amplification and scaled impact",
+            "Number of AI prompts used"
+          ],
+          "correct": 2,
+          "explanation": "In the new paradigm, value equals team amplification. How many problems can you multiply your problem-solving across? Your impact scales through directing rather than doing."
+        },
+        {
+          "question": "What does 'mentoring = teaching AI leverage' mean?",
+          "options": [
+            "AI should mentor junior developers",
+            "Seniors teach juniors how to use AI as a thinking partner and multiplier",
+            "AI replaces the need for mentoring",
+            "Juniors should teach seniors about AI"
+          ],
+          "correct": 1,
+          "explanation": "In the new paradigm, senior mentoring evolves from pairing sessions to teaching how to leverage AI effectively. You help juniors understand how to direct AI rather than just use it."
+        }
+      ]
+    },
+    {
+      "storyId": "strategy-story",
+      "questions": [
+        {
+          "question": "What does 'Rapid Acquisition' refer to in this course?",
+          "options": [
+            "Buying AI tools quickly",
+            "Understanding any codebase in hours instead of weeks",
+            "Learning programming languages fast",
+            "Hiring engineers rapidly"
+          ],
+          "correct": 1,
+          "explanation": "Rapid Acquisition is the ability to understand any codebase in hours, not weeks. AI maps dependencies and traces data flows while you navigate and interpret the patterns."
+        },
+        {
+          "question": "In 'Architectural Direction' (Strategy 4), what does the senior engineer do?",
+          "options": [
+            "Writes all the code themselves",
+            "Expresses architectural intent while AI drafts implementation",
+            "Lets AI make all design decisions",
+            "Reviews AI output line by line"
+          ],
+          "correct": 1,
+          "explanation": "Architectural Direction means you express the intent and make design decisions while AI handles execution speed. Your design, AI's velocity."
+        },
+        {
+          "question": "How does 'Platform Integration' work with AI?",
+          "options": [
+            "AI designs the entire integration",
+            "You design contracts and error handling, AI generates glue code",
+            "No AI is used for integrations",
+            "AI replaces the need for integration"
+          ],
+          "correct": 1,
+          "explanation": "In Platform Integration, you focus on the important parts—contracts and error handling strategies—while AI generates the glue code. Strategic division of labor."
+        }
+      ]
+    }
+  ]
+}

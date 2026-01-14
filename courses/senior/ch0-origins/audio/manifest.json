@@ -1,0 +1,4265 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T02:03:52.793Z",
+  "stories": [
+    "multiplier-story",
+    "paradigm-story",
+    "strategy-story"
+  ],
+  "ballad": {
+    "multiplier-story": [
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Junior + AI. A junior with AI is a faster junior. They ask AI how to do X. They debug AI output line by line. The AI helps, but it's still a junior working faster.",
+        "duration": 16,
+        "words": [
+          {
+            "word": "Junior",
+            "start": 0,
+            "end": 0.7200000286102295
+          },
+          {
+            "word": "plus",
+            "start": 0.7200000286102295,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "AI",
+            "start": 1.340000033378601,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "A",
+            "start": 2.700000047683716,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "junior",
+            "start": 2.759999990463257,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "with",
+            "start": 3.0399999618530273,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "AI",
+            "start": 3.4200000762939453,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "is",
+            "start": 3.8399999141693115,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "a",
+            "start": 4.320000171661377,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "faster",
+            "start": 4.599999904632568,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "junior",
+            "start": 4.980000019073486,
+            "end": 5.320000171661377
+          },
+          {
+            "word": "They",
+            "start": 6.119999885559082,
+            "end": 6.260000228881836
+          },
+          {
+            "word": "ask",
+            "start": 6.260000228881836,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "AI",
+            "start": 6.659999847412109,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "how",
+            "start": 7.019999980926514,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "to",
+            "start": 7.360000133514404,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "do",
+            "start": 7.559999942779541,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "X",
+            "start": 7.71999979019165,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "They",
+            "start": 8.720000267028809,
+            "end": 9
+          },
+          {
+            "word": "debug",
+            "start": 9,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "AI",
+            "start": 9.420000076293945,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "output",
+            "start": 9.880000114440918,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "line",
+            "start": 10.380000114440918,
+            "end": 11
+          },
+          {
+            "word": "by",
+            "start": 11,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "line",
+            "start": 11.279999732971191,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "The",
+            "start": 12.199999809265137,
+            "end": 12.380000114440918
+          },
+          {
+            "word": "AI",
+            "start": 12.380000114440918,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "helps",
+            "start": 12.65999984741211,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "but",
+            "start": 13.399999618530273,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "it's",
+            "start": 13.460000038146973,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "still",
+            "start": 13.720000267028809,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "a",
+            "start": 13.920000076293945,
+            "end": 14.479999542236328
+          },
+          {
+            "word": "junior",
+            "start": 14.479999542236328,
+            "end": 14.479999542236328
+          },
+          {
+            "word": "working",
+            "start": 14.479999542236328,
+            "end": 15.140000343322754
+          },
+          {
+            "word": "faster",
+            "start": 15.140000343322754,
+            "end": 15.600000381469727
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Your Experience. But you have something juniors don't: years of pattern recognition. System design intuition. The ability to spot architectural problems at a glance. This changes everything.",
+        "duration": 15.210000038146973,
+        "words": [
+          {
+            "word": "your",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "experience",
+            "start": 0.5,
+            "end": 1.4199999570846558
+          },
+          {
+            "word": "But",
+            "start": 2.180000066757202,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "you",
+            "start": 2.319999933242798,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "have",
+            "start": 2.559999942779541,
+            "end": 2.7799999713897705
+          },
+          {
+            "word": "something",
+            "start": 2.7799999713897705,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "Juniors",
+            "start": 3.200000047683716,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "don't",
+            "start": 3.680000066757202,
+            "end": 4.099999904632568
+          },
+          {
+            "word": "Years",
+            "start": 5.179999828338623,
+            "end": 5.179999828338623
+          },
+          {
+            "word": "of",
+            "start": 5.179999828338623,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "pattern",
+            "start": 5.440000057220459,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "recognition",
+            "start": 5.760000228881836,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "system",
+            "start": 7.139999866485596,
+            "end": 7.340000152587891
+          },
+          {
+            "word": "design",
+            "start": 7.340000152587891,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "intuition",
+            "start": 7.920000076293945,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "the",
+            "start": 9.180000305175781,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "ability",
+            "start": 9.380000114440918,
+            "end": 9.65999984741211
+          },
+          {
+            "word": "to",
+            "start": 9.65999984741211,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "spot",
+            "start": 10.319999694824219,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "architectural",
+            "start": 10.319999694824219,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "problems",
+            "start": 11.039999961853027,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "at",
+            "start": 11.479999542236328,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "a",
+            "start": 11.779999732971191,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "glance",
+            "start": 12.420000076293945,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "This",
+            "start": 12.899999618530273,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "changes",
+            "start": 13.399999618530273,
+            "end": 14.199999809265137
+          },
+          {
+            "word": "everything",
+            "start": 14.199999809265137,
+            "end": 14.880000114440918
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Multiplier. AI doesn't replace senior engineers—it multiplies them. Experience times AI amplification equals unprecedented capability. Ten years of experience times AI equals 100x impact.",
+        "duration": 18.360000610351562,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.6600000262260437
+          },
+          {
+            "word": "Multiplier",
+            "start": 0.6600000262260437,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "AI",
+            "start": 1.9199999570846558,
+            "end": 2.440000057220459
+          },
+          {
+            "word": "doesn't",
+            "start": 2.440000057220459,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "replace",
+            "start": 2.9600000381469727,
+            "end": 3.4000000953674316
+          },
+          {
+            "word": "senior",
+            "start": 3.4000000953674316,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "engineers",
+            "start": 3.880000114440918,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "it",
+            "start": 4.820000171661377,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "multiplies",
+            "start": 5.340000152587891,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "them",
+            "start": 6.199999809265137,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "Experience",
+            "start": 7.71999979019165,
+            "end": 7.739999771118164
+          },
+          {
+            "word": "times",
+            "start": 7.739999771118164,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "AI",
+            "start": 8.15999984741211,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "amplification",
+            "start": 8.539999961853027,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "equals",
+            "start": 9.279999732971191,
+            "end": 10.119999885559082
+          },
+          {
+            "word": "unprecedented",
+            "start": 10.119999885559082,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "capability",
+            "start": 11.199999809265137,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "10",
+            "start": 12.84000015258789,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "years",
+            "start": 13.119999885559082,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "of",
+            "start": 13.420000076293945,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "experience",
+            "start": 13.720000267028809,
+            "end": 14.180000305175781
+          },
+          {
+            "word": "times",
+            "start": 14.180000305175781,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "AI",
+            "start": 14.760000228881836,
+            "end": 15.300000190734863
+          },
+          {
+            "word": "equals",
+            "start": 15.300000190734863,
+            "end": 16.18000030517578
+          },
+          {
+            "word": "100x",
+            "start": 16.18000030517578,
+            "end": 17.559999465942383
+          },
+          {
+            "word": "impact",
+            "start": 17.559999465942383,
+            "end": 18.040000915527344
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Senior + AI. You don't ask AI how to code. You direct AI to implement your design. You validate AI output instantly because you've seen these patterns thousands of times before.",
+        "duration": 14.109999656677246,
+        "words": [
+          {
+            "word": "SEMIA",
+            "start": 0,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "plus",
+            "start": 0.9399999976158142,
+            "end": 1.7000000476837158
+          },
+          {
+            "word": "AI",
+            "start": 1.7000000476837158,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "You",
+            "start": 2.8399999141693115,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "don't",
+            "start": 2.859999895095825,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "ask",
+            "start": 3.119999885559082,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "AI",
+            "start": 3.4600000381469727,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "how",
+            "start": 3.740000009536743,
+            "end": 4
+          },
+          {
+            "word": "to",
+            "start": 4,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "code",
+            "start": 4.420000076293945,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "You",
+            "start": 4.960000038146973,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "direct",
+            "start": 5.079999923706055,
+            "end": 5.5
+          },
+          {
+            "word": "AI",
+            "start": 5.5,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "to",
+            "start": 5.860000133514404,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "implement",
+            "start": 6.199999809265137,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "your",
+            "start": 6.440000057220459,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "design",
+            "start": 6.800000190734863,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "You",
+            "start": 7.840000152587891,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "validate",
+            "start": 7.980000019073486,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "AI",
+            "start": 8.399999618530273,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "output",
+            "start": 8.859999656677246,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "instantly",
+            "start": 9.359999656677246,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "because",
+            "start": 9.9399995803833,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "you've",
+            "start": 10.699999809265137,
+            "end": 11.15999984741211
+          },
+          {
+            "word": "seen",
+            "start": 11.15999984741211,
+            "end": 11.15999984741211
+          },
+          {
+            "word": "these",
+            "start": 11.15999984741211,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "patterns",
+            "start": 11.520000457763672,
+            "end": 11.84000015258789
+          },
+          {
+            "word": "thousands",
+            "start": 11.84000015258789,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "of",
+            "start": 12.579999923706055,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "times",
+            "start": 13.119999885559082,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "before",
+            "start": 13.119999885559082,
+            "end": 13.5
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "A New Category. A senior with AI is an entirely different category of engineer. Your years of experience become superpowers when combined with AI velocity. This is your unfair advantage.",
+        "duration": 14.800000190734863,
+        "words": [
+          {
+            "word": "A",
+            "start": 0,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "new",
+            "start": 0.8799999952316284,
+            "end": 1.2200000286102295
+          },
+          {
+            "word": "category",
+            "start": 1.2200000286102295,
+            "end": 1.6399999856948853
+          },
+          {
+            "word": "A",
+            "start": 2.299999952316284,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "senior",
+            "start": 2.759999990463257,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "with",
+            "start": 2.759999990463257,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "AI",
+            "start": 3.119999885559082,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "is",
+            "start": 3.4800000190734863,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "an",
+            "start": 3.940000057220459,
+            "end": 4.21999979019165
+          },
+          {
+            "word": "entirely",
+            "start": 4.21999979019165,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "different",
+            "start": 4.71999979019165,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "category",
+            "start": 5.340000152587891,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "of",
+            "start": 5.679999828338623,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "engineer",
+            "start": 5.980000019073486,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "Your",
+            "start": 6.940000057220459,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "years",
+            "start": 7.159999847412109,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "of",
+            "start": 7.460000038146973,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "experience",
+            "start": 8.300000190734863,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "become",
+            "start": 8.300000190734863,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "superpowers",
+            "start": 8.859999656677246,
+            "end": 9.65999984741211
+          },
+          {
+            "word": "when",
+            "start": 9.65999984741211,
+            "end": 10.260000228881836
+          },
+          {
+            "word": "combined",
+            "start": 10.260000228881836,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "with",
+            "start": 10.680000305175781,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "AI",
+            "start": 11.079999923706055,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "velocity",
+            "start": 11.359999656677246,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "This",
+            "start": 12.520000457763672,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "is",
+            "start": 12.699999809265137,
+            "end": 12.960000038146973
+          },
+          {
+            "word": "your",
+            "start": 12.960000038146973,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "unfair",
+            "start": 13.260000228881836,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "advantage",
+            "start": 13.720000267028809,
+            "end": 14.260000228881836
+          }
+        ]
+      }
+    ],
+    "paradigm-story": [
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Traditional Senior Role. In the traditional model, senior engineers create value through doing. Write the most complex code. Be the bottleneck for hard problems. Review code line by line.",
+        "duration": 15.640000343322754,
+        "words": [
+          {
+            "word": "Traditional",
+            "start": 0,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "senior",
+            "start": 0.800000011920929,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "role",
+            "start": 1.2799999713897705,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "In",
+            "start": 2.640000104904175,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "the",
+            "start": 2.640000104904175,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "traditional",
+            "start": 2.880000114440918,
+            "end": 3.259999990463257
+          },
+          {
+            "word": "model",
+            "start": 3.259999990463257,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "senior",
+            "start": 4.420000076293945,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "engineers",
+            "start": 4.800000190734863,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "create",
+            "start": 5.380000114440918,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "value",
+            "start": 5.860000133514404,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "through",
+            "start": 6.28000020980835,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "doing",
+            "start": 6.619999885559082,
+            "end": 7
+          },
+          {
+            "word": "Write",
+            "start": 8.199999809265137,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "the",
+            "start": 8.199999809265137,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "most",
+            "start": 8.399999618530273,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "complex",
+            "start": 9.020000457763672,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "code",
+            "start": 9.279999732971191,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "Be",
+            "start": 10.5600004196167,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "the",
+            "start": 10.619999885559082,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "bottleneck",
+            "start": 10.9399995803833,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "for",
+            "start": 11.260000228881836,
+            "end": 11.539999961853027
+          },
+          {
+            "word": "hard",
+            "start": 11.539999961853027,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "problems",
+            "start": 11.880000114440918,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "Review",
+            "start": 13.319999694824219,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "code",
+            "start": 13.399999618530273,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "line",
+            "start": 13.899999618530273,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "by",
+            "start": 14.5600004196167,
+            "end": 14.920000076293945
+          },
+          {
+            "word": "line",
+            "start": 14.920000076293945,
+            "end": 15.199999809265137
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Individual Output. Value equals individual output. How much code can you write? How many bugs can you fix? This model is about to become obsolete.",
+        "duration": 11.800000190734863,
+        "words": [
+          {
+            "word": "Individual",
+            "start": 0.6000000238418579,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "output",
+            "start": 1.159999966621399,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "Value",
+            "start": 2.700000047683716,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "equals",
+            "start": 2.700000047683716,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "individual",
+            "start": 3.299999952316284,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "output",
+            "start": 4.059999942779541,
+            "end": 4.519999980926514
+          },
+          {
+            "word": "How",
+            "start": 5.300000190734863,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "much",
+            "start": 5.420000076293945,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "code",
+            "start": 5.679999828338623,
+            "end": 5.920000076293945
+          },
+          {
+            "word": "can",
+            "start": 5.920000076293945,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "you",
+            "start": 6.119999885559082,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "write",
+            "start": 6.300000190734863,
+            "end": 6.5
+          },
+          {
+            "word": "How",
+            "start": 7.119999885559082,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "many",
+            "start": 7.260000228881836,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "bugs",
+            "start": 7.539999961853027,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "can",
+            "start": 7.860000133514404,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "you",
+            "start": 8.100000381469727,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "fix",
+            "start": 8.300000190734863,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "This",
+            "start": 9.119999885559082,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "model",
+            "start": 9.600000381469727,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "is",
+            "start": 9.819999694824219,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "about",
+            "start": 10.100000381469727,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "to",
+            "start": 10.380000114440918,
+            "end": 11
+          },
+          {
+            "word": "become",
+            "start": 11,
+            "end": 11
+          },
+          {
+            "word": "obsolete",
+            "start": 11,
+            "end": 11.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "AI-Amplified Senior. The new paradigm: value through directing. You design systems, AI implements. You review at the architectural level while AI catches the details.",
+        "duration": 13.920000076293945,
+        "words": [
+          {
+            "word": "AI",
+            "start": 0,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "Amplified",
+            "start": 0.6200000047683716,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "Senior",
+            "start": 1.2799999713897705,
+            "end": 1.8200000524520874
+          },
+          {
+            "word": "The",
+            "start": 2.619999885559082,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "new",
+            "start": 2.700000047683716,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "paradigm",
+            "start": 2.9800000190734863,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "value",
+            "start": 3.859999895095825,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "through",
+            "start": 4.179999828338623,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "directing",
+            "start": 4.539999961853027,
+            "end": 5
+          },
+          {
+            "word": "You",
+            "start": 6.119999885559082,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "design",
+            "start": 6.119999885559082,
+            "end": 6.519999980926514
+          },
+          {
+            "word": "systems",
+            "start": 6.519999980926514,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "AI",
+            "start": 7.579999923706055,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "implements",
+            "start": 7.559999942779541,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "You",
+            "start": 9.34000015258789,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "review",
+            "start": 9.5600004196167,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "at",
+            "start": 9.9399995803833,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "the",
+            "start": 10.199999809265137,
+            "end": 10.520000457763672
+          },
+          {
+            "word": "architectural",
+            "start": 10.520000457763672,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "level",
+            "start": 10.9399995803833,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "while",
+            "start": 11.9399995803833,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "AI",
+            "start": 12.119999885559082,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "catches",
+            "start": 12.539999961853027,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "the",
+            "start": 12.9399995803833,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "details",
+            "start": 13.65999984741211,
+            "end": 13.65999984741211
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Team Amplification. Value equals team amplification. How many problems can you multiply your solving across the team? Mentoring becomes teaching AI leverage. Your impact scales.",
+        "duration": 13.319999694824219,
+        "words": [
+          {
+            "word": "Team",
+            "start": 0,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "Amplification",
+            "start": 0.9599999785423279,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "Value",
+            "start": 3.0999999046325684,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "equals",
+            "start": 3.0999999046325684,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "Team",
+            "start": 3.880000114440918,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "Amplification",
+            "start": 4.320000171661377,
+            "end": 5.019999980926514
+          },
+          {
+            "word": "How",
+            "start": 5.860000133514404,
+            "end": 5.920000076293945
+          },
+          {
+            "word": "many",
+            "start": 5.920000076293945,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "problems",
+            "start": 6.199999809265137,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "can",
+            "start": 6.639999866485596,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "you",
+            "start": 6.920000076293945,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "multiply",
+            "start": 7.320000171661377,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "your",
+            "start": 7.599999904632568,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "solving",
+            "start": 8.039999961853027,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "across",
+            "start": 8.359999656677246,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "the",
+            "start": 8.739999771118164,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "team",
+            "start": 8.979999542236328,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "Mentoring",
+            "start": 10.300000190734863,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "becomes",
+            "start": 10.479999542236328,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "teaching",
+            "start": 11.199999809265137,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "AI",
+            "start": 11.800000190734863,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "leverage",
+            "start": 12.539999961853027,
+            "end": 13
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Architect Role. This is the evolution: from senior engineer who does, to senior architect who directs. Your experience becomes the compass. AI becomes the velocity.",
+        "duration": 13.460000038146973,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "architect",
+            "start": 0.41999998688697815,
+            "end": 1
+          },
+          {
+            "word": "role",
+            "start": 1,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "This",
+            "start": 2.319999933242798,
+            "end": 2.359999895095825
+          },
+          {
+            "word": "is",
+            "start": 2.359999895095825,
+            "end": 2.5
+          },
+          {
+            "word": "the",
+            "start": 2.5,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "evolution",
+            "start": 2.759999990463257,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "from",
+            "start": 3.180000066757202,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "senior",
+            "start": 3.819999933242798,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "engineer",
+            "start": 4.260000228881836,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "who",
+            "start": 4.679999828338623,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "does",
+            "start": 4.940000057220459,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "to",
+            "start": 5.679999828338623,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "senior",
+            "start": 6.059999942779541,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "architect",
+            "start": 6.360000133514404,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "who",
+            "start": 6.920000076293945,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "directs",
+            "start": 7.539999961853027,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "Your",
+            "start": 8.699999809265137,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "experience",
+            "start": 8.880000114440918,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "becomes",
+            "start": 9.619999885559082,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "the",
+            "start": 10.15999984741211,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "compass",
+            "start": 10.859999656677246,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "AI",
+            "start": 11.579999923706055,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "becomes",
+            "start": 11.880000114440918,
+            "end": 12.5
+          },
+          {
+            "word": "the",
+            "start": 12.5,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "velocity",
+            "start": 12.819999694824219,
+            "end": 13.140000343322754
+          }
+        ]
+      }
+    ],
+    "strategy-story": [
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Four Strategies. This course teaches four strategic approaches to multiply your impact. These aren't about using AI—they're about leveraging AI with your experience.",
+        "duration": 14.010000228881836,
+        "words": [
+          {
+            "word": "Four",
+            "start": 0,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "strategies",
+            "start": 1.2799999713897705,
+            "end": 1.899999976158142
+          },
+          {
+            "word": "This",
+            "start": 2.799999952316284,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "course",
+            "start": 2.9800000190734863,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "teaches",
+            "start": 3.359999895095825,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "four",
+            "start": 3.819999933242798,
+            "end": 4.5
+          },
+          {
+            "word": "strategic",
+            "start": 4.5,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "approaches",
+            "start": 5.039999961853027,
+            "end": 5.519999980926514
+          },
+          {
+            "word": "to",
+            "start": 5.519999980926514,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "multiply",
+            "start": 6.380000114440918,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "your",
+            "start": 6.820000171661377,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "impact",
+            "start": 7.320000171661377,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "These",
+            "start": 8.420000076293945,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "aren't",
+            "start": 8.539999961853027,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "about",
+            "start": 8.859999656677246,
+            "end": 9.15999984741211
+          },
+          {
+            "word": "using",
+            "start": 9.15999984741211,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "AI",
+            "start": 9.5600004196167,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "they're",
+            "start": 10.4399995803833,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "about",
+            "start": 10.859999656677246,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "leveraging",
+            "start": 11.239999771118164,
+            "end": 11.640000343322754
+          },
+          {
+            "word": "AI",
+            "start": 11.640000343322754,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "with",
+            "start": 12.100000381469727,
+            "end": 12.600000381469727
+          },
+          {
+            "word": "your",
+            "start": 12.600000381469727,
+            "end": 13
+          },
+          {
+            "word": "experience",
+            "start": 13,
+            "end": 13.680000305175781
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Rapid Acquisition. Strategy one: Understand any codebase in hours, not weeks. AI maps dependencies, traces data flows, identifies patterns—with you as the navigator. Chapter 1.",
+        "duration": 14.15999984741211,
+        "words": [
+          {
+            "word": "Rapid",
+            "start": 0,
+            "end": 0.7200000286102295
+          },
+          {
+            "word": "acquisition",
+            "start": 0.7200000286102295,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "Strategy",
+            "start": 2.9200000762939453,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "one",
+            "start": 2.9200000762939453,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "understand",
+            "start": 4.139999866485596,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "any",
+            "start": 4.139999866485596,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "code",
+            "start": 4.539999961853027,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "base",
+            "start": 4.800000190734863,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "in",
+            "start": 5.079999923706055,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "hours",
+            "start": 5.599999904632568,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "not",
+            "start": 6.159999847412109,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "weeks",
+            "start": 6.340000152587891,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "AI",
+            "start": 7.619999885559082,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "maps",
+            "start": 7.840000152587891,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "dependencies",
+            "start": 8.260000228881836,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "traces",
+            "start": 9.600000381469727,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "data",
+            "start": 9.600000381469727,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "flows",
+            "start": 9.979999542236328,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "identifies",
+            "start": 11.100000381469727,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "patterns",
+            "start": 11.100000381469727,
+            "end": 11.539999961853027
+          },
+          {
+            "word": "with",
+            "start": 11.539999961853027,
+            "end": 12.380000114440918
+          },
+          {
+            "word": "you",
+            "start": 12.380000114440918,
+            "end": 12.760000228881836
+          },
+          {
+            "word": "as",
+            "start": 12.760000228881836,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "the",
+            "start": 13.140000343322754,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "navigator",
+            "start": 13.420000076293945,
+            "end": 13.859999656677246
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "System-Wide Debugging. Strategy two: Trace bugs across service boundaries. Root cause analysis at scale. Turn days of investigation into hours. Chapter 2.",
+        "duration": 12.640000343322754,
+        "words": [
+          {
+            "word": "System",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "wide",
+            "start": 0.6000000238418579,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "debugging",
+            "start": 1.059999942779541,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "Strategy",
+            "start": 2.759999990463257,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "2",
+            "start": 2.759999990463257,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "Trace",
+            "start": 3.9800000190734863,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "bugs",
+            "start": 4.079999923706055,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "across",
+            "start": 4.400000095367432,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "service",
+            "start": 4.860000133514404,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "boundaries",
+            "start": 5.260000228881836,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "Root",
+            "start": 6.599999904632568,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "cause",
+            "start": 6.679999828338623,
+            "end": 7
+          },
+          {
+            "word": "analysis",
+            "start": 7,
+            "end": 7.440000057220459
+          },
+          {
+            "word": "at",
+            "start": 7.440000057220459,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "scale",
+            "start": 7.980000019073486,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "Turn",
+            "start": 9.119999885559082,
+            "end": 9.15999984741211
+          },
+          {
+            "word": "days",
+            "start": 9.15999984741211,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "of",
+            "start": 9.539999961853027,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "investigation",
+            "start": 10.300000190734863,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "into",
+            "start": 10.300000190734863,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "hours",
+            "start": 10.819999694824219,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "Chapter",
+            "start": 12.039999961853027,
+            "end": 12.140000343322754
+          },
+          {
+            "word": "2",
+            "start": 12.140000343322754,
+            "end": 12.479999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Platform Integration. Strategy three: Design robust integration points. AI generates the glue code while you focus on contracts and error handling strategies. Chapter 3.",
+        "duration": 11.850000381469727,
+        "words": [
+          {
+            "word": "Platform",
+            "start": 0,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "integration",
+            "start": 0.9800000190734863,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "Strategy",
+            "start": 2.799999952316284,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "3",
+            "start": 2.799999952316284,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "Design",
+            "start": 4.139999866485596,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "robust",
+            "start": 4.179999828338623,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "integration",
+            "start": 4.760000228881836,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "points",
+            "start": 5.300000190734863,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "AI",
+            "start": 6.579999923706055,
+            "end": 6.760000228881836
+          },
+          {
+            "word": "generates",
+            "start": 6.760000228881836,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "the",
+            "start": 7.239999771118164,
+            "end": 7.5
+          },
+          {
+            "word": "glue",
+            "start": 7.5,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "code",
+            "start": 7.71999979019165,
+            "end": 8.079999923706055
+          },
+          {
+            "word": "while",
+            "start": 8.079999923706055,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "you",
+            "start": 8.520000457763672,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "focus",
+            "start": 8.800000190734863,
+            "end": 9.079999923706055
+          },
+          {
+            "word": "on",
+            "start": 9.079999923706055,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "contracts",
+            "start": 9.479999542236328,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "and",
+            "start": 9.779999732971191,
+            "end": 10.34000015258789
+          },
+          {
+            "word": "error",
+            "start": 10.34000015258789,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "handling",
+            "start": 10.600000381469727,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "strategies",
+            "start": 10.859999656677246,
+            "end": 11.399999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Architectural Direction. Strategy four: Express architectural intent, let AI draft implementation. Your design decisions, AI's execution speed. This is the amplification point. Chapter 4.",
+        "duration": 17.559999465942383,
+        "words": [
+          {
+            "word": "architectural",
+            "start": 0,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "direction",
+            "start": 1.0199999809265137,
+            "end": 1.7599999904632568
+          },
+          {
+            "word": "Strategy",
+            "start": 3.200000047683716,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "four",
+            "start": 3.200000047683716,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "Express",
+            "start": 5.21999979019165,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "architectural",
+            "start": 5.21999979019165,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "intent",
+            "start": 6.099999904632568,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "Let",
+            "start": 7.579999923706055,
+            "end": 7.679999828338623
+          },
+          {
+            "word": "AI",
+            "start": 7.679999828338623,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "draft",
+            "start": 8.199999809265137,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "implementation",
+            "start": 8.720000267028809,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "Your",
+            "start": 10.5600004196167,
+            "end": 10.84000015258789
+          },
+          {
+            "word": "design",
+            "start": 10.84000015258789,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "decisions",
+            "start": 11.260000228881836,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "AI's",
+            "start": 12.5,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "execution",
+            "start": 13.15999984741211,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "speed",
+            "start": 13.600000381469727,
+            "end": 14.119999885559082
+          },
+          {
+            "word": "This",
+            "start": 14.739999771118164,
+            "end": 15.420000076293945
+          },
+          {
+            "word": "is",
+            "start": 15.420000076293945,
+            "end": 15.680000305175781
+          },
+          {
+            "word": "the",
+            "start": 15.680000305175781,
+            "end": 16
+          },
+          {
+            "word": "amplification",
+            "start": 16,
+            "end": 16.579999923706055
+          },
+          {
+            "word": "point",
+            "start": 16.579999923706055,
+            "end": 17.059999465942383
+          }
+        ]
+      }
+    ]
+  },
+  "echo": {
+    "multiplier-story": [
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Junior + AI. A junior with AI is a faster junior. They ask AI how to do X. They debug AI output line by line. The AI helps, but it's still a junior working faster.",
+        "duration": 13.699999809265137,
+        "words": [
+          {
+            "word": "Junior",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "plus",
+            "start": 0.6000000238418579,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "AI",
+            "start": 1.1200000047683716,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "A",
+            "start": 2.119999885559082,
+            "end": 2.240000009536743
+          },
+          {
+            "word": "junior",
+            "start": 2.240000009536743,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "with",
+            "start": 2.4600000381469727,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "AI",
+            "start": 2.759999990463257,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "is",
+            "start": 3.0799999237060547,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "a",
+            "start": 3.4800000190734863,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "faster",
+            "start": 3.7200000286102295,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "junior",
+            "start": 4.079999923706055,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "They",
+            "start": 4.980000019073486,
+            "end": 5.139999866485596
+          },
+          {
+            "word": "ask",
+            "start": 5.139999866485596,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "AI",
+            "start": 5.460000038146973,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "how",
+            "start": 5.800000190734863,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "to",
+            "start": 6.099999904632568,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "do",
+            "start": 6.300000190734863,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "X",
+            "start": 6.460000038146973,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "They",
+            "start": 7.179999828338623,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "debug",
+            "start": 7.400000095367432,
+            "end": 7.820000171661377
+          },
+          {
+            "word": "AI",
+            "start": 7.820000171661377,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "output",
+            "start": 8.300000190734863,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "line",
+            "start": 8.760000228881836,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "by",
+            "start": 9.180000305175781,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "line",
+            "start": 9.479999542236328,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "The",
+            "start": 10.260000228881836,
+            "end": 10.420000076293945
+          },
+          {
+            "word": "AI",
+            "start": 10.420000076293945,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "helps",
+            "start": 10.720000267028809,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "but",
+            "start": 11.4399995803833,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "it's",
+            "start": 11.520000457763672,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "still",
+            "start": 11.760000228881836,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "a",
+            "start": 11.960000038146973,
+            "end": 12.460000038146973
+          },
+          {
+            "word": "junior",
+            "start": 12.460000038146973,
+            "end": 12.460000038146973
+          },
+          {
+            "word": "working",
+            "start": 12.460000038146973,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "faster",
+            "start": 12.920000076293945,
+            "end": 13.34000015258789
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Your Experience. But you have something juniors don't: years of pattern recognition. System design intuition. The ability to spot architectural problems at a glance. This changes everything.",
+        "duration": 15.210000038146973,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 0.3799999952316284
+          },
+          {
+            "word": "experience",
+            "start": 0.3799999952316284,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "But",
+            "start": 1.9600000381469727,
+            "end": 2.0799999237060547
+          },
+          {
+            "word": "you",
+            "start": 2.0799999237060547,
+            "end": 2.240000009536743
+          },
+          {
+            "word": "have",
+            "start": 2.240000009536743,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "something",
+            "start": 2.4600000381469727,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "juniors",
+            "start": 2.819999933242798,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "don't",
+            "start": 3.240000009536743,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "Years",
+            "start": 4.820000171661377,
+            "end": 4.820000171661377
+          },
+          {
+            "word": "of",
+            "start": 4.820000171661377,
+            "end": 5.539999961853027
+          },
+          {
+            "word": "pattern",
+            "start": 5.539999961853027,
+            "end": 5.539999961853027
+          },
+          {
+            "word": "recognition",
+            "start": 5.539999961853027,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "System",
+            "start": 7.360000133514404,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "design",
+            "start": 7.539999961853027,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "intuition",
+            "start": 8.140000343322754,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "The",
+            "start": 9.640000343322754,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "ability",
+            "start": 9.819999694824219,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "to",
+            "start": 10.0600004196167,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "spot",
+            "start": 10.699999809265137,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "architectural",
+            "start": 10.699999809265137,
+            "end": 11.399999618530273
+          },
+          {
+            "word": "problems",
+            "start": 11.399999618530273,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "at",
+            "start": 11.880000114440918,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "a",
+            "start": 12.220000267028809,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "glance",
+            "start": 12.739999771118164,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "This",
+            "start": 13.640000343322754,
+            "end": 13.859999656677246
+          },
+          {
+            "word": "changes",
+            "start": 13.859999656677246,
+            "end": 14.300000190734863
+          },
+          {
+            "word": "everything",
+            "start": 14.300000190734863,
+            "end": 14.84000015258789
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Multiplier. AI doesn't replace senior engineers—it multiplies them. Experience times AI amplification equals unprecedented capability. Ten years of experience times AI equals 100x impact.",
+        "duration": 14.65999984741211,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "multiplier",
+            "start": 0.9800000190734863,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "AI",
+            "start": 2.559999942779541,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "doesn't",
+            "start": 2.559999942779541,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "replace",
+            "start": 2.940000057220459,
+            "end": 3.3399999141693115
+          },
+          {
+            "word": "senior",
+            "start": 3.3399999141693115,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "engineers",
+            "start": 3.7200000286102295,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "it",
+            "start": 4.360000133514404,
+            "end": 4.519999980926514
+          },
+          {
+            "word": "multiplies",
+            "start": 4.519999980926514,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "them",
+            "start": 5.079999923706055,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "Experience",
+            "start": 6.099999904632568,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "times",
+            "start": 6.380000114440918,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "AI",
+            "start": 6.679999828338623,
+            "end": 7
+          },
+          {
+            "word": "amplification",
+            "start": 7,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "equals",
+            "start": 7.71999979019165,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "unprecedented",
+            "start": 8.539999961853027,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "capability",
+            "start": 9.380000114440918,
+            "end": 10
+          },
+          {
+            "word": "10",
+            "start": 10.579999923706055,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "years",
+            "start": 10.779999732971191,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "of",
+            "start": 10.9399995803833,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "experience",
+            "start": 11.220000267028809,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "times",
+            "start": 11.619999885559082,
+            "end": 12
+          },
+          {
+            "word": "AI",
+            "start": 12,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "equals",
+            "start": 12.359999656677246,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "100x",
+            "start": 13.079999923706055,
+            "end": 14.020000457763672
+          },
+          {
+            "word": "impact",
+            "start": 14.020000457763672,
+            "end": 14.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Senior + AI. You don't ask AI how to code. You direct AI to implement your design. You validate AI output instantly because you've seen these patterns thousands of times before.",
+        "duration": 15.15999984741211,
+        "words": [
+          {
+            "word": "Senior",
+            "start": 0,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "plus",
+            "start": 0.699999988079071,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "AI",
+            "start": 1.440000057220459,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "You",
+            "start": 2.819999933242798,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "don't",
+            "start": 2.8399999141693115,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "ask",
+            "start": 3.140000104904175,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "AI",
+            "start": 3.4600000381469727,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "how",
+            "start": 3.9800000190734863,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "to",
+            "start": 4.460000038146973,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "code",
+            "start": 4.920000076293945,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "You",
+            "start": 5.5,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "direct",
+            "start": 5.639999866485596,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "AI",
+            "start": 5.980000019073486,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "to",
+            "start": 6.400000095367432,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "implement",
+            "start": 7.139999866485596,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "your",
+            "start": 7.139999866485596,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "design",
+            "start": 7.619999885559082,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "You",
+            "start": 8.819999694824219,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "validate",
+            "start": 8.979999542236328,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "AI",
+            "start": 9.4399995803833,
+            "end": 9.899999618530273
+          },
+          {
+            "word": "output",
+            "start": 9.899999618530273,
+            "end": 10.399999618530273
+          },
+          {
+            "word": "instantly",
+            "start": 10.399999618530273,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "because",
+            "start": 11.039999961853027,
+            "end": 11.739999771118164
+          },
+          {
+            "word": "you've",
+            "start": 11.739999771118164,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "seen",
+            "start": 12.260000228881836,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "these",
+            "start": 12.260000228881836,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "patterns",
+            "start": 13.15999984741211,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "thousands",
+            "start": 13.15999984741211,
+            "end": 13.800000190734863
+          },
+          {
+            "word": "of",
+            "start": 13.800000190734863,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "times",
+            "start": 14.039999961853027,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "before",
+            "start": 14.34000015258789,
+            "end": 14.760000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "multiplier-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "A New Category. A senior with AI is an entirely different category of engineer. Your years of experience become superpowers when combined with AI velocity. This is your unfair advantage.",
+        "duration": 13.920000076293945,
+        "words": [
+          {
+            "word": "A",
+            "start": 0,
+            "end": 0.36000001430511475
+          },
+          {
+            "word": "new",
+            "start": 0.36000001430511475,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "category",
+            "start": 0.7799999713897705,
+            "end": 1.6399999856948853
+          },
+          {
+            "word": "A",
+            "start": 2.559999942779541,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "senior",
+            "start": 2.759999990463257,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "with",
+            "start": 2.880000114440918,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "AI",
+            "start": 3.1600000858306885,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "is",
+            "start": 3.359999895095825,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "an",
+            "start": 3.619999885559082,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "entirely",
+            "start": 3.859999895095825,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "different",
+            "start": 4.480000019073486,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "category",
+            "start": 4.679999828338623,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "of",
+            "start": 5.059999942779541,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "engineer",
+            "start": 5.380000114440918,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "Your",
+            "start": 6.659999847412109,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "years",
+            "start": 6.840000152587891,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "of",
+            "start": 7.139999866485596,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "experience",
+            "start": 7.920000076293945,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "become",
+            "start": 7.920000076293945,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "superpowers",
+            "start": 8.300000190734863,
+            "end": 9.079999923706055
+          },
+          {
+            "word": "when",
+            "start": 9.079999923706055,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "combined",
+            "start": 9.319999694824219,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "with",
+            "start": 9.800000190734863,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "AI",
+            "start": 10.380000114440918,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "velocity",
+            "start": 10.720000267028809,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "This",
+            "start": 11.539999961853027,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "is",
+            "start": 12.220000267028809,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "your",
+            "start": 12.4399995803833,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "unfair",
+            "start": 12.739999771118164,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "advantage",
+            "start": 13.15999984741211,
+            "end": 13.680000305175781
+          }
+        ]
+      }
+    ],
+    "paradigm-story": [
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Traditional Senior Role. In the traditional model, senior engineers create value through doing. Write the most complex code. Be the bottleneck for hard problems. Review code line by line.",
+        "duration": 13.40999984741211,
+        "words": [
+          {
+            "word": "Traditional",
+            "start": 0,
+            "end": 0.6600000262260437
+          },
+          {
+            "word": "senior",
+            "start": 0.6600000262260437,
+            "end": 1.0399999618530273
+          },
+          {
+            "word": "role",
+            "start": 1.0399999618530273,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "In",
+            "start": 2,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "the",
+            "start": 2.0199999809265137,
+            "end": 2.259999990463257
+          },
+          {
+            "word": "traditional",
+            "start": 2.259999990463257,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "model",
+            "start": 2.640000104904175,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "senior",
+            "start": 3.700000047683716,
+            "end": 3.9000000953674316
+          },
+          {
+            "word": "engineers",
+            "start": 3.9000000953674316,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "create",
+            "start": 4.340000152587891,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "value",
+            "start": 4.739999771118164,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "through",
+            "start": 5.099999904632568,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "doing",
+            "start": 5.440000057220459,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "Write",
+            "start": 6.619999885559082,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "the",
+            "start": 6.619999885559082,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "most",
+            "start": 6.840000152587891,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "complex",
+            "start": 7.300000190734863,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "code",
+            "start": 7.579999923706055,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "Be",
+            "start": 8.579999923706055,
+            "end": 8.640000343322754
+          },
+          {
+            "word": "the",
+            "start": 8.640000343322754,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "bottleneck",
+            "start": 9.020000457763672,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "for",
+            "start": 9.420000076293945,
+            "end": 9.65999984741211
+          },
+          {
+            "word": "hard",
+            "start": 9.65999984741211,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "problems",
+            "start": 9.960000038146973,
+            "end": 10.420000076293945
+          },
+          {
+            "word": "Review",
+            "start": 11.100000381469727,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "code",
+            "start": 11.100000381469727,
+            "end": 11.5
+          },
+          {
+            "word": "line",
+            "start": 11.5,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "by",
+            "start": 11.800000190734863,
+            "end": 12.039999961853027
+          },
+          {
+            "word": "line",
+            "start": 12.039999961853027,
+            "end": 12.300000190734863
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Individual Output. Value equals individual output. How much code can you write? How many bugs can you fix? This model is about to become obsolete.",
+        "duration": 10.199999809265137,
+        "words": [
+          {
+            "word": "Individual",
+            "start": 0,
+            "end": 0.7599999904632568
+          },
+          {
+            "word": "output",
+            "start": 0.7599999904632568,
+            "end": 1.2599999904632568
+          },
+          {
+            "word": "Value",
+            "start": 2,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "equals",
+            "start": 2.180000066757202,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "individual",
+            "start": 2.6600000858306885,
+            "end": 3.2200000286102295
+          },
+          {
+            "word": "output",
+            "start": 3.2200000286102295,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "How",
+            "start": 3.9600000381469727,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "much",
+            "start": 4.019999980926514,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "code",
+            "start": 4.260000228881836,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "can",
+            "start": 4.460000038146973,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "you",
+            "start": 4.659999847412109,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "write",
+            "start": 4.840000152587891,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "How",
+            "start": 6.039999961853027,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "many",
+            "start": 6.179999828338623,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "bugs",
+            "start": 6.440000057220459,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "can",
+            "start": 6.679999828338623,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "you",
+            "start": 6.920000076293945,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "fix",
+            "start": 7.139999866485596,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "This",
+            "start": 7.840000152587891,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "model",
+            "start": 8.15999984741211,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "is",
+            "start": 8.460000038146973,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "about",
+            "start": 8.699999809265137,
+            "end": 8.960000038146973
+          },
+          {
+            "word": "to",
+            "start": 8.960000038146973,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "become",
+            "start": 9.380000114440918,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "obsolete",
+            "start": 9.460000038146973,
+            "end": 9.920000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "AI-Amplified Senior. The new paradigm: value through directing. You design systems, AI implements. You review at the architectural level while AI catches the details.",
+        "duration": 12.399999618530273,
+        "words": [
+          {
+            "word": "AI",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "Amplified",
+            "start": 0.5600000023841858,
+            "end": 1.2999999523162842
+          },
+          {
+            "word": "CMEAR",
+            "start": 1.2999999523162842,
+            "end": 1.840000033378601
+          },
+          {
+            "word": "the",
+            "start": 2.359999895095825,
+            "end": 2.440000057220459
+          },
+          {
+            "word": "new",
+            "start": 2.440000057220459,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "paradigm",
+            "start": 2.700000047683716,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "value",
+            "start": 3.5799999237060547,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "through",
+            "start": 3.9200000762939453,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "directing",
+            "start": 4.239999771118164,
+            "end": 4.619999885559082
+          },
+          {
+            "word": "You",
+            "start": 5.400000095367432,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "design",
+            "start": 5.400000095367432,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "systems",
+            "start": 5.760000228881836,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "AI",
+            "start": 6.860000133514404,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "implements",
+            "start": 7.079999923706055,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "You",
+            "start": 8.279999732971191,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "review",
+            "start": 8.4399995803833,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "at",
+            "start": 8.699999809265137,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "the",
+            "start": 8.880000114440918,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "architectural",
+            "start": 9.100000381469727,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "level",
+            "start": 9.539999961853027,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "while",
+            "start": 10.380000114440918,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "AI",
+            "start": 10.5600004196167,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "catches",
+            "start": 10.979999542236328,
+            "end": 11.34000015258789
+          },
+          {
+            "word": "the",
+            "start": 11.34000015258789,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "details",
+            "start": 11.979999542236328,
+            "end": 11.979999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Team Amplification. Value equals team amplification. How many problems can you multiply your solving across the team? Mentoring becomes teaching AI leverage. Your impact scales.",
+        "duration": 13.149999618530273,
+        "words": [
+          {
+            "word": "Team",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "amplification",
+            "start": 0.6000000238418579,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "Value",
+            "start": 2.1600000858306885,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "equals",
+            "start": 2.299999952316284,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "team",
+            "start": 2.9000000953674316,
+            "end": 3.3399999141693115
+          },
+          {
+            "word": "amplification",
+            "start": 3.3399999141693115,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "How",
+            "start": 4.699999809265137,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "many",
+            "start": 4.760000228881836,
+            "end": 5.019999980926514
+          },
+          {
+            "word": "problems",
+            "start": 5.019999980926514,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "can",
+            "start": 5.460000038146973,
+            "end": 5.659999847412109
+          },
+          {
+            "word": "you",
+            "start": 5.659999847412109,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "multiply",
+            "start": 5.960000038146973,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "your",
+            "start": 6.239999771118164,
+            "end": 6.599999904632568
+          },
+          {
+            "word": "solving",
+            "start": 6.599999904632568,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "across",
+            "start": 6.880000114440918,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "the",
+            "start": 7.260000228881836,
+            "end": 7.480000019073486
+          },
+          {
+            "word": "team",
+            "start": 7.480000019073486,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "Mentoring",
+            "start": 8.5600004196167,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "becomes",
+            "start": 8.760000228881836,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "teaching",
+            "start": 9.239999771118164,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "AI",
+            "start": 9.720000267028809,
+            "end": 10.260000228881836
+          },
+          {
+            "word": "leverage",
+            "start": 10.260000228881836,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "Your",
+            "start": 11.359999656677246,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "impact",
+            "start": 11.5600004196167,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "scales",
+            "start": 12.119999885559082,
+            "end": 12.920000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "paradigm-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Architect Role. This is the evolution: from senior engineer who does, to senior architect who directs. Your experience becomes the compass. AI becomes the velocity.",
+        "duration": 13.359999656677246,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "architect",
+            "start": 0.41999998688697815,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "role",
+            "start": 0.9399999976158142,
+            "end": 1.3799999952316284
+          },
+          {
+            "word": "This",
+            "start": 2.299999952316284,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "is",
+            "start": 2.299999952316284,
+            "end": 2.5
+          },
+          {
+            "word": "the",
+            "start": 2.5,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "evolution",
+            "start": 2.740000009536743,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "From",
+            "start": 4.159999847412109,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "senior",
+            "start": 4.340000152587891,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "engineer",
+            "start": 4.699999809265137,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "who",
+            "start": 5.059999942779541,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "does",
+            "start": 5.300000190734863,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "to",
+            "start": 6.199999809265137,
+            "end": 6.5
+          },
+          {
+            "word": "senior",
+            "start": 6.5,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "architect",
+            "start": 6.699999809265137,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "who",
+            "start": 7.119999885559082,
+            "end": 7.679999828338623
+          },
+          {
+            "word": "directs",
+            "start": 7.679999828338623,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "Your",
+            "start": 9.100000381469727,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "experience",
+            "start": 9.239999771118164,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "becomes",
+            "start": 9.819999694824219,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "the",
+            "start": 10.220000267028809,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "compass",
+            "start": 10.800000190734863,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "AI",
+            "start": 11.779999732971191,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "becomes",
+            "start": 11.960000038146973,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "the",
+            "start": 12.399999618530273,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "velocity",
+            "start": 12.699999809265137,
+            "end": 13
+          }
+        ]
+      }
+    ],
+    "strategy-story": [
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Four Strategies. This course teaches four strategic approaches to multiply your impact. These aren't about using AI—they're about leveraging AI with your experience.",
+        "duration": 11.850000381469727,
+        "words": [
+          {
+            "word": "Four",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "strategies",
+            "start": 0.5600000023841858,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "This",
+            "start": 2.0999999046325684,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "course",
+            "start": 2.200000047683716,
+            "end": 2.5
+          },
+          {
+            "word": "teaches",
+            "start": 2.5,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "four",
+            "start": 2.9000000953674316,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "strategic",
+            "start": 3.4200000762939453,
+            "end": 4
+          },
+          {
+            "word": "approaches",
+            "start": 4,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "to",
+            "start": 4.440000057220459,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "multiply",
+            "start": 5.079999923706055,
+            "end": 5.5
+          },
+          {
+            "word": "your",
+            "start": 5.5,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "impact",
+            "start": 5.900000095367432,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "These",
+            "start": 6.900000095367432,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "aren't",
+            "start": 7.019999980926514,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "about",
+            "start": 7.21999979019165,
+            "end": 7.5
+          },
+          {
+            "word": "using",
+            "start": 7.5,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "AI",
+            "start": 7.860000133514404,
+            "end": 8.319999694824219
+          },
+          {
+            "word": "They're",
+            "start": 8.819999694824219,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "about",
+            "start": 9.020000457763672,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "leveraging",
+            "start": 9.260000228881836,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "AI",
+            "start": 9.640000343322754,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "with",
+            "start": 10.199999809265137,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "your",
+            "start": 10.800000190734863,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "experience",
+            "start": 11.039999961853027,
+            "end": 11.579999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Rapid Acquisition. Strategy one: Understand any codebase in hours, not weeks. AI maps dependencies, traces data flows, identifies patterns—with you as the navigator. Chapter 1.",
+        "duration": 13.800000190734863,
+        "words": [
+          {
+            "word": "Rapid",
+            "start": 0,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "Acquisition",
+            "start": 0.6800000071525574,
+            "end": 1.5800000429153442
+          },
+          {
+            "word": "Strategy",
+            "start": 2.059999942779541,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "1",
+            "start": 2.4200000762939453,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "Understand",
+            "start": 3.799999952316284,
+            "end": 3.799999952316284
+          },
+          {
+            "word": "any",
+            "start": 3.799999952316284,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "codebase",
+            "start": 4.260000228881836,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "in",
+            "start": 4.760000228881836,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "hours",
+            "start": 5.21999979019165,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "not",
+            "start": 5.699999809265137,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "weeks",
+            "start": 6.119999885559082,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "AI",
+            "start": 7.199999809265137,
+            "end": 7.420000076293945
+          },
+          {
+            "word": "maps",
+            "start": 7.420000076293945,
+            "end": 7.800000190734863
+          },
+          {
+            "word": "dependencies",
+            "start": 7.800000190734863,
+            "end": 8.5
+          },
+          {
+            "word": "traces",
+            "start": 9.180000305175781,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "data",
+            "start": 9.180000305175781,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "flows",
+            "start": 9.640000343322754,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "identifies",
+            "start": 10.899999618530273,
+            "end": 10.899999618530273
+          },
+          {
+            "word": "patterns",
+            "start": 10.899999618530273,
+            "end": 11.34000015258789
+          },
+          {
+            "word": "with",
+            "start": 11.4399995803833,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "you",
+            "start": 11.960000038146973,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "as",
+            "start": 12.260000228881836,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "the",
+            "start": 12.619999885559082,
+            "end": 12.899999618530273
+          },
+          {
+            "word": "navigator",
+            "start": 12.899999618530273,
+            "end": 13.300000190734863
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "System-Wide Debugging. Strategy two: Trace bugs across service boundaries. Root cause analysis at scale. Turn days of investigation into hours. Chapter 2.",
+        "duration": 10.699999809265137,
+        "words": [
+          {
+            "word": "System",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "wide",
+            "start": 0.6399999856948853,
+            "end": 1.0399999618530273
+          },
+          {
+            "word": "debugging",
+            "start": 1.0399999618530273,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "strategy",
+            "start": 2.1600000858306885,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "two",
+            "start": 2.380000114440918,
+            "end": 3
+          },
+          {
+            "word": "Trace",
+            "start": 3.5799999237060547,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "bugs",
+            "start": 3.680000066757202,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "across",
+            "start": 3.9800000190734863,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "service",
+            "start": 4.420000076293945,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "boundaries",
+            "start": 4.840000152587891,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "Root",
+            "start": 6.019999980926514,
+            "end": 6.079999923706055
+          },
+          {
+            "word": "cause",
+            "start": 6.079999923706055,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "analysis",
+            "start": 6.400000095367432,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "at",
+            "start": 6.820000171661377,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "scale",
+            "start": 7.260000228881836,
+            "end": 7.480000019073486
+          },
+          {
+            "word": "Turn",
+            "start": 8.279999732971191,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "days",
+            "start": 8.34000015258789,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "of",
+            "start": 8.739999771118164,
+            "end": 9.5
+          },
+          {
+            "word": "investigation",
+            "start": 9.5,
+            "end": 9.5
+          },
+          {
+            "word": "into",
+            "start": 9.5,
+            "end": 10
+          },
+          {
+            "word": "hours",
+            "start": 10,
+            "end": 10.399999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Platform Integration. Strategy three: Design robust integration points. AI generates the glue code while you focus on contracts and error handling strategies. Chapter 3.",
+        "duration": 11.899999618530273,
+        "words": [
+          {
+            "word": "Platform",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "integration",
+            "start": 0.6000000238418579,
+            "end": 1.2000000476837158
+          },
+          {
+            "word": "Strategy",
+            "start": 2.380000114440918,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "3",
+            "start": 2.380000114440918,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "Design",
+            "start": 3.859999895095825,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "robust",
+            "start": 3.859999895095825,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "integration",
+            "start": 4.440000057220459,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "points",
+            "start": 4.980000019073486,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "AI",
+            "start": 6.159999847412109,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "generates",
+            "start": 6.380000114440918,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "the",
+            "start": 6.860000133514404,
+            "end": 7.179999828338623
+          },
+          {
+            "word": "glue",
+            "start": 7.179999828338623,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "code",
+            "start": 7.360000133514404,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "while",
+            "start": 7.71999979019165,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "you",
+            "start": 8.140000343322754,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "focus",
+            "start": 8.460000038146973,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "on",
+            "start": 8.760000228881836,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "contracts",
+            "start": 9.619999885559082,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "and",
+            "start": 9.619999885559082,
+            "end": 10.199999809265137
+          },
+          {
+            "word": "error",
+            "start": 10.199999809265137,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "handling",
+            "start": 10.5600004196167,
+            "end": 10.880000114440918
+          },
+          {
+            "word": "strategies",
+            "start": 10.880000114440918,
+            "end": 11.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "strategy-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Architectural Direction. Strategy four: Express architectural intent, let AI draft implementation. Your design decisions, AI's execution speed. This is the amplification point. Chapter 4.",
+        "duration": 15.449999809265137,
+        "words": [
+          {
+            "word": "Architectural",
+            "start": 0,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "direction",
+            "start": 0.800000011920929,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "Strategy",
+            "start": 2.4800000190734863,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "four",
+            "start": 2.4800000190734863,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "express",
+            "start": 3.819999933242798,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "architectural",
+            "start": 3.859999895095825,
+            "end": 4.5
+          },
+          {
+            "word": "intent",
+            "start": 4.5,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "Let",
+            "start": 5.519999980926514,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "AI",
+            "start": 5.599999904632568,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "draft",
+            "start": 6.019999980926514,
+            "end": 6.420000076293945
+          },
+          {
+            "word": "implementation",
+            "start": 6.420000076293945,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "Your",
+            "start": 8.220000267028809,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "design",
+            "start": 8.4399995803833,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "decisions",
+            "start": 8.859999656677246,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "AI's",
+            "start": 9.960000038146973,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "execution",
+            "start": 10.539999961853027,
+            "end": 10.880000114440918
+          },
+          {
+            "word": "speed",
+            "start": 10.880000114440918,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "This",
+            "start": 12.220000267028809,
+            "end": 12.380000114440918
+          },
+          {
+            "word": "is",
+            "start": 12.380000114440918,
+            "end": 12.520000457763672
+          },
+          {
+            "word": "the",
+            "start": 12.520000457763672,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "amplification",
+            "start": 12.800000190734863,
+            "end": 13.300000190734863
+          },
+          {
+            "word": "point",
+            "start": 13.300000190734863,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "Chapter",
+            "start": 14.600000381469727,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "four",
+            "start": 14.800000190734863,
+            "end": 15.15999984741211
+          }
+        ]
+      }
+    ]
+  }
+}

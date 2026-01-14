@@ -1,0 +1,281 @@
+{
+  "pageId": "ch6-capstone2",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "Your Amplified Workflow",
+    "icon": "🌟",
+    "themeColor": "success"
+  },
+  "stories": [
+    {
+      "id": "skills-review-story",
+      "diagramId": "skills-review",
+      "title": "What You've Mastered",
+      "steps": [
+        {
+          "nodeId": "five-weeks",
+          "icon": "📚",
+          "title": "Five Weeks of Mastery",
+          "narration": "Five intensive weeks of learning have transformed how you work. You've built skills that make you ten times more effective with AI. Let's review what you can now do.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "rapid-acquisition",
+          "edges": [{ "from": "five-weeks", "to": "rapid-acquisition" }],
+          "icon": "🪨",
+          "title": "Rapid Acquisition",
+          "narration": "You can master any codebase in hours, not weeks. You know how to give AI context, verify its understanding, and generate documentation that accelerates your entire team.",
+          "connectsTo": "Five Weeks"
+        },
+        {
+          "nodeId": "system-debugging",
+          "edges": [{ "from": "five-weeks", "to": "system-debugging" }],
+          "icon": "⚡",
+          "title": "System Debugging",
+          "narration": "Distributed system issues no longer intimidate you. You gather the right context, generate hypotheses with AI, and systematically investigate until you find the root cause.",
+          "connectsTo": "Five Weeks"
+        },
+        {
+          "nodeId": "platform-strategy",
+          "edges": [{ "from": "five-weeks", "to": "platform-strategy" }],
+          "icon": "🧲",
+          "title": "Platform Strategy",
+          "narration": "You design integration patterns that scale. You know when to use each pattern, how to generate compliant code, and how to verify AI output meets your standards.",
+          "connectsTo": "Five Weeks"
+        },
+        {
+          "nodeId": "ai-design",
+          "edges": [{ "from": "five-weeks", "to": "ai-design" }],
+          "icon": "🏛️",
+          "title": "AI-Augmented Design",
+          "narration": "You design systems faster without sacrificing quality. AI accelerates your process while your judgment ensures the architecture is sound.",
+          "connectsTo": "Five Weeks"
+        },
+        {
+          "nodeId": "amplified",
+          "edges": [{ "from": "rapid-acquisition", "to": "amplified" }, { "from": "system-debugging", "to": "amplified" }, { "from": "platform-strategy", "to": "amplified" }, { "from": "ai-design", "to": "amplified" }],
+          "icon": "⚡",
+          "title": "You're Amplified",
+          "narration": "These skills make you genuinely amplified. You give AI the context it needs, verify its output intelligently, and direct it with clear designs. You're not just using AI—you're multiplied by it.",
+          "connectsTo": "All Skills"
+        }
+      ]
+    },
+    {
+      "id": "playbook-story",
+      "diagramId": "playbook",
+      "title": "Building Your Playbook",
+      "steps": [
+        {
+          "nodeId": "what-is-playbook",
+          "icon": "📖",
+          "title": "What's a Playbook?",
+          "narration": "A playbook is your documented system for how YOU use AI to multiply YOUR impact. It's personal, tested, and continuously improved. This is what separates casual AI users from amplified engineers.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "acquisition-protocol",
+          "edges": [{ "from": "what-is-playbook", "to": "acquisition-protocol" }],
+          "icon": "🔍",
+          "title": "Acquisition Protocol",
+          "narration": "Document your best prompts for learning codebases. Your verification checklist. Documentation templates you generate. Time targets for each phase. This becomes your standard operating procedure.",
+          "connectsTo": "Playbook"
+        },
+        {
+          "nodeId": "debugging-workflow",
+          "edges": [{ "from": "what-is-playbook", "to": "debugging-workflow" }],
+          "icon": "🐛",
+          "title": "Debugging Workflow",
+          "narration": "How do you gather information for AI? What are your hypothesis generation prompts? Your investigation framework? Post-incident documentation templates? Write it all down.",
+          "connectsTo": "Playbook"
+        },
+        {
+          "nodeId": "design-process",
+          "edges": [{ "from": "what-is-playbook", "to": "design-process" }],
+          "icon": "📐",
+          "title": "Design Process",
+          "narration": "Your requirements synthesis approach. Design generation prompts. Trade-off analysis framework. Review preparation checklist. Each process systematized for consistency and speed.",
+          "connectsTo": "Playbook"
+        },
+        {
+          "nodeId": "code-standards",
+          "edges": [{ "from": "what-is-playbook", "to": "code-standards" }],
+          "icon": "💻",
+          "title": "Code Generation Standards",
+          "narration": "What do you delegate to AI versus do yourself? How do you review AI-generated code? Testing requirements? Common corrections you make? Define your standards clearly.",
+          "connectsTo": "Playbook"
+        },
+        {
+          "nodeId": "continuous-improvement",
+          "edges": [{ "from": "acquisition-protocol", "to": "continuous-improvement" }, { "from": "debugging-workflow", "to": "continuous-improvement" }, { "from": "design-process", "to": "continuous-improvement" }, { "from": "code-standards", "to": "continuous-improvement" }],
+          "icon": "📈",
+          "title": "Continuous Improvement",
+          "narration": "Track what works and what doesn't. Improve your prompts over time. Share learnings with your team. A playbook is never finished—it evolves as AI capabilities evolve.",
+          "connectsTo": "All Sections"
+        }
+      ]
+    },
+    {
+      "id": "amplification-story",
+      "diagramId": "amplification",
+      "title": "Your Amplified Journey",
+      "steps": [
+        {
+          "nodeId": "measure-impact",
+          "icon": "📊",
+          "title": "Measure Your Impact",
+          "narration": "How do you know your playbook works? Measure before and after. Track time savings, scope expansion, and quality improvements. Data proves amplification is real.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "speed-gains",
+          "edges": [{ "from": "measure-impact", "to": "speed-gains" }],
+          "icon": "⏱️",
+          "title": "Speed Gains",
+          "narration": "Five times faster codebase onboarding. Three times faster incident resolution. Two times faster design cycles. These aren't aspirational—they're achievable with systematic AI use.",
+          "connectsTo": "Measure Impact"
+        },
+        {
+          "nodeId": "scope-expansion",
+          "edges": [{ "from": "measure-impact", "to": "scope-expansion" }],
+          "icon": "🎯",
+          "title": "Scope Expansion",
+          "narration": "The biggest gain? Taking on projects you couldn't before. Ten times bigger scope becomes possible when AI handles the repetitive work and you focus on judgment calls.",
+          "connectsTo": "Measure Impact"
+        },
+        {
+          "nodeId": "journey-complete",
+          "edges": [{ "from": "speed-gains", "to": "journey-complete" }, { "from": "scope-expansion", "to": "journey-complete" }],
+          "icon": "🏆",
+          "title": "Journey Complete",
+          "narration": "From senior engineer to amplified engineer. You've mastered rapid acquisition, system debugging, platform strategy, and AI-augmented design. You have a playbook that multiplies your impact.",
+          "connectsTo": "All Gains"
+        },
+        {
+          "nodeId": "the-future",
+          "edges": [{ "from": "journey-complete", "to": "the-future" }],
+          "icon": "🚀",
+          "title": "The Future Is Yours",
+          "narration": "The engineers who embrace AI won't just keep their jobs. They'll take on bigger roles, more responsibility, and more impact. You're one of them now. Stay amplified, keep improving, and lead the way!",
+          "connectsTo": "Journey Complete"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "skills-review-story",
+      "questions": [
+        {
+          "question": "What makes the combination of these skills so powerful with AI?",
+          "options": [
+            "AI does all the work for you",
+            "You can give AI context, verify output, and direct with clear designs",
+            "You no longer need to understand the code",
+            "AI replaces the need for these skills"
+          ],
+          "correct": 1,
+          "explanation": "Your skills make AI effective. You provide context, verify quality, and direct with clear designs. Without these skills, AI output is generic and unreliable."
+        },
+        {
+          "question": "What does 'rapid acquisition' mean in this context?",
+          "options": [
+            "Quickly buying new software",
+            "Fast hiring of engineers",
+            "Mastering codebases in hours instead of weeks",
+            "Rapid typing speed"
+          ],
+          "correct": 2,
+          "explanation": "Rapid acquisition is the skill of quickly understanding and navigating any codebase using AI assistance—turning weeks of ramp-up into hours."
+        },
+        {
+          "question": "How do these skills relate to each other?",
+          "options": [
+            "They're completely independent",
+            "You only need one of them",
+            "They build on each other and combine for maximum amplification",
+            "They conflict with each other"
+          ],
+          "correct": 2,
+          "explanation": "The skills compound. Rapid acquisition feeds into debugging. Debugging informs platform strategy. Strategy enables better design. Together, they make you amplified."
+        }
+      ]
+    },
+    {
+      "storyId": "playbook-story",
+      "questions": [
+        {
+          "question": "What is an engineering playbook?",
+          "options": [
+            "A video game about engineering",
+            "Your documented system for using AI to multiply your impact",
+            "A book about football plays",
+            "The company's official documentation"
+          ],
+          "correct": 1,
+          "explanation": "A playbook is YOUR personal, tested, documented system for how you use AI. It includes prompts, processes, verification steps, and continuous improvement."
+        },
+        {
+          "question": "Why document your prompts in a library?",
+          "options": [
+            "To impress your manager",
+            "Because prompts expire after one use",
+            "So you can reuse, refine, and share what works",
+            "AI requires written documentation"
+          ],
+          "correct": 2,
+          "explanation": "A prompts library captures what works. You reuse effective prompts, refine them over time, and share with teammates—compounding your and your team's effectiveness."
+        },
+        {
+          "question": "Why is continuous improvement part of the playbook?",
+          "options": [
+            "It's just nice to have",
+            "AI capabilities evolve, so your playbook must evolve too",
+            "Management requires documentation",
+            "It's not actually important"
+          ],
+          "correct": 1,
+          "explanation": "AI tools improve constantly. What works today might be outdated tomorrow, and new capabilities emerge. Your playbook must evolve to stay amplified."
+        }
+      ]
+    },
+    {
+      "storyId": "amplification-story",
+      "questions": [
+        {
+          "question": "What's the biggest gain from being an amplified engineer?",
+          "options": [
+            "Working fewer hours",
+            "Taking on projects 10x bigger in scope",
+            "Not needing to think anymore",
+            "Replacing your teammates"
+          ],
+          "correct": 1,
+          "explanation": "The biggest win is scope expansion. When AI handles repetitive work, you can take on projects that would have been impossible before—10x bigger impact."
+        },
+        {
+          "question": "How should you track amplification?",
+          "options": [
+            "Just guess if it's helping",
+            "Ask AI how much faster you are",
+            "Measure time and effort before vs after on real tasks",
+            "Counting lines of code"
+          ],
+          "correct": 2,
+          "explanation": "Track real tasks with before/after comparisons. How long would it take without AI? How long did it actually take? What worked well? What needs improvement?"
+        },
+        {
+          "question": "What happens to engineers who embrace AI effectively?",
+          "options": [
+            "They get replaced by AI",
+            "They stay at the same level",
+            "They take on bigger roles, responsibility, and impact",
+            "They become AI developers"
+          ],
+          "correct": 2,
+          "explanation": "Amplified engineers don't just keep their jobs—they grow. Bigger roles, more responsibility, greater impact. AI is a multiplier for those who master it."
+        }
+      ]
+    }
+  ]
+}

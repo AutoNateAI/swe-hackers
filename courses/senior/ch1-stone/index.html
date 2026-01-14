@@ -4,526 +4,446 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 1: The Stone Remembers | Senior Amplifier</title>
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--accent-stone);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(168, 143, 106, 0.25) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(191, 170, 143, 0.2) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--accent-stone);
-    }
-    
-    .story-block::before {
-      color: var(--accent-stone);
-    }
-
-    .amplify-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: linear-gradient(135deg, #7c6f64, #a89984);
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: var(--bg-primary);
-      margin: 1rem 0;
-    }
-
-    .comparison-table {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .comparison-column {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      border-top: 3px solid var(--text-muted);
-    }
-
-    .comparison-column.amplified {
-      border-top-color: var(--success);
-    }
-
-    .comparison-column h4 {
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-    }
-
-    .comparison-column.amplified h4 {
-      color: var(--success);
-    }
-
-    .comparison-item {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .comparison-item:last-child {
-      border-bottom: none;
-    }
-
-    .time-badge {
-      background: var(--bg-primary);
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .amplified .time-badge {
-      background: rgba(102, 187, 106, 0.15);
-      color: var(--success);
-    }
-
-    .protocol-step {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border-left: 3px solid var(--accent-stone);
-    }
-
-    .protocol-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      background: var(--accent-stone);
-      color: var(--bg-primary);
-      border-radius: 50%;
-      font-weight: 700;
-      margin-right: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .comparison-table {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
 </head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+<body data-course="senior" data-lesson="ch1-stone">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🪨</div>
+        <span>Senior Amplifier</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Senior</a>
+        <a href="../ch0-origins/">Ch 0</a>
+        <a href="index.html" class="active">Ch 1</a>
+        <a href="../ch2-lightning/">Ch 2: Lightning</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="plateau" title="The Plateau"></div>
-    <div class="progress-dot" data-section="amplified" title="Amplified Approach"></div>
-    <div class="progress-dot" data-section="protocol" title="The Protocol"></div>
-    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
-    <div class="progress-dot" data-section="project" title="Project"></div>
-  </nav>
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Senior Amplifier</a>
+        <span>/</span>
+        <span>Chapter 1: The Stone Remembers</span>
+      </div>
+      <h1>🪨 The Stone Remembers</h1>
+      <p>You know your codebase well. But what if you could master ANY codebase in hours instead of weeks? Learn the AI-augmented approach to rapid codebase acquisition that unlocks your expertise across domains.</p>
+    </div>
 
-  <main class="lesson-container">
-    
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         HERO SECTION
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Chapter 1 • Week 1</span>
-        <div class="hero-icon">🪨</div>
-        <h1>The Stone Remembers</h1>
-        <p class="hero-subtitle">
-          You know your codebase well. But what if you could master <strong>any</strong> codebase 
-          in hours instead of weeks? Welcome to amplified engineering.
-        </p>
-        <div class="amplify-badge">
-          🎯 Senior Amplifier Mode
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
         </div>
       </div>
+    </section>
+
+    <!-- Story 1: The Plateau -->
+    <section class="section" id="plateau-section">
+      <h2>The Senior Plateau</h2>
+      <p>You've mastered your domain, but when you face unfamiliar code, you're back to square one. Traditional onboarding takes 2-4 weeks. The amplified approach compresses that to hours.</p>
       
-      <div class="scroll-indicator">
-        <span>Begin your amplification</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         THE SENIOR PLATEAU
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="plateau">
-      <div class="section-content">
-        <h2 class="fade-in">🏔️ The Senior Plateau</h2>
+      <div class="diagram-container" id="plateau-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🏔️ Breaking the Plateau</span>
+        </div>
+        <div id="plateau-story" class="diagram-canvas storytelling"></div>
         
-        <div class="story-block fade-in">
-          <p>
-            You've been a senior engineer for a while. You know your service inside out. 
-            You can navigate your codebase with your eyes closed. But here's the uncomfortable truth: 
-            <strong>your expertise is domain-locked</strong>.
-          </p>
-        </div>
-
-        <p class="fade-in">
-          When you need to review a PR in an unfamiliar service, integrate with a legacy system, 
-          or evaluate an acquisition target's code — you're back to square one. The traditional 
-          approach takes <strong>2-4 weeks</strong> to get productive in a new codebase.
-        </p>
-
-        <div class="comparison-table fade-in">
-          <div class="comparison-column">
-            <h4>⏱️ Traditional Timeline</h4>
-            <div class="comparison-item">
-              <span>Week 1</span>
-              <span class="time-badge">Setup & Exploration</span>
-            </div>
-            <div class="comparison-item">
-              <span>Week 2</span>
-              <span class="time-badge">Break Things</span>
-            </div>
-            <div class="comparison-item">
-              <span>Week 3</span>
-              <span class="time-badge">Understand Flows</span>
-            </div>
-            <div class="comparison-item">
-              <span>Week 4</span>
-              <span class="time-badge">Finally Productive</span>
-            </div>
-          </div>
-          
-          <div class="comparison-column amplified">
-            <h4>⚡ Amplified Timeline</h4>
-            <div class="comparison-item">
-              <span>Hours 1-2</span>
-              <span class="time-badge">AI Architecture Overview</span>
-            </div>
-            <div class="comparison-item">
-              <span>Hours 3-4</span>
-              <span class="time-badge">Entry Points & Flows</span>
-            </div>
-            <div class="comparison-item">
-              <span>Hours 5-6</span>
-              <span class="time-badge">Patterns & Risks</span>
-            </div>
-            <div class="comparison-item">
-              <span>Day 2</span>
-              <span class="time-badge">Making Contributions</span>
+        <div class="diagram-story" id="plateau-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="callout callout-insight fade-in">
-          <span class="callout-icon">💡</span>
-          <strong>The Key Insight:</strong> AI doesn't replace your expertise — it lets you 
-          <em>acquire</em> expertise faster. You're still the judge. AI is your research assistant.
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="plateau-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="plateau-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="plateau-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="plateau-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="plateau-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         THE AMPLIFIED APPROACH
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="amplified">
-      <div class="section-content">
-        <h2 class="fade-in">🚀 The Amplified Approach</h2>
+    <!-- Story 2: The Amplified Approach -->
+    <section class="section" id="amplified-section">
+      <h2>The Amplified Approach</h2>
+      <p>Instead of manually reading thousands of files, let AI do the initial reconnaissance. Then apply your senior judgment to verify and extend what it finds. AI accelerates; you decide.</p>
+      
+      <div class="diagram-container" id="amplified-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🤖 AI-Augmented Codebase Acquisition</span>
+        </div>
+        <div id="amplified-story" class="diagram-canvas storytelling"></div>
         
-        <p class="fade-in">
-          Instead of manually reading thousands of files, let AI do the initial reconnaissance. 
-          Then you apply your senior judgment to verify and extend what it finds.
-        </p>
-
-        <div class="diagram-container fade-in">
-          <div class="diagram-title">AI-Augmented Codebase Acquisition</div>
-          <div class="mermaid">
-flowchart LR
-    A[New Codebase] --> B[AI Analysis]
-    B --> C[Architecture Summary]
-    B --> D[Entry Points]
-    B --> E[Patterns Found]
-    B --> F[Risk Areas]
-    C --> G[Senior Verification]
-    D --> G
-    E --> G
-    F --> G
-    G --> H[Deep Dive Where Needed]
-    H --> I[Productive in Hours]
-    
-    style A fill:#4a4a5a,stroke:#6a6a7a
-    style B fill:#7986cb,stroke:#3f51b5
-    style I fill:#66bb6a,stroke:#43a047
+        <div class="diagram-story" id="amplified-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="fade-in">What AI Excels At</h3>
-        
-        <div class="code-demo fade-in">
-          <div class="code-header">
-            <span>AI Prompt</span>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-          <pre class="code-content"><code>Analyze this codebase and provide:
-
-1. High-level architecture summary
-2. All entry points (API routes, CLI commands, jobs)
-3. Core data models and their relationships  
-4. Repeated patterns you see
-5. Areas of high complexity or potential tech debt
-6. External services this code integrates with
-
-Focus on structure and patterns, not line-by-line review.</code></pre>
+          <div class="playback-center">
+            <div class="story-progress" id="amplified-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
         </div>
 
-        <h3 class="fade-in">What YOU Still Do</h3>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="amplified-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="amplified-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="amplified-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-        <div class="feature-cards fade-in">
-          <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h4>Verify</h4>
-            <p>Check AI's claims against the actual code. AI makes mistakes.</p>
+      <div class="quiz-card" id="amplified-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">🔍</div>
-            <h4>Context</h4>
-            <p>You know what matters for YOUR situation. AI doesn't.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">⚖️</div>
-            <h4>Judgment</h4>
-            <p>Decide what to trust, what to investigate deeper, what to skip.</p>
-          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         THE RAPID ACQUISITION PROTOCOL
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="protocol">
-      <div class="section-content">
-        <h2 class="fade-in">📋 The Rapid Acquisition Protocol</h2>
+    <!-- Story 3: The Protocol -->
+    <section class="section" id="protocol-section">
+      <h2>The Rapid Acquisition Protocol</h2>
+      <p>A repeatable 6-step process for mastering any codebase quickly: reconnaissance, entry points, data models, patterns, risks, and documentation. Systematic, scalable, effective.</p>
+      
+      <div class="diagram-container" id="protocol-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📋 The 6-Step Protocol</span>
+        </div>
+        <div id="protocol-story" class="diagram-canvas storytelling"></div>
         
-        <p class="fade-in">
-          A repeatable 6-step process for mastering any codebase quickly:
-        </p>
-
-        <div class="protocol-step fade-in">
-          <span class="protocol-number">1</span>
-          <strong>Initial Reconnaissance</strong>
-          <p>Feed AI the codebase. Ask for structure, not details. Understand the shape before the substance.</p>
-        </div>
-
-        <div class="protocol-step fade-in">
-          <span class="protocol-number">2</span>
-          <strong>Entry Point Mapping</strong>
-          <p>Where does execution start? API routes, CLI commands, job schedulers. These are your map's landmarks.</p>
-        </div>
-
-        <div class="protocol-step fade-in">
-          <span class="protocol-number">3</span>
-          <strong>Data Model Analysis</strong>
-          <p>What are the nouns? Database schemas, domain objects, API types. Understanding data = understanding the system.</p>
-        </div>
-
-        <div class="protocol-step fade-in">
-          <span class="protocol-number">4</span>
-          <strong>Pattern Recognition</strong>
-          <p>How do they do things? Naming conventions, error handling, testing approaches. Learn the local dialect.</p>
-        </div>
-
-        <div class="protocol-step fade-in">
-          <span class="protocol-number">5</span>
-          <strong>Risk Assessment</strong>
-          <p>Where are the landmines? Complex areas, tech debt, missing tests, security concerns.</p>
-        </div>
-
-        <div class="protocol-step fade-in">
-          <span class="protocol-number">6</span>
-          <strong>Documentation Generation</strong>
-          <p>What's missing? Have AI draft docs you wish existed. Then verify and refine.</p>
-        </div>
-
-        <div class="diagram-container fade-in">
-          <div class="diagram-title">Acquisition Protocol Flow</div>
-          <div class="mermaid">
-flowchart TB
-    subgraph Phase1 ["Phase 1: AI Discovery (2 hrs)"]
-        A1[Structure Analysis] --> A2[Entry Points]
-        A2 --> A3[Data Models]
-    end
-    
-    subgraph Phase2 ["Phase 2: Pattern Recognition (2 hrs)"]
-        B1[Code Patterns] --> B2[Risk Areas]
-        B2 --> B3[Dependencies]
-    end
-    
-    subgraph Phase3 ["Phase 3: Verification (2 hrs)"]
-        C1[Spot Check AI Claims] --> C2[Manual Deep Dive]
-        C2 --> C3[Generate Missing Docs]
-    end
-    
-    Phase1 --> Phase2 --> Phase3
-    Phase3 --> D[Productive in Day 2]
-    
-    style D fill:#66bb6a,stroke:#43a047
+        <div class="diagram-story" id="protocol-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="protocol-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="protocol-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="protocol-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="protocol-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="protocol-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         QUIZ
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="quiz">
-      <div class="section-content">
-        <div class="quiz-container fade-in" data-activity="quiz-senior-ch1-leverage" data-type="quiz" data-points="10" data-answer="C">
-          <div class="quiz-header">
-            <span class="quiz-icon">🧠</span>
-            <h3>Knowledge Check</h3>
-          </div>
-          
-          <p class="quiz-question">
-            What's the PRIMARY advantage of AI-augmented codebase acquisition?
-          </p>
-          
-          <div class="quiz-options">
-            <div class="quiz-option" data-correct="false">
-              <span class="option-letter">A</span>
-              <span class="option-text">AI writes code for you</span>
-            </div>
-            <div class="quiz-option" data-correct="true">
-              <span class="option-letter">B</span>
-              <span class="option-text">AI accelerates reconnaissance, you provide judgment</span>
-            </div>
-            <div class="quiz-option" data-correct="false">
-              <span class="option-letter">C</span>
-              <span class="option-text">AI replaces the need to understand the code</span>
-            </div>
-            <div class="quiz-option" data-correct="false">
-              <span class="option-letter">D</span>
-              <span class="option-text">AI guarantees accuracy without verification</span>
-            </div>
-          </div>
-          
-          <button class="quiz-submit" disabled>Check Answer</button>
-          <div class="quiz-feedback"></div>
-        </div>
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready for Chapter 2?</h2>
+      <p>You've learned the Rapid Acquisition Protocol for mastering any codebase in hours. Now let's apply AI-augmented thinking to control flow at scale—debugging production systems, tracing complex flows, and writing bulletproof error handling.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch2-lightning/" class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Chapter 2: Lightning at Scale</h3>
+          <p>Debugging production systems, tracing flows, and AI-powered incident response.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in Senior Amplifier.</p>
+        </a>
       </div>
     </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         PROJECT
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🔨 Chapter Project: Rapid Acquisition Protocol</h2>
-        
-        <div class="story-block fade-in">
-          <p>
-            Create YOUR repeatable protocol for learning any new codebase. Test it on 2-3 
-            unfamiliar codebases (open source or internal) and refine based on results.
-          </p>
-        </div>
-
-        <div class="terminal-demo fade-in">
-          <div class="terminal-header">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span>Project Structure</span>
-          </div>
-          <div class="terminal-content">
-            <div class="terminal-line">your-folder/ch1-stone/</div>
-            <div class="terminal-line">├── ACQUISITION_PROTOCOL.md    # Your process</div>
-            <div class="terminal-line">├── PROMPTS.md                 # AI prompts that work</div>
-            <div class="terminal-line">├── codebase-1/                # First test analysis</div>
-            <div class="terminal-line">│   ├── ARCHITECTURE.md</div>
-            <div class="terminal-line">│   ├── ENTRY_POINTS.md</div>
-            <div class="terminal-line">│   └── PATTERNS.md</div>
-            <div class="terminal-line">├── codebase-2/                # Second test analysis</div>
-            <div class="terminal-line">└── LEARNINGS.md               # What worked</div>
-          </div>
-        </div>
-
-        <h3 class="fade-in">Success Criteria</h3>
-        
-        <ul class="fade-in">
-          <li>Protocol tested on at least 2 unfamiliar codebases</li>
-          <li>Can get productive in a new codebase in &lt; 1 day</li>
-          <li>AI prompts documented and refined</li>
-          <li>Verification checklist created</li>
-          <li>Documentation templates ready for reuse</li>
-        </ul>
-
-        <div class="project-footer fade-in">
-          <h3>📦 Save Your Work!</h3>
-          <p>Commit your protocol and analyses to your repository.</p>
-          
-          <a href="../ch2-lightning/index.html" class="nav-link next">
-            <span>Continue to Chapter 2</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- Chapter Navigation -->
-  <nav class="chapter-nav">
-    <a href="../ch0-origins/" class="nav-btn prev">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      <span>← Chapter 0: Origins</span>
-    </a>
-    <a href="../ch2-lightning/" class="nav-btn next">
-      <span>Chapter 2: Lightning →</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#plateau-section">The Plateau</a></li>
+      <li><a href="#amplified-section">Amplified Approach</a></li>
+      <li><a href="#protocol-section">The Protocol</a></li>
+    </ul>
   </nav>
 
-  <script src="../../shared/js/lesson.js"></script>
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
   
-  <!-- Lesson Integration -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      window.LessonIntegration.init("senior", "ch1-stone");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("senior", "ch1-stone");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("senior", "ch1-stone");
-        }
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'plateau': [
+          // The plateau problem
+          { data: { id: 'domain-locked', label: '🏔️ Domain\nLocked', type: 'external', description: 'Expertise trapped in one codebase' } },
+          { data: { id: 'unfamiliar-code', label: '❓ Unfamiliar\nCode', type: 'concept', description: 'Back to square one' } },
+          { data: { id: 'traditional-timeline', label: '⏱️ Traditional\n2-4 Weeks', type: 'data', description: 'Setup, break, learn, productive' } },
+          { data: { id: 'amplified-timeline', label: '⚡ Amplified\nHours', type: 'service', description: 'AI overview → flows → patterns' } },
+          { data: { id: 'key-insight', label: '💡 Key Insight\nAI Assists', type: 'page', description: 'You judge, AI researches' } },
+          // Edges
+          { data: { source: 'domain-locked', target: 'unfamiliar-code' } },
+          { data: { source: 'unfamiliar-code', target: 'traditional-timeline' } },
+          { data: { source: 'traditional-timeline', target: 'amplified-timeline' } },
+          { data: { source: 'amplified-timeline', target: 'key-insight' } }
+        ],
+
+        'amplified': [
+          // The amplified approach
+          { data: { id: 'new-codebase', label: '📦 New\nCodebase', type: 'external', description: 'Thousands of files, unknown patterns' } },
+          { data: { id: 'ai-analysis', label: '🤖 AI\nAnalysis', type: 'concept', description: 'Feed codebase, ask for structure' } },
+          { data: { id: 'ai-outputs', label: '📊 AI\nOutputs', type: 'data', description: 'Architecture, entry points, patterns' } },
+          { data: { id: 'senior-verification', label: '🔍 Senior\nVerification', type: 'auth', description: 'Check claims, apply judgment' } },
+          { data: { id: 'productive-fast', label: '🚀 Productive\nin Hours', type: 'page', description: 'Contributing by day 2' } },
+          // Edges
+          { data: { source: 'new-codebase', target: 'ai-analysis' } },
+          { data: { source: 'ai-analysis', target: 'ai-outputs' } },
+          { data: { source: 'ai-outputs', target: 'senior-verification' } },
+          { data: { source: 'senior-verification', target: 'productive-fast' } }
+        ],
+
+        'protocol': [
+          // The 6-step protocol
+          { data: { id: 'repeatable-process', label: '📋 6-Step\nProtocol', type: 'external', description: 'Systematic acquisition' } },
+          { data: { id: 'step-reconnaissance', label: '1️⃣ Recon\nStructure', type: 'concept', description: 'Ask AI for shape, not details' } },
+          { data: { id: 'step-entry-points', label: '2️⃣ Entry\nPoints', type: 'data', description: 'API routes, CLI, jobs' } },
+          { data: { id: 'step-data-models', label: '3️⃣ Data\nModels', type: 'service', description: 'Schemas, domain objects' } },
+          { data: { id: 'step-patterns', label: '4️⃣ Pattern\nRecognition', type: 'auth', description: 'Conventions, local dialect' } },
+          { data: { id: 'step-risks', label: '5️⃣ Risk\nAssessment', type: 'concept', description: 'Landmines, tech debt' } },
+          { data: { id: 'step-docs', label: '6️⃣ Generate\nDocs', type: 'data', description: 'Draft, verify, refine' } },
+          { data: { id: 'mastery', label: '🏆 Codebase\nMastery', type: 'page', description: 'Contributor in days' } },
+          // Edges
+          { data: { source: 'repeatable-process', target: 'step-reconnaissance' } },
+          { data: { source: 'step-reconnaissance', target: 'step-entry-points' } },
+          { data: { source: 'step-entry-points', target: 'step-data-models' } },
+          { data: { source: 'step-data-models', target: 'step-patterns' } },
+          { data: { source: 'step-patterns', target: 'step-risks' } },
+          { data: { source: 'step-risks', target: 'step-docs' } },
+          { data: { source: 'step-docs', target: 'mastery' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      // Map story IDs to diagram element keys
+      const storyToDiagram = {
+        'plateau-story': 'plateau',
+        'amplified-story': 'amplified',
+        'protocol-story': 'protocol'
+      };
+
+      // Create storytelling diagrams for each story in the JSON
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      // Map story IDs to quiz container IDs
+      const storyToQuiz = {
+        'plateau-story': 'plateau-quiz',
+        'amplified-story': 'amplified-quiz',
+        'protocol-story': 'protocol-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
     });
   </script>
 </body>

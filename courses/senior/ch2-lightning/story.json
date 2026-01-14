@@ -1,0 +1,265 @@
+{
+  "pageId": "ch2-lightning",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "Lightning Paths",
+    "icon": "⚡",
+    "themeColor": "lightning"
+  },
+  "stories": [
+    {
+      "id": "distributed-challenge-story",
+      "diagramId": "distributed-challenge",
+      "title": "The Distributed Challenge",
+      "steps": [
+        {
+          "nodeId": "your-service",
+          "icon": "🟢",
+          "title": "Your Comfort Zone",
+          "narration": "You're great at debugging your own service. You know every log statement, every database query, every external call. Debugging here is straightforward.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "hard-bugs",
+          "edges": [{ "from": "your-service", "to": "hard-bugs" }],
+          "icon": "🔴",
+          "title": "Where Hard Bugs Hide",
+          "narration": "But the hard bugs don't live in one service anymore. They live in the spaces between services—race conditions, cascading failures, data inconsistencies across distributed systems.",
+          "connectsTo": "Your Service"
+        },
+        {
+          "nodeId": "service-mesh",
+          "edges": [{ "from": "hard-bugs", "to": "service-mesh" }],
+          "icon": "🕸️",
+          "title": "The Service Mesh",
+          "narration": "Service A calls Service B, which queues work for Service C, which calls a third-party API. When something breaks, where do you even start looking?",
+          "connectsTo": "Hard Bugs"
+        },
+        {
+          "nodeId": "mttr-stats",
+          "edges": [{ "from": "service-mesh", "to": "mttr-stats" }],
+          "icon": "📊",
+          "title": "The Numbers Don't Lie",
+          "narration": "Distributed bugs take five times longer to resolve. Seventy-three percent of incidents involve multiple services. Two to three teams are typically involved in finding root cause.",
+          "connectsTo": "Service Mesh"
+        },
+        {
+          "nodeId": "amplified-need",
+          "edges": [{ "from": "mttr-stats", "to": "amplified-need" }],
+          "icon": "🚀",
+          "title": "The Amplified Need",
+          "narration": "Senior engineers debug their service. Amplified engineers diagnose system-wide issues across services they've never seen. That requires a different approach.",
+          "connectsTo": "Statistics"
+        }
+      ]
+    },
+    {
+      "id": "ai-debugging-story",
+      "diagramId": "ai-debugging",
+      "title": "AI-Augmented Debugging",
+      "steps": [
+        {
+          "nodeId": "feed-ai",
+          "icon": "🤖",
+          "title": "Feed AI Everything",
+          "narration": "AI can be your distributed systems debugger. Feed it logs from multiple services, metrics showing the latency spike, and recent deployment history. Give it the full picture.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "correlations",
+          "edges": [{ "from": "feed-ai", "to": "correlations" }],
+          "icon": "🔗",
+          "title": "Spot Correlations",
+          "narration": "AI spots correlations that humans would take hours to find. Service B's errors started exactly when Service A's connection pool hit its limit. The timestamps align perfectly.",
+          "connectsTo": "Feed AI"
+        },
+        {
+          "nodeId": "sequence",
+          "edges": [{ "from": "correlations", "to": "sequence" }],
+          "icon": "📋",
+          "title": "Sequence of Events",
+          "narration": "AI reconstructs the sequence of events. First the database slowed down, then connections piled up, then timeouts cascaded upstream. The root cause becomes clear.",
+          "connectsTo": "Correlations"
+        },
+        {
+          "nodeId": "hypotheses",
+          "edges": [{ "from": "sequence", "to": "hypotheses" }],
+          "icon": "💡",
+          "title": "Hypothesis Generation",
+          "narration": "AI generates ranked hypotheses. High likelihood: database connection pool exhaustion. Medium: third-party rate limiting. Lower: memory leak from recent deploy. Now you know where to dig.",
+          "connectsTo": "Sequence"
+        },
+        {
+          "nodeId": "five-x-faster",
+          "edges": [{ "from": "hypotheses", "to": "five-x-faster" }],
+          "icon": "⚡",
+          "title": "5x Faster Resolution",
+          "narration": "The amplified advantage: AI generates hypotheses in minutes. You test them in order of likelihood. Result: root cause found five times faster than traditional debugging.",
+          "connectsTo": "Hypotheses"
+        }
+      ]
+    },
+    {
+      "id": "investigation-framework-story",
+      "diagramId": "investigation-framework",
+      "title": "The Investigation Framework",
+      "steps": [
+        {
+          "nodeId": "phase-gather",
+          "icon": "1️⃣",
+          "title": "Phase 1: GATHER (10 min)",
+          "narration": "First phase: gather data. Collect metrics from all potentially affected services. Pull logs from the relevant time window—thirty minutes before and after. Get deployment history and config changes.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "phase-ai",
+          "edges": [{ "from": "phase-gather", "to": "phase-ai" }],
+          "icon": "2️⃣",
+          "title": "Phase 2: AI ANALYSIS (15 min)",
+          "narration": "Second phase: AI analysis. Ask what patterns it sees in the metrics. Have it correlate logs across services. Given the deployment history, what could have changed? What additional data would help?",
+          "connectsTo": "GATHER"
+        },
+        {
+          "nodeId": "phase-hypotheses",
+          "edges": [{ "from": "phase-ai", "to": "phase-hypotheses" }],
+          "icon": "3️⃣",
+          "title": "Phase 3: HYPOTHESES (10 min)",
+          "narration": "Third phase: hypothesis ranking. Ask AI for the five most likely root causes. What evidence would confirm each one? Rank by likelihood and effort to test. Identify quick wins versus deep investigations.",
+          "connectsTo": "AI ANALYSIS"
+        },
+        {
+          "nodeId": "phase-investigate",
+          "edges": [{ "from": "phase-hypotheses", "to": "phase-investigate" }],
+          "icon": "4️⃣",
+          "title": "Phase 4: INVESTIGATE (varies)",
+          "narration": "Fourth phase: targeted investigation. Test hypotheses in order of likelihood. Use AI to dig deeper into the most likely causes. Validate with domain experts when needed. Document as you go.",
+          "connectsTo": "HYPOTHESES"
+        },
+        {
+          "nodeId": "phase-document",
+          "edges": [{ "from": "phase-investigate", "to": "phase-document" }],
+          "icon": "5️⃣",
+          "title": "Phase 5: DOCUMENT (15 min)",
+          "narration": "Final phase: documentation. AI generates an incident report draft. You verify and add context. Create action items for prevention. Update runbooks with learnings. Future you will thank present you.",
+          "connectsTo": "INVESTIGATE"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "distributed-challenge-story",
+      "questions": [
+        {
+          "question": "Why are distributed bugs harder to debug than single-service bugs?",
+          "options": [
+            "The code is more complex",
+            "They span multiple services, teams, and have timing dependencies",
+            "The programming languages are different",
+            "There are more lines of code"
+          ],
+          "correct": 1,
+          "explanation": "Distributed bugs involve multiple services (often owned by different teams), race conditions, cascading failures, and timing dependencies that are invisible when looking at one service."
+        },
+        {
+          "question": "According to the lesson, how much longer does it take to resolve distributed bugs?",
+          "options": [
+            "2x longer",
+            "3x longer",
+            "5x longer",
+            "10x longer"
+          ],
+          "correct": 2,
+          "explanation": "Distributed bugs take 5x longer to resolve on average. They require understanding systems you don't own and coordinating across multiple teams."
+        },
+        {
+          "question": "What percentage of production incidents involve multiple services?",
+          "options": [
+            "25%",
+            "50%",
+            "73%",
+            "90%"
+          ],
+          "correct": 2,
+          "explanation": "73% of incidents involve multiple services. This is why system-wide debugging skills are essential for senior and amplified engineers."
+        }
+      ]
+    },
+    {
+      "storyId": "ai-debugging-story",
+      "questions": [
+        {
+          "question": "What should you feed AI when debugging a distributed system issue?",
+          "options": [
+            "Only logs from your service",
+            "Logs from multiple services, metrics, and deployment history",
+            "Just the error message",
+            "The source code"
+          ],
+          "correct": 1,
+          "explanation": "Give AI the full picture: logs from all affected services, metrics showing the problem, deployment history, and any recent config changes. Context is everything."
+        },
+        {
+          "question": "What is the 'Amplified Advantage' in debugging?",
+          "options": [
+            "Having more engineers on the problem",
+            "AI generates hypotheses in minutes that you test in order of likelihood",
+            "Using more expensive monitoring tools",
+            "Writing more unit tests"
+          ],
+          "correct": 1,
+          "explanation": "The Amplified Advantage: AI rapidly generates and ranks hypotheses based on all the data. You test them in order of likelihood, finding root cause 5x faster."
+        },
+        {
+          "question": "Why does AI rank hypotheses by likelihood?",
+          "options": [
+            "To make reports look professional",
+            "So you can test the most likely causes first and find the issue faster",
+            "Because AI likes making lists",
+            "To avoid testing any hypotheses"
+          ],
+          "correct": 1,
+          "explanation": "Ranking by likelihood lets you test the most probable causes first. If the #1 hypothesis is confirmed, you've saved hours. If not, move to #2. Systematic and efficient."
+        }
+      ]
+    },
+    {
+      "storyId": "investigation-framework-story",
+      "questions": [
+        {
+          "question": "What should be the FIRST step in AI-augmented distributed debugging?",
+          "options": [
+            "Ask AI to fix the bug",
+            "Gather logs, metrics, and deployment history",
+            "Rollback the last deployment",
+            "Escalate to the other team"
+          ],
+          "correct": 1,
+          "explanation": "Always gather first! Collect metrics, logs (±30 min window), deployment history, and customer impact. You can't analyze what you don't have."
+        },
+        {
+          "question": "How long should the GATHER phase take in the framework?",
+          "options": [
+            "5 minutes",
+            "10 minutes",
+            "30 minutes",
+            "1 hour"
+          ],
+          "correct": 1,
+          "explanation": "The GATHER phase is time-boxed to 10 minutes. Collect what you can quickly. You can always get more data later if needed. Don't let data gathering become analysis paralysis."
+        },
+        {
+          "question": "Why does the framework include a DOCUMENT phase?",
+          "options": [
+            "To satisfy compliance requirements",
+            "So AI can write reports",
+            "To create learnings, update runbooks, and prevent future incidents",
+            "Because managers like documents"
+          ],
+          "correct": 2,
+          "explanation": "Documentation creates organizational memory. Incident reports, prevention action items, and updated runbooks mean the next person won't repeat your debugging journey."
+        }
+      ]
+    }
+  ]
+}

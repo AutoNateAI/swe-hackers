@@ -1,0 +1,265 @@
+{
+  "pageId": "ch3-magnetism",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "The Pull Between",
+    "icon": "🧲",
+    "themeColor": "magnetism"
+  },
+  "stories": [
+    {
+      "id": "platform-scale-story",
+      "diagramId": "platform-scale",
+      "title": "Thinking at Platform Scale",
+      "steps": [
+        {
+          "nodeId": "traditional-senior",
+          "icon": "👤",
+          "title": "The Traditional Senior",
+          "narration": "You can design solid integrations. Retries, circuit breakers, idempotency—you know all the patterns. But your impact is limited to integrations you personally build and review.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "impact-limit",
+          "edges": [{ "from": "traditional-senior", "to": "impact-limit" }],
+          "icon": "📍",
+          "title": "The Impact Ceiling",
+          "narration": "Traditional seniors impact their team. One integration at a time. One code review at a time. Your expertise helps, but only where you can personally touch the code.",
+          "connectsTo": "Traditional Senior"
+        },
+        {
+          "nodeId": "amplified-shift",
+          "edges": [{ "from": "impact-limit", "to": "amplified-shift" }],
+          "icon": "⚡",
+          "title": "The Amplified Shift",
+          "narration": "What if you could define integration patterns once, and have AI generate compliant implementations across all teams? Your expertise scales beyond what you can personally touch.",
+          "connectsTo": "Impact Ceiling"
+        },
+        {
+          "nodeId": "pattern-definition",
+          "edges": [{ "from": "amplified-shift", "to": "pattern-definition" }],
+          "icon": "📐",
+          "title": "Define Patterns Once",
+          "narration": "You do the work once: define the patterns, create templates, write validation rules. This is where your senior expertise shines—you know what good looks like.",
+          "connectsTo": "Amplified Shift"
+        },
+        {
+          "nodeId": "ai-multiplies",
+          "edges": [{ "from": "pattern-definition", "to": "ai-multiplies" }],
+          "icon": "🤖",
+          "title": "AI Multiplies Your Impact",
+          "narration": "AI does the work many times: generates code, creates docs, checks compliance. Every team gets the same quality you'd deliver personally. Your patterns scale across the organization.",
+          "connectsTo": "Define Patterns"
+        }
+      ]
+    },
+    {
+      "id": "strategy-framework-story",
+      "diagramId": "strategy-framework",
+      "title": "The Integration Strategy Framework",
+      "steps": [
+        {
+          "nodeId": "four-pillars",
+          "icon": "🏛️",
+          "title": "Four Strategic Pillars",
+          "narration": "Move from designing individual integrations to defining organizational strategy. Four pillars: Patterns, Contracts, Observability, and Governance. Master these, and you shape how your entire company connects systems.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "patterns-pillar",
+          "edges": [{ "from": "four-pillars", "to": "patterns-pillar" }],
+          "icon": "📐",
+          "title": "Patterns Pillar",
+          "narration": "What are the standard ways we connect systems? When do we use sync versus async? What's our retry and backoff standard? How do we handle partial failures? Define these once for everyone.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "contracts-pillar",
+          "edges": [{ "from": "four-pillars", "to": "contracts-pillar" }],
+          "icon": "📝",
+          "title": "Contracts Pillar",
+          "narration": "How do services define what they expect from each other? OpenAPI specifications, versioning strategy, breaking change policy. Contracts prevent integration chaos as the organization grows.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "observability-pillar",
+          "edges": [{ "from": "four-pillars", "to": "observability-pillar" }],
+          "icon": "📊",
+          "title": "Observability Pillar",
+          "narration": "How do we know integrations are healthy? Required metrics, distributed tracing, alerting thresholds. If you can't see it, you can't fix it. Make visibility a requirement, not an afterthought.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "governance-pillar",
+          "edges": [{ "from": "four-pillars", "to": "governance-pillar" }],
+          "icon": "🔐",
+          "title": "Governance Pillar",
+          "narration": "Who decides what and when? New integration approval, deprecation procedures, security reviews. Governance isn't bureaucracy—it's clarity about ownership and responsibility.",
+          "connectsTo": "Four Pillars"
+        }
+      ]
+    },
+    {
+      "id": "ai-toolkit-story",
+      "diagramId": "ai-toolkit",
+      "title": "The AI Integration Toolkit",
+      "steps": [
+        {
+          "nodeId": "ai-multiplier",
+          "icon": "🛠️",
+          "title": "AI as Your Multiplier",
+          "narration": "Once you define the strategy, AI becomes your implementation multiplier. Your patterns become prompts. Your standards become validation rules. Your expertise generates code across every team.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "prompt-engineering",
+          "edges": [{ "from": "ai-multiplier", "to": "prompt-engineering" }],
+          "icon": "💬",
+          "title": "Prompt Engineering for Integrations",
+          "narration": "Write prompts that encode your standards: retry patterns, circuit breaker config, timeout values, authentication method. Give AI the API spec and your rules—it generates compliant clients every time.",
+          "connectsTo": "AI Multiplier"
+        },
+        {
+          "nodeId": "the-checklist",
+          "edges": [{ "from": "prompt-engineering", "to": "the-checklist" }],
+          "icon": "✅",
+          "title": "The Integration Checklist",
+          "narration": "Authentication, error handling, rate limiting, observability—define the checklist once. AI ensures every integration meets the standard. No more inconsistent implementations across teams.",
+          "connectsTo": "Prompt Engineering"
+        },
+        {
+          "nodeId": "template-library",
+          "edges": [{ "from": "the-checklist", "to": "template-library" }],
+          "icon": "📚",
+          "title": "Template Library",
+          "narration": "Create reference implementations for sync clients, async clients, webhook handlers. AI uses these as examples to generate new integrations that match your architectural style exactly.",
+          "connectsTo": "Checklist"
+        },
+        {
+          "nodeId": "amplified-impact",
+          "edges": [{ "from": "template-library", "to": "amplified-impact" }],
+          "icon": "🚀",
+          "title": "Amplified Impact",
+          "narration": "Define it once, AI implements it everywhere. Your integration expertise now shapes every service connection in the company. That's amplified senior impact—platform-wide influence.",
+          "connectsTo": "Template Library"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "platform-scale-story",
+      "questions": [
+        {
+          "question": "What limits a traditional senior engineer's integration impact?",
+          "options": [
+            "Lack of technical skills",
+            "Impact limited to integrations they personally build and review",
+            "Company politics",
+            "Not enough AI tools available"
+          ],
+          "correct": 1,
+          "explanation": "Traditional seniors are limited by what they can personally touch. Amplified seniors define patterns that scale their expertise across the entire organization through AI."
+        },
+        {
+          "question": "What's the key to scaling your integration expertise?",
+          "options": [
+            "Work longer hours to review more code",
+            "Define patterns once that AI can implement consistently everywhere",
+            "Hire more senior engineers",
+            "Let AI design everything without guidance"
+          ],
+          "correct": 1,
+          "explanation": "Define patterns, templates, and validation rules once. AI multiplies your expertise by generating compliant code across all teams, far beyond what you could personally build."
+        },
+        {
+          "question": "How does an amplified senior's impact differ from a traditional senior?",
+          "options": [
+            "They write code faster",
+            "They impact their team vs the entire organization",
+            "They don't need to understand integrations",
+            "They only work on new projects"
+          ],
+          "correct": 1,
+          "explanation": "Traditional seniors impact their team (one integration at a time). Amplified seniors define patterns that shape integrations organization-wide through AI-generated implementations."
+        }
+      ]
+    },
+    {
+      "storyId": "strategy-framework-story",
+      "questions": [
+        {
+          "question": "What are the four pillars of integration strategy?",
+          "options": [
+            "Speed, Cost, Quality, Scope",
+            "Patterns, Contracts, Observability, Governance",
+            "Frontend, Backend, Database, Cache",
+            "Plan, Build, Test, Deploy"
+          ],
+          "correct": 1,
+          "explanation": "The four pillars are: Patterns (how we connect), Contracts (what services expect), Observability (how we monitor), and Governance (who decides what). These shape organizational integration strategy."
+        },
+        {
+          "question": "Why is the Contracts pillar important?",
+          "options": [
+            "Legal compliance only",
+            "It defines what services expect from each other, preventing integration chaos",
+            "It's not important, just nice to have",
+            "Only needed for external APIs"
+          ],
+          "correct": 1,
+          "explanation": "Contracts (OpenAPI specs, versioning, breaking change policies) define expectations between services. Without clear contracts, integration chaos grows as the organization scales."
+        },
+        {
+          "question": "What does the Governance pillar address?",
+          "options": [
+            "Who writes the most code",
+            "Who decides what and when—approval, deprecation, security reviews",
+            "How to avoid all meetings",
+            "Salary negotiations"
+          ],
+          "correct": 1,
+          "explanation": "Governance provides clarity: new integration approval, deprecation procedures, security requirements. It's not bureaucracy—it's clarity about ownership and responsibility."
+        }
+      ]
+    },
+    {
+      "storyId": "ai-toolkit-story",
+      "questions": [
+        {
+          "question": "How do you turn your standards into AI prompts?",
+          "options": [
+            "Let AI figure out the standards",
+            "Encode retry patterns, circuit breaker config, timeouts, and auth in the prompt",
+            "Just paste code and hope for the best",
+            "Standards don't matter for AI"
+          ],
+          "correct": 1,
+          "explanation": "Your prompts should encode your standards: retry patterns, circuit breaker config, timeout values, authentication methods. Give AI the spec plus your rules for consistent output."
+        },
+        {
+          "question": "What's the purpose of an integration checklist?",
+          "options": [
+            "To create more paperwork",
+            "To ensure every integration meets the same standard consistently",
+            "To slow down development",
+            "Only for junior engineers"
+          ],
+          "correct": 1,
+          "explanation": "The checklist (auth, error handling, rate limiting, observability) ensures consistent quality. AI uses it to validate that every generated integration meets your standards."
+        },
+        {
+          "question": "What is 'amplified impact' in integration strategy?",
+          "options": [
+            "Writing louder commit messages",
+            "Defining patterns once that AI implements everywhere, scaling your expertise organization-wide",
+            "Having more meetings",
+            "Working on more projects simultaneously"
+          ],
+          "correct": 1,
+          "explanation": "Amplified impact means your integration expertise shapes every service connection in the company. Define it once, AI implements it everywhere—platform-wide influence."
+        }
+      ]
+    }
+  ]
+}

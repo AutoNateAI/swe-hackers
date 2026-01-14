@@ -1,0 +1,5770 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T02:06:37.501Z",
+  "stories": [
+    "initiative-scale-story",
+    "process-story",
+    "leadership-story"
+  ],
+  "ballad": {
+    "initiative-scale-story": [
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Not Just a Feature. This isn't about building a feature. This is about leading something that would normally take a team three plus months. Something with stakeholders, dependencies, and organizational impact.",
+        "duration": 13.800000190734863,
+        "words": [
+          {
+            "word": "Not",
+            "start": 0,
+            "end": 0.4000000059604645
+          },
+          {
+            "word": "just",
+            "start": 0.4000000059604645,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "a",
+            "start": 0.7400000095367432,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "feature",
+            "start": 0.9599999785423279,
+            "end": 1.2999999523162842
+          },
+          {
+            "word": "This",
+            "start": 2.0199999809265137,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "isn't",
+            "start": 2.180000066757202,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "about",
+            "start": 2.4600000381469727,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "building",
+            "start": 2.799999952316284,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "a",
+            "start": 3.140000104904175,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "feature",
+            "start": 3.440000057220459,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "This",
+            "start": 4.599999904632568,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "is",
+            "start": 4.699999809265137,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "about",
+            "start": 4.860000133514404,
+            "end": 5.139999866485596
+          },
+          {
+            "word": "leading",
+            "start": 5.139999866485596,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "something",
+            "start": 5.440000057220459,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "that",
+            "start": 5.900000095367432,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "would",
+            "start": 6.059999942779541,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "normally",
+            "start": 6.28000020980835,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "take",
+            "start": 6.679999828338623,
+            "end": 6.900000095367432
+          },
+          {
+            "word": "a",
+            "start": 6.900000095367432,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "team",
+            "start": 7.320000171661377,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "three",
+            "start": 7.320000171661377,
+            "end": 7.880000114440918
+          },
+          {
+            "word": "plus",
+            "start": 7.880000114440918,
+            "end": 8.319999694824219
+          },
+          {
+            "word": "months",
+            "start": 8.319999694824219,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "Something",
+            "start": 9.420000076293945,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "with",
+            "start": 9.479999542236328,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "stakeholders",
+            "start": 9.819999694824219,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "dependencies",
+            "start": 11.380000114440918,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "and",
+            "start": 11.579999923706055,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "organizational",
+            "start": 12.15999984741211,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "impact",
+            "start": 12.859999656677246,
+            "end": 13.399999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Feature vs Project. A feature takes one to two weeks with contained scope. A project takes one to two months with a small team and defined boundaries. These are valuable, but they're not what we're after here.",
+        "duration": 15.760000228881836,
+        "words": [
+          {
+            "word": "Feature",
+            "start": 0,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "versus",
+            "start": 0.6800000071525574,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "project",
+            "start": 1.4800000190734863,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "A",
+            "start": 2.819999933242798,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "feature",
+            "start": 3.0999999046325684,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "takes",
+            "start": 3.380000114440918,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "one",
+            "start": 3.859999895095825,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "to",
+            "start": 4.179999828338623,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "two",
+            "start": 4.360000133514404,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "weeks",
+            "start": 4.639999866485596,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "with",
+            "start": 4.920000076293945,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "contained",
+            "start": 5.340000152587891,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "scope",
+            "start": 5.900000095367432,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "A",
+            "start": 7.059999942779541,
+            "end": 7.679999828338623
+          },
+          {
+            "word": "project",
+            "start": 7.679999828338623,
+            "end": 7.679999828338623
+          },
+          {
+            "word": "takes",
+            "start": 7.679999828338623,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "one",
+            "start": 8.15999984741211,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "to",
+            "start": 8.479999542236328,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "two",
+            "start": 8.699999809265137,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "months",
+            "start": 8.979999542236328,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "with",
+            "start": 9.279999732971191,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "a",
+            "start": 9.699999809265137,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "small",
+            "start": 9.9399995803833,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "team",
+            "start": 10.15999984741211,
+            "end": 10.5
+          },
+          {
+            "word": "and",
+            "start": 10.5,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "defined",
+            "start": 10.979999542236328,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "boundaries",
+            "start": 11.420000076293945,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "These",
+            "start": 12.760000228881836,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "are",
+            "start": 12.9399995803833,
+            "end": 13.220000267028809
+          },
+          {
+            "word": "valuable",
+            "start": 13.220000267028809,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "but",
+            "start": 13.779999732971191,
+            "end": 14.119999885559082
+          },
+          {
+            "word": "they're",
+            "start": 14.119999885559082,
+            "end": 14.420000076293945
+          },
+          {
+            "word": "not",
+            "start": 14.420000076293945,
+            "end": 14.600000381469727
+          },
+          {
+            "word": "what",
+            "start": 14.600000381469727,
+            "end": 14.819999694824219
+          },
+          {
+            "word": "we're",
+            "start": 14.819999694824219,
+            "end": 15.039999961853027
+          },
+          {
+            "word": "after",
+            "start": 15.039999961853027,
+            "end": 15.300000190734863
+          },
+          {
+            "word": "here",
+            "start": 15.300000190734863,
+            "end": 15.600000381469727
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Initiative Scale. An initiative is three plus months, cross-team, with organizational impact. Platform migrations, architecture transformations, security overhauls. This is your target — something that moves the needle for the entire organization.",
+        "duration": 19.600000381469727,
+        "words": [
+          {
+            "word": "Initiative",
+            "start": 0,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "scale",
+            "start": 1.0199999809265137,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "An",
+            "start": 1.9800000190734863,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "initiative",
+            "start": 2.4800000190734863,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "is",
+            "start": 2.640000104904175,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "three",
+            "start": 3.180000066757202,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "plus",
+            "start": 3.5199999809265137,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "months",
+            "start": 3.819999933242798,
+            "end": 4.159999847412109
+          },
+          {
+            "word": "cross",
+            "start": 4.159999847412109,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "team",
+            "start": 4.840000152587891,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "with",
+            "start": 5.119999885559082,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "organizational",
+            "start": 5.760000228881836,
+            "end": 6.599999904632568
+          },
+          {
+            "word": "impact",
+            "start": 6.599999904632568,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "Platform",
+            "start": 8.460000038146973,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "migrations",
+            "start": 8.460000038146973,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "architecture",
+            "start": 10.420000076293945,
+            "end": 10.4399995803833
+          },
+          {
+            "word": "transformations",
+            "start": 10.4399995803833,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "security",
+            "start": 12.279999732971191,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "overhauls",
+            "start": 12.619999885559082,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "This",
+            "start": 13.960000038146973,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "is",
+            "start": 14.34000015258789,
+            "end": 14.619999885559082
+          },
+          {
+            "word": "your",
+            "start": 14.619999885559082,
+            "end": 14.920000076293945
+          },
+          {
+            "word": "target",
+            "start": 14.920000076293945,
+            "end": 15.279999732971191
+          },
+          {
+            "word": "Something",
+            "start": 16.18000030517578,
+            "end": 16.239999771118164
+          },
+          {
+            "word": "that",
+            "start": 16.239999771118164,
+            "end": 16.84000015258789
+          },
+          {
+            "word": "moves",
+            "start": 16.84000015258789,
+            "end": 16.84000015258789
+          },
+          {
+            "word": "the",
+            "start": 16.84000015258789,
+            "end": 17.299999237060547
+          },
+          {
+            "word": "needle",
+            "start": 17.299999237060547,
+            "end": 17.299999237060547
+          },
+          {
+            "word": "for",
+            "start": 17.299999237060547,
+            "end": 17.719999313354492
+          },
+          {
+            "word": "the",
+            "start": 17.719999313354492,
+            "end": 17.959999084472656
+          },
+          {
+            "word": "entire",
+            "start": 17.959999084472656,
+            "end": 18.399999618530273
+          },
+          {
+            "word": "organization",
+            "start": 18.399999618530273,
+            "end": 19.15999984741211
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The AI Advantage. Here's your unfair advantage: with AI, you can take on initiatives that would traditionally require a dedicated team. Your amplified skills let you move at team speed as an individual contributor.",
+        "duration": 16.84000015258789,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "AI",
+            "start": 0.41999998688697815,
+            "end": 0.8999999761581421
+          },
+          {
+            "word": "advantage",
+            "start": 0.8999999761581421,
+            "end": 1.7000000476837158
+          },
+          {
+            "word": "Here's",
+            "start": 2.799999952316284,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "your",
+            "start": 2.880000114440918,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "unfair",
+            "start": 3.180000066757202,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "advantage",
+            "start": 3.700000047683716,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "With",
+            "start": 5.039999961853027,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "AI",
+            "start": 5.28000020980835,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "you",
+            "start": 6.039999961853027,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "can",
+            "start": 6.340000152587891,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "take",
+            "start": 6.579999923706055,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "on",
+            "start": 6.78000020980835,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "initiatives",
+            "start": 7.119999885559082,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "that",
+            "start": 7.519999980926514,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "would",
+            "start": 8.119999885559082,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "traditionally",
+            "start": 8.380000114440918,
+            "end": 8.960000038146973
+          },
+          {
+            "word": "require",
+            "start": 8.960000038146973,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "a",
+            "start": 9.460000038146973,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "dedicated",
+            "start": 9.920000076293945,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "team",
+            "start": 10.220000267028809,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "Your",
+            "start": 11.680000305175781,
+            "end": 11.920000076293945
+          },
+          {
+            "word": "amplified",
+            "start": 11.920000076293945,
+            "end": 12.5
+          },
+          {
+            "word": "skills",
+            "start": 12.5,
+            "end": 13
+          },
+          {
+            "word": "let",
+            "start": 13,
+            "end": 13.5
+          },
+          {
+            "word": "you",
+            "start": 13.5,
+            "end": 13.680000305175781
+          },
+          {
+            "word": "move",
+            "start": 13.680000305175781,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "at",
+            "start": 13.899999618530273,
+            "end": 14.300000190734863
+          },
+          {
+            "word": "team",
+            "start": 14.300000190734863,
+            "end": 14.5
+          },
+          {
+            "word": "speed",
+            "start": 14.5,
+            "end": 14.819999694824219
+          },
+          {
+            "word": "as",
+            "start": 14.819999694824219,
+            "end": 15.260000228881836
+          },
+          {
+            "word": "an",
+            "start": 15.260000228881836,
+            "end": 15.640000343322754
+          },
+          {
+            "word": "individual",
+            "start": 15.640000343322754,
+            "end": 16.020000457763672
+          },
+          {
+            "word": "contributor",
+            "start": 16.020000457763672,
+            "end": 16.559999465942383
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Real Examples. Think platform migrations, monolith to microservices, system-wide performance overhauls, security initiatives, infrastructure modernization, developer experience transformations. Pick something that matters.",
+        "duration": 15.720000267028809,
+        "words": [
+          {
+            "word": "Real",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "examples",
+            "start": 0.5600000023841858,
+            "end": 1.3200000524520874
+          },
+          {
+            "word": "Think",
+            "start": 2.2200000286102295,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "platform",
+            "start": 2.3399999141693115,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "migrations",
+            "start": 2.859999895095825,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "monolith",
+            "start": 4.320000171661377,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "to",
+            "start": 4.579999923706055,
+            "end": 5
+          },
+          {
+            "word": "microservices",
+            "start": 5,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "system",
+            "start": 6.699999809265137,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "wide",
+            "start": 6.920000076293945,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "performance",
+            "start": 7.300000190734863,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "overhauls",
+            "start": 7.920000076293945,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "security",
+            "start": 9.65999984741211,
+            "end": 9.760000228881836
+          },
+          {
+            "word": "initiatives",
+            "start": 9.760000228881836,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "infrastructure",
+            "start": 11.199999809265137,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "modernization",
+            "start": 11.5600004196167,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "developer",
+            "start": 13.34000015258789,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "experience",
+            "start": 13.619999885559082,
+            "end": 14.520000457763672
+          },
+          {
+            "word": "transformations",
+            "start": 14.520000457763672,
+            "end": 15.140000343322754
+          }
+        ]
+      }
+    ],
+    "process-story": [
+      {
+        "storyId": "process-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Day 1: Problem Definition. Start with the problem, not the solution. What exactly are we solving? What's the impact of solving it? What's the cost of NOT solving it? Who are the stakeholders? Get crystal clear before moving forward.",
+        "duration": 19.600000381469727,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.47999998927116394
+          },
+          {
+            "word": "1",
+            "start": 0.47999998927116394,
+            "end": 1
+          },
+          {
+            "word": "Problem",
+            "start": 1.840000033378601,
+            "end": 2.0999999046325684
+          },
+          {
+            "word": "definition",
+            "start": 2.0999999046325684,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "Start",
+            "start": 4.059999942779541,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "with",
+            "start": 4.059999942779541,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "the",
+            "start": 4.300000190734863,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "problem",
+            "start": 4.880000114440918,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "not",
+            "start": 5.380000114440918,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "the",
+            "start": 5.739999771118164,
+            "end": 6.079999923706055
+          },
+          {
+            "word": "solution",
+            "start": 6.079999923706055,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "What",
+            "start": 7.21999979019165,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "exactly",
+            "start": 7.400000095367432,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "are",
+            "start": 7.920000076293945,
+            "end": 8.079999923706055
+          },
+          {
+            "word": "we",
+            "start": 8.079999923706055,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "solving",
+            "start": 8.579999923706055,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "What's",
+            "start": 9.300000190734863,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "the",
+            "start": 9.5600004196167,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "impact",
+            "start": 9.979999542236328,
+            "end": 10.239999771118164
+          },
+          {
+            "word": "of",
+            "start": 10.239999771118164,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "solving",
+            "start": 10.819999694824219,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "it",
+            "start": 10.819999694824219,
+            "end": 11.020000457763672
+          },
+          {
+            "word": "What's",
+            "start": 11.420000076293945,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "the",
+            "start": 11.859999656677246,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "cost",
+            "start": 12.260000228881836,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "of",
+            "start": 12.34000015258789,
+            "end": 12.720000267028809
+          },
+          {
+            "word": "not",
+            "start": 12.720000267028809,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "solving",
+            "start": 13.039999961853027,
+            "end": 13.300000190734863
+          },
+          {
+            "word": "it",
+            "start": 13.300000190734863,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "Who",
+            "start": 14.15999984741211,
+            "end": 14.539999961853027
+          },
+          {
+            "word": "are",
+            "start": 14.539999961853027,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "the",
+            "start": 14.800000190734863,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "stakeholders",
+            "start": 15.020000457763672,
+            "end": 15.520000457763672
+          },
+          {
+            "word": "Get",
+            "start": 16.260000228881836,
+            "end": 16.639999389648438
+          },
+          {
+            "word": "crystal",
+            "start": 16.639999389648438,
+            "end": 17.1200008392334
+          },
+          {
+            "word": "clear",
+            "start": 17.1200008392334,
+            "end": 17.719999313354492
+          },
+          {
+            "word": "before",
+            "start": 17.719999313354492,
+            "end": 18.420000076293945
+          },
+          {
+            "word": "moving",
+            "start": 18.420000076293945,
+            "end": 18.8799991607666
+          },
+          {
+            "word": "forward",
+            "start": 18.8799991607666,
+            "end": 19.260000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Day 2: AI-Augmented Design. Now design — but supercharged with AI. Use your chapter four process for rapid design exploration. Generate options, analyze trade-offs, create a detailed design doc. What took teams weeks, you do in a day.",
+        "duration": 21.450000762939453,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "two",
+            "start": 0.6000000238418579,
+            "end": 1
+          },
+          {
+            "word": "AI",
+            "start": 1.8200000524520874,
+            "end": 2.1600000858306885
+          },
+          {
+            "word": "augmented",
+            "start": 2.1600000858306885,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "design",
+            "start": 2.8399999141693115,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "Now",
+            "start": 4.300000190734863,
+            "end": 4.519999980926514
+          },
+          {
+            "word": "design",
+            "start": 4.519999980926514,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "but",
+            "start": 5.539999961853027,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "supercharged",
+            "start": 5.860000133514404,
+            "end": 6.539999961853027
+          },
+          {
+            "word": "with",
+            "start": 6.539999961853027,
+            "end": 7
+          },
+          {
+            "word": "AI",
+            "start": 7,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "Use",
+            "start": 8.34000015258789,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "your",
+            "start": 8.34000015258789,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "chapter",
+            "start": 8.699999809265137,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "four",
+            "start": 8.9399995803833,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "process",
+            "start": 9.319999694824219,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "for",
+            "start": 9.84000015258789,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "rapid",
+            "start": 10.359999656677246,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "design",
+            "start": 10.699999809265137,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "exploration",
+            "start": 11.239999771118164,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "Generate",
+            "start": 13.020000457763672,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "options",
+            "start": 13.279999732971191,
+            "end": 13.800000190734863
+          },
+          {
+            "word": "analyze",
+            "start": 14.859999656677246,
+            "end": 14.859999656677246
+          },
+          {
+            "word": "trade",
+            "start": 14.859999656677246,
+            "end": 15.359999656677246
+          },
+          {
+            "word": "offs",
+            "start": 15.359999656677246,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "create",
+            "start": 16.040000915527344,
+            "end": 16.260000228881836
+          },
+          {
+            "word": "a",
+            "start": 16.260000228881836,
+            "end": 16.6200008392334
+          },
+          {
+            "word": "detailed",
+            "start": 16.6200008392334,
+            "end": 16.940000534057617
+          },
+          {
+            "word": "design",
+            "start": 16.940000534057617,
+            "end": 17.3799991607666
+          },
+          {
+            "word": "doc",
+            "start": 17.3799991607666,
+            "end": 17.719999313354492
+          },
+          {
+            "word": "What",
+            "start": 18.139999389648438,
+            "end": 18.479999542236328
+          },
+          {
+            "word": "took",
+            "start": 18.479999542236328,
+            "end": 18.739999771118164
+          },
+          {
+            "word": "Teams",
+            "start": 18.739999771118164,
+            "end": 19.139999389648438
+          },
+          {
+            "word": "weeks",
+            "start": 19.139999389648438,
+            "end": 19.600000381469727
+          },
+          {
+            "word": "you",
+            "start": 20.020000457763672,
+            "end": 20.399999618530273
+          },
+          {
+            "word": "do",
+            "start": 20.399999618530273,
+            "end": 20.6200008392334
+          },
+          {
+            "word": "in",
+            "start": 20.6200008392334,
+            "end": 20.899999618530273
+          },
+          {
+            "word": "a",
+            "start": 20.899999618530273,
+            "end": 21.200000762939453
+          },
+          {
+            "word": "day",
+            "start": 21.200000762939453,
+            "end": 21.299999237060547
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Day 3: Socialization. Present to key stakeholders. Gather feedback. This is crucial — great designs fail without buy-in. Listen more than you talk. Iterate on the design based on real input from people who have context you lack.",
+        "duration": 19.239999771118164,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.7599999904632568
+          },
+          {
+            "word": "3",
+            "start": 0.7599999904632568,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "Socialization",
+            "start": 2.200000047683716,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "Present",
+            "start": 4.039999961853027,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "to",
+            "start": 4.039999961853027,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "key",
+            "start": 4.360000133514404,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "stakeholders",
+            "start": 4.699999809265137,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "Gather",
+            "start": 6.300000190734863,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "feedback",
+            "start": 6.300000190734863,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "This",
+            "start": 7.460000038146973,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "is",
+            "start": 7.619999885559082,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "crucial",
+            "start": 7.920000076293945,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "Great",
+            "start": 9,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "designs",
+            "start": 9.100000381469727,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "fail",
+            "start": 9.579999923706055,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "without",
+            "start": 10.039999961853027,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "buy",
+            "start": 10.359999656677246,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "in",
+            "start": 10.819999694824219,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "Listen",
+            "start": 11.899999618530273,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "more",
+            "start": 11.899999618530273,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "than",
+            "start": 12.359999656677246,
+            "end": 12.520000457763672
+          },
+          {
+            "word": "you",
+            "start": 12.520000457763672,
+            "end": 12.979999542236328
+          },
+          {
+            "word": "talk",
+            "start": 12.979999542236328,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "Iterate",
+            "start": 13.9399995803833,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "on",
+            "start": 13.9399995803833,
+            "end": 14.15999984741211
+          },
+          {
+            "word": "the",
+            "start": 14.15999984741211,
+            "end": 14.319999694824219
+          },
+          {
+            "word": "design",
+            "start": 14.319999694824219,
+            "end": 14.640000343322754
+          },
+          {
+            "word": "based",
+            "start": 14.640000343322754,
+            "end": 15.119999885559082
+          },
+          {
+            "word": "on",
+            "start": 15.119999885559082,
+            "end": 15.460000038146973
+          },
+          {
+            "word": "real",
+            "start": 15.460000038146973,
+            "end": 15.800000190734863
+          },
+          {
+            "word": "input",
+            "start": 15.800000190734863,
+            "end": 16.139999389648438
+          },
+          {
+            "word": "from",
+            "start": 16.139999389648438,
+            "end": 16.540000915527344
+          },
+          {
+            "word": "people",
+            "start": 16.540000915527344,
+            "end": 16.920000076293945
+          },
+          {
+            "word": "who",
+            "start": 16.920000076293945,
+            "end": 17.239999771118164
+          },
+          {
+            "word": "have",
+            "start": 17.239999771118164,
+            "end": 17.520000457763672
+          },
+          {
+            "word": "context",
+            "start": 17.520000457763672,
+            "end": 18.040000915527344
+          },
+          {
+            "word": "you",
+            "start": 18.040000915527344,
+            "end": 18.600000381469727
+          },
+          {
+            "word": "lack",
+            "start": 18.600000381469727,
+            "end": 18.799999237060547
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Day 4: Planning. Break the initiative into workstreams. Identify dependencies and blockers. Resource requirements. Timeline and milestones. Make the path forward concrete and actionable.",
+        "duration": 15.600000381469727,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "four",
+            "start": 0.5,
+            "end": 0.8999999761581421
+          },
+          {
+            "word": "Planning",
+            "start": 1.4800000190734863,
+            "end": 1.9199999570846558
+          },
+          {
+            "word": "Break",
+            "start": 2.9200000762939453,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "the",
+            "start": 2.9200000762939453,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "initiative",
+            "start": 3.240000009536743,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "into",
+            "start": 3.5399999618530273,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "work",
+            "start": 4.019999980926514,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "streams",
+            "start": 4.400000095367432,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "Identify",
+            "start": 5.800000190734863,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "dependencies",
+            "start": 6.039999961853027,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "and",
+            "start": 6.619999885559082,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "blockers",
+            "start": 7.119999885559082,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "resource",
+            "start": 8.359999656677246,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "requirements",
+            "start": 8.699999809265137,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "timeline",
+            "start": 10.260000228881836,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "and",
+            "start": 10.479999542236328,
+            "end": 10.899999618530273
+          },
+          {
+            "word": "milestones",
+            "start": 10.899999618530273,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "Make",
+            "start": 12.4399995803833,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "the",
+            "start": 12.479999542236328,
+            "end": 12.720000267028809
+          },
+          {
+            "word": "path",
+            "start": 12.720000267028809,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "forward",
+            "start": 13.039999961853027,
+            "end": 13.4399995803833
+          },
+          {
+            "word": "concrete",
+            "start": 13.4399995803833,
+            "end": 14.180000305175781
+          },
+          {
+            "word": "and",
+            "start": 14.180000305175781,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "actionable",
+            "start": 14.800000190734863,
+            "end": 15.15999984741211
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Day 5: Kickoff. Get official buy-in. Assign responsibilities. Start execution on phase one. The initiative is now real — people are committed, work is happening, momentum is building.",
+        "duration": 15.359999656677246,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "5",
+            "start": 0.46000000834465027,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "Kick",
+            "start": 1.5,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "off",
+            "start": 1.559999942779541,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "Get",
+            "start": 2.5799999237060547,
+            "end": 2.619999885559082
+          },
+          {
+            "word": "official",
+            "start": 2.619999885559082,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "buy",
+            "start": 3.140000104904175,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "in",
+            "start": 3.4800000190734863,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "Assign",
+            "start": 4.539999961853027,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "responsibilities",
+            "start": 4.599999904632568,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "Start",
+            "start": 6.559999942779541,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "execution",
+            "start": 6.579999923706055,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "on",
+            "start": 7.159999847412109,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "phase",
+            "start": 7.659999847412109,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "1",
+            "start": 7.960000038146973,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "The",
+            "start": 9,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "initiative",
+            "start": 9.119999885559082,
+            "end": 9.5
+          },
+          {
+            "word": "is",
+            "start": 9.5,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "now",
+            "start": 10.039999961853027,
+            "end": 10.399999618530273
+          },
+          {
+            "word": "real",
+            "start": 10.399999618530273,
+            "end": 10.65999984741211
+          },
+          {
+            "word": "People",
+            "start": 11.380000114440918,
+            "end": 11.399999618530273
+          },
+          {
+            "word": "are",
+            "start": 11.399999618530273,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "committed",
+            "start": 11.779999732971191,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "Work",
+            "start": 12.84000015258789,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "is",
+            "start": 12.859999656677246,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "happening",
+            "start": 13.140000343322754,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "Momentum",
+            "start": 14.220000267028809,
+            "end": 14.460000038146973
+          },
+          {
+            "word": "is",
+            "start": 14.460000038146973,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "building",
+            "start": 14.800000190734863,
+            "end": 15.079999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-5",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Execute & Iterate. Execute the first phase. Demonstrate early progress. Validate your approach with real work. Document learnings. Then retrospect and iterate — the cycle continues until the initiative is complete.",
+        "duration": 17.950000762939453,
+        "words": [
+          {
+            "word": "Execute",
+            "start": 0,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "and",
+            "start": 0.8399999737739563,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "iterate",
+            "start": 1.399999976158142,
+            "end": 1.9199999570846558
+          },
+          {
+            "word": "Execute",
+            "start": 2.9200000762939453,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "the",
+            "start": 3.140000104904175,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "first",
+            "start": 3.5399999618530273,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "phase",
+            "start": 3.940000057220459,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "Demonstrate",
+            "start": 5.199999809265137,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "early",
+            "start": 5.639999866485596,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "progress",
+            "start": 6.239999771118164,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "Validate",
+            "start": 7.739999771118164,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "your",
+            "start": 7.960000038146973,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "approach",
+            "start": 8.220000267028809,
+            "end": 8.5
+          },
+          {
+            "word": "with",
+            "start": 8.5,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "real",
+            "start": 8.819999694824219,
+            "end": 9.15999984741211
+          },
+          {
+            "word": "work",
+            "start": 9.15999984741211,
+            "end": 9.5
+          },
+          {
+            "word": "Document",
+            "start": 10.579999923706055,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "learnings",
+            "start": 10.579999923706055,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "Then",
+            "start": 11.800000190734863,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "retrospect",
+            "start": 12.260000228881836,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "and",
+            "start": 12.699999809265137,
+            "end": 13.819999694824219
+          },
+          {
+            "word": "iterate",
+            "start": 13.819999694824219,
+            "end": 13.819999694824219
+          },
+          {
+            "word": "The",
+            "start": 14.4399995803833,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "cycle",
+            "start": 14.699999809265137,
+            "end": 15
+          },
+          {
+            "word": "continues",
+            "start": 15,
+            "end": 15.65999984741211
+          },
+          {
+            "word": "until",
+            "start": 15.65999984741211,
+            "end": 16.139999389648438
+          },
+          {
+            "word": "the",
+            "start": 16.139999389648438,
+            "end": 16.799999237060547
+          },
+          {
+            "word": "initiative",
+            "start": 16.799999237060547,
+            "end": 16.799999237060547
+          },
+          {
+            "word": "is",
+            "start": 16.799999237060547,
+            "end": 17.200000762939453
+          },
+          {
+            "word": "complete",
+            "start": 17.200000762939453,
+            "end": 17.600000381469727
+          }
+        ]
+      }
+    ],
+    "leadership-story": [
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Beyond Technical Work. Leading an initiative is more than technical work. It requires leadership skills that AI can't do for you. These are human skills — communication, alignment, relationship building.",
+        "duration": 15.720000267028809,
+        "words": [
+          {
+            "word": "Beyond",
+            "start": 0,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "technical",
+            "start": 0.7400000095367432,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "work",
+            "start": 1.399999976158142,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "leading",
+            "start": 2.799999952316284,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "an",
+            "start": 2.799999952316284,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "initiative",
+            "start": 3.200000047683716,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "is",
+            "start": 3.4200000762939453,
+            "end": 4.039999961853027
+          },
+          {
+            "word": "more",
+            "start": 4.039999961853027,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "than",
+            "start": 4.300000190734863,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "technical",
+            "start": 4.539999961853027,
+            "end": 4.960000038146973
+          },
+          {
+            "word": "work",
+            "start": 4.960000038146973,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "It",
+            "start": 6.019999980926514,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "requires",
+            "start": 6.119999885559082,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "leadership",
+            "start": 6.559999942779541,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "skills",
+            "start": 7.139999866485596,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "that",
+            "start": 7.579999923706055,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "AI",
+            "start": 8.140000343322754,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "can't",
+            "start": 8.479999542236328,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "do",
+            "start": 8.979999542236328,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "for",
+            "start": 9.100000381469727,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "you",
+            "start": 9.380000114440918,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "These",
+            "start": 10.399999618530273,
+            "end": 10.5
+          },
+          {
+            "word": "are",
+            "start": 10.5,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "human",
+            "start": 10.9399995803833,
+            "end": 11.319999694824219
+          },
+          {
+            "word": "skills",
+            "start": 11.319999694824219,
+            "end": 11.720000267028809
+          },
+          {
+            "word": "communication",
+            "start": 13.100000381469727,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "alignment",
+            "start": 14.079999923706055,
+            "end": 14.079999923706055
+          },
+          {
+            "word": "relationship",
+            "start": 15.079999923706055,
+            "end": 15.079999923706055
+          },
+          {
+            "word": "building",
+            "start": 15.079999923706055,
+            "end": 15.4399995803833
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Vision Communication. Can you explain WHY this matters in terms stakeholders care about? Business impact, not technical elegance. Executives don't care about clean architecture — they care about revenue, risk, and velocity.",
+        "duration": 16.31999969482422,
+        "words": [
+          {
+            "word": "Vision",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "communication",
+            "start": 0.5799999833106995,
+            "end": 1.4199999570846558
+          },
+          {
+            "word": "Can",
+            "start": 2.240000009536743,
+            "end": 2.2799999713897705
+          },
+          {
+            "word": "you",
+            "start": 2.2799999713897705,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "explain",
+            "start": 2.5199999809265137,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "why",
+            "start": 2.940000057220459,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "this",
+            "start": 3.319999933242798,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "matters",
+            "start": 3.640000104904175,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "In",
+            "start": 4.420000076293945,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "terms",
+            "start": 4.539999961853027,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "stakeholders",
+            "start": 4.840000152587891,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "care",
+            "start": 5.480000019073486,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "about",
+            "start": 5.840000152587891,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "Business",
+            "start": 7.199999809265137,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "impact",
+            "start": 7.260000228881836,
+            "end": 7.78000020980835
+          },
+          {
+            "word": "not",
+            "start": 8.34000015258789,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "technical",
+            "start": 8.520000457763672,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "elegance",
+            "start": 9.020000457763672,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "Executives",
+            "start": 10.5600004196167,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "don't",
+            "start": 10.760000228881836,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "care",
+            "start": 11.180000305175781,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "about",
+            "start": 11.460000038146973,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "clean",
+            "start": 11.819999694824219,
+            "end": 12.140000343322754
+          },
+          {
+            "word": "architecture",
+            "start": 12.140000343322754,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "They",
+            "start": 13.100000381469727,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "care",
+            "start": 13.420000076293945,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "about",
+            "start": 13.65999984741211,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "revenue",
+            "start": 14.039999961853027,
+            "end": 14.4399995803833
+          },
+          {
+            "word": "risk",
+            "start": 15.100000381469727,
+            "end": 15.15999984741211
+          },
+          {
+            "word": "and",
+            "start": 15.15999984741211,
+            "end": 15.640000343322754
+          },
+          {
+            "word": "velocity",
+            "start": 15.640000343322754,
+            "end": 15.979999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Stakeholder Management. Who needs to buy in? What are their concerns? How do you address them proactively? Map your stakeholders, understand their motivations, and bring them along on the journey.",
+        "duration": 12.760000228881836,
+        "words": [
+          {
+            "word": "Stakeholder",
+            "start": 0,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "management",
+            "start": 0.8600000143051147,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "Who",
+            "start": 2.299999952316284,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "needs",
+            "start": 2.299999952316284,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "to",
+            "start": 2.5399999618530273,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "buy",
+            "start": 2.880000114440918,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "in",
+            "start": 2.940000057220459,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "What",
+            "start": 3.700000047683716,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "are",
+            "start": 3.819999933242798,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "their",
+            "start": 3.9200000762939453,
+            "end": 4.21999979019165
+          },
+          {
+            "word": "concerns",
+            "start": 4.21999979019165,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "How",
+            "start": 5.300000190734863,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "do",
+            "start": 5.400000095367432,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "you",
+            "start": 5.579999923706055,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "address",
+            "start": 5.760000228881836,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "them",
+            "start": 5.980000019073486,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "proactively",
+            "start": 6.21999979019165,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "Map",
+            "start": 7.71999979019165,
+            "end": 7.739999771118164
+          },
+          {
+            "word": "your",
+            "start": 7.739999771118164,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "stakeholders",
+            "start": 8.140000343322754,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "understand",
+            "start": 9.539999961853027,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "their",
+            "start": 9.539999961853027,
+            "end": 10.420000076293945
+          },
+          {
+            "word": "motivations",
+            "start": 10.420000076293945,
+            "end": 10.420000076293945
+          },
+          {
+            "word": "and",
+            "start": 10.640000343322754,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "bring",
+            "start": 11.140000343322754,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "them",
+            "start": 11.300000190734863,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "along",
+            "start": 11.520000457763672,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "on",
+            "start": 11.779999732971191,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "the",
+            "start": 12.100000381469727,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "journey",
+            "start": 12.34000015258789,
+            "end": 12.539999961853027
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Progress Visibility. How do others know the initiative is on track? Clear milestones, regular updates, visible metrics. If stakeholders have to ask how things are going, you're not communicating enough.",
+        "duration": 14.4399995803833,
+        "words": [
+          {
+            "word": "progress",
+            "start": 0,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "visibility",
+            "start": 0.7799999713897705,
+            "end": 1.5
+          },
+          {
+            "word": "How",
+            "start": 2.3399999141693115,
+            "end": 2.359999895095825
+          },
+          {
+            "word": "do",
+            "start": 2.359999895095825,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "others",
+            "start": 2.680000066757202,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "know",
+            "start": 2.940000057220459,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "the",
+            "start": 3.180000066757202,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "initiative",
+            "start": 3.4800000190734863,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "is",
+            "start": 3.759999990463257,
+            "end": 4
+          },
+          {
+            "word": "on",
+            "start": 4,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "track",
+            "start": 4.239999771118164,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "Clear",
+            "start": 5.559999942779541,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "milestones",
+            "start": 5.559999942779541,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "regular",
+            "start": 6.980000019073486,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "updates",
+            "start": 7.21999979019165,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "visible",
+            "start": 8.600000381469727,
+            "end": 8.640000343322754
+          },
+          {
+            "word": "metrics",
+            "start": 8.640000343322754,
+            "end": 9.15999984741211
+          },
+          {
+            "word": "If",
+            "start": 9.579999923706055,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "stakeholders",
+            "start": 10.100000381469727,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "have",
+            "start": 10.619999885559082,
+            "end": 10.920000076293945
+          },
+          {
+            "word": "to",
+            "start": 10.920000076293945,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "ask",
+            "start": 11.140000343322754,
+            "end": 11.4399995803833
+          },
+          {
+            "word": "how",
+            "start": 11.4399995803833,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "things",
+            "start": 11.680000305175781,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "are",
+            "start": 11.859999656677246,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "going",
+            "start": 12.100000381469727,
+            "end": 12.279999732971191
+          },
+          {
+            "word": "you're",
+            "start": 12.779999732971191,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "not",
+            "start": 12.9399995803833,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "communicating",
+            "start": 13.260000228881836,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "enough",
+            "start": 13.84000015258789,
+            "end": 14.220000267028809
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Risk & Adaptation. What could go wrong? How are you mitigating? When do you escalate? Plans will change — can you adjust scope, timeline, or approach while maintaining momentum? Flexibility is survival.",
+        "duration": 15.15999984741211,
+        "words": [
+          {
+            "word": "Risk",
+            "start": 0,
+            "end": 0.47999998927116394
+          },
+          {
+            "word": "and",
+            "start": 0.47999998927116394,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "adaptation",
+            "start": 1.059999942779541,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "What",
+            "start": 2.4000000953674316,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "could",
+            "start": 2.4200000762939453,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "go",
+            "start": 2.6600000858306885,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "wrong",
+            "start": 2.880000114440918,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "How",
+            "start": 3.6600000858306885,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "are",
+            "start": 3.8399999141693115,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "you",
+            "start": 4.139999866485596,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "mitigating",
+            "start": 4.380000114440918,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "When",
+            "start": 5.360000133514404,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "do",
+            "start": 5.480000019073486,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "you",
+            "start": 5.71999979019165,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "escalate",
+            "start": 6.019999980926514,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "Plans",
+            "start": 7.199999809265137,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "will",
+            "start": 7.199999809265137,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "change",
+            "start": 7.539999961853027,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "Can",
+            "start": 8.520000457763672,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "you",
+            "start": 8.5600004196167,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "adjust",
+            "start": 8.779999732971191,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "scope",
+            "start": 9.020000457763672,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "timeline",
+            "start": 10.140000343322754,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "or",
+            "start": 10.140000343322754,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "approach",
+            "start": 10.479999542236328,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "while",
+            "start": 10.859999656677246,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "maintaining",
+            "start": 11.380000114440918,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "momentum",
+            "start": 11.859999656677246,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "Flexibility",
+            "start": 13.239999771118164,
+            "end": 13.739999771118164
+          },
+          {
+            "word": "is",
+            "start": 13.739999771118164,
+            "end": 14.380000114440918
+          },
+          {
+            "word": "survival",
+            "start": 14.380000114440918,
+            "end": 14.779999732971191
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-5",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "AI + Leadership. Here's the secret: AI helps you move faster on technical work, freeing time for the human work. Use that time for communication, alignment, and relationship building. That's what makes initiatives succeed.",
+        "duration": 17.200000762939453,
+        "words": [
+          {
+            "word": "AI",
+            "start": 0,
+            "end": 0.5400000214576721
+          },
+          {
+            "word": "plus",
+            "start": 0.5400000214576721,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "leadership",
+            "start": 1.340000033378601,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "Here's",
+            "start": 3.140000104904175,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "the",
+            "start": 3.240000009536743,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "secret",
+            "start": 3.5199999809265137,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "AI",
+            "start": 4.579999923706055,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "helps",
+            "start": 4.71999979019165,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "you",
+            "start": 5.079999923706055,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "move",
+            "start": 5.380000114440918,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "faster",
+            "start": 5.559999942779541,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "on",
+            "start": 5.960000038146973,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "technical",
+            "start": 6.320000171661377,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "work",
+            "start": 6.619999885559082,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "freeing",
+            "start": 7.78000020980835,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "time",
+            "start": 8.020000457763672,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "for",
+            "start": 8.239999771118164,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "the",
+            "start": 8.579999923706055,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "human",
+            "start": 8.979999542236328,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "work",
+            "start": 8.979999542236328,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "Use",
+            "start": 10.260000228881836,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "that",
+            "start": 10.279999732971191,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "time",
+            "start": 10.539999961853027,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "for",
+            "start": 10.819999694824219,
+            "end": 11.920000076293945
+          },
+          {
+            "word": "communication",
+            "start": 11.920000076293945,
+            "end": 11.920000076293945
+          },
+          {
+            "word": "alignment",
+            "start": 12.640000343322754,
+            "end": 12.640000343322754
+          },
+          {
+            "word": "and",
+            "start": 12.760000228881836,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "relationship",
+            "start": 13.239999771118164,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "building",
+            "start": 13.600000381469727,
+            "end": 14
+          },
+          {
+            "word": "That's",
+            "start": 14.5600004196167,
+            "end": 15.0600004196167
+          },
+          {
+            "word": "what",
+            "start": 15.0600004196167,
+            "end": 15.199999809265137
+          },
+          {
+            "word": "makes",
+            "start": 15.199999809265137,
+            "end": 15.460000038146973
+          },
+          {
+            "word": "initiatives",
+            "start": 15.460000038146973,
+            "end": 16.15999984741211
+          },
+          {
+            "word": "succeed",
+            "start": 16.15999984741211,
+            "end": 16.760000228881836
+          }
+        ]
+      }
+    ]
+  },
+  "echo": {
+    "initiative-scale-story": [
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Not Just a Feature. This isn't about building a feature. This is about leading something that would normally take a team three plus months. Something with stakeholders, dependencies, and organizational impact.",
+        "duration": 13.460000038146973,
+        "words": [
+          {
+            "word": "not",
+            "start": 0,
+            "end": 0.4399999976158142
+          },
+          {
+            "word": "just",
+            "start": 0.4399999976158142,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "a",
+            "start": 0.800000011920929,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "feature",
+            "start": 1.0199999809265137,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "This",
+            "start": 2,
+            "end": 2.119999885559082
+          },
+          {
+            "word": "isn't",
+            "start": 2.119999885559082,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "about",
+            "start": 2.319999933242798,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "building",
+            "start": 2.5799999237060547,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "a",
+            "start": 2.859999895095825,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "feature",
+            "start": 3.4200000762939453,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "This",
+            "start": 3.9200000762939453,
+            "end": 4.159999847412109
+          },
+          {
+            "word": "is",
+            "start": 4.159999847412109,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "about",
+            "start": 4.320000171661377,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "leading",
+            "start": 4.559999942779541,
+            "end": 4.900000095367432
+          },
+          {
+            "word": "something",
+            "start": 4.900000095367432,
+            "end": 5.320000171661377
+          },
+          {
+            "word": "that",
+            "start": 5.320000171661377,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "would",
+            "start": 5.480000019073486,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "normally",
+            "start": 5.699999809265137,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "take",
+            "start": 6.039999961853027,
+            "end": 6.260000228881836
+          },
+          {
+            "word": "a",
+            "start": 6.260000228881836,
+            "end": 6.5
+          },
+          {
+            "word": "team",
+            "start": 6.5,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "three",
+            "start": 6.679999828338623,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "plus",
+            "start": 7.460000038146973,
+            "end": 7.880000114440918
+          },
+          {
+            "word": "months",
+            "start": 7.880000114440918,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "something",
+            "start": 9.100000381469727,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "with",
+            "start": 9.34000015258789,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "stakeholders",
+            "start": 9.640000343322754,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "dependencies",
+            "start": 11.319999694824219,
+            "end": 11.319999694824219
+          },
+          {
+            "word": "and",
+            "start": 11.479999542236328,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "organizational",
+            "start": 12.079999923706055,
+            "end": 12.640000343322754
+          },
+          {
+            "word": "impact",
+            "start": 12.640000343322754,
+            "end": 13.180000305175781
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Feature vs Project. A feature takes one to two weeks with contained scope. A project takes one to two months with a small team and defined boundaries. These are valuable, but they're not what we're after here.",
+        "duration": 12.640000343322754,
+        "words": [
+          {
+            "word": "Feature",
+            "start": 0,
+            "end": 0.5400000214576721
+          },
+          {
+            "word": "versus",
+            "start": 0.5400000214576721,
+            "end": 1
+          },
+          {
+            "word": "project",
+            "start": 1,
+            "end": 1.5199999809265137
+          },
+          {
+            "word": "A",
+            "start": 2,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "feature",
+            "start": 2.200000047683716,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "takes",
+            "start": 2.4600000381469727,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "one",
+            "start": 2.799999952316284,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "to",
+            "start": 3.140000104904175,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "two",
+            "start": 3.299999952316284,
+            "end": 3.5
+          },
+          {
+            "word": "weeks",
+            "start": 3.5,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "with",
+            "start": 3.740000009536743,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "contained",
+            "start": 4.019999980926514,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "scope",
+            "start": 4.480000019073486,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "A",
+            "start": 5.380000114440918,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "project",
+            "start": 5.639999866485596,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "takes",
+            "start": 5.820000171661377,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "one",
+            "start": 6.119999885559082,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "to",
+            "start": 6.360000133514404,
+            "end": 6.519999980926514
+          },
+          {
+            "word": "two",
+            "start": 6.519999980926514,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "months",
+            "start": 6.739999771118164,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "with",
+            "start": 6.940000057220459,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "a",
+            "start": 7.159999847412109,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "small",
+            "start": 7.400000095367432,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "team",
+            "start": 7.579999923706055,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "and",
+            "start": 7.920000076293945,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "defined",
+            "start": 8.180000305175781,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "boundaries",
+            "start": 8.5600004196167,
+            "end": 9
+          },
+          {
+            "word": "These",
+            "start": 9.720000267028809,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "are",
+            "start": 9.880000114440918,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "valuable",
+            "start": 10.15999984741211,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "but",
+            "start": 10.9399995803833,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "they're",
+            "start": 11.140000343322754,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "not",
+            "start": 11.380000114440918,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "what",
+            "start": 11.579999923706055,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "we're",
+            "start": 11.760000228881836,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "after",
+            "start": 12.020000457763672,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "here",
+            "start": 12.180000305175781,
+            "end": 12.479999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Initiative Scale. An initiative is three plus months, cross-team, with organizational impact. Platform migrations, architecture transformations, security overhauls. This is your target — something that moves the needle for the entire organization.",
+        "duration": 15.960000038146973,
+        "words": [
+          {
+            "word": "Initiative",
+            "start": 0,
+            "end": 0.6600000262260437
+          },
+          {
+            "word": "scale",
+            "start": 0.6600000262260437,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "An",
+            "start": 1.6799999475479126,
+            "end": 1.899999976158142
+          },
+          {
+            "word": "initiative",
+            "start": 1.899999976158142,
+            "end": 2.119999885559082
+          },
+          {
+            "word": "is",
+            "start": 2.119999885559082,
+            "end": 2.5999999046325684
+          },
+          {
+            "word": "three",
+            "start": 2.5999999046325684,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "plus",
+            "start": 2.9000000953674316,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "months",
+            "start": 3.180000066757202,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "cross",
+            "start": 3.859999895095825,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "team",
+            "start": 4.179999828338623,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "with",
+            "start": 4.860000133514404,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "organizational",
+            "start": 5.119999885559082,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "impact",
+            "start": 5.679999828338623,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "Platform",
+            "start": 7.320000171661377,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "migrations",
+            "start": 7.320000171661377,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "architecture",
+            "start": 8.699999809265137,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "transformations",
+            "start": 8.760000228881836,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "security",
+            "start": 10.359999656677246,
+            "end": 10.520000457763672
+          },
+          {
+            "word": "overhauls",
+            "start": 10.520000457763672,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "This",
+            "start": 11.640000343322754,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "is",
+            "start": 11.800000190734863,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "your",
+            "start": 11.979999542236328,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "target",
+            "start": 12.239999771118164,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "Something",
+            "start": 13.100000381469727,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "that",
+            "start": 13.199999809265137,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "moves",
+            "start": 13.699999809265137,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "the",
+            "start": 13.699999809265137,
+            "end": 14.079999923706055
+          },
+          {
+            "word": "needle",
+            "start": 14.079999923706055,
+            "end": 14.079999923706055
+          },
+          {
+            "word": "for",
+            "start": 14.079999923706055,
+            "end": 14.319999694824219
+          },
+          {
+            "word": "the",
+            "start": 14.319999694824219,
+            "end": 14.520000457763672
+          },
+          {
+            "word": "entire",
+            "start": 14.520000457763672,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "organization",
+            "start": 14.899999618530273,
+            "end": 15.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The AI Advantage. Here's your unfair advantage: with AI, you can take on initiatives that would traditionally require a dedicated team. Your amplified skills let you move at team speed as an individual contributor.",
+        "duration": 13.84000015258789,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.5199999809265137
+          },
+          {
+            "word": "AI",
+            "start": 0.5199999809265137,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "advantage",
+            "start": 0.9800000190734863,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "Here's",
+            "start": 2.319999933242798,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "your",
+            "start": 2.4200000762939453,
+            "end": 2.7200000286102295
+          },
+          {
+            "word": "unfair",
+            "start": 2.7200000286102295,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "advantage",
+            "start": 3.0999999046325684,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "With",
+            "start": 4.019999980926514,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "AI",
+            "start": 4.199999809265137,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "you",
+            "start": 5,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "can",
+            "start": 5.059999942779541,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "take",
+            "start": 5.28000020980835,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "on",
+            "start": 5.420000076293945,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "initiatives",
+            "start": 5.71999979019165,
+            "end": 6
+          },
+          {
+            "word": "that",
+            "start": 6,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "would",
+            "start": 6.239999771118164,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "traditionally",
+            "start": 6.440000057220459,
+            "end": 6.980000019073486
+          },
+          {
+            "word": "require",
+            "start": 6.980000019073486,
+            "end": 7.5
+          },
+          {
+            "word": "a",
+            "start": 7.5,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "dedicated",
+            "start": 7.920000076293945,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "team",
+            "start": 8.279999732971191,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "Your",
+            "start": 9.380000114440918,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "amplified",
+            "start": 9.579999923706055,
+            "end": 10.079999923706055
+          },
+          {
+            "word": "skills",
+            "start": 10.079999923706055,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "let",
+            "start": 10.479999542236328,
+            "end": 10.84000015258789
+          },
+          {
+            "word": "you",
+            "start": 10.84000015258789,
+            "end": 11.020000457763672
+          },
+          {
+            "word": "move",
+            "start": 11.020000457763672,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "at",
+            "start": 11.140000343322754,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "team",
+            "start": 11.420000076293945,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "speed",
+            "start": 11.699999809265137,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "as",
+            "start": 12.079999923706055,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "an",
+            "start": 12.479999542236328,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "individual",
+            "start": 12.819999694824219,
+            "end": 13.180000305175781
+          },
+          {
+            "word": "contributor",
+            "start": 13.180000305175781,
+            "end": 13.640000343322754
+          }
+        ]
+      },
+      {
+        "storyId": "initiative-scale-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Real Examples. Think platform migrations, monolith to microservices, system-wide performance overhauls, security initiatives, infrastructure modernization, developer experience transformations. Pick something that matters.",
+        "duration": 14.949999809265137,
+        "words": [
+          {
+            "word": "Real",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "examples",
+            "start": 0.5600000023841858,
+            "end": 1.2599999904632568
+          },
+          {
+            "word": "Think",
+            "start": 2.319999933242798,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "platform",
+            "start": 2.319999933242798,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "migrations",
+            "start": 2.9200000762939453,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "monolith",
+            "start": 4.21999979019165,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "to",
+            "start": 4.380000114440918,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "microservices",
+            "start": 4.679999828338623,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "system",
+            "start": 6.079999923706055,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "wide",
+            "start": 6.300000190734863,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "performance",
+            "start": 6.639999866485596,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "overhauls",
+            "start": 7.21999979019165,
+            "end": 7.800000190734863
+          },
+          {
+            "word": "security",
+            "start": 8.380000114440918,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "initiatives",
+            "start": 8.739999771118164,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "infrastructure",
+            "start": 9.960000038146973,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "modernization",
+            "start": 10.279999732971191,
+            "end": 11.020000457763672
+          },
+          {
+            "word": "developer",
+            "start": 11.5600004196167,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "experience",
+            "start": 11.859999656677246,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "transformations",
+            "start": 12.479999542236328,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "Pick",
+            "start": 13.800000190734863,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "something",
+            "start": 13.84000015258789,
+            "end": 14.15999984741211
+          },
+          {
+            "word": "that",
+            "start": 14.15999984741211,
+            "end": 14.579999923706055
+          },
+          {
+            "word": "matters",
+            "start": 14.579999923706055,
+            "end": 14.65999984741211
+          }
+        ]
+      }
+    ],
+    "process-story": [
+      {
+        "storyId": "process-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Day 1: Problem Definition. Start with the problem, not the solution. What exactly are we solving? What's the impact of solving it? What's the cost of NOT solving it? Who are the stakeholders? Get crystal clear before moving forward.",
+        "duration": 15.720000267028809,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "one",
+            "start": 0.41999998688697815,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "problem",
+            "start": 1.4600000381469727,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "definition",
+            "start": 1.6200000047683716,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "Start",
+            "start": 2.880000114440918,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "with",
+            "start": 2.9000000953674316,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "the",
+            "start": 3.0799999237060547,
+            "end": 3.4000000953674316
+          },
+          {
+            "word": "problem",
+            "start": 3.4000000953674316,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "not",
+            "start": 3.9800000190734863,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 4.079999923706055,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "solution",
+            "start": 4.320000171661377,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "What",
+            "start": 5.28000020980835,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "exactly",
+            "start": 5.380000114440918,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "are",
+            "start": 5.820000171661377,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "we",
+            "start": 5.980000019073486,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "solving",
+            "start": 6.460000038146973,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "What's",
+            "start": 7.039999961853027,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "the",
+            "start": 7.21999979019165,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "impact",
+            "start": 7.559999942779541,
+            "end": 7.800000190734863
+          },
+          {
+            "word": "of",
+            "start": 7.800000190734863,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "solving",
+            "start": 8.300000190734863,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "it",
+            "start": 8.300000190734863,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "What's",
+            "start": 8.920000076293945,
+            "end": 9.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 9.079999923706055,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "cost",
+            "start": 9.300000190734863,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "of",
+            "start": 9.619999885559082,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "not",
+            "start": 9.920000076293945,
+            "end": 10.260000228881836
+          },
+          {
+            "word": "solving",
+            "start": 10.260000228881836,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "it",
+            "start": 10.539999961853027,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "Who",
+            "start": 11.359999656677246,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "are",
+            "start": 11.479999542236328,
+            "end": 11.640000343322754
+          },
+          {
+            "word": "the",
+            "start": 11.640000343322754,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "stakeholders",
+            "start": 11.819999694824219,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "Get",
+            "start": 12.979999542236328,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "crystal",
+            "start": 13.15999984741211,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "clear",
+            "start": 13.619999885559082,
+            "end": 14.0600004196167
+          },
+          {
+            "word": "before",
+            "start": 14.0600004196167,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "moving",
+            "start": 14.699999809265137,
+            "end": 15.079999923706055
+          },
+          {
+            "word": "forward",
+            "start": 15.079999923706055,
+            "end": 15.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Day 2: AI-Augmented Design. Now design — but supercharged with AI. Use your chapter four process for rapid design exploration. Generate options, analyze trade-offs, create a detailed design doc. What took teams weeks, you do in a day.",
+        "duration": 19.100000381469727,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "2",
+            "start": 0.46000000834465027,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "AI",
+            "start": 1.7000000476837158,
+            "end": 1.899999976158142
+          },
+          {
+            "word": "Augmented",
+            "start": 1.899999976158142,
+            "end": 2.5
+          },
+          {
+            "word": "Design",
+            "start": 2.5,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "Now",
+            "start": 3.9000000953674316,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "design",
+            "start": 3.9600000381469727,
+            "end": 4.519999980926514
+          },
+          {
+            "word": "but",
+            "start": 4.940000057220459,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "supercharged",
+            "start": 5.21999979019165,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "with",
+            "start": 5.820000171661377,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "AI",
+            "start": 6.179999828338623,
+            "end": 6.5
+          },
+          {
+            "word": "Use",
+            "start": 7.639999866485596,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "your",
+            "start": 7.639999866485596,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "Chapter",
+            "start": 7.900000095367432,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "4",
+            "start": 8.15999984741211,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "process",
+            "start": 8.399999618530273,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "for",
+            "start": 8.899999618530273,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "rapid",
+            "start": 9.199999809265137,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "design",
+            "start": 9.479999542236328,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "exploration",
+            "start": 9.880000114440918,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "Generate",
+            "start": 11.5600004196167,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "options",
+            "start": 11.680000305175781,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "Analyze",
+            "start": 12.979999542236328,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "trade",
+            "start": 13.020000457763672,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "offs",
+            "start": 13.520000457763672,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "Create",
+            "start": 14.319999694824219,
+            "end": 14.319999694824219
+          },
+          {
+            "word": "a",
+            "start": 14.319999694824219,
+            "end": 14.960000038146973
+          },
+          {
+            "word": "detailed",
+            "start": 14.960000038146973,
+            "end": 14.960000038146973
+          },
+          {
+            "word": "design",
+            "start": 14.960000038146973,
+            "end": 15.380000114440918
+          },
+          {
+            "word": "doc",
+            "start": 15.380000114440918,
+            "end": 15.680000305175781
+          },
+          {
+            "word": "What",
+            "start": 16.200000762939453,
+            "end": 16.479999542236328
+          },
+          {
+            "word": "took",
+            "start": 16.479999542236328,
+            "end": 16.700000762939453
+          },
+          {
+            "word": "Teams",
+            "start": 16.700000762939453,
+            "end": 17.040000915527344
+          },
+          {
+            "word": "weeks",
+            "start": 17.040000915527344,
+            "end": 17.440000534057617
+          },
+          {
+            "word": "you",
+            "start": 17.84000015258789,
+            "end": 17.959999084472656
+          },
+          {
+            "word": "do",
+            "start": 17.959999084472656,
+            "end": 18.139999389648438
+          },
+          {
+            "word": "in",
+            "start": 18.139999389648438,
+            "end": 18.299999237060547
+          },
+          {
+            "word": "a",
+            "start": 18.299999237060547,
+            "end": 18.540000915527344
+          },
+          {
+            "word": "day",
+            "start": 18.540000915527344,
+            "end": 18.6200008392334
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Day 3: Socialization. Present to key stakeholders. Gather feedback. This is crucial — great designs fail without buy-in. Listen more than you talk. Iterate on the design based on real input from people who have context you lack.",
+        "duration": 15.640000343322754,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.4000000059604645
+          },
+          {
+            "word": "three",
+            "start": 0.4000000059604645,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "Socialization",
+            "start": 1.440000057220459,
+            "end": 2.0399999618530273
+          },
+          {
+            "word": "Present",
+            "start": 2.9000000953674316,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "to",
+            "start": 2.9000000953674316,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "key",
+            "start": 3.140000104904175,
+            "end": 3.440000057220459
+          },
+          {
+            "word": "stakeholders",
+            "start": 3.440000057220459,
+            "end": 4
+          },
+          {
+            "word": "Gather",
+            "start": 4.760000228881836,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "feedback",
+            "start": 4.760000228881836,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "This",
+            "start": 5.78000020980835,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "is",
+            "start": 5.840000152587891,
+            "end": 6.139999866485596
+          },
+          {
+            "word": "crucial",
+            "start": 6.139999866485596,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "Great",
+            "start": 7.079999923706055,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "designs",
+            "start": 7.139999866485596,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "fail",
+            "start": 7.559999942779541,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "without",
+            "start": 8.039999961853027,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "buy",
+            "start": 8.399999618530273,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "in",
+            "start": 8.819999694824219,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "Listen",
+            "start": 9.579999923706055,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "more",
+            "start": 9.579999923706055,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "than",
+            "start": 9.920000076293945,
+            "end": 10.119999885559082
+          },
+          {
+            "word": "you",
+            "start": 10.119999885559082,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "talk",
+            "start": 10.300000190734863,
+            "end": 10.579999923706055
+          },
+          {
+            "word": "Iterate",
+            "start": 11.420000076293945,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "on",
+            "start": 11.460000038146973,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "the",
+            "start": 11.600000381469727,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "design",
+            "start": 11.800000190734863,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "based",
+            "start": 12.100000381469727,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "on",
+            "start": 12.479999542236328,
+            "end": 12.779999732971191
+          },
+          {
+            "word": "real",
+            "start": 12.779999732971191,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "input",
+            "start": 13.079999923706055,
+            "end": 13.380000114440918
+          },
+          {
+            "word": "from",
+            "start": 13.380000114440918,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "people",
+            "start": 13.65999984741211,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "who",
+            "start": 13.899999618530273,
+            "end": 14.079999923706055
+          },
+          {
+            "word": "have",
+            "start": 14.079999923706055,
+            "end": 14.319999694824219
+          },
+          {
+            "word": "context",
+            "start": 14.319999694824219,
+            "end": 14.819999694824219
+          },
+          {
+            "word": "you",
+            "start": 14.819999694824219,
+            "end": 15.359999656677246
+          },
+          {
+            "word": "lack",
+            "start": 15.359999656677246,
+            "end": 15.380000114440918
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Day 4: Planning. Break the initiative into workstreams. Identify dependencies and blockers. Resource requirements. Timeline and milestones. Make the path forward concrete and actionable.",
+        "duration": 14.850000381469727,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "four",
+            "start": 0.46000000834465027,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "Planning",
+            "start": 1.6799999475479126,
+            "end": 1.6799999475479126
+          },
+          {
+            "word": "Break",
+            "start": 2.3399999141693115,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "the",
+            "start": 2.3399999141693115,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "initiative",
+            "start": 2.640000104904175,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "into",
+            "start": 2.940000057220459,
+            "end": 3.3399999141693115
+          },
+          {
+            "word": "work",
+            "start": 3.3399999141693115,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "streams",
+            "start": 3.700000047683716,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "Identify",
+            "start": 4.840000152587891,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "dependencies",
+            "start": 5.079999923706055,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "and",
+            "start": 5.639999866485596,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "blocks",
+            "start": 6.28000020980835,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "Resource",
+            "start": 7.579999923706055,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "requirements",
+            "start": 7.599999904632568,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "Timeline",
+            "start": 9.039999961853027,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "and",
+            "start": 9.260000228881836,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "milestones",
+            "start": 9.819999694824219,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "Make",
+            "start": 11.079999923706055,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "the",
+            "start": 11.140000343322754,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "path",
+            "start": 11.600000381469727,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "forward",
+            "start": 11.600000381469727,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "concrete",
+            "start": 12.239999771118164,
+            "end": 12.84000015258789
+          },
+          {
+            "word": "and",
+            "start": 12.84000015258789,
+            "end": 13.5
+          },
+          {
+            "word": "actionable",
+            "start": 13.5,
+            "end": 13.760000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Day 5: Kickoff. Get official buy-in. Assign responsibilities. Start execution on phase one. The initiative is now real — people are committed, work is happening, momentum is building.",
+        "duration": 16.84000015258789,
+        "words": [
+          {
+            "word": "Day",
+            "start": 0,
+            "end": 0.47999998927116394
+          },
+          {
+            "word": "five",
+            "start": 0.47999998927116394,
+            "end": 1.100000023841858
+          },
+          {
+            "word": "kickoff",
+            "start": 1.7200000286102295,
+            "end": 2.0999999046325684
+          },
+          {
+            "word": "Get",
+            "start": 3.0199999809265137,
+            "end": 3.0199999809265137
+          },
+          {
+            "word": "official",
+            "start": 3.0199999809265137,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "buy",
+            "start": 3.5399999618530273,
+            "end": 4
+          },
+          {
+            "word": "in",
+            "start": 4,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "Assign",
+            "start": 5.320000171661377,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "responsibilities",
+            "start": 5.340000152587891,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "Start",
+            "start": 7.199999809265137,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "execution",
+            "start": 7.199999809265137,
+            "end": 7.78000020980835
+          },
+          {
+            "word": "on",
+            "start": 7.78000020980835,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "phase",
+            "start": 8.279999732971191,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "one",
+            "start": 8.5600004196167,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "The",
+            "start": 9.9399995803833,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "initiative",
+            "start": 10.140000343322754,
+            "end": 10.4399995803833
+          },
+          {
+            "word": "is",
+            "start": 10.4399995803833,
+            "end": 10.920000076293945
+          },
+          {
+            "word": "now",
+            "start": 10.920000076293945,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "real",
+            "start": 11.300000190734863,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "People",
+            "start": 12.65999984741211,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "are",
+            "start": 12.65999984741211,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "committed",
+            "start": 13.239999771118164,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "Work",
+            "start": 14.119999885559082,
+            "end": 14.119999885559082
+          },
+          {
+            "word": "is",
+            "start": 14.119999885559082,
+            "end": 14.420000076293945
+          },
+          {
+            "word": "happening",
+            "start": 14.420000076293945,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "Momentum",
+            "start": 15.779999732971191,
+            "end": 15.9399995803833
+          },
+          {
+            "word": "is",
+            "start": 15.9399995803833,
+            "end": 16.239999771118164
+          },
+          {
+            "word": "building",
+            "start": 16.239999771118164,
+            "end": 16.5
+          }
+        ]
+      },
+      {
+        "storyId": "process-story",
+        "stepId": "step-5",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Execute & Iterate. Execute the first phase. Demonstrate early progress. Validate your approach with real work. Document learnings. Then retrospect and iterate — the cycle continues until the initiative is complete.",
+        "duration": 17.950000762939453,
+        "words": [
+          {
+            "word": "Execute",
+            "start": 0,
+            "end": 0.7200000286102295
+          },
+          {
+            "word": "and",
+            "start": 0.7200000286102295,
+            "end": 1.1799999475479126
+          },
+          {
+            "word": "iterate",
+            "start": 1.1799999475479126,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "Execute",
+            "start": 2.880000114440918,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "the",
+            "start": 2.9000000953674316,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "first",
+            "start": 3.1600000858306885,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "phase",
+            "start": 3.5399999618530273,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "Demonstrate",
+            "start": 5.28000020980835,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "early",
+            "start": 5.300000190734863,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "progress",
+            "start": 5.800000190734863,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "Validate",
+            "start": 7.519999980926514,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "your",
+            "start": 7.659999847412109,
+            "end": 7.880000114440918
+          },
+          {
+            "word": "approach",
+            "start": 7.880000114440918,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "with",
+            "start": 8.180000305175781,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "real",
+            "start": 8.479999542236328,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "work",
+            "start": 8.800000190734863,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "Document",
+            "start": 10.260000228881836,
+            "end": 10.260000228881836
+          },
+          {
+            "word": "learnings",
+            "start": 10.260000228881836,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "Then",
+            "start": 11.5600004196167,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "retrospect",
+            "start": 12.239999771118164,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "and",
+            "start": 12.619999885559082,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "iterate",
+            "start": 13.460000038146973,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "The",
+            "start": 14.119999885559082,
+            "end": 14.5
+          },
+          {
+            "word": "cycle",
+            "start": 14.5,
+            "end": 14.600000381469727
+          },
+          {
+            "word": "continues",
+            "start": 14.600000381469727,
+            "end": 15.220000267028809
+          },
+          {
+            "word": "until",
+            "start": 15.220000267028809,
+            "end": 15.5
+          },
+          {
+            "word": "the",
+            "start": 15.5,
+            "end": 16.139999389648438
+          },
+          {
+            "word": "initiative",
+            "start": 16.139999389648438,
+            "end": 16.139999389648438
+          },
+          {
+            "word": "is",
+            "start": 16.139999389648438,
+            "end": 16.540000915527344
+          },
+          {
+            "word": "complete",
+            "start": 16.540000915527344,
+            "end": 16.940000534057617
+          }
+        ]
+      }
+    ],
+    "leadership-story": [
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Beyond Technical Work. Leading an initiative is more than technical work. It requires leadership skills that AI can't do for you. These are human skills — communication, alignment, relationship building.",
+        "duration": 14.15999984741211,
+        "words": [
+          {
+            "word": "Beyond",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "technical",
+            "start": 0.6399999856948853,
+            "end": 1.100000023841858
+          },
+          {
+            "word": "work",
+            "start": 1.100000023841858,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "leading",
+            "start": 2.119999885559082,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "an",
+            "start": 2.140000104904175,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "initiative",
+            "start": 2.4800000190734863,
+            "end": 2.7200000286102295
+          },
+          {
+            "word": "is",
+            "start": 2.7200000286102295,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "more",
+            "start": 3.0999999046325684,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "than",
+            "start": 3.359999895095825,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "technical",
+            "start": 3.5799999237060547,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "work",
+            "start": 3.9800000190734863,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "It",
+            "start": 5.260000228881836,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "requires",
+            "start": 5.260000228881836,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "leadership",
+            "start": 5.699999809265137,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "skills",
+            "start": 6.179999828338623,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "that",
+            "start": 6.639999866485596,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "AI",
+            "start": 7.21999979019165,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "can't",
+            "start": 7.519999980926514,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "do",
+            "start": 7.960000038146973,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "for",
+            "start": 8.119999885559082,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "you",
+            "start": 8.34000015258789,
+            "end": 8.619999885559082
+          },
+          {
+            "word": "These",
+            "start": 9.720000267028809,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "are",
+            "start": 9.739999771118164,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "human",
+            "start": 9.9399995803833,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "skills",
+            "start": 10.300000190734863,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "communication",
+            "start": 11.800000190734863,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "alignment",
+            "start": 12.65999984741211,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "relationship",
+            "start": 13.619999885559082,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "building",
+            "start": 13.619999885559082,
+            "end": 13.979999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Vision Communication. Can you explain WHY this matters in terms stakeholders care about? Business impact, not technical elegance. Executives don't care about clean architecture — they care about revenue, risk, and velocity.",
+        "duration": 14.15999984741211,
+        "words": [
+          {
+            "word": "Vision",
+            "start": 0,
+            "end": 0.5199999809265137
+          },
+          {
+            "word": "communication",
+            "start": 0.5199999809265137,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "Can",
+            "start": 2.059999942779541,
+            "end": 2.0799999237060547
+          },
+          {
+            "word": "you",
+            "start": 2.0799999237060547,
+            "end": 2.2799999713897705
+          },
+          {
+            "word": "explain",
+            "start": 2.2799999713897705,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "why",
+            "start": 2.640000104904175,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "this",
+            "start": 3.0399999618530273,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "matters",
+            "start": 3.299999952316284,
+            "end": 3.559999942779541
+          },
+          {
+            "word": "in",
+            "start": 3.559999942779541,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "terms",
+            "start": 3.880000114440918,
+            "end": 4.099999904632568
+          },
+          {
+            "word": "stakeholders",
+            "start": 4.099999904632568,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "care",
+            "start": 4.639999866485596,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "about",
+            "start": 4.940000057220459,
+            "end": 5.21999979019165
+          },
+          {
+            "word": "Business",
+            "start": 6.019999980926514,
+            "end": 6.260000228881836
+          },
+          {
+            "word": "impact",
+            "start": 6.260000228881836,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "not",
+            "start": 7.059999942779541,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "technical",
+            "start": 7.199999809265137,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "elegance",
+            "start": 7.559999942779541,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "Executives",
+            "start": 9.220000267028809,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "don't",
+            "start": 9.300000190734863,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "care",
+            "start": 9.619999885559082,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "about",
+            "start": 9.779999732971191,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "clean",
+            "start": 10.0600004196167,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "architecture",
+            "start": 10.319999694824219,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "They",
+            "start": 11.399999618530273,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "care",
+            "start": 11.5600004196167,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "about",
+            "start": 11.760000228881836,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "revenue",
+            "start": 12.100000381469727,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "risk",
+            "start": 13.039999961853027,
+            "end": 13.0600004196167
+          },
+          {
+            "word": "and",
+            "start": 13.079999923706055,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "velocity",
+            "start": 13.899999618530273,
+            "end": 13.899999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Stakeholder Management. Who needs to buy in? What are their concerns? How do you address them proactively? Map your stakeholders, understand their motivations, and bring them along on the journey.",
+        "duration": 12.8100004196167,
+        "words": [
+          {
+            "word": "Stakeholder",
+            "start": 0,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "management",
+            "start": 0.7799999713897705,
+            "end": 1.2599999904632568
+          },
+          {
+            "word": "Who",
+            "start": 2.0999999046325684,
+            "end": 2.0999999046325684
+          },
+          {
+            "word": "needs",
+            "start": 2.0999999046325684,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "to",
+            "start": 2.319999933242798,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "buy",
+            "start": 2.700000047683716,
+            "end": 2.740000009536743
+          },
+          {
+            "word": "in",
+            "start": 2.740000009536743,
+            "end": 3
+          },
+          {
+            "word": "What",
+            "start": 3.740000009536743,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "are",
+            "start": 3.859999895095825,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "their",
+            "start": 3.9600000381469727,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "concerns",
+            "start": 4.199999809265137,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "How",
+            "start": 5.5,
+            "end": 5.619999885559082
+          },
+          {
+            "word": "do",
+            "start": 5.619999885559082,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "you",
+            "start": 5.760000228881836,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "address",
+            "start": 5.940000057220459,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "them",
+            "start": 6.199999809265137,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "proactively",
+            "start": 6.480000019073486,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "Map",
+            "start": 8.0600004196167,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "your",
+            "start": 8.0600004196167,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "stakeholders",
+            "start": 8.380000114440918,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "understand",
+            "start": 9.720000267028809,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "their",
+            "start": 9.720000267028809,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "motivations",
+            "start": 9.979999542236328,
+            "end": 10.5
+          },
+          {
+            "word": "and",
+            "start": 10.760000228881836,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "bring",
+            "start": 11.279999732971191,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "them",
+            "start": 11.359999656677246,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "along",
+            "start": 11.579999923706055,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "on",
+            "start": 11.859999656677246,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "the",
+            "start": 12.0600004196167,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "journey",
+            "start": 12.220000267028809,
+            "end": 12.399999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Progress Visibility. How do others know the initiative is on track? Clear milestones, regular updates, visible metrics. If stakeholders have to ask how things are going, you're not communicating enough.",
+        "duration": 13.319999694824219,
+        "words": [
+          {
+            "word": "Progress",
+            "start": 0,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "visibility",
+            "start": 1.1200000047683716,
+            "end": 1.7400000095367432
+          },
+          {
+            "word": "How",
+            "start": 2.5799999237060547,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "do",
+            "start": 2.5799999237060547,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "others",
+            "start": 2.8399999141693115,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "know",
+            "start": 3.0399999618530273,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "the",
+            "start": 3.299999952316284,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "initiative",
+            "start": 3.619999885559082,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "is",
+            "start": 3.8399999141693115,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "on",
+            "start": 4.079999923706055,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "track",
+            "start": 4.320000171661377,
+            "end": 4.619999885559082
+          },
+          {
+            "word": "Clear",
+            "start": 5.360000133514404,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "milestones",
+            "start": 5.360000133514404,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "regular",
+            "start": 6.639999866485596,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "updates",
+            "start": 6.699999809265137,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "visible",
+            "start": 7.860000133514404,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "metrics",
+            "start": 7.900000095367432,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "If",
+            "start": 9,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "stakeholders",
+            "start": 9.100000381469727,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "have",
+            "start": 9.539999961853027,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "to",
+            "start": 9.84000015258789,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "ask",
+            "start": 10.180000305175781,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "how",
+            "start": 10.300000190734863,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "things",
+            "start": 10.539999961853027,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "are",
+            "start": 10.760000228881836,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "going",
+            "start": 10.9399995803833,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "you're",
+            "start": 11.680000305175781,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "not",
+            "start": 11.859999656677246,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "communicating",
+            "start": 12.15999984741211,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "enough",
+            "start": 12.699999809265137,
+            "end": 13.079999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Risk & Adaptation. What could go wrong? How are you mitigating? When do you escalate? Plans will change — can you adjust scope, timeline, or approach while maintaining momentum? Flexibility is survival.",
+        "duration": 16.600000381469727,
+        "words": [
+          {
+            "word": "risk",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "and",
+            "start": 0.6600000262260437,
+            "end": 1.3200000524520874
+          },
+          {
+            "word": "adaptation",
+            "start": 1.3200000524520874,
+            "end": 1.9199999570846558
+          },
+          {
+            "word": "What",
+            "start": 2.880000114440918,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "could",
+            "start": 2.9200000762939453,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "go",
+            "start": 3.1600000858306885,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "wrong",
+            "start": 3.4200000762939453,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "How",
+            "start": 4.400000095367432,
+            "end": 4.5
+          },
+          {
+            "word": "are",
+            "start": 4.5,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "you",
+            "start": 4.639999866485596,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "mitigating",
+            "start": 4.920000076293945,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "When",
+            "start": 5.78000020980835,
+            "end": 5.920000076293945
+          },
+          {
+            "word": "do",
+            "start": 5.920000076293945,
+            "end": 6.139999866485596
+          },
+          {
+            "word": "you",
+            "start": 6.139999866485596,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "escalate",
+            "start": 6.380000114440918,
+            "end": 6.760000228881836
+          },
+          {
+            "word": "Plans",
+            "start": 7.619999885559082,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "will",
+            "start": 7.619999885559082,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "change",
+            "start": 8.039999961853027,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "Can",
+            "start": 9.079999923706055,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "you",
+            "start": 9.100000381469727,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "adjust",
+            "start": 9.300000190734863,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "scope",
+            "start": 9.5600004196167,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "timeline",
+            "start": 10.800000190734863,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "or",
+            "start": 10.920000076293945,
+            "end": 11.399999618530273
+          },
+          {
+            "word": "approach",
+            "start": 11.399999618530273,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "while",
+            "start": 11.760000228881836,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "maintaining",
+            "start": 12.260000228881836,
+            "end": 12.720000267028809
+          },
+          {
+            "word": "momentum",
+            "start": 12.720000267028809,
+            "end": 13.220000267028809
+          },
+          {
+            "word": "Flexibility",
+            "start": 14.079999923706055,
+            "end": 14.5
+          },
+          {
+            "word": "is",
+            "start": 14.5,
+            "end": 14.960000038146973
+          },
+          {
+            "word": "survival",
+            "start": 14.960000038146973,
+            "end": 15.420000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "leadership-story",
+        "stepId": "step-5",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "AI + Leadership. Here's the secret: AI helps you move faster on technical work, freeing time for the human work. Use that time for communication, alignment, and relationship building. That's what makes initiatives succeed.",
+        "duration": 16.559999465942383,
+        "words": [
+          {
+            "word": "AI",
+            "start": 0.8199999928474426,
+            "end": 1.5199999809265137
+          },
+          {
+            "word": "plus",
+            "start": 1.5199999809265137,
+            "end": 1.9600000381469727
+          },
+          {
+            "word": "leadership",
+            "start": 1.9600000381469727,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "Here's",
+            "start": 3.0999999046325684,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "the",
+            "start": 3.200000047683716,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "secret",
+            "start": 3.4600000381469727,
+            "end": 3.680000066757202
+          },
+          {
+            "word": "AI",
+            "start": 4.71999979019165,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "helps",
+            "start": 4.71999979019165,
+            "end": 5
+          },
+          {
+            "word": "you",
+            "start": 5,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "move",
+            "start": 5.199999809265137,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "faster",
+            "start": 5.420000076293945,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "on",
+            "start": 5.840000152587891,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "technical",
+            "start": 6.119999885559082,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "work",
+            "start": 6.480000019073486,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "freeing",
+            "start": 7.440000057220459,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "time",
+            "start": 7.699999809265137,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "for",
+            "start": 7.940000057220459,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "the",
+            "start": 8.119999885559082,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "human",
+            "start": 8.600000381469727,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "work",
+            "start": 8.600000381469727,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "Use",
+            "start": 9.720000267028809,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "that",
+            "start": 9.720000267028809,
+            "end": 10
+          },
+          {
+            "word": "time",
+            "start": 10,
+            "end": 10.239999771118164
+          },
+          {
+            "word": "for",
+            "start": 10.239999771118164,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "communication",
+            "start": 11.279999732971191,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "alignment",
+            "start": 12.180000305175781,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "and",
+            "start": 12.640000343322754,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "relationship",
+            "start": 13.319999694824219,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "building",
+            "start": 12.960000038146973,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "That's",
+            "start": 14.239999771118164,
+            "end": 14.9399995803833
+          },
+          {
+            "word": "what",
+            "start": 14.9399995803833,
+            "end": 15.079999923706055
+          },
+          {
+            "word": "makes",
+            "start": 15.079999923706055,
+            "end": 15.300000190734863
+          },
+          {
+            "word": "initiatives",
+            "start": 15.300000190734863,
+            "end": 15.84000015258789
+          },
+          {
+            "word": "succeed",
+            "start": 15.84000015258789,
+            "end": 16.31999969482422
+          }
+        ]
+      }
+    ]
+  }
+}

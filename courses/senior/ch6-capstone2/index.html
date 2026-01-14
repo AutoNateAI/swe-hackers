@@ -3,476 +3,447 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capstone II: Your Amplified Workflow | Senior Amplifier</title>
-  
-  <!-- Fonts -->
+  <title>Your Amplified Workflow | Senior Amplifier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--success);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(102, 187, 106, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(76, 175, 80, 0.15) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--success);
-    }
-    
-    .story-block::before {
-      color: var(--success);
-    }
-
-    .playbook-section {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border-left: 3px solid var(--success);
-    }
-
-    .playbook-section h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-icon {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(102, 187, 106, 0.15);
-      border-radius: 50%;
-      font-size: 1rem;
-    }
-
-    .skills-summary {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .skill-card {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-      border-top: 3px solid var(--accent-lightning);
-    }
-
-    .skill-card.ch1 { border-top-color: var(--accent-stone); }
-    .skill-card.ch2 { border-top-color: var(--accent-lightning); }
-    .skill-card.ch3 { border-top-color: var(--accent-magnetism); }
-    .skill-card.ch4 { border-top-color: #7c4dff; }
-
-    .skill-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-card h4 {
-      margin-bottom: 0.25rem;
-    }
-
-    .skill-card p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    .impact-metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .metric-card {
-      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--success);
-      line-height: 1;
-    }
-
-    .metric-label {
-      margin-top: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-    }
-
-    .celebration {
-      background: linear-gradient(135deg, rgba(102, 187, 106, 0.1), rgba(76, 175, 80, 0.05));
-      border: 1px solid rgba(102, 187, 106, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      text-align: center;
-      margin: 2rem 0;
-    }
-
-    .celebration-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    .celebration h3 {
-      color: var(--success);
-      margin-bottom: 1rem;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
 </head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+<body data-course="senior" data-lesson="ch6-capstone2">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🌟</div>
+        <span>Amplified</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Senior</a>
+        <a href="../ch5-capstone1/">Ch 5</a>
+        <a href="index.html" class="active">Ch 6</a>
+        <a href="../ch0-origins/">Origins</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="skills" title="Skills Review"></div>
-    <div class="progress-dot" data-section="playbook" title="Your Playbook"></div>
-    <div class="progress-dot" data-section="impact" title="Measure Impact"></div>
-    <div class="progress-dot" data-section="project" title="Final Project"></div>
-  </nav>
-
-  <main class="lesson-container">
-    
-    <!-- HERO SECTION -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Capstone II • Week 6</span>
-        <div class="hero-icon">🌟</div>
-        <h1>Your Amplified Workflow</h1>
-        <p class="hero-subtitle">
-          You've learned the skills. Now <strong>systematize</strong> them. Build your personal 
-          playbook for AI-augmented engineering.
-        </p>
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Senior Amplifier</a>
+        <span>/</span>
+        <span>Your Amplified Workflow</span>
       </div>
+      <h1>🌟 Your Amplified Workflow</h1>
+      <p>You've learned the skills. Now systematize them. Build your personal playbook for AI-augmented engineering.</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 1: Skills Review -->
+    <section class="section" id="skills-review-section">
+      <h2>📚 What You've Mastered</h2>
+      <p>Five weeks of intensive learning. Here's what you can now do.</p>
       
-      <div class="scroll-indicator">
-        <span>Build your system</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- SKILLS REVIEW -->
-    <section class="section" data-section="skills">
-      <div class="section-content">
-        <h2 class="fade-in">📚 What You've Learned</h2>
+      <div class="diagram-container" id="skills-review-container">
+        <div class="diagram-header">
+          <span class="diagram-title">⚡ Your Amplified Skillset</span>
+        </div>
+        <div id="skills-review-story" class="diagram-canvas storytelling"></div>
         
-        <p class="fade-in">
-          Five weeks of intensive learning. Here's what you can now do:
-        </p>
-
-        <div class="skills-summary fade-in">
-          <div class="skill-card ch1">
-            <div class="skill-icon">🪨</div>
-            <h4>Rapid Acquisition</h4>
-            <p>Master any codebase in hours, not weeks</p>
-          </div>
-          <div class="skill-card ch2">
-            <div class="skill-icon">⚡</div>
-            <h4>System Debugging</h4>
-            <p>Diagnose distributed issues with AI assistance</p>
-          </div>
-          <div class="skill-card ch3">
-            <div class="skill-icon">🧲</div>
-            <h4>Platform Strategy</h4>
-            <p>Design integration patterns that scale</p>
-          </div>
-          <div class="skill-card ch4">
-            <div class="skill-icon">🏛️</div>
-            <h4>AI-Augmented Design</h4>
-            <p>Design systems faster without sacrificing quality</p>
+        <div class="diagram-story" id="skills-review-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="story-block fade-in">
-          <p>
-            These skills make you 10x more effective with AI. Because now you can give AI 
-            the context it needs, verify its output intelligently, and direct it with clear 
-            designs. <strong>You're amplified.</strong>
-          </p>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="skills-review-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="skills-review-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="skills-review-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="skills-review-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- YOUR PLAYBOOK -->
-    <section class="section" data-section="playbook">
-      <div class="section-content">
-        <h2 class="fade-in">📖 Building Your Playbook</h2>
-        
-        <p class="fade-in">
-          A playbook is your documented system for how YOU use AI to multiply YOUR impact. 
-          Here's what goes in it:
-        </p>
-
-        <div class="playbook-section fade-in">
-          <h4><span class="section-icon">🔍</span> Codebase Acquisition Protocol</h4>
-          <ul>
-            <li>Your best prompts for learning new codebases</li>
-            <li>Your verification checklist (what to spot-check)</li>
-            <li>Documentation templates you generate</li>
-            <li>Time targets for each phase</li>
-          </ul>
+      <div class="quiz-card" id="skills-review-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
         </div>
-
-        <div class="playbook-section fade-in">
-          <h4><span class="section-icon">🐛</span> Debugging Workflow</h4>
-          <ul>
-            <li>How you gather information for AI (logs, metrics, context)</li>
-            <li>Your hypothesis generation prompts</li>
-            <li>Your investigation framework</li>
-            <li>Post-incident documentation templates</li>
-          </ul>
-        </div>
-
-        <div class="playbook-section fade-in">
-          <h4><span class="section-icon">🔗</span> Integration Design Process</h4>
-          <ul>
-            <li>Your standard patterns and when to use them</li>
-            <li>Code generation prompts that produce compliant code</li>
-            <li>Your review checklist for AI-generated integrations</li>
-            <li>Documentation standards</li>
-          </ul>
-        </div>
-
-        <div class="playbook-section fade-in">
-          <h4><span class="section-icon">📐</span> System Design Process</h4>
-          <ul>
-            <li>Your requirements synthesis approach</li>
-            <li>Design generation prompts</li>
-            <li>Trade-off analysis framework</li>
-            <li>Review preparation checklist</li>
-          </ul>
-        </div>
-
-        <div class="playbook-section fade-in">
-          <h4><span class="section-icon">💻</span> Code Generation Standards</h4>
-          <ul>
-            <li>What you delegate to AI vs. do yourself</li>
-            <li>How you review AI-generated code</li>
-            <li>Testing requirements for AI code</li>
-            <li>Common corrections you make</li>
-          </ul>
-        </div>
-
-        <div class="playbook-section fade-in">
-          <h4><span class="section-icon">📈</span> Continuous Improvement</h4>
-          <ul>
-            <li>How you track what works and what doesn't</li>
-            <li>How you improve your prompts over time</li>
-            <li>How you share learnings with your team</li>
-          </ul>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- MEASURE IMPACT -->
-    <section class="section" data-section="impact">
-      <div class="section-content">
-        <h2 class="fade-in">📊 Measuring Your Amplification</h2>
+    <!-- Story 2: Building Your Playbook -->
+    <section class="section" id="playbook-section">
+      <h2>📖 Building Your Playbook</h2>
+      <p>Document your system for AI-augmented engineering.</p>
+      
+      <div class="diagram-container" id="playbook-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📋 Playbook Components</span>
+        </div>
+        <div id="playbook-story" class="diagram-canvas storytelling"></div>
         
-        <p class="fade-in">
-          How do you know your playbook works? Measure before and after:
-        </p>
-
-        <div class="impact-metrics fade-in">
-          <div class="metric-card">
-            <div class="metric-value">5x</div>
-            <div class="metric-label">Faster codebase onboarding</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">3x</div>
-            <div class="metric-label">Faster incident resolution</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">2x</div>
-            <div class="metric-label">Faster design cycle</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">10x</div>
-            <div class="metric-label">Bigger project scope possible</div>
+        <div class="diagram-story" id="playbook-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="fade-in">What to Track</h3>
-        
-        <div class="code-demo fade-in">
-          <div class="code-header">
-            <span>Impact Tracking Template</span>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-          <pre class="code-content"><code>## Task: [Description]
+          <div class="playback-center">
+            <div class="story-progress" id="playbook-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-**Without AI (estimated):**
-- Time: X hours/days
-- Effort: [description]
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="playbook-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="playbook-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="playbook-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-**With AI (actual):**
-- Time: Y hours/days  
-- Effort: [description]
-
-**Amplification Factor:** X/Y
-
-**What worked well:**
-- [Prompt that saved time]
-- [Process that accelerated]
-
-**What to improve:**
-- [Where AI fell short]
-- [What needed manual correction]</code></pre>
+      <div class="quiz-card" id="playbook-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- FINAL PROJECT -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🌟 Final Project: Your Playbook</h2>
+    <!-- Story 3: Amplification Journey -->
+    <section class="section" id="amplification-section">
+      <h2>🏆 Your Amplified Journey</h2>
+      <p>Measure your impact and complete your transformation.</p>
+      
+      <div class="diagram-container" id="amplification-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🚀 Journey Complete</span>
+        </div>
+        <div id="amplification-story" class="diagram-canvas storytelling"></div>
         
-        <div class="story-block fade-in">
-          <p>
-            Build your personal <strong>Amplified Engineering Playbook</strong>. Test it on 
-            a real project. Measure the impact. Refine based on results.
-          </p>
-        </div>
-
-        <div class="terminal-demo fade-in">
-          <div class="terminal-header">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span>Deliverables</span>
-          </div>
-          <div class="terminal-content">
-            <div class="terminal-line">your-folder/capstone-2/</div>
-            <div class="terminal-line">├── PLAYBOOK.md               # Your complete system</div>
-            <div class="terminal-line">├── PROMPTS_LIBRARY.md        # Your best AI prompts</div>
-            <div class="terminal-line">├── VERIFICATION_CHECKLISTS.md # How you verify AI output</div>
-            <div class="terminal-line">├── REAL_PROJECT/             # Applied to real work</div>
-            <div class="terminal-line">│   ├── BEFORE_AFTER.md       # Impact measurement</div>
-            <div class="terminal-line">│   └── REFINEMENTS.md        # What you improved</div>
-            <div class="terminal-line">├── TEAM_GUIDE.md             # How others can use this</div>
-            <div class="terminal-line">└── FUTURE_IMPROVEMENTS.md    # What's next</div>
+        <div class="diagram-story" id="amplification-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3 class="fade-in">Success Criteria</h3>
-        
-        <ul class="fade-in">
-          <li>Playbook documented with all major workflows</li>
-          <li>Prompts library with 10+ tested prompts</li>
-          <li>Applied to at least one real project</li>
-          <li>Before/after impact measured</li>
-          <li>Ready to share with your team</li>
-        </ul>
-
-        <div class="celebration fade-in">
-          <div class="celebration-icon">🎉</div>
-          <h3>Congratulations, Amplified Engineer!</h3>
-          <p>
-            You've completed the Senior Amplifier course. You now have a systematic approach 
-            to using AI that multiplies your impact. You're not just using AI tools — you're 
-            <strong>amplified</strong> by them.
-          </p>
-          <p style="margin-top: 1rem;">
-            The engineers who embrace AI won't just keep their jobs. They'll take on bigger 
-            roles, more responsibility, and more impact. <strong>You're one of them now.</strong>
-          </p>
-        </div>
-
-        <div class="diagram-container fade-in">
-          <div class="diagram-title">Your Journey Complete</div>
-          <div class="mermaid">
-flowchart LR
-    A[Senior Engineer] --> B[Ch1: Rapid Acquisition]
-    B --> C[Ch2: System Debugging]
-    C --> D[Ch3: Platform Strategy]
-    D --> E[Ch4: AI Design]
-    E --> F[Cap1: Lead Initiative]
-    F --> G[Cap2: Your Playbook]
-    G --> H[Amplified Engineer]
-    
-    style A fill:#4a4a5a,stroke:#6a6a7a
-    style H fill:#66bb6a,stroke:#43a047
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="amplification-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
           </div>
         </div>
 
-        <div class="project-footer fade-in">
-          <h3>📦 Save Your Work!</h3>
-          <p>Commit your playbook and share it with your team. Your amplified journey continues.</p>
-          
-          <a href="../../index.html" class="nav-link next">
-            <span>Return to Course Home</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="amplification-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="amplification-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="amplification-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="amplification-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>🎉 Course Complete!</h2>
+      <p>Congratulations, Amplified Engineer! You now have a systematic approach to using AI that multiplies your impact.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch0-origins/" class="card">
+          <div class="card-icon">🌟</div>
+          <h3>Back to Origins</h3>
+          <p>Review where your amplification journey began.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in the Senior Amplifier course.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
-  <!-- Chapter Navigation -->
-  <nav class="chapter-nav">
-    <a href="../ch5-capstone1/index.html" class="nav-btn prev">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      <span>Capstone I</span>
-    </a>
-    <a href="../../index.html" class="nav-btn next">
-      <span>Course Complete!</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#skills-review-section">Skills Review</a></li>
+      <li><a href="#playbook-section">Your Playbook</a></li>
+      <li><a href="#amplification-section">Amplified Journey</a></li>
+    </ul>
   </nav>
 
-  <script src="../../shared/js/lesson.js"></script>
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
   
-  <!-- Lesson Integration -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      window.LessonIntegration.init("senior", "ch6-capstone2");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("senior", "ch6-capstone2");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("senior", "ch6-capstone2");
-        }
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'skills-review': [
+          // Skills mastered
+          { data: { id: 'five-weeks', label: '📚 Five Weeks\nof Mastery', type: 'concept', description: 'Intensive learning' } },
+          { data: { id: 'rapid-acquisition', label: '🪨 Rapid\nAcquisition', type: 'data', description: 'Master codebases fast' } },
+          { data: { id: 'system-debugging', label: '⚡ System\nDebugging', type: 'auth', description: 'Distributed diagnosis' } },
+          { data: { id: 'platform-strategy', label: '🧲 Platform\nStrategy', type: 'service', description: 'Integration patterns' } },
+          { data: { id: 'ai-design', label: '🏛️ AI-Augmented\nDesign', type: 'external', description: 'Faster architecture' } },
+          { data: { id: 'amplified', label: '⚡ You\'re\nAmplified', type: 'example', description: '10x effective' } },
+          // Edges
+          { data: { source: 'five-weeks', target: 'rapid-acquisition' } },
+          { data: { source: 'five-weeks', target: 'system-debugging' } },
+          { data: { source: 'five-weeks', target: 'platform-strategy' } },
+          { data: { source: 'five-weeks', target: 'ai-design' } },
+          { data: { source: 'rapid-acquisition', target: 'amplified' } },
+          { data: { source: 'system-debugging', target: 'amplified' } },
+          { data: { source: 'platform-strategy', target: 'amplified' } },
+          { data: { source: 'ai-design', target: 'amplified' } }
+        ],
+        'playbook': [
+          // Playbook components
+          { data: { id: 'what-is-playbook', label: '📖 Your\nPlaybook', type: 'concept', description: 'Documented system' } },
+          { data: { id: 'acquisition-protocol', label: '🔍 Acquisition\nProtocol', type: 'data', description: 'Codebase learning' } },
+          { data: { id: 'debugging-workflow', label: '🐛 Debugging\nWorkflow', type: 'auth', description: 'Investigation system' } },
+          { data: { id: 'design-process', label: '📐 Design\nProcess', type: 'service', description: 'Architecture approach' } },
+          { data: { id: 'code-standards', label: '💻 Code\nStandards', type: 'external', description: 'Generation rules' } },
+          { data: { id: 'continuous-improvement', label: '📈 Continuous\nImprovement', type: 'example', description: 'Always evolving' } },
+          // Edges
+          { data: { source: 'what-is-playbook', target: 'acquisition-protocol' } },
+          { data: { source: 'what-is-playbook', target: 'debugging-workflow' } },
+          { data: { source: 'what-is-playbook', target: 'design-process' } },
+          { data: { source: 'what-is-playbook', target: 'code-standards' } },
+          { data: { source: 'acquisition-protocol', target: 'continuous-improvement' } },
+          { data: { source: 'debugging-workflow', target: 'continuous-improvement' } },
+          { data: { source: 'design-process', target: 'continuous-improvement' } },
+          { data: { source: 'code-standards', target: 'continuous-improvement' } }
+        ],
+        'amplification': [
+          // Amplification journey
+          { data: { id: 'measure-impact', label: '📊 Measure\nImpact', type: 'concept', description: 'Before vs after' } },
+          { data: { id: 'speed-gains', label: '⏱️ Speed\nGains', type: 'data', description: '3-5x faster' } },
+          { data: { id: 'scope-expansion', label: '🎯 Scope\nExpansion', type: 'service', description: '10x bigger projects' } },
+          { data: { id: 'journey-complete', label: '🏆 Journey\nComplete', type: 'example', description: 'Amplified engineer' } },
+          { data: { id: 'the-future', label: '🚀 The Future\nIs Yours', type: 'page', description: 'Lead the way' } },
+          // Edges
+          { data: { source: 'measure-impact', target: 'speed-gains' } },
+          { data: { source: 'measure-impact', target: 'scope-expansion' } },
+          { data: { source: 'speed-gains', target: 'journey-complete' } },
+          { data: { source: 'scope-expansion', target: 'journey-complete' } },
+          { data: { source: 'journey-complete', target: 'the-future' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      const storyToDiagram = {
+        'skills-review-story': 'skills-review',
+        'playbook-story': 'playbook',
+        'amplification-story': 'amplification'
+      };
+
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      const storyToQuiz = {
+        'skills-review-story': 'skills-review-quiz',
+        'playbook-story': 'playbook-quiz',
+        'amplification-story': 'amplification-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+        new Quiz(containerId, quiz.questions);
+      });
     });
   </script>
 </body>
 </html>
-

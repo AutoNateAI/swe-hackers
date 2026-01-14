@@ -1,0 +1,125 @@
+{
+  "storyId": "ai-debugging-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Hypothesis Generation. AI generates ranked hypotheses. High likelihood: database connection pool exhaustion. Medium: third-party rate limiting. Lower: memory leak from recent deploy. Now you know where to dig.",
+  "duration": 13.510000228881836,
+  "words": [
+    {
+      "word": "Hypothesis",
+      "start": 0,
+      "end": 0.9599999785423279
+    },
+    {
+      "word": "generation",
+      "start": 0.9599999785423279,
+      "end": 1.6200000047683716
+    },
+    {
+      "word": "AI",
+      "start": 3.0799999237060547,
+      "end": 3.0799999237060547
+    },
+    {
+      "word": "generates",
+      "start": 3.0799999237060547,
+      "end": 3.6600000858306885
+    },
+    {
+      "word": "ranked",
+      "start": 3.6600000858306885,
+      "end": 4.079999923706055
+    },
+    {
+      "word": "hypotheses",
+      "start": 4.079999923706055,
+      "end": 4.840000152587891
+    },
+    {
+      "word": "High",
+      "start": 5.579999923706055,
+      "end": 5.579999923706055
+    },
+    {
+      "word": "likelihood",
+      "start": 5.579999923706055,
+      "end": 6.019999980926514
+    },
+    {
+      "word": "database",
+      "start": 6.840000152587891,
+      "end": 6.840000152587891
+    },
+    {
+      "word": "connection",
+      "start": 6.840000152587891,
+      "end": 7.320000171661377
+    },
+    {
+      "word": "pool",
+      "start": 7.320000171661377,
+      "end": 7.659999847412109
+    },
+    {
+      "word": "exhaustion",
+      "start": 7.659999847412109,
+      "end": 8.180000305175781
+    },
+    {
+      "word": "Medium",
+      "start": 9.039999961853027,
+      "end": 9.039999961853027
+    },
+    {
+      "word": "third",
+      "start": 9.640000343322754,
+      "end": 9.720000267028809
+    },
+    {
+      "word": "party",
+      "start": 9.720000267028809,
+      "end": 9.960000038146973
+    },
+    {
+      "word": "rate",
+      "start": 9.960000038146973,
+      "end": 10.34000015258789
+    },
+    {
+      "word": "limiting",
+      "start": 10.34000015258789,
+      "end": 10.640000343322754
+    },
+    {
+      "word": "Lower",
+      "start": 11.399999618530273,
+      "end": 11.399999618530273
+    },
+    {
+      "word": "memory",
+      "start": 12.039999961853027,
+      "end": 12.039999961853027
+    },
+    {
+      "word": "leak",
+      "start": 12.039999961853027,
+      "end": 12.239999771118164
+    },
+    {
+      "word": "from",
+      "start": 12.239999771118164,
+      "end": 12.520000457763672
+    },
+    {
+      "word": "recent",
+      "start": 12.520000457763672,
+      "end": 12.819999694824219
+    },
+    {
+      "word": "deploy",
+      "start": 12.819999694824219,
+      "end": 13.220000267028809
+    }
+  ]
+}

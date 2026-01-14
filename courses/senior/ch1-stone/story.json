@@ -1,0 +1,289 @@
+{
+  "pageId": "ch1-stone",
+  "courseId": "senior",
+  "chapterMeta": {
+    "title": "The Stone Remembers",
+    "icon": "🪨",
+    "themeColor": "stone"
+  },
+  "stories": [
+    {
+      "id": "plateau-story",
+      "diagramId": "plateau",
+      "title": "The Senior Plateau",
+      "steps": [
+        {
+          "nodeId": "domain-locked",
+          "icon": "🏔️",
+          "title": "Domain-Locked Expertise",
+          "narration": "You've been a senior engineer for a while. You know your service inside out, can navigate your codebase with your eyes closed. But here's the uncomfortable truth: your expertise is domain-locked.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "unfamiliar-code",
+          "edges": [{ "from": "domain-locked", "to": "unfamiliar-code" }],
+          "icon": "❓",
+          "title": "Back to Square One",
+          "narration": "When you need to review a PR in an unfamiliar service, integrate with a legacy system, or evaluate an acquisition target's code—you're back to square one. All that expertise doesn't transfer automatically.",
+          "connectsTo": "Domain-Locked"
+        },
+        {
+          "nodeId": "traditional-timeline",
+          "edges": [{ "from": "unfamiliar-code", "to": "traditional-timeline" }],
+          "icon": "⏱️",
+          "title": "The Traditional Timeline",
+          "narration": "The traditional approach takes 2 to 4 weeks to get productive in a new codebase. Week one for setup and exploration, week two for breaking things, week three for understanding flows, week four for finally being productive.",
+          "connectsTo": "Unfamiliar Code"
+        },
+        {
+          "nodeId": "amplified-timeline",
+          "edges": [{ "from": "traditional-timeline", "to": "amplified-timeline" }],
+          "icon": "⚡",
+          "title": "The Amplified Timeline",
+          "narration": "But what if you could compress that to hours? Hours one and two for AI architecture overview, three and four for entry points and flows, five and six for patterns and risks. Day two: making contributions.",
+          "connectsTo": "Traditional Timeline"
+        },
+        {
+          "nodeId": "key-insight",
+          "edges": [{ "from": "amplified-timeline", "to": "key-insight" }],
+          "icon": "💡",
+          "title": "The Key Insight",
+          "narration": "AI doesn't replace your expertise—it lets you acquire expertise faster. You're still the judge, the decision-maker, the one who knows what matters. AI is your research assistant, not your replacement.",
+          "connectsTo": "Amplified Timeline"
+        }
+      ]
+    },
+    {
+      "id": "amplified-story",
+      "diagramId": "amplified",
+      "title": "The Amplified Approach",
+      "steps": [
+        {
+          "nodeId": "new-codebase",
+          "icon": "📦",
+          "title": "Facing a New Codebase",
+          "narration": "You're dropped into an unfamiliar codebase. Thousands of files, unknown patterns, undocumented decisions. Instead of manually reading everything, let AI do the initial reconnaissance.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "ai-analysis",
+          "edges": [{ "from": "new-codebase", "to": "ai-analysis" }],
+          "icon": "🤖",
+          "title": "AI Analysis",
+          "narration": "Feed the codebase to AI and ask for structure, not details. Architecture summary, entry points, core data models, repeated patterns, areas of complexity, external integrations. Understand the shape before the substance.",
+          "connectsTo": "New Codebase"
+        },
+        {
+          "nodeId": "ai-outputs",
+          "edges": [{ "from": "ai-analysis", "to": "ai-outputs" }],
+          "icon": "📊",
+          "title": "What AI Produces",
+          "narration": "AI gives you an architecture summary, maps the entry points, identifies patterns, and flags risk areas. All in about two hours of conversation instead of weeks of manual exploration.",
+          "connectsTo": "AI Analysis"
+        },
+        {
+          "nodeId": "senior-verification",
+          "edges": [{ "from": "ai-outputs", "to": "senior-verification" }],
+          "icon": "🔍",
+          "title": "Senior Verification",
+          "narration": "Now YOU apply your judgment. Verify AI's claims against actual code—AI makes mistakes. You know what matters for YOUR situation. Decide what to trust, what to investigate deeper, what to skip.",
+          "connectsTo": "AI Outputs"
+        },
+        {
+          "nodeId": "productive-fast",
+          "edges": [{ "from": "senior-verification", "to": "productive-fast" }],
+          "icon": "🚀",
+          "title": "Productive in Hours",
+          "narration": "Deep dive only where needed based on AI's map. By day two, you're making meaningful contributions. What took weeks now takes hours. Your expertise transfers across codebases.",
+          "connectsTo": "Verification"
+        }
+      ]
+    },
+    {
+      "id": "protocol-story",
+      "diagramId": "protocol",
+      "title": "The Rapid Acquisition Protocol",
+      "steps": [
+        {
+          "nodeId": "repeatable-process",
+          "icon": "📋",
+          "title": "A Repeatable Process",
+          "narration": "This isn't magic—it's a repeatable 6-step protocol for mastering any codebase quickly. Each step builds on the previous, creating a systematic approach to rapid acquisition.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "step-reconnaissance",
+          "edges": [{ "from": "repeatable-process", "to": "step-reconnaissance" }],
+          "icon": "1️⃣",
+          "title": "Initial Reconnaissance",
+          "narration": "Step one: Feed AI the codebase and ask for structure, not details. Understand the shape before the substance. What are the major components? How do they relate?",
+          "connectsTo": "Repeatable Process"
+        },
+        {
+          "nodeId": "step-entry-points",
+          "edges": [{ "from": "step-reconnaissance", "to": "step-entry-points" }],
+          "icon": "2️⃣",
+          "title": "Entry Point Mapping",
+          "narration": "Step two: Where does execution start? API routes, CLI commands, job schedulers. These are your map's landmarks—the places where external requests enter the system.",
+          "connectsTo": "Reconnaissance"
+        },
+        {
+          "nodeId": "step-data-models",
+          "edges": [{ "from": "step-entry-points", "to": "step-data-models" }],
+          "icon": "3️⃣",
+          "title": "Data Model Analysis",
+          "narration": "Step three: What are the nouns? Database schemas, domain objects, API types. Understanding data means understanding the system. Data shapes behavior.",
+          "connectsTo": "Entry Points"
+        },
+        {
+          "nodeId": "step-patterns",
+          "edges": [{ "from": "step-data-models", "to": "step-patterns" }],
+          "icon": "4️⃣",
+          "title": "Pattern Recognition",
+          "narration": "Step four: How do they do things? Naming conventions, error handling, testing approaches. Learn the local dialect so your code fits in and follows established conventions.",
+          "connectsTo": "Data Models"
+        },
+        {
+          "nodeId": "step-risks",
+          "edges": [{ "from": "step-patterns", "to": "step-risks" }],
+          "icon": "5️⃣",
+          "title": "Risk Assessment",
+          "narration": "Step five: Where are the landmines? Complex areas, tech debt, missing tests, security concerns. Know what to avoid touching until you understand it deeply.",
+          "connectsTo": "Patterns"
+        },
+        {
+          "nodeId": "step-docs",
+          "edges": [{ "from": "step-risks", "to": "step-docs" }],
+          "icon": "6️⃣",
+          "title": "Documentation Generation",
+          "narration": "Step six: What's missing? Have AI draft docs you wish existed—architecture diagrams, API documentation, onboarding guides. Then verify, refine, and contribute back.",
+          "connectsTo": "Risks"
+        },
+        {
+          "nodeId": "mastery",
+          "edges": [{ "from": "step-docs", "to": "mastery" }],
+          "icon": "🏆",
+          "title": "Codebase Mastery",
+          "narration": "Follow the protocol and you go from stranger to contributor in a day or two. This isn't about shortcuts—it's about systematic, AI-augmented learning that scales across any codebase.",
+          "connectsTo": "Documentation"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "plateau-story",
+      "questions": [
+        {
+          "question": "What is the 'senior plateau' problem?",
+          "options": [
+            "Senior engineers get bored",
+            "Expertise is domain-locked and doesn't transfer to new codebases",
+            "Senior engineers are too expensive",
+            "AI is replacing senior engineers"
+          ],
+          "correct": 1,
+          "explanation": "The senior plateau is when your deep expertise in your own codebase doesn't automatically transfer. In unfamiliar code, even seniors start from scratch—traditionally taking 2-4 weeks to get productive."
+        },
+        {
+          "question": "How long does the traditional approach take to get productive in a new codebase?",
+          "options": [
+            "A few hours",
+            "1-2 days",
+            "2-4 weeks",
+            "2-3 months"
+          ],
+          "correct": 2,
+          "explanation": "Traditional codebase onboarding takes 2-4 weeks: setup and exploration, breaking things, understanding flows, and finally being productive. The amplified approach compresses this to hours."
+        },
+        {
+          "question": "What's the key insight about AI-augmented learning?",
+          "options": [
+            "AI replaces the need to understand code",
+            "AI does everything automatically",
+            "AI helps you acquire expertise faster—you still provide judgment",
+            "AI only works for simple codebases"
+          ],
+          "correct": 2,
+          "explanation": "AI doesn't replace your expertise—it accelerates acquisition. You're still the judge who decides what's important, verifies AI's claims, and applies your experience. AI is your research assistant."
+        }
+      ]
+    },
+    {
+      "storyId": "amplified-story",
+      "questions": [
+        {
+          "question": "What should you ask AI for when analyzing a new codebase?",
+          "options": [
+            "Line-by-line code review",
+            "Structure and patterns, not details",
+            "Bug fixes",
+            "Performance optimizations"
+          ],
+          "correct": 1,
+          "explanation": "Ask AI for high-level structure: architecture summary, entry points, data models, patterns, complexity areas, and external integrations. Understand the shape before diving into details."
+        },
+        {
+          "question": "What's YOUR job after AI provides its analysis?",
+          "options": [
+            "Accept everything AI says as truth",
+            "Verify AI's claims, apply context, and use judgment",
+            "Ignore it and read the code manually",
+            "Forward it to your team without review"
+          ],
+          "correct": 1,
+          "explanation": "AI makes mistakes! Your job is to verify claims against actual code, apply context (you know what matters for YOUR situation), and use judgment on what to trust, investigate, or skip."
+        },
+        {
+          "question": "Why is senior verification critical?",
+          "options": [
+            "It's not—AI is always accurate",
+            "AI lacks context about your specific situation and can make mistakes",
+            "Verification is just for compliance",
+            "Only juniors need to verify"
+          ],
+          "correct": 1,
+          "explanation": "AI can hallucinate, miss context, and make errors. You bring domain knowledge, understanding of your specific goals, and experience to judge what's accurate and relevant."
+        }
+      ]
+    },
+    {
+      "storyId": "protocol-story",
+      "questions": [
+        {
+          "question": "What's the first step in the Rapid Acquisition Protocol?",
+          "options": [
+            "Start coding immediately",
+            "Initial reconnaissance—ask AI for structure, not details",
+            "Read every file manually",
+            "Set up your development environment"
+          ],
+          "correct": 1,
+          "explanation": "Step 1 is Initial Reconnaissance: Feed AI the codebase and ask for high-level structure. Understand the shape before the substance—major components and how they relate."
+        },
+        {
+          "question": "Why is 'Entry Point Mapping' important?",
+          "options": [
+            "It helps with authentication",
+            "Entry points are where execution starts—your map's landmarks",
+            "It's not important",
+            "It speeds up compilation"
+          ],
+          "correct": 1,
+          "explanation": "Entry points (API routes, CLI commands, job schedulers) are where external requests enter the system. They're landmarks that help you navigate and trace how data flows through the codebase."
+        },
+        {
+          "question": "What's the purpose of step 6—Documentation Generation?",
+          "options": [
+            "To create marketing materials",
+            "To draft missing docs (architecture, APIs, guides), then verify and refine",
+            "Documentation isn't part of the protocol",
+            "To generate code comments"
+          ],
+          "correct": 1,
+          "explanation": "Step 6 is about creating docs you wish existed. Have AI draft architecture diagrams, API docs, onboarding guides—then verify, refine, and contribute back. You improve the codebase for others."
+        }
+      ]
+    }
+  ]
+}
