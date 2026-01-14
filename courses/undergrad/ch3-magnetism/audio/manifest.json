@@ -1,0 +1,4720 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T01:53:55.432Z",
+  "stories": [
+    "api-reality-story",
+    "rest-design-story",
+    "auth-errors-story"
+  ],
+  "ballad": {
+    "api-reality-story": [
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Your Class Project. In class, you write requests dot get url and call it a day. Simple, clean, works on your machine. But that simple call hides a massive iceberg underneath.",
+        "duration": 14.949999809265137,
+        "words": [
+          {
+            "word": "your",
+            "start": 0,
+            "end": 0.5199999809265137
+          },
+          {
+            "word": "class",
+            "start": 0.5199999809265137,
+            "end": 1
+          },
+          {
+            "word": "project",
+            "start": 1,
+            "end": 1.6399999856948853
+          },
+          {
+            "word": "In",
+            "start": 2.3399999141693115,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "class",
+            "start": 2.5199999809265137,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "you",
+            "start": 3.299999952316284,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "write",
+            "start": 3.4200000762939453,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "requests",
+            "start": 3.7200000286102295,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "getURL",
+            "start": 4.239999771118164,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "and",
+            "start": 5.639999866485596,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "call",
+            "start": 5.880000114440918,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "it",
+            "start": 6.119999885559082,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "a",
+            "start": 6.28000020980835,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "day",
+            "start": 6.619999885559082,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "Simple",
+            "start": 7.440000057220459,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "clean",
+            "start": 8.34000015258789,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "works",
+            "start": 8.800000190734863,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "on",
+            "start": 8.979999542236328,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "your",
+            "start": 9.180000305175781,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "machine",
+            "start": 9.4399995803833,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "But",
+            "start": 10.199999809265137,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "that",
+            "start": 10.760000228881836,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "simple",
+            "start": 11.039999961853027,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "call",
+            "start": 11.359999656677246,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "hides",
+            "start": 11.9399995803833,
+            "end": 12.359999656677246
+          },
+          {
+            "word": "a",
+            "start": 12.359999656677246,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "massive",
+            "start": 13.100000381469727,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "iceberg",
+            "start": 13.100000381469727,
+            "end": 13.739999771118164
+          },
+          {
+            "word": "underneath",
+            "start": 13.739999771118164,
+            "end": 14.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Hidden Contract. Behind every API call is a contract—documented, versioned, authenticated, rate-limited. Breaking that contract breaks everyone who depends on it. That's the production reality.",
+        "duration": 16.100000381469727,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "hidden",
+            "start": 0.41999998688697815,
+            "end": 0.8999999761581421
+          },
+          {
+            "word": "contract",
+            "start": 0.8999999761581421,
+            "end": 1.5800000429153442
+          },
+          {
+            "word": "Behind",
+            "start": 2.5799999237060547,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "every",
+            "start": 2.5799999237060547,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "API",
+            "start": 3.180000066757202,
+            "end": 3.559999942779541
+          },
+          {
+            "word": "call",
+            "start": 3.559999942779541,
+            "end": 4
+          },
+          {
+            "word": "is",
+            "start": 4,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "a",
+            "start": 4.480000019073486,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "contract",
+            "start": 4.78000020980835,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "Documented",
+            "start": 6.159999847412109,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "versioned",
+            "start": 7.079999923706055,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "authenticated",
+            "start": 7.78000020980835,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "rate",
+            "start": 8.9399995803833,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "limited",
+            "start": 9.020000457763672,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "Breaking",
+            "start": 10.4399995803833,
+            "end": 10.4399995803833
+          },
+          {
+            "word": "that",
+            "start": 10.4399995803833,
+            "end": 11
+          },
+          {
+            "word": "contract",
+            "start": 11,
+            "end": 11.319999694824219
+          },
+          {
+            "word": "breaks",
+            "start": 11.319999694824219,
+            "end": 12.039999961853027
+          },
+          {
+            "word": "everyone",
+            "start": 12.039999961853027,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "who",
+            "start": 12.65999984741211,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "depends",
+            "start": 13.100000381469727,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "on",
+            "start": 13.34000015258789,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "it",
+            "start": 13.5600004196167,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "That's",
+            "start": 14.100000381469727,
+            "end": 14.720000267028809
+          },
+          {
+            "word": "the",
+            "start": 14.720000267028809,
+            "end": 14.979999542236328
+          },
+          {
+            "word": "production",
+            "start": 14.979999542236328,
+            "end": 15.359999656677246
+          },
+          {
+            "word": "reality",
+            "start": 15.359999656677246,
+            "end": 15.84000015258789
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Production API Clients. Production code needs retry logic, authentication headers, rate limit handling, and response validation. A simple get becomes a robust client with fallback strategies.",
+        "duration": 14.4399995803833,
+        "words": [
+          {
+            "word": "Production",
+            "start": 0,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "API",
+            "start": 0.800000011920929,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "clients",
+            "start": 1.399999976158142,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "Production",
+            "start": 3.2200000286102295,
+            "end": 3.2200000286102295
+          },
+          {
+            "word": "code",
+            "start": 3.2200000286102295,
+            "end": 3.5799999237060547
+          },
+          {
+            "word": "needs",
+            "start": 3.5799999237060547,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "retry",
+            "start": 3.940000057220459,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "logic",
+            "start": 4.440000057220459,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "authentication",
+            "start": 5.559999942779541,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "headers",
+            "start": 5.880000114440918,
+            "end": 6.260000228881836
+          },
+          {
+            "word": "rate",
+            "start": 6.980000019073486,
+            "end": 7.039999961853027
+          },
+          {
+            "word": "limit",
+            "start": 7.039999961853027,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "handling",
+            "start": 7.300000190734863,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "and",
+            "start": 8.039999961853027,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "response",
+            "start": 8.520000457763672,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "validation",
+            "start": 8.880000114440918,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "A",
+            "start": 10.199999809265137,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "simple",
+            "start": 10.720000267028809,
+            "end": 10.920000076293945
+          },
+          {
+            "word": "GET",
+            "start": 10.920000076293945,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "becomes",
+            "start": 11.239999771118164,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "a",
+            "start": 11.880000114440918,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "robust",
+            "start": 12.4399995803833,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "client",
+            "start": 12.4399995803833,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "with",
+            "start": 12.819999694824219,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "fallback",
+            "start": 13.140000343322754,
+            "end": 13.539999961853027
+          },
+          {
+            "word": "strategies",
+            "start": 13.539999961853027,
+            "end": 14
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Versioned Responses. You can't just return json data. Production APIs have versioned contracts, consistent error formats, pagination for large results, and hypermedia links for discoverability.",
+        "duration": 15.260000228881836,
+        "words": [
+          {
+            "word": "Versioned",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "word": "responses",
+            "start": 1,
+            "end": 1.3799999952316284
+          },
+          {
+            "word": "You",
+            "start": 2.5399999618530273,
+            "end": 2.5999999046325684
+          },
+          {
+            "word": "can't",
+            "start": 2.5999999046325684,
+            "end": 3
+          },
+          {
+            "word": "just",
+            "start": 3,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "return",
+            "start": 3.240000009536743,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "JSON",
+            "start": 3.5999999046325684,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "data",
+            "start": 4.019999980926514,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "Production",
+            "start": 5.659999847412109,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "APIs",
+            "start": 5.699999809265137,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "have",
+            "start": 6.239999771118164,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "versioned",
+            "start": 6.739999771118164,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "contracts",
+            "start": 7.380000114440918,
+            "end": 7.760000228881836
+          },
+          {
+            "word": "consistent",
+            "start": 8.739999771118164,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "error",
+            "start": 8.920000076293945,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "formats",
+            "start": 9.319999694824219,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "pagination",
+            "start": 10.640000343322754,
+            "end": 10.920000076293945
+          },
+          {
+            "word": "for",
+            "start": 10.920000076293945,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "large",
+            "start": 11.279999732971191,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "results",
+            "start": 11.579999923706055,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "and",
+            "start": 12.640000343322754,
+            "end": 12.899999618530273
+          },
+          {
+            "word": "hypermedia",
+            "start": 12.899999618530273,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "links",
+            "start": 13.460000038146973,
+            "end": 13.680000305175781
+          },
+          {
+            "word": "for",
+            "start": 13.680000305175781,
+            "end": 14.220000267028809
+          },
+          {
+            "word": "discoverability",
+            "start": 14.220000267028809,
+            "end": 15.020000457763672
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Structured Error Handling. Forget raise Exception. Production needs structured errors with codes, retry-after headers, and circuit breakers that prevent cascading failures across your entire system.",
+        "duration": 15.359999656677246,
+        "words": [
+          {
+            "word": "structured",
+            "start": 0,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "error",
+            "start": 0.9399999976158142,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "handling",
+            "start": 1.6200000047683716,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "Forget",
+            "start": 3.0799999237060547,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "raise",
+            "start": 3.640000104904175,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "exception",
+            "start": 3.640000104904175,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "Production",
+            "start": 5.460000038146973,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "needs",
+            "start": 5.460000038146973,
+            "end": 6
+          },
+          {
+            "word": "structured",
+            "start": 6,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "errors",
+            "start": 6.559999942779541,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "with",
+            "start": 6.920000076293945,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "codes",
+            "start": 7.320000171661377,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "retry",
+            "start": 8.520000457763672,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "after",
+            "start": 8.779999732971191,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "headers",
+            "start": 9.119999885559082,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "and",
+            "start": 9.399999618530273,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "circuit",
+            "start": 10.180000305175781,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "breakers",
+            "start": 10.539999961853027,
+            "end": 10.960000038146973
+          },
+          {
+            "word": "that",
+            "start": 10.960000038146973,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "prevent",
+            "start": 11.140000343322754,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "cascading",
+            "start": 11.600000381469727,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "failures",
+            "start": 12.4399995803833,
+            "end": 12.979999542236328
+          },
+          {
+            "word": "across",
+            "start": 12.979999542236328,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "your",
+            "start": 13.699999809265137,
+            "end": 14.079999923706055
+          },
+          {
+            "word": "entire",
+            "start": 14.079999923706055,
+            "end": 14.539999961853027
+          },
+          {
+            "word": "system",
+            "start": 14.539999961853027,
+            "end": 14.880000114440918
+          }
+        ]
+      }
+    ],
+    "rest-design-story": [
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Bad API Design. You've seen it: get Users, create New User, user underscore data. Inconsistent, verb-based, unpredictable. Every endpoint is a surprise. This is API chaos.",
+        "duration": 16.200000762939453,
+        "words": [
+          {
+            "word": "bad",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "API",
+            "start": 0.6399999856948853,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "design",
+            "start": 1.2799999713897705,
+            "end": 1.899999976158142
+          },
+          {
+            "word": "You've",
+            "start": 2.740000009536743,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "seen",
+            "start": 3.059999942779541,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "it",
+            "start": 3.059999942779541,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "Get",
+            "start": 4.059999942779541,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "users",
+            "start": 4.079999923706055,
+            "end": 4.5
+          },
+          {
+            "word": "create",
+            "start": 5.260000228881836,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "new",
+            "start": 5.300000190734863,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "user",
+            "start": 5.639999866485596,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "user",
+            "start": 6.820000171661377,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "underscore",
+            "start": 6.820000171661377,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "data",
+            "start": 7.360000133514404,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "Inconsistent",
+            "start": 8.819999694824219,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "verb",
+            "start": 9.579999923706055,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "based",
+            "start": 9.9399995803833,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "unpredictable",
+            "start": 10.699999809265137,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "Every",
+            "start": 11.819999694824219,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "endpoint",
+            "start": 12.300000190734863,
+            "end": 12.779999732971191
+          },
+          {
+            "word": "is",
+            "start": 12.779999732971191,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "a",
+            "start": 13.020000457763672,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "surprise",
+            "start": 13.579999923706055,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "This",
+            "start": 14.239999771118164,
+            "end": 14.420000076293945
+          },
+          {
+            "word": "is",
+            "start": 14.420000076293945,
+            "end": 14.960000038146973
+          },
+          {
+            "word": "API",
+            "start": 14.960000038146973,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "chaos",
+            "start": 15.479999542236328,
+            "end": 15.9399995803833
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Think in Resources. REST is about resources, not actions. Users is a resource. Orders is a resource. The HTTP method tells you the action. GET reads, POST creates, PUT updates, DELETE removes.",
+        "duration": 19.31999969482422,
+        "words": [
+          {
+            "word": "Think",
+            "start": 0,
+            "end": 0.47999998927116394
+          },
+          {
+            "word": "in",
+            "start": 0.47999998927116394,
+            "end": 1.100000023841858
+          },
+          {
+            "word": "resources",
+            "start": 1.100000023841858,
+            "end": 1.7000000476837158
+          },
+          {
+            "word": "Rest",
+            "start": 2.880000114440918,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "is",
+            "start": 2.880000114440918,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "about",
+            "start": 3.119999885559082,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "resources",
+            "start": 3.4200000762939453,
+            "end": 3.799999952316284
+          },
+          {
+            "word": "not",
+            "start": 4.320000171661377,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "actions",
+            "start": 4.480000019073486,
+            "end": 5
+          },
+          {
+            "word": "Users",
+            "start": 6.159999847412109,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "is",
+            "start": 6.159999847412109,
+            "end": 6.539999961853027
+          },
+          {
+            "word": "a",
+            "start": 6.539999961853027,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "resource",
+            "start": 7.199999809265137,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "Orders",
+            "start": 8.039999961853027,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "is",
+            "start": 8.140000343322754,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "a",
+            "start": 8.479999542236328,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "resource",
+            "start": 9.0600004196167,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "The",
+            "start": 9.800000190734863,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "HTTP",
+            "start": 9.960000038146973,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "method",
+            "start": 10.600000381469727,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "tells",
+            "start": 11.180000305175781,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "you",
+            "start": 11.699999809265137,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "the",
+            "start": 11.859999656677246,
+            "end": 12.199999809265137
+          },
+          {
+            "word": "action",
+            "start": 12.199999809265137,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "Get",
+            "start": 13.359999656677246,
+            "end": 13.380000114440918
+          },
+          {
+            "word": "reads",
+            "start": 13.380000114440918,
+            "end": 14.020000457763672
+          },
+          {
+            "word": "Post",
+            "start": 14.720000267028809,
+            "end": 15.0600004196167
+          },
+          {
+            "word": "creates",
+            "start": 15.0600004196167,
+            "end": 15.680000305175781
+          },
+          {
+            "word": "Put",
+            "start": 16.559999465942383,
+            "end": 16.68000030517578
+          },
+          {
+            "word": "updates",
+            "start": 16.68000030517578,
+            "end": 17.34000015258789
+          },
+          {
+            "word": "Delete",
+            "start": 18.399999618530273,
+            "end": 18.399999618530273
+          },
+          {
+            "word": "removes",
+            "start": 18.399999618530273,
+            "end": 19.139999389648438
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Predictable URLs. Slash users lists all users. Slash users slash 123 gets user 123. Slash users slash 123 slash orders gets that user's orders. Once you know the pattern, you can guess any endpoint.",
+        "duration": 19.600000381469727,
+        "words": [
+          {
+            "word": "predictable",
+            "start": 0,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "urls",
+            "start": 0.9800000190734863,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "slash",
+            "start": 1.940000057220459,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "users",
+            "start": 3.180000066757202,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "lists",
+            "start": 3.619999885559082,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "all",
+            "start": 4.079999923706055,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "users",
+            "start": 4.579999923706055,
+            "end": 5.320000171661377
+          },
+          {
+            "word": "slash",
+            "start": 5.320000171661377,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "users",
+            "start": 6.119999885559082,
+            "end": 6.519999980926514
+          },
+          {
+            "word": "slash",
+            "start": 6.519999980926514,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "one",
+            "start": 7.159999847412109,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "two",
+            "start": 7.400000095367432,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "three",
+            "start": 7.579999923706055,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "gets",
+            "start": 8.039999961853027,
+            "end": 8.5
+          },
+          {
+            "word": "user",
+            "start": 8.5,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "one",
+            "start": 8.899999618530273,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "two",
+            "start": 9.260000228881836,
+            "end": 9.5
+          },
+          {
+            "word": "three",
+            "start": 9.5,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "slash",
+            "start": 10.140000343322754,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "users",
+            "start": 10.859999656677246,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "slash",
+            "start": 11.260000228881836,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "one",
+            "start": 11.800000190734863,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "two",
+            "start": 12.079999923706055,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "three",
+            "start": 12.220000267028809,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "slash",
+            "start": 12.65999984741211,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "orders",
+            "start": 13.319999694824219,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "gets",
+            "start": 13.5600004196167,
+            "end": 14.15999984741211
+          },
+          {
+            "word": "that",
+            "start": 14.15999984741211,
+            "end": 14.539999961853027
+          },
+          {
+            "word": "user's",
+            "start": 14.539999961853027,
+            "end": 15.34000015258789
+          },
+          {
+            "word": "orders",
+            "start": 15.34000015258789,
+            "end": 15.619999885559082
+          },
+          {
+            "word": "once",
+            "start": 15.619999885559082,
+            "end": 16.200000762939453
+          },
+          {
+            "word": "you",
+            "start": 16.200000762939453,
+            "end": 16.3799991607666
+          },
+          {
+            "word": "know",
+            "start": 16.3799991607666,
+            "end": 16.479999542236328
+          },
+          {
+            "word": "the",
+            "start": 16.479999542236328,
+            "end": 16.739999771118164
+          },
+          {
+            "word": "pattern",
+            "start": 16.739999771118164,
+            "end": 16.959999084472656
+          },
+          {
+            "word": "you",
+            "start": 16.959999084472656,
+            "end": 17.479999542236328
+          },
+          {
+            "word": "can",
+            "start": 17.479999542236328,
+            "end": 17.739999771118164
+          },
+          {
+            "word": "guess",
+            "start": 17.739999771118164,
+            "end": 18.059999465942383
+          },
+          {
+            "word": "any",
+            "start": 18.059999465942383,
+            "end": 18.5
+          },
+          {
+            "word": "endpoint",
+            "start": 18.5,
+            "end": 19
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "HTTP Methods = CRUD. GET equals Read. POST equals Create. PUT equals Update. DELETE equals Delete. The method plus the resource tells the whole story. No more guessing what createNewUser does.",
+        "duration": 18.809999465942383,
+        "words": [
+          {
+            "word": "HTTP",
+            "start": 0,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "methods",
+            "start": 0.9399999976158142,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "equals",
+            "start": 1.559999942779541,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "crud",
+            "start": 2.5199999809265137,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "Get",
+            "start": 4.119999885559082,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "equals",
+            "start": 4.119999885559082,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "read",
+            "start": 4.760000228881836,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "Post",
+            "start": 6.179999828338623,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "equals",
+            "start": 6.199999809265137,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "create",
+            "start": 6.860000133514404,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "Put",
+            "start": 8.359999656677246,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "equals",
+            "start": 8.420000076293945,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "update",
+            "start": 9.020000457763672,
+            "end": 9.579999923706055
+          },
+          {
+            "word": "Delete",
+            "start": 10.619999885559082,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "equals",
+            "start": 10.619999885559082,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "delete",
+            "start": 11.260000228881836,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "The",
+            "start": 12.359999656677246,
+            "end": 12.600000381469727
+          },
+          {
+            "word": "method",
+            "start": 12.600000381469727,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "plus",
+            "start": 12.920000076293945,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "the",
+            "start": 13.279999732971191,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "resource",
+            "start": 13.9399995803833,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "tells",
+            "start": 13.9399995803833,
+            "end": 14.399999618530273
+          },
+          {
+            "word": "the",
+            "start": 14.399999618530273,
+            "end": 14.640000343322754
+          },
+          {
+            "word": "whole",
+            "start": 14.640000343322754,
+            "end": 15
+          },
+          {
+            "word": "story",
+            "start": 15,
+            "end": 15.5600004196167
+          },
+          {
+            "word": "No",
+            "start": 16.079999923706055,
+            "end": 16.239999771118164
+          },
+          {
+            "word": "more",
+            "start": 16.239999771118164,
+            "end": 16.5
+          },
+          {
+            "word": "guessing",
+            "start": 16.5,
+            "end": 16.799999237060547
+          },
+          {
+            "word": "what",
+            "start": 16.799999237060547,
+            "end": 17.18000030517578
+          },
+          {
+            "word": "create",
+            "start": 17.18000030517578,
+            "end": 17.559999465942383
+          },
+          {
+            "word": "new",
+            "start": 17.559999465942383,
+            "end": 17.860000610351562
+          },
+          {
+            "word": "user",
+            "start": 17.860000610351562,
+            "end": 18.1200008392334
+          },
+          {
+            "word": "does",
+            "start": 18.1200008392334,
+            "end": 18.459999084472656
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Consistency Wins. When your API is consistent and predictable, developers can integrate faster, make fewer mistakes, and your documentation almost writes itself. Good design is good communication.",
+        "duration": 15.640000343322754,
+        "words": [
+          {
+            "word": "Consistency",
+            "start": 0,
+            "end": 1.0800000429153442
+          },
+          {
+            "word": "wins",
+            "start": 1.0800000429153442,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "When",
+            "start": 2.4200000762939453,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "your",
+            "start": 2.5199999809265137,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "API",
+            "start": 2.819999933242798,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "is",
+            "start": 3.200000047683716,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "consistent",
+            "start": 3.5999999046325684,
+            "end": 4.159999847412109
+          },
+          {
+            "word": "and",
+            "start": 4.159999847412109,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "predictable",
+            "start": 4.579999923706055,
+            "end": 5
+          },
+          {
+            "word": "developers",
+            "start": 5.860000133514404,
+            "end": 5.920000076293945
+          },
+          {
+            "word": "can",
+            "start": 5.920000076293945,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "integrate",
+            "start": 6.360000133514404,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "faster",
+            "start": 6.800000190734863,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "make",
+            "start": 8.140000343322754,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "fewer",
+            "start": 8.239999771118164,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "mistakes",
+            "start": 8.5600004196167,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "and",
+            "start": 9.399999618530273,
+            "end": 9.760000228881836
+          },
+          {
+            "word": "your",
+            "start": 9.760000228881836,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "documentation",
+            "start": 10.039999961853027,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "almost",
+            "start": 10.739999771118164,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "writes",
+            "start": 11.5600004196167,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "itself",
+            "start": 11.9399995803833,
+            "end": 12.460000038146973
+          },
+          {
+            "word": "Good",
+            "start": 13.119999885559082,
+            "end": 13.300000190734863
+          },
+          {
+            "word": "design",
+            "start": 13.300000190734863,
+            "end": 13.760000228881836
+          },
+          {
+            "word": "is",
+            "start": 13.760000228881836,
+            "end": 14.359999656677246
+          },
+          {
+            "word": "good",
+            "start": 14.359999656677246,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "communication",
+            "start": 14.699999809265137,
+            "end": 15.300000190734863
+          }
+        ]
+      }
+    ],
+    "auth-errors-story": [
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Why Auth Matters. Every production API needs authentication. Who's calling? Are they allowed? How do we track usage? Without auth, your API is an open door to abuse and data breaches.",
+        "duration": 14.949999809265137,
+        "words": [
+          {
+            "word": "Why",
+            "start": 0,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "Auth",
+            "start": 0.6200000047683716,
+            "end": 1
+          },
+          {
+            "word": "matters",
+            "start": 1,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "Every",
+            "start": 2.3399999141693115,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "production",
+            "start": 2.6600000858306885,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "API",
+            "start": 3.200000047683716,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "needs",
+            "start": 3.700000047683716,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "authentication",
+            "start": 4.239999771118164,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "Who's",
+            "start": 5.659999847412109,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "calling",
+            "start": 5.960000038146973,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "Are",
+            "start": 6.78000020980835,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "they",
+            "start": 6.800000190734863,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "allowed",
+            "start": 6.940000057220459,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "How",
+            "start": 7.980000019073486,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "do",
+            "start": 8.100000381469727,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "we",
+            "start": 8.239999771118164,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "track",
+            "start": 8.420000076293945,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "usage",
+            "start": 8.680000305175781,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "Without",
+            "start": 9.899999618530273,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "Auth",
+            "start": 10.100000381469727,
+            "end": 10.520000457763672
+          },
+          {
+            "word": "your",
+            "start": 10.920000076293945,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "API",
+            "start": 11.199999809265137,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "is",
+            "start": 11.579999923706055,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "an",
+            "start": 11.960000038146973,
+            "end": 12.319999694824219
+          },
+          {
+            "word": "open",
+            "start": 12.319999694824219,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "door",
+            "start": 12.5600004196167,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "to",
+            "start": 12.800000190734863,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "abuse",
+            "start": 13.15999984741211,
+            "end": 13.479999542236328
+          },
+          {
+            "word": "and",
+            "start": 13.479999542236328,
+            "end": 13.859999656677246
+          },
+          {
+            "word": "data",
+            "start": 13.859999656677246,
+            "end": 14.140000343322754
+          },
+          {
+            "word": "breaches",
+            "start": 14.140000343322754,
+            "end": 14.4399995803833
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "API Keys. The simplest auth: a secret key in the header. Great for server-to-server calls. But keys can leak, can't expire gracefully, and don't support fine-grained permissions.",
+        "duration": 14.899999618530273,
+        "words": [
+          {
+            "word": "API",
+            "start": 0,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "keys",
+            "start": 1.2799999713897705,
+            "end": 1.6399999856948853
+          },
+          {
+            "word": "The",
+            "start": 2.4200000762939453,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "simplest",
+            "start": 2.5799999237060547,
+            "end": 2.9800000190734863
+          },
+          {
+            "word": "auth",
+            "start": 2.9800000190734863,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "A",
+            "start": 4.059999942779541,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "secret",
+            "start": 4.119999885559082,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "key",
+            "start": 4.480000019073486,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "in",
+            "start": 4.78000020980835,
+            "end": 4.960000038146973
+          },
+          {
+            "word": "the",
+            "start": 4.960000038146973,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "header",
+            "start": 5.420000076293945,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "Great",
+            "start": 6.239999771118164,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "for",
+            "start": 6.239999771118164,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "server",
+            "start": 6.619999885559082,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "to",
+            "start": 6.860000133514404,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "server",
+            "start": 7.380000114440918,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "calls",
+            "start": 7.380000114440918,
+            "end": 7.78000020980835
+          },
+          {
+            "word": "But",
+            "start": 8.479999542236328,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "keys",
+            "start": 8.760000228881836,
+            "end": 9
+          },
+          {
+            "word": "can",
+            "start": 9,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "leak",
+            "start": 9.399999618530273,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "can't",
+            "start": 10.380000114440918,
+            "end": 10.5
+          },
+          {
+            "word": "expire",
+            "start": 10.5,
+            "end": 10.899999618530273
+          },
+          {
+            "word": "gracefully",
+            "start": 10.899999618530273,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "and",
+            "start": 11.779999732971191,
+            "end": 12.279999732971191
+          },
+          {
+            "word": "don't",
+            "start": 12.279999732971191,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "support",
+            "start": 12.579999923706055,
+            "end": 13
+          },
+          {
+            "word": "fine",
+            "start": 13,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "brained",
+            "start": 13.65999984741211,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "permissions",
+            "start": 13.920000076293945,
+            "end": 14.460000038146973
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "OAuth and JWT. OAuth 2.0 is the industry standard—supports scopes, refresh tokens, third-party login. JWTs are self-contained tokens that don't need server-side sessions. More complex, but more powerful.",
+        "duration": 17.799999237060547,
+        "words": [
+          {
+            "word": "OAuth",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "and",
+            "start": 0.6000000238418579,
+            "end": 1.1799999475479126
+          },
+          {
+            "word": "JWT",
+            "start": 1.1799999475479126,
+            "end": 2.140000104904175
+          },
+          {
+            "word": "OAuth",
+            "start": 2.9000000953674316,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "2",
+            "start": 3.1600000858306885,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "0",
+            "start": 3.4200000762939453,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "is",
+            "start": 3.9200000762939453,
+            "end": 4.179999828338623
+          },
+          {
+            "word": "the",
+            "start": 4.179999828338623,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "industry",
+            "start": 4.460000038146973,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "standard",
+            "start": 4.840000152587891,
+            "end": 5.5
+          },
+          {
+            "word": "supports",
+            "start": 5.840000152587891,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "scopes",
+            "start": 6.159999847412109,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "refresh",
+            "start": 7.179999828338623,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "tokens",
+            "start": 7.460000038146973,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "third",
+            "start": 8.520000457763672,
+            "end": 8.619999885559082
+          },
+          {
+            "word": "party",
+            "start": 8.619999885559082,
+            "end": 8.880000114440918
+          },
+          {
+            "word": "login",
+            "start": 8.880000114440918,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "JWTs",
+            "start": 10.180000305175781,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "are",
+            "start": 10.9399995803833,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "self",
+            "start": 11.5600004196167,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "contained",
+            "start": 11.819999694824219,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "tokens",
+            "start": 12.239999771118164,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "that",
+            "start": 12.579999923706055,
+            "end": 13.220000267028809
+          },
+          {
+            "word": "don't",
+            "start": 13.220000267028809,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "need",
+            "start": 13.460000038146973,
+            "end": 13.819999694824219
+          },
+          {
+            "word": "server",
+            "start": 13.819999694824219,
+            "end": 14.220000267028809
+          },
+          {
+            "word": "side",
+            "start": 14.220000267028809,
+            "end": 14.479999542236328
+          },
+          {
+            "word": "sessions",
+            "start": 14.479999542236328,
+            "end": 14.920000076293945
+          },
+          {
+            "word": "More",
+            "start": 15.699999809265137,
+            "end": 15.779999732971191
+          },
+          {
+            "word": "complex",
+            "start": 15.779999732971191,
+            "end": 16.280000686645508
+          },
+          {
+            "word": "but",
+            "start": 16.559999465942383,
+            "end": 16.940000534057617
+          },
+          {
+            "word": "more",
+            "start": 16.940000534057617,
+            "end": 17.260000228881836
+          },
+          {
+            "word": "powerful",
+            "start": 17.260000228881836,
+            "end": 17.559999465942383
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "HTTP Status Codes. 200 means OK. 201 means Created. 400 means you messed up. 401 means authenticate first. 403 means you're not allowed. 404 means not found. 500 means we messed up. Know these cold.",
+        "duration": 22.75,
+        "words": [
+          {
+            "word": "HTTP",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "word": "status",
+            "start": 1,
+            "end": 2.059999942779541
+          },
+          {
+            "word": "codes",
+            "start": 2.059999942779541,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "200",
+            "start": 3.759999990463257,
+            "end": 3.759999990463257
+          },
+          {
+            "word": "means",
+            "start": 3.759999990463257,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "OK",
+            "start": 4.420000076293945,
+            "end": 5
+          },
+          {
+            "word": "201",
+            "start": 5.880000114440918,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "means",
+            "start": 6.179999828338623,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "created",
+            "start": 6.860000133514404,
+            "end": 7.420000076293945
+          },
+          {
+            "word": "400",
+            "start": 8.100000381469727,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "means",
+            "start": 8.5600004196167,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "you",
+            "start": 9.220000267028809,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "messed",
+            "start": 9.520000457763672,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "up",
+            "start": 9.739999771118164,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "401",
+            "start": 10.84000015258789,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "means",
+            "start": 11.119999885559082,
+            "end": 11.84000015258789
+          },
+          {
+            "word": "authenticate",
+            "start": 11.84000015258789,
+            "end": 12.520000457763672
+          },
+          {
+            "word": "first",
+            "start": 12.520000457763672,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "403",
+            "start": 13.859999656677246,
+            "end": 14.460000038146973
+          },
+          {
+            "word": "means",
+            "start": 14.460000038146973,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "you're",
+            "start": 14.899999618530273,
+            "end": 15.140000343322754
+          },
+          {
+            "word": "not",
+            "start": 15.140000343322754,
+            "end": 15.4399995803833
+          },
+          {
+            "word": "allowed",
+            "start": 15.4399995803833,
+            "end": 15.739999771118164
+          },
+          {
+            "word": "404",
+            "start": 16.559999465942383,
+            "end": 17.18000030517578
+          },
+          {
+            "word": "means",
+            "start": 17.18000030517578,
+            "end": 17.600000381469727
+          },
+          {
+            "word": "not",
+            "start": 17.600000381469727,
+            "end": 17.979999542236328
+          },
+          {
+            "word": "found",
+            "start": 17.979999542236328,
+            "end": 18.31999969482422
+          },
+          {
+            "word": "500",
+            "start": 19.040000915527344,
+            "end": 19.459999084472656
+          },
+          {
+            "word": "means",
+            "start": 19.459999084472656,
+            "end": 20.100000381469727
+          },
+          {
+            "word": "we",
+            "start": 20.100000381469727,
+            "end": 20.479999542236328
+          },
+          {
+            "word": "messed",
+            "start": 20.479999542236328,
+            "end": 20.639999389648438
+          },
+          {
+            "word": "up",
+            "start": 20.639999389648438,
+            "end": 21.139999389648438
+          },
+          {
+            "word": "Know",
+            "start": 21.479999542236328,
+            "end": 21.600000381469727
+          },
+          {
+            "word": "these",
+            "start": 21.600000381469727,
+            "end": 21.959999084472656
+          },
+          {
+            "word": "cold",
+            "start": 21.959999084472656,
+            "end": 22.31999969482422
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Consistent Error Format. Always include: an error code for machines, a message for humans, a request ID for debugging, and a docs URL for resolution. Good errors turn frustrated developers into happy ones.",
+        "duration": 17.440000534057617,
+        "words": [
+          {
+            "word": "Consistent",
+            "start": 0,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "error",
+            "start": 0.9200000166893005,
+            "end": 1.3799999952316284
+          },
+          {
+            "word": "format",
+            "start": 1.3799999952316284,
+            "end": 1.840000033378601
+          },
+          {
+            "word": "Always",
+            "start": 2.819999933242798,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "include",
+            "start": 3.0799999237060547,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "an",
+            "start": 3.5999999046325684,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "error",
+            "start": 4.28000020980835,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "code",
+            "start": 4.400000095367432,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "for",
+            "start": 4.679999828338623,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "machines",
+            "start": 5.460000038146973,
+            "end": 5.659999847412109
+          },
+          {
+            "word": "a",
+            "start": 5.940000057220459,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "message",
+            "start": 6.400000095367432,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "for",
+            "start": 6.400000095367432,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "humans",
+            "start": 7.159999847412109,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "a",
+            "start": 7.840000152587891,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "request",
+            "start": 8.020000457763672,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "ID",
+            "start": 8.359999656677246,
+            "end": 8.65999984741211
+          },
+          {
+            "word": "for",
+            "start": 8.65999984741211,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "debugging",
+            "start": 9.0600004196167,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "and",
+            "start": 9.84000015258789,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "a",
+            "start": 10.140000343322754,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "docs",
+            "start": 10.600000381469727,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "URL",
+            "start": 10.680000305175781,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "for",
+            "start": 11.039999961853027,
+            "end": 11.5
+          },
+          {
+            "word": "resolution",
+            "start": 11.5,
+            "end": 12
+          },
+          {
+            "word": "Good",
+            "start": 13.020000457763672,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "errors",
+            "start": 13.15999984741211,
+            "end": 13.479999542236328
+          },
+          {
+            "word": "turn",
+            "start": 13.479999542236328,
+            "end": 14.239999771118164
+          },
+          {
+            "word": "frustrated",
+            "start": 14.239999771118164,
+            "end": 14.859999656677246
+          },
+          {
+            "word": "developers",
+            "start": 14.859999656677246,
+            "end": 15.380000114440918
+          },
+          {
+            "word": "into",
+            "start": 15.380000114440918,
+            "end": 16.059999465942383
+          },
+          {
+            "word": "happy",
+            "start": 16.059999465942383,
+            "end": 16.399999618530273
+          },
+          {
+            "word": "ones",
+            "start": 16.399999618530273,
+            "end": 16.719999313354492
+          }
+        ]
+      }
+    ]
+  },
+  "echo": {
+    "api-reality-story": [
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Your Class Project. In class, you write requests dot get url and call it a day. Simple, clean, works on your machine. But that simple call hides a massive iceberg underneath.",
+        "duration": 14.15999984741211,
+        "words": [
+          {
+            "word": "your",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "class",
+            "start": 0.5,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "project",
+            "start": 0.9200000166893005,
+            "end": 1.5199999809265137
+          },
+          {
+            "word": "In",
+            "start": 2.059999942779541,
+            "end": 2.240000009536743
+          },
+          {
+            "word": "class",
+            "start": 2.240000009536743,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "you",
+            "start": 3,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "write",
+            "start": 3.140000104904175,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "requests",
+            "start": 3.359999895095825,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "getURL",
+            "start": 3.940000057220459,
+            "end": 5.320000171661377
+          },
+          {
+            "word": "and",
+            "start": 5.320000171661377,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "call",
+            "start": 5.639999866485596,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "it",
+            "start": 5.900000095367432,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "a",
+            "start": 6.059999942779541,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "day",
+            "start": 6.360000133514404,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "Simple",
+            "start": 7.099999904632568,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "clean",
+            "start": 7.900000095367432,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "works",
+            "start": 8.359999656677246,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "on",
+            "start": 8.460000038146973,
+            "end": 8.65999984741211
+          },
+          {
+            "word": "your",
+            "start": 8.65999984741211,
+            "end": 8.859999656677246
+          },
+          {
+            "word": "machine",
+            "start": 8.859999656677246,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "But",
+            "start": 9.420000076293945,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "that",
+            "start": 9.979999542236328,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "simple",
+            "start": 10.279999732971191,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "call",
+            "start": 10.619999885559082,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "hides",
+            "start": 11.140000343322754,
+            "end": 11.720000267028809
+          },
+          {
+            "word": "a",
+            "start": 11.720000267028809,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "massive",
+            "start": 12.579999923706055,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "iceberg",
+            "start": 12.579999923706055,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "underneath",
+            "start": 13.199999809265137,
+            "end": 13.739999771118164
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Hidden Contract. Behind every API call is a contract—documented, versioned, authenticated, rate-limited. Breaking that contract breaks everyone who depends on it. That's the production reality.",
+        "duration": 14.850000381469727,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.3799999952316284
+          },
+          {
+            "word": "hidden",
+            "start": 0.3799999952316284,
+            "end": 0.7599999904632568
+          },
+          {
+            "word": "contract",
+            "start": 0.7599999904632568,
+            "end": 1.5
+          },
+          {
+            "word": "Behind",
+            "start": 2.4600000381469727,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "every",
+            "start": 2.4600000381469727,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "API",
+            "start": 2.9600000381469727,
+            "end": 3.3399999141693115
+          },
+          {
+            "word": "call",
+            "start": 3.3399999141693115,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "is",
+            "start": 3.7200000286102295,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "a",
+            "start": 3.9800000190734863,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "contract",
+            "start": 4.659999847412109,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "Documented",
+            "start": 5.420000076293945,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "versioned",
+            "start": 6.260000228881836,
+            "end": 6.539999961853027
+          },
+          {
+            "word": "authenticated",
+            "start": 6.940000057220459,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "rate",
+            "start": 7.739999771118164,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "limited",
+            "start": 7.960000038146973,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "Breaking",
+            "start": 9.359999656677246,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "that",
+            "start": 9.359999656677246,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "contract",
+            "start": 10.180000305175781,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "breaks",
+            "start": 10.180000305175781,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "everyone",
+            "start": 10.699999809265137,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "who",
+            "start": 11.199999809265137,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "depends",
+            "start": 11.460000038146973,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "on",
+            "start": 11.699999809265137,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "it",
+            "start": 11.9399995803833,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "That's",
+            "start": 12.600000381469727,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "the",
+            "start": 13.119999885559082,
+            "end": 13.4399995803833
+          },
+          {
+            "word": "production",
+            "start": 13.4399995803833,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "reality",
+            "start": 13.9399995803833,
+            "end": 14.420000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Production API Clients. Production code needs retry logic, authentication headers, rate limit handling, and response validation. A simple get becomes a robust client with fallback strategies.",
+        "duration": 13.800000190734863,
+        "words": [
+          {
+            "word": "Production",
+            "start": 0,
+            "end": 0.7200000286102295
+          },
+          {
+            "word": "API",
+            "start": 0.7200000286102295,
+            "end": 1.3200000524520874
+          },
+          {
+            "word": "clients",
+            "start": 1.3200000524520874,
+            "end": 1.9600000381469727
+          },
+          {
+            "word": "Production",
+            "start": 3.140000104904175,
+            "end": 3.140000104904175
+          },
+          {
+            "word": "code",
+            "start": 3.140000104904175,
+            "end": 3.5
+          },
+          {
+            "word": "needs",
+            "start": 3.5,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "retry",
+            "start": 3.859999895095825,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "logic",
+            "start": 4.380000114440918,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "authentication",
+            "start": 5.420000076293945,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "headers",
+            "start": 5.739999771118164,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "rate",
+            "start": 6.760000228881836,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "limit",
+            "start": 6.860000133514404,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "handling",
+            "start": 7.079999923706055,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "and",
+            "start": 7.900000095367432,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "response",
+            "start": 8.140000343322754,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "validation",
+            "start": 8.460000038146973,
+            "end": 9
+          },
+          {
+            "word": "A",
+            "start": 9.699999809265137,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "simple",
+            "start": 9.960000038146973,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "GET",
+            "start": 10.220000267028809,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "becomes",
+            "start": 10.600000381469727,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "a",
+            "start": 11.199999809265137,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "robust",
+            "start": 11.779999732971191,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "client",
+            "start": 11.779999732971191,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "with",
+            "start": 12.180000305175781,
+            "end": 12.5
+          },
+          {
+            "word": "fallback",
+            "start": 12.5,
+            "end": 12.979999542236328
+          },
+          {
+            "word": "strategies",
+            "start": 12.979999542236328,
+            "end": 13.4399995803833
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Versioned Responses. You can't just return json data. Production APIs have versioned contracts, consistent error formats, pagination for large results, and hypermedia links for discoverability.",
+        "duration": 15.90999984741211,
+        "words": [
+          {
+            "word": "Versioned",
+            "start": 0,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "responses",
+            "start": 1.1200000047683716,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "You",
+            "start": 2.5,
+            "end": 2.5
+          },
+          {
+            "word": "can't",
+            "start": 2.5,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "just",
+            "start": 2.859999895095825,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "return",
+            "start": 3.180000066757202,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "JSON",
+            "start": 3.5999999046325684,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "data",
+            "start": 4.139999866485596,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "Production",
+            "start": 6.099999904632568,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "APIs",
+            "start": 6.159999847412109,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "have",
+            "start": 6.679999828338623,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "versioned",
+            "start": 7.159999847412109,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "contracts",
+            "start": 8.260000228881836,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "consistent",
+            "start": 9.399999618530273,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "error",
+            "start": 9.420000076293945,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "formats",
+            "start": 9.880000114440918,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "pagination",
+            "start": 11.300000190734863,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "for",
+            "start": 11.680000305175781,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "large",
+            "start": 12.0600004196167,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "results",
+            "start": 12.399999618530273,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "and",
+            "start": 13.460000038146973,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "hypermedia",
+            "start": 13.720000267028809,
+            "end": 14.319999694824219
+          },
+          {
+            "word": "links",
+            "start": 14.319999694824219,
+            "end": 14.479999542236328
+          },
+          {
+            "word": "for",
+            "start": 14.479999542236328,
+            "end": 14.819999694824219
+          },
+          {
+            "word": "discoverability",
+            "start": 14.819999694824219,
+            "end": 15.65999984741211
+          }
+        ]
+      },
+      {
+        "storyId": "api-reality-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Structured Error Handling. Forget raise Exception. Production needs structured errors with codes, retry-after headers, and circuit breakers that prevent cascading failures across your entire system.",
+        "duration": 13.239999771118164,
+        "words": [
+          {
+            "word": "Structured",
+            "start": 0,
+            "end": 0.800000011920929
+          },
+          {
+            "word": "error",
+            "start": 0.800000011920929,
+            "end": 1.2200000286102295
+          },
+          {
+            "word": "handling",
+            "start": 1.2200000286102295,
+            "end": 1.7000000476837158
+          },
+          {
+            "word": "Forget",
+            "start": 3.059999942779541,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "raise",
+            "start": 3.059999942779541,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "exception",
+            "start": 3.5399999618530273,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "Production",
+            "start": 4.860000133514404,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "needs",
+            "start": 4.860000133514404,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "structured",
+            "start": 5.260000228881836,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "errors",
+            "start": 5.699999809265137,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "with",
+            "start": 6.039999961853027,
+            "end": 6.400000095367432
+          },
+          {
+            "word": "codes",
+            "start": 6.400000095367432,
+            "end": 6.760000228881836
+          },
+          {
+            "word": "retry",
+            "start": 7.400000095367432,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "after",
+            "start": 7.659999847412109,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "headers",
+            "start": 7.960000038146973,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "and",
+            "start": 8.65999984741211,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "circuit",
+            "start": 8.920000076293945,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "breakers",
+            "start": 9.119999885559082,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "that",
+            "start": 9.600000381469727,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "prevent",
+            "start": 9.800000190734863,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "cascading",
+            "start": 10.15999984741211,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "failures",
+            "start": 10.859999656677246,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "across",
+            "start": 11.300000190734863,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "your",
+            "start": 11.65999984741211,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "entire",
+            "start": 11.960000038146973,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "system",
+            "start": 12.420000076293945,
+            "end": 12.720000267028809
+          }
+        ]
+      }
+    ],
+    "rest-design-story": [
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Bad API Design. You've seen it: get Users, create New User, user underscore data. Inconsistent, verb-based, unpredictable. Every endpoint is a surprise. This is API chaos.",
+        "duration": 13.75,
+        "words": [
+          {
+            "word": "Bad",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "API",
+            "start": 0.5799999833106995,
+            "end": 1.1799999475479126
+          },
+          {
+            "word": "design",
+            "start": 1.1799999475479126,
+            "end": 1.7799999713897705
+          },
+          {
+            "word": "You've",
+            "start": 2.299999952316284,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "seen",
+            "start": 2.640000104904175,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "it",
+            "start": 2.6600000858306885,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "Get",
+            "start": 3.380000114440918,
+            "end": 3.5
+          },
+          {
+            "word": "users",
+            "start": 3.5,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "Create",
+            "start": 4.619999885559082,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "new",
+            "start": 4.639999866485596,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "user",
+            "start": 4.920000076293945,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "User",
+            "start": 5.960000038146973,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "underscore",
+            "start": 5.960000038146973,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "data",
+            "start": 6.460000038146973,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "Inconsistent",
+            "start": 7.480000019073486,
+            "end": 7.980000019073486
+          },
+          {
+            "word": "Verb",
+            "start": 8.319999694824219,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "based",
+            "start": 8.539999961853027,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "Unpredictable",
+            "start": 9.079999923706055,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "Every",
+            "start": 10.079999923706055,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "endpoint",
+            "start": 10.279999732971191,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "is",
+            "start": 10.699999809265137,
+            "end": 10.899999618530273
+          },
+          {
+            "word": "a",
+            "start": 10.899999618530273,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "surprise",
+            "start": 11.479999542236328,
+            "end": 11.479999542236328
+          },
+          {
+            "word": "This",
+            "start": 12,
+            "end": 12.199999809265137
+          },
+          {
+            "word": "is",
+            "start": 12.199999809265137,
+            "end": 12.579999923706055
+          },
+          {
+            "word": "API",
+            "start": 12.579999923706055,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "chaos",
+            "start": 13.039999961853027,
+            "end": 13.520000457763672
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Think in Resources. REST is about resources, not actions. Users is a resource. Orders is a resource. The HTTP method tells you the action. GET reads, POST creates, PUT updates, DELETE removes.",
+        "duration": 16.239999771118164,
+        "words": [
+          {
+            "word": "Think",
+            "start": 0,
+            "end": 0.4000000059604645
+          },
+          {
+            "word": "in",
+            "start": 0.4000000059604645,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "resources",
+            "start": 0.7799999713897705,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "REST",
+            "start": 2.2799999713897705,
+            "end": 2.2799999713897705
+          },
+          {
+            "word": "is",
+            "start": 2.2799999713897705,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "about",
+            "start": 2.4600000381469727,
+            "end": 2.7200000286102295
+          },
+          {
+            "word": "resources",
+            "start": 2.7200000286102295,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "not",
+            "start": 3.799999952316284,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "actions",
+            "start": 3.859999895095825,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "Users",
+            "start": 5.340000152587891,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "is",
+            "start": 5.480000019073486,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "a",
+            "start": 5.820000171661377,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "resource",
+            "start": 6.059999942779541,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "Orders",
+            "start": 7.099999904632568,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "is",
+            "start": 7.199999809265137,
+            "end": 7.480000019073486
+          },
+          {
+            "word": "a",
+            "start": 7.480000019073486,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "resource",
+            "start": 8.039999961853027,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "The",
+            "start": 8.600000381469727,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "HTTP",
+            "start": 8.699999809265137,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "method",
+            "start": 9.260000228881836,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "tells",
+            "start": 9.779999732971191,
+            "end": 10.34000015258789
+          },
+          {
+            "word": "you",
+            "start": 10.34000015258789,
+            "end": 10.5
+          },
+          {
+            "word": "the",
+            "start": 10.5,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "action",
+            "start": 10.680000305175781,
+            "end": 11
+          },
+          {
+            "word": "Get",
+            "start": 11.720000267028809,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "reads",
+            "start": 11.779999732971191,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "Post",
+            "start": 12.619999885559082,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "creates",
+            "start": 12.880000114440918,
+            "end": 13.380000114440918
+          },
+          {
+            "word": "Put",
+            "start": 14.020000457763672,
+            "end": 14.199999809265137
+          },
+          {
+            "word": "updates",
+            "start": 14.199999809265137,
+            "end": 14.600000381469727
+          },
+          {
+            "word": "Delete",
+            "start": 15.359999656677246,
+            "end": 15.359999656677246
+          },
+          {
+            "word": "removes",
+            "start": 15.359999656677246,
+            "end": 15.819999694824219
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Predictable URLs. Slash users lists all users. Slash users slash 123 gets user 123. Slash users slash 123 slash orders gets that user's orders. Once you know the pattern, you can guess any endpoint.",
+        "duration": 18.15999984741211,
+        "words": [
+          {
+            "word": "Predictable",
+            "start": 0.8399999737739563,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "URLs",
+            "start": 1.6200000047683716,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "Slash",
+            "start": 3.380000114440918,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "users",
+            "start": 3.4800000190734863,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "lists",
+            "start": 3.8399999141693115,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "all",
+            "start": 4.260000228881836,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "users",
+            "start": 4.579999923706055,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "Slash",
+            "start": 5.78000020980835,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "users",
+            "start": 5.900000095367432,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "slash",
+            "start": 6.28000020980835,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "123",
+            "start": 6.659999847412109,
+            "end": 7.340000152587891
+          },
+          {
+            "word": "gets",
+            "start": 7.340000152587891,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "user",
+            "start": 8.020000457763672,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "123",
+            "start": 8.380000114440918,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "Slash",
+            "start": 10.119999885559082,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "users",
+            "start": 10.220000267028809,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "slash",
+            "start": 10.619999885559082,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "123",
+            "start": 11.039999961853027,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "slash",
+            "start": 11.619999885559082,
+            "end": 12.199999809265137
+          },
+          {
+            "word": "orders",
+            "start": 12.199999809265137,
+            "end": 12.5
+          },
+          {
+            "word": "gets",
+            "start": 12.5,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "that",
+            "start": 13.100000381469727,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "user's",
+            "start": 13.520000457763672,
+            "end": 14.260000228881836
+          },
+          {
+            "word": "orders",
+            "start": 14.260000228881836,
+            "end": 14.260000228881836
+          },
+          {
+            "word": "Once",
+            "start": 15.119999885559082,
+            "end": 15.319999694824219
+          },
+          {
+            "word": "you",
+            "start": 15.319999694824219,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "know",
+            "start": 15.479999542236328,
+            "end": 15.600000381469727
+          },
+          {
+            "word": "the",
+            "start": 15.600000381469727,
+            "end": 16.1200008392334
+          },
+          {
+            "word": "pattern",
+            "start": 16.1200008392334,
+            "end": 16.1200008392334
+          },
+          {
+            "word": "you",
+            "start": 16.5,
+            "end": 16.739999771118164
+          },
+          {
+            "word": "can",
+            "start": 16.739999771118164,
+            "end": 16.959999084472656
+          },
+          {
+            "word": "guess",
+            "start": 16.959999084472656,
+            "end": 17.139999389648438
+          },
+          {
+            "word": "any",
+            "start": 17.139999389648438,
+            "end": 17.520000457763672
+          },
+          {
+            "word": "endpoint",
+            "start": 17.520000457763672,
+            "end": 17.920000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "HTTP Methods = CRUD. GET equals Read. POST equals Create. PUT equals Update. DELETE equals Delete. The method plus the resource tells the whole story. No more guessing what createNewUser does.",
+        "duration": 18.549999237060547,
+        "words": [
+          {
+            "word": "HTTP",
+            "start": 0,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "methods",
+            "start": 0.9399999976158142,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "equals",
+            "start": 1.5399999618530273,
+            "end": 2.2200000286102295
+          },
+          {
+            "word": "CRRD",
+            "start": 2.2200000286102295,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "GET",
+            "start": 4.239999771118164,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "equals",
+            "start": 4.260000228881836,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "read",
+            "start": 5.079999923706055,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "POST",
+            "start": 6.340000152587891,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "equals",
+            "start": 6.340000152587891,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "create",
+            "start": 6.880000114440918,
+            "end": 7.340000152587891
+          },
+          {
+            "word": "PUT",
+            "start": 8.140000343322754,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "equals",
+            "start": 8.140000343322754,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "update",
+            "start": 8.899999618530273,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "DELETE",
+            "start": 10.300000190734863,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "equals",
+            "start": 10.300000190734863,
+            "end": 11.0600004196167
+          },
+          {
+            "word": "delete",
+            "start": 11.0600004196167,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "The",
+            "start": 12.0600004196167,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "method",
+            "start": 12.300000190734863,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "plus",
+            "start": 12.619999885559082,
+            "end": 13.180000305175781
+          },
+          {
+            "word": "the",
+            "start": 13.180000305175781,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "resource",
+            "start": 13.920000076293945,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "tells",
+            "start": 13.920000076293945,
+            "end": 14.420000076293945
+          },
+          {
+            "word": "the",
+            "start": 14.420000076293945,
+            "end": 14.640000343322754
+          },
+          {
+            "word": "whole",
+            "start": 14.640000343322754,
+            "end": 15
+          },
+          {
+            "word": "story",
+            "start": 15,
+            "end": 15.279999732971191
+          },
+          {
+            "word": "no",
+            "start": 15.859999656677246,
+            "end": 16
+          },
+          {
+            "word": "more",
+            "start": 16,
+            "end": 16.260000228881836
+          },
+          {
+            "word": "guessing",
+            "start": 16.260000228881836,
+            "end": 16.559999465942383
+          },
+          {
+            "word": "what",
+            "start": 16.559999465942383,
+            "end": 16.920000076293945
+          },
+          {
+            "word": "create",
+            "start": 16.920000076293945,
+            "end": 17.280000686645508
+          },
+          {
+            "word": "new",
+            "start": 17.280000686645508,
+            "end": 17.6200008392334
+          },
+          {
+            "word": "user",
+            "start": 17.6200008392334,
+            "end": 17.8799991607666
+          },
+          {
+            "word": "does",
+            "start": 17.8799991607666,
+            "end": 18.280000686645508
+          }
+        ]
+      },
+      {
+        "storyId": "rest-design-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Consistency Wins. When your API is consistent and predictable, developers can integrate faster, make fewer mistakes, and your documentation almost writes itself. Good design is good communication.",
+        "duration": 13.960000038146973,
+        "words": [
+          {
+            "word": "Consistency",
+            "start": 0,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "wins",
+            "start": 0.8799999952316284,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "When",
+            "start": 1.899999976158142,
+            "end": 1.9199999570846558
+          },
+          {
+            "word": "your",
+            "start": 1.9199999570846558,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "API",
+            "start": 2.180000066757202,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "is",
+            "start": 2.700000047683716,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "consistent",
+            "start": 3.0399999618530273,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "and",
+            "start": 3.619999885559082,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "predictable",
+            "start": 3.9800000190734863,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "developers",
+            "start": 5.179999828338623,
+            "end": 5.320000171661377
+          },
+          {
+            "word": "can",
+            "start": 5.320000171661377,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "integrate",
+            "start": 5.78000020980835,
+            "end": 6.139999866485596
+          },
+          {
+            "word": "faster",
+            "start": 6.139999866485596,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "make",
+            "start": 7.21999979019165,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "fewer",
+            "start": 7.300000190734863,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "mistakes",
+            "start": 7.619999885559082,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "and",
+            "start": 8.479999542236328,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "your",
+            "start": 8.600000381469727,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "documentation",
+            "start": 8.800000190734863,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "almost",
+            "start": 9.479999542236328,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "writes",
+            "start": 10.100000381469727,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "itself",
+            "start": 10.479999542236328,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "Good",
+            "start": 11.5600004196167,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "design",
+            "start": 11.699999809265137,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "is",
+            "start": 12.119999885559082,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "good",
+            "start": 12.65999984741211,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "communication",
+            "start": 12.9399995803833,
+            "end": 13.539999961853027
+          }
+        ]
+      }
+    ],
+    "auth-errors-story": [
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Why Auth Matters. Every production API needs authentication. Who's calling? Are they allowed? How do we track usage? Without auth, your API is an open door to abuse and data breaches.",
+        "duration": 14.65999984741211,
+        "words": [
+          {
+            "word": "Why",
+            "start": 0,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "Auth",
+            "start": 0.699999988079071,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "matters",
+            "start": 1.1200000047683716,
+            "end": 1.7599999904632568
+          },
+          {
+            "word": "Every",
+            "start": 2.3399999141693115,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "production",
+            "start": 2.5199999809265137,
+            "end": 3.059999942779541
+          },
+          {
+            "word": "API",
+            "start": 3.059999942779541,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "needs",
+            "start": 3.5999999046325684,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "authentication",
+            "start": 4.300000190734863,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "Who's",
+            "start": 5.760000228881836,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "calling",
+            "start": 6.099999904632568,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "Are",
+            "start": 6.880000114440918,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "they",
+            "start": 6.920000076293945,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "allowed",
+            "start": 7.079999923706055,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "How",
+            "start": 8.039999961853027,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "do",
+            "start": 8.140000343322754,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "we",
+            "start": 8.279999732971191,
+            "end": 8.5
+          },
+          {
+            "word": "track",
+            "start": 8.5,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "usage",
+            "start": 8.720000267028809,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "Without",
+            "start": 10.020000457763672,
+            "end": 10.239999771118164
+          },
+          {
+            "word": "Auth",
+            "start": 10.239999771118164,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "your",
+            "start": 11.020000457763672,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "API",
+            "start": 11.199999809265137,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "is",
+            "start": 11.579999923706055,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "an",
+            "start": 11.899999618530273,
+            "end": 12.199999809265137
+          },
+          {
+            "word": "open",
+            "start": 12.199999809265137,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "door",
+            "start": 12.420000076293945,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "to",
+            "start": 12.65999984741211,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "abuse",
+            "start": 13.039999961853027,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "and",
+            "start": 13.34000015258789,
+            "end": 13.779999732971191
+          },
+          {
+            "word": "data",
+            "start": 13.779999732971191,
+            "end": 14.039999961853027
+          },
+          {
+            "word": "breaches",
+            "start": 14.039999961853027,
+            "end": 14.319999694824219
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "API Keys. The simplest auth: a secret key in the header. Great for server-to-server calls. But keys can leak, can't expire gracefully, and don't support fine-grained permissions.",
+        "duration": 0.36000001430511475,
+        "words": [
+          {
+            "word": "MBC",
+            "start": 0,
+            "end": 0
+          },
+          {
+            "word": "뉴스",
+            "start": 0,
+            "end": 0
+          },
+          {
+            "word": "이덕영입니다",
+            "start": 0,
+            "end": 0.2800000011920929
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "OAuth and JWT. OAuth 2.0 is the industry standard—supports scopes, refresh tokens, third-party login. JWTs are self-contained tokens that don't need server-side sessions. More complex, but more powerful.",
+        "duration": 15.399999618530273,
+        "words": [
+          {
+            "word": "OAuth",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "and",
+            "start": 0.5600000023841858,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "JWT",
+            "start": 1.0199999809265137,
+            "end": 1.9600000381469727
+          },
+          {
+            "word": "OAuth",
+            "start": 2.4800000190734863,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "2",
+            "start": 2.759999990463257,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "0",
+            "start": 3.0399999618530273,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "is",
+            "start": 3.4600000381469727,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "the",
+            "start": 3.5999999046325684,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "industry",
+            "start": 3.8399999141693115,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "standard",
+            "start": 4.239999771118164,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "supports",
+            "start": 5.099999904632568,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "scopes",
+            "start": 5.420000076293945,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "refresh",
+            "start": 6.300000190734863,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "tokens",
+            "start": 6.559999942779541,
+            "end": 6.900000095367432
+          },
+          {
+            "word": "third",
+            "start": 7.5,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "party",
+            "start": 7.579999923706055,
+            "end": 7.78000020980835
+          },
+          {
+            "word": "login",
+            "start": 8.100000381469727,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "JWTs",
+            "start": 8.779999732971191,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "are",
+            "start": 9.460000038146973,
+            "end": 9.779999732971191
+          },
+          {
+            "word": "self",
+            "start": 9.779999732971191,
+            "end": 10.020000457763672
+          },
+          {
+            "word": "contained",
+            "start": 10.020000457763672,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "tokens",
+            "start": 10.380000114440918,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "that",
+            "start": 10.720000267028809,
+            "end": 11.300000190734863
+          },
+          {
+            "word": "don't",
+            "start": 11.300000190734863,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "need",
+            "start": 11.520000457763672,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "server",
+            "start": 11.779999732971191,
+            "end": 12.119999885559082
+          },
+          {
+            "word": "side",
+            "start": 12.119999885559082,
+            "end": 12.319999694824219
+          },
+          {
+            "word": "sessions",
+            "start": 12.319999694824219,
+            "end": 12.760000228881836
+          },
+          {
+            "word": "More",
+            "start": 13.319999694824219,
+            "end": 13.479999542236328
+          },
+          {
+            "word": "complex",
+            "start": 13.479999542236328,
+            "end": 13.960000038146973
+          },
+          {
+            "word": "but",
+            "start": 14.239999771118164,
+            "end": 14.5600004196167
+          },
+          {
+            "word": "more",
+            "start": 14.5600004196167,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "powerful",
+            "start": 14.800000190734863,
+            "end": 15.140000343322754
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "HTTP Status Codes. 200 means OK. 201 means Created. 400 means you messed up. 401 means authenticate first. 403 means you're not allowed. 404 means not found. 500 means we messed up. Know these cold.",
+        "duration": 19.559999465942383,
+        "words": [
+          {
+            "word": "HTTP",
+            "start": 0,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "status",
+            "start": 1.6200000047683716,
+            "end": 2.240000009536743
+          },
+          {
+            "word": "codes",
+            "start": 2.240000009536743,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "200",
+            "start": 3.380000114440918,
+            "end": 3.380000114440918
+          },
+          {
+            "word": "means",
+            "start": 3.380000114440918,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "OK",
+            "start": 3.859999895095825,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "201",
+            "start": 5,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "means",
+            "start": 5.340000152587891,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "created",
+            "start": 5.820000171661377,
+            "end": 6.28000020980835
+          },
+          {
+            "word": "400",
+            "start": 6.920000076293945,
+            "end": 7.340000152587891
+          },
+          {
+            "word": "means",
+            "start": 7.340000152587891,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "you",
+            "start": 7.840000152587891,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "messed",
+            "start": 8.020000457763672,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "up",
+            "start": 8.199999809265137,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "401",
+            "start": 9.220000267028809,
+            "end": 9.5
+          },
+          {
+            "word": "means",
+            "start": 9.5,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "authenticate",
+            "start": 10.0600004196167,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "first",
+            "start": 10.699999809265137,
+            "end": 11.15999984741211
+          },
+          {
+            "word": "403",
+            "start": 11.720000267028809,
+            "end": 12.279999732971191
+          },
+          {
+            "word": "means",
+            "start": 12.279999732971191,
+            "end": 12.600000381469727
+          },
+          {
+            "word": "you're",
+            "start": 12.600000381469727,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "not",
+            "start": 12.800000190734863,
+            "end": 12.979999542236328
+          },
+          {
+            "word": "allowed",
+            "start": 12.979999542236328,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "404",
+            "start": 14.039999961853027,
+            "end": 14.520000457763672
+          },
+          {
+            "word": "means",
+            "start": 14.520000457763672,
+            "end": 14.779999732971191
+          },
+          {
+            "word": "not",
+            "start": 14.779999732971191,
+            "end": 15.140000343322754
+          },
+          {
+            "word": "found",
+            "start": 15.140000343322754,
+            "end": 15.420000076293945
+          },
+          {
+            "word": "500",
+            "start": 16.1200008392334,
+            "end": 16.440000534057617
+          },
+          {
+            "word": "means",
+            "start": 16.440000534057617,
+            "end": 16.920000076293945
+          },
+          {
+            "word": "we",
+            "start": 16.920000076293945,
+            "end": 17.200000762939453
+          },
+          {
+            "word": "messed",
+            "start": 17.200000762939453,
+            "end": 17.34000015258789
+          },
+          {
+            "word": "up",
+            "start": 17.34000015258789,
+            "end": 17.979999542236328
+          },
+          {
+            "word": "Know",
+            "start": 18.239999771118164,
+            "end": 18.3799991607666
+          },
+          {
+            "word": "these",
+            "start": 18.3799991607666,
+            "end": 18.639999389648438
+          },
+          {
+            "word": "cold",
+            "start": 18.639999389648438,
+            "end": 18.959999084472656
+          }
+        ]
+      },
+      {
+        "storyId": "auth-errors-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Consistent Error Format. Always include: an error code for machines, a message for humans, a request ID for debugging, and a docs URL for resolution. Good errors turn frustrated developers into happy ones.",
+        "duration": 14.25,
+        "words": [
+          {
+            "word": "Consistent",
+            "start": 0,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "error",
+            "start": 0.7400000095367432,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "format",
+            "start": 1.1200000047683716,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "Always",
+            "start": 2.4000000953674316,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "include",
+            "start": 2.4000000953674316,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "an",
+            "start": 2.859999895095825,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "error",
+            "start": 3.4800000190734863,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "code",
+            "start": 3.700000047683716,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "for",
+            "start": 3.9800000190734863,
+            "end": 4.21999979019165
+          },
+          {
+            "word": "machines",
+            "start": 4.21999979019165,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "a",
+            "start": 5.019999980926514,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "message",
+            "start": 5.380000114440918,
+            "end": 5.380000114440918
+          },
+          {
+            "word": "for",
+            "start": 5.380000114440918,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "humans",
+            "start": 6.019999980926514,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "a",
+            "start": 6.460000038146973,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "request",
+            "start": 6.619999885559082,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "ID",
+            "start": 6.940000057220459,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "for",
+            "start": 7.21999979019165,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "debugging",
+            "start": 7.519999980926514,
+            "end": 7.800000190734863
+          },
+          {
+            "word": "and",
+            "start": 8.260000228881836,
+            "end": 8.359999656677246
+          },
+          {
+            "word": "a",
+            "start": 8.359999656677246,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "docs",
+            "start": 8.819999694824219,
+            "end": 8.960000038146973
+          },
+          {
+            "word": "URL",
+            "start": 8.960000038146973,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "for",
+            "start": 9.359999656677246,
+            "end": 9.760000228881836
+          },
+          {
+            "word": "resolution",
+            "start": 9.760000228881836,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "Good",
+            "start": 10.960000038146973,
+            "end": 11.0600004196167
+          },
+          {
+            "word": "errors",
+            "start": 11.0600004196167,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "turn",
+            "start": 11.460000038146973,
+            "end": 12.020000457763672
+          },
+          {
+            "word": "frustrated",
+            "start": 12.020000457763672,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "developers",
+            "start": 12.539999961853027,
+            "end": 13.0600004196167
+          },
+          {
+            "word": "into",
+            "start": 13.0600004196167,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "happy",
+            "start": 13.520000457763672,
+            "end": 13.819999694824219
+          },
+          {
+            "word": "ones",
+            "start": 13.819999694824219,
+            "end": 14.100000381469727
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "storyId": "events-story",
+  "stepId": "step-0",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "The Coupling Problem. In request-response architecture, services call each other directly and wait. Order service calls payment, which calls inventory, which calls shipping. One chain, all waiting.",
+  "duration": 15.640000343322754,
+  "words": [
+    {
+      "word": "The",
+      "start": 0,
+      "end": 0.5
+    },
+    {
+      "word": "coupling",
+      "start": 0.5,
+      "end": 0.8600000143051147
+    },
+    {
+      "word": "problem",
+      "start": 0.8600000143051147,
+      "end": 1.440000057220459
+    },
+    {
+      "word": "In",
+      "start": 2.0999999046325684,
+      "end": 2.119999885559082
+    },
+    {
+      "word": "request",
+      "start": 2.119999885559082,
+      "end": 2.559999942779541
+    },
+    {
+      "word": "response",
+      "start": 2.559999942779541,
+      "end": 3.0799999237060547
+    },
+    {
+      "word": "architecture",
+      "start": 3.0799999237060547,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "services",
+      "start": 4.300000190734863,
+      "end": 4.579999923706055
+    },
+    {
+      "word": "call",
+      "start": 4.579999923706055,
+      "end": 4.960000038146973
+    },
+    {
+      "word": "each",
+      "start": 4.960000038146973,
+      "end": 5.21999979019165
+    },
+    {
+      "word": "other",
+      "start": 5.21999979019165,
+      "end": 5.440000057220459
+    },
+    {
+      "word": "directly",
+      "start": 5.440000057220459,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "and",
+      "start": 5.940000057220459,
+      "end": 6.440000057220459
+    },
+    {
+      "word": "wait",
+      "start": 6.440000057220459,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "Order",
+      "start": 8.020000457763672,
+      "end": 8.119999885559082
+    },
+    {
+      "word": "service",
+      "start": 8.119999885559082,
+      "end": 8.520000457763672
+    },
+    {
+      "word": "calls",
+      "start": 8.520000457763672,
+      "end": 8.859999656677246
+    },
+    {
+      "word": "payment",
+      "start": 8.859999656677246,
+      "end": 9.300000190734863
+    },
+    {
+      "word": "which",
+      "start": 9.800000190734863,
+      "end": 9.9399995803833
+    },
+    {
+      "word": "calls",
+      "start": 9.9399995803833,
+      "end": 10.279999732971191
+    },
+    {
+      "word": "inventory",
+      "start": 10.279999732971191,
+      "end": 10.84000015258789
+    },
+    {
+      "word": "which",
+      "start": 11.399999618530273,
+      "end": 11.5
+    },
+    {
+      "word": "calls",
+      "start": 11.5,
+      "end": 11.859999656677246
+    },
+    {
+      "word": "shipping",
+      "start": 11.859999656677246,
+      "end": 12.180000305175781
+    },
+    {
+      "word": "One",
+      "start": 13.300000190734863,
+      "end": 13.619999885559082
+    },
+    {
+      "word": "chain",
+      "start": 13.619999885559082,
+      "end": 14.020000457763672
+    },
+    {
+      "word": "all",
+      "start": 14.5,
+      "end": 14.899999618530273
+    },
+    {
+      "word": "waiting",
+      "start": 14.899999618530273,
+      "end": 15.180000305175781
+    }
+  ]
+}

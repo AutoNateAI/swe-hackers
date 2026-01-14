@@ -1,0 +1,265 @@
+{
+  "pageId": "ch3-magnetism",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "The Pull Between",
+    "icon": "🧲",
+    "themeColor": "magnetism"
+  },
+  "stories": [
+    {
+      "id": "api-reality-story",
+      "diagramId": "api-reality",
+      "title": "The Reality Gap",
+      "steps": [
+        {
+          "nodeId": "class-project",
+          "icon": "🎓",
+          "title": "Your Class Project",
+          "narration": "In class, you write requests dot get url and call it a day. Simple, clean, works on your machine. But that simple call hides a massive iceberg underneath.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "the-contract",
+          "edges": [{ "from": "class-project", "to": "the-contract" }],
+          "icon": "📜",
+          "title": "The Hidden Contract",
+          "narration": "Behind every API call is a contract—documented, versioned, authenticated, rate-limited. Breaking that contract breaks everyone who depends on it. That's the production reality.",
+          "connectsTo": "Class Project"
+        },
+        {
+          "nodeId": "production-client",
+          "edges": [{ "from": "the-contract", "to": "production-client" }],
+          "icon": "🔧",
+          "title": "Production API Clients",
+          "narration": "Production code needs retry logic, authentication headers, rate limit handling, and response validation. A simple get becomes a robust client with fallback strategies.",
+          "connectsTo": "Contract"
+        },
+        {
+          "nodeId": "versioned-responses",
+          "edges": [{ "from": "production-client", "to": "versioned-responses" }],
+          "icon": "📦",
+          "title": "Versioned Responses",
+          "narration": "You can't just return json data. Production APIs have versioned contracts, consistent error formats, pagination for large results, and hypermedia links for discoverability.",
+          "connectsTo": "Production Client"
+        },
+        {
+          "nodeId": "error-handling",
+          "edges": [{ "from": "versioned-responses", "to": "error-handling" }],
+          "icon": "⚠️",
+          "title": "Structured Error Handling",
+          "narration": "Forget raise Exception. Production needs structured errors with codes, retry-after headers, and circuit breakers that prevent cascading failures across your entire system.",
+          "connectsTo": "Versioned Responses"
+        }
+      ]
+    },
+    {
+      "id": "rest-design-story",
+      "diagramId": "rest-design",
+      "title": "RESTful API Design",
+      "steps": [
+        {
+          "nodeId": "bad-design",
+          "icon": "❌",
+          "title": "Bad API Design",
+          "narration": "You've seen it: get Users, create New User, user underscore data. Inconsistent, verb-based, unpredictable. Every endpoint is a surprise. This is API chaos.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "resource-thinking",
+          "edges": [{ "from": "bad-design", "to": "resource-thinking" }],
+          "icon": "🎯",
+          "title": "Think in Resources",
+          "narration": "REST is about resources, not actions. Users is a resource. Orders is a resource. The HTTP method tells you the action. GET reads, POST creates, PUT updates, DELETE removes.",
+          "connectsTo": "Bad Design"
+        },
+        {
+          "nodeId": "predictable-urls",
+          "edges": [{ "from": "resource-thinking", "to": "predictable-urls" }],
+          "icon": "🔗",
+          "title": "Predictable URLs",
+          "narration": "Slash users lists all users. Slash users slash 123 gets user 123. Slash users slash 123 slash orders gets that user's orders. Once you know the pattern, you can guess any endpoint.",
+          "connectsTo": "Resources"
+        },
+        {
+          "nodeId": "http-methods",
+          "edges": [{ "from": "predictable-urls", "to": "http-methods" }],
+          "icon": "📮",
+          "title": "HTTP Methods = CRUD",
+          "narration": "GET equals Read. POST equals Create. PUT equals Update. DELETE equals Delete. The method plus the resource tells the whole story. No more guessing what createNewUser does.",
+          "connectsTo": "URLs"
+        },
+        {
+          "nodeId": "consistency-wins",
+          "edges": [{ "from": "http-methods", "to": "consistency-wins" }],
+          "icon": "✅",
+          "title": "Consistency Wins",
+          "narration": "When your API is consistent and predictable, developers can integrate faster, make fewer mistakes, and your documentation almost writes itself. Good design is good communication.",
+          "connectsTo": "HTTP Methods"
+        }
+      ]
+    },
+    {
+      "id": "auth-errors-story",
+      "diagramId": "auth-errors",
+      "title": "Authentication & Errors",
+      "steps": [
+        {
+          "nodeId": "auth-matters",
+          "icon": "🔐",
+          "title": "Why Auth Matters",
+          "narration": "Every production API needs authentication. Who's calling? Are they allowed? How do we track usage? Without auth, your API is an open door to abuse and data breaches.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "api-keys",
+          "edges": [{ "from": "auth-matters", "to": "api-keys" }],
+          "icon": "🔑",
+          "title": "API Keys",
+          "narration": "The simplest auth: a secret key in the header. Great for server-to-server calls. But keys can leak, can't expire gracefully, and don't support fine-grained permissions.",
+          "connectsTo": "Auth Matters"
+        },
+        {
+          "nodeId": "oauth-jwt",
+          "edges": [{ "from": "api-keys", "to": "oauth-jwt" }],
+          "icon": "🎫",
+          "title": "OAuth and JWT",
+          "narration": "OAuth 2.0 is the industry standard—supports scopes, refresh tokens, third-party login. JWTs are self-contained tokens that don't need server-side sessions. More complex, but more powerful.",
+          "connectsTo": "API Keys"
+        },
+        {
+          "nodeId": "status-codes",
+          "edges": [{ "from": "oauth-jwt", "to": "status-codes" }],
+          "icon": "📊",
+          "title": "HTTP Status Codes",
+          "narration": "200 means OK. 201 means Created. 400 means you messed up. 401 means authenticate first. 403 means you're not allowed. 404 means not found. 500 means we messed up. Know these cold.",
+          "connectsTo": "OAuth/JWT"
+        },
+        {
+          "nodeId": "error-format",
+          "edges": [{ "from": "status-codes", "to": "error-format" }],
+          "icon": "📋",
+          "title": "Consistent Error Format",
+          "narration": "Always include: an error code for machines, a message for humans, a request ID for debugging, and a docs URL for resolution. Good errors turn frustrated developers into happy ones.",
+          "connectsTo": "Status Codes"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "api-reality-story",
+      "questions": [
+        {
+          "question": "What makes production API clients different from class project code?",
+          "options": [
+            "Production code uses different programming languages",
+            "Production clients need retry logic, auth, rate limiting, and validation",
+            "Production APIs don't need error handling",
+            "Class projects are more complex than production code"
+          ],
+          "correct": 1,
+          "explanation": "Production API clients handle real-world challenges: network failures (retry), security (auth), abuse prevention (rate limiting), and data integrity (validation)."
+        },
+        {
+          "question": "What is an API 'contract'?",
+          "options": [
+            "A legal document between companies",
+            "The documented agreement of how the API behaves—versioned, authenticated, rate-limited",
+            "A database schema",
+            "The price you pay to use an API"
+          ],
+          "correct": 1,
+          "explanation": "An API contract defines how the API behaves—what requests it accepts, what responses it returns, how it authenticates, and its rate limits. Breaking this breaks all clients."
+        },
+        {
+          "question": "Why do production APIs need structured errors instead of generic exceptions?",
+          "options": [
+            "Structured errors look nicer",
+            "They enable machine-readable codes, debugging IDs, and actionable retry logic",
+            "Generic exceptions are too fast",
+            "Structured errors use less bandwidth"
+          ],
+          "correct": 1,
+          "explanation": "Structured errors with codes (machine-readable), messages (human-readable), request IDs (debugging), and retry-after headers enable proper error handling and recovery."
+        }
+      ]
+    },
+    {
+      "storyId": "rest-design-story",
+      "questions": [
+        {
+          "question": "What's wrong with endpoints like /getUsers and /createNewUser?",
+          "options": [
+            "They're too short",
+            "They use verbs instead of resources, making them inconsistent and unpredictable",
+            "They don't use enough capital letters",
+            "Nothing, this is best practice"
+          ],
+          "correct": 1,
+          "explanation": "REST uses resources (nouns) with HTTP methods (verbs). /users with GET, POST, PUT, DELETE is consistent and predictable. Verb-based URLs create chaos."
+        },
+        {
+          "question": "In REST, what does POST /users do?",
+          "options": [
+            "Gets all users",
+            "Creates a new user",
+            "Updates a user",
+            "Deletes all users"
+          ],
+          "correct": 1,
+          "explanation": "POST creates new resources. POST /users creates a new user. GET reads, PUT updates, DELETE removes. The HTTP method tells you the action."
+        },
+        {
+          "question": "How would you get orders for user 123 in a RESTful API?",
+          "options": [
+            "POST /getOrdersForUser?id=123",
+            "GET /orders?user=123",
+            "GET /users/123/orders",
+            "GET /user_orders/123"
+          ],
+          "correct": 2,
+          "explanation": "Nested resources show relationships. /users/123/orders reads as 'the orders belonging to user 123'. This is predictable and self-documenting."
+        }
+      ]
+    },
+    {
+      "storyId": "auth-errors-story",
+      "questions": [
+        {
+          "question": "What's the difference between 401 and 403 status codes?",
+          "options": [
+            "They mean the same thing",
+            "401 = not authenticated (who are you?), 403 = not authorized (you can't do that)",
+            "401 = server error, 403 = client error",
+            "401 = not found, 403 = bad request"
+          ],
+          "correct": 1,
+          "explanation": "401 Unauthorized means 'I don't know who you are—please authenticate.' 403 Forbidden means 'I know who you are, but you don't have permission for this.'"
+        },
+        {
+          "question": "Why might you choose JWT over API keys?",
+          "options": [
+            "JWTs are always more secure",
+            "JWTs are self-contained, support expiration, and don't need server-side sessions",
+            "API keys are deprecated",
+            "JWTs are easier to implement"
+          ],
+          "correct": 1,
+          "explanation": "JWTs contain claims (user ID, expiration, permissions) within the token itself. No database lookup needed to validate them, making them great for distributed systems."
+        },
+        {
+          "question": "What should a good API error response include?",
+          "options": [
+            "Just the HTTP status code",
+            "Error code, human message, request ID, and documentation URL",
+            "A stack trace from the server",
+            "The developer's email address"
+          ],
+          "correct": 1,
+          "explanation": "Good errors include: code (machine-readable), message (human-readable), request_id (for debugging), and docs_url (for resolution). This enables proper error handling."
+        }
+      ]
+    }
+  ]
+}

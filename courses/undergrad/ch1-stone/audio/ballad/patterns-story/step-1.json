@@ -1,0 +1,160 @@
+{
+  "storyId": "patterns-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Repository Pattern. The Repository Pattern abstracts data access. Your code doesn't care if it's SQL, NoSQL, or an API. You define an interface, then swap implementations without changing business logic.",
+  "duration": 16.459999084472656,
+  "words": [
+    {
+      "word": "Repository",
+      "start": 0,
+      "end": 0.9399999976158142
+    },
+    {
+      "word": "pattern",
+      "start": 0.9399999976158142,
+      "end": 1.5199999809265137
+    },
+    {
+      "word": "The",
+      "start": 1.8799999952316284,
+      "end": 2.0399999618530273
+    },
+    {
+      "word": "repository",
+      "start": 2.0399999618530273,
+      "end": 2.640000104904175
+    },
+    {
+      "word": "pattern",
+      "start": 2.640000104904175,
+      "end": 3.180000066757202
+    },
+    {
+      "word": "abstracts",
+      "start": 3.180000066757202,
+      "end": 4.28000020980835
+    },
+    {
+      "word": "data",
+      "start": 4.28000020980835,
+      "end": 4.5
+    },
+    {
+      "word": "access",
+      "start": 4.5,
+      "end": 5
+    },
+    {
+      "word": "Your",
+      "start": 5.619999885559082,
+      "end": 5.800000190734863
+    },
+    {
+      "word": "code",
+      "start": 5.800000190734863,
+      "end": 6.079999923706055
+    },
+    {
+      "word": "doesn't",
+      "start": 6.079999923706055,
+      "end": 6.460000038146973
+    },
+    {
+      "word": "care",
+      "start": 6.460000038146973,
+      "end": 6.679999828338623
+    },
+    {
+      "word": "if",
+      "start": 6.679999828338623,
+      "end": 6.860000133514404
+    },
+    {
+      "word": "it's",
+      "start": 6.860000133514404,
+      "end": 7.119999885559082
+    },
+    {
+      "word": "SQL",
+      "start": 7.119999885559082,
+      "end": 7.519999980926514
+    },
+    {
+      "word": "NoSQL",
+      "start": 8.119999885559082,
+      "end": 8.5600004196167
+    },
+    {
+      "word": "or",
+      "start": 9.079999923706055,
+      "end": 9.199999809265137
+    },
+    {
+      "word": "an",
+      "start": 9.199999809265137,
+      "end": 9.520000457763672
+    },
+    {
+      "word": "API",
+      "start": 9.520000457763672,
+      "end": 9.65999984741211
+    },
+    {
+      "word": "You",
+      "start": 10.5,
+      "end": 10.65999984741211
+    },
+    {
+      "word": "define",
+      "start": 10.65999984741211,
+      "end": 11.100000381469727
+    },
+    {
+      "word": "an",
+      "start": 11.100000381469727,
+      "end": 11.600000381469727
+    },
+    {
+      "word": "interface",
+      "start": 11.600000381469727,
+      "end": 11.880000114440918
+    },
+    {
+      "word": "then",
+      "start": 12.4399995803833,
+      "end": 12.739999771118164
+    },
+    {
+      "word": "swap",
+      "start": 12.739999771118164,
+      "end": 13.079999923706055
+    },
+    {
+      "word": "implementations",
+      "start": 13.079999923706055,
+      "end": 14.079999923706055
+    },
+    {
+      "word": "without",
+      "start": 14.079999923706055,
+      "end": 14.699999809265137
+    },
+    {
+      "word": "changing",
+      "start": 14.699999809265137,
+      "end": 15.180000305175781
+    },
+    {
+      "word": "business",
+      "start": 15.180000305175781,
+      "end": 15.699999809265137
+    },
+    {
+      "word": "logic",
+      "start": 15.699999809265137,
+      "end": 16.040000915527344
+    }
+  ]
+}

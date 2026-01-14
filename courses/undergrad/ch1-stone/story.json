@@ -1,0 +1,257 @@
+{
+  "pageId": "ch1-stone",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "The Bridge to Industry",
+    "icon": "🎓",
+    "themeColor": "stone"
+  },
+  "stories": [
+    {
+      "id": "bridge-story",
+      "diagramId": "bridge",
+      "title": "The Bridge",
+      "steps": [
+        {
+          "nodeId": "the-gap",
+          "icon": "🎓",
+          "title": "The Gap Nobody Mentions",
+          "narration": "Here's a secret your professors won't tell you: the gap between classroom CS and industry engineering is massive. But it doesn't have to be. Your academic foundation is solid — you just need a translation layer.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "classroom-skills",
+          "edges": [{ "from": "the-gap", "to": "classroom-skills" }],
+          "icon": "📚",
+          "title": "What You've Learned",
+          "narration": "Think about what you've built: algorithms, data structures, database theory, software design principles. This isn't just academic exercise — it's the foundation that industry builds on.",
+          "connectsTo": "The Gap"
+        },
+        {
+          "nodeId": "the-bridge",
+          "edges": [{ "from": "classroom-skills", "to": "the-bridge" }],
+          "icon": "🌉",
+          "title": "This Course Is The Bridge",
+          "narration": "This course connects what you know to how software is actually built. Design patterns, modern tools, AI-augmented development. Same concepts you learned, applied to real production systems.",
+          "connectsTo": "Your Skills"
+        },
+        {
+          "nodeId": "industry-ready",
+          "edges": [{ "from": "the-bridge", "to": "industry-ready" }],
+          "icon": "💼",
+          "title": "Industry-Ready",
+          "narration": "The destination: internships, full-time roles, career growth. You're not starting from zero — you're translating knowledge you already have into the language industry speaks.",
+          "connectsTo": "The Bridge"
+        },
+        {
+          "nodeId": "knowledge-transfer",
+          "edges": [{ "from": "industry-ready", "to": "knowledge-transfer" }],
+          "icon": "💡",
+          "title": "Your Knowledge Transfers",
+          "narration": "That binary search tree you implemented? Industry uses self-balancing variants like Red-Black trees. The concept is identical — your knowledge transfers. You just need to see the connection.",
+          "connectsTo": "Industry-Ready"
+        }
+      ]
+    },
+    {
+      "id": "translation-story",
+      "diagramId": "translation",
+      "title": "The Translation Layer",
+      "steps": [
+        {
+          "nodeId": "same-concepts",
+          "icon": "🔄",
+          "title": "Same Concepts, Different Names",
+          "narration": "Everything you learned in class maps to something in industry. Linked lists and arrays become choosing the right data store. Big-O analysis becomes performance optimization at scale.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "theory-to-practice",
+          "edges": [{ "from": "same-concepts", "to": "theory-to-practice" }],
+          "icon": "📝",
+          "title": "Theory to Practice",
+          "narration": "Database normalization becomes schema design for real products. UML diagrams become architecture documentation. Software design principles become code review standards.",
+          "connectsTo": "Same Concepts"
+        },
+        {
+          "nodeId": "hash-table-example",
+          "edges": [{ "from": "theory-to-practice", "to": "hash-table-example" }],
+          "icon": "🔧",
+          "title": "The Hash Table Example",
+          "narration": "In class, you implement a hash table from scratch with collision handling. In industry, you use Python's built-in dict or Redis for distributed caching. Same concept, production-ready tools.",
+          "connectsTo": "Theory to Practice"
+        },
+        {
+          "nodeId": "the-insight",
+          "edges": [{ "from": "hash-table-example", "to": "the-insight" }],
+          "icon": "🎯",
+          "title": "The Key Insight",
+          "narration": "Here's the insight: you learned the fundamentals so you can understand and debug the abstractions. Interviewers test the fundamentals. Industry uses the abstractions. You need both.",
+          "connectsTo": "Hash Table Example"
+        }
+      ]
+    },
+    {
+      "id": "patterns-story",
+      "diagramId": "patterns",
+      "title": "Industry Patterns",
+      "steps": [
+        {
+          "nodeId": "patterns-everywhere",
+          "icon": "🏭",
+          "title": "Patterns Everywhere",
+          "narration": "Certain patterns appear in every production codebase. Learn them once, recognize them everywhere. They're the shared vocabulary of professional software engineering.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "repository-pattern",
+          "edges": [{ "from": "patterns-everywhere", "to": "repository-pattern" }],
+          "icon": "🔄",
+          "title": "Repository Pattern",
+          "narration": "The Repository Pattern abstracts data access. Your code doesn't care if it's SQL, NoSQL, or an API. You define an interface, then swap implementations without changing business logic.",
+          "connectsTo": "Patterns Everywhere"
+        },
+        {
+          "nodeId": "factory-pattern",
+          "edges": [{ "from": "repository-pattern", "to": "factory-pattern" }],
+          "icon": "🏭",
+          "title": "Factory Pattern",
+          "narration": "The Factory Pattern creates objects without exposing creation logic. Seen in every framework — React components, Django models, Spring beans. It keeps code flexible and testable.",
+          "connectsTo": "Repository Pattern"
+        },
+        {
+          "nodeId": "dependency-injection",
+          "edges": [{ "from": "factory-pattern", "to": "dependency-injection" }],
+          "icon": "🎯",
+          "title": "Dependency Injection",
+          "narration": "Dependency Injection means passing dependencies in, not creating them internally. This is what enables testing — inject a mock database instead of hitting production!",
+          "connectsTo": "Factory Pattern"
+        },
+        {
+          "nodeId": "solid-connection",
+          "edges": [{ "from": "dependency-injection", "to": "solid-connection" }],
+          "icon": "📐",
+          "title": "The SOLID Connection",
+          "narration": "Remember Liskov Substitution from OOP class? That's exactly what makes Repository Pattern work — any implementation can be swapped in. Your academic knowledge is the foundation for industry patterns!",
+          "connectsTo": "Dependency Injection"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "bridge-story",
+      "questions": [
+        {
+          "question": "What's the main purpose of this course according to 'The Bridge' concept?",
+          "options": [
+            "To teach you algorithms from scratch",
+            "To replace your academic knowledge",
+            "To translate your classroom knowledge into industry skills",
+            "To help you memorize design patterns"
+          ],
+          "correct": 2,
+          "explanation": "The course acts as a bridge — translating the solid foundation you built in class into the patterns and practices used in industry."
+        },
+        {
+          "question": "Why is your academic CS foundation valuable in industry?",
+          "options": [
+            "Industry uses the exact same code you wrote in class",
+            "The concepts transfer — industry tools are built on the fundamentals you learned",
+            "Academic projects can be copy-pasted into production",
+            "Professors design industry software"
+          ],
+          "correct": 1,
+          "explanation": "Your knowledge of fundamentals (like hash tables, trees, Big-O) helps you understand WHY industry tools work. Redis is basically a distributed hash table!"
+        },
+        {
+          "question": "What's an example of classroom-to-industry translation?",
+          "options": [
+            "UML diagrams → Video games",
+            "Big-O analysis → Performance optimization at scale",
+            "Linked lists → Machine learning",
+            "Database theory → Frontend design"
+          ],
+          "correct": 1,
+          "explanation": "Big-O analysis in class translates directly to performance optimization in industry. Understanding algorithmic complexity helps you make systems scale."
+        }
+      ]
+    },
+    {
+      "storyId": "translation-story",
+      "questions": [
+        {
+          "question": "In class you implement a hash table from scratch. In industry, what do you use instead?",
+          "options": [
+            "More hash tables from scratch",
+            "Built-in dict or distributed caching like Redis",
+            "Linked lists only",
+            "Industry doesn't use hash tables"
+          ],
+          "correct": 1,
+          "explanation": "Industry uses production-ready abstractions like Python's dict or Redis. Your knowledge of how hash tables work helps you understand and debug these tools."
+        },
+        {
+          "question": "Why do interviewers test fundamentals while industry uses abstractions?",
+          "options": [
+            "Interviewers are out of touch",
+            "Fundamentals prove you can understand and debug the abstractions",
+            "Abstractions are too easy to test",
+            "It's just tradition with no purpose"
+          ],
+          "correct": 1,
+          "explanation": "Understanding fundamentals proves you can debug issues, optimize performance, and make architectural decisions. You need both the knowledge AND the tools."
+        },
+        {
+          "question": "What does 'your knowledge transfers' mean?",
+          "options": [
+            "You can copy your homework into production",
+            "The concepts you learned apply to industry tools — same ideas, different implementations",
+            "You need to forget everything and start over",
+            "Industry uses completely different algorithms"
+          ],
+          "correct": 1,
+          "explanation": "A binary search tree in class and a Red-Black tree in production are the SAME concept. Your understanding transfers — you just apply it to different implementations."
+        }
+      ]
+    },
+    {
+      "storyId": "patterns-story",
+      "questions": [
+        {
+          "question": "Why does industry prefer the Repository Pattern over direct database calls?",
+          "options": [
+            "It's faster at runtime",
+            "It uses less memory",
+            "It enables testing with mocks and swapping databases without changing business logic",
+            "It's required by Python"
+          ],
+          "correct": 2,
+          "explanation": "Repository Pattern is about abstraction. It lets you test without a real database (using mocks) and swap storage backends without rewriting your business logic."
+        },
+        {
+          "question": "What does Dependency Injection enable?",
+          "options": [
+            "Faster code execution",
+            "Testing with mock dependencies instead of real ones",
+            "Automatic database creation",
+            "Code obfuscation"
+          ],
+          "correct": 1,
+          "explanation": "By injecting dependencies, you can pass in mock databases, fake APIs, or test doubles. This makes your code testable without hitting real external systems."
+        },
+        {
+          "question": "How does the Liskov Substitution Principle relate to the Repository Pattern?",
+          "options": [
+            "They're completely unrelated",
+            "Any repository implementation can be substituted without breaking the service",
+            "Liskov invented the Repository Pattern",
+            "Repository Pattern violates Liskov Substitution"
+          ],
+          "correct": 1,
+          "explanation": "Liskov Substitution says subtypes must be substitutable. That's exactly how Repository Pattern works — PostgresRepo, MongoRepo, or MockRepo can all be swapped in!"
+        }
+      ]
+    }
+  ]
+}

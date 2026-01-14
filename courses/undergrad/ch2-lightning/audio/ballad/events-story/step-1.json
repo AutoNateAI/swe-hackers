@@ -1,0 +1,145 @@
+{
+  "storyId": "events-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Publish-Subscribe. Event-driven flips this model. Services publish events to a message queue. Other services subscribe to events they care about. No direct calls, no waiting!",
+  "duration": 13.960000038146973,
+  "words": [
+    {
+      "word": "Publish",
+      "start": 0,
+      "end": 0.6000000238418579
+    },
+    {
+      "word": "subscribe",
+      "start": 0.7599999904632568,
+      "end": 1.3200000524520874
+    },
+    {
+      "word": "Event",
+      "start": 2.200000047683716,
+      "end": 2.4600000381469727
+    },
+    {
+      "word": "driven",
+      "start": 2.4600000381469727,
+      "end": 2.7799999713897705
+    },
+    {
+      "word": "flips",
+      "start": 2.7799999713897705,
+      "end": 3.4200000762939453
+    },
+    {
+      "word": "this",
+      "start": 3.4200000762939453,
+      "end": 3.799999952316284
+    },
+    {
+      "word": "model",
+      "start": 3.799999952316284,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "Services",
+      "start": 5.300000190734863,
+      "end": 5.300000190734863
+    },
+    {
+      "word": "publish",
+      "start": 5.300000190734863,
+      "end": 5.78000020980835
+    },
+    {
+      "word": "events",
+      "start": 5.78000020980835,
+      "end": 6.179999828338623
+    },
+    {
+      "word": "to",
+      "start": 6.179999828338623,
+      "end": 6.380000114440918
+    },
+    {
+      "word": "a",
+      "start": 6.380000114440918,
+      "end": 6.679999828338623
+    },
+    {
+      "word": "message",
+      "start": 6.679999828338623,
+      "end": 6.880000114440918
+    },
+    {
+      "word": "queue",
+      "start": 6.880000114440918,
+      "end": 7.260000228881836
+    },
+    {
+      "word": "Other",
+      "start": 8.039999961853027,
+      "end": 8.220000267028809
+    },
+    {
+      "word": "services",
+      "start": 8.220000267028809,
+      "end": 8.65999984741211
+    },
+    {
+      "word": "subscribe",
+      "start": 8.65999984741211,
+      "end": 9.619999885559082
+    },
+    {
+      "word": "to",
+      "start": 9.619999885559082,
+      "end": 9.979999542236328
+    },
+    {
+      "word": "events",
+      "start": 9.979999542236328,
+      "end": 10.15999984741211
+    },
+    {
+      "word": "they",
+      "start": 10.15999984741211,
+      "end": 10.460000038146973
+    },
+    {
+      "word": "care",
+      "start": 10.460000038146973,
+      "end": 10.739999771118164
+    },
+    {
+      "word": "about",
+      "start": 10.739999771118164,
+      "end": 11.319999694824219
+    },
+    {
+      "word": "No",
+      "start": 11.779999732971191,
+      "end": 11.979999542236328
+    },
+    {
+      "word": "direct",
+      "start": 11.979999542236328,
+      "end": 12.239999771118164
+    },
+    {
+      "word": "calls",
+      "start": 12.239999771118164,
+      "end": 12.680000305175781
+    },
+    {
+      "word": "no",
+      "start": 12.979999542236328,
+      "end": 13.420000076293945
+    },
+    {
+      "word": "waiting",
+      "start": 13.420000076293945,
+      "end": 13.739999771118164
+    }
+  ]
+}

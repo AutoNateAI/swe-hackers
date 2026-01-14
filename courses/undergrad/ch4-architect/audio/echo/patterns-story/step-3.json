@@ -1,0 +1,155 @@
+{
+  "storyId": "patterns-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Pub/Sub Messaging. Fourth pattern: publish-subscribe. Decouple services with message queues. Publishers don't know about subscribers. Easy to add new consumers. This is how modern systems stay flexible.",
+  "duration": 15.960000038146973,
+  "words": [
+    {
+      "word": "Pub",
+      "start": 0,
+      "end": 0.6399999856948853
+    },
+    {
+      "word": "sub",
+      "start": 0.8600000143051147,
+      "end": 1.2000000476837158
+    },
+    {
+      "word": "messaging",
+      "start": 1.5399999618530273,
+      "end": 2
+    },
+    {
+      "word": "Fourth",
+      "start": 3.240000009536743,
+      "end": 3.240000009536743
+    },
+    {
+      "word": "pattern",
+      "start": 3.240000009536743,
+      "end": 3.5999999046325684
+    },
+    {
+      "word": "publish",
+      "start": 4.139999866485596,
+      "end": 4.400000095367432
+    },
+    {
+      "word": "subscribe",
+      "start": 4.619999885559082,
+      "end": 5.380000114440918
+    },
+    {
+      "word": "Decouple",
+      "start": 5.800000190734863,
+      "end": 6.139999866485596
+    },
+    {
+      "word": "services",
+      "start": 6.139999866485596,
+      "end": 6.599999904632568
+    },
+    {
+      "word": "with",
+      "start": 6.599999904632568,
+      "end": 6.980000019073486
+    },
+    {
+      "word": "message",
+      "start": 6.980000019073486,
+      "end": 7.300000190734863
+    },
+    {
+      "word": "queues",
+      "start": 7.300000190734863,
+      "end": 8.220000267028809
+    },
+    {
+      "word": "Publishers",
+      "start": 8.640000343322754,
+      "end": 8.899999618530273
+    },
+    {
+      "word": "don't",
+      "start": 8.899999618530273,
+      "end": 9.220000267028809
+    },
+    {
+      "word": "know",
+      "start": 9.220000267028809,
+      "end": 9.460000038146973
+    },
+    {
+      "word": "about",
+      "start": 9.460000038146973,
+      "end": 9.779999732971191
+    },
+    {
+      "word": "subscribers",
+      "start": 9.779999732971191,
+      "end": 10.319999694824219
+    },
+    {
+      "word": "Easy",
+      "start": 11.260000228881836,
+      "end": 11.260000228881836
+    },
+    {
+      "word": "to",
+      "start": 11.260000228881836,
+      "end": 11.520000457763672
+    },
+    {
+      "word": "add",
+      "start": 11.520000457763672,
+      "end": 11.760000228881836
+    },
+    {
+      "word": "new",
+      "start": 11.760000228881836,
+      "end": 12.119999885559082
+    },
+    {
+      "word": "consumers",
+      "start": 12.119999885559082,
+      "end": 12.420000076293945
+    },
+    {
+      "word": "This",
+      "start": 13.140000343322754,
+      "end": 13.359999656677246
+    },
+    {
+      "word": "is",
+      "start": 13.359999656677246,
+      "end": 13.619999885559082
+    },
+    {
+      "word": "how",
+      "start": 13.619999885559082,
+      "end": 13.899999618530273
+    },
+    {
+      "word": "modern",
+      "start": 13.899999618530273,
+      "end": 14.260000228881836
+    },
+    {
+      "word": "systems",
+      "start": 14.260000228881836,
+      "end": 14.739999771118164
+    },
+    {
+      "word": "stay",
+      "start": 14.739999771118164,
+      "end": 15.300000190734863
+    },
+    {
+      "word": "flexible",
+      "start": 15.300000190734863,
+      "end": 15.619999885559082
+    }
+  ]
+}

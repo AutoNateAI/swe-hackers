@@ -1,646 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 2: Lightning Paths | AutoNateAI Bridge</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2: Lightning Paths | The Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+</head>
+<body data-course="undergrad" data-lesson="ch2-lightning">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>Lightning Paths</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Bridge</a>
+        <a href="../ch1-stone/">Ch 1</a>
+        <a href="index.html" class="active">Ch 2</a>
+        <a href="../ch3-magnetism/">Ch 3: APIs</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">The Bridge</a>
+        <span>/</span>
+        <span>Chapter 2: Lightning Paths</span>
+      </div>
+      <h1>⚡ Lightning Paths</h1>
+      <p>You learned algorithms and Big O. But did anyone teach you about event-driven architecture? About processing millions of events per second? About async vs sync? Time to bridge the gap.</p>
+    </div>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../shared/css/lesson.css" />
-
-    <!-- Mermaid for diagrams -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-
-    <style>
-      :root {
-        --chapter-color: var(--accent-lightning);
-      }
-
-      .hero::before {
-        background: radial-gradient(
-            ellipse at 30% 50%,
-            rgba(255, 213, 79, 0.2) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 70% 30%,
-            rgba(255, 143, 0, 0.15) 0%,
-            transparent 50%
-          );
-      }
-
-      .story-block {
-        border-left-color: var(--accent-lightning);
-      }
-
-      .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 2rem 0;
-      }
-
-      .comparison-table th,
-      .comparison-table td {
-        padding: 1rem;
-        text-align: left;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .comparison-table th {
-        background: var(--bg-tertiary);
-        font-weight: 600;
-      }
-
-      .comparison-table tr:hover td {
-        background: rgba(255, 213, 79, 0.05);
-      }
-
-      .pipeline-stage {
-        background: var(--bg-secondary);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-left: 4px solid var(--accent-lightning);
-      }
-
-      .pipeline-stage h4 {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .pipeline-stage .stage-num {
-        background: var(--accent-lightning);
-        color: var(--bg-primary);
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 0.875rem;
-      }
-
-      .interview-tip {
-        background: linear-gradient(135deg, rgba(255, 213, 79, 0.1), rgba(255, 143, 0, 0.05));
-        border: 1px solid rgba(255, 213, 79, 0.3);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 2rem 0;
-      }
-
-      .interview-tip h4 {
-        color: var(--accent-lightning);
-        margin-bottom: 0.75rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Progress Bar -->
-    <div class="progress-bar"></div>
-
-    <nav class="progress-tracker">
-      <div class="progress-dot active" data-section="hero" title="Start"></div>
-      <div class="progress-dot" data-section="reality" title="Reality Check"></div>
-      <div class="progress-dot" data-section="async" title="Async"></div>
-      <div class="progress-dot" data-section="events" title="Event-Driven"></div>
-      <div class="progress-dot" data-section="patterns" title="Patterns"></div>
-      <div class="progress-dot" data-section="trial" title="Trial"></div>
-      <div class="progress-dot" data-section="project" title="Project"></div>
-    </nav>
-
-    <main class="lesson-container">
-      <!-- HERO -->
-      <section class="hero section" data-section="hero">
-        <div class="hero-content">
-          <span class="hero-chapter">Chapter 2 • Week 2</span>
-          <div class="hero-icon">⚡</div>
-          <h1>Lightning Paths</h1>
-          <p class="hero-subtitle">
-            You learned about algorithms and Big O. But did anyone teach you about
-            <strong>event-driven architecture</strong>? About processing millions
-            of events per second? About async vs sync?
-          </p>
-        </div>
-
-        <div class="scroll-indicator">
-          <span>Enter the flow</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
-        </div>
-      </section>
-
-      <!-- REALITY CHECK -->
-      <section class="section" data-section="reality">
-        <div class="section-content">
-          <h2 class="fade-in">🎓 → 💼 The Reality Gap</h2>
-
-          <div class="story-block fade-in">
-            <p>
-              That <code>for</code> loop processing data? In production, it becomes
-              <strong>stream processing</strong> — handling data as it flows rather
-              than in batches, enabling real-time analytics.
-            </p>
-          </div>
-
-          <table class="comparison-table fade-in">
-            <thead>
-              <tr>
-                <th>Your Class Project</th>
-                <th>Production System</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>for item in items: handle(item)</code></td>
-                <td>Async event handlers, message queues, parallel processing</td>
-              </tr>
-              <tr>
-                <td><code>result = slow_function()</code></td>
-                <td>async/await, non-blocking I/O, concurrent execution</td>
-              </tr>
-              <tr>
-                <td><code>try: risky_call() except: log()</code></td>
-                <td>Circuit breakers, retry with backoff, graceful degradation</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="interview-tip fade-in">
-            <h4>💼 Interview Reality</h4>
-            <p>
-              "Design a system that processes 100,000 events per second" is a common
-              system design question. Synchronous processing won't cut it. You need
-              to understand async patterns, message queues, and parallel processing.
-            </p>
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
           </div>
         </div>
-      </section>
-
-      <!-- ASYNC -->
-      <section class="section" data-section="async">
-        <div class="section-content">
-          <h2 class="fade-in">⏱️ Sync vs Async: The Core Difference</h2>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Synchronous: Wait for Each Operation</div>
-            <div class="mermaid">
-              sequenceDiagram
-                participant App
-                participant DB
-                participant API
-                participant Cache
-
-                App->>DB: Get user (wait...)
-                DB-->>App: User data
-                App->>API: Get orders (wait...)
-                API-->>App: Order data
-                App->>Cache: Store (wait...)
-                Cache-->>App: Done
-
-                Note over App: Total: t1 + t2 + t3
-            </div>
-          </div>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Asynchronous: Concurrent Operations</div>
-            <div class="mermaid">
-              sequenceDiagram
-                participant App
-                participant DB
-                participant API
-                participant Cache
-
-                par Parallel Requests
-                  App->>DB: Get user
-                  App->>API: Get orders
-                end
-                DB-->>App: User data
-                API-->>App: Order data
-                App->>Cache: Store
-                Cache-->>App: Done
-
-                Note over App: Total: max(t1, t2) + t3
-            </div>
-          </div>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Python - The Difference</span>
-              <button class="code-copy">Copy</button>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="comment"># Synchronous - blocks while waiting</span>
-<span class="keyword">def</span> <span class="function">get_user_data_sync</span>(user_id):
-    user = db.get_user(user_id)          <span class="comment"># Wait 100ms...</span>
-    orders = db.get_orders(user_id)      <span class="comment"># Wait 150ms...</span>
-    reviews = db.get_reviews(user_id)    <span class="comment"># Wait 100ms...</span>
-    <span class="keyword">return</span> combine(user, orders, reviews)
-<span class="comment"># Total time: 350ms</span>
-
-<span class="comment"># Asynchronous - concurrent execution</span>
-<span class="keyword">async def</span> <span class="function">get_user_data_async</span>(user_id):
-    user, orders, reviews = <span class="keyword">await</span> asyncio.gather(
-        db.get_user(user_id),
-        db.get_orders(user_id),
-        db.get_reviews(user_id)
-    )
-    <span class="keyword">return</span> combine(user, orders, reviews)
-<span class="comment"># Total time: 150ms (max of all three)</span></code></pre>
-            </div>
-            <div class="code-caption">
-              <p>
-                <span class="icon">⚡</span>
-                <strong>2.3x faster</strong> with the same operations. At scale,
-                this is the difference between handling 1,000 and 10,000 requests/second.
-              </p>
-            </div>
-          </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- EVENT-DRIVEN -->
-      <section class="section" data-section="events">
-        <div class="section-content">
-          <h2 class="fade-in">📨 Event-Driven Architecture</h2>
-
-          <p class="fade-in">
-            Instead of one service calling another and waiting, services
-            <strong>publish events</strong> and <strong>subscribe</strong> to events
-            they care about.
-          </p>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Request-Response vs Event-Driven</div>
-            <div class="mermaid">
-              flowchart LR
-                subgraph SYNC["❌ Request-Response"]
-                  S_ORDER[Order Service] -->|call| S_PAYMENT[Payment]
-                  S_PAYMENT -->|call| S_INVENTORY[Inventory]
-                  S_INVENTORY -->|call| S_SHIPPING[Shipping]
-                end
-
-                subgraph ASYNC["✅ Event-Driven"]
-                  A_ORDER[Order Service] -->|publish| QUEUE[(Message Queue)]
-                  QUEUE -->|subscribe| A_PAYMENT[Payment]
-                  QUEUE -->|subscribe| A_INVENTORY[Inventory]
-                  QUEUE -->|subscribe| A_SHIPPING[Shipping]
-                end
-
-                style SYNC fill:#2d1a1a,stroke:#ef5350
-                style ASYNC fill:#1a2d1a,stroke:#4caf50
-            </div>
-          </div>
-
-          <h3 class="fade-in">Why Event-Driven?</h3>
-
-          <div class="concept-grid fade-in">
-            <div class="concept-card lightning stagger-item">
-              <div class="concept-card-icon">🔄</div>
-              <h4>Decoupling</h4>
-              <p>Services don't need to know about each other. Add new consumers without changing producers.</p>
-            </div>
-            <div class="concept-card lightning stagger-item">
-              <div class="concept-card-icon">📈</div>
-              <h4>Scalability</h4>
-              <p>Add more consumers to handle load. Each can process independently.</p>
-            </div>
-            <div class="concept-card lightning stagger-item">
-              <div class="concept-card-icon">🛡️</div>
-              <h4>Resilience</h4>
-              <p>If a consumer is down, messages wait in the queue. No data lost.</p>
-            </div>
-            <div class="concept-card lightning stagger-item">
-              <div class="concept-card-icon">⏱️</div>
-              <h4>Async Processing</h4>
-              <p>Respond to user immediately, process in background.</p>
-            </div>
-          </div>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Python - Event Publishing</span>
-              <button class="code-copy">Copy</button>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass
-<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
-
-<span class="decorator">@dataclass</span>
-<span class="keyword">class</span> <span class="variable">OrderCreatedEvent</span>:
-    order_id: <span class="variable">str</span>
-    user_id: <span class="variable">str</span>
-    items: list[<span class="variable">str</span>]
-    total: <span class="variable">float</span>
-    timestamp: datetime
-
-<span class="comment"># Producer: Order Service</span>
-<span class="keyword">async def</span> <span class="function">create_order</span>(order_data):
-    order = save_to_database(order_data)
-
-    <span class="comment"># Publish event - don't wait for consumers</span>
-    event = OrderCreatedEvent(
-        order_id=order.id,
-        user_id=order.user_id,
-        items=order.items,
-        total=order.total,
-        timestamp=datetime.utcnow()
-    )
-    <span class="keyword">await</span> message_queue.publish(<span class="string">"orders"</span>, event)
-
-    <span class="keyword">return</span> order  <span class="comment"># Respond immediately to user</span>
-
-<span class="comment"># Consumers run separately</span>
-<span class="keyword">async def</span> <span class="function">payment_consumer</span>(event: OrderCreatedEvent):
-    <span class="string">"""Process payment when order is created."""</span>
-    <span class="keyword">await</span> charge_customer(event.user_id, event.total)
-
-<span class="keyword">async def</span> <span class="function">inventory_consumer</span>(event: OrderCreatedEvent):
-    <span class="string">"""Update inventory when order is created."""</span>
-    <span class="keyword">for</span> item <span class="keyword">in</span> event.items:
-        <span class="keyword">await</span> decrement_stock(item)</code></pre>
-            </div>
-          </div>
+    <!-- Story 1: Sync vs Async -->
+    <section class="section" id="async-section">
+      <h2>Sync vs Async</h2>
+      <p>That for loop processing data? In production, it becomes stream processing—async, concurrent, handling thousands of requests per second. Learn the fundamental difference.</p>
+      
+      <div class="diagram-container" id="async-container">
+        <div class="diagram-header">
+          <span class="diagram-title">⏱️ Blocking vs Non-Blocking Execution</span>
         </div>
-      </section>
-
-      <!-- PATTERNS -->
-      <section class="section" data-section="patterns">
-        <div class="section-content">
-          <h2 class="fade-in">🛠️ Production Patterns</h2>
-
-          <h3 class="fade-in">1. Retry with Exponential Backoff</h3>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Python</span>
-              <button class="code-copy">Copy</button>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="keyword">from</span> tenacity <span class="keyword">import</span> retry, stop_after_attempt, wait_exponential
-
-<span class="decorator">@retry</span>(
-    stop=stop_after_attempt(<span class="number">3</span>),
-    wait=wait_exponential(multiplier=<span class="number">1</span>, min=<span class="number">2</span>, max=<span class="number">10</span>)
-)
-<span class="keyword">async def</span> <span class="function">call_external_service</span>(data):
-    <span class="string">"""
-    Attempt 1: immediate
-    Attempt 2: wait 2 seconds
-    Attempt 3: wait 4 seconds
-    Then fail
-    """</span>
-    response = <span class="keyword">await</span> http_client.post(EXTERNAL_URL, json=data)
-    response.raise_for_status()
-    <span class="keyword">return</span> response.json()</code></pre>
-            </div>
-          </div>
-
-          <h3 class="fade-in">2. Dead Letter Queue</h3>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Handling Poison Messages</div>
-            <div class="mermaid">
-              flowchart LR
-                QUEUE[(Main Queue)] --> PROCESS{Process OK?}
-                PROCESS -->|Yes| DONE[Done]
-                PROCESS -->|No, retry| QUEUE
-                PROCESS -->|Max retries| DLQ[(Dead Letter Queue)]
-                DLQ --> ALERT[Alert Ops Team]
-
-                style DLQ fill:#ef5350,color:#fff
-            </div>
-          </div>
-
-          <h3 class="fade-in">3. Circuit Breaker</h3>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Python</span>
-              <button class="code-copy">Copy</button>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="keyword">from</span> circuitbreaker <span class="keyword">import</span> circuit
-
-<span class="decorator">@circuit</span>(failure_threshold=<span class="number">5</span>, recovery_timeout=<span class="number">30</span>)
-<span class="keyword">async def</span> <span class="function">call_payment_service</span>(order):
-    <span class="string">"""
-    After 5 failures: circuit OPENS (fails fast)
-    After 30 seconds: circuit HALF-OPENS (tries one request)
-    On success: circuit CLOSES (normal operation)
-    """</span>
-    <span class="keyword">return await</span> payment_client.charge(order)</code></pre>
-            </div>
-            <div class="code-caption">
-              <p>
-                <span class="icon">🛡️</span>
-                <strong>Why?</strong> If an external service is down, don't keep
-                hammering it. Fail fast and let it recover.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TRIAL -->
-      <section class="section" data-section="trial">
-        <div class="section-content">
-          <h2 class="fade-in">📝 The Trial</h2>
-
-          <p class="fade-in">
-            These are the kinds of questions you'll face in system design interviews:
-          </p>
-
-          <div class="quiz-container fade-in" data-activity="quiz-undergrad-ch2-interview" data-type="quiz" data-points="10" data-answer="B">
-            <div class="quiz-header">
-              <span class="quiz-icon">💼</span>
-              <h3 class="quiz-title">Interview Question</h3>
-            </div>
-
-            <p class="quiz-question">
-              A downstream payment service is slow (5s response time). Users are
-              complaining about slow checkouts. What's the best solution?
-            </p>
-
-            <div class="quiz-options">
-              <div class="quiz-option" data-value="A">
-                <span class="quiz-option-letter">A</span>
-                <span>Increase the timeout to 10 seconds</span>
-              </div>
-              <div class="quiz-option" data-value="B">
-                <span class="quiz-option-letter">B</span>
-                <span>Make payment async — accept order, process payment in background</span>
-              </div>
-              <div class="quiz-option" data-value="C">
-                <span class="quiz-option-letter">C</span>
-                <span>Add more servers to the checkout service</span>
-              </div>
-              <div class="quiz-option" data-value="D">
-                <span class="quiz-option-letter">D</span>
-                <span>Cache the payment results</span>
+        <div id="async-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="async-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
               </div>
             </div>
-
-            <div
-              class="quiz-feedback"
-              data-correct-msg="Correct! Accept the order immediately, publish a 'PaymentNeeded' event, and process asynchronously. User sees 'Order Confirmed' instantly."
-              data-incorrect-msg="The right answer is async processing. Accept the order, respond to user, process payment in background via message queue."
-            ></div>
-
-            <button class="quiz-btn" disabled>Check Answer</button>
-          </div>
-
-          <h3 class="fade-in">More Interview Questions to Consider</h3>
-
-          <div class="cta-box fade-in">
-            <ol style="text-align: left; margin: 0;">
-              <li>Why would you use async/await vs. threading vs. multiprocessing?</li>
-              <li>What problems does a message queue solve?</li>
-              <li>What's a dead letter queue and when would you use it?</li>
-              <li>How do you handle a downstream service that's slow or failing?</li>
-              <li>Design an event-driven system for order processing.</li>
-            </ol>
           </div>
         </div>
-      </section>
 
-      <!-- PROJECT -->
-      <section class="section" data-section="project">
-        <div class="section-content">
-          <h2 class="fade-in">🔨 Mini-Project: Event-Driven Pipeline</h2>
-
-          <div class="story-block fade-in">
-            <p>
-              Build a content moderation pipeline. Images flow through multiple
-              processing stages asynchronously.
-            </p>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Your Pipeline Architecture</div>
-            <div class="mermaid">
-              flowchart LR
-                UPLOAD[Image Upload] --> Q1[(Queue)]
-                Q1 --> RESIZE[Resize/Thumbnail]
-                RESIZE --> Q2[(Queue)]
-                Q2 --> CLASSIFY[ML Classify]
-                CLASSIFY --> Q3[(Queue)]
-                Q3 --> STORE[Store Result]
-
-                RESIZE -.->|Error| DLQ[(DLQ)]
-                CLASSIFY -.->|Error| DLQ
-
-                style UPLOAD fill:#4db6ac,color:#fff
-                style STORE fill:#4caf50,color:#fff
-                style DLQ fill:#ef5350,color:#fff
-            </div>
+          <div class="playback-center">
+            <div class="story-progress" id="async-story-progress"></div>
           </div>
-
-          <div class="pipeline-stage fade-in">
-            <h4><span class="stage-num">1</span> Event Definitions</h4>
-            <p>Define your events with dataclasses: <code>ImageUploadEvent</code>,
-            <code>ProcessedImageEvent</code>, <code>ClassificationEvent</code></p>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
           </div>
+        </div>
 
-          <div class="pipeline-stage fade-in">
-            <h4><span class="stage-num">2</span> Message Queue</h4>
-            <p>Implement with Redis Pub/Sub or an in-memory queue. Messages survive
-            if a consumer is temporarily down.</p>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="async-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
           </div>
-
-          <div class="pipeline-stage fade-in">
-            <h4><span class="stage-num">3</span> Pipeline Stages</h4>
-            <p>Each processor is an async function that consumes from one queue
-            and publishes to the next.</p>
+          <div class="control-group">
+            <button class="audio-toggle" id="async-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
           </div>
-
-          <div class="pipeline-stage fade-in">
-            <h4><span class="stage-num">4</span> Error Handling</h4>
-            <p>Retry with backoff, dead letter queue for poison messages,
-            logging and monitoring.</p>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="async-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
           </div>
+        </div>
+      </div>
 
-          <div class="cta-box fade-in">
-            <h3>📦 Deliverables</h3>
-            <div class="code-block" style="text-align: left; margin: 1rem 0">
-              <div class="code-content">
-                <pre><code>your-folder/ch2-lightning/
-├── events.py           <span class="comment"># Event definitions</span>
-├── queue.py            <span class="comment"># Message queue implementation</span>
-├── processors/
-│   ├── image.py        <span class="comment"># Resize stage</span>
-│   ├── classifier.py   <span class="comment"># ML classify stage</span>
-│   └── storage.py      <span class="comment"># Store results stage</span>
-├── pipeline.py         <span class="comment"># Orchestration</span>
-├── tests/
-├── README.md
-└── ARCHITECTURE.md     <span class="comment"># Diagram + decisions</span></code></pre>
+      <div class="quiz-card" id="async-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 2: Event-Driven -->
+    <section class="section" id="events-section">
+      <h2>Event-Driven Architecture</h2>
+      <p>Instead of services calling each other and waiting, they publish events and subscribe to what they care about. This is how Netflix, Uber, and Stripe handle millions of requests.</p>
+      
+      <div class="diagram-container" id="events-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📨 Publish-Subscribe Pattern</span>
+        </div>
+        <div id="events-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="events-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
               </div>
             </div>
-            <a href="../ch3-magnetism/index.html" class="cta-btn">
-              <span>Continue to Chapter 3</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
           </div>
         </div>
-      </section>
-    </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="lesson-nav">
-      <button class="nav-btn" onclick="location.href='../ch1-stone/index.html'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Chapter 1
-      </button>
-      <button class="nav-btn primary" onclick="location.href='../ch3-magnetism/index.html'">
-        Chapter 3: APIs
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </button>
-    </nav>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="events-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="../../shared/js/lesson.js"></script>
-    
-    <!-- Lesson Integration -->
-    <script src="../../shared/js/firebase-config.js"></script>
-    <script src="../../shared/js/auth.js"></script>
-    <script src="../../shared/js/data-service.js"></script>
-    <script src="../../shared/js/lesson-integration.js"></script>
-    <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        window.LessonIntegration.init("undergrad", "ch2-lightning");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("undergrad", "ch2-lightning");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("undergrad", "ch2-lightning");
-        }
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="events-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="events-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="events-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="events-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 3: Production Patterns -->
+    <section class="section" id="patterns-section">
+      <h2>Production Patterns</h2>
+      <p>In production, things fail. Networks hiccup, services crash, databases timeout. Learn the patterns that make systems resilient: retry with backoff, dead letter queues, and circuit breakers.</p>
+      
+      <div class="diagram-container" id="patterns-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🛡️ Resilience Patterns</span>
+        </div>
+        <div id="patterns-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="patterns-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="patterns-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="patterns-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="patterns-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="patterns-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="patterns-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready for Chapter 3?</h2>
+      <p>You've learned how to handle concurrent operations and build resilient systems. Now let's dive into API design—REST, GraphQL, versioning, and the patterns that power every modern application.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch3-magnetism/" class="card">
+          <div class="card-icon">🧲</div>
+          <h3>Chapter 3: API Design</h3>
+          <p>REST, GraphQL, versioning, and API best practices for production systems.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in The Bridge.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#async-section">Sync vs Async</a></li>
+      <li><a href="#events-section">Event-Driven</a></li>
+      <li><a href="#patterns-section">Production Patterns</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'async': [
+          // Sync problem
+          { data: { id: 'sync-problem', label: '⏳ Sync Problem\nWait, Wait, Wait', type: 'external', description: 'Each operation blocks until complete' } },
+          // Blocking I/O
+          { data: { id: 'blocking-io', label: '🚫 Blocking I/O\nIdle Waiting', type: 'concept', description: 'DB calls, API requests, file reads' } },
+          // Async concept
+          { data: { id: 'async-concept', label: '⚡ Async\nNon-Blocking', type: 'auth', description: 'Start all at once, wait for max' } },
+          // Concurrent
+          { data: { id: 'concurrent', label: '🔄 Concurrent\ngather()', type: 'service', description: 'Multiple ops at same time' } },
+          // Scale impact
+          { data: { id: 'scale-impact', label: '📈 Scale Impact\n1K → 10K rps', type: 'page', description: 'Dramatic throughput improvement' } },
+          // Edges
+          { data: { source: 'sync-problem', target: 'blocking-io' } },
+          { data: { source: 'blocking-io', target: 'async-concept' } },
+          { data: { source: 'async-concept', target: 'concurrent' } },
+          { data: { source: 'concurrent', target: 'scale-impact' } }
+        ],
+
+        'events': [
+          // Request-response
+          { data: { id: 'request-response', label: '🔗 Request-Response\nTight Coupling', type: 'external', description: 'Services call and wait' } },
+          // Pub-sub
+          { data: { id: 'publish-subscribe', label: '📨 Pub-Sub\nMessage Queue', type: 'concept', description: 'Publish events, subscribe to topics' } },
+          // Decoupling
+          { data: { id: 'decoupling', label: '🔓 Decoupling\nIndependent Services', type: 'service', description: 'Add consumers without changing producers' } },
+          // Resilience
+          { data: { id: 'resilience', label: '🛡️ Resilience\nMessages Persist', type: 'data', description: 'Consumer down? Queue holds messages' } },
+          // Instant response
+          { data: { id: 'instant-response', label: '⚡ Instant Response\nAsync Processing', type: 'page', description: 'Respond now, process later' } },
+          // Edges
+          { data: { source: 'request-response', target: 'publish-subscribe' } },
+          { data: { source: 'publish-subscribe', target: 'decoupling' } },
+          { data: { source: 'publish-subscribe', target: 'resilience' } },
+          { data: { source: 'decoupling', target: 'instant-response' } },
+          { data: { source: 'resilience', target: 'instant-response' } }
+        ],
+
+        'patterns': [
+          // Failure reality
+          { data: { id: 'failure-reality', label: '💥 Failure Reality\nThings Break', type: 'external', description: 'Networks, services, databases fail' } },
+          // Retry backoff
+          { data: { id: 'retry-backoff', label: '🔁 Retry Backoff\n2s → 4s → 8s', type: 'concept', description: 'Exponential wait between retries' } },
+          // Dead letter
+          { data: { id: 'dead-letter', label: '💀 Dead Letter\nSave for Later', type: 'data', description: 'Failed after max retries? Investigate' } },
+          // Circuit breaker
+          { data: { id: 'circuit-breaker', label: '🔌 Circuit Breaker\nFail Fast', type: 'auth', description: '5 failures? Stop calling' } },
+          // Graceful degradation
+          { data: { id: 'graceful-degradation', label: '✅ Graceful Degradation\nCore Keeps Running', type: 'page', description: 'Some features down, system up' } },
+          // Edges
+          { data: { source: 'failure-reality', target: 'retry-backoff' } },
+          { data: { source: 'failure-reality', target: 'circuit-breaker' } },
+          { data: { source: 'retry-backoff', target: 'dead-letter' } },
+          { data: { source: 'dead-letter', target: 'graceful-degradation' } },
+          { data: { source: 'circuit-breaker', target: 'graceful-degradation' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      const storyToDiagram = {
+        'async-story': 'async',
+        'events-story': 'events',
+        'patterns-story': 'patterns'
+      };
+
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
       });
-    </script>
-  </body>
-</html>
 
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      const storyToQuiz = {
+        'async-story': 'async-quiz',
+        'events-story': 'events-quiz',
+        'patterns-story': 'patterns-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+{
+  "storyId": "auth-errors-story",
+  "stepId": "step-1",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "API Keys. The simplest auth: a secret key in the header. Great for server-to-server calls. But keys can leak, can't expire gracefully, and don't support fine-grained permissions.",
+  "duration": 14.899999618530273,
+  "words": [
+    {
+      "word": "API",
+      "start": 0,
+      "end": 1.2799999713897705
+    },
+    {
+      "word": "keys",
+      "start": 1.2799999713897705,
+      "end": 1.6399999856948853
+    },
+    {
+      "word": "The",
+      "start": 2.4200000762939453,
+      "end": 2.5799999237060547
+    },
+    {
+      "word": "simplest",
+      "start": 2.5799999237060547,
+      "end": 2.9800000190734863
+    },
+    {
+      "word": "auth",
+      "start": 2.9800000190734863,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "A",
+      "start": 4.059999942779541,
+      "end": 4.119999885559082
+    },
+    {
+      "word": "secret",
+      "start": 4.119999885559082,
+      "end": 4.480000019073486
+    },
+    {
+      "word": "key",
+      "start": 4.480000019073486,
+      "end": 4.78000020980835
+    },
+    {
+      "word": "in",
+      "start": 4.78000020980835,
+      "end": 4.960000038146973
+    },
+    {
+      "word": "the",
+      "start": 4.960000038146973,
+      "end": 5.420000076293945
+    },
+    {
+      "word": "header",
+      "start": 5.420000076293945,
+      "end": 5.599999904632568
+    },
+    {
+      "word": "Great",
+      "start": 6.239999771118164,
+      "end": 6.239999771118164
+    },
+    {
+      "word": "for",
+      "start": 6.239999771118164,
+      "end": 6.619999885559082
+    },
+    {
+      "word": "server",
+      "start": 6.619999885559082,
+      "end": 6.860000133514404
+    },
+    {
+      "word": "to",
+      "start": 6.860000133514404,
+      "end": 7.380000114440918
+    },
+    {
+      "word": "server",
+      "start": 7.380000114440918,
+      "end": 7.380000114440918
+    },
+    {
+      "word": "calls",
+      "start": 7.380000114440918,
+      "end": 7.78000020980835
+    },
+    {
+      "word": "But",
+      "start": 8.479999542236328,
+      "end": 8.760000228881836
+    },
+    {
+      "word": "keys",
+      "start": 8.760000228881836,
+      "end": 9
+    },
+    {
+      "word": "can",
+      "start": 9,
+      "end": 9.399999618530273
+    },
+    {
+      "word": "leak",
+      "start": 9.399999618530273,
+      "end": 9.600000381469727
+    },
+    {
+      "word": "can't",
+      "start": 10.380000114440918,
+      "end": 10.5
+    },
+    {
+      "word": "expire",
+      "start": 10.5,
+      "end": 10.899999618530273
+    },
+    {
+      "word": "gracefully",
+      "start": 10.899999618530273,
+      "end": 11.479999542236328
+    },
+    {
+      "word": "and",
+      "start": 11.779999732971191,
+      "end": 12.279999732971191
+    },
+    {
+      "word": "don't",
+      "start": 12.279999732971191,
+      "end": 12.579999923706055
+    },
+    {
+      "word": "support",
+      "start": 12.579999923706055,
+      "end": 13
+    },
+    {
+      "word": "fine",
+      "start": 13,
+      "end": 13.65999984741211
+    },
+    {
+      "word": "brained",
+      "start": 13.65999984741211,
+      "end": 13.920000076293945
+    },
+    {
+      "word": "permissions",
+      "start": 13.920000076293945,
+      "end": 14.460000038146973
+    }
+  ]
+}

@@ -3,557 +3,437 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 1: The Stone Remembers | Bridge to Industry</title>
-  
-  <!-- Fonts -->
+  <title>Chapter 1: The Bridge to Industry | Bridge to Industry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  
-  <style>
-    :root {
-      --chapter-color: var(--accent-magnetism);
-    }
-    
-    .hero::before {
-      background: 
-        radial-gradient(ellipse at 30% 50%, rgba(121, 134, 203, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(63, 81, 181, 0.15) 0%, transparent 50%);
-    }
-    
-    .story-block {
-      border-left-color: var(--accent-magnetism);
-    }
-    
-    .story-block::before {
-      color: var(--accent-magnetism);
-    }
-
-    .did-you-know {
-      background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin: 2rem 0;
-      border-left: 4px solid var(--accent-magnetism);
-    }
-
-    .did-you-know h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--accent-magnetism);
-      margin-bottom: 0.75rem;
-    }
-
-    .did-you-know p {
-      margin-bottom: 0;
-    }
-
-    .classroom-vs-industry {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .classroom-vs-industry {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .comparison-panel {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-    }
-
-    .comparison-panel.classroom {
-      border-top: 3px solid var(--text-muted);
-    }
-
-    .comparison-panel.industry {
-      border-top: 3px solid var(--accent-magnetism);
-    }
-
-    .comparison-panel h4 {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .interview-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0.75rem;
-      background: var(--accent-magnetism);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: white;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
 </head>
-<body>
-  <!-- Progress Bar -->
-  <div class="progress-bar"></div>
+<body data-course="undergrad" data-lesson="ch1-stone">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <span>Bridge to Industry</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Undergrad</a>
+        <a href="../ch0-origins/">Ch 0</a>
+        <a href="index.html" class="active">Ch 1</a>
+        <a href="../ch2-lightning/">Ch 2: Control Flow</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Progress Tracker (Side) -->
-  <nav class="progress-tracker">
-    <div class="progress-dot active" data-section="hero" title="Start"></div>
-    <div class="progress-dot" data-section="bridge" title="The Bridge"></div>
-    <div class="progress-dot" data-section="translation" title="Translation"></div>
-    <div class="progress-dot" data-section="industry" title="Industry Patterns"></div>
-    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
-    <div class="progress-dot" data-section="project" title="Project"></div>
-  </nav>
-
-  <main class="lesson-container">
-    
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         HERO SECTION
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="hero section" data-section="hero">
-      <div class="hero-content">
-        <span class="hero-chapter">Chapter 1 • Week 1</span>
-        <div class="hero-icon">🎓</div>
-        <h1>The Bridge to Industry</h1>
-        <p class="hero-subtitle">
-          You've learned algorithms, data structures, and theory. Now let's connect 
-          that knowledge to how software is actually built in the real world.
-        </p>
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Bridge to Industry</a>
+        <span>/</span>
+        <span>Chapter 1: The Bridge</span>
       </div>
+      <h1>🎓 The Bridge to Industry</h1>
+      <p>You've learned algorithms, data structures, and theory. Now let's connect that knowledge to how software is actually built in the real world. Your academic foundation is solid — you just need the translation layer.</p>
+    </div>
+
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
+          </div>
+        </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 1: The Bridge -->
+    <section class="section" id="bridge-section">
+      <h2>The Bridge</h2>
+      <p>The gap between classroom CS and industry engineering is massive — but it doesn't have to be. Your academic foundation is solid. You just need to see how it connects to the real world.</p>
       
-      <div class="scroll-indicator">
-        <span>Cross the bridge</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         THE BRIDGE
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="bridge">
-      <div class="section-content">
-        <h2 class="fade-in">🌉 The Bridge</h2>
+      <div class="diagram-container" id="bridge-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🌉 From Classroom to Industry</span>
+        </div>
+        <div id="bridge-story" class="diagram-canvas storytelling"></div>
         
-        <div class="story-block fade-in">
-          <p>
-            Here's a secret your professors won't tell you: the gap between classroom 
-            CS and industry engineering is <strong>massive</strong>. But it doesn't 
-            have to be. Your academic foundation is solid — you just need a translation layer.
-          </p>
-        </div>
-
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">Your Journey</div>
-          <div class="mermaid">
-            flowchart LR
-              subgraph CLASSROOM["🎓 Classroom"]
-                ALGO["Algorithms"]
-                DS["Data Structures"]
-                THEORY["Theory"]
-              end
-              
-              subgraph BRIDGE["🌉 This Course"]
-                PATTERNS["Design Patterns"]
-                TOOLS["Modern Tools"]
-                AI["AI-Augmented Dev"]
-              end
-              
-              subgraph INDUSTRY["💼 Industry"]
-                INTERN["Internship"]
-                JOB["Full-Time Role"]
-                GROWTH["Career Growth"]
-              end
-              
-              CLASSROOM --> BRIDGE
-              BRIDGE --> INDUSTRY
-              
-              style CLASSROOM fill:#2d2d44,stroke:#6a6a80
-              style BRIDGE fill:#2d2d44,stroke:#7986cb
-              style INDUSTRY fill:#2d2d44,stroke:#4caf50
-          </div>
-        </div>
-
-        <div class="did-you-know fade-in">
-          <h4>💡 Did You Know?</h4>
-          <p>
-            That binary search tree you implemented in Data Structures? Industry uses 
-            self-balancing variants (Red-Black, AVL) — but the <em>concept</em> is identical. 
-            Your knowledge transfers; you just need to see the connection.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         TRANSLATION
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="translation">
-      <div class="section-content">
-        <h2 class="fade-in">🔄 The Translation Layer</h2>
-
-        <p class="fade-in">
-          Everything you learned in class maps to something in industry. Let's decode it:
-        </p>
-
-        <div class="classroom-vs-industry fade-in">
-          <div class="comparison-panel classroom">
-            <h4>🎓 In Your Courses</h4>
-            <ul class="skill-list" style="list-style: none;">
-              <li>• Linked lists, arrays, trees</li>
-              <li>• Big-O analysis</li>
-              <li>• Database normalization</li>
-              <li>• UML diagrams</li>
-              <li>• Software design principles</li>
-            </ul>
-          </div>
-          <div class="comparison-panel industry">
-            <h4>💼 In Industry</h4>
-            <ul class="skill-list" style="list-style: none;">
-              <li>• Choosing the right data store</li>
-              <li>• Performance optimization at scale</li>
-              <li>• Schema design for real products</li>
-              <li>• Architecture documentation</li>
-              <li>• Code review standards</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python - Classroom vs. Industry</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="comment"># 🎓 Classroom: Implement a hash table from scratch</span>
-<span class="keyword">class</span> <span class="function">HashTable</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, size=<span class="number">100</span>):
-        self.table = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(size)]
-    
-    <span class="keyword">def</span> <span class="function">_hash</span>(self, key):
-        <span class="keyword">return</span> <span class="function">hash</span>(key) % <span class="function">len</span>(self.table)
-    
-    <span class="keyword">def</span> <span class="function">put</span>(self, key, value):
-        bucket = self.table[self._hash(key)]
-        <span class="comment"># ... collision handling ...</span>
-
-<span class="comment"># 💼 Industry: Use the right tool for the job</span>
-<span class="keyword">from</span> typing <span class="keyword">import</span> Dict, Any
-
-<span class="comment"># Simple case: built-in dict (your hash table!)</span>
-cache: Dict[<span class="variable">str</span>, Any] = {}
-
-<span class="comment"># Distributed case: Redis</span>
-<span class="keyword">import</span> redis
-cache = redis.Redis(host=<span class="string">'localhost'</span>, port=<span class="number">6379</span>)
-cache.<span class="function">set</span>(<span class="string">'key'</span>, <span class="string">'value'</span>)
-
-<span class="comment"># Your hash table knowledge helps you understand WHY these work</span></code></pre>
-          </div>
-          <div class="code-caption">
-            <p>
-              <span class="icon">💡</span>
-              <strong>The Insight:</strong> You learned the fundamentals so you can 
-              understand and debug the abstractions. Interviewers test the fundamentals; 
-              industry uses the abstractions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         INDUSTRY PATTERNS
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="industry">
-      <div class="section-content">
-        <h2 class="fade-in">🏭 Industry Patterns</h2>
-
-        <p class="fade-in">
-          These patterns appear in every production codebase. Learn them once, 
-          recognize them everywhere.
-        </p>
-
-        <div class="concept-grid fade-in">
-          <div class="concept-card" style="border-top: 3px solid var(--accent-magnetism);">
-            <div class="concept-card-icon">🔄</div>
-            <h4>Repository Pattern</h4>
-            <p>Abstract data access. Your code doesn't care if it's SQL, NoSQL, or an API.</p>
-            <span class="interview-badge">Common Interview Topic</span>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-magnetism);">
-            <div class="concept-card-icon">🏭</div>
-            <h4>Factory Pattern</h4>
-            <p>Create objects without exposing creation logic. Seen in every framework.</p>
-            <span class="interview-badge">Common Interview Topic</span>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-magnetism);">
-            <div class="concept-card-icon">👀</div>
-            <h4>Observer Pattern</h4>
-            <p>React to changes. Foundation of event-driven systems and reactive UIs.</p>
-          </div>
-          
-          <div class="concept-card" style="border-top: 3px solid var(--accent-magnetism);">
-            <div class="concept-card-icon">🎯</div>
-            <h4>Dependency Injection</h4>
-            <p>Pass dependencies in, don't create them internally. Enables testing.</p>
-            <span class="interview-badge">Common Interview Topic</span>
-          </div>
-        </div>
-
-        <div class="diagram-container scale-in">
-          <div class="diagram-title">Repository Pattern Example</div>
-          <div class="mermaid">
-            classDiagram
-                class UserService {
-                    -repository: UserRepository
-                    +get_user(id): User
-                    +create_user(data): User
-                }
-                
-                class UserRepository {
-                    <<interface>>
-                    +find_by_id(id): User
-                    +save(user): User
-                }
-                
-                class PostgresUserRepo {
-                    +find_by_id(id): User
-                    +save(user): User
-                }
-                
-                class MongoUserRepo {
-                    +find_by_id(id): User
-                    +save(user): User
-                }
-                
-                class MockUserRepo {
-                    +find_by_id(id): User
-                    +save(user): User
-                }
-                
-                UserService --> UserRepository
-                PostgresUserRepo ..|> UserRepository
-                MongoUserRepo ..|> UserRepository
-                MockUserRepo ..|> UserRepository
-          </div>
-        </div>
-
-        <div class="did-you-know fade-in">
-          <h4>💡 Did You Know?</h4>
-          <p>
-            The Liskov Substitution Principle from your OOP class? That's exactly what 
-            makes the Repository Pattern work — any implementation can be swapped in 
-            without changing the service code.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         QUIZ
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="quiz">
-      <div class="section-content">
-        <div class="quiz-container" data-activity="quiz-undergrad-ch1-industry" data-type="quiz" data-points="10" data-answer="C">
-          <div class="quiz-header">
-            <span class="quiz-icon">🧠</span>
-            <h3 class="quiz-title">Knowledge Check</h3>
-          </div>
-
-          <p class="quiz-question">
-            Why does industry prefer the Repository Pattern over direct database calls?
-          </p>
-
-          <div class="quiz-options">
-            <div class="quiz-option" data-value="A">
-              <span class="quiz-option-letter">A</span>
-              <span>It's faster at runtime</span>
-            </div>
-            <div class="quiz-option" data-value="B">
-              <span class="quiz-option-letter">B</span>
-              <span>It uses less memory</span>
-            </div>
-            <div class="quiz-option" data-value="C">
-              <span class="quiz-option-letter">C</span>
-              <span>It enables testing with mocks and swapping databases without changing business logic</span>
-            </div>
-            <div class="quiz-option" data-value="D">
-              <span class="quiz-option-letter">D</span>
-              <span>It's required by Python</span>
+        <div class="diagram-story" id="bridge-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="quiz-feedback" 
-               data-correct-msg="This is the key insight: abstraction enables testability and flexibility. This is the 'D' in SOLID (Dependency Inversion)." 
-               data-incorrect-msg="The Repository Pattern is about abstraction, not performance. It lets you test without a real database.">
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
+          <div class="playback-center">
+            <div class="story-progress" id="bridge-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-          <button class="quiz-btn" disabled>Check Answer</button>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="bridge-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="bridge-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="bridge-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="bridge-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         PROJECT
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="section" data-section="project">
-      <div class="section-content">
-        <h2 class="fade-in">🔨 Chapter Project: The Production Data Layer</h2>
-
-        <div class="story-block fade-in">
-          <p>
-            Build a data access layer using the Repository Pattern. You'll create 
-            an interface, multiple implementations (in-memory for testing, file-based 
-            for persistence), and demonstrate the flexibility.
-          </p>
+    <!-- Story 2: The Translation Layer -->
+    <section class="section" id="translation-section">
+      <h2>The Translation Layer</h2>
+      <p>Everything you learned in class maps to something in industry. Linked lists become choosing the right data store. Big-O becomes performance at scale. Let's decode the translation.</p>
+      
+      <div class="diagram-container" id="translation-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔄 Classroom → Industry</span>
         </div>
-
-        <div class="try-it-box fade-in">
-          <div class="try-it-header">
-            <span class="try-it-icon">🏗️</span>
-            <h3 class="try-it-title">Requirements</h3>
-          </div>
-
-          <ol class="try-it-steps">
-            <li>
-              <strong>Define the Interface</strong><br>
-              Create an abstract base class <code>UserRepository</code> with CRUD methods.
-            </li>
-            <li>
-              <strong>In-Memory Implementation</strong><br>
-              Build <code>InMemoryUserRepo</code> using a dict. Perfect for tests.
-            </li>
-            <li>
-              <strong>JSON File Implementation</strong><br>
-              Build <code>JsonFileUserRepo</code> that persists to a JSON file.
-            </li>
-            <li>
-              <strong>Service Layer</strong><br>
-              Create <code>UserService</code> that accepts any repository implementation.
-            </li>
-            <li>
-              <strong>Write Tests</strong><br>
-              Test UserService using InMemoryUserRepo — no file I/O needed!
-            </li>
-          </ol>
-        </div>
-
-        <div class="code-block scale-in">
-          <div class="code-header">
-            <span class="code-language">Python - Starter Structure</span>
-            <button class="code-copy">Copy</button>
-          </div>
-          <div class="code-content">
-            <pre><code><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod
-<span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass
-<span class="keyword">from</span> typing <span class="keyword">import</span> Optional, List
-
-<span class="keyword">@dataclass</span>
-<span class="keyword">class</span> <span class="function">User</span>:
-    id: <span class="variable">int</span>
-    name: <span class="variable">str</span>
-    email: <span class="variable">str</span>
-
-<span class="keyword">class</span> <span class="function">UserRepository</span>(ABC):
-    <span class="string">"""Abstract interface for user data access."""</span>
-    
-    <span class="keyword">@abstractmethod</span>
-    <span class="keyword">def</span> <span class="function">find_by_id</span>(self, user_id: <span class="variable">int</span>) -> Optional[User]:
-        <span class="keyword">pass</span>
-    
-    <span class="keyword">@abstractmethod</span>
-    <span class="keyword">def</span> <span class="function">save</span>(self, user: User) -> User:
-        <span class="keyword">pass</span>
-    
-    <span class="keyword">@abstractmethod</span>
-    <span class="keyword">def</span> <span class="function">delete</span>(self, user_id: <span class="variable">int</span>) -> <span class="variable">bool</span>:
-        <span class="keyword">pass</span>
-    
-    <span class="keyword">@abstractmethod</span>
-    <span class="keyword">def</span> <span class="function">find_all</span>(self) -> List[User]:
-        <span class="keyword">pass</span>
-
-<span class="comment"># TODO: Implement InMemoryUserRepo</span>
-<span class="comment"># TODO: Implement JsonFileUserRepo</span>
-<span class="comment"># TODO: Implement UserService</span></code></pre>
+        <div id="translation-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="translation-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="cta-box fade-in">
-          <h3>📦 Deliverables</h3>
-          <p>
-            Create <code>undergrad/ch1-stone/</code> with:
-            <br>• <code>models.py</code> — User dataclass
-            <br>• <code>repository.py</code> — Abstract class + implementations
-            <br>• <code>service.py</code> — UserService
-            <br>• <code>test_service.py</code> — Tests using InMemoryUserRepo
-          </p>
-          <a href="../ch2-lightning/index.html" class="cta-btn">
-            <span>Continue to Chapter 2: Control Flow at Scale</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="translation-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="translation-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="translation-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="translation-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="translation-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
     </section>
 
+    <!-- Story 3: Industry Patterns -->
+    <section class="section" id="patterns-section">
+      <h2>Industry Patterns</h2>
+      <p>These patterns appear in every production codebase. Repository, Factory, Observer, Dependency Injection — learn them once, recognize them everywhere. They're the shared vocabulary of professional engineering.</p>
+      
+      <div class="diagram-container" id="patterns-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🏭 Design Patterns in Production</span>
+        </div>
+        <div id="patterns-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="patterns-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="patterns-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="patterns-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="patterns-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="patterns-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="patterns-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready for Chapter 2?</h2>
+      <p>You've seen how classroom knowledge bridges to industry patterns. Now let's explore how simple control flow concepts scale to handle millions of requests — async programming, event loops, and concurrent thinking.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch2-lightning/" class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Chapter 2: Control Flow at Scale</h3>
+          <p>Learn async/await, event-driven architecture, and concurrent programming patterns.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in Bridge to Industry.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
-  <!-- Bottom Navigation -->
-  <nav class="lesson-nav">
-    <a class="nav-btn" href="../ch0-origins/">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      ← Chapter 0: Origins
-    </a>
-    <a class="nav-btn primary" href="../ch2-lightning/">
-      Chapter 2: Lightning →
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#bridge-section">The Bridge</a></li>
+      <li><a href="#translation-section">Translation Layer</a></li>
+      <li><a href="#patterns-section">Industry Patterns</a></li>
+    </ul>
   </nav>
 
-  <!-- Scripts -->
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="../../shared/js/lesson.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
   
-  <!-- Lesson Integration -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      window.LessonIntegration.init("undergrad", "ch1-stone");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("undergrad", "ch1-stone");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("undergrad", "ch1-stone");
-        }
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'bridge': [
+          // The journey from classroom to industry
+          { data: { id: 'the-gap', label: '🎓 The Gap\nExists', type: 'external', description: 'Classroom vs Industry' } },
+          { data: { id: 'classroom-skills', label: '📚 Your\nFoundation', type: 'concept', description: 'Algorithms, DS, Theory' } },
+          { data: { id: 'the-bridge', label: '🌉 This\nCourse', type: 'service', description: 'The translation layer' } },
+          { data: { id: 'industry-ready', label: '💼 Industry\nReady', type: 'data', description: 'Internships, Jobs, Growth' } },
+          { data: { id: 'knowledge-transfer', label: '💡 Knowledge\nTransfers', type: 'page', description: 'Same concepts apply' } },
+          // Edges
+          { data: { source: 'the-gap', target: 'classroom-skills' } },
+          { data: { source: 'classroom-skills', target: 'the-bridge' } },
+          { data: { source: 'the-bridge', target: 'industry-ready' } },
+          { data: { source: 'industry-ready', target: 'knowledge-transfer' } }
+        ],
+
+        'translation': [
+          // Translation layer
+          { data: { id: 'same-concepts', label: '🔄 Same\nConcepts', type: 'concept', description: 'Different names' } },
+          { data: { id: 'theory-to-practice', label: '📝 Theory to\nPractice', type: 'service', description: 'Real applications' } },
+          { data: { id: 'hash-table-example', label: '🔧 Hash Table\n→ Redis', type: 'data', description: 'Fundamentals in action' } },
+          { data: { id: 'the-insight', label: '🎯 The Key\nInsight', type: 'page', description: 'Fundamentals + Abstractions' } },
+          // Edges
+          { data: { source: 'same-concepts', target: 'theory-to-practice' } },
+          { data: { source: 'theory-to-practice', target: 'hash-table-example' } },
+          { data: { source: 'hash-table-example', target: 'the-insight' } }
+        ],
+
+        'patterns': [
+          // Industry patterns
+          { data: { id: 'patterns-everywhere', label: '🏭 Patterns\nEverywhere', type: 'external', description: 'Shared vocabulary' } },
+          { data: { id: 'repository-pattern', label: '🔄 Repository\nPattern', type: 'concept', description: 'Abstract data access' } },
+          { data: { id: 'factory-pattern', label: '🏭 Factory\nPattern', type: 'service', description: 'Object creation' } },
+          { data: { id: 'dependency-injection', label: '🎯 Dependency\nInjection', type: 'auth', description: 'Enables testing' } },
+          { data: { id: 'solid-connection', label: '📐 SOLID\nConnection', type: 'page', description: 'Academic → Industry' } },
+          // Edges
+          { data: { source: 'patterns-everywhere', target: 'repository-pattern' } },
+          { data: { source: 'repository-pattern', target: 'factory-pattern' } },
+          { data: { source: 'factory-pattern', target: 'dependency-injection' } },
+          { data: { source: 'dependency-injection', target: 'solid-connection' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      const storyToDiagram = {
+        'bridge-story': 'bridge',
+        'translation-story': 'translation',
+        'patterns-story': 'patterns'
+      };
+
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
+      });
+
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      const storyToQuiz = {
+        'bridge-story': 'bridge-quiz',
+        'translation-story': 'translation-quiz',
+        'patterns-story': 'patterns-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
     });
   </script>
 </body>
 </html>
-

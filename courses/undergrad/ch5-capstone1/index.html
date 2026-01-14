@@ -1,473 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capstone I: Full-Stack Application | AutoNateAI Bridge</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone I: Ship Something Real | AutoNateAI Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+</head>
+<body data-course="undergrad" data-lesson="ch5-capstone1">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🔥</div>
+        <span>Capstone I</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Undergrad Bridge</a>
+        <a href="../ch4-architect/">Ch 4</a>
+        <a href="index.html" class="active">Capstone I</a>
+        <a href="../ch6-capstone2/">Capstone II</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Undergrad Bridge</a>
+        <span>/</span>
+        <span>Capstone I: Ship Something Real</span>
+      </div>
+      <h1>🔥 Ship Something Real</h1>
+      <p>Theory is worthless without execution. Build and deploy a complete application you'd be proud to show in an interview—deployed, tested, documented, and professional.</p>
+    </div>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../shared/css/lesson.css" />
-
-    <!-- Mermaid for diagrams -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-
-    <style>
-      :root {
-        --chapter-color: #e91e63;
-        --accent-capstone: #e91e63;
-      }
-
-      .hero::before {
-        background: radial-gradient(
-            ellipse at 30% 50%,
-            rgba(233, 30, 99, 0.2) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 70% 30%,
-            rgba(156, 39, 176, 0.15) 0%,
-            transparent 50%
-          );
-      }
-
-      .story-block {
-        border-left-color: var(--accent-capstone);
-      }
-
-      .option-card {
-        background: var(--bg-secondary);
-        border-radius: var(--radius-lg);
-        padding: 2rem;
-        margin: 1.5rem 0;
-        border-left: 4px solid var(--accent-capstone);
-        transition: all 0.3s ease;
-      }
-
-      .option-card:hover {
-        transform: translateX(5px);
-        box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2);
-      }
-
-      .option-card h3 {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-        color: var(--accent-capstone);
-      }
-
-      .option-card .examples {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-      }
-
-      .requirement-section {
-        background: var(--bg-secondary);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 1rem 0;
-      }
-
-      .requirement-section h4 {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
-      }
-
-      .requirement-section ul {
-        list-style: none;
-      }
-
-      .requirement-section li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.5rem;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .requirement-section li:last-child {
-        border-bottom: none;
-      }
-
-      .requirement-section li::before {
-        content: "☐";
-        color: var(--accent-capstone);
-      }
-
-      .production-badge {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        background: rgba(233, 30, 99, 0.2);
-        color: var(--accent-capstone);
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-left: 0.5rem;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Progress Bar -->
-    <div class="progress-bar"></div>
-
-    <nav class="progress-tracker">
-      <div class="progress-dot active" data-section="hero" title="Start"></div>
-      <div class="progress-dot" data-section="challenge" title="Challenge"></div>
-      <div class="progress-dot" data-section="options" title="Options"></div>
-      <div class="progress-dot" data-section="requirements" title="Requirements"></div>
-      <div class="progress-dot" data-section="quality" title="Quality"></div>
-      <div class="progress-dot" data-section="deliverables" title="Deliverables"></div>
-    </nav>
-
-    <main class="lesson-container">
-      <!-- HERO -->
-      <section class="hero section" data-section="hero">
-        <div class="hero-content">
-          <span class="hero-chapter">Capstone I • Week 5</span>
-          <div class="hero-icon">🔥</div>
-          <h1>Ship Something Real</h1>
-          <p class="hero-subtitle">
-            Theory is worthless without execution. Build and deploy a
-            <strong>complete application</strong> you'd be proud to show in an interview.
-          </p>
-        </div>
-
-        <div class="scroll-indicator">
-          <span>Start building</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
-        </div>
-      </section>
-
-      <!-- CHALLENGE -->
-      <section class="section" data-section="challenge">
-        <div class="section-content">
-          <h2 class="fade-in">🎯 The Quest</h2>
-
-          <div class="story-block fade-in">
-            <p>
-              This isn't a school project. This is a <strong>product</strong>. Something
-              that works, that's deployed, that you can demo to a recruiter and say:
-              "I built this. Here's how. Here's why."
-            </p>
-          </div>
-
-          <div class="cta-box fade-in">
-            <h3>What Makes This Different</h3>
-            <ul style="text-align: left; margin: 0;">
-              <li>✅ <strong>Deployed</strong> — Live on the internet, not localhost</li>
-              <li>✅ <strong>Tested</strong> — Unit + integration tests that run in CI</li>
-              <li>✅ <strong>Documented</strong> — README, API docs, architecture</li>
-              <li>✅ <strong>Professional</strong> — Code quality, error handling, logging</li>
-            </ul>
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
           </div>
         </div>
-      </section>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
+        </div>
+      </div>
+    </section>
 
-      <!-- OPTIONS -->
-      <section class="section" data-section="options">
-        <div class="section-content">
-          <h2 class="fade-in">🛠️ Choose Your Path</h2>
-
-          <div class="option-card fade-in">
-            <h3>🔧 Option A: Developer Tool</h3>
-            <p>A CLI or web tool that solves a real developer problem.</p>
-            <p class="examples">
-              <em>Examples:</em> Dependency analyzer, code snippet manager, git helper,
-              API mock generator
-            </p>
-          </div>
-
-          <div class="option-card fade-in">
-            <h3>☁️ Option B: SaaS Product</h3>
-            <p>A web application with authentication, data storage, and real features.</p>
-            <p class="examples">
-              <em>Examples:</em> Habit tracker, bookmark manager, study group coordinator,
-              expense tracker
-            </p>
-          </div>
-
-          <div class="option-card fade-in">
-            <h3>🔌 Option C: API Platform</h3>
-            <p>A production-ready API that other developers could use.</p>
-            <p class="examples">
-              <em>Examples:</em> Mock data generator, file conversion service, webhook
-              forwarder, aggregation API
-            </p>
-          </div>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Typical Architecture</div>
-            <div class="mermaid">
-              flowchart TD
-                CLIENT[Frontend/CLI] --> API[FastAPI Backend]
-                API --> AUTH[Auth Service]
-                API --> DB[(PostgreSQL)]
-                API --> CACHE[(Redis)]
-
-                subgraph INFRA["Infrastructure"]
-                  CI[GitHub Actions] --> DEPLOY[Railway/Vercel]
-                end
-
-                API --> INFRA
-
-                style API fill:#e91e63,color:#fff
-                style DB fill:#4db6ac,color:#fff
-                style CI fill:#7986cb,color:#fff
+    <!-- Story 1: The Quest -->
+    <section class="section" id="quest-section">
+      <h2>The Quest: Ship Something Real</h2>
+      <p>This isn't a school project. This is a product—something that works, that's deployed, that you can demo to a recruiter. Learn what separates homework from a portfolio piece.</p>
+      
+      <div class="diagram-container" id="quest-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎯 What Makes This Different</span>
+        </div>
+        <div id="quest-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="quest-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- REQUIREMENTS -->
-      <section class="section" data-section="requirements">
-        <div class="section-content">
-          <h2 class="fade-in">✅ Must-Have Requirements</h2>
-
-          <div class="requirement-section fade-in">
-            <h4>📝 Code Quality</h4>
-            <ul>
-              <li>Clean, documented code (someone else could contribute)</li>
-              <li>Comprehensive tests (unit + integration)</li>
-              <li>Type hints throughout</li>
-              <li>Code formatting (Black, isort)</li>
-            </ul>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-
-          <div class="requirement-section fade-in">
-            <h4>🗄️ Data Layer</h4>
-            <ul>
-              <li>Database with proper migrations</li>
-              <li>Repository pattern for data access</li>
-              <li>Caching where appropriate</li>
-            </ul>
+          <div class="playback-center">
+            <div class="story-progress" id="quest-story-progress"></div>
           </div>
-
-          <div class="requirement-section fade-in">
-            <h4>🔌 API Layer</h4>
-            <ul>
-              <li>RESTful API design</li>
-              <li>OpenAPI/Swagger documentation</li>
-              <li>Authentication (even if simple)</li>
-              <li>Proper error handling</li>
-            </ul>
-          </div>
-
-          <div class="requirement-section fade-in">
-            <h4>🚀 Deployment</h4>
-            <ul>
-              <li>CI/CD pipeline (GitHub Actions)</li>
-              <li>Deployed to production (Heroku, Railway, Vercel, etc.)</li>
-              <li>Environment-based config (dev/staging/prod)</li>
-              <li>Health checks / monitoring</li>
-            </ul>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
           </div>
         </div>
-      </section>
 
-      <!-- QUALITY -->
-      <section class="section" data-section="quality">
-        <div class="section-content">
-          <h2 class="fade-in">💎 Production Quality Standards</h2>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="quest-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="quest-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="quest-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-          <p class="fade-in">
-            The difference between a "school project" and a "portfolio piece":
-          </p>
+      <div class="quiz-card" id="quest-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
 
-          <table class="comparison-table fade-in">
-            <thead>
-              <tr>
-                <th>School Project</th>
-                <th>Production Quality <span class="production-badge">YOU</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>"Works on my machine"</td>
-                <td>Deployed + CI/CD + Docker</td>
-              </tr>
-              <tr>
-                <td>print("debug")</td>
-                <td>Structured logging with levels</td>
-              </tr>
-              <tr>
-                <td>if error: pass</td>
-                <td>Proper error handling + user messages</td>
-              </tr>
-              <tr>
-                <td>No tests</td>
-                <td>80%+ coverage, runs in CI</td>
-              </tr>
-              <tr>
-                <td>README: "Run main.py"</td>
-                <td>Setup guide, architecture docs, API spec</td>
-              </tr>
-              <tr>
-                <td>Hardcoded credentials</td>
-                <td>Environment variables, secrets management</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Example: GitHub Actions CI</span>
-              <button class="code-copy">Copy</button>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="comment"># .github/workflows/ci.yml</span>
-name: CI
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run linting
-        run: |
-          black --check .
-          isort --check .
-
-      - name: Run tests
-        run: pytest --cov=src tests/
-
-      - name: Upload coverage
-        uses: codecov/codecov-action@v3</code></pre>
+    <!-- Story 2: Architecture -->
+    <section class="section" id="architecture-section">
+      <h2>Choose Your Path</h2>
+      <p>Three options, same production skills. Pick Developer Tool, SaaS Product, or API Platform based on what you want in your portfolio. All lead to the same professional architecture.</p>
+      
+      <div class="diagram-container" id="architecture-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🛠️ Three Paths, One Architecture</span>
+        </div>
+        <div id="architecture-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="architecture-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- DELIVERABLES -->
-      <section class="section" data-section="deliverables">
-        <div class="section-content">
-          <h2 class="fade-in">📦 Deliverables</h2>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Project Structure</span>
-            </div>
-            <div class="code-content">
-              <pre><code>your-folder/capstone-1/
-├── src/                    <span class="comment"># Your application code</span>
-│   ├── api/
-│   ├── models/
-│   ├── services/
-│   └── core/
-├── tests/
-│   ├── unit/
-│   └── integration/
-├── docs/
-│   ├── ARCHITECTURE.md     <span class="comment"># System design</span>
-│   ├── API.md              <span class="comment"># API documentation</span>
-│   └── DEPLOYMENT.md       <span class="comment"># How to deploy</span>
-├── .github/workflows/      <span class="comment"># CI/CD pipelines</span>
-├── docker-compose.yml      <span class="comment"># Local dev environment</span>
-├── README.md               <span class="comment"># Project overview</span>
-├── DEMO.md                 <span class="comment"># Screenshots/video</span>
-└── REFLECTION.md           <span class="comment"># What you learned</span></code></pre>
-            </div>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-
-          <h3 class="fade-in">Presentation Requirements</h3>
-
-          <div class="concept-grid fade-in">
-            <div class="concept-card stagger-item" style="border-top-color: var(--accent-capstone);">
-              <div class="concept-card-icon">🎬</div>
-              <h4>Live Demo</h4>
-              <p>Show it working in production. Not localhost.</p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: var(--accent-capstone);">
-              <div class="concept-card-icon">🏗️</div>
-              <h4>Architecture Tour</h4>
-              <p>Walk through the system design decisions.</p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: var(--accent-capstone);">
-              <div class="concept-card-icon">💬</div>
-              <h4>Technical Discussion</h4>
-              <p>Explain tradeoffs. What would you do differently?</p>
-            </div>
+          <div class="playback-center">
+            <div class="story-progress" id="architecture-story-progress"></div>
           </div>
-
-          <div class="cta-box fade-in">
-            <h3>🎯 Interview-Ready Portfolio Piece</h3>
-            <p>
-              When a recruiter asks "Tell me about a project you've built," this is
-              your answer. Architecture diagrams, deployed URL, GitHub link, test
-              coverage. Everything a senior engineer would have.
-            </p>
-            <a href="../ch6-capstone2/index.html" class="cta-btn">
-              <span>Continue to Capstone II</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
           </div>
         </div>
-      </section>
-    </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="lesson-nav">
-      <button class="nav-btn" onclick="location.href='../ch4-architect/index.html'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Chapter 4
-      </button>
-      <button class="nav-btn primary" onclick="location.href='../ch6-capstone2/index.html'">
-        Capstone II
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </button>
-    </nav>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="architecture-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="architecture-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="architecture-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="../../shared/js/lesson.js"></script>
-    
-    <!-- Lesson Integration -->
-    <script src="../../shared/js/firebase-config.js"></script>
-    <script src="../../shared/js/auth.js"></script>
-    <script src="../../shared/js/data-service.js"></script>
-    <script src="../../shared/js/lesson-integration.js"></script>
-    <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        window.LessonIntegration.init("undergrad", "ch5-capstone1");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("undergrad", "ch5-capstone1");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("undergrad", "ch5-capstone1");
-        }
+      <div class="quiz-card" id="architecture-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 3: Requirements -->
+    <section class="section" id="requirements-section">
+      <h2>Must-Have Requirements</h2>
+      <p>Your capstone must meet production standards in four areas: Code Quality, Data Layer, API Layer, and Deployment. Here's what each pillar requires.</p>
+      
+      <div class="diagram-container" id="requirements-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🏛️ The Four Pillars</span>
+        </div>
+        <div id="requirements-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="requirements-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="requirements-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="requirements-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="requirements-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="requirements-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="requirements-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 4: Quality Standards -->
+    <section class="section" id="quality-section">
+      <h2>School vs Production Quality</h2>
+      <p>There's a massive gap between "works on my machine" and production quality. See what separates a school project from code that impresses senior engineers.</p>
+      
+      <div class="diagram-container" id="quality-container">
+        <div class="diagram-header">
+          <span class="diagram-title">💎 The Quality Gap</span>
+        </div>
+        <div id="quality-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="quality-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="quality-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="quality-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="quality-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="quality-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="quality-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready to Build?</h2>
+      <p>You know what's required: deployed, tested, documented, professional. Pick your path, design your architecture, and ship something real. Then come back for Capstone II to level up even further.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch6-capstone2/" class="card">
+          <div class="card-icon">🚀</div>
+          <h3>Capstone II: Scale & Polish</h3>
+          <p>Add advanced features, optimize performance, and prepare for production scale.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in Undergrad Bridge.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#quest-section">The Quest</a></li>
+      <li><a href="#architecture-section">Choose Your Path</a></li>
+      <li><a href="#requirements-section">Requirements</a></li>
+      <li><a href="#quality-section">Quality Standards</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'quest': [
+          // Core message
+          { data: { id: 'not-school', label: '🎯 Not a\nSchool Project', type: 'external', description: 'This is a product' } },
+          // Three pillars
+          { data: { id: 'deployed', label: '🌐 Deployed\nLive URL', type: 'concept', description: 'On the internet, not localhost' } },
+          { data: { id: 'tested', label: '✅ Tested\nCI/CD', type: 'data', description: 'Automated tests in pipeline' } },
+          { data: { id: 'documented', label: '📚 Documented\nREADME + API', type: 'service', description: 'Professional communication' } },
+          // Result
+          { data: { id: 'portfolio-piece', label: '💼 Interview\nReady', type: 'page', description: 'Show recruiters real work' } },
+          // Edges
+          { data: { source: 'not-school', target: 'deployed' } },
+          { data: { source: 'not-school', target: 'tested' } },
+          { data: { source: 'not-school', target: 'documented' } },
+          { data: { source: 'deployed', target: 'portfolio-piece' } },
+          { data: { source: 'tested', target: 'portfolio-piece' } },
+          { data: { source: 'documented', target: 'portfolio-piece' } }
+        ],
+
+        'architecture': [
+          // Choose path
+          { data: { id: 'choose-path', label: '🛤️ Choose\nYour Path', type: 'external', description: 'Three options' } },
+          // Three options
+          { data: { id: 'dev-tool', label: '🔧 Developer\nTool', type: 'concept', description: 'CLI or web tool for devs' } },
+          { data: { id: 'saas-product', label: '☁️ SaaS\nProduct', type: 'data', description: 'Web app with auth' } },
+          { data: { id: 'api-platform', label: '🔌 API\nPlatform', type: 'service', description: 'Backend for developers' } },
+          // Result
+          { data: { id: 'full-stack', label: '🏗️ Full-Stack\nArchitecture', type: 'page', description: 'FastAPI + PostgreSQL + CI/CD' } },
+          // Edges
+          { data: { source: 'choose-path', target: 'dev-tool' } },
+          { data: { source: 'choose-path', target: 'saas-product' } },
+          { data: { source: 'choose-path', target: 'api-platform' } },
+          { data: { source: 'dev-tool', target: 'full-stack' } },
+          { data: { source: 'saas-product', target: 'full-stack' } },
+          { data: { source: 'api-platform', target: 'full-stack' } }
+        ],
+
+        'requirements': [
+          // Four pillars
+          { data: { id: 'four-pillars', label: '🏛️ Four\nPillars', type: 'external', description: 'Production requirements' } },
+          { data: { id: 'code-quality', label: '📝 Code\nQuality', type: 'concept', description: 'Tests, types, formatting' } },
+          { data: { id: 'data-layer', label: '🗄️ Data\nLayer', type: 'data', description: 'Database, migrations, cache' } },
+          { data: { id: 'api-layer', label: '🔌 API\nLayer', type: 'service', description: 'REST, docs, auth' } },
+          { data: { id: 'deployment', label: '🚀 Deploy\nment', type: 'auth', description: 'CI/CD, hosting, monitoring' } },
+          // Result
+          { data: { id: 'production-ready', label: '✨ Production\nReady', type: 'page', description: 'Real system, not a toy' } },
+          // Edges
+          { data: { source: 'four-pillars', target: 'code-quality' } },
+          { data: { source: 'four-pillars', target: 'data-layer' } },
+          { data: { source: 'four-pillars', target: 'api-layer' } },
+          { data: { source: 'four-pillars', target: 'deployment' } },
+          { data: { source: 'code-quality', target: 'production-ready' } },
+          { data: { source: 'data-layer', target: 'production-ready' } },
+          { data: { source: 'api-layer', target: 'production-ready' } },
+          { data: { source: 'deployment', target: 'production-ready' } }
+        ],
+
+        'quality': [
+          // The gap
+          { data: { id: 'the-difference', label: '💎 Quality\nGap', type: 'external', description: 'School vs Production' } },
+          // Comparisons
+          { data: { id: 'works-vs-deployed', label: '🌐 Works →\nDeployed', type: 'concept', description: 'Live URL, not localhost' } },
+          { data: { id: 'print-vs-logging', label: '📊 Print →\nLogging', type: 'data', description: 'Structured with levels' } },
+          { data: { id: 'pass-vs-handle', label: '🛡️ Pass →\nHandle', type: 'auth', description: 'Proper error handling' } },
+          { data: { id: 'no-tests-vs-coverage', label: '✅ None →\n80%+ Tests', type: 'service', description: 'Coverage in CI' } },
+          // Result
+          { data: { id: 'senior-standard', label: '🏆 Senior\nStandard', type: 'page', description: 'Professional practices' } },
+          // Edges
+          { data: { source: 'the-difference', target: 'works-vs-deployed' } },
+          { data: { source: 'the-difference', target: 'print-vs-logging' } },
+          { data: { source: 'the-difference', target: 'pass-vs-handle' } },
+          { data: { source: 'the-difference', target: 'no-tests-vs-coverage' } },
+          { data: { source: 'works-vs-deployed', target: 'senior-standard' } },
+          { data: { source: 'print-vs-logging', target: 'senior-standard' } },
+          { data: { source: 'pass-vs-handle', target: 'senior-standard' } },
+          { data: { source: 'no-tests-vs-coverage', target: 'senior-standard' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      // Map story IDs to diagram element keys
+      const storyToDiagram = {
+        'quest-story': 'quest',
+        'architecture-story': 'architecture',
+        'requirements-story': 'requirements',
+        'quality-story': 'quality'
+      };
+
+      // Create storytelling diagrams for each story in the JSON
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
       });
-    </script>
-  </body>
-</html>
 
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      // Map story IDs to quiz container IDs
+      const storyToQuiz = {
+        'quest-story': 'quest-quiz',
+        'architecture-story': 'architecture-quiz',
+        'requirements-story': 'requirements-quiz',
+        'quality-story': 'quality-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

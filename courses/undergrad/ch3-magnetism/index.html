@@ -1,536 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 3: The Pull Between | AutoNateAI Bridge</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3: The Pull Between | AutoNateAI Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+</head>
+<body data-course="undergrad" data-lesson="ch3-magnetism">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🧲</div>
+        <span>The Pull Between</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Bridge</a>
+        <a href="../ch2-lightning/">Ch 2</a>
+        <a href="index.html" class="active">Ch 3</a>
+        <a href="../ch4-architect/">Ch 4: System Design</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Bridge Program</a>
+        <span>/</span>
+        <span>Chapter 3: The Pull Between</span>
+      </div>
+      <h1>🧲 The Pull Between</h1>
+      <p>You've called APIs in class projects. But have you <strong>designed</strong> one? Learn REST, authentication, and error handling like production systems demand.</p>
+    </div>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../shared/css/lesson.css" />
-
-    <!-- Mermaid for diagrams -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-
-    <style>
-      :root {
-        --chapter-color: var(--accent-magnetism);
-      }
-
-      .hero::before {
-        background: radial-gradient(
-            ellipse at 30% 50%,
-            rgba(121, 134, 203, 0.2) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 70% 30%,
-            rgba(63, 81, 181, 0.15) 0%,
-            transparent 50%
-          );
-      }
-
-      .story-block {
-        border-left-color: var(--accent-magnetism);
-      }
-
-      .http-status {
-        display: inline-block;
-        padding: 0.25rem 0.5rem;
-        border-radius: var(--radius-sm);
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-
-      .http-status.success { background: #1b5e20; color: #a5d6a7; }
-      .http-status.client { background: #e65100; color: #ffcc80; }
-      .http-status.server { background: #b71c1c; color: #ef9a9a; }
-
-      .api-endpoint {
-        background: var(--bg-secondary);
-        border-radius: var(--radius-md);
-        padding: 1rem;
-        margin: 0.5rem 0;
-        font-family: var(--font-mono);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .api-method {
-        padding: 0.25rem 0.75rem;
-        border-radius: var(--radius-sm);
-        font-weight: 600;
-        font-size: 0.75rem;
-      }
-
-      .api-method.get { background: #1565c0; }
-      .api-method.post { background: #2e7d32; }
-      .api-method.put { background: #f57c00; }
-      .api-method.delete { background: #c62828; }
-
-      .auth-box {
-        background: var(--bg-secondary);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-left: 4px solid var(--accent-magnetism);
-      }
-
-      .auth-box h4 {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.75rem;
-        color: var(--accent-magnetism);
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Progress Bar -->
-    <div class="progress-bar"></div>
-
-    <nav class="progress-tracker">
-      <div class="progress-dot active" data-section="hero" title="Start"></div>
-      <div class="progress-dot" data-section="reality" title="Reality"></div>
-      <div class="progress-dot" data-section="design" title="API Design"></div>
-      <div class="progress-dot" data-section="auth" title="Authentication"></div>
-      <div class="progress-dot" data-section="errors" title="Error Handling"></div>
-      <div class="progress-dot" data-section="trial" title="Trial"></div>
-      <div class="progress-dot" data-section="project" title="Project"></div>
-    </nav>
-
-    <main class="lesson-container">
-      <!-- HERO -->
-      <section class="hero section" data-section="hero">
-        <div class="hero-content">
-          <span class="hero-chapter">Chapter 3 • Week 3</span>
-          <div class="hero-icon">🧲</div>
-          <h1>The Pull Between</h1>
-          <p class="hero-subtitle">
-            You've called APIs in class projects. But have you <strong>designed</strong>
-            one? Have you dealt with authentication, rate limiting, versioning, and
-            backwards compatibility?
-          </p>
-        </div>
-
-        <div class="scroll-indicator">
-          <span>Connect the systems</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
-        </div>
-      </section>
-
-      <!-- REALITY -->
-      <section class="section" data-section="reality">
-        <div class="section-content">
-          <h2 class="fade-in">🎓 → 💼 The Reality Gap</h2>
-
-          <div class="story-block fade-in">
-            <p>
-              That <code>requests.get(url)</code> you wrote? Behind it is a
-              <strong>contract</strong> — documented, versioned, authenticated,
-              rate-limited. Breaking that contract breaks everyone who depends on it.
-            </p>
-          </div>
-
-          <table class="comparison-table fade-in">
-            <thead>
-              <tr>
-                <th>Your Class Project</th>
-                <th>Production System</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>requests.get(url)</code></td>
-                <td>API clients with retry, auth, rate limit handling, validation</td>
-              </tr>
-              <tr>
-                <td><code>return json_data</code></td>
-                <td>Versioned contracts, consistent errors, pagination, HATEOAS</td>
-              </tr>
-              <tr>
-                <td><code>if error: raise Exception()</code></td>
-                <td>Structured errors, error codes, retry-after, circuit breakers</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- API DESIGN -->
-      <section class="section" data-section="design">
-        <div class="section-content">
-          <h2 class="fade-in">📐 RESTful API Design</h2>
-
-          <h3 class="fade-in">Bad vs. Good API Design</h3>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Bad API Design</span>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="comment"># ❌ Inconsistent, verb-based, unclear</span>
-GET /getUsers
-POST /createNewUser
-GET /user_data?user=123
-POST /deleteUser</code></pre>
-            </div>
-          </div>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Good API Design (RESTful)</span>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="comment"># ✅ Resource-based, predictable, consistent</span>
-GET /users              <span class="comment"># List users</span>
-POST /users             <span class="comment"># Create user</span>
-GET /users/123          <span class="comment"># Get user 123</span>
-PUT /users/123          <span class="comment"># Update user 123</span>
-DELETE /users/123       <span class="comment"># Delete user 123</span>
-GET /users/123/orders   <span class="comment"># Get orders for user 123</span></code></pre>
-            </div>
-          </div>
-
-          <h3 class="fade-in">CRUD → HTTP Methods</h3>
-
-          <div class="api-endpoint fade-in">
-            <span class="api-method get">GET</span>
-            <span>/users</span>
-            <span style="color: var(--text-muted); margin-left: auto;">Read - List all users</span>
-          </div>
-
-          <div class="api-endpoint fade-in">
-            <span class="api-method post">POST</span>
-            <span>/users</span>
-            <span style="color: var(--text-muted); margin-left: auto;">Create - Add new user</span>
-          </div>
-
-          <div class="api-endpoint fade-in">
-            <span class="api-method put">PUT</span>
-            <span>/users/123</span>
-            <span style="color: var(--text-muted); margin-left: auto;">Update - Replace user 123</span>
-          </div>
-
-          <div class="api-endpoint fade-in">
-            <span class="api-method delete">DELETE</span>
-            <span>/users/123</span>
-            <span style="color: var(--text-muted); margin-left: auto;">Delete - Remove user 123</span>
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
           </div>
         </div>
-      </section>
-
-      <!-- AUTHENTICATION -->
-      <section class="section" data-section="auth">
-        <div class="section-content">
-          <h2 class="fade-in">🔐 Authentication Patterns</h2>
-
-          <div class="auth-box fade-in">
-            <h4>🔑 API Key</h4>
-            <p>Simple, but less secure. Good for server-to-server. Sent in header or query param.</p>
-            <code style="font-size: 0.875rem;">Authorization: ApiKey sk-abc123...</code>
-          </div>
-
-          <div class="auth-box fade-in">
-            <h4>🎫 OAuth 2.0</h4>
-            <p>Industry standard. Supports scopes, refresh tokens, third-party auth. Complex but robust.</p>
-            <code style="font-size: 0.875rem;">Authorization: Bearer eyJhbGciOi...</code>
-          </div>
-
-          <div class="auth-box fade-in">
-            <h4>📜 JWT (JSON Web Token)</h4>
-            <p>Self-contained tokens. No server-side session needed. Watch for token size and expiration.</p>
-            <code style="font-size: 0.875rem;">{ "sub": "123", "exp": 1699999999, "role": "admin" }</code>
-          </div>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">OAuth 2.0 Flow</div>
-            <div class="mermaid">
-              sequenceDiagram
-                participant User
-                participant App
-                participant AuthServer as Auth Server
-                participant API
-
-                User->>App: Login
-                App->>AuthServer: Redirect to auth
-                AuthServer->>User: Login form
-                User->>AuthServer: Credentials
-                AuthServer->>App: Auth code
-                App->>AuthServer: Exchange for tokens
-                AuthServer->>App: Access + Refresh tokens
-                App->>API: Request + Access token
-                API->>App: Protected data
-            </div>
-          </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ERROR HANDLING -->
-      <section class="section" data-section="errors">
-        <div class="section-content">
-          <h2 class="fade-in">⚠️ Error Handling Contract</h2>
-
-          <h3 class="fade-in">HTTP Status Codes You Must Know</h3>
-
-          <div class="concept-grid fade-in">
-            <div class="concept-card stagger-item" style="border-top-color: #4caf50;">
-              <div class="concept-card-icon">2️⃣</div>
-              <h4>2xx Success</h4>
-              <p>
-                <span class="http-status success">200</span> OK<br>
-                <span class="http-status success">201</span> Created<br>
-                <span class="http-status success">204</span> No Content
-              </p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: #ff9800;">
-              <div class="concept-card-icon">4️⃣</div>
-              <h4>4xx Client Error</h4>
-              <p>
-                <span class="http-status client">400</span> Bad Request<br>
-                <span class="http-status client">401</span> Unauthorized<br>
-                <span class="http-status client">403</span> Forbidden<br>
-                <span class="http-status client">404</span> Not Found<br>
-                <span class="http-status client">429</span> Too Many Requests
-              </p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: #ef5350;">
-              <div class="concept-card-icon">5️⃣</div>
-              <h4>5xx Server Error</h4>
-              <p>
-                <span class="http-status server">500</span> Internal Error<br>
-                <span class="http-status server">502</span> Bad Gateway<br>
-                <span class="http-status server">503</span> Unavailable
-              </p>
-            </div>
-          </div>
-
-          <h3 class="fade-in">Consistent Error Response Format</h3>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">JSON - Error Response</span>
-              <button class="code-copy">Copy</button>
-            </div>
-            <div class="code-content">
-              <pre><code>{
-  <span class="string">"error"</span>: {
-    <span class="string">"code"</span>: <span class="string">"VALIDATION_ERROR"</span>,
-    <span class="string">"message"</span>: <span class="string">"Invalid request parameters"</span>,
-    <span class="string">"details"</span>: [
-      {<span class="string">"field"</span>: <span class="string">"email"</span>, <span class="string">"message"</span>: <span class="string">"Invalid email format"</span>},
-      {<span class="string">"field"</span>: <span class="string">"age"</span>, <span class="string">"message"</span>: <span class="string">"Must be positive"</span>}
-    ],
-    <span class="string">"request_id"</span>: <span class="string">"abc-123"</span>,
-    <span class="string">"docs_url"</span>: <span class="string">"https://api.example.com/docs/errors#VALIDATION_ERROR"</span>
-  }
-}</code></pre>
-            </div>
-            <div class="code-caption">
-              <p>
-                <span class="icon">💡</span>
-                Always include: error code (machine-readable), message (human-readable),
-                request_id (for debugging), and link to docs.
-              </p>
-            </div>
-          </div>
+    <!-- Story 1: The Reality Gap -->
+    <section class="section" id="api-reality-section">
+      <h2>The Reality Gap</h2>
+      <p>That simple <code>requests.get(url)</code> you wrote? Behind it is a contract—documented, versioned, authenticated, rate-limited. Welcome to production APIs.</p>
+      
+      <div class="diagram-container" id="api-reality-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎓 Class Project → 💼 Production</span>
         </div>
-      </section>
-
-      <!-- TRIAL -->
-      <section class="section" data-section="trial">
-        <div class="section-content">
-          <h2 class="fade-in">📝 The Trial</h2>
-
-          <div class="quiz-container fade-in" data-activity="quiz-undergrad-ch3-systems" data-type="quiz" data-points="10" data-answer="C">
-            <div class="quiz-header">
-              <span class="quiz-icon">💼</span>
-              <h3 class="quiz-title">Interview Question</h3>
-            </div>
-
-            <p class="quiz-question">
-              You're designing a REST API. A client sends a DELETE request to
-              <code>/users/999</code> but user 999 doesn't exist. What should you return?
-            </p>
-
-            <div class="quiz-options">
-              <div class="quiz-option" data-value="A">
-                <span class="quiz-option-letter">A</span>
-                <span>200 OK with empty body</span>
-              </div>
-              <div class="quiz-option" data-value="B">
-                <span class="quiz-option-letter">B</span>
-                <span>204 No Content</span>
-              </div>
-              <div class="quiz-option" data-value="C">
-                <span class="quiz-option-letter">C</span>
-                <span>404 Not Found</span>
-              </div>
-              <div class="quiz-option" data-value="D">
-                <span class="quiz-option-letter">D</span>
-                <span>400 Bad Request</span>
+        <div id="api-reality-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="api-reality-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
               </div>
             </div>
-
-            <div
-              class="quiz-feedback"
-              data-correct-msg="Correct! 404 clearly indicates the resource doesn't exist. Some argue for 204 (idempotency), but 404 is more accurate."
-              data-incorrect-msg="404 is the standard response for a resource that doesn't exist. The request is valid (not 400), but the resource isn't there."
-            ></div>
-
-            <button class="quiz-btn" disabled>Check Answer</button>
-          </div>
-
-          <div class="cta-box fade-in">
-            <h3>More Interview Questions</h3>
-            <ol style="text-align: left; margin: 0;">
-              <li>What's the difference between authentication and authorization?</li>
-              <li>How would you version an API without breaking existing clients?</li>
-              <li>Design the API for a URL shortener (endpoints, request/response).</li>
-              <li>What's the purpose of rate limiting? How would you implement it?</li>
-              <li>How do you handle an external API that's unreliable?</li>
-            </ol>
           </div>
         </div>
-      </section>
 
-      <!-- PROJECT -->
-      <section class="section" data-section="project">
-        <div class="section-content">
-          <h2 class="fade-in">🔨 Mini-Project: API Integration Suite</h2>
-
-          <div class="story-block fade-in">
-            <p>
-              Build a "Developer Dashboard" API that aggregates data from multiple
-              external APIs (GitHub, Weather, News) and exposes a unified interface.
-            </p>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">Your Unified API Architecture</div>
-            <div class="mermaid">
-              flowchart TD
-                CLIENT[Client] --> YOUR_API[Your Unified API]
-                YOUR_API --> GITHUB[GitHub API]
-                YOUR_API --> WEATHER[Weather API]
-                YOUR_API --> NEWS[News API]
-
-                CACHE[(Redis Cache)] <-.-> YOUR_API
-
-                YOUR_API --> |"If GitHub down"| FALLBACK[Graceful Fallback]
-
-                style YOUR_API fill:#7986cb,color:#fff
-                style CACHE fill:#4db6ac,color:#fff
-            </div>
+          <div class="playback-center">
+            <div class="story-progress" id="api-reality-story-progress"></div>
           </div>
-
-          <h3 class="fade-in">Requirements</h3>
-
-          <div class="concept-grid fade-in">
-            <div class="concept-card magnetism stagger-item">
-              <div class="concept-card-icon">🔌</div>
-              <h4>FastAPI App</h4>
-              <p>GET /dashboard/{username} aggregates all data sources</p>
-            </div>
-            <div class="concept-card magnetism stagger-item">
-              <div class="concept-card-icon">🌐</div>
-              <h4>External APIs</h4>
-              <p>GitHub + Weather + News. Handle each failing independently.</p>
-            </div>
-            <div class="concept-card magnetism stagger-item">
-              <div class="concept-card-icon">🛡️</div>
-              <h4>Production Patterns</h4>
-              <p>Caching, rate limiting, circuit breaker, timeouts</p>
-            </div>
-            <div class="concept-card magnetism stagger-item">
-              <div class="concept-card-icon">📖</div>
-              <h4>Documentation</h4>
-              <p>OpenAPI/Swagger spec with examples</p>
-            </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
           </div>
+        </div>
 
-          <div class="cta-box fade-in">
-            <h3>📦 Deliverables</h3>
-            <div class="code-block" style="text-align: left; margin: 1rem 0">
-              <div class="code-content">
-                <pre><code>your-folder/ch3-magnetism/
-├── api/
-│   ├── main.py          <span class="comment"># FastAPI app</span>
-│   ├── routes/          <span class="comment"># Route handlers</span>
-│   └── schemas.py       <span class="comment"># Pydantic models</span>
-├── integrations/        <span class="comment"># External API clients</span>
-│   ├── github.py
-│   ├── weather.py
-│   └── news.py
-├── core/
-│   ├── cache.py
-│   └── circuit_breaker.py
-├── tests/
-├── README.md
-└── API_SPEC.md          <span class="comment"># Your API documentation</span></code></pre>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="api-reality-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="api-reality-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="api-reality-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="api-reality-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 2: RESTful API Design -->
+    <section class="section" id="rest-design-section">
+      <h2>RESTful API Design</h2>
+      <p>Bad APIs are chaos. Good APIs are predictable. Learn to think in resources, not actions, and your APIs will practically document themselves.</p>
+      
+      <div class="diagram-container" id="rest-design-container">
+        <div class="diagram-header">
+          <span class="diagram-title">📐 From Chaos to Consistency</span>
+        </div>
+        <div id="rest-design-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="rest-design-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
               </div>
             </div>
-            <a href="../ch4-architect/index.html" class="cta-btn">
-              <span>Continue to Chapter 4</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
           </div>
         </div>
-      </section>
-    </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="lesson-nav">
-      <button class="nav-btn" onclick="location.href='../ch2-lightning/index.html'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Chapter 2
-      </button>
-      <button class="nav-btn primary" onclick="location.href='../ch4-architect/index.html'">
-        Chapter 4: System Design
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </button>
-    </nav>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="rest-design-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="../../shared/js/lesson.js"></script>
-    
-    <!-- Lesson Integration -->
-    <script src="../../shared/js/firebase-config.js"></script>
-    <script src="../../shared/js/auth.js"></script>
-    <script src="../../shared/js/data-service.js"></script>
-    <script src="../../shared/js/lesson-integration.js"></script>
-    <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        window.LessonIntegration.init("undergrad", "ch3-magnetism");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("undergrad", "ch3-magnetism");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("undergrad", "ch3-magnetism");
-        }
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="rest-design-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="rest-design-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="rest-design-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="rest-design-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 3: Authentication & Errors -->
+    <section class="section" id="auth-errors-section">
+      <h2>Authentication & Errors</h2>
+      <p>Who's calling your API? Are they allowed? What happens when things go wrong? Master auth patterns and error handling that production demands.</p>
+      
+      <div class="diagram-container" id="auth-errors-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🔐 Securing Your API</span>
+        </div>
+        <div id="auth-errors-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="auth-errors-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="auth-errors-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
+
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="auth-errors-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="auth-errors-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="auth-errors-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="auth-errors-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>Ready to Design Systems?</h2>
+      <p>You now understand APIs as contracts—how to design them, secure them, and handle errors properly. Next up: system design and architecture patterns.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch4-architect/" class="card">
+          <div class="card-icon">🏛️</div>
+          <h3>Chapter 4: System Design</h3>
+          <p>Learn to design scalable systems with databases, caching, and microservices.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in the Bridge Program.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#api-reality-section">The Reality Gap</a></li>
+      <li><a href="#rest-design-section">RESTful API Design</a></li>
+      <li><a href="#auth-errors-section">Authentication & Errors</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'api-reality': [
+          // Nodes
+          { data: { id: 'class-project', label: '🎓 Class Project\nrequests.get()', type: 'external', description: 'Simple API calls' } },
+          { data: { id: 'the-contract', label: '📜 The Contract\nAPI Agreement', type: 'concept', description: 'Versioned, documented' } },
+          { data: { id: 'production-client', label: '🔧 Production\nClient', type: 'service', description: 'Retry, auth, validation' } },
+          { data: { id: 'versioned-responses', label: '📦 Versioned\nResponses', type: 'data', description: 'Pagination, HATEOAS' } },
+          { data: { id: 'error-handling', label: '⚠️ Structured\nErrors', type: 'auth', description: 'Codes, circuit breakers' } },
+          // Edges
+          { data: { source: 'class-project', target: 'the-contract' } },
+          { data: { source: 'the-contract', target: 'production-client' } },
+          { data: { source: 'production-client', target: 'versioned-responses' } },
+          { data: { source: 'versioned-responses', target: 'error-handling' } }
+        ],
+
+        'rest-design': [
+          // Nodes
+          { data: { id: 'bad-design', label: '❌ Bad Design\n/getUsers', type: 'external', description: 'Verb-based chaos' } },
+          { data: { id: 'resource-thinking', label: '🎯 Resources\nNot Actions', type: 'concept', description: 'Think in nouns' } },
+          { data: { id: 'predictable-urls', label: '🔗 Predictable\nURLs', type: 'data', description: '/users/123/orders' } },
+          { data: { id: 'http-methods', label: '📮 HTTP Methods\n= CRUD', type: 'service', description: 'GET POST PUT DELETE' } },
+          { data: { id: 'consistency-wins', label: '✅ Consistency\nWins', type: 'page', description: 'Self-documenting' } },
+          // Edges
+          { data: { source: 'bad-design', target: 'resource-thinking' } },
+          { data: { source: 'resource-thinking', target: 'predictable-urls' } },
+          { data: { source: 'predictable-urls', target: 'http-methods' } },
+          { data: { source: 'http-methods', target: 'consistency-wins' } }
+        ],
+
+        'auth-errors': [
+          // Nodes
+          { data: { id: 'auth-matters', label: '🔐 Auth Matters\nWho + Allowed?', type: 'concept', description: 'Security foundation' } },
+          { data: { id: 'api-keys', label: '🔑 API Keys\nSimple Auth', type: 'example', description: 'Server-to-server' } },
+          { data: { id: 'oauth-jwt', label: '🎫 OAuth/JWT\nAdvanced Auth', type: 'auth', description: 'Scopes, tokens' } },
+          { data: { id: 'status-codes', label: '📊 Status Codes\n2xx 4xx 5xx', type: 'service', description: 'Know these cold' } },
+          { data: { id: 'error-format', label: '📋 Error Format\nConsistent', type: 'page', description: 'Code, message, ID' } },
+          // Edges
+          { data: { source: 'auth-matters', target: 'api-keys' } },
+          { data: { source: 'api-keys', target: 'oauth-jwt' } },
+          { data: { source: 'oauth-jwt', target: 'status-codes' } },
+          { data: { source: 'status-codes', target: 'error-format' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      // Map story IDs to diagram element keys
+      const storyToDiagram = {
+        'api-reality-story': 'api-reality',
+        'rest-design-story': 'rest-design',
+        'auth-errors-story': 'auth-errors'
+      };
+
+      // Create storytelling diagrams for each story in the JSON
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
       });
-    </script>
-  </body>
-</html>
 
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      // Map story IDs to quiz container IDs
+      const storyToQuiz = {
+        'api-reality-story': 'api-reality-quiz',
+        'rest-design-story': 'rest-design-quiz',
+        'auth-errors-story': 'auth-errors-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

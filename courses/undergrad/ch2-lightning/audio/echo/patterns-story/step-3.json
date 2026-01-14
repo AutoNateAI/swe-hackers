@@ -1,0 +1,150 @@
+{
+  "storyId": "patterns-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Circuit Breaker. If a service is down, stop hammering it! After five failures, the circuit opens—requests fail fast. After thirty seconds, try one request. Success? Circuit closes.",
+  "duration": 13.149999618530273,
+  "words": [
+    {
+      "word": "Circuit",
+      "start": 0,
+      "end": 0.5
+    },
+    {
+      "word": "breaker",
+      "start": 0.5,
+      "end": 0.9599999785423279
+    },
+    {
+      "word": "If",
+      "start": 1.3799999952316284,
+      "end": 1.399999976158142
+    },
+    {
+      "word": "a",
+      "start": 1.399999976158142,
+      "end": 1.6200000047683716
+    },
+    {
+      "word": "service",
+      "start": 1.6200000047683716,
+      "end": 1.8799999952316284
+    },
+    {
+      "word": "is",
+      "start": 1.8799999952316284,
+      "end": 2.1600000858306885
+    },
+    {
+      "word": "down",
+      "start": 2.1600000858306885,
+      "end": 2.380000114440918
+    },
+    {
+      "word": "stop",
+      "start": 2.9000000953674316,
+      "end": 3
+    },
+    {
+      "word": "hammering",
+      "start": 3,
+      "end": 3.4000000953674316
+    },
+    {
+      "word": "it",
+      "start": 3.4000000953674316,
+      "end": 3.680000066757202
+    },
+    {
+      "word": "After",
+      "start": 4,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "five",
+      "start": 4.059999942779541,
+      "end": 4.5
+    },
+    {
+      "word": "failures",
+      "start": 4.5,
+      "end": 4.860000133514404
+    },
+    {
+      "word": "the",
+      "start": 5.199999809265137,
+      "end": 5.559999942779541
+    },
+    {
+      "word": "circuit",
+      "start": 5.559999942779541,
+      "end": 5.559999942779541
+    },
+    {
+      "word": "opens",
+      "start": 5.559999942779541,
+      "end": 6.019999980926514
+    },
+    {
+      "word": "Requests",
+      "start": 6.820000171661377,
+      "end": 6.820000171661377
+    },
+    {
+      "word": "fail",
+      "start": 6.820000171661377,
+      "end": 7.119999885559082
+    },
+    {
+      "word": "fast",
+      "start": 7.119999885559082,
+      "end": 7.599999904632568
+    },
+    {
+      "word": "After",
+      "start": 8.079999923706055,
+      "end": 8.100000381469727
+    },
+    {
+      "word": "30",
+      "start": 8.100000381469727,
+      "end": 8.5600004196167
+    },
+    {
+      "word": "seconds",
+      "start": 8.5600004196167,
+      "end": 8.84000015258789
+    },
+    {
+      "word": "try",
+      "start": 9.279999732971191,
+      "end": 9.380000114440918
+    },
+    {
+      "word": "one",
+      "start": 9.380000114440918,
+      "end": 9.739999771118164
+    },
+    {
+      "word": "request",
+      "start": 9.739999771118164,
+      "end": 10.140000343322754
+    },
+    {
+      "word": "Success",
+      "start": 10.9399995803833,
+      "end": 10.960000038146973
+    },
+    {
+      "word": "Circuit",
+      "start": 11.579999923706055,
+      "end": 11.579999923706055
+    },
+    {
+      "word": "closes",
+      "start": 11.579999923706055,
+      "end": 11.960000038146973
+    }
+  ]
+}

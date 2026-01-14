@@ -1,0 +1,150 @@
+{
+  "storyId": "async-story",
+  "stepId": "step-3",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "Concurrent Execution. With async await and gather, you can fire off multiple operations simultaneously. While one waits for the database, another waits for the API—all at once.",
+  "duration": 14.300000190734863,
+  "words": [
+    {
+      "word": "Concurrent",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "word": "execution",
+      "start": 1,
+      "end": 1.8799999952316284
+    },
+    {
+      "word": "With",
+      "start": 2.740000009536743,
+      "end": 2.9000000953674316
+    },
+    {
+      "word": "async",
+      "start": 2.9000000953674316,
+      "end": 3.359999895095825
+    },
+    {
+      "word": "await",
+      "start": 3.359999895095825,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "and",
+      "start": 3.759999990463257,
+      "end": 4.21999979019165
+    },
+    {
+      "word": "gather",
+      "start": 4.21999979019165,
+      "end": 4.519999980926514
+    },
+    {
+      "word": "you",
+      "start": 5.260000228881836,
+      "end": 5.320000171661377
+    },
+    {
+      "word": "can",
+      "start": 5.320000171661377,
+      "end": 5.860000133514404
+    },
+    {
+      "word": "sire",
+      "start": 5.860000133514404,
+      "end": 5.860000133514404
+    },
+    {
+      "word": "off",
+      "start": 5.860000133514404,
+      "end": 6.239999771118164
+    },
+    {
+      "word": "multiple",
+      "start": 6.239999771118164,
+      "end": 6.639999866485596
+    },
+    {
+      "word": "operations",
+      "start": 6.71999979019165,
+      "end": 7.519999980926514
+    },
+    {
+      "word": "simultaneously",
+      "start": 7.519999980926514,
+      "end": 8.319999694824219
+    },
+    {
+      "word": "While",
+      "start": 8.880000114440918,
+      "end": 9.279999732971191
+    },
+    {
+      "word": "one",
+      "start": 9.279999732971191,
+      "end": 9.619999885559082
+    },
+    {
+      "word": "waits",
+      "start": 9.619999885559082,
+      "end": 9.880000114440918
+    },
+    {
+      "word": "for",
+      "start": 9.880000114440918,
+      "end": 10.039999961853027
+    },
+    {
+      "word": "the",
+      "start": 10.039999961853027,
+      "end": 10.300000190734863
+    },
+    {
+      "word": "database",
+      "start": 10.300000190734863,
+      "end": 10.640000343322754
+    },
+    {
+      "word": "another",
+      "start": 11.380000114440918,
+      "end": 11.5
+    },
+    {
+      "word": "waits",
+      "start": 11.5,
+      "end": 11.960000038146973
+    },
+    {
+      "word": "for",
+      "start": 11.960000038146973,
+      "end": 12.15999984741211
+    },
+    {
+      "word": "the",
+      "start": 12.15999984741211,
+      "end": 12.399999618530273
+    },
+    {
+      "word": "API",
+      "start": 12.399999618530273,
+      "end": 12.739999771118164
+    },
+    {
+      "word": "all",
+      "start": 13.300000190734863,
+      "end": 13.5600004196167
+    },
+    {
+      "word": "at",
+      "start": 13.5600004196167,
+      "end": 13.960000038146973
+    },
+    {
+      "word": "once",
+      "start": 13.960000038146973,
+      "end": 14.039999961853027
+    }
+  ]
+}

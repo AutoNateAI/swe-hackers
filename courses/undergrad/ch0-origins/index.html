@@ -1,959 +1,680 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 0: The Bridge | The Bridge to Industry</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../shared/css/lesson.css">
-  
-  <style>
-    .origin-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0a0a0f 0%, #0a1628 50%, #0d1f3c 100%);
-    }
-    
-    .wave-container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      overflow: hidden;
-    }
-    
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath fill='%230ea5e9' fill-opacity='0.1' d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,140.83,94.17,208.18,70.28,googl289.4,41.21,321.39,56.44,321.39,56.44Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
-      animation: wave 20s linear infinite;
-    }
-    
-    @keyframes wave {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 2rem;
-    }
-    
-    .chapter-badge {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background: rgba(14, 165, 233, 0.15);
-      border: 1px solid rgba(14, 165, 233, 0.3);
-      border-radius: 30px;
-      color: #0ea5e9;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 2rem;
-    }
-    
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #0ea5e9, #22d3ee, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-    
-    .scroll-indicator {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      z-index: 2;
-    }
-    
-    .scroll-arrow {
-      width: 24px;
-      height: 24px;
-      border-right: 2px solid var(--text-muted);
-      border-bottom: 2px solid var(--text-muted);
-      transform: rotate(45deg);
-      animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-      0%, 100% { transform: rotate(45deg) translateY(0); }
-      50% { transform: rotate(45deg) translateY(10px); }
-    }
-    
-    /* Bridge Visualization */
-    .bridge-visual {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: 3rem;
-      margin: 2rem 0;
-      position: relative;
-    }
-    
-    .bridge-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-    
-    .bridge-side {
-      flex: 1;
-      text-align: center;
-      padding: 2rem;
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .bridge-side.academic {
-      border-top: 4px solid #f97316;
-    }
-    
-    .bridge-side.industry {
-      border-top: 4px solid #0ea5e9;
-    }
-    
-    .bridge-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    
-    .bridge-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .bridge-items {
-      text-align: left;
-      padding: 1rem 0;
-    }
-    
-    .bridge-item {
-      padding: 0.5rem 0;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    
-    .bridge-connector {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .connector-line {
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #f97316, #0ea5e9);
-      border-radius: 2px;
-    }
-    
-    .connector-text {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--text-primary);
-    }
-    
-    /* Reality Check Cards */
-    .reality-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .reality-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-    
-    .reality-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .reality-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .reality-icon {
-      font-size: 1.5rem;
-    }
-    
-    .reality-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    
-    .reality-label.academic { color: #f97316; }
-    .reality-label.industry { color: #0ea5e9; }
-    
-    .reality-academic {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    }
-    
-    .reality-industry {
-      font-size: 0.95rem;
-      color: var(--text-primary);
-    }
-    
-    /* Skills Translation */
-    .skills-translation {
-      margin: 2rem 0;
-    }
-    
-    .skill-row {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 1.5rem;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      margin-bottom: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.5s ease;
-    }
-    
-    .skill-row.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .skill-academic, .skill-industry {
-      text-align: center;
-    }
-    
-    .skill-name {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    .skill-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    
-    .skill-arrow {
-      font-size: 1.5rem;
-      color: #0ea5e9;
-    }
-    
-    /* Interview Prep */
-    .interview-topics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .interview-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      text-align: center;
-      opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.5s ease;
-    }
-    
-    .interview-card.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    .interview-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .interview-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .interview-chapter {
-      font-size: 0.8rem;
-      color: #0ea5e9;
-    }
-    
-    /* Quiz */
-    .origin-quiz {
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(6, 182, 212, 0.05));
-      border: 1px solid rgba(14, 165, 233, 0.3);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
-    
-    .quiz-question {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    
-    .quiz-option {
-      padding: 1rem 1.5rem;
-      background: var(--bg-card);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: left;
-    }
-    
-    .quiz-option:hover {
-      border-color: #0ea5e9;
-      background: rgba(14, 165, 233, 0.1);
-    }
-    
-    .quiz-option.correct {
-      border-color: #10b981;
-      background: rgba(16, 185, 129, 0.15);
-    }
-    
-    .quiz-option.incorrect {
-      border-color: #ef4444;
-      background: rgba(239, 68, 68, 0.15);
-    }
-    
-    /* Continue Button */
-    .continue-section {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
-    }
-    
-    .continue-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1.25rem 2.5rem;
-      background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-      color: white;
-      text-decoration: none;
-      border-radius: var(--radius-lg);
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
-    }
-    
-    .continue-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
-    }
-    
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2.25rem; }
-      .bridge-container { flex-direction: column; }
-      .connector-line { width: 4px; height: 50px; }
-      .reality-grid { grid-template-columns: 1fr; }
-      .skill-row { grid-template-columns: 1fr; text-align: center; }
-      .skill-arrow { transform: rotate(90deg); }
-      .interview-topics { grid-template-columns: 1fr; }
-    }
-  </style>
-  
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  
-  <!-- Anime.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  
-  <!-- Mermaid -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-</head>
-<body>
-  
-  <!-- Hero Section -->
-  <section class="origin-hero">
-    <div class="wave-container">
-      <div class="wave"></div>
-    </div>
-    
-    <div class="hero-content">
-      <span class="chapter-badge">🌉 Pre-Quest</span>
-      <h1 class="hero-title">The Bridge</h1>
-      <p class="hero-subtitle">
-        Your CS degree gave you the fundamentals. Now it's time to translate that knowledge 
-        into industry-ready skills. This is where theory meets real-world engineering.
-      </p>
-    </div>
-    
-    <div class="scroll-indicator">
-      <span>Cross the bridge</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
-  
-  <!-- Main Content -->
-  <div class="lesson-container">
-    
-    <!-- Section 1: The Gap -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🎓</span>
-        The Gap Nobody Talks About
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Here's the truth: <strong>Your CS degree taught you to think, not to ship.</strong> 
-          That's not a flaw—it's by design. Academic programs teach timeless fundamentals. 
-          Industry demands practical execution.
-        </p>
-        
-        <div class="bridge-visual">
-          <div class="bridge-container">
-            <div class="bridge-side academic">
-              <div class="bridge-icon">🎓</div>
-              <div class="bridge-title">Academic World</div>
-              <div class="bridge-items">
-                <div class="bridge-item">• Algorithms & Data Structures</div>
-                <div class="bridge-item">• Theory of Computation</div>
-                <div class="bridge-item">• Clean, isolated problems</div>
-                <div class="bridge-item">• Solo projects with clear specs</div>
-              </div>
-            </div>
-            
-            <div class="bridge-connector">
-              <div class="connector-line"></div>
-              <div class="connector-text">🌉</div>
-              <div class="connector-line"></div>
-            </div>
-            
-            <div class="bridge-side industry">
-              <div class="bridge-icon">🏢</div>
-              <div class="bridge-title">Industry World</div>
-              <div class="bridge-items">
-                <div class="bridge-item">• Legacy code & tech debt</div>
-                <div class="bridge-item">• Distributed systems at scale</div>
-                <div class="bridge-item">• Ambiguous, evolving requirements</div>
-                <div class="bridge-item">• Team collaboration & code review</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="callout callout-insight">
-          <div class="callout-title">🎯 The Good News</div>
-          <p>
-            Your fundamentals are solid. You understand <em>why</em> things work. 
-            This course teaches you <em>how</em> to apply that knowledge in production 
-            environments—with AI as your accelerator.
-          </p>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Bridge | Bridge to Industry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../shared/css/lesson-interactive.css" />
+  </head>
+  <body data-course="undergrad" data-lesson="ch0-origins">
+    <header class="header">
+      <div class="header-content">
+        <a href="../../index.html" class="logo">
+          <div class="logo-icon">🌉</div>
+          <span>The Bridge</span>
+        </a>
+        <nav class="nav-links">
+          <a href="../index.html">← Undergrad</a>
+          <a href="index.html" class="active">Ch 0</a>
+          <a href="../ch1-stone/">Ch 1: Stone</a>
+        </nav>
       </div>
-    </section>
-    
-    <!-- Section 2: Reality Check -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">💡</span>
-        What You Learned vs. What You'll Do
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Let's translate your academic knowledge to industry contexts:
-        </p>
-        
-        <div class="reality-grid">
-          <div class="reality-card">
-            <div class="reality-header">
-              <span class="reality-icon">📊</span>
-              <span class="reality-label academic">In Class</span>
-            </div>
-            <div class="reality-academic">"Implement a hash map from scratch"</div>
-            <div class="reality-label industry">In Industry</div>
-            <div class="reality-industry">"Choose the right database for this use case and optimize queries"</div>
-          </div>
-          
-          <div class="reality-card">
-            <div class="reality-header">
-              <span class="reality-icon">🔄</span>
-              <span class="reality-label academic">In Class</span>
-            </div>
-            <div class="reality-academic">"Analyze time complexity of sorting"</div>
-            <div class="reality-label industry">In Industry</div>
-            <div class="reality-industry">"Profile production system and identify bottlenecks"</div>
-          </div>
-          
-          <div class="reality-card">
-            <div class="reality-header">
-              <span class="reality-icon">🧪</span>
-              <span class="reality-label academic">In Class</span>
-            </div>
-            <div class="reality-academic">"Write unit tests for your function"</div>
-            <div class="reality-label industry">In Industry</div>
-            <div class="reality-industry">"Design test strategy for microservices with CI/CD"</div>
-          </div>
-          
-          <div class="reality-card">
-            <div class="reality-header">
-              <span class="reality-icon">🐛</span>
-              <span class="reality-label academic">In Class</span>
-            </div>
-            <div class="reality-academic">"Debug your code with print statements"</div>
-            <div class="reality-label industry">In Industry</div>
-            <div class="reality-industry">"Trace bugs across distributed services using logs & traces"</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 3: Skills Translation -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🔄</span>
-        Your Skills, Translated
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          Every concept you learned has a production counterpart. Here's your translation guide:
-        </p>
-        
-        <div class="skills-translation">
-          <div class="skill-row">
-            <div class="skill-academic">
-              <div class="skill-name">Data Structures</div>
-              <div class="skill-desc">Arrays, trees, graphs</div>
-            </div>
-            <div class="skill-arrow">→</div>
-            <div class="skill-industry">
-              <div class="skill-name">Database Design</div>
-              <div class="skill-desc">Schemas, indexes, caching</div>
-            </div>
-          </div>
-          
-          <div class="skill-row">
-            <div class="skill-academic">
-              <div class="skill-name">OOP Principles</div>
-              <div class="skill-desc">Encapsulation, inheritance</div>
-            </div>
-            <div class="skill-arrow">→</div>
-            <div class="skill-industry">
-              <div class="skill-name">System Architecture</div>
-              <div class="skill-desc">Services, APIs, contracts</div>
-            </div>
-          </div>
-          
-          <div class="skill-row">
-            <div class="skill-academic">
-              <div class="skill-name">Algorithms</div>
-              <div class="skill-desc">Sorting, searching, graphs</div>
-            </div>
-            <div class="skill-arrow">→</div>
-            <div class="skill-industry">
-              <div class="skill-name">Performance Optimization</div>
-              <div class="skill-desc">Profiling, scaling, load balancing</div>
-            </div>
-          </div>
-          
-          <div class="skill-row">
-            <div class="skill-academic">
-              <div class="skill-name">Networking Theory</div>
-              <div class="skill-desc">TCP/IP, protocols</div>
-            </div>
-            <div class="skill-arrow">→</div>
-            <div class="skill-industry">
-              <div class="skill-name">API Design</div>
-              <div class="skill-desc">REST, GraphQL, gRPC</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="diagram-container">
-          <pre class="mermaid">
-graph LR
-    subgraph Academic["CS Fundamentals"]
-        A1[Theory] --> A2[Algorithms]
-        A2 --> A3[Problem Solving]
-    end
-    
-    subgraph Bridge["This Course"]
-        B1[Production Patterns]
-        B2[System Design]
-        B3[AI Tools]
-    end
-    
-    subgraph Industry["Industry Ready"]
-        C1[Ship Features]
-        C2[Scale Systems]
-        C3[Lead Projects]
-    end
-    
-    A3 --> B1
-    B1 --> B2
-    B2 --> B3
-    B3 --> C1
-    C1 --> C2
-    C2 --> C3
-    
-    style A1 fill:#1a1a2e,stroke:#f97316
-    style A2 fill:#1a1a2e,stroke:#f97316
-    style A3 fill:#1a1a2e,stroke:#f97316
-    style B1 fill:#1a1a2e,stroke:#0ea5e9
-    style B2 fill:#1a1a2e,stroke:#0ea5e9
-    style B3 fill:#1a1a2e,stroke:#0ea5e9
-    style C1 fill:#1a1a2e,stroke:#10b981
-    style C2 fill:#1a1a2e,stroke:#10b981
-    style C3 fill:#1a1a2e,stroke:#10b981
-          </pre>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 4: Interview Ready -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">💼</span>
-        Interview-Ready Skills
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          This course builds exactly what interviewers look for. Each chapter maps to 
-          real interview categories:
-        </p>
-        
-        <div class="interview-topics">
-          <div class="interview-card">
-            <div class="interview-icon">🗄️</div>
-            <div class="interview-title">Database Design</div>
-            <div class="interview-chapter">Chapter 1</div>
-          </div>
-          
-          <div class="interview-card">
-            <div class="interview-icon">⚡</div>
-            <div class="interview-title">Async & Events</div>
-            <div class="interview-chapter">Chapter 2</div>
-          </div>
-          
-          <div class="interview-card">
-            <div class="interview-icon">🔌</div>
-            <div class="interview-title">API Design</div>
-            <div class="interview-chapter">Chapter 3</div>
-          </div>
-          
-          <div class="interview-card">
-            <div class="interview-icon">🏗️</div>
-            <div class="interview-title">System Design</div>
-            <div class="interview-chapter">Chapter 4</div>
-          </div>
-          
-          <div class="interview-card">
-            <div class="interview-icon">🚀</div>
-            <div class="interview-title">Full-Stack Project</div>
-            <div class="interview-chapter">Capstone 1</div>
-          </div>
-          
-          <div class="interview-card">
-            <div class="interview-icon">🤖</div>
-            <div class="interview-title">AI Integration</div>
-            <div class="interview-chapter">Capstone 2</div>
-          </div>
-        </div>
-        
-        <div class="origin-quiz">
-          <div class="quiz-question">
-            🧠 Quick Check: What's the main difference between academic and industry coding?
-          </div>
-          <div class="quiz-options">
-            <button class="quiz-option" onclick="checkAnswer(this, false)">Industry code is more complex</button>
-            <button class="quiz-option" onclick="checkAnswer(this, true)">Industry requires working with ambiguity, legacy code, and teams</button>
-            <button class="quiz-option" onclick="checkAnswer(this, false)">Industry uses different programming languages</button>
-            <button class="quiz-option" onclick="checkAnswer(this, false)">Academic problems are easier</button>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 5: Your AI Advantage -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🤖</span>
-        Your AI Advantage
-      </h2>
-      
-      <div class="section-content">
-        <p>
-          You're entering the industry at the perfect time. AI tools let you punch above 
-          your experience level from day one.
-        </p>
-        
-        <div class="diagram-container">
-          <pre class="mermaid">
-mindmap
-  root((AI-Augmented<br/>New Grad))
-    🔍 Understand Faster
-      Explain legacy code
-      Map system architecture
-      Trace data flows
-    🏗️ Build Smarter
-      Generate boilerplate
-      Implement patterns
-      Write tests
-    📚 Learn Continuously
-      Explain concepts
-      Find best practices
-      Review your code
-    💬 Communicate Better
-      Draft documentation
-      Prepare for meetings
-      Write clear PRs
-          </pre>
-        </div>
-        
-        <div class="callout callout-tip">
-          <div class="callout-title">🚀 Pro Tip: Day One Advantage</div>
-          <p>
-            Use AI to understand your new codebase before asking teammates. 
-            You'll ask smarter questions and ramp up faster than anyone expects.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Section 6: What's Next -->
-    <section class="lesson-section">
-      <h2 class="section-title">
-        <span class="title-icon">🗺️</span>
-        Your Bridge Journey
-      </h2>
-      
-      <div class="section-content">
-        <p>Here's how we'll bridge the gap over the next 6 weeks:</p>
-        
-        <div class="diagram-container">
-          <pre class="mermaid">
-gantt
-    title Your Industry Readiness Path
-    dateFormat  YYYY-MM-DD
-    section Foundation
-    Ch1: Production Data Layers     :a1, 2024-01-01, 7d
-    Ch2: Event-Driven Systems       :a2, after a1, 7d
-    section Integration
-    Ch3: API Design & Integration   :a3, after a2, 7d
-    Ch4: System Design Interviews   :a4, after a3, 7d
-    section Portfolio
-    Ch5: Full-Stack Application     :a5, after a4, 7d
-    Ch6: AI-Augmented Tool          :a6, after a5, 7d
-          </pre>
-        </div>
-        
-        <div class="callout callout-success">
-          <div class="callout-title">✅ Pre-Quest Complete!</div>
-          <p>
-            You understand the gap between academic and industry expectations. 
-            You see how your CS fundamentals translate to production skills. 
-            Chapter 1 starts with the most critical skill: <strong>building production 
-            data layers</strong> that scale.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Continue Section -->
-    <section class="continue-section">
-      <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
-        Ready to Cross the Bridge?
-      </h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-        The foundation is set. Let's build production-ready data layers that would 
-        impress any interviewer.
-      </p>
-      <a href="../ch1-stone/" class="continue-btn">
-        Continue to Chapter 1: Production Data Layers →
-      </a>
-    </section>
-    
-  </div>
-  
-  <!-- Bottom Navigation -->
-  <nav class="lesson-nav">
-    <a class="nav-btn" href="../ch6-capstone2/">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7" />
-      </svg>
-      ← Capstone II (Loop)
-    </a>
-    <a class="nav-btn primary" href="../ch1-stone/">
-      Chapter 1: Stone →
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7" />
-      </svg>
-    </a>
-  </nav>
-  
-  <!-- Scripts -->
-  <script src="../../shared/js/firebase-config.js"></script>
-  <script src="../../shared/js/auth.js"></script>
-  <script src="../../shared/js/data-service.js"></script>
-  <script src="../../shared/js/lesson-integration.js"></script>
-  <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
-  
-  <script>
-    // Initialize Mermaid
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'dark',
-      themeVariables: {
-        primaryColor: '#0ea5e9',
-        primaryTextColor: '#e8e8f0',
-        primaryBorderColor: '#0284c7',
-        lineColor: '#6a6a80',
-        secondaryColor: '#1a1a2e',
-        tertiaryColor: '#12121a',
-        background: '#0a1628',
-        mainBkg: '#0a1628',
-        nodeBorder: '#0284c7',
-        clusterBkg: '#1a1a2e',
-        titleColor: '#e8e8f0',
-        edgeLabelBackground: '#1a1a2e'
-      },
-      flowchart: {
-        curve: 'basis',
-        padding: 20,
-        htmlLabels: true,
-        nodeSpacing: 50,
-        rankSpacing: 50
-      }
-    });
-    
-    // Quiz
-    function checkAnswer(btn, isCorrect) {
-      document.querySelectorAll('.quiz-option').forEach(opt => {
-        opt.disabled = true;
-        opt.classList.remove('correct', 'incorrect');
-      });
-      
-      btn.classList.add(isCorrect ? 'correct' : 'incorrect');
-      
-      if (!isCorrect) {
-        document.querySelectorAll('.quiz-option')[1].classList.add('correct');
-      }
-    }
-    
-    // Animate on scroll
-    function setupScrollAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      document.querySelectorAll('.reality-card, .skill-row, .interview-card').forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.1}s`;
-        observer.observe(item);
-      });
-    }
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      setupScrollAnimations();
-      
-      anime({
-        targets: '.hero-content > *',
-        opacity: [0, 1],
-        translateY: [30, 0],
-        delay: anime.stagger(200, { start: 500 }),
-        duration: 800,
-        easing: 'easeOutQuad'
-      });
-      
-      anime({
-        targets: '.bridge-side',
-        scale: [0.9, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(300, { start: 1000 }),
-        duration: 600,
-        easing: 'easeOutBack'
-      });
-      
-      // Initialize lesson integration (handles Firebase, auth, and header)
-      if (window.LessonIntegration) {
-        window.LessonIntegration.init('undergrad', 'ch0-origins');
-      }
-      
-      // Initialize progress tracker after a short delay for auth
-      // Initialize progress tracker immediately
-      if (window.ProgressTracker) {
-        window.ProgressTracker.init('undergrad', 'ch0-origins');
-      }
-      if (window.ActivityTracker) {
-        window.ActivityTracker.init('undergrad', 'ch0-origins');
-      }
-    });
-  </script>
-</body>
-</html>
+    </header>
 
+    <main class="container">
+      <div class="page-header">
+        <div class="breadcrumb">
+          <a href="../index.html">Bridge to Industry</a>
+          <span>/</span>
+          <span>The Bridge</span>
+        </div>
+        <h1>🌉 The Bridge</h1>
+        <p>
+          Your CS degree gave you the fundamentals. Now it's time to translate
+          that knowledge into industry-ready skills. This is where theory meets
+          real-world engineering.
+        </p>
+      </div>
+
+      <!-- Audio Info -->
+      <section class="section audio-info-section">
+        <div class="info-box compact">
+          <div class="info-header">
+            <span class="info-icon">🎙️</span>
+            <div>
+              <h4>Interactive Learning Experience</h4>
+              <p>
+                Watch diagrams come alive with AI narration • Click dots to jump
+                • Test your understanding with quizzes
+              </p>
+            </div>
+          </div>
+          <div class="voice-options">
+            <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+            <span class="voice-badge">🎩 Male UK Storyteller</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Story 1: The Gap -->
+      <section class="section" id="gap-section">
+        <h2>🎓 The Gap Nobody Talks About</h2>
+        <p>
+          Understanding the difference between what you learned and what you'll
+          do.
+        </p>
+
+        <div class="diagram-container" id="gap-container">
+          <div class="diagram-header">
+            <span class="diagram-title">🌉 Academic → Industry</span>
+          </div>
+          <div id="gap-story" class="diagram-canvas storytelling"></div>
+
+          <div class="diagram-story" id="gap-story-caption">
+            <div class="story-step">
+              <div class="story-icon visible">🚀</div>
+              <div class="story-content">
+                <div class="story-title visible">Ready to Explore</div>
+                <div class="story-text visible">
+                  Click any progress dot below to jump to that step, or press
+                  Play to watch the full story unfold.
+                </div>
+                <div class="story-connection" style="display: none">
+                  <span class="arrow">→</span>
+                  <span class="connection-text"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="playback-controls">
+            <div class="playback-left">
+              <button class="diagram-btn play-btn" data-action="play">
+                ▶ Play
+              </button>
+            </div>
+            <div class="playback-center">
+              <div class="story-progress" id="gap-story-progress"></div>
+            </div>
+            <div class="playback-right">
+              <button
+                class="diagram-btn small"
+                data-action="fit"
+                title="Fit to view"
+              >
+                Fit
+              </button>
+              <button
+                class="diagram-btn small"
+                data-action="reset"
+                title="Reset view"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-bar">
+            <div class="control-group">
+              <label>⏱️</label>
+              <select id="gap-speed-select">
+                <option value="1000">1s</option>
+                <option value="2000" selected>2s</option>
+                <option value="5000">5s</option>
+                <option value="10000">10s</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <button
+                class="audio-toggle"
+                id="gap-audio-toggle"
+                title="Toggle audio narration"
+              >
+                <span class="audio-icon">🔊</span>
+              </button>
+            </div>
+            <div class="control-group">
+              <label>🎤</label>
+              <select id="gap-voice-select" class="voice-select">
+                <option value="">Loading...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card" id="gap-quiz">
+          <div class="quiz-header">
+            <h4>📝 Check Your Understanding</h4>
+            <div class="quiz-progress">
+              <span class="answered">0</span>/<span class="total">3</span>
+              answered
+              <span class="score"></span>
+            </div>
+          </div>
+          <div class="quiz-carousel"></div>
+          <div class="quiz-nav">
+            <button class="quiz-nav-btn prev" disabled>← Prev</button>
+            <div class="quiz-dots"></div>
+            <button class="quiz-nav-btn next">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Story 2: Skills Translation -->
+      <section class="section" id="translation-section">
+        <h2>🔄 Your Skills, Translated</h2>
+        <p>
+          Every academic concept has a production counterpart. Here's your
+          translation guide.
+        </p>
+
+        <div class="diagram-container" id="translation-container">
+          <div class="diagram-header">
+            <span class="diagram-title">📚 Academic → Production</span>
+          </div>
+          <div id="translation-story" class="diagram-canvas storytelling"></div>
+
+          <div class="diagram-story" id="translation-story-caption">
+            <div class="story-step">
+              <div class="story-icon visible">🚀</div>
+              <div class="story-content">
+                <div class="story-title visible">Ready to Explore</div>
+                <div class="story-text visible">
+                  Click any progress dot below to jump to that step, or press
+                  Play to watch the full story unfold.
+                </div>
+                <div class="story-connection" style="display: none">
+                  <span class="arrow">→</span>
+                  <span class="connection-text"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="playback-controls">
+            <div class="playback-left">
+              <button class="diagram-btn play-btn" data-action="play">
+                ▶ Play
+              </button>
+            </div>
+            <div class="playback-center">
+              <div class="story-progress" id="translation-story-progress"></div>
+            </div>
+            <div class="playback-right">
+              <button
+                class="diagram-btn small"
+                data-action="fit"
+                title="Fit to view"
+              >
+                Fit
+              </button>
+              <button
+                class="diagram-btn small"
+                data-action="reset"
+                title="Reset view"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-bar">
+            <div class="control-group">
+              <label>⏱️</label>
+              <select id="translation-speed-select">
+                <option value="1000">1s</option>
+                <option value="2000" selected>2s</option>
+                <option value="5000">5s</option>
+                <option value="10000">10s</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <button
+                class="audio-toggle"
+                id="translation-audio-toggle"
+                title="Toggle audio narration"
+              >
+                <span class="audio-icon">🔊</span>
+              </button>
+            </div>
+            <div class="control-group">
+              <label>🎤</label>
+              <select id="translation-voice-select" class="voice-select">
+                <option value="">Loading...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card" id="translation-quiz">
+          <div class="quiz-header">
+            <h4>📝 Check Your Understanding</h4>
+            <div class="quiz-progress">
+              <span class="answered">0</span>/<span class="total">3</span>
+              answered
+              <span class="score"></span>
+            </div>
+          </div>
+          <div class="quiz-carousel"></div>
+          <div class="quiz-nav">
+            <button class="quiz-nav-btn prev" disabled>← Prev</button>
+            <div class="quiz-dots"></div>
+            <button class="quiz-nav-btn next">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Story 3: AI Advantage -->
+      <section class="section" id="ai-advantage-section">
+        <h2>🤖 Your AI Advantage</h2>
+        <p>
+          You're entering the industry at the perfect time. AI is your
+          superpower.
+        </p>
+
+        <div class="diagram-container" id="ai-advantage-container">
+          <div class="diagram-header">
+            <span class="diagram-title">⚡ AI-Augmented New Grad</span>
+          </div>
+          <div
+            id="ai-advantage-story"
+            class="diagram-canvas storytelling"
+          ></div>
+
+          <div class="diagram-story" id="ai-advantage-story-caption">
+            <div class="story-step">
+              <div class="story-icon visible">🚀</div>
+              <div class="story-content">
+                <div class="story-title visible">Ready to Explore</div>
+                <div class="story-text visible">
+                  Click any progress dot below to jump to that step, or press
+                  Play to watch the full story unfold.
+                </div>
+                <div class="story-connection" style="display: none">
+                  <span class="arrow">→</span>
+                  <span class="connection-text"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="playback-controls">
+            <div class="playback-left">
+              <button class="diagram-btn play-btn" data-action="play">
+                ▶ Play
+              </button>
+            </div>
+            <div class="playback-center">
+              <div
+                class="story-progress"
+                id="ai-advantage-story-progress"
+              ></div>
+            </div>
+            <div class="playback-right">
+              <button
+                class="diagram-btn small"
+                data-action="fit"
+                title="Fit to view"
+              >
+                Fit
+              </button>
+              <button
+                class="diagram-btn small"
+                data-action="reset"
+                title="Reset view"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-bar">
+            <div class="control-group">
+              <label>⏱️</label>
+              <select id="ai-advantage-speed-select">
+                <option value="1000">1s</option>
+                <option value="2000" selected>2s</option>
+                <option value="5000">5s</option>
+                <option value="10000">10s</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <button
+                class="audio-toggle"
+                id="ai-advantage-audio-toggle"
+                title="Toggle audio narration"
+              >
+                <span class="audio-icon">🔊</span>
+              </button>
+            </div>
+            <div class="control-group">
+              <label>🎤</label>
+              <select id="ai-advantage-voice-select" class="voice-select">
+                <option value="">Loading...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card" id="ai-advantage-quiz">
+          <div class="quiz-header">
+            <h4>📝 Check Your Understanding</h4>
+            <div class="quiz-progress">
+              <span class="answered">0</span>/<span class="total">3</span>
+              answered
+              <span class="score"></span>
+            </div>
+          </div>
+          <div class="quiz-carousel"></div>
+          <div class="quiz-nav">
+            <button class="quiz-nav-btn prev" disabled>← Prev</button>
+            <div class="quiz-dots"></div>
+            <button class="quiz-nav-btn next">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Next Steps -->
+      <section class="section">
+        <h2>🚀 Cross the Bridge</h2>
+        <p>
+          The foundation is set. Let's build production-ready data layers that
+          would impress any interviewer.
+        </p>
+        <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr)">
+          <a href="../ch1-stone/" class="card">
+            <div class="card-icon">🪨</div>
+            <h3>Chapter 1: Production Data Layers</h3>
+            <p>
+              Learn to build database schemas, caching strategies, and data
+              flows that scale.
+            </p>
+          </a>
+          <a href="../index.html" class="card">
+            <div class="card-icon">📚</div>
+            <h3>Course Overview</h3>
+            <p>See all chapters in the Bridge to Industry course.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <nav class="page-nav">
+      <h4>On This Page</h4>
+      <ul>
+        <li><a href="#gap-section">The Gap</a></li>
+        <li><a href="#translation-section">Skills Translation</a></li>
+        <li><a href="#ai-advantage-section">AI Advantage</a></li>
+      </ul>
+    </nav>
+
+    <button class="back-to-top" title="Back to top">↑</button>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+
+    <!-- Interactive Engines -->
+    <script src="../../shared/js/interactive/diagram-utils.js"></script>
+    <script src="../../shared/js/interactive/audio-engine.js"></script>
+    <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+    <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Initialize page animations
+        DiagramUtils.initPageAnimations();
+        DiagramUtils.setupBackToTop();
+
+        // Load story and quiz data from JSON
+        const response = await fetch("story.json");
+        const pageData = await response.json();
+
+        // Create a shared audio engine pointing to the audio folder
+        const audioEngine = new AudioNarrationEngine("audio");
+
+        // ============================================
+        // DIAGRAM ELEMENTS (Cytoscape data)
+        // ============================================
+
+        const diagramElements = {
+          gap: [
+            // The gap between academic and industry
+            {
+              data: {
+                id: "cs-degree",
+                label: "🎓 CS Degree\nFundamentals",
+                type: "concept",
+                description: "Theory and principles",
+              },
+            },
+            {
+              data: {
+                id: "the-gap",
+                label: "🕳️ The Gap\nThink vs Ship",
+                type: "auth",
+                description: "The hidden challenge",
+              },
+            },
+            {
+              data: {
+                id: "academic-world",
+                label: "📚 Academic\nClean Problems",
+                type: "data",
+                description: "Well-defined specs",
+              },
+            },
+            {
+              data: {
+                id: "industry-world",
+                label: "🏢 Industry\nMessy Reality",
+                type: "external",
+                description: "Ambiguous requirements",
+              },
+            },
+            {
+              data: {
+                id: "bridge",
+                label: "🌉 This Course\nYour Bridge",
+                type: "example",
+                description: "Theory → Practice",
+              },
+            },
+            // Edges
+            { data: { source: "cs-degree", target: "the-gap" } },
+            { data: { source: "the-gap", target: "academic-world" } },
+            { data: { source: "the-gap", target: "industry-world" } },
+            { data: { source: "academic-world", target: "bridge" } },
+            { data: { source: "industry-world", target: "bridge" } },
+          ],
+          translation: [
+            // Skills translation
+            {
+              data: {
+                id: "solid-foundation",
+                label: "🏗️ Your\nFoundation",
+                type: "concept",
+                description: "CS fundamentals",
+              },
+            },
+            {
+              data: {
+                id: "data-structures",
+                label: "📊 Data Structures\n→ Databases",
+                type: "data",
+                description: "Schemas, indexes, caching",
+              },
+            },
+            {
+              data: {
+                id: "oop-architecture",
+                label: "🔌 OOP\n→ Architecture",
+                type: "service",
+                description: "Services, APIs, contracts",
+              },
+            },
+            {
+              data: {
+                id: "algorithms-perf",
+                label: "⚡ Algorithms\n→ Performance",
+                type: "auth",
+                description: "Profiling, scaling",
+              },
+            },
+            {
+              data: {
+                id: "networking-apis",
+                label: "🌐 Networking\n→ API Design",
+                type: "external",
+                description: "REST, GraphQL, gRPC",
+              },
+            },
+            {
+              data: {
+                id: "industry-ready",
+                label: "🚀 Industry\nReady",
+                type: "example",
+                description: "Complete translation",
+              },
+            },
+            // Edges
+            { data: { source: "solid-foundation", target: "data-structures" } },
+            {
+              data: { source: "solid-foundation", target: "oop-architecture" },
+            },
+            { data: { source: "solid-foundation", target: "algorithms-perf" } },
+            { data: { source: "solid-foundation", target: "networking-apis" } },
+            { data: { source: "data-structures", target: "industry-ready" } },
+            { data: { source: "oop-architecture", target: "industry-ready" } },
+            { data: { source: "algorithms-perf", target: "industry-ready" } },
+            { data: { source: "networking-apis", target: "industry-ready" } },
+          ],
+          "ai-advantage": [
+            // AI advantage
+            {
+              data: {
+                id: "perfect-timing",
+                label: "⏰ Perfect\nTiming",
+                type: "concept",
+                description: "Enter at the right moment",
+              },
+            },
+            {
+              data: {
+                id: "understand-faster",
+                label: "🔍 Understand\nFaster",
+                type: "data",
+                description: "Explain legacy code",
+              },
+            },
+            {
+              data: {
+                id: "build-smarter",
+                label: "🏗️ Build\nSmarter",
+                type: "service",
+                description: "Generate, implement",
+              },
+            },
+            {
+              data: {
+                id: "learn-continuously",
+                label: "📚 Learn\nContinuously",
+                type: "auth",
+                description: "24/7 senior engineer",
+              },
+            },
+            {
+              data: {
+                id: "communicate-better",
+                label: "💬 Communicate\nBetter",
+                type: "external",
+                description: "Docs, PRs, meetings",
+              },
+            },
+            {
+              data: {
+                id: "competitive-edge",
+                label: "🏆 Competitive\nEdge",
+                type: "page",
+                description: "Fundamentals + AI speed",
+              },
+            },
+            // Edges
+            { data: { source: "perfect-timing", target: "understand-faster" } },
+            { data: { source: "perfect-timing", target: "build-smarter" } },
+            {
+              data: { source: "perfect-timing", target: "learn-continuously" },
+            },
+            {
+              data: { source: "perfect-timing", target: "communicate-better" },
+            },
+            {
+              data: { source: "understand-faster", target: "competitive-edge" },
+            },
+            { data: { source: "build-smarter", target: "competitive-edge" } },
+            {
+              data: {
+                source: "learn-continuously",
+                target: "competitive-edge",
+              },
+            },
+            {
+              data: {
+                source: "communicate-better",
+                target: "competitive-edge",
+              },
+            },
+          ],
+        };
+
+        // ============================================
+        // INITIALIZE STORYTELLING DIAGRAMS
+        // ============================================
+
+        const storyToDiagram = {
+          "gap-story": "gap",
+          "translation-story": "translation",
+          "ai-advantage-story": "ai-advantage",
+        };
+
+        pageData.stories.forEach((story) => {
+          const diagramKey = storyToDiagram[story.id];
+          if (!diagramKey) return;
+
+          const elements = diagramElements[diagramKey];
+          if (!elements) return;
+
+          new StorytellingDiagram(story.id, elements, story.steps, {
+            audioEngine,
+            storyId: story.id,
+          });
+        });
+
+        // ============================================
+        // INITIALIZE QUIZZES
+        // ============================================
+
+        const storyToQuiz = {
+          "gap-story": "gap-quiz",
+          "translation-story": "translation-quiz",
+          "ai-advantage-story": "ai-advantage-quiz",
+        };
+
+        pageData.quizzes.forEach((quiz) => {
+          const containerId = storyToQuiz[quiz.storyId];
+          if (!containerId) return;
+          new Quiz(containerId, quiz.questions);
+        });
+      });
+    </script>
+  </body>
+</html>

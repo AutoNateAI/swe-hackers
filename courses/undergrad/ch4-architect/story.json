@@ -1,0 +1,278 @@
+{
+  "pageId": "ch4-architect",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "The Age of Architects",
+    "icon": "🏛️",
+    "themeColor": "architect"
+  },
+  "stories": [
+    {
+      "id": "interview-reality-story",
+      "diagramId": "interview-reality",
+      "title": "The Interview Reality",
+      "steps": [
+        {
+          "nodeId": "faang-interview",
+          "icon": "💼",
+          "title": "The FAANG Interview",
+          "narration": "Every major tech company has a system design interview round. They don't want to see you code—they want to see you think. Can you design Twitter? Uber? A URL shortener?",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "clarify",
+          "edges": [{ "from": "faang-interview", "to": "clarify" }],
+          "icon": "❓",
+          "title": "Clarify Requirements",
+          "narration": "First, interviewers watch if you clarify requirements before diving in. Never assume. What's the scale? What are the constraints? What features are in scope?",
+          "connectsTo": "FAANG Interview"
+        },
+        {
+          "nodeId": "estimate",
+          "edges": [{ "from": "faang-interview", "to": "estimate" }],
+          "icon": "📊",
+          "title": "Estimate Scale",
+          "narration": "Second, can you estimate scale? How many users? How much data? What's the read-write ratio? Back-of-envelope math shows you can reason about production systems.",
+          "connectsTo": "FAANG Interview"
+        },
+        {
+          "nodeId": "architecture",
+          "edges": [{ "from": "faang-interview", "to": "architecture" }],
+          "icon": "🏛️",
+          "title": "High-Level Architecture",
+          "narration": "Third, can you draw a high-level architecture? Boxes and arrows showing major components and how they communicate. This is the heart of system design.",
+          "connectsTo": "FAANG Interview"
+        },
+        {
+          "nodeId": "deep-dive",
+          "edges": [{ "from": "faang-interview", "to": "deep-dive" }],
+          "icon": "🔬",
+          "title": "Deep Dive",
+          "narration": "Fourth, can you deep dive into a critical component? Pick one piece—database schema, API design, caching strategy—and show depth of knowledge.",
+          "connectsTo": "FAANG Interview"
+        },
+        {
+          "nodeId": "bottlenecks",
+          "edges": [
+            { "from": "clarify", "to": "bottlenecks" },
+            { "from": "estimate", "to": "bottlenecks" },
+            { "from": "architecture", "to": "bottlenecks" },
+            { "from": "deep-dive", "to": "bottlenecks" }
+          ],
+          "icon": "⚠️",
+          "title": "Identify Bottlenecks",
+          "narration": "Finally, do you identify bottlenecks and tradeoffs? Where will it break? How do you scale? Anticipate problems before they're asked. That's senior thinking.",
+          "connectsTo": "All Skills"
+        }
+      ]
+    },
+    {
+      "id": "design-framework-story",
+      "diagramId": "design-framework",
+      "title": "The System Design Framework",
+      "steps": [
+        {
+          "nodeId": "step-clarify",
+          "icon": "1️⃣",
+          "title": "Step 1: CLARIFY",
+          "narration": "When faced with any design problem, start by clarifying. What are the requirements? What's the scale? What are the constraints? Never assume—always ask. This shows maturity.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "step-estimate",
+          "edges": [{ "from": "step-clarify", "to": "step-estimate" }],
+          "icon": "2️⃣",
+          "title": "Step 2: ESTIMATE",
+          "narration": "Next, estimate scale. How many users? How much data? What's the read-write ratio? Do the math out loud. One hundred million users times five hundred bytes equals fifty gigabytes. Interviewers love this.",
+          "connectsTo": "CLARIFY"
+        },
+        {
+          "nodeId": "step-design",
+          "edges": [{ "from": "step-estimate", "to": "step-design" }],
+          "icon": "3️⃣",
+          "title": "Step 3: DESIGN HIGH-LEVEL",
+          "narration": "Now draw the boxes and arrows. What are the major components? Clients, load balancer, application servers, cache, database. How do they communicate? This is your architecture.",
+          "connectsTo": "ESTIMATE"
+        },
+        {
+          "nodeId": "step-deep",
+          "edges": [{ "from": "step-design", "to": "step-deep" }],
+          "icon": "4️⃣",
+          "title": "Step 4: DEEP DIVE",
+          "narration": "Pick a critical component and go deep. How does the key generation work? What's the database schema? What's the caching strategy? Show you can move from high-level to implementation details.",
+          "connectsTo": "DESIGN"
+        },
+        {
+          "nodeId": "step-bottlenecks",
+          "edges": [{ "from": "step-deep", "to": "step-bottlenecks" }],
+          "icon": "5️⃣",
+          "title": "Step 5: IDENTIFY BOTTLENECKS",
+          "narration": "Finally, anticipate problems. Where will it break under load? What's the single point of failure? How do you scale? What's the failure mode? Senior engineers think about what can go wrong.",
+          "connectsTo": "DEEP DIVE"
+        }
+      ]
+    },
+    {
+      "id": "patterns-story",
+      "diagramId": "patterns",
+      "title": "Common System Design Patterns",
+      "steps": [
+        {
+          "nodeId": "load-balancer",
+          "icon": "⚖️",
+          "title": "Load Balancing",
+          "narration": "The first pattern: load balancing. Distribute traffic across multiple servers. Round-robin, least connections, or weighted algorithms. This is how you handle millions of requests.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "sharding",
+          "edges": [{ "from": "load-balancer", "to": "sharding" }],
+          "icon": "🗃️",
+          "title": "Database Sharding",
+          "narration": "Second pattern: database sharding. Split data across multiple databases. Users one through one million go to shard A, the next million to shard B. Scale horizontally beyond a single machine.",
+          "connectsTo": "Load Balancing"
+        },
+        {
+          "nodeId": "caching",
+          "edges": [{ "from": "sharding", "to": "caching" }],
+          "icon": "📦",
+          "title": "Caching Layer",
+          "narration": "Third pattern: caching. Store frequently accessed data in Redis or Memcached. Cache-aside, write-through, or write-behind. Caching turns slow operations into fast ones.",
+          "connectsTo": "Sharding"
+        },
+        {
+          "nodeId": "pubsub",
+          "edges": [{ "from": "caching", "to": "pubsub" }],
+          "icon": "📨",
+          "title": "Pub/Sub Messaging",
+          "narration": "Fourth pattern: publish-subscribe. Decouple services with message queues. Publishers don't know about subscribers. Easy to add new consumers. This is how modern systems stay flexible.",
+          "connectsTo": "Caching"
+        },
+        {
+          "nodeId": "combined",
+          "edges": [{ "from": "pubsub", "to": "combined" }],
+          "icon": "🏗️",
+          "title": "Patterns Together",
+          "narration": "Real systems combine all these patterns. Load balancer in front, application servers behind, cache for hot data, sharded database for scale, message queues for async work. Now you're thinking like an architect.",
+          "connectsTo": "Pub/Sub"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "interview-reality-story",
+      "questions": [
+        {
+          "question": "In a system design interview, what should you do FIRST?",
+          "options": [
+            "Start drawing the architecture immediately",
+            "Clarify requirements and constraints before designing",
+            "Write pseudocode for the main algorithm",
+            "Discuss database schema"
+          ],
+          "correct": 1,
+          "explanation": "Always clarify first! Understanding requirements, scale, and constraints shows maturity and prevents designing the wrong system."
+        },
+        {
+          "question": "Why do interviewers want to see back-of-envelope calculations?",
+          "options": [
+            "To test your math skills",
+            "To waste interview time",
+            "To see if you can reason about scale and production systems",
+            "To compare you to other candidates"
+          ],
+          "correct": 2,
+          "explanation": "Estimating scale shows you understand production systems. How many requests per second? How much storage? This separates senior engineers from juniors."
+        },
+        {
+          "question": "What separates senior engineers in system design discussions?",
+          "options": [
+            "They draw prettier diagrams",
+            "They anticipate bottlenecks and tradeoffs before being asked",
+            "They use more technical jargon",
+            "They finish faster than others"
+          ],
+          "correct": 1,
+          "explanation": "Senior engineers think about what can go wrong. They identify single points of failure, scaling challenges, and tradeoffs proactively."
+        }
+      ]
+    },
+    {
+      "storyId": "design-framework-story",
+      "questions": [
+        {
+          "question": "What are the five steps of the system design framework in order?",
+          "options": [
+            "Design, Code, Test, Deploy, Monitor",
+            "Clarify, Estimate, Design, Deep Dive, Bottlenecks",
+            "Research, Plan, Build, Launch, Iterate",
+            "Requirements, Architecture, Implementation, Testing, Deployment"
+          ],
+          "correct": 1,
+          "explanation": "The framework is: Clarify requirements → Estimate scale → Design high-level → Deep dive into components → Identify bottlenecks. This structure keeps your interview organized."
+        },
+        {
+          "question": "What does 'deep dive' mean in system design?",
+          "options": [
+            "Diving into the code repository",
+            "Picking one critical component and explaining it in detail",
+            "Going underwater to think",
+            "Skipping the high-level design"
+          ],
+          "correct": 1,
+          "explanation": "Deep dive means picking one component—like database schema, caching strategy, or API design—and showing depth of knowledge. It proves you can go from high-level to implementation."
+        },
+        {
+          "question": "Why is estimating read/write ratio important?",
+          "options": [
+            "It's just a formality interviewers expect",
+            "It determines whether you need a frontend",
+            "It affects architecture decisions like caching and database choice",
+            "It decides how many engineers you need"
+          ],
+          "correct": 2,
+          "explanation": "A 100:1 read/write ratio means heavy caching helps. A 1:1 ratio might need different strategies. This ratio drives architecture decisions."
+        }
+      ]
+    },
+    {
+      "storyId": "patterns-story",
+      "questions": [
+        {
+          "question": "You're designing Twitter's home feed. Users follow many people, celebrities have millions of followers. What's the best approach?",
+          "options": [
+            "Pull model: Query all followed users on each load",
+            "Hybrid: Push for regular users, pull for celebrities",
+            "Push model: Fan out every tweet to all followers",
+            "Cache everything in Redis"
+          ],
+          "correct": 1,
+          "explanation": "Push is fast for reads but expensive for celebrities (50M followers = 50M writes per tweet). Hybrid combines push for normal users with pull for celebrities."
+        },
+        {
+          "question": "What problem does database sharding solve?",
+          "options": [
+            "Making queries faster by indexing",
+            "Storing data across multiple machines to scale beyond one database",
+            "Backing up data automatically",
+            "Encrypting sensitive data"
+          ],
+          "correct": 1,
+          "explanation": "Sharding splits data across multiple databases. When one machine can't handle the load or storage, you distribute across many. This is horizontal scaling."
+        },
+        {
+          "question": "In a cache-aside pattern, what happens on a cache miss?",
+          "options": [
+            "Return an error to the user",
+            "Query database, store result in cache, then return",
+            "Wait for the cache to refresh automatically",
+            "Redirect to a different server"
+          ],
+          "correct": 1,
+          "explanation": "Cache-aside: On miss, query database, store the result in cache, then return. Next request for same data will be a cache hit. Simple and effective."
+        }
+      ]
+    }
+  ]
+}

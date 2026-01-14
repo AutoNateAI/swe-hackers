@@ -1,0 +1,135 @@
+{
+  "storyId": "patterns-story",
+  "stepId": "step-3",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Dependency Injection. Dependency Injection means passing dependencies in, not creating them internally. This is what enables testing — inject a mock database instead of hitting production!",
+  "duration": 13,
+  "words": [
+    {
+      "word": "Dependency",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "word": "injection",
+      "start": 1,
+      "end": 1.5199999809265137
+    },
+    {
+      "word": "Dependency",
+      "start": 2.819999933242798,
+      "end": 3.0999999046325684
+    },
+    {
+      "word": "injection",
+      "start": 3.0999999046325684,
+      "end": 3.5199999809265137
+    },
+    {
+      "word": "means",
+      "start": 3.5199999809265137,
+      "end": 3.9200000762939453
+    },
+    {
+      "word": "passing",
+      "start": 3.9200000762939453,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "dependencies",
+      "start": 4.460000038146973,
+      "end": 5.099999904632568
+    },
+    {
+      "word": "in",
+      "start": 5.099999904632568,
+      "end": 5.559999942779541
+    },
+    {
+      "word": "not",
+      "start": 6.099999904632568,
+      "end": 6.199999809265137
+    },
+    {
+      "word": "creating",
+      "start": 6.199999809265137,
+      "end": 6.599999904632568
+    },
+    {
+      "word": "them",
+      "start": 6.599999904632568,
+      "end": 6.900000095367432
+    },
+    {
+      "word": "internally",
+      "start": 6.900000095367432,
+      "end": 7.260000228881836
+    },
+    {
+      "word": "This",
+      "start": 8.119999885559082,
+      "end": 8.260000228881836
+    },
+    {
+      "word": "is",
+      "start": 8.260000228881836,
+      "end": 8.4399995803833
+    },
+    {
+      "word": "what",
+      "start": 8.4399995803833,
+      "end": 8.600000381469727
+    },
+    {
+      "word": "enables",
+      "start": 8.600000381469727,
+      "end": 8.9399995803833
+    },
+    {
+      "word": "testing",
+      "start": 8.9399995803833,
+      "end": 9.4399995803833
+    },
+    {
+      "word": "Inject",
+      "start": 10.4399995803833,
+      "end": 10.4399995803833
+    },
+    {
+      "word": "a",
+      "start": 10.4399995803833,
+      "end": 10.920000076293945
+    },
+    {
+      "word": "mock",
+      "start": 10.920000076293945,
+      "end": 10.960000038146973
+    },
+    {
+      "word": "database",
+      "start": 10.960000038146973,
+      "end": 11.460000038146973
+    },
+    {
+      "word": "instead",
+      "start": 11.460000038146973,
+      "end": 11.859999656677246
+    },
+    {
+      "word": "of",
+      "start": 11.859999656677246,
+      "end": 12.140000343322754
+    },
+    {
+      "word": "hitting",
+      "start": 12.140000343322754,
+      "end": 12.34000015258789
+    },
+    {
+      "word": "production",
+      "start": 12.34000015258789,
+      "end": 12.760000228881836
+    }
+  ]
+}

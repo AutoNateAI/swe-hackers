@@ -1,0 +1,4445 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T01:53:26.858Z",
+  "stories": [
+    "bridge-story",
+    "translation-story",
+    "patterns-story"
+  ],
+  "ballad": {
+    "bridge-story": [
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Gap Nobody Mentions. Here's a secret your professors won't tell you: the gap between classroom CS and industry engineering is massive. But it doesn't have to be. Your academic foundation is solid — you just need a translation layer.",
+        "duration": 18.360000610351562,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "gap",
+            "start": 0.41999998688697815,
+            "end": 0.7799999713897705
+          },
+          {
+            "word": "nobody",
+            "start": 0.7799999713897705,
+            "end": 1.8200000524520874
+          },
+          {
+            "word": "mentions",
+            "start": 1.8200000524520874,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "Here's",
+            "start": 3.4000000953674316,
+            "end": 3.5
+          },
+          {
+            "word": "a",
+            "start": 3.5,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "secret",
+            "start": 3.859999895095825,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "your",
+            "start": 4.059999942779541,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "professors",
+            "start": 4.460000038146973,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "won't",
+            "start": 4.800000190734863,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "tell",
+            "start": 5.079999923706055,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "you",
+            "start": 5.340000152587891,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "The",
+            "start": 6.139999866485596,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "gap",
+            "start": 6.360000133514404,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "between",
+            "start": 6.579999923706055,
+            "end": 7.039999961853027
+          },
+          {
+            "word": "classroom",
+            "start": 7.039999961853027,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "CS",
+            "start": 7.619999885559082,
+            "end": 8.079999923706055
+          },
+          {
+            "word": "and",
+            "start": 8.079999923706055,
+            "end": 8.619999885559082
+          },
+          {
+            "word": "industry",
+            "start": 8.619999885559082,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "engineering",
+            "start": 9.180000305175781,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "is",
+            "start": 9.699999809265137,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "massive",
+            "start": 10.479999542236328,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "But",
+            "start": 11.220000267028809,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "it",
+            "start": 11.619999885559082,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "doesn't",
+            "start": 11.859999656677246,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "have",
+            "start": 12.15999984741211,
+            "end": 12.5
+          },
+          {
+            "word": "to",
+            "start": 12.5,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "be",
+            "start": 12.699999809265137,
+            "end": 12.800000190734863
+          },
+          {
+            "word": "Your",
+            "start": 13.479999542236328,
+            "end": 13.779999732971191
+          },
+          {
+            "word": "academic",
+            "start": 13.779999732971191,
+            "end": 14.279999732971191
+          },
+          {
+            "word": "foundation",
+            "start": 14.279999732971191,
+            "end": 14.779999732971191
+          },
+          {
+            "word": "is",
+            "start": 14.779999732971191,
+            "end": 15.319999694824219
+          },
+          {
+            "word": "solid",
+            "start": 15.319999694824219,
+            "end": 15.539999961853027
+          },
+          {
+            "word": "You",
+            "start": 15.899999618530273,
+            "end": 16.139999389648438
+          },
+          {
+            "word": "just",
+            "start": 16.139999389648438,
+            "end": 16.5
+          },
+          {
+            "word": "need",
+            "start": 16.5,
+            "end": 16.68000030517578
+          },
+          {
+            "word": "a",
+            "start": 16.68000030517578,
+            "end": 17.15999984741211
+          },
+          {
+            "word": "translation",
+            "start": 17.15999984741211,
+            "end": 17.559999465942383
+          },
+          {
+            "word": "layer",
+            "start": 17.559999465942383,
+            "end": 17.920000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "What You've Learned. Think about what you've built: algorithms, data structures, database theory, software design principles. This isn't just academic exercise — it's the foundation that industry builds on.",
+        "duration": 15.399999618530273,
+        "words": [
+          {
+            "word": "What",
+            "start": 0,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "you've",
+            "start": 1.0199999809265137,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "learned",
+            "start": 1.440000057220459,
+            "end": 1.7799999713897705
+          },
+          {
+            "word": "Think",
+            "start": 2.440000057220459,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "about",
+            "start": 2.5199999809265137,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "what",
+            "start": 2.759999990463257,
+            "end": 3
+          },
+          {
+            "word": "you've",
+            "start": 3,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "built",
+            "start": 3.5399999618530273,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "Algorithms",
+            "start": 4.300000190734863,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "data",
+            "start": 5.159999847412109,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "structures",
+            "start": 5.460000038146973,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "database",
+            "start": 6.71999979019165,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "theory",
+            "start": 6.940000057220459,
+            "end": 7.360000133514404
+          },
+          {
+            "word": "software",
+            "start": 8.119999885559082,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "design",
+            "start": 8.279999732971191,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "principles",
+            "start": 8.739999771118164,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "This",
+            "start": 9.619999885559082,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "isn't",
+            "start": 10.0600004196167,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "just",
+            "start": 10.380000114440918,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "academic",
+            "start": 10.739999771118164,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "exercise",
+            "start": 11.220000267028809,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "it's",
+            "start": 12.039999961853027,
+            "end": 12.5
+          },
+          {
+            "word": "the",
+            "start": 12.5,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "foundation",
+            "start": 12.819999694824219,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "that",
+            "start": 13.239999771118164,
+            "end": 13.960000038146973
+          },
+          {
+            "word": "industry",
+            "start": 13.960000038146973,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "builds",
+            "start": 14.34000015258789,
+            "end": 14.739999771118164
+          },
+          {
+            "word": "on",
+            "start": 14.739999771118164,
+            "end": 15.020000457763672
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "This Course Is The Bridge. This course connects what you know to how software is actually built. Design patterns, modern tools, AI-augmented development. Same concepts you learned, applied to real production systems.",
+        "duration": 16.559999465942383,
+        "words": [
+          {
+            "word": "This",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "course",
+            "start": 0.5,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "is",
+            "start": 0.9200000166893005,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "the",
+            "start": 1.340000033378601,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "bridge",
+            "start": 1.600000023841858,
+            "end": 1.9600000381469727
+          },
+          {
+            "word": "This",
+            "start": 2.9800000190734863,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "course",
+            "start": 3.0799999237060547,
+            "end": 3.4000000953674316
+          },
+          {
+            "word": "connects",
+            "start": 3.4000000953674316,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "what",
+            "start": 3.819999933242798,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "you",
+            "start": 4.119999885559082,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "know",
+            "start": 4.320000171661377,
+            "end": 4.599999904632568
+          },
+          {
+            "word": "to",
+            "start": 4.599999904632568,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "how",
+            "start": 5.119999885559082,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "software",
+            "start": 5.400000095367432,
+            "end": 5.860000133514404
+          },
+          {
+            "word": "is",
+            "start": 5.860000133514404,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "actually",
+            "start": 6.179999828338623,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "built",
+            "start": 6.78000020980835,
+            "end": 7
+          },
+          {
+            "word": "Design",
+            "start": 8.119999885559082,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "patterns",
+            "start": 8.119999885559082,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "modern",
+            "start": 9.140000343322754,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "tools",
+            "start": 9.300000190734863,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "AI",
+            "start": 10.5600004196167,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "augmented",
+            "start": 10.739999771118164,
+            "end": 11.319999694824219
+          },
+          {
+            "word": "development",
+            "start": 11.319999694824219,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "same",
+            "start": 12.619999885559082,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "concepts",
+            "start": 12.920000076293945,
+            "end": 13.359999656677246
+          },
+          {
+            "word": "you",
+            "start": 13.359999656677246,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "learned",
+            "start": 13.619999885559082,
+            "end": 13.979999542236328
+          },
+          {
+            "word": "applied",
+            "start": 13.979999542236328,
+            "end": 14.619999885559082
+          },
+          {
+            "word": "to",
+            "start": 14.619999885559082,
+            "end": 14.960000038146973
+          },
+          {
+            "word": "real",
+            "start": 14.960000038146973,
+            "end": 15.359999656677246
+          },
+          {
+            "word": "production",
+            "start": 15.359999656677246,
+            "end": 15.779999732971191
+          },
+          {
+            "word": "systems",
+            "start": 15.779999732971191,
+            "end": 16.360000610351562
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Industry-Ready. The destination: internships, full-time roles, career growth. You're not starting from zero — you're translating knowledge you already have into the language industry speaks.",
+        "duration": 12.359999656677246,
+        "words": [
+          {
+            "word": "Industry",
+            "start": 0,
+            "end": 0.7400000095367432
+          },
+          {
+            "word": "ready",
+            "start": 0.7400000095367432,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "The",
+            "start": 1.659999966621399,
+            "end": 1.8200000524520874
+          },
+          {
+            "word": "destination",
+            "start": 1.8200000524520874,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "Internships",
+            "start": 3.359999895095825,
+            "end": 3.9800000190734863
+          },
+          {
+            "word": "Full",
+            "start": 4.179999828338623,
+            "end": 4.21999979019165
+          },
+          {
+            "word": "time",
+            "start": 4.21999979019165,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "roles",
+            "start": 4.460000038146973,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "Career",
+            "start": 5.360000133514404,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "growth",
+            "start": 5.420000076293945,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "You're",
+            "start": 6.320000171661377,
+            "end": 6.420000076293945
+          },
+          {
+            "word": "not",
+            "start": 6.420000076293945,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "starting",
+            "start": 6.679999828338623,
+            "end": 6.960000038146973
+          },
+          {
+            "word": "from",
+            "start": 6.960000038146973,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "zero",
+            "start": 7.260000228881836,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "You're",
+            "start": 8.140000343322754,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "translating",
+            "start": 8.4399995803833,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "knowledge",
+            "start": 8.899999618530273,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "you",
+            "start": 9.300000190734863,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "already",
+            "start": 9.520000457763672,
+            "end": 9.960000038146973
+          },
+          {
+            "word": "have",
+            "start": 9.960000038146973,
+            "end": 10.239999771118164
+          },
+          {
+            "word": "into",
+            "start": 10.239999771118164,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "the",
+            "start": 10.600000381469727,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "language",
+            "start": 10.819999694824219,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "industry",
+            "start": 11.119999885559082,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "speaks",
+            "start": 11.579999923706055,
+            "end": 11.979999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Your Knowledge Transfers. That binary search tree you implemented? Industry uses self-balancing variants like Red-Black trees. The concept is identical — your knowledge transfers. You just need to see the connection.",
+        "duration": 16.459999084472656,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "knowledge",
+            "start": 0.6000000238418579,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "transfers",
+            "start": 1.2400000095367432,
+            "end": 2.240000009536743
+          },
+          {
+            "word": "That",
+            "start": 3.059999942779541,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "binary",
+            "start": 3.119999885559082,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "search",
+            "start": 3.7200000286102295,
+            "end": 4.159999847412109
+          },
+          {
+            "word": "tree",
+            "start": 4.159999847412109,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "you",
+            "start": 4.400000095367432,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "implemented",
+            "start": 4.699999809265137,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "Industry",
+            "start": 6.320000171661377,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "uses",
+            "start": 6.320000171661377,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "self",
+            "start": 6.739999771118164,
+            "end": 7.179999828338623
+          },
+          {
+            "word": "balancing",
+            "start": 7.179999828338623,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "variants",
+            "start": 7.539999961853027,
+            "end": 8.119999885559082
+          },
+          {
+            "word": "like",
+            "start": 8.119999885559082,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "red",
+            "start": 8.600000381469727,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "black",
+            "start": 8.9399995803833,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "trees",
+            "start": 9.260000228881836,
+            "end": 9.65999984741211
+          },
+          {
+            "word": "The",
+            "start": 10.239999771118164,
+            "end": 10.4399995803833
+          },
+          {
+            "word": "concept",
+            "start": 10.4399995803833,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "is",
+            "start": 10.819999694824219,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "identical",
+            "start": 11.199999809265137,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "Your",
+            "start": 12.420000076293945,
+            "end": 12.640000343322754
+          },
+          {
+            "word": "knowledge",
+            "start": 12.640000343322754,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "transfers",
+            "start": 13.020000457763672,
+            "end": 13.779999732971191
+          },
+          {
+            "word": "You",
+            "start": 14.4399995803833,
+            "end": 14.600000381469727
+          },
+          {
+            "word": "just",
+            "start": 14.600000381469727,
+            "end": 15
+          },
+          {
+            "word": "need",
+            "start": 15,
+            "end": 15.15999984741211
+          },
+          {
+            "word": "to",
+            "start": 15.15999984741211,
+            "end": 15.399999618530273
+          },
+          {
+            "word": "see",
+            "start": 15.399999618530273,
+            "end": 15.579999923706055
+          },
+          {
+            "word": "the",
+            "start": 15.579999923706055,
+            "end": 15.859999656677246
+          },
+          {
+            "word": "connection",
+            "start": 15.859999656677246,
+            "end": 16.1200008392334
+          }
+        ]
+      }
+    ],
+    "translation-story": [
+      {
+        "storyId": "translation-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Same Concepts, Different Names. Everything you learned in class maps to something in industry. Linked lists and arrays become choosing the right data store. Big-O analysis becomes performance optimization at scale.",
+        "duration": 17.520000457763672,
+        "words": [
+          {
+            "word": "Same",
+            "start": 0,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "concepts",
+            "start": 0.8199999928474426,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "different",
+            "start": 2.3399999141693115,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "names",
+            "start": 2.6600000858306885,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "Everything",
+            "start": 4.099999904632568,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "you",
+            "start": 4.460000038146973,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "learned",
+            "start": 4.800000190734863,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "in",
+            "start": 5.039999961853027,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "class",
+            "start": 5.300000190734863,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "maps",
+            "start": 5.699999809265137,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "to",
+            "start": 6.320000171661377,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "something",
+            "start": 6.639999866485596,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "in",
+            "start": 6.940000057220459,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "industry",
+            "start": 7.199999809265137,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "Linked",
+            "start": 8.819999694824219,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "lists",
+            "start": 8.84000015258789,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "and",
+            "start": 9.220000267028809,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "arrays",
+            "start": 9.539999961853027,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "become",
+            "start": 9.920000076293945,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "choosing",
+            "start": 10.5600004196167,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "the",
+            "start": 10.9399995803833,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "right",
+            "start": 11.220000267028809,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "data",
+            "start": 11.460000038146973,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "store",
+            "start": 11.779999732971191,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "Big",
+            "start": 13.119999885559082,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "O",
+            "start": 13.279999732971191,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "analysis",
+            "start": 13.420000076293945,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "becomes",
+            "start": 13.920000076293945,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "performance",
+            "start": 14.760000228881836,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "optimization",
+            "start": 15.479999542236328,
+            "end": 16.239999771118164
+          },
+          {
+            "word": "at",
+            "start": 16.239999771118164,
+            "end": 17.040000915527344
+          },
+          {
+            "word": "scale",
+            "start": 17.040000915527344,
+            "end": 17.280000686645508
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Theory to Practice. Database normalization becomes schema design for real products. UML diagrams become architecture documentation. Software design principles become code review standards.",
+        "duration": 15.960000038146973,
+        "words": [
+          {
+            "word": "Theory",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "to",
+            "start": 0.5799999833106995,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "practice",
+            "start": 0.9599999785423279,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "Database",
+            "start": 2.5799999237060547,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "normalization",
+            "start": 2.859999895095825,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "becomes",
+            "start": 3.740000009536743,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "schema",
+            "start": 4.400000095367432,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "design",
+            "start": 4.860000133514404,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "for",
+            "start": 5.340000152587891,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "real",
+            "start": 5.820000171661377,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "products",
+            "start": 6.179999828338623,
+            "end": 6.71999979019165
+          },
+          {
+            "word": "UML",
+            "start": 7.880000114440918,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "diagrams",
+            "start": 8.180000305175781,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "become",
+            "start": 8.779999732971191,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "architecture",
+            "start": 9.520000457763672,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "documentation",
+            "start": 10.319999694824219,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "Software",
+            "start": 12.5600004196167,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "design",
+            "start": 12.5600004196167,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "principles",
+            "start": 13.119999885559082,
+            "end": 13.640000343322754
+          },
+          {
+            "word": "become",
+            "start": 13.640000343322754,
+            "end": 14.300000190734863
+          },
+          {
+            "word": "code",
+            "start": 14.300000190734863,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "review",
+            "start": 14.760000228881836,
+            "end": 15.100000381469727
+          },
+          {
+            "word": "standards",
+            "start": 15.100000381469727,
+            "end": 15.600000381469727
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Hash Table Example. In class, you implement a hash table from scratch with collision handling. In industry, you use Python's built-in dict or Redis for distributed caching. Same concept, production-ready tools.",
+        "duration": 15.760000228881836,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "hash",
+            "start": 0.8600000143051147,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "table",
+            "start": 1.159999966621399,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "example",
+            "start": 1.440000057220459,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "In",
+            "start": 2.799999952316284,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "class",
+            "start": 2.9600000381469727,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "you",
+            "start": 3.2799999713897705,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "implement",
+            "start": 3.5399999618530273,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "a",
+            "start": 3.859999895095825,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "hash",
+            "start": 4.119999885559082,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "table",
+            "start": 4.340000152587891,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "from",
+            "start": 4.579999923706055,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "scratch",
+            "start": 4.940000057220459,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "with",
+            "start": 5.260000228881836,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "collision",
+            "start": 5.739999771118164,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "handling",
+            "start": 6.119999885559082,
+            "end": 6.519999980926514
+          },
+          {
+            "word": "In",
+            "start": 7.260000228881836,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "industry",
+            "start": 7.460000038146973,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "you",
+            "start": 7.900000095367432,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "use",
+            "start": 8.399999618530273,
+            "end": 8.65999984741211
+          },
+          {
+            "word": "Python's",
+            "start": 8.65999984741211,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "built",
+            "start": 9.380000114440918,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "in",
+            "start": 9.479999542236328,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "dict",
+            "start": 9.739999771118164,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "or",
+            "start": 9.979999542236328,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "Redis",
+            "start": 10.5600004196167,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "for",
+            "start": 10.859999656677246,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "distributed",
+            "start": 11.279999732971191,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "caching",
+            "start": 11.819999694824219,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "Same",
+            "start": 12.859999656677246,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "concept",
+            "start": 13.140000343322754,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "production",
+            "start": 14.220000267028809,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "ready",
+            "start": 14.699999809265137,
+            "end": 15.079999923706055
+          },
+          {
+            "word": "tools",
+            "start": 15.079999923706055,
+            "end": 15.539999961853027
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Key Insight. Here's the insight: you learned the fundamentals so you can understand and debug the abstractions. Interviewers test the fundamentals. Industry uses the abstractions. You need both.",
+        "duration": 16.049999237060547,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "key",
+            "start": 0.41999998688697815,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "insight",
+            "start": 0.8799999952316284,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "Here's",
+            "start": 2.4000000953674316,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "the",
+            "start": 2.4600000381469727,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "insight",
+            "start": 3.0399999618530273,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "You",
+            "start": 3.880000114440918,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "learn",
+            "start": 4.019999980926514,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "the",
+            "start": 4.260000228881836,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "fundamentals",
+            "start": 5.099999904632568,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "so",
+            "start": 5.099999904632568,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "you",
+            "start": 5.599999904632568,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "can",
+            "start": 5.760000228881836,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "understand",
+            "start": 6.039999961853027,
+            "end": 6.539999961853027
+          },
+          {
+            "word": "and",
+            "start": 6.539999961853027,
+            "end": 7.28000020980835
+          },
+          {
+            "word": "debug",
+            "start": 7.28000020980835,
+            "end": 7.28000020980835
+          },
+          {
+            "word": "the",
+            "start": 7.28000020980835,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "abstractions",
+            "start": 7.659999847412109,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "Interviewers",
+            "start": 9.260000228881836,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "test",
+            "start": 9.800000190734863,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "the",
+            "start": 10.359999656677246,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "fundamentals",
+            "start": 11.260000228881836,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "Industry",
+            "start": 12.399999618530273,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "uses",
+            "start": 12.399999618530273,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 13.079999923706055,
+            "end": 13.479999542236328
+          },
+          {
+            "word": "abstractions",
+            "start": 13.479999542236328,
+            "end": 14.020000457763672
+          },
+          {
+            "word": "You",
+            "start": 14.760000228881836,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "need",
+            "start": 15.020000457763672,
+            "end": 15.279999732971191
+          },
+          {
+            "word": "both",
+            "start": 15.279999732971191,
+            "end": 15.760000228881836
+          }
+        ]
+      }
+    ],
+    "patterns-story": [
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Patterns Everywhere. Certain patterns appear in every production codebase. Learn them once, recognize them everywhere. They're the shared vocabulary of professional software engineering.",
+        "duration": 13.40999984741211,
+        "words": [
+          {
+            "word": "Patterns",
+            "start": 0,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "everywhere",
+            "start": 0.6200000047683716,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "Certain",
+            "start": 2.4800000190734863,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "patterns",
+            "start": 2.559999942779541,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "appear",
+            "start": 2.940000057220459,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "in",
+            "start": 3.359999895095825,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "every",
+            "start": 3.700000047683716,
+            "end": 4.099999904632568
+          },
+          {
+            "word": "production",
+            "start": 4.099999904632568,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "code",
+            "start": 4.460000038146973,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "base",
+            "start": 4.840000152587891,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "Learn",
+            "start": 5.980000019073486,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "them",
+            "start": 5.980000019073486,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "once",
+            "start": 6.21999979019165,
+            "end": 6.559999942779541
+          },
+          {
+            "word": "recognize",
+            "start": 7.539999961853027,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "them",
+            "start": 7.539999961853027,
+            "end": 8
+          },
+          {
+            "word": "everywhere",
+            "start": 8,
+            "end": 8.5
+          },
+          {
+            "word": "They're",
+            "start": 9.140000343322754,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "the",
+            "start": 9.460000038146973,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "shared",
+            "start": 9.819999694824219,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "vocabulary",
+            "start": 10.039999961853027,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "of",
+            "start": 10.600000381469727,
+            "end": 11.34000015258789
+          },
+          {
+            "word": "professional",
+            "start": 11.34000015258789,
+            "end": 11.9399995803833
+          },
+          {
+            "word": "software",
+            "start": 11.9399995803833,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "engineering",
+            "start": 12.4399995803833,
+            "end": 12.899999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Repository Pattern. The Repository Pattern abstracts data access. Your code doesn't care if it's SQL, NoSQL, or an API. You define an interface, then swap implementations without changing business logic.",
+        "duration": 16.459999084472656,
+        "words": [
+          {
+            "word": "Repository",
+            "start": 0,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "pattern",
+            "start": 0.9399999976158142,
+            "end": 1.5199999809265137
+          },
+          {
+            "word": "The",
+            "start": 1.8799999952316284,
+            "end": 2.0399999618530273
+          },
+          {
+            "word": "repository",
+            "start": 2.0399999618530273,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "pattern",
+            "start": 2.640000104904175,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "abstracts",
+            "start": 3.180000066757202,
+            "end": 4.28000020980835
+          },
+          {
+            "word": "data",
+            "start": 4.28000020980835,
+            "end": 4.5
+          },
+          {
+            "word": "access",
+            "start": 4.5,
+            "end": 5
+          },
+          {
+            "word": "Your",
+            "start": 5.619999885559082,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "code",
+            "start": 5.800000190734863,
+            "end": 6.079999923706055
+          },
+          {
+            "word": "doesn't",
+            "start": 6.079999923706055,
+            "end": 6.460000038146973
+          },
+          {
+            "word": "care",
+            "start": 6.460000038146973,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "if",
+            "start": 6.679999828338623,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "it's",
+            "start": 6.860000133514404,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "SQL",
+            "start": 7.119999885559082,
+            "end": 7.519999980926514
+          },
+          {
+            "word": "NoSQL",
+            "start": 8.119999885559082,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "or",
+            "start": 9.079999923706055,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "an",
+            "start": 9.199999809265137,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "API",
+            "start": 9.520000457763672,
+            "end": 9.65999984741211
+          },
+          {
+            "word": "You",
+            "start": 10.5,
+            "end": 10.65999984741211
+          },
+          {
+            "word": "define",
+            "start": 10.65999984741211,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "an",
+            "start": 11.100000381469727,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "interface",
+            "start": 11.600000381469727,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "then",
+            "start": 12.4399995803833,
+            "end": 12.739999771118164
+          },
+          {
+            "word": "swap",
+            "start": 12.739999771118164,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "implementations",
+            "start": 13.079999923706055,
+            "end": 14.079999923706055
+          },
+          {
+            "word": "without",
+            "start": 14.079999923706055,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "changing",
+            "start": 14.699999809265137,
+            "end": 15.180000305175781
+          },
+          {
+            "word": "business",
+            "start": 15.180000305175781,
+            "end": 15.699999809265137
+          },
+          {
+            "word": "logic",
+            "start": 15.699999809265137,
+            "end": 16.040000915527344
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Factory Pattern. The Factory Pattern creates objects without exposing creation logic. Seen in every framework — React components, Django models, Spring beans. It keeps code flexible and testable.",
+        "duration": 17.110000610351562,
+        "words": [
+          {
+            "word": "Factory",
+            "start": 0,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "Pattern",
+            "start": 0.9399999976158142,
+            "end": 1.7599999904632568
+          },
+          {
+            "word": "The",
+            "start": 2.140000104904175,
+            "end": 2.359999895095825
+          },
+          {
+            "word": "Factory",
+            "start": 2.359999895095825,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "Pattern",
+            "start": 2.8399999141693115,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "creates",
+            "start": 3.4200000762939453,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "objects",
+            "start": 3.9600000381469727,
+            "end": 4.519999980926514
+          },
+          {
+            "word": "without",
+            "start": 4.519999980926514,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "exposing",
+            "start": 5.059999942779541,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "creation",
+            "start": 5.679999828338623,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "logic",
+            "start": 6.340000152587891,
+            "end": 6.980000019073486
+          },
+          {
+            "word": "Seen",
+            "start": 7.920000076293945,
+            "end": 8
+          },
+          {
+            "word": "in",
+            "start": 8,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "every",
+            "start": 8.199999809265137,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "framework",
+            "start": 8.699999809265137,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "React",
+            "start": 10.180000305175781,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "components",
+            "start": 10.220000267028809,
+            "end": 10.84000015258789
+          },
+          {
+            "word": "Django",
+            "start": 11.760000228881836,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "models",
+            "start": 11.760000228881836,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "Spring",
+            "start": 13.039999961853027,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "Beans",
+            "start": 13.15999984741211,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "It",
+            "start": 14.359999656677246,
+            "end": 14.520000457763672
+          },
+          {
+            "word": "keeps",
+            "start": 14.520000457763672,
+            "end": 14.779999732971191
+          },
+          {
+            "word": "code",
+            "start": 14.779999732971191,
+            "end": 15.260000228881836
+          },
+          {
+            "word": "flexible",
+            "start": 15.260000228881836,
+            "end": 15.779999732971191
+          },
+          {
+            "word": "and",
+            "start": 15.779999732971191,
+            "end": 16.479999542236328
+          },
+          {
+            "word": "testable",
+            "start": 16.479999542236328,
+            "end": 16.920000076293945
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Dependency Injection. Dependency Injection means passing dependencies in, not creating them internally. This is what enables testing — inject a mock database instead of hitting production!",
+        "duration": 13.800000190734863,
+        "words": [
+          {
+            "word": "Dependency",
+            "start": 0,
+            "end": 0.8999999761581421
+          },
+          {
+            "word": "injection",
+            "start": 0.8999999761581421,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "Dependency",
+            "start": 2.6600000858306885,
+            "end": 3
+          },
+          {
+            "word": "injection",
+            "start": 3,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "means",
+            "start": 3.4600000381469727,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "passing",
+            "start": 3.880000114440918,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "dependencies",
+            "start": 4.480000019073486,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "in",
+            "start": 5.119999885559082,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "not",
+            "start": 6.139999866485596,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "creating",
+            "start": 6.239999771118164,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "them",
+            "start": 6.679999828338623,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "internally",
+            "start": 7.079999923706055,
+            "end": 7.480000019073486
+          },
+          {
+            "word": "This",
+            "start": 8.260000228881836,
+            "end": 8.5
+          },
+          {
+            "word": "is",
+            "start": 8.5,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "what",
+            "start": 8.779999732971191,
+            "end": 8.960000038146973
+          },
+          {
+            "word": "enables",
+            "start": 8.960000038146973,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "testing",
+            "start": 9.300000190734863,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "Inject",
+            "start": 10.640000343322754,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "a",
+            "start": 10.859999656677246,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "mock",
+            "start": 11.279999732971191,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "database",
+            "start": 11.380000114440918,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "instead",
+            "start": 11.899999618530273,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "of",
+            "start": 12.539999961853027,
+            "end": 12.960000038146973
+          },
+          {
+            "word": "hitting",
+            "start": 12.960000038146973,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "production",
+            "start": 13.079999923706055,
+            "end": 13.520000457763672
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The SOLID Connection. Remember Liskov Substitution from OOP class? That's exactly what makes Repository Pattern work — any implementation can be swapped in. Your academic knowledge is the foundation for industry patterns!",
+        "duration": 15.90999984741211,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.3400000035762787
+          },
+          {
+            "word": "solid",
+            "start": 0.3400000035762787,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "connection",
+            "start": 0.9399999976158142,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "Remember",
+            "start": 2.819999933242798,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "Liskov's",
+            "start": 2.819999933242798,
+            "end": 3.4000000953674316
+          },
+          {
+            "word": "substitution",
+            "start": 3.4000000953674316,
+            "end": 3.9600000381469727
+          },
+          {
+            "word": "from",
+            "start": 3.9600000381469727,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "OOP",
+            "start": 4.360000133514404,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "class",
+            "start": 4.78000020980835,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "That's",
+            "start": 6.059999942779541,
+            "end": 6.340000152587891
+          },
+          {
+            "word": "exactly",
+            "start": 6.340000152587891,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "what",
+            "start": 6.880000114440918,
+            "end": 7.159999847412109
+          },
+          {
+            "word": "makes",
+            "start": 7.159999847412109,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "repository",
+            "start": 7.400000095367432,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "pattern",
+            "start": 8.0600004196167,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "work",
+            "start": 8.479999542236328,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "Any",
+            "start": 9.640000343322754,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "implementation",
+            "start": 9.84000015258789,
+            "end": 10.260000228881836
+          },
+          {
+            "word": "can",
+            "start": 10.260000228881836,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "be",
+            "start": 10.720000267028809,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "swapped",
+            "start": 11.180000305175781,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "in",
+            "start": 11.180000305175781,
+            "end": 11.539999961853027
+          },
+          {
+            "word": "Your",
+            "start": 12.220000267028809,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "academic",
+            "start": 12.4399995803833,
+            "end": 12.9399995803833
+          },
+          {
+            "word": "knowledge",
+            "start": 12.9399995803833,
+            "end": 13.300000190734863
+          },
+          {
+            "word": "is",
+            "start": 13.300000190734863,
+            "end": 13.760000228881836
+          },
+          {
+            "word": "the",
+            "start": 13.760000228881836,
+            "end": 14.100000381469727
+          },
+          {
+            "word": "foundation",
+            "start": 14.100000381469727,
+            "end": 14.4399995803833
+          },
+          {
+            "word": "for",
+            "start": 14.4399995803833,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "industry",
+            "start": 14.899999618530273,
+            "end": 15.239999771118164
+          },
+          {
+            "word": "patterns",
+            "start": 15.239999771118164,
+            "end": 15.680000305175781
+          }
+        ]
+      }
+    ]
+  },
+  "echo": {
+    "bridge-story": [
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Gap Nobody Mentions. Here's a secret your professors won't tell you: the gap between classroom CS and industry engineering is massive. But it doesn't have to be. Your academic foundation is solid — you just need a translation layer.",
+        "duration": 16.959999084472656,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.36000001430511475
+          },
+          {
+            "word": "gap",
+            "start": 0.36000001430511475,
+            "end": 0.6600000262260437
+          },
+          {
+            "word": "nobody",
+            "start": 0.6600000262260437,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "mentions",
+            "start": 1.3600000143051147,
+            "end": 1.9199999570846558
+          },
+          {
+            "word": "Here's",
+            "start": 2.6600000858306885,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "a",
+            "start": 2.759999990463257,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "secret",
+            "start": 3.0999999046325684,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "your",
+            "start": 3.319999933242798,
+            "end": 3.6600000858306885
+          },
+          {
+            "word": "professors",
+            "start": 3.6600000858306885,
+            "end": 4.159999847412109
+          },
+          {
+            "word": "won't",
+            "start": 4.159999847412109,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "tell",
+            "start": 4.460000038146973,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "you",
+            "start": 4.739999771118164,
+            "end": 5.019999980926514
+          },
+          {
+            "word": "The",
+            "start": 5.440000057220459,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "gap",
+            "start": 5.559999942779541,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "between",
+            "start": 5.840000152587891,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "classroom",
+            "start": 6.320000171661377,
+            "end": 6.820000171661377
+          },
+          {
+            "word": "CS",
+            "start": 6.820000171661377,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "and",
+            "start": 7.300000190734863,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "industry",
+            "start": 7.699999809265137,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "engineering",
+            "start": 8.199999809265137,
+            "end": 8.699999809265137
+          },
+          {
+            "word": "is",
+            "start": 8.699999809265137,
+            "end": 9.319999694824219
+          },
+          {
+            "word": "massive",
+            "start": 9.319999694824219,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "But",
+            "start": 10.279999732971191,
+            "end": 10.520000457763672
+          },
+          {
+            "word": "it",
+            "start": 10.520000457763672,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "doesn't",
+            "start": 10.739999771118164,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "have",
+            "start": 11.100000381469727,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "to",
+            "start": 11.520000457763672,
+            "end": 11.739999771118164
+          },
+          {
+            "word": "be",
+            "start": 11.739999771118164,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "Your",
+            "start": 12.4399995803833,
+            "end": 12.640000343322754
+          },
+          {
+            "word": "academic",
+            "start": 12.640000343322754,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "foundation",
+            "start": 13.100000381469727,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "is",
+            "start": 13.5600004196167,
+            "end": 13.960000038146973
+          },
+          {
+            "word": "solid",
+            "start": 13.960000038146973,
+            "end": 14.239999771118164
+          },
+          {
+            "word": "You",
+            "start": 14.760000228881836,
+            "end": 14.9399995803833
+          },
+          {
+            "word": "just",
+            "start": 14.9399995803833,
+            "end": 15.300000190734863
+          },
+          {
+            "word": "need",
+            "start": 15.300000190734863,
+            "end": 15.520000457763672
+          },
+          {
+            "word": "a",
+            "start": 15.520000457763672,
+            "end": 15.84000015258789
+          },
+          {
+            "word": "translation",
+            "start": 15.84000015258789,
+            "end": 16.31999969482422
+          },
+          {
+            "word": "layer",
+            "start": 16.31999969482422,
+            "end": 16.68000030517578
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "What You've Learned. Think about what you've built: algorithms, data structures, database theory, software design principles. This isn't just academic exercise — it's the foundation that industry builds on.",
+        "duration": 14.5600004196167,
+        "words": [
+          {
+            "word": "What",
+            "start": 0,
+            "end": 0.3799999952316284
+          },
+          {
+            "word": "you've",
+            "start": 0.3799999952316284,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "learned",
+            "start": 0.8600000143051147,
+            "end": 1.2000000476837158
+          },
+          {
+            "word": "Think",
+            "start": 1.9600000381469727,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "about",
+            "start": 2.0199999809265137,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "what",
+            "start": 2.299999952316284,
+            "end": 2.559999942779541
+          },
+          {
+            "word": "you've",
+            "start": 2.559999942779541,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "built",
+            "start": 3.180000066757202,
+            "end": 3.180000066757202
+          },
+          {
+            "word": "Algorithms",
+            "start": 3.880000114440918,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "Data",
+            "start": 4.980000019073486,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "structures",
+            "start": 4.980000019073486,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "Database",
+            "start": 6.039999961853027,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "theory",
+            "start": 6.380000114440918,
+            "end": 6.659999847412109
+          },
+          {
+            "word": "Software",
+            "start": 7.28000020980835,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "design",
+            "start": 7.579999923706055,
+            "end": 8.079999923706055
+          },
+          {
+            "word": "principles",
+            "start": 8.079999923706055,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "This",
+            "start": 9.260000228881836,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "isn't",
+            "start": 9.4399995803833,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "just",
+            "start": 9.84000015258789,
+            "end": 10.34000015258789
+          },
+          {
+            "word": "academic",
+            "start": 10.34000015258789,
+            "end": 10.920000076293945
+          },
+          {
+            "word": "exercise",
+            "start": 10.920000076293945,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "It's",
+            "start": 11.979999542236328,
+            "end": 12.199999809265137
+          },
+          {
+            "word": "the",
+            "start": 12.199999809265137,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "foundation",
+            "start": 12.420000076293945,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "that",
+            "start": 12.859999656677246,
+            "end": 13.359999656677246
+          },
+          {
+            "word": "industry",
+            "start": 13.359999656677246,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "builds",
+            "start": 13.720000267028809,
+            "end": 14.100000381469727
+          },
+          {
+            "word": "on",
+            "start": 14.100000381469727,
+            "end": 14.399999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "This Course Is The Bridge. This course connects what you know to how software is actually built. Design patterns, modern tools, AI-augmented development. Same concepts you learned, applied to real production systems.",
+        "duration": 14.25,
+        "words": [
+          {
+            "word": "This",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "course",
+            "start": 0.46000000834465027,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "is",
+            "start": 0.8399999737739563,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "the",
+            "start": 1.159999966621399,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "bridge",
+            "start": 1.3600000143051147,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "This",
+            "start": 2.4800000190734863,
+            "end": 2.5199999809265137
+          },
+          {
+            "word": "course",
+            "start": 2.5199999809265137,
+            "end": 2.8399999141693115
+          },
+          {
+            "word": "connects",
+            "start": 2.8399999141693115,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "what",
+            "start": 3.200000047683716,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "you",
+            "start": 3.4600000381469727,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "know",
+            "start": 3.640000104904175,
+            "end": 3.9000000953674316
+          },
+          {
+            "word": "to",
+            "start": 3.9000000953674316,
+            "end": 4.21999979019165
+          },
+          {
+            "word": "how",
+            "start": 4.21999979019165,
+            "end": 4.440000057220459
+          },
+          {
+            "word": "software",
+            "start": 4.440000057220459,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "is",
+            "start": 4.800000190734863,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "actually",
+            "start": 5.039999961853027,
+            "end": 5.5
+          },
+          {
+            "word": "built",
+            "start": 5.5,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "Design",
+            "start": 6.840000152587891,
+            "end": 6.860000133514404
+          },
+          {
+            "word": "patterns",
+            "start": 6.860000133514404,
+            "end": 7.28000020980835
+          },
+          {
+            "word": "modern",
+            "start": 8.039999961853027,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "tools",
+            "start": 8.0600004196167,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "AI",
+            "start": 9,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "augmented",
+            "start": 9.220000267028809,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "development",
+            "start": 9.699999809265137,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "same",
+            "start": 10.84000015258789,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "concepts",
+            "start": 10.979999542236328,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "you",
+            "start": 11.380000114440918,
+            "end": 11.600000381469727
+          },
+          {
+            "word": "learned",
+            "start": 11.600000381469727,
+            "end": 11.84000015258789
+          },
+          {
+            "word": "applied",
+            "start": 11.84000015258789,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "to",
+            "start": 12.4399995803833,
+            "end": 12.760000228881836
+          },
+          {
+            "word": "real",
+            "start": 12.760000228881836,
+            "end": 13.039999961853027
+          },
+          {
+            "word": "production",
+            "start": 13.039999961853027,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "systems",
+            "start": 13.399999618530273,
+            "end": 13.859999656677246
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Industry-Ready. The destination: internships, full-time roles, career growth. You're not starting from zero — you're translating knowledge you already have into the language industry speaks.",
+        "duration": 13.100000381469727,
+        "words": [
+          {
+            "word": "Industry",
+            "start": 0,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "ready",
+            "start": 0.6800000071525574,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "The",
+            "start": 2.180000066757202,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "destination",
+            "start": 2.180000066757202,
+            "end": 2.700000047683716
+          },
+          {
+            "word": "Internships",
+            "start": 3.5399999618530273,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "Full",
+            "start": 4.420000076293945,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "time",
+            "start": 4.420000076293945,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "roles",
+            "start": 4.659999847412109,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "Career",
+            "start": 5.71999979019165,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "growth",
+            "start": 5.760000228881836,
+            "end": 6.139999866485596
+          },
+          {
+            "word": "You're",
+            "start": 6.900000095367432,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "not",
+            "start": 7.539999961853027,
+            "end": 7.739999771118164
+          },
+          {
+            "word": "starting",
+            "start": 7.739999771118164,
+            "end": 8
+          },
+          {
+            "word": "from",
+            "start": 8,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "zero",
+            "start": 8.279999732971191,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "You're",
+            "start": 8.859999656677246,
+            "end": 9.180000305175781
+          },
+          {
+            "word": "translating",
+            "start": 9.180000305175781,
+            "end": 9.5
+          },
+          {
+            "word": "knowledge",
+            "start": 9.5,
+            "end": 10
+          },
+          {
+            "word": "you",
+            "start": 10,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "already",
+            "start": 10.15999984741211,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "have",
+            "start": 10.619999885559082,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "into",
+            "start": 10.979999542236328,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "the",
+            "start": 11.220000267028809,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "language",
+            "start": 11.460000038146973,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "industry",
+            "start": 11.760000228881836,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "speaks",
+            "start": 12.220000267028809,
+            "end": 12.579999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "bridge-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Your Knowledge Transfers. That binary search tree you implemented? Industry uses self-balancing variants like Red-Black trees. The concept is identical — your knowledge transfers. You just need to see the connection.",
+        "duration": 16.049999237060547,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 1.2000000476837158
+          },
+          {
+            "word": "knowledge",
+            "start": 1.2000000476837158,
+            "end": 1.6200000047683716
+          },
+          {
+            "word": "transfers",
+            "start": 1.6200000047683716,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "That",
+            "start": 3.299999952316284,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "binary",
+            "start": 3.4200000762939453,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "search",
+            "start": 3.880000114440918,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "tree",
+            "start": 4.300000190734863,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "you",
+            "start": 4.539999961853027,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "implemented",
+            "start": 4.840000152587891,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "industry",
+            "start": 6.019999980926514,
+            "end": 6.420000076293945
+          },
+          {
+            "word": "uses",
+            "start": 6.420000076293945,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "self",
+            "start": 6.840000152587891,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "balancing",
+            "start": 7.239999771118164,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "variants",
+            "start": 7.639999866485596,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "like",
+            "start": 8.199999809265137,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "red",
+            "start": 8.520000457763672,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "black",
+            "start": 8.800000190734863,
+            "end": 9.079999923706055
+          },
+          {
+            "word": "trees",
+            "start": 9.079999923706055,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "The",
+            "start": 10.079999923706055,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "concept",
+            "start": 10.319999694824219,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "is",
+            "start": 10.680000305175781,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "identical",
+            "start": 11.039999961853027,
+            "end": 11.539999961853027
+          },
+          {
+            "word": "Your",
+            "start": 12.34000015258789,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "knowledge",
+            "start": 12.479999542236328,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "transfers",
+            "start": 12.859999656677246,
+            "end": 13.380000114440918
+          },
+          {
+            "word": "You",
+            "start": 14.100000381469727,
+            "end": 14.260000228881836
+          },
+          {
+            "word": "just",
+            "start": 14.260000228881836,
+            "end": 14.640000343322754
+          },
+          {
+            "word": "need",
+            "start": 14.640000343322754,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "to",
+            "start": 14.800000190734863,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "see",
+            "start": 15.020000457763672,
+            "end": 15.199999809265137
+          },
+          {
+            "word": "the",
+            "start": 15.199999809265137,
+            "end": 15.420000076293945
+          },
+          {
+            "word": "connection",
+            "start": 15.420000076293945,
+            "end": 15.720000267028809
+          }
+        ]
+      }
+    ],
+    "translation-story": [
+      {
+        "storyId": "translation-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Same Concepts, Different Names. Everything you learned in class maps to something in industry. Linked lists and arrays become choosing the right data store. Big-O analysis becomes performance optimization at scale.",
+        "duration": 14.520000457763672,
+        "words": [
+          {
+            "word": "Same",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "concepts",
+            "start": 0.6000000238418579,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "different",
+            "start": 1.7400000095367432,
+            "end": 2
+          },
+          {
+            "word": "names",
+            "start": 2,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "Everything",
+            "start": 3.2200000286102295,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "you",
+            "start": 3.240000009536743,
+            "end": 3.5
+          },
+          {
+            "word": "learned",
+            "start": 3.5,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "in",
+            "start": 3.700000047683716,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "class",
+            "start": 3.940000057220459,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "maps",
+            "start": 4.300000190734863,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "to",
+            "start": 4.78000020980835,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "something",
+            "start": 5.079999923706055,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "in",
+            "start": 5.360000133514404,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "industry",
+            "start": 5.579999923706055,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "Linked",
+            "start": 6.800000190734863,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "lists",
+            "start": 6.800000190734863,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "and",
+            "start": 7.119999885559082,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "arrays",
+            "start": 7.400000095367432,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "become",
+            "start": 7.71999979019165,
+            "end": 8.319999694824219
+          },
+          {
+            "word": "choosing",
+            "start": 8.319999694824219,
+            "end": 8.619999885559082
+          },
+          {
+            "word": "the",
+            "start": 8.619999885559082,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "right",
+            "start": 8.819999694824219,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "data",
+            "start": 9.0600004196167,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "store",
+            "start": 9.34000015258789,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "Big",
+            "start": 10.420000076293945,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "O",
+            "start": 10.5600004196167,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "analysis",
+            "start": 10.720000267028809,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "becomes",
+            "start": 11.180000305175781,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "performance",
+            "start": 11.680000305175781,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "optimization",
+            "start": 12.260000228881836,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "at",
+            "start": 12.819999694824219,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "scale",
+            "start": 13.239999771118164,
+            "end": 13.479999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Theory to Practice. Database normalization becomes schema design for real products. UML diagrams become architecture documentation. Software design principles become code review standards.",
+        "duration": 13.75,
+        "words": [
+          {
+            "word": "Theory",
+            "start": 0,
+            "end": 0.5199999809265137
+          },
+          {
+            "word": "to",
+            "start": 0.5199999809265137,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "practice",
+            "start": 0.9800000190734863,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "Database",
+            "start": 2.2200000286102295,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "normalization",
+            "start": 2.5399999618530273,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "becomes",
+            "start": 3.2799999713897705,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "schema",
+            "start": 3.740000009536743,
+            "end": 4.099999904632568
+          },
+          {
+            "word": "design",
+            "start": 4.099999904632568,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "for",
+            "start": 4.539999961853027,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "real",
+            "start": 4.840000152587891,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "products",
+            "start": 5.159999847412109,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "UML",
+            "start": 6.659999847412109,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "diagrams",
+            "start": 6.940000057220459,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "become",
+            "start": 7.460000038146973,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "architecture",
+            "start": 7.940000057220459,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "documentation",
+            "start": 8.579999923706055,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "Software",
+            "start": 10.539999961853027,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "design",
+            "start": 10.539999961853027,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "principles",
+            "start": 10.979999542236328,
+            "end": 11.4399995803833
+          },
+          {
+            "word": "become",
+            "start": 11.4399995803833,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "code",
+            "start": 12.0600004196167,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "review",
+            "start": 12.479999542236328,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "standards",
+            "start": 12.819999694824219,
+            "end": 13.300000190734863
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Hash Table Example. In class, you implement a hash table from scratch with collision handling. In industry, you use Python's built-in dict or Redis for distributed caching. Same concept, production-ready tools.",
+        "duration": 15.550000190734863,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "hash",
+            "start": 0.5600000023841858,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "table",
+            "start": 0.6800000071525574,
+            "end": 1
+          },
+          {
+            "word": "example",
+            "start": 1,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "In",
+            "start": 2.380000114440918,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "class",
+            "start": 2.5399999618530273,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "you",
+            "start": 3.140000104904175,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "implement",
+            "start": 3.5199999809265137,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "a",
+            "start": 3.7799999713897705,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "hash",
+            "start": 4.059999942779541,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "table",
+            "start": 4.320000171661377,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "from",
+            "start": 4.539999961853027,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "scratch",
+            "start": 4.880000114440918,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "with",
+            "start": 5.199999809265137,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "collision",
+            "start": 5.460000038146973,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "handling",
+            "start": 5.800000190734863,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "In",
+            "start": 7.099999904632568,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "industry",
+            "start": 7.260000228881836,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "you",
+            "start": 8.020000457763672,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "use",
+            "start": 8.15999984741211,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "Python's",
+            "start": 8.399999618530273,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "built",
+            "start": 9.140000343322754,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "in",
+            "start": 9.260000228881836,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "dict",
+            "start": 9.460000038146973,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "or",
+            "start": 10.079999923706055,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "Redis",
+            "start": 10.460000038146973,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "for",
+            "start": 10.880000114440918,
+            "end": 11.020000457763672
+          },
+          {
+            "word": "distributed",
+            "start": 11.020000457763672,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "caching",
+            "start": 11.520000457763672,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "Same",
+            "start": 12.960000038146973,
+            "end": 13.220000267028809
+          },
+          {
+            "word": "concept",
+            "start": 13.220000267028809,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "production",
+            "start": 14.279999732971191,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "ready",
+            "start": 14.699999809265137,
+            "end": 14.979999542236328
+          },
+          {
+            "word": "tools",
+            "start": 14.979999542236328,
+            "end": 15.319999694824219
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Key Insight. Here's the insight: you learned the fundamentals so you can understand and debug the abstractions. Interviewers test the fundamentals. Industry uses the abstractions. You need both.",
+        "duration": 12.399999618530273,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.30000001192092896
+          },
+          {
+            "word": "key",
+            "start": 0.30000001192092896,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "insight",
+            "start": 0.6800000071525574,
+            "end": 1.2200000286102295
+          },
+          {
+            "word": "Here's",
+            "start": 1.8200000524520874,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "the",
+            "start": 1.8799999952316284,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "insight",
+            "start": 2.200000047683716,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "You",
+            "start": 2.759999990463257,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "learn",
+            "start": 2.799999952316284,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "the",
+            "start": 3.0799999237060547,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "fundamentals",
+            "start": 3.4200000762939453,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "so",
+            "start": 3.700000047683716,
+            "end": 4
+          },
+          {
+            "word": "you",
+            "start": 4,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "can",
+            "start": 4.119999885559082,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "understand",
+            "start": 4.380000114440918,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "and",
+            "start": 4.880000114440918,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "debug",
+            "start": 5.400000095367432,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "the",
+            "start": 5.71999979019165,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "abstractions",
+            "start": 6.099999904632568,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "Interviewers",
+            "start": 7.21999979019165,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "test",
+            "start": 7.71999979019165,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "the",
+            "start": 8.039999961853027,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "fundamentals",
+            "start": 8.380000114440918,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "Industry",
+            "start": 9.720000267028809,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "uses",
+            "start": 9.720000267028809,
+            "end": 10.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 10.079999923706055,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "abstractions",
+            "start": 10.460000038146973,
+            "end": 11
+          },
+          {
+            "word": "You",
+            "start": 11.520000457763672,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "need",
+            "start": 11.65999984741211,
+            "end": 11.84000015258789
+          },
+          {
+            "word": "both",
+            "start": 11.84000015258789,
+            "end": 12.199999809265137
+          }
+        ]
+      }
+    ],
+    "patterns-story": [
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Patterns Everywhere. Certain patterns appear in every production codebase. Learn them once, recognize them everywhere. They're the shared vocabulary of professional software engineering.",
+        "duration": 12.760000228881836,
+        "words": [
+          {
+            "word": "Patterns",
+            "start": 0,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "everywhere",
+            "start": 0.6200000047683716,
+            "end": 1.4199999570846558
+          },
+          {
+            "word": "Certain",
+            "start": 2.5399999618530273,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "patterns",
+            "start": 2.5399999618530273,
+            "end": 2.9000000953674316
+          },
+          {
+            "word": "appear",
+            "start": 2.9000000953674316,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "in",
+            "start": 3.299999952316284,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "every",
+            "start": 3.5999999046325684,
+            "end": 3.9000000953674316
+          },
+          {
+            "word": "production",
+            "start": 3.9000000953674316,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "code",
+            "start": 4.260000228881836,
+            "end": 4.619999885559082
+          },
+          {
+            "word": "base",
+            "start": 4.619999885559082,
+            "end": 4.920000076293945
+          },
+          {
+            "word": "Learn",
+            "start": 5.71999979019165,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "them",
+            "start": 5.71999979019165,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "once",
+            "start": 5.960000038146973,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "recognize",
+            "start": 7.019999980926514,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "them",
+            "start": 7.019999980926514,
+            "end": 7.300000190734863
+          },
+          {
+            "word": "everywhere",
+            "start": 7.300000190734863,
+            "end": 7.820000171661377
+          },
+          {
+            "word": "They're",
+            "start": 8.319999694824219,
+            "end": 8.5
+          },
+          {
+            "word": "the",
+            "start": 8.5,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "shared",
+            "start": 8.760000228881836,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "vocabulary",
+            "start": 9.039999961853027,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "of",
+            "start": 9.619999885559082,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "professional",
+            "start": 10.15999984741211,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "software",
+            "start": 10.600000381469727,
+            "end": 11.119999885559082
+          },
+          {
+            "word": "engineering",
+            "start": 11.119999885559082,
+            "end": 11.5600004196167
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Repository Pattern. The Repository Pattern abstracts data access. Your code doesn't care if it's SQL, NoSQL, or an API. You define an interface, then swap implementations without changing business logic.",
+        "duration": 15,
+        "words": [
+          {
+            "word": "Repository",
+            "start": 0,
+            "end": 0.8999999761581421
+          },
+          {
+            "word": "pattern",
+            "start": 0.8999999761581421,
+            "end": 1.2599999904632568
+          },
+          {
+            "word": "The",
+            "start": 2.140000104904175,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "repository",
+            "start": 2.4000000953674316,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "pattern",
+            "start": 2.9600000381469727,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "abstracts",
+            "start": 3.4800000190734863,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "data",
+            "start": 4.480000019073486,
+            "end": 4.659999847412109
+          },
+          {
+            "word": "access",
+            "start": 4.659999847412109,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "Your",
+            "start": 5.78000020980835,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "code",
+            "start": 5.900000095367432,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "doesn't",
+            "start": 6.119999885559082,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "care",
+            "start": 6.440000057220459,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "if",
+            "start": 6.679999828338623,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "it's",
+            "start": 6.840000152587891,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "SQL",
+            "start": 7.119999885559082,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "NoSQL",
+            "start": 7.840000152587891,
+            "end": 8.199999809265137
+          },
+          {
+            "word": "or",
+            "start": 8.5,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "an",
+            "start": 8.579999923706055,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "API",
+            "start": 8.899999618530273,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "You",
+            "start": 9.84000015258789,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "define",
+            "start": 10.0600004196167,
+            "end": 10.380000114440918
+          },
+          {
+            "word": "an",
+            "start": 10.380000114440918,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "interface",
+            "start": 10.720000267028809,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "then",
+            "start": 11.539999961853027,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "swap",
+            "start": 11.779999732971191,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "implementations",
+            "start": 12.100000381469727,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "without",
+            "start": 12.920000076293945,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "changing",
+            "start": 13.5600004196167,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "business",
+            "start": 13.9399995803833,
+            "end": 14.399999618530273
+          },
+          {
+            "word": "logic",
+            "start": 14.399999618530273,
+            "end": 14.779999732971191
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Factory Pattern. The Factory Pattern creates objects without exposing creation logic. Seen in every framework — React components, Django models, Spring beans. It keeps code flexible and testable.",
+        "duration": 13.699999809265137,
+        "words": [
+          {
+            "word": "Factory",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "pattern",
+            "start": 0.5799999833106995,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "The",
+            "start": 1.4600000381469727,
+            "end": 1.5800000429153442
+          },
+          {
+            "word": "factory",
+            "start": 1.5800000429153442,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "pattern",
+            "start": 1.8799999952316284,
+            "end": 2.2200000286102295
+          },
+          {
+            "word": "creates",
+            "start": 2.2200000286102295,
+            "end": 2.619999885559082
+          },
+          {
+            "word": "objects",
+            "start": 2.619999885559082,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "without",
+            "start": 3.0399999618530273,
+            "end": 3.359999895095825
+          },
+          {
+            "word": "exposing",
+            "start": 3.359999895095825,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "creation",
+            "start": 3.8399999141693115,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "logic",
+            "start": 4.360000133514404,
+            "end": 4.760000228881836
+          },
+          {
+            "word": "Seen",
+            "start": 5.639999866485596,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "in",
+            "start": 5.699999809265137,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "every",
+            "start": 5.900000095367432,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "framework",
+            "start": 6.320000171661377,
+            "end": 6.71999979019165
+          },
+          {
+            "word": "React",
+            "start": 7.579999923706055,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "components",
+            "start": 7.639999866485596,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "Django",
+            "start": 9.039999961853027,
+            "end": 9.039999961853027
+          },
+          {
+            "word": "models",
+            "start": 9.039999961853027,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "Spring",
+            "start": 10.0600004196167,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "beans",
+            "start": 10.300000190734863,
+            "end": 10.680000305175781
+          },
+          {
+            "word": "It",
+            "start": 11.279999732971191,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "keeps",
+            "start": 11.380000114440918,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "code",
+            "start": 11.579999923706055,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "flexible",
+            "start": 11.960000038146973,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "and",
+            "start": 12.4399995803833,
+            "end": 13.0600004196167
+          },
+          {
+            "word": "testable",
+            "start": 13.0600004196167,
+            "end": 13.479999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Dependency Injection. Dependency Injection means passing dependencies in, not creating them internally. This is what enables testing — inject a mock database instead of hitting production!",
+        "duration": 13,
+        "words": [
+          {
+            "word": "Dependency",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "word": "injection",
+            "start": 1,
+            "end": 1.5199999809265137
+          },
+          {
+            "word": "Dependency",
+            "start": 2.819999933242798,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "injection",
+            "start": 3.0999999046325684,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "means",
+            "start": 3.5199999809265137,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "passing",
+            "start": 3.9200000762939453,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "dependencies",
+            "start": 4.460000038146973,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "in",
+            "start": 5.099999904632568,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "not",
+            "start": 6.099999904632568,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "creating",
+            "start": 6.199999809265137,
+            "end": 6.599999904632568
+          },
+          {
+            "word": "them",
+            "start": 6.599999904632568,
+            "end": 6.900000095367432
+          },
+          {
+            "word": "internally",
+            "start": 6.900000095367432,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "This",
+            "start": 8.119999885559082,
+            "end": 8.260000228881836
+          },
+          {
+            "word": "is",
+            "start": 8.260000228881836,
+            "end": 8.4399995803833
+          },
+          {
+            "word": "what",
+            "start": 8.4399995803833,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "enables",
+            "start": 8.600000381469727,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "testing",
+            "start": 8.9399995803833,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "Inject",
+            "start": 10.4399995803833,
+            "end": 10.4399995803833
+          },
+          {
+            "word": "a",
+            "start": 10.4399995803833,
+            "end": 10.920000076293945
+          },
+          {
+            "word": "mock",
+            "start": 10.920000076293945,
+            "end": 10.960000038146973
+          },
+          {
+            "word": "database",
+            "start": 10.960000038146973,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "instead",
+            "start": 11.460000038146973,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "of",
+            "start": 11.859999656677246,
+            "end": 12.140000343322754
+          },
+          {
+            "word": "hitting",
+            "start": 12.140000343322754,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "production",
+            "start": 12.34000015258789,
+            "end": 12.760000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "patterns-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The SOLID Connection. Remember Liskov Substitution from OOP class? That's exactly what makes Repository Pattern work — any implementation can be swapped in. Your academic knowledge is the foundation for industry patterns!",
+        "duration": 15.119999885559082,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "solid",
+            "start": 0.46000000834465027,
+            "end": 0.9399999976158142
+          },
+          {
+            "word": "connection",
+            "start": 0.9399999976158142,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "Remember",
+            "start": 2.5799999237060547,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "Liskov's",
+            "start": 2.5799999237060547,
+            "end": 3.259999990463257
+          },
+          {
+            "word": "substitution",
+            "start": 3.259999990463257,
+            "end": 3.6600000858306885
+          },
+          {
+            "word": "from",
+            "start": 3.6600000858306885,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "OOP",
+            "start": 4.079999923706055,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "class",
+            "start": 4.539999961853027,
+            "end": 5
+          },
+          {
+            "word": "That's",
+            "start": 5.639999866485596,
+            "end": 5.980000019073486
+          },
+          {
+            "word": "exactly",
+            "start": 5.980000019073486,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "what",
+            "start": 6.440000057220459,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "makes",
+            "start": 6.699999809265137,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "repository",
+            "start": 6.840000152587891,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "pattern",
+            "start": 7.599999904632568,
+            "end": 8
+          },
+          {
+            "word": "work",
+            "start": 8,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "Any",
+            "start": 9.020000457763672,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "implementation",
+            "start": 9.199999809265137,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "can",
+            "start": 9.739999771118164,
+            "end": 10
+          },
+          {
+            "word": "be",
+            "start": 10,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "swapped",
+            "start": 10.279999732971191,
+            "end": 10.5
+          },
+          {
+            "word": "in",
+            "start": 10.5,
+            "end": 10.819999694824219
+          },
+          {
+            "word": "Your",
+            "start": 11.5,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "academic",
+            "start": 11.760000228881836,
+            "end": 12.100000381469727
+          },
+          {
+            "word": "knowledge",
+            "start": 12.100000381469727,
+            "end": 12.4399995803833
+          },
+          {
+            "word": "is",
+            "start": 12.4399995803833,
+            "end": 12.640000343322754
+          },
+          {
+            "word": "the",
+            "start": 12.640000343322754,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "foundation",
+            "start": 12.920000076293945,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "for",
+            "start": 13.260000228881836,
+            "end": 13.720000267028809
+          },
+          {
+            "word": "industry",
+            "start": 13.720000267028809,
+            "end": 14.140000343322754
+          },
+          {
+            "word": "patterns",
+            "start": 14.140000343322754,
+            "end": 14.479999542236328
+          }
+        ]
+      }
+    ]
+  }
+}

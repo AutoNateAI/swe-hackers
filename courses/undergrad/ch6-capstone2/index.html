@@ -1,556 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capstone II: AI-Augmented Development | AutoNateAI Bridge</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone II: AI-Augmented Development | AutoNateAI Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+</head>
+<body data-course="undergrad" data-lesson="ch6-capstone2">
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">
+        <div class="logo-icon">🌟</div>
+        <span>Capstone II</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">← Bridge Program</a>
+        <a href="../ch5-capstone1/">Capstone I</a>
+        <a href="index.html" class="active">Capstone II</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <main class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">Bridge Program</a>
+        <span>/</span>
+        <span>Capstone II: AI-Augmented Development</span>
+      </div>
+      <h1>🌟 AI-Augmented Development</h1>
+      <p>The engineers who learn to work with AI will build 10x what they could alone. Build something that proves you understand the future of software development.</p>
+    </div>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../shared/css/lesson.css" />
-
-    <!-- Mermaid for diagrams -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-
-    <style>
-      :root {
-        --chapter-color: #ff6f00;
-        --accent-final: linear-gradient(135deg, #e91e63 0%, #ff6f00 100%);
-      }
-
-      .hero::before {
-        background: radial-gradient(
-            ellipse at 30% 50%,
-            rgba(255, 111, 0, 0.2) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 70% 30%,
-            rgba(233, 30, 99, 0.15) 0%,
-            transparent 50%
-          );
-      }
-
-      .story-block {
-        border-left-color: #ff6f00;
-      }
-
-      .ai-option {
-        background: var(--bg-secondary);
-        border-radius: var(--radius-lg);
-        padding: 2rem;
-        margin: 1.5rem 0;
-        border-left: 4px solid #ff6f00;
-        transition: all 0.3s ease;
-      }
-
-      .ai-option:hover {
-        transform: translateX(5px);
-        box-shadow: 0 10px 30px rgba(255, 111, 0, 0.2);
-      }
-
-      .ai-option h3 {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-        color: #ff6f00;
-      }
-
-      .ai-option .features {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .ai-option .features li {
-        padding: 0.25rem 0;
-      }
-
-      .prompt-example {
-        background: var(--bg-tertiary);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-        border: 1px solid rgba(255, 111, 0, 0.3);
-      }
-
-      .prompt-example h4 {
-        color: #ff6f00;
-        margin-bottom: 1rem;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .completion-section {
-        background: var(--accent-final);
-        color: white;
-        padding: 3rem;
-        border-radius: var(--radius-lg);
-        text-align: center;
-        margin: 3rem 0;
-      }
-
-      .completion-section .trophy {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-      }
-
-      .skills-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
-        margin: 2rem 0;
-      }
-
-      .skill-badge {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: var(--bg-secondary);
-        border-radius: 9999px;
-        font-size: 0.875rem;
-      }
-
-      .ethics-box {
-        background: rgba(255, 111, 0, 0.1);
-        border: 1px solid rgba(255, 111, 0, 0.3);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin: 2rem 0;
-      }
-
-      .ethics-box h4 {
-        color: #ff6f00;
-        margin-bottom: 1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Progress Bar -->
-    <div class="progress-bar"></div>
-
-    <nav class="progress-tracker">
-      <div class="progress-dot active" data-section="hero" title="Start"></div>
-      <div class="progress-dot" data-section="challenge" title="Challenge"></div>
-      <div class="progress-dot" data-section="options" title="Options"></div>
-      <div class="progress-dot" data-section="prompts" title="Prompts"></div>
-      <div class="progress-dot" data-section="requirements" title="Requirements"></div>
-      <div class="progress-dot" data-section="complete" title="Complete"></div>
-    </nav>
-
-    <main class="lesson-container">
-      <!-- HERO -->
-      <section class="hero section" data-section="hero">
-        <div class="hero-content">
-          <span class="hero-chapter">Capstone II • Week 6</span>
-          <div class="hero-icon">🌟</div>
-          <h1>AI-Augmented Development</h1>
-          <p class="hero-subtitle">
-            The engineers who learn to work <strong>with</strong> AI will build 10x
-            what they could alone. Build something that proves you understand the future.
-          </p>
-        </div>
-
-        <div class="scroll-indicator">
-          <span>Complete your journey</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
-        </div>
-      </section>
-
-      <!-- CHALLENGE -->
-      <section class="section" data-section="challenge">
-        <div class="section-content">
-          <h2 class="fade-in">🎯 The Final Quest</h2>
-
-          <div class="story-block fade-in">
-            <p>
-              Build something that demonstrates you can <strong>leverage AI as a
-              professional tool</strong> — not just ask ChatGPT to write code for you,
-              but integrate AI capabilities into a real system.
-            </p>
-          </div>
-
-          <div class="diagram-container scale-in">
-            <div class="diagram-title">AI Integration Architecture</div>
-            <div class="mermaid">
-              flowchart LR
-                USER[User Input] --> APP[Your Application]
-                APP --> PROMPT[Prompt Engineering]
-                PROMPT --> AI[AI Provider]
-                AI --> VALIDATE[Validate Output]
-                VALIDATE --> PROCESS[Process/Transform]
-                PROCESS --> USER
-
-                APP --> CACHE[(Cache)]
-                APP --> RATE[Rate Limiter]
-
-                style APP fill:#ff6f00,color:#fff
-                style AI fill:#7986cb,color:#fff
-            </div>
-          </div>
-
-          <div class="cta-box fade-in">
-            <h3>This Is NOT Just a ChatGPT Wrapper</h3>
-            <ul style="text-align: left; margin: 0;">
-              <li>✅ Meaningful integration with other systems (GitHub, databases, APIs)</li>
-              <li>✅ Proper prompt engineering (documented, tested, iterated)</li>
-              <li>✅ Output validation and error handling</li>
-              <li>✅ Production concerns (caching, rate limiting, cost awareness)</li>
-            </ul>
+    <!-- Audio Info -->
+    <section class="section audio-info-section">
+      <div class="info-box compact">
+        <div class="info-header">
+          <span class="info-icon">🎙️</span>
+          <div>
+            <h4>Interactive Learning Experience</h4>
+            <p>Watch diagrams come alive with AI narration • Click dots to jump • Test your understanding with quizzes</p>
           </div>
         </div>
-      </section>
-
-      <!-- OPTIONS -->
-      <section class="section" data-section="options">
-        <div class="section-content">
-          <h2 class="fade-in">🛠️ Choose Your Path</h2>
-
-          <div class="ai-option fade-in">
-            <h3>🤖 Option A: AI-Powered Code Review Bot</h3>
-            <p>A GitHub integration that automatically reviews pull requests.</p>
-            <div class="features">
-              <ul>
-                <li>Integrates with GitHub webhooks</li>
-                <li>Analyzes diff for common issues</li>
-                <li>Provides actionable suggestions as comments</li>
-                <li>Learns from accepted/rejected suggestions</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="ai-option fade-in">
-            <h3>📚 Option B: Documentation Generator</h3>
-            <p>Analyzes codebases and generates comprehensive documentation.</p>
-            <div class="features">
-              <ul>
-                <li>Parses code structure (AST)</li>
-                <li>Generates docstrings, README, architecture docs</li>
-                <li>Creates diagrams from code relationships</li>
-                <li>Updates docs as code changes</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="ai-option fade-in">
-            <h3>💬 Option C: Dev Assistant API</h3>
-            <p>A natural language API that helps developers with common tasks.</p>
-            <div class="features">
-              <ul>
-                <li>Natural language → code generation</li>
-                <li>Validates and formats output</li>
-                <li>Generates tests for provided code</li>
-                <li>Exposes as a documented REST API</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="ai-option fade-in">
-            <h3>🎯 Option D: Your Proposal</h3>
-            <p>Build something unique that meaningfully integrates AI.</p>
-            <div class="features">
-              <ul>
-                <li>Must solve a real problem</li>
-                <li>Must be more than a wrapper around ChatGPT</li>
-                <li>Must demonstrate production-quality integration</li>
-                <li>Get approval before starting</li>
-              </ul>
-            </div>
-          </div>
+        <div class="voice-options">
+          <span class="voice-badge">👩‍🎤 Female Storyteller</span>
+          <span class="voice-badge">🎩 Male UK Storyteller</span>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- PROMPTS -->
-      <section class="section" data-section="prompts">
-        <div class="section-content">
-          <h2 class="fade-in">🎨 The Art of Prompt Engineering</h2>
-
-          <p class="fade-in">
-            This is what separates amateur AI integration from professional work.
-            <strong>Document your prompts</strong> as carefully as you document your code.
-          </p>
-
-          <div class="prompt-example fade-in">
-            <h4>❌ Bad Prompt</h4>
-            <div class="code-block" style="margin: 0;">
-              <div class="code-content">
-                <pre><code>"Review this code and find bugs"</code></pre>
+    <!-- Story 1: Real AI Integration -->
+    <section class="section" id="ai-integration-section">
+      <h2>Real AI Integration</h2>
+      <p>This is NOT just a ChatGPT wrapper. Learn what separates amateur AI work from professional, production-quality integration.</p>
+      
+      <div class="diagram-container" id="ai-integration-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🤖 AI Integration Architecture</span>
+        </div>
+        <div id="ai-integration-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="ai-integration-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
               </div>
             </div>
-            <p style="color: var(--text-muted); margin-top: 0.5rem;">
-              Vague, no context, inconsistent output format.
-            </p>
           </div>
+        </div>
 
-          <div class="prompt-example fade-in" style="border-color: #4caf50;">
-            <h4 style="color: #4caf50;">✅ Good Prompt</h4>
-            <div class="code-block" style="margin: 0;">
-              <div class="code-content">
-                <pre><code>You are a senior Python developer performing a code review.
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="ai-integration-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-Analyze the following code for:
-1. Security vulnerabilities (SQL injection, XSS, etc.)
-2. Performance issues (N+1 queries, unnecessary loops)
-3. Code style violations (PEP 8)
-4. Missing error handling
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="ai-integration-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="ai-integration-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="ai-integration-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-Format your response as JSON:
-{
-  "issues": [
-    {
-      "severity": "high|medium|low",
-      "type": "security|performance|style|error-handling",
-      "line": <line_number>,
-      "description": "<what's wrong>",
-      "suggestion": "<how to fix>"
-    }
-  ],
-  "summary": "<one sentence summary>"
-}
+      <div class="quiz-card" id="ai-integration-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
 
-Code to review:
-```python
-{code}
-```</code></pre>
+    <!-- Story 2: The Art of Prompts -->
+    <section class="section" id="prompt-section">
+      <h2>The Art of Prompts</h2>
+      <p>This is what separates amateur AI integration from professional work. Document your prompts as carefully as you document your code.</p>
+      
+      <div class="diagram-container" id="prompt-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎨 Prompt Engineering</span>
+        </div>
+        <div id="prompt-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="prompt-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
               </div>
             </div>
-            <p style="color: var(--text-muted); margin-top: 0.5rem;">
-              Specific role, clear criteria, structured output format, context provided.
-            </p>
           </div>
+        </div>
 
-          <h3 class="fade-in">Prompt Engineering Best Practices</h3>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
+          </div>
+          <div class="playback-center">
+            <div class="story-progress" id="prompt-story-progress"></div>
+          </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
+          </div>
+        </div>
 
-          <div class="concept-grid fade-in">
-            <div class="concept-card stagger-item" style="border-top-color: #ff6f00;">
-              <div class="concept-card-icon">🎭</div>
-              <h4>Set a Role</h4>
-              <p>"You are a senior Python developer..."</p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: #ff6f00;">
-              <div class="concept-card-icon">📋</div>
-              <h4>Be Specific</h4>
-              <p>List exactly what you want analyzed/generated</p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: #ff6f00;">
-              <div class="concept-card-icon">📊</div>
-              <h4>Structure Output</h4>
-              <p>Request JSON or specific format for parsing</p>
-            </div>
-            <div class="concept-card stagger-item" style="border-top-color: #ff6f00;">
-              <div class="concept-card-icon">🧪</div>
-              <h4>Test & Iterate</h4>
-              <p>Version your prompts, track performance</p>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="prompt-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="audio-toggle" id="prompt-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="prompt-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="prompt-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 3: Course Complete -->
+    <section class="section" id="completion-section">
+      <h2>🏆 Course Complete</h2>
+      <p>Six weeks ago, you had a degree and some code. Now you have a portfolio that proves you can ship.</p>
+      
+      <div class="diagram-container" id="completion-container">
+        <div class="diagram-header">
+          <span class="diagram-title">🎓 Your Journey</span>
+        </div>
+        <div id="completion-story" class="diagram-canvas storytelling"></div>
+        
+        <div class="diagram-story" id="completion-story-caption">
+          <div class="story-step">
+            <div class="story-icon visible">🚀</div>
+            <div class="story-content">
+              <div class="story-title visible">Ready to Explore</div>
+              <div class="story-text visible">Click any progress dot below to jump to that step, or press Play to watch the full story unfold.</div>
+              <div class="story-connection" style="display: none;">
+                <span class="arrow">→</span>
+                <span class="connection-text"></span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- REQUIREMENTS -->
-      <section class="section" data-section="requirements">
-        <div class="section-content">
-          <h2 class="fade-in">✅ Requirements</h2>
-
-          <h3 class="fade-in">AI Integration</h3>
-          <div class="requirement-section fade-in">
-            <ul>
-              <li>Meaningful use of AI (not just calling an API)</li>
-              <li>Prompt engineering documented</li>
-              <li>Output validation and error handling</li>
-              <li>Cost/usage awareness (estimate costs)</li>
-            </ul>
+        <div class="playback-controls">
+          <div class="playback-left">
+            <button class="diagram-btn play-btn" data-action="play">▶ Play</button>
           </div>
-
-          <h3 class="fade-in">Production Quality</h3>
-          <div class="requirement-section fade-in">
-            <ul>
-              <li>All requirements from Capstone I</li>
-              <li>Rate limiting for AI calls</li>
-              <li>Caching where appropriate</li>
-              <li>Graceful degradation if AI is unavailable</li>
-            </ul>
+          <div class="playback-center">
+            <div class="story-progress" id="completion-story-progress"></div>
           </div>
-
-          <div class="ethics-box fade-in">
-            <h4>⚖️ Ethical Considerations</h4>
-            <p>Document in your project:</p>
-            <ul style="margin: 0.5rem 0 0 1.5rem;">
-              <li>What data is sent to AI providers?</li>
-              <li>How is user privacy protected?</li>
-              <li>What are the limitations of AI output?</li>
-              <li>How do you handle AI mistakes/hallucinations?</li>
-            </ul>
-          </div>
-
-          <h3 class="fade-in">📦 Deliverables</h3>
-
-          <div class="code-block scale-in">
-            <div class="code-header">
-              <span class="code-language">Project Structure</span>
-            </div>
-            <div class="code-content">
-              <pre><code>your-folder/capstone-2/
-├── src/
-├── prompts/                <span class="comment"># Your prompt templates</span>
-│   ├── code_review.txt
-│   └── README.md           <span class="comment"># Why each prompt works</span>
-├── tests/
-├── docs/
-│   ├── ARCHITECTURE.md
-│   ├── AI_INTEGRATION.md   <span class="comment"># How you use AI</span>
-│   ├── PROMPTS.md          <span class="comment"># Prompt engineering docs</span>
-│   └── ETHICS.md           <span class="comment"># Ethical considerations</span>
-├── README.md
-├── DEMO.md                 <span class="comment"># Screenshots/video</span>
-└── COST_ANALYSIS.md        <span class="comment"># How much does it cost?</span></code></pre>
-            </div>
+          <div class="playback-right">
+            <button class="diagram-btn small" data-action="fit" title="Fit to view">Fit</button>
+            <button class="diagram-btn small" data-action="reset" title="Reset view">Reset</button>
           </div>
         </div>
-      </section>
 
-      <!-- COMPLETE -->
-      <section class="section" data-section="complete">
-        <div class="section-content">
-          <div class="completion-section fade-in">
-            <div class="trophy">🏆</div>
-            <h2>Course Complete!</h2>
-            <p>
-              Six weeks ago, you had a degree and some code.<br>
-              Now you have a <strong>portfolio</strong> that proves you can ship.
-            </p>
+        <div class="settings-bar">
+          <div class="control-group">
+            <label>⏱️</label>
+            <select id="completion-speed-select">
+              <option value="1000">1s</option>
+              <option value="2000" selected>2s</option>
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+            </select>
           </div>
-
-          <h3 class="fade-in" style="text-align: center;">🎯 What You've Built</h3>
-
-          <div class="skills-grid fade-in">
-            <div class="skill-badge">🗄️ Production Data Layer</div>
-            <div class="skill-badge">⚡ Event-Driven Pipeline</div>
-            <div class="skill-badge">🔌 API Integration Suite</div>
-            <div class="skill-badge">🏛️ System Design Portfolio</div>
-            <div class="skill-badge">🚀 Deployed Full-Stack App</div>
-            <div class="skill-badge">🤖 AI-Augmented Tool</div>
+          <div class="control-group">
+            <button class="audio-toggle" id="completion-audio-toggle" title="Toggle audio narration">
+              <span class="audio-icon">🔊</span>
+            </button>
           </div>
-
-          <div class="story-block fade-in">
-            <p>
-              <strong>You're not just a CS student anymore. You're an engineer.</strong><br><br>
-              The interview question isn't scary — you've designed systems bigger than what they'll ask.
-              The job posting requirements aren't intimidating — you've built things that exceed them.
-            </p>
-          </div>
-
-          <h3 class="fade-in" style="text-align: center;">📊 Interview Prep Summary</h3>
-
-          <table class="comparison-table fade-in">
-            <thead>
-              <tr>
-                <th>Topic</th>
-                <th>What You Built</th>
-                <th>Interview Questions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Databases</td>
-                <td>Ch1: Data Layer</td>
-                <td>Schema design, indexing, caching</td>
-              </tr>
-              <tr>
-                <td>Async/Events</td>
-                <td>Ch2: Pipeline</td>
-                <td>Message queues, async patterns</td>
-              </tr>
-              <tr>
-                <td>APIs</td>
-                <td>Ch3: Integration</td>
-                <td>REST design, auth, error handling</td>
-              </tr>
-              <tr>
-                <td>System Design</td>
-                <td>Ch4: Portfolio</td>
-                <td>URL shortener, chat, etc.</td>
-              </tr>
-              <tr>
-                <td>Full-Stack</td>
-                <td>Capstone I</td>
-                <td>"Tell me about a project..."</td>
-              </tr>
-              <tr>
-                <td>Modern Tooling</td>
-                <td>Capstone II</td>
-                <td>AI integration, productivity</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="cta-box fade-in" style="text-align: center;">
-            <h3>🎉 The Gap Is Closed</h3>
-            <p>
-              <em>They taught you to code. We taught you to build. Now go show them.</em>
-            </p>
-            <a href="../../index.html" class="cta-btn">
-              <span>Return to Course Home</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-            </a>
+          <div class="control-group">
+            <label>🎤</label>
+            <select id="completion-voice-select" class="voice-select">
+              <option value="">Loading...</option>
+            </select>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <!-- Bottom Navigation -->
-    <nav class="lesson-nav">
-      <button class="nav-btn" onclick="location.href='../ch5-capstone1/index.html'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Capstone I
-      </button>
-      <button class="nav-btn primary" onclick="location.href='../../index.html'">
-        Course Home
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      </button>
-    </nav>
+      <div class="quiz-card" id="completion-quiz">
+        <div class="quiz-header">
+          <h4>📝 Check Your Understanding</h4>
+          <div class="quiz-progress">
+            <span class="answered">0</span>/<span class="total">3</span> answered
+            <span class="score"></span>
+          </div>
+        </div>
+        <div class="quiz-carousel"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn prev" disabled>← Prev</button>
+          <div class="quiz-dots"></div>
+          <button class="quiz-nav-btn next">Next →</button>
+        </div>
+      </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="../../shared/js/lesson.js"></script>
-    
-    <!-- Lesson Integration -->
-    <script src="../../shared/js/firebase-config.js"></script>
-    <script src="../../shared/js/auth.js"></script>
-    <script src="../../shared/js/data-service.js"></script>
-    <script src="../../shared/js/lesson-integration.js"></script>
-    <script src="../../shared/js/progress-tracker.js"></script>
-  <script src="../../shared/js/activity-tracker.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        window.LessonIntegration.init("undergrad", "ch6-capstone2");
-        // Initialize progress tracker immediately
-        if (window.ProgressTracker) {
-          window.ProgressTracker.init("undergrad", "ch6-capstone2");
-        }
-        if (window.ActivityTracker) {
-          window.ActivityTracker.init("undergrad", "ch6-capstone2");
-        }
+    <!-- Next Steps -->
+    <section class="section">
+      <h2>🎉 The Gap Is Closed</h2>
+      <p>They taught you to code. We taught you to build. Now go show them what you can do.</p>
+      <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <a href="../ch5-capstone1/" class="card">
+          <div class="card-icon">🚀</div>
+          <h3>Review Capstone I</h3>
+          <p>Revisit the full-stack deployment capstone.</p>
+        </a>
+        <a href="../index.html" class="card">
+          <div class="card-icon">📚</div>
+          <h3>Course Overview</h3>
+          <p>See all chapters in the Bridge Program.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="page-nav">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#ai-integration-section">Real AI Integration</a></li>
+      <li><a href="#prompt-section">The Art of Prompts</a></li>
+      <li><a href="#completion-section">Course Complete</a></li>
+    </ul>
+  </nav>
+
+  <button class="back-to-top" title="Back to top">↑</button>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+  
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
+  <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize page animations
+      DiagramUtils.initPageAnimations();
+      DiagramUtils.setupBackToTop();
+
+      // Load story and quiz data from JSON
+      const response = await fetch('story.json');
+      const pageData = await response.json();
+
+      // Create a shared audio engine pointing to the audio folder
+      const audioEngine = new AudioNarrationEngine('audio');
+
+      // ============================================
+      // DIAGRAM ELEMENTS (Cytoscape data)
+      // ============================================
+
+      const diagramElements = {
+        'ai-integration': [
+          { data: { id: 'not-wrapper', label: '🚫 Not Just\na Wrapper', type: 'external', description: 'More than API calls' } },
+          { data: { id: 'prompt-eng', label: '🎨 Prompt\nEngineering', type: 'concept', description: 'Documented, tested prompts' } },
+          { data: { id: 'validation', label: '✅ Output\nValidation', type: 'auth', description: 'Never trust AI blindly' } },
+          { data: { id: 'system-integration', label: '🔌 System\nIntegration', type: 'data', description: 'Connect to real systems' } },
+          { data: { id: 'production-ready', label: '🚀 Production\nReady', type: 'service', description: 'Caching, rate limits, costs' } },
+          // Edges
+          { data: { source: 'not-wrapper', target: 'prompt-eng' } },
+          { data: { source: 'prompt-eng', target: 'validation' } },
+          { data: { source: 'validation', target: 'system-integration' } },
+          { data: { source: 'system-integration', target: 'production-ready' } }
+        ],
+
+        'prompt': [
+          { data: { id: 'bad-prompt', label: '❌ Bad Prompt\nVague & Random', type: 'external', description: 'Inconsistent output' } },
+          { data: { id: 'set-role', label: '🎭 Set Role\nSenior Developer', type: 'concept', description: 'Give AI context' } },
+          { data: { id: 'be-specific', label: '📋 Be Specific\nList Criteria', type: 'data', description: 'What exactly to analyze' } },
+          { data: { id: 'structure-output', label: '📊 Structure\nJSON Schema', type: 'auth', description: 'Parseable output' } },
+          { data: { id: 'iterate', label: '🔄 Test &\nIterate', type: 'service', description: 'Version like code' } },
+          // Edges
+          { data: { source: 'bad-prompt', target: 'set-role' } },
+          { data: { source: 'set-role', target: 'be-specific' } },
+          { data: { source: 'be-specific', target: 'structure-output' } },
+          { data: { source: 'structure-output', target: 'iterate' } }
+        ],
+
+        'completion': [
+          { data: { id: 'six-weeks', label: '📅 Six Weeks\nAgo', type: 'external', description: 'Degree + some code' } },
+          { data: { id: 'what-built', label: '🏗️ What You\nBuilt', type: 'concept', description: '6 production projects' } },
+          { data: { id: 'interview-ready', label: '💼 Interview\nReady', type: 'data', description: 'Exceed requirements' } },
+          { data: { id: 'gap-closed', label: '🏆 Gap\nClosed', type: 'service', description: "You're an engineer now" } },
+          // Edges
+          { data: { source: 'six-weeks', target: 'what-built' } },
+          { data: { source: 'what-built', target: 'interview-ready' } },
+          { data: { source: 'interview-ready', target: 'gap-closed' } }
+        ]
+      };
+
+      // ============================================
+      // INITIALIZE STORYTELLING DIAGRAMS
+      // ============================================
+
+      const storyToDiagram = {
+        'ai-integration-story': 'ai-integration',
+        'prompt-story': 'prompt',
+        'completion-story': 'completion'
+      };
+
+      pageData.stories.forEach(story => {
+        const diagramKey = storyToDiagram[story.id];
+        if (!diagramKey) return;
+
+        const elements = diagramElements[diagramKey];
+        if (!elements) return;
+
+        new StorytellingDiagram(
+          story.id,
+          elements,
+          story.steps,
+          { audioEngine, storyId: story.id }
+        );
       });
-    </script>
-  </body>
-</html>
 
+      // ============================================
+      // INITIALIZE QUIZZES
+      // ============================================
+
+      const storyToQuiz = {
+        'ai-integration-story': 'ai-integration-quiz',
+        'prompt-story': 'prompt-quiz',
+        'completion-story': 'completion-quiz'
+      };
+
+      pageData.quizzes.forEach(quiz => {
+        const containerId = storyToQuiz[quiz.storyId];
+        if (!containerId) return;
+
+        new Quiz(containerId, quiz.questions);
+      });
+    });
+  </script>
+</body>
+</html>

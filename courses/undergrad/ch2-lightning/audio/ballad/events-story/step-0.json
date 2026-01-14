@@ -1,0 +1,150 @@
+{
+  "storyId": "events-story",
+  "stepId": "step-0",
+  "voice": "ballad",
+  "voiceLabel": "Storyteller (Female)",
+  "text": "The Coupling Problem. In request-response architecture, services call each other directly and wait. Order service calls payment, which calls inventory, which calls shipping. One chain, all waiting.",
+  "duration": 15.210000038146973,
+  "words": [
+    {
+      "word": "The",
+      "start": 0,
+      "end": 0.46000000834465027
+    },
+    {
+      "word": "coupling",
+      "start": 0.46000000834465027,
+      "end": 0.8600000143051147
+    },
+    {
+      "word": "problem",
+      "start": 0.8600000143051147,
+      "end": 1.4800000190734863
+    },
+    {
+      "word": "In",
+      "start": 2.259999990463257,
+      "end": 2.259999990463257
+    },
+    {
+      "word": "request",
+      "start": 2.259999990463257,
+      "end": 2.819999933242798
+    },
+    {
+      "word": "response",
+      "start": 2.819999933242798,
+      "end": 3.359999895095825
+    },
+    {
+      "word": "architecture",
+      "start": 3.359999895095825,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "services",
+      "start": 5,
+      "end": 5.239999771118164
+    },
+    {
+      "word": "call",
+      "start": 5.239999771118164,
+      "end": 5.579999923706055
+    },
+    {
+      "word": "each",
+      "start": 5.579999923706055,
+      "end": 5.800000190734863
+    },
+    {
+      "word": "other",
+      "start": 5.800000190734863,
+      "end": 6.239999771118164
+    },
+    {
+      "word": "directly",
+      "start": 6.239999771118164,
+      "end": 6.619999885559082
+    },
+    {
+      "word": "and",
+      "start": 6.619999885559082,
+      "end": 7.159999847412109
+    },
+    {
+      "word": "wait",
+      "start": 7.159999847412109,
+      "end": 7.400000095367432
+    },
+    {
+      "word": "Order",
+      "start": 8.359999656677246,
+      "end": 8.4399995803833
+    },
+    {
+      "word": "service",
+      "start": 8.4399995803833,
+      "end": 8.899999618530273
+    },
+    {
+      "word": "calls",
+      "start": 8.899999618530273,
+      "end": 9.260000228881836
+    },
+    {
+      "word": "payment",
+      "start": 9.260000228881836,
+      "end": 9.680000305175781
+    },
+    {
+      "word": "which",
+      "start": 10.180000305175781,
+      "end": 10.319999694824219
+    },
+    {
+      "word": "calls",
+      "start": 10.319999694824219,
+      "end": 10.680000305175781
+    },
+    {
+      "word": "inventory",
+      "start": 10.680000305175781,
+      "end": 11.079999923706055
+    },
+    {
+      "word": "which",
+      "start": 11.760000228881836,
+      "end": 11.920000076293945
+    },
+    {
+      "word": "calls",
+      "start": 11.920000076293945,
+      "end": 12.319999694824219
+    },
+    {
+      "word": "shipping",
+      "start": 12.319999694824219,
+      "end": 12.640000343322754
+    },
+    {
+      "word": "One",
+      "start": 13.180000305175781,
+      "end": 13.4399995803833
+    },
+    {
+      "word": "chain",
+      "start": 13.4399995803833,
+      "end": 13.800000190734863
+    },
+    {
+      "word": "all",
+      "start": 14.119999885559082,
+      "end": 14.640000343322754
+    },
+    {
+      "word": "waiting",
+      "start": 14.640000343322754,
+      "end": 14.960000038146973
+    }
+  ]
+}

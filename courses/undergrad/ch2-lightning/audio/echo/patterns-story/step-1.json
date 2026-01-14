@@ -1,0 +1,145 @@
+{
+  "storyId": "patterns-story",
+  "stepId": "step-1",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Retry with Backoff. When a call fails, retry—but not immediately! Wait two seconds, then four, then eight. Exponential backoff gives the failing service time to recover.",
+  "duration": 13,
+  "words": [
+    {
+      "word": "Retry",
+      "start": 0,
+      "end": 0.6800000071525574
+    },
+    {
+      "word": "with",
+      "start": 0.6800000071525574,
+      "end": 1.100000023841858
+    },
+    {
+      "word": "backoff",
+      "start": 1.100000023841858,
+      "end": 1.5800000429153442
+    },
+    {
+      "word": "When",
+      "start": 2.0399999618530273,
+      "end": 2.0799999237060547
+    },
+    {
+      "word": "a",
+      "start": 2.0799999237060547,
+      "end": 2.4600000381469727
+    },
+    {
+      "word": "call",
+      "start": 2.4600000381469727,
+      "end": 2.4800000190734863
+    },
+    {
+      "word": "fails",
+      "start": 2.4800000190734863,
+      "end": 2.859999895095825
+    },
+    {
+      "word": "retry",
+      "start": 3.4800000190734863,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "but",
+      "start": 4.119999885559082,
+      "end": 4.21999979019165
+    },
+    {
+      "word": "not",
+      "start": 4.21999979019165,
+      "end": 4.5
+    },
+    {
+      "word": "immediately",
+      "start": 4.5,
+      "end": 5.019999980926514
+    },
+    {
+      "word": "Wait",
+      "start": 5.840000152587891,
+      "end": 5.900000095367432
+    },
+    {
+      "word": "2",
+      "start": 5.900000095367432,
+      "end": 6.260000228881836
+    },
+    {
+      "word": "seconds",
+      "start": 6.260000228881836,
+      "end": 6.639999866485596
+    },
+    {
+      "word": "then",
+      "start": 6.920000076293945,
+      "end": 7.159999847412109
+    },
+    {
+      "word": "4",
+      "start": 7.159999847412109,
+      "end": 7.5
+    },
+    {
+      "word": "then",
+      "start": 7.800000190734863,
+      "end": 7.980000019073486
+    },
+    {
+      "word": "8",
+      "start": 7.980000019073486,
+      "end": 8.319999694824219
+    },
+    {
+      "word": "Exponential",
+      "start": 9.239999771118164,
+      "end": 9.600000381469727
+    },
+    {
+      "word": "backoff",
+      "start": 9.600000381469727,
+      "end": 10.100000381469727
+    },
+    {
+      "word": "gives",
+      "start": 10.100000381469727,
+      "end": 10.380000114440918
+    },
+    {
+      "word": "the",
+      "start": 10.380000114440918,
+      "end": 10.65999984741211
+    },
+    {
+      "word": "failing",
+      "start": 10.65999984741211,
+      "end": 10.9399995803833
+    },
+    {
+      "word": "service",
+      "start": 10.9399995803833,
+      "end": 11.319999694824219
+    },
+    {
+      "word": "time",
+      "start": 11.319999694824219,
+      "end": 11.800000190734863
+    },
+    {
+      "word": "to",
+      "start": 11.800000190734863,
+      "end": 12.34000015258789
+    },
+    {
+      "word": "recover",
+      "start": 12.34000015258789,
+      "end": 12.34000015258789
+    }
+  ]
+}

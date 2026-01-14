@@ -1,0 +1,5470 @@
+{
+  "voices": {
+    "ballad": {
+      "name": "ballad",
+      "label": "Storyteller (Female)"
+    },
+    "echo": {
+      "name": "echo",
+      "label": "Storyteller (Male UK)"
+    }
+  },
+  "defaultVoice": "ballad",
+  "generatedAt": "2026-01-14T01:52:54.215Z",
+  "stories": [
+    "gap-story",
+    "translation-story",
+    "ai-advantage-story"
+  ],
+  "ballad": {
+    "gap-story": [
+      {
+        "storyId": "gap-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Your CS Degree. Your CS degree gave you something powerful: the ability to think computationally. Algorithms, data structures, theory of computation—these are timeless fundamentals that never go out of style.",
+        "duration": 15.720000267028809,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "CS",
+            "start": 0.6399999856948853,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "degree",
+            "start": 1.059999942779541,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "Your",
+            "start": 2.319999933242798,
+            "end": 2.5999999046325684
+          },
+          {
+            "word": "CS",
+            "start": 2.5999999046325684,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "degree",
+            "start": 2.9600000381469727,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "gave",
+            "start": 3.2799999713897705,
+            "end": 3.559999942779541
+          },
+          {
+            "word": "you",
+            "start": 3.559999942779541,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "something",
+            "start": 3.740000009536743,
+            "end": 4.139999866485596
+          },
+          {
+            "word": "powerful",
+            "start": 4.139999866485596,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "The",
+            "start": 5.320000171661377,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "ability",
+            "start": 5.360000133514404,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "to",
+            "start": 5.739999771118164,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "think",
+            "start": 6.579999923706055,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "computationally",
+            "start": 6.579999923706055,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "Algorithms",
+            "start": 8.420000076293945,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "data",
+            "start": 9.359999656677246,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "structures",
+            "start": 9.4399995803833,
+            "end": 9.859999656677246
+          },
+          {
+            "word": "theory",
+            "start": 10.460000038146973,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "of",
+            "start": 10.460000038146973,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "computation",
+            "start": 10.779999732971191,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "These",
+            "start": 11.84000015258789,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "are",
+            "start": 12.15999984741211,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "timeless",
+            "start": 12.5600004196167,
+            "end": 13.0600004196167
+          },
+          {
+            "word": "fundamentals",
+            "start": 13.0600004196167,
+            "end": 13.65999984741211
+          },
+          {
+            "word": "that",
+            "start": 13.65999984741211,
+            "end": 14.220000267028809
+          },
+          {
+            "word": "never",
+            "start": 14.220000267028809,
+            "end": 14.640000343322754
+          },
+          {
+            "word": "go",
+            "start": 14.640000343322754,
+            "end": 14.859999656677246
+          },
+          {
+            "word": "out",
+            "start": 14.859999656677246,
+            "end": 15.039999961853027
+          },
+          {
+            "word": "of",
+            "start": 15.039999961853027,
+            "end": 15.520000457763672
+          },
+          {
+            "word": "style",
+            "start": 15.520000457763672,
+            "end": 15.520000457763672
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Hidden Gap. But here's the truth nobody tells you: your degree taught you to think, not to ship. Academic programs focus on clean, isolated problems. Industry throws you into messy, evolving systems.",
+        "duration": 14.850000381469727,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.25999999046325684
+          },
+          {
+            "word": "hidden",
+            "start": 0.25999999046325684,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "gap",
+            "start": 0.5799999833106995,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "But",
+            "start": 1.7200000286102295,
+            "end": 1.7999999523162842
+          },
+          {
+            "word": "here's",
+            "start": 1.7999999523162842,
+            "end": 2.119999885559082
+          },
+          {
+            "word": "the",
+            "start": 2.119999885559082,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "truth",
+            "start": 2.3399999141693115,
+            "end": 2.619999885559082
+          },
+          {
+            "word": "nobody",
+            "start": 2.619999885559082,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "tells",
+            "start": 3.0999999046325684,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "you",
+            "start": 3.4200000762939453,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "Your",
+            "start": 4.360000133514404,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "degree",
+            "start": 4.420000076293945,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "taught",
+            "start": 4.71999979019165,
+            "end": 5.119999885559082
+          },
+          {
+            "word": "you",
+            "start": 5.119999885559082,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "to",
+            "start": 5.28000020980835,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "think",
+            "start": 5.78000020980835,
+            "end": 5.78000020980835
+          },
+          {
+            "word": "not",
+            "start": 6.440000057220459,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "to",
+            "start": 6.440000057220459,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "ship",
+            "start": 6.679999828338623,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "Academic",
+            "start": 7.920000076293945,
+            "end": 7.920000076293945
+          },
+          {
+            "word": "programs",
+            "start": 7.920000076293945,
+            "end": 8.520000457763672
+          },
+          {
+            "word": "focus",
+            "start": 8.520000457763672,
+            "end": 8.920000076293945
+          },
+          {
+            "word": "on",
+            "start": 8.920000076293945,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "clean",
+            "start": 9.199999809265137,
+            "end": 9.619999885559082
+          },
+          {
+            "word": "isolated",
+            "start": 10.239999771118164,
+            "end": 10.239999771118164
+          },
+          {
+            "word": "problems",
+            "start": 10.239999771118164,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "Industry",
+            "start": 11.859999656677246,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "throws",
+            "start": 11.880000114440918,
+            "end": 12.34000015258789
+          },
+          {
+            "word": "you",
+            "start": 12.34000015258789,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "into",
+            "start": 12.5600004196167,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "messy",
+            "start": 12.859999656677246,
+            "end": 13.260000228881836
+          },
+          {
+            "word": "evolving",
+            "start": 13.920000076293945,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "systems",
+            "start": 13.920000076293945,
+            "end": 14.34000015258789
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Academic World. In school, you had clear specs, solo projects, and problems with known solutions. You implemented hash maps from scratch and analyzed sorting algorithms. The problems were hard but well-defined.",
+        "duration": 15.5,
+        "words": [
+          {
+            "word": "Academic",
+            "start": 0,
+            "end": 0.7599999904632568
+          },
+          {
+            "word": "world",
+            "start": 0.7599999904632568,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "In",
+            "start": 2.140000104904175,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "school",
+            "start": 2.319999933242798,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "you",
+            "start": 2.9800000190734863,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "had",
+            "start": 3.0799999237060547,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "clear",
+            "start": 3.299999952316284,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "specs",
+            "start": 3.740000009536743,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "solo",
+            "start": 4.519999980926514,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "projects",
+            "start": 4.840000152587891,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "and",
+            "start": 5.679999828338623,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "problems",
+            "start": 5.960000038146973,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "with",
+            "start": 6.199999809265137,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "known",
+            "start": 6.480000019073486,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "solutions",
+            "start": 6.840000152587891,
+            "end": 7.320000171661377
+          },
+          {
+            "word": "You",
+            "start": 8.079999923706055,
+            "end": 8.319999694824219
+          },
+          {
+            "word": "implemented",
+            "start": 8.319999694824219,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "HashMats",
+            "start": 8.819999694824219,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "from",
+            "start": 9.420000076293945,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "scratch",
+            "start": 9.800000190734863,
+            "end": 10.140000343322754
+          },
+          {
+            "word": "and",
+            "start": 10.140000343322754,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "analysed",
+            "start": 10.640000343322754,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "sorting",
+            "start": 11.260000228881836,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "algorithms",
+            "start": 11.680000305175781,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "The",
+            "start": 12.9399995803833,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "problems",
+            "start": 13.199999809265137,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "were",
+            "start": 13.399999618530273,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "hard",
+            "start": 13.699999809265137,
+            "end": 14.119999885559082
+          },
+          {
+            "word": "but",
+            "start": 14.4399995803833,
+            "end": 14.619999885559082
+          },
+          {
+            "word": "well",
+            "start": 14.619999885559082,
+            "end": 14.920000076293945
+          },
+          {
+            "word": "defined",
+            "start": 14.920000076293945,
+            "end": 15.279999732971191
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Industry Reality. In industry, you inherit legacy code with technical debt. Requirements change mid-sprint. You debug across distributed systems. You collaborate with teams who have different opinions. The problems are ambiguous.",
+        "duration": 18.959999084472656,
+        "words": [
+          {
+            "word": "Industry",
+            "start": 0,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "reality",
+            "start": 0.8600000143051147,
+            "end": 1.5399999618530273
+          },
+          {
+            "word": "In",
+            "start": 2.299999952316284,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "industry",
+            "start": 2.4200000762939453,
+            "end": 2.9200000762939453
+          },
+          {
+            "word": "you",
+            "start": 3.4000000953674316,
+            "end": 3.5999999046325684
+          },
+          {
+            "word": "inherit",
+            "start": 3.5999999046325684,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "legacy",
+            "start": 3.9200000762939453,
+            "end": 4.480000019073486
+          },
+          {
+            "word": "code",
+            "start": 4.480000019073486,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "with",
+            "start": 4.880000114440918,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "technical",
+            "start": 5.360000133514404,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "debt",
+            "start": 5.840000152587891,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "Requirements",
+            "start": 7.420000076293945,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "change",
+            "start": 7.539999961853027,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "mid",
+            "start": 8.140000343322754,
+            "end": 8.5600004196167
+          },
+          {
+            "word": "sprint",
+            "start": 8.5600004196167,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "You",
+            "start": 9.539999961853027,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "debug",
+            "start": 9.739999771118164,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "across",
+            "start": 10.180000305175781,
+            "end": 10.800000190734863
+          },
+          {
+            "word": "distributed",
+            "start": 10.800000190734863,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "systems",
+            "start": 11.420000076293945,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "You",
+            "start": 12.640000343322754,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "collaborate",
+            "start": 12.880000114440918,
+            "end": 13.180000305175781
+          },
+          {
+            "word": "with",
+            "start": 13.180000305175781,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "teams",
+            "start": 13.699999809265137,
+            "end": 14
+          },
+          {
+            "word": "who",
+            "start": 14,
+            "end": 14.420000076293945
+          },
+          {
+            "word": "have",
+            "start": 14.420000076293945,
+            "end": 14.619999885559082
+          },
+          {
+            "word": "different",
+            "start": 14.619999885559082,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "opinions",
+            "start": 15.020000457763672,
+            "end": 15.5
+          },
+          {
+            "word": "The",
+            "start": 16.440000534057617,
+            "end": 17.219999313354492
+          },
+          {
+            "word": "problems",
+            "start": 17.219999313354492,
+            "end": 17.5
+          },
+          {
+            "word": "are",
+            "start": 17.5,
+            "end": 18.200000762939453
+          },
+          {
+            "word": "ambiguous",
+            "start": 18.200000762939453,
+            "end": 18.559999465942383
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "This Is Your Bridge. This course is your bridge. We don't replace your fundamentals—we translate them. You'll learn how theory becomes practice, how algorithms become systems, and how to ship code that actually runs in production.",
+        "duration": 16.600000381469727,
+        "words": [
+          {
+            "word": "This",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "is",
+            "start": 0.5600000023841858,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "your",
+            "start": 0.9200000166893005,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "bridge",
+            "start": 1.3600000143051147,
+            "end": 1.7200000286102295
+          },
+          {
+            "word": "This",
+            "start": 2.7799999713897705,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "course",
+            "start": 2.940000057220459,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "is",
+            "start": 3.2799999713897705,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "your",
+            "start": 3.5199999809265137,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "bridge",
+            "start": 3.819999933242798,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "We",
+            "start": 4.71999979019165,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "don't",
+            "start": 4.78000020980835,
+            "end": 5.019999980926514
+          },
+          {
+            "word": "replace",
+            "start": 5.019999980926514,
+            "end": 5.440000057220459
+          },
+          {
+            "word": "your",
+            "start": 5.440000057220459,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "fundamentals",
+            "start": 5.880000114440918,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "we",
+            "start": 6.71999979019165,
+            "end": 6.900000095367432
+          },
+          {
+            "word": "translate",
+            "start": 6.900000095367432,
+            "end": 7.380000114440918
+          },
+          {
+            "word": "them",
+            "start": 7.380000114440918,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "You'll",
+            "start": 8.380000114440918,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "learn",
+            "start": 8.720000267028809,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "how",
+            "start": 8.899999618530273,
+            "end": 9.239999771118164
+          },
+          {
+            "word": "theory",
+            "start": 9.239999771118164,
+            "end": 9.5
+          },
+          {
+            "word": "becomes",
+            "start": 9.5,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "practice",
+            "start": 9.84000015258789,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "how",
+            "start": 10.880000114440918,
+            "end": 11.0600004196167
+          },
+          {
+            "word": "algorithms",
+            "start": 11.0600004196167,
+            "end": 11.5
+          },
+          {
+            "word": "become",
+            "start": 11.5,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "systems",
+            "start": 11.979999542236328,
+            "end": 12.420000076293945
+          },
+          {
+            "word": "and",
+            "start": 12.899999618530273,
+            "end": 13
+          },
+          {
+            "word": "how",
+            "start": 13,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "to",
+            "start": 13.140000343322754,
+            "end": 13.380000114440918
+          },
+          {
+            "word": "ship",
+            "start": 13.380000114440918,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "code",
+            "start": 13.5600004196167,
+            "end": 13.9399995803833
+          },
+          {
+            "word": "that",
+            "start": 13.9399995803833,
+            "end": 14.399999618530273
+          },
+          {
+            "word": "actually",
+            "start": 14.399999618530273,
+            "end": 14.9399995803833
+          },
+          {
+            "word": "runs",
+            "start": 14.9399995803833,
+            "end": 15.300000190734863
+          },
+          {
+            "word": "in",
+            "start": 15.300000190734863,
+            "end": 15.800000190734863
+          },
+          {
+            "word": "production",
+            "start": 15.800000190734863,
+            "end": 16.100000381469727
+          }
+        ]
+      }
+    ],
+    "translation-story": [
+      {
+        "storyId": "translation-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Same Concepts, Different Names. Everything you learned in class maps to something in industry. Linked lists and arrays become choosing the right data store. Big-O analysis becomes performance optimization at scale.",
+        "duration": 17.520000457763672,
+        "words": [
+          {
+            "word": "Same",
+            "start": 0,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "concepts",
+            "start": 0.8199999928474426,
+            "end": 1.600000023841858
+          },
+          {
+            "word": "different",
+            "start": 2.3399999141693115,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "names",
+            "start": 2.6600000858306885,
+            "end": 3.119999885559082
+          },
+          {
+            "word": "Everything",
+            "start": 4.099999904632568,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "you",
+            "start": 4.460000038146973,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "learned",
+            "start": 4.800000190734863,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "in",
+            "start": 5.039999961853027,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "class",
+            "start": 5.300000190734863,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "maps",
+            "start": 5.699999809265137,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "to",
+            "start": 6.320000171661377,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "something",
+            "start": 6.639999866485596,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "in",
+            "start": 6.940000057220459,
+            "end": 7.199999809265137
+          },
+          {
+            "word": "industry",
+            "start": 7.199999809265137,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "Linked",
+            "start": 8.819999694824219,
+            "end": 8.84000015258789
+          },
+          {
+            "word": "lists",
+            "start": 8.84000015258789,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "and",
+            "start": 9.220000267028809,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "arrays",
+            "start": 9.539999961853027,
+            "end": 9.920000076293945
+          },
+          {
+            "word": "become",
+            "start": 9.920000076293945,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "choosing",
+            "start": 10.5600004196167,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "the",
+            "start": 10.9399995803833,
+            "end": 11.220000267028809
+          },
+          {
+            "word": "right",
+            "start": 11.220000267028809,
+            "end": 11.460000038146973
+          },
+          {
+            "word": "data",
+            "start": 11.460000038146973,
+            "end": 11.779999732971191
+          },
+          {
+            "word": "store",
+            "start": 11.779999732971191,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "Big",
+            "start": 13.119999885559082,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "O",
+            "start": 13.279999732971191,
+            "end": 13.420000076293945
+          },
+          {
+            "word": "analysis",
+            "start": 13.420000076293945,
+            "end": 13.920000076293945
+          },
+          {
+            "word": "becomes",
+            "start": 13.920000076293945,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "performance",
+            "start": 14.760000228881836,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "optimization",
+            "start": 15.479999542236328,
+            "end": 16.239999771118164
+          },
+          {
+            "word": "at",
+            "start": 16.239999771118164,
+            "end": 17.040000915527344
+          },
+          {
+            "word": "scale",
+            "start": 17.040000915527344,
+            "end": 17.280000686645508
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Theory to Practice. Database normalization becomes schema design for real products. UML diagrams become architecture documentation. Software design principles become code review standards.",
+        "duration": 15.960000038146973,
+        "words": [
+          {
+            "word": "Theory",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "to",
+            "start": 0.5799999833106995,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "practice",
+            "start": 0.9599999785423279,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "Database",
+            "start": 2.5799999237060547,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "normalization",
+            "start": 2.859999895095825,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "becomes",
+            "start": 3.740000009536743,
+            "end": 4.400000095367432
+          },
+          {
+            "word": "schema",
+            "start": 4.400000095367432,
+            "end": 4.860000133514404
+          },
+          {
+            "word": "design",
+            "start": 4.860000133514404,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "for",
+            "start": 5.340000152587891,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "real",
+            "start": 5.820000171661377,
+            "end": 6.179999828338623
+          },
+          {
+            "word": "products",
+            "start": 6.179999828338623,
+            "end": 6.71999979019165
+          },
+          {
+            "word": "UML",
+            "start": 7.880000114440918,
+            "end": 8.180000305175781
+          },
+          {
+            "word": "diagrams",
+            "start": 8.180000305175781,
+            "end": 8.779999732971191
+          },
+          {
+            "word": "become",
+            "start": 8.779999732971191,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "architecture",
+            "start": 9.520000457763672,
+            "end": 10.319999694824219
+          },
+          {
+            "word": "documentation",
+            "start": 10.319999694824219,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "Software",
+            "start": 12.5600004196167,
+            "end": 12.5600004196167
+          },
+          {
+            "word": "design",
+            "start": 12.5600004196167,
+            "end": 13.119999885559082
+          },
+          {
+            "word": "principles",
+            "start": 13.119999885559082,
+            "end": 13.640000343322754
+          },
+          {
+            "word": "become",
+            "start": 13.640000343322754,
+            "end": 14.300000190734863
+          },
+          {
+            "word": "code",
+            "start": 14.300000190734863,
+            "end": 14.760000228881836
+          },
+          {
+            "word": "review",
+            "start": 14.760000228881836,
+            "end": 15.100000381469727
+          },
+          {
+            "word": "standards",
+            "start": 15.100000381469727,
+            "end": 15.600000381469727
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Hash Table Example. In class, you implement a hash table from scratch with collision handling. In industry, you use Python's built-in dict or Redis for distributed caching. Same concept, production-ready tools.",
+        "duration": 15.760000228881836,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.8600000143051147
+          },
+          {
+            "word": "hash",
+            "start": 0.8600000143051147,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "table",
+            "start": 1.159999966621399,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "example",
+            "start": 1.440000057220459,
+            "end": 2.180000066757202
+          },
+          {
+            "word": "In",
+            "start": 2.799999952316284,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "class",
+            "start": 2.9600000381469727,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "you",
+            "start": 3.2799999713897705,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "implement",
+            "start": 3.5399999618530273,
+            "end": 3.859999895095825
+          },
+          {
+            "word": "a",
+            "start": 3.859999895095825,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "hash",
+            "start": 4.119999885559082,
+            "end": 4.340000152587891
+          },
+          {
+            "word": "table",
+            "start": 4.340000152587891,
+            "end": 4.579999923706055
+          },
+          {
+            "word": "from",
+            "start": 4.579999923706055,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "scratch",
+            "start": 4.940000057220459,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "with",
+            "start": 5.260000228881836,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "collision",
+            "start": 5.739999771118164,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "handling",
+            "start": 6.119999885559082,
+            "end": 6.519999980926514
+          },
+          {
+            "word": "In",
+            "start": 7.260000228881836,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "industry",
+            "start": 7.460000038146973,
+            "end": 7.900000095367432
+          },
+          {
+            "word": "you",
+            "start": 7.900000095367432,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "use",
+            "start": 8.399999618530273,
+            "end": 8.65999984741211
+          },
+          {
+            "word": "Python's",
+            "start": 8.65999984741211,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "built",
+            "start": 9.380000114440918,
+            "end": 9.479999542236328
+          },
+          {
+            "word": "in",
+            "start": 9.479999542236328,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "dict",
+            "start": 9.739999771118164,
+            "end": 9.979999542236328
+          },
+          {
+            "word": "or",
+            "start": 9.979999542236328,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "Redis",
+            "start": 10.5600004196167,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "for",
+            "start": 10.859999656677246,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "distributed",
+            "start": 11.279999732971191,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "caching",
+            "start": 11.819999694824219,
+            "end": 12.180000305175781
+          },
+          {
+            "word": "Same",
+            "start": 12.859999656677246,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "concept",
+            "start": 13.140000343322754,
+            "end": 13.600000381469727
+          },
+          {
+            "word": "production",
+            "start": 14.220000267028809,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "ready",
+            "start": 14.699999809265137,
+            "end": 15.079999923706055
+          },
+          {
+            "word": "tools",
+            "start": 15.079999923706055,
+            "end": 15.539999961853027
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "The Key Insight. Here's the insight: you learned the fundamentals so you can understand and debug the abstractions. Interviewers test the fundamentals. Industry uses the abstractions. You need both.",
+        "duration": 16.049999237060547,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.41999998688697815
+          },
+          {
+            "word": "key",
+            "start": 0.41999998688697815,
+            "end": 0.8799999952316284
+          },
+          {
+            "word": "insight",
+            "start": 0.8799999952316284,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "Here's",
+            "start": 2.4000000953674316,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "the",
+            "start": 2.4600000381469727,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "insight",
+            "start": 3.0399999618530273,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "You",
+            "start": 3.880000114440918,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "learn",
+            "start": 4.019999980926514,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "the",
+            "start": 4.260000228881836,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "fundamentals",
+            "start": 5.099999904632568,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "so",
+            "start": 5.099999904632568,
+            "end": 5.599999904632568
+          },
+          {
+            "word": "you",
+            "start": 5.599999904632568,
+            "end": 5.760000228881836
+          },
+          {
+            "word": "can",
+            "start": 5.760000228881836,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "understand",
+            "start": 6.039999961853027,
+            "end": 6.539999961853027
+          },
+          {
+            "word": "and",
+            "start": 6.539999961853027,
+            "end": 7.28000020980835
+          },
+          {
+            "word": "debug",
+            "start": 7.28000020980835,
+            "end": 7.28000020980835
+          },
+          {
+            "word": "the",
+            "start": 7.28000020980835,
+            "end": 7.659999847412109
+          },
+          {
+            "word": "abstractions",
+            "start": 7.659999847412109,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "Interviewers",
+            "start": 9.260000228881836,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "test",
+            "start": 9.800000190734863,
+            "end": 10.359999656677246
+          },
+          {
+            "word": "the",
+            "start": 10.359999656677246,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "fundamentals",
+            "start": 11.260000228881836,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "Industry",
+            "start": 12.399999618530273,
+            "end": 12.399999618530273
+          },
+          {
+            "word": "uses",
+            "start": 12.399999618530273,
+            "end": 13.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 13.079999923706055,
+            "end": 13.479999542236328
+          },
+          {
+            "word": "abstractions",
+            "start": 13.479999542236328,
+            "end": 14.020000457763672
+          },
+          {
+            "word": "You",
+            "start": 14.760000228881836,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "need",
+            "start": 15.020000457763672,
+            "end": 15.279999732971191
+          },
+          {
+            "word": "both",
+            "start": 15.279999732971191,
+            "end": 15.760000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Networking → API Design. TCP/IP and protocols become REST, GraphQL, and gRPC. Understanding how the network actually works gives you superpowers when designing and debugging APIs.",
+        "duration": 17.709999084472656,
+        "words": [
+          {
+            "word": "Networking",
+            "start": 0,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "API",
+            "start": 1.600000023841858,
+            "end": 2.0199999809265137
+          },
+          {
+            "word": "design",
+            "start": 2.0199999809265137,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "TCPIP",
+            "start": 3.700000047683716,
+            "end": 4.460000038146973
+          },
+          {
+            "word": "and",
+            "start": 4.460000038146973,
+            "end": 5.099999904632568
+          },
+          {
+            "word": "protocols",
+            "start": 5.099999904632568,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "become",
+            "start": 5.699999809265137,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "REST",
+            "start": 6.440000057220459,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "GraphQL",
+            "start": 7.739999771118164,
+            "end": 8.140000343322754
+          },
+          {
+            "word": "and",
+            "start": 8.65999984741211,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "gRPC",
+            "start": 9.0600004196167,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "Understanding",
+            "start": 10.920000076293945,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "how",
+            "start": 10.9399995803833,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "the",
+            "start": 11.239999771118164,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "network",
+            "start": 11.819999694824219,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "actually",
+            "start": 11.819999694824219,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "works",
+            "start": 12.539999961853027,
+            "end": 13
+          },
+          {
+            "word": "gives",
+            "start": 13,
+            "end": 13.5600004196167
+          },
+          {
+            "word": "you",
+            "start": 13.5600004196167,
+            "end": 13.880000114440918
+          },
+          {
+            "word": "superpowers",
+            "start": 13.880000114440918,
+            "end": 14.5
+          },
+          {
+            "word": "when",
+            "start": 14.5,
+            "end": 15.020000457763672
+          },
+          {
+            "word": "designing",
+            "start": 15.020000457763672,
+            "end": 15.479999542236328
+          },
+          {
+            "word": "and",
+            "start": 15.479999542236328,
+            "end": 16.559999465942383
+          },
+          {
+            "word": "debugging",
+            "start": 16.559999465942383,
+            "end": 16.559999465942383
+          },
+          {
+            "word": "APIs",
+            "start": 16.559999465942383,
+            "end": 17.079999923706055
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-5",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Industry Ready. By the end of this course, you'll see the connections clearly. Your academic knowledge becomes your competitive advantage. You don't just code—you understand why things work.",
+        "duration": 13.5600004196167,
+        "words": [
+          {
+            "word": "Industry",
+            "start": 0,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "ready",
+            "start": 1.0199999809265137,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "By",
+            "start": 2.180000066757202,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "the",
+            "start": 2.299999952316284,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "end",
+            "start": 2.5799999237060547,
+            "end": 2.640000104904175
+          },
+          {
+            "word": "of",
+            "start": 2.640000104904175,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "this",
+            "start": 2.799999952316284,
+            "end": 3
+          },
+          {
+            "word": "course",
+            "start": 3,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "you'll",
+            "start": 3.299999952316284,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "see",
+            "start": 3.940000057220459,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 4.079999923706055,
+            "end": 4.360000133514404
+          },
+          {
+            "word": "connections",
+            "start": 4.360000133514404,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "clearly",
+            "start": 4.739999771118164,
+            "end": 5.260000228881836
+          },
+          {
+            "word": "Your",
+            "start": 6.039999961853027,
+            "end": 6.360000133514404
+          },
+          {
+            "word": "academic",
+            "start": 6.360000133514404,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "knowledge",
+            "start": 6.800000190734863,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "becomes",
+            "start": 7.21999979019165,
+            "end": 7.78000020980835
+          },
+          {
+            "word": "your",
+            "start": 7.78000020980835,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "competitive",
+            "start": 8.220000267028809,
+            "end": 8.65999984741211
+          },
+          {
+            "word": "advantage",
+            "start": 8.65999984741211,
+            "end": 9.220000267028809
+          },
+          {
+            "word": "You",
+            "start": 9.979999542236328,
+            "end": 10.119999885559082
+          },
+          {
+            "word": "don't",
+            "start": 10.119999885559082,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "just",
+            "start": 10.300000190734863,
+            "end": 10.600000381469727
+          },
+          {
+            "word": "code",
+            "start": 10.600000381469727,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "you",
+            "start": 11.239999771118164,
+            "end": 11.359999656677246
+          },
+          {
+            "word": "understand",
+            "start": 11.359999656677246,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "why",
+            "start": 11.960000038146973,
+            "end": 12.619999885559082
+          },
+          {
+            "word": "things",
+            "start": 12.619999885559082,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "work",
+            "start": 12.920000076293945,
+            "end": 13.300000190734863
+          }
+        ]
+      }
+    ],
+    "ai-advantage-story": [
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-0",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Perfect Timing. You're entering the industry at the perfect moment. AI tools let you punch above your experience level from day one. This is a superpower previous generations didn't have.",
+        "duration": 13.510000228881836,
+        "words": [
+          {
+            "word": "Perfect",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "timing",
+            "start": 0.6399999856948853,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "You're",
+            "start": 2.0999999046325684,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "entering",
+            "start": 2.380000114440918,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "the",
+            "start": 2.680000066757202,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "industry",
+            "start": 3.200000047683716,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "at",
+            "start": 3.299999952316284,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "the",
+            "start": 3.640000104904175,
+            "end": 3.9200000762939453
+          },
+          {
+            "word": "perfect",
+            "start": 3.9200000762939453,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "moment",
+            "start": 4.320000171661377,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "AI",
+            "start": 5.619999885559082,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "tools",
+            "start": 5.900000095367432,
+            "end": 6.239999771118164
+          },
+          {
+            "word": "let",
+            "start": 6.239999771118164,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "you",
+            "start": 6.480000019073486,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "punch",
+            "start": 6.739999771118164,
+            "end": 7
+          },
+          {
+            "word": "above",
+            "start": 7,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "your",
+            "start": 7.239999771118164,
+            "end": 7.539999961853027
+          },
+          {
+            "word": "experience",
+            "start": 7.539999961853027,
+            "end": 8.079999923706055
+          },
+          {
+            "word": "level",
+            "start": 8.079999923706055,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "from",
+            "start": 8.34000015258789,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "day",
+            "start": 8.760000228881836,
+            "end": 9.100000381469727
+          },
+          {
+            "word": "one",
+            "start": 9.100000381469727,
+            "end": 9.359999656677246
+          },
+          {
+            "word": "This",
+            "start": 10.119999885559082,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "is",
+            "start": 10.279999732971191,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "a",
+            "start": 10.479999542236328,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "superpower",
+            "start": 10.720000267028809,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "previous",
+            "start": 11.239999771118164,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "generations",
+            "start": 11.960000038146973,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "didn't",
+            "start": 12.539999961853027,
+            "end": 12.920000076293945
+          },
+          {
+            "word": "have",
+            "start": 12.920000076293945,
+            "end": 13.260000228881836
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-1",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Understand Faster. Use AI to explain legacy code, map system architecture, and trace data flows. Before asking teammates, get AI to help you understand. You'll ask smarter questions and ramp up faster.",
+        "duration": 18,
+        "words": [
+          {
+            "word": "Understand",
+            "start": 0,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "faster",
+            "start": 0.8399999737739563,
+            "end": 1.4199999570846558
+          },
+          {
+            "word": "Use",
+            "start": 2.5999999046325684,
+            "end": 2.5999999046325684
+          },
+          {
+            "word": "AI",
+            "start": 2.5999999046325684,
+            "end": 3.0399999618530273
+          },
+          {
+            "word": "to",
+            "start": 3.0399999618530273,
+            "end": 3.4800000190734863
+          },
+          {
+            "word": "explain",
+            "start": 3.4800000190734863,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "legacy",
+            "start": 4.079999923706055,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "code",
+            "start": 4.559999942779541,
+            "end": 5
+          },
+          {
+            "word": "map",
+            "start": 5.699999809265137,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "system",
+            "start": 5.840000152587891,
+            "end": 6.21999979019165
+          },
+          {
+            "word": "architecture",
+            "start": 6.21999979019165,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "and",
+            "start": 7.139999866485596,
+            "end": 7.820000171661377
+          },
+          {
+            "word": "trace",
+            "start": 7.820000171661377,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "data",
+            "start": 7.840000152587891,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "flows",
+            "start": 8.300000190734863,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "Before",
+            "start": 9.460000038146973,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "asking",
+            "start": 9.739999771118164,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "teammates",
+            "start": 10.15999984741211,
+            "end": 10.779999732971191
+          },
+          {
+            "word": "get",
+            "start": 11.399999618530273,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "AI",
+            "start": 11.579999923706055,
+            "end": 12.039999961853027
+          },
+          {
+            "word": "to",
+            "start": 12.039999961853027,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "help",
+            "start": 12.300000190734863,
+            "end": 12.5
+          },
+          {
+            "word": "you",
+            "start": 12.5,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "understand",
+            "start": 13.199999809265137,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "You'll",
+            "start": 13.899999618530273,
+            "end": 14.260000228881836
+          },
+          {
+            "word": "ask",
+            "start": 14.260000228881836,
+            "end": 14.640000343322754
+          },
+          {
+            "word": "smarter",
+            "start": 14.640000343322754,
+            "end": 15.119999885559082
+          },
+          {
+            "word": "questions",
+            "start": 15.119999885559082,
+            "end": 15.640000343322754
+          },
+          {
+            "word": "and",
+            "start": 15.640000343322754,
+            "end": 16.3799991607666
+          },
+          {
+            "word": "ramp",
+            "start": 16.3799991607666,
+            "end": 16.600000381469727
+          },
+          {
+            "word": "up",
+            "start": 16.600000381469727,
+            "end": 17.040000915527344
+          },
+          {
+            "word": "faster",
+            "start": 17.040000915527344,
+            "end": 17.399999618530273
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-2",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Build Smarter. AI generates boilerplate, implements patterns, and writes tests. You focus on design decisions and architecture—the parts that require human judgment. Work at a higher level of abstraction.",
+        "duration": 15.15999984741211,
+        "words": [
+          {
+            "word": "Build",
+            "start": 0,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "smarter",
+            "start": 0.6399999856948853,
+            "end": 1.340000033378601
+          },
+          {
+            "word": "AI",
+            "start": 2.359999895095825,
+            "end": 2.4200000762939453
+          },
+          {
+            "word": "generates",
+            "start": 2.4200000762939453,
+            "end": 3
+          },
+          {
+            "word": "boilerplate",
+            "start": 3,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "implements",
+            "start": 4.380000114440918,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "patterns",
+            "start": 4.380000114440918,
+            "end": 4.900000095367432
+          },
+          {
+            "word": "and",
+            "start": 5.28000020980835,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "writes",
+            "start": 5.460000038146973,
+            "end": 5.699999809265137
+          },
+          {
+            "word": "tests",
+            "start": 5.699999809265137,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "You",
+            "start": 6.840000152587891,
+            "end": 7
+          },
+          {
+            "word": "focus",
+            "start": 7,
+            "end": 7.340000152587891
+          },
+          {
+            "word": "on",
+            "start": 7.340000152587891,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "design",
+            "start": 7.71999979019165,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "decisions",
+            "start": 8.0600004196167,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "and",
+            "start": 8.460000038146973,
+            "end": 9
+          },
+          {
+            "word": "architecture",
+            "start": 9,
+            "end": 9.4399995803833
+          },
+          {
+            "word": "the",
+            "start": 10.020000457763672,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "parts",
+            "start": 10.180000305175781,
+            "end": 10.5
+          },
+          {
+            "word": "that",
+            "start": 10.5,
+            "end": 10.84000015258789
+          },
+          {
+            "word": "require",
+            "start": 10.84000015258789,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "human",
+            "start": 11.140000343322754,
+            "end": 11.619999885559082
+          },
+          {
+            "word": "judgment",
+            "start": 11.619999885559082,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "Work",
+            "start": 12.800000190734863,
+            "end": 12.979999542236328
+          },
+          {
+            "word": "as",
+            "start": 12.979999542236328,
+            "end": 13.140000343322754
+          },
+          {
+            "word": "a",
+            "start": 13.140000343322754,
+            "end": 13.279999732971191
+          },
+          {
+            "word": "higher",
+            "start": 13.279999732971191,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "level",
+            "start": 13.579999923706055,
+            "end": 13.859999656677246
+          },
+          {
+            "word": "of",
+            "start": 13.859999656677246,
+            "end": 14.34000015258789
+          },
+          {
+            "word": "abstraction",
+            "start": 14.34000015258789,
+            "end": 14.680000305175781
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-3",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Learn Continuously. AI explains concepts, finds best practices, and reviews your code. It's like having a senior engineer available 24/7 to answer questions and provide feedback.",
+        "duration": 13.960000038146973,
+        "words": [
+          {
+            "word": "Learn",
+            "start": 0,
+            "end": 0.5799999833106995
+          },
+          {
+            "word": "continuously",
+            "start": 0.5799999833106995,
+            "end": 1.4800000190734863
+          },
+          {
+            "word": "AI",
+            "start": 2.440000057220459,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "explains",
+            "start": 2.5799999237060547,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "concepts",
+            "start": 3.200000047683716,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "finds",
+            "start": 4.559999942779541,
+            "end": 4.559999942779541
+          },
+          {
+            "word": "best",
+            "start": 4.559999942779541,
+            "end": 4.940000057220459
+          },
+          {
+            "word": "practices",
+            "start": 4.940000057220459,
+            "end": 5.420000076293945
+          },
+          {
+            "word": "and",
+            "start": 5.860000133514404,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "reviews",
+            "start": 6.119999885559082,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "your",
+            "start": 6.320000171661377,
+            "end": 6.739999771118164
+          },
+          {
+            "word": "code",
+            "start": 6.739999771118164,
+            "end": 6.900000095367432
+          },
+          {
+            "word": "It's",
+            "start": 7.5,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "like",
+            "start": 7.619999885559082,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "having",
+            "start": 7.860000133514404,
+            "end": 8.0600004196167
+          },
+          {
+            "word": "a",
+            "start": 8.0600004196167,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "senior",
+            "start": 8.380000114440918,
+            "end": 8.640000343322754
+          },
+          {
+            "word": "engineer",
+            "start": 8.640000343322754,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "available",
+            "start": 9.140000343322754,
+            "end": 9.800000190734863
+          },
+          {
+            "word": "24",
+            "start": 9.800000190734863,
+            "end": 10.479999542236328
+          },
+          {
+            "word": "7",
+            "start": 10.479999542236328,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "to",
+            "start": 10.859999656677246,
+            "end": 11.380000114440918
+          },
+          {
+            "word": "answer",
+            "start": 11.380000114440918,
+            "end": 11.640000343322754
+          },
+          {
+            "word": "questions",
+            "start": 11.640000343322754,
+            "end": 12.140000343322754
+          },
+          {
+            "word": "and",
+            "start": 12.140000343322754,
+            "end": 12.720000267028809
+          },
+          {
+            "word": "provide",
+            "start": 12.720000267028809,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "feedback",
+            "start": 13.100000381469727,
+            "end": 13.539999961853027
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-4",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Communicate Better. Draft documentation, prepare for meetings, write clear PRs. Communication is half the job, and AI helps you express technical concepts clearly and professionally.",
+        "duration": 14.520000457763672,
+        "words": [
+          {
+            "word": "Communicate",
+            "start": 0,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "better",
+            "start": 1.1200000047683716,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "draft",
+            "start": 2.5399999618530273,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "documentation",
+            "start": 2.5399999618530273,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "prepare",
+            "start": 4.019999980926514,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "for",
+            "start": 4.199999809265137,
+            "end": 4.900000095367432
+          },
+          {
+            "word": "meetings",
+            "start": 4.900000095367432,
+            "end": 4.900000095367432
+          },
+          {
+            "word": "write",
+            "start": 5.519999980926514,
+            "end": 5.619999885559082
+          },
+          {
+            "word": "clear",
+            "start": 5.619999885559082,
+            "end": 6.019999980926514
+          },
+          {
+            "word": "PRs",
+            "start": 6.019999980926514,
+            "end": 7.139999866485596
+          },
+          {
+            "word": "Communication",
+            "start": 7.539999961853027,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "is",
+            "start": 7.840000152587891,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "half",
+            "start": 8.399999618530273,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "the",
+            "start": 8.680000305175781,
+            "end": 8.899999618530273
+          },
+          {
+            "word": "job",
+            "start": 8.899999618530273,
+            "end": 9.079999923706055
+          },
+          {
+            "word": "and",
+            "start": 9.079999923706055,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "AI",
+            "start": 9.84000015258789,
+            "end": 10.300000190734863
+          },
+          {
+            "word": "helps",
+            "start": 10.300000190734863,
+            "end": 10.760000228881836
+          },
+          {
+            "word": "you",
+            "start": 10.760000228881836,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "express",
+            "start": 11.420000076293945,
+            "end": 11.420000076293945
+          },
+          {
+            "word": "technical",
+            "start": 11.420000076293945,
+            "end": 11.960000038146973
+          },
+          {
+            "word": "concepts",
+            "start": 11.960000038146973,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "clearly",
+            "start": 12.479999542236328,
+            "end": 13.100000381469727
+          },
+          {
+            "word": "and",
+            "start": 13.100000381469727,
+            "end": 13.84000015258789
+          },
+          {
+            "word": "professionally",
+            "start": 13.84000015258789,
+            "end": 14.239999771118164
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-5",
+        "voice": "ballad",
+        "voiceLabel": "Storyteller (Female)",
+        "text": "Your Competitive Edge. Combined with your CS fundamentals, AI makes you formidable. You understand the theory AND you can execute at speed. This course teaches you to wield both together. Let's cross the bridge!",
+        "duration": 17.059999465942383,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "competitive",
+            "start": 0.5600000023841858,
+            "end": 1.1200000047683716
+          },
+          {
+            "word": "edge",
+            "start": 1.1200000047683716,
+            "end": 1.5800000429153442
+          },
+          {
+            "word": "Combined",
+            "start": 2.619999885559082,
+            "end": 2.619999885559082
+          },
+          {
+            "word": "with",
+            "start": 2.619999885559082,
+            "end": 2.880000114440918
+          },
+          {
+            "word": "your",
+            "start": 2.880000114440918,
+            "end": 3.1600000858306885
+          },
+          {
+            "word": "CS",
+            "start": 3.1600000858306885,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "fundamentals",
+            "start": 3.5199999809265137,
+            "end": 4.239999771118164
+          },
+          {
+            "word": "AI",
+            "start": 4.920000076293945,
+            "end": 5.300000190734863
+          },
+          {
+            "word": "makes",
+            "start": 5.300000190734863,
+            "end": 5.659999847412109
+          },
+          {
+            "word": "you",
+            "start": 5.659999847412109,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "formidable",
+            "start": 6.039999961853027,
+            "end": 6.539999961853027
+          },
+          {
+            "word": "You",
+            "start": 7.300000190734863,
+            "end": 7.420000076293945
+          },
+          {
+            "word": "understand",
+            "start": 7.420000076293945,
+            "end": 7.960000038146973
+          },
+          {
+            "word": "the",
+            "start": 7.960000038146973,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "theory",
+            "start": 8.600000381469727,
+            "end": 8.600000381469727
+          },
+          {
+            "word": "and",
+            "start": 8.600000381469727,
+            "end": 9.420000076293945
+          },
+          {
+            "word": "you",
+            "start": 9.420000076293945,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "can",
+            "start": 9.600000381469727,
+            "end": 9.880000114440918
+          },
+          {
+            "word": "execute",
+            "start": 9.880000114440918,
+            "end": 10.180000305175781
+          },
+          {
+            "word": "at",
+            "start": 10.180000305175781,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "speed",
+            "start": 10.699999809265137,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "This",
+            "start": 11.5,
+            "end": 11.880000114440918
+          },
+          {
+            "word": "course",
+            "start": 11.880000114440918,
+            "end": 12.220000267028809
+          },
+          {
+            "word": "teaches",
+            "start": 12.220000267028809,
+            "end": 12.600000381469727
+          },
+          {
+            "word": "you",
+            "start": 12.600000381469727,
+            "end": 12.859999656677246
+          },
+          {
+            "word": "to",
+            "start": 12.859999656677246,
+            "end": 13.399999618530273
+          },
+          {
+            "word": "wield",
+            "start": 13.399999618530273,
+            "end": 13.460000038146973
+          },
+          {
+            "word": "both",
+            "start": 13.460000038146973,
+            "end": 14.15999984741211
+          },
+          {
+            "word": "together",
+            "start": 14.15999984741211,
+            "end": 14.720000267028809
+          },
+          {
+            "word": "Let's",
+            "start": 15.300000190734863,
+            "end": 16.059999465942383
+          },
+          {
+            "word": "cross",
+            "start": 16.059999465942383,
+            "end": 16.299999237060547
+          },
+          {
+            "word": "the",
+            "start": 16.299999237060547,
+            "end": 16.81999969482422
+          },
+          {
+            "word": "bridge",
+            "start": 16.81999969482422,
+            "end": 16.81999969482422
+          }
+        ]
+      }
+    ]
+  },
+  "echo": {
+    "gap-story": [
+      {
+        "storyId": "gap-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Your CS Degree. Your CS degree gave you something powerful: the ability to think computationally. Algorithms, data structures, theory of computation—these are timeless fundamentals that never go out of style.",
+        "duration": 12,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 0.30000001192092896
+          },
+          {
+            "word": "CS",
+            "start": 0.30000001192092896,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "degree",
+            "start": 0.699999988079071,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "gave",
+            "start": 0.9800000190734863,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "you",
+            "start": 1.2799999713897705,
+            "end": 1.4600000381469727
+          },
+          {
+            "word": "something",
+            "start": 1.4600000381469727,
+            "end": 1.8600000143051147
+          },
+          {
+            "word": "powerful",
+            "start": 1.8600000143051147,
+            "end": 2.3399999141693115
+          },
+          {
+            "word": "The",
+            "start": 2.9600000381469727,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "ability",
+            "start": 2.9600000381469727,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "to",
+            "start": 3.2799999713897705,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "think",
+            "start": 3.740000009536743,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "computationally",
+            "start": 3.880000114440918,
+            "end": 5.139999866485596
+          },
+          {
+            "word": "Algorithms",
+            "start": 5.480000019073486,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "data",
+            "start": 6.340000152587891,
+            "end": 6.440000057220459
+          },
+          {
+            "word": "structures",
+            "start": 6.440000057220459,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "theory",
+            "start": 7.559999942779541,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "of",
+            "start": 7.559999942779541,
+            "end": 7.880000114440918
+          },
+          {
+            "word": "computation",
+            "start": 7.880000114440918,
+            "end": 8.300000190734863
+          },
+          {
+            "word": "These",
+            "start": 8.880000114440918,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "are",
+            "start": 9.0600004196167,
+            "end": 9.300000190734863
+          },
+          {
+            "word": "timeless",
+            "start": 9.300000190734863,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "fundamentals",
+            "start": 9.720000267028809,
+            "end": 10.220000267028809
+          },
+          {
+            "word": "that",
+            "start": 10.220000267028809,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "never",
+            "start": 10.539999961853027,
+            "end": 10.859999656677246
+          },
+          {
+            "word": "go",
+            "start": 10.859999656677246,
+            "end": 11.100000381469727
+          },
+          {
+            "word": "out",
+            "start": 11.100000381469727,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "of",
+            "start": 11.260000228881836,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "style",
+            "start": 11.65999984741211,
+            "end": 11.680000305175781
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Hidden Gap. But here's the truth nobody tells you: your degree taught you to think, not to ship. Academic programs focus on clean, isolated problems. Industry throws you into messy, evolving systems.",
+        "duration": 14.899999618530273,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.3199999928474426
+          },
+          {
+            "word": "hidden",
+            "start": 0.3199999928474426,
+            "end": 0.6399999856948853
+          },
+          {
+            "word": "gap",
+            "start": 0.6399999856948853,
+            "end": 1.0199999809265137
+          },
+          {
+            "word": "But",
+            "start": 1.7999999523162842,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "here's",
+            "start": 1.8799999952316284,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "the",
+            "start": 2.200000047683716,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "truth",
+            "start": 2.4000000953674316,
+            "end": 2.680000066757202
+          },
+          {
+            "word": "nobody",
+            "start": 2.680000066757202,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "tells",
+            "start": 3.299999952316284,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "you",
+            "start": 3.619999885559082,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "Your",
+            "start": 4.659999847412109,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "degree",
+            "start": 4.739999771118164,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "taught",
+            "start": 5.059999942779541,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "you",
+            "start": 5.400000095367432,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "to",
+            "start": 5.579999923706055,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "think",
+            "start": 6.119999885559082,
+            "end": 6.119999885559082
+          },
+          {
+            "word": "not",
+            "start": 6.579999923706055,
+            "end": 6.78000020980835
+          },
+          {
+            "word": "to",
+            "start": 6.78000020980835,
+            "end": 7.059999942779541
+          },
+          {
+            "word": "ship",
+            "start": 7.059999942779541,
+            "end": 7.639999866485596
+          },
+          {
+            "word": "Academic",
+            "start": 8.399999618530273,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "programs",
+            "start": 8.479999542236328,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "focus",
+            "start": 9.020000457763672,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "on",
+            "start": 9.399999618530273,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "clean",
+            "start": 9.720000267028809,
+            "end": 10.119999885559082
+          },
+          {
+            "word": "isolated",
+            "start": 10.720000267028809,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "problems",
+            "start": 10.720000267028809,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "Industry",
+            "start": 12.319999694824219,
+            "end": 12.319999694824219
+          },
+          {
+            "word": "throws",
+            "start": 12.319999694824219,
+            "end": 12.65999984741211
+          },
+          {
+            "word": "you",
+            "start": 12.65999984741211,
+            "end": 12.899999618530273
+          },
+          {
+            "word": "into",
+            "start": 12.899999618530273,
+            "end": 13.15999984741211
+          },
+          {
+            "word": "messy",
+            "start": 13.15999984741211,
+            "end": 13.520000457763672
+          },
+          {
+            "word": "evolving",
+            "start": 14.180000305175781,
+            "end": 14.180000305175781
+          },
+          {
+            "word": "systems",
+            "start": 14.180000305175781,
+            "end": 14.619999885559082
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Academic World. In school, you had clear specs, solo projects, and problems with known solutions. You implemented hash maps from scratch and analyzed sorting algorithms. The problems were hard but well-defined.",
+        "duration": 15.15999984741211,
+        "words": [
+          {
+            "word": "Academic",
+            "start": 0,
+            "end": 0.6600000262260437
+          },
+          {
+            "word": "world",
+            "start": 0.6600000262260437,
+            "end": 1.159999966621399
+          },
+          {
+            "word": "In",
+            "start": 1.6399999856948853,
+            "end": 1.7400000095367432
+          },
+          {
+            "word": "school",
+            "start": 1.7400000095367432,
+            "end": 2
+          },
+          {
+            "word": "you",
+            "start": 2.200000047683716,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "had",
+            "start": 2.200000047683716,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "clear",
+            "start": 2.380000114440918,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "specs",
+            "start": 2.859999895095825,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "solo",
+            "start": 3.940000057220459,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "projects",
+            "start": 4.059999942779541,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "and",
+            "start": 4.940000057220459,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "problems",
+            "start": 5.480000019073486,
+            "end": 5.480000019073486
+          },
+          {
+            "word": "with",
+            "start": 5.480000019073486,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "known",
+            "start": 5.800000190734863,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "solutions",
+            "start": 6.159999847412109,
+            "end": 6.679999828338623
+          },
+          {
+            "word": "You",
+            "start": 7.400000095367432,
+            "end": 7.739999771118164
+          },
+          {
+            "word": "implemented",
+            "start": 7.739999771118164,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "HashMaps",
+            "start": 8.15999984741211,
+            "end": 8.760000228881836
+          },
+          {
+            "word": "from",
+            "start": 8.760000228881836,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "scratch",
+            "start": 9.140000343322754,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "and",
+            "start": 9.520000457763672,
+            "end": 10.039999961853027
+          },
+          {
+            "word": "analyzed",
+            "start": 10.039999961853027,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "sorting",
+            "start": 10.619999885559082,
+            "end": 11
+          },
+          {
+            "word": "algorithms",
+            "start": 11,
+            "end": 11.579999923706055
+          },
+          {
+            "word": "The",
+            "start": 12.319999694824219,
+            "end": 12.680000305175781
+          },
+          {
+            "word": "problems",
+            "start": 12.680000305175781,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "were",
+            "start": 12.880000114440918,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "hard",
+            "start": 13.199999809265137,
+            "end": 13.579999923706055
+          },
+          {
+            "word": "but",
+            "start": 13.579999923706055,
+            "end": 14.0600004196167
+          },
+          {
+            "word": "well",
+            "start": 14.0600004196167,
+            "end": 14.5
+          },
+          {
+            "word": "defined",
+            "start": 14.5,
+            "end": 14.880000114440918
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Industry Reality. In industry, you inherit legacy code with technical debt. Requirements change mid-sprint. You debug across distributed systems. You collaborate with teams who have different opinions. The problems are ambiguous.",
+        "duration": 15.119999885559082,
+        "words": [
+          {
+            "word": "Industry",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "Reality",
+            "start": 0.6000000238418579,
+            "end": 1.2799999713897705
+          },
+          {
+            "word": "In",
+            "start": 1.7999999523162842,
+            "end": 1.7999999523162842
+          },
+          {
+            "word": "industry",
+            "start": 1.7999999523162842,
+            "end": 2.259999990463257
+          },
+          {
+            "word": "you",
+            "start": 2.5999999046325684,
+            "end": 2.7200000286102295
+          },
+          {
+            "word": "inherit",
+            "start": 2.7200000286102295,
+            "end": 3
+          },
+          {
+            "word": "legacy",
+            "start": 3,
+            "end": 3.4600000381469727
+          },
+          {
+            "word": "code",
+            "start": 3.4600000381469727,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "with",
+            "start": 3.7799999713897705,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "technical",
+            "start": 4.019999980926514,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "debt",
+            "start": 4.380000114440918,
+            "end": 4.800000190734863
+          },
+          {
+            "word": "Requirements",
+            "start": 5.579999923706055,
+            "end": 5.840000152587891
+          },
+          {
+            "word": "change",
+            "start": 5.840000152587891,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "mid",
+            "start": 6.300000190734863,
+            "end": 6.699999809265137
+          },
+          {
+            "word": "sprint",
+            "start": 6.699999809265137,
+            "end": 6.980000019073486
+          },
+          {
+            "word": "You",
+            "start": 7.699999809265137,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "debug",
+            "start": 7.860000133514404,
+            "end": 8.220000267028809
+          },
+          {
+            "word": "across",
+            "start": 8.220000267028809,
+            "end": 8.680000305175781
+          },
+          {
+            "word": "distributed",
+            "start": 8.680000305175781,
+            "end": 9.199999809265137
+          },
+          {
+            "word": "systems",
+            "start": 9.199999809265137,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "You",
+            "start": 10.399999618530273,
+            "end": 10.5
+          },
+          {
+            "word": "collaborate",
+            "start": 10.5,
+            "end": 10.9399995803833
+          },
+          {
+            "word": "with",
+            "start": 10.9399995803833,
+            "end": 11.279999732971191
+          },
+          {
+            "word": "teams",
+            "start": 11.279999732971191,
+            "end": 11.539999961853027
+          },
+          {
+            "word": "who",
+            "start": 11.539999961853027,
+            "end": 11.720000267028809
+          },
+          {
+            "word": "have",
+            "start": 11.720000267028809,
+            "end": 11.859999656677246
+          },
+          {
+            "word": "different",
+            "start": 11.859999656677246,
+            "end": 12.319999694824219
+          },
+          {
+            "word": "opinions",
+            "start": 12.319999694824219,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "The",
+            "start": 13.420000076293945,
+            "end": 13.619999885559082
+          },
+          {
+            "word": "problems",
+            "start": 13.619999885559082,
+            "end": 13.960000038146973
+          },
+          {
+            "word": "are",
+            "start": 13.960000038146973,
+            "end": 14.399999618530273
+          },
+          {
+            "word": "ambiguous",
+            "start": 14.399999618530273,
+            "end": 14.720000267028809
+          }
+        ]
+      },
+      {
+        "storyId": "gap-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "This Is Your Bridge. This course is your bridge. We don't replace your fundamentals—we translate them. You'll learn how theory becomes practice, how algorithms become systems, and how to ship code that actually runs in production.",
+        "duration": 17.200000762939453,
+        "words": [
+          {
+            "word": "This",
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "word": "is",
+            "start": 0.5,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "your",
+            "start": 0.9599999785423279,
+            "end": 1.3799999952316284
+          },
+          {
+            "word": "bridge",
+            "start": 1.3799999952316284,
+            "end": 1.7400000095367432
+          },
+          {
+            "word": "This",
+            "start": 2.7200000286102295,
+            "end": 2.819999933242798
+          },
+          {
+            "word": "course",
+            "start": 2.819999933242798,
+            "end": 3.200000047683716
+          },
+          {
+            "word": "is",
+            "start": 3.200000047683716,
+            "end": 3.640000104904175
+          },
+          {
+            "word": "your",
+            "start": 3.640000104904175,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "bridge",
+            "start": 3.940000057220459,
+            "end": 4.260000228881836
+          },
+          {
+            "word": "We",
+            "start": 5.039999961853027,
+            "end": 5.059999942779541
+          },
+          {
+            "word": "don't",
+            "start": 5.059999942779541,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "replace",
+            "start": 5.28000020980835,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "your",
+            "start": 5.639999866485596,
+            "end": 6.039999961853027
+          },
+          {
+            "word": "fundamentals",
+            "start": 6.039999961853027,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "we",
+            "start": 7.019999980926514,
+            "end": 7.239999771118164
+          },
+          {
+            "word": "translate",
+            "start": 7.239999771118164,
+            "end": 7.699999809265137
+          },
+          {
+            "word": "them",
+            "start": 7.699999809265137,
+            "end": 8.020000457763672
+          },
+          {
+            "word": "You'll",
+            "start": 8.5600004196167,
+            "end": 8.800000190734863
+          },
+          {
+            "word": "learn",
+            "start": 8.800000190734863,
+            "end": 8.9399995803833
+          },
+          {
+            "word": "how",
+            "start": 8.9399995803833,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "theory",
+            "start": 9.279999732971191,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "becomes",
+            "start": 9.5600004196167,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "practice",
+            "start": 9.9399995803833,
+            "end": 10.5
+          },
+          {
+            "word": "how",
+            "start": 11.039999961853027,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "algorithms",
+            "start": 11.239999771118164,
+            "end": 11.720000267028809
+          },
+          {
+            "word": "become",
+            "start": 11.720000267028809,
+            "end": 12.239999771118164
+          },
+          {
+            "word": "systems",
+            "start": 12.239999771118164,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "and",
+            "start": 12.880000114440918,
+            "end": 13.319999694824219
+          },
+          {
+            "word": "how",
+            "start": 13.319999694824219,
+            "end": 13.4399995803833
+          },
+          {
+            "word": "to",
+            "start": 13.4399995803833,
+            "end": 13.739999771118164
+          },
+          {
+            "word": "ship",
+            "start": 13.739999771118164,
+            "end": 13.880000114440918
+          },
+          {
+            "word": "code",
+            "start": 13.880000114440918,
+            "end": 14.260000228881836
+          },
+          {
+            "word": "that",
+            "start": 14.260000228881836,
+            "end": 14.800000190734863
+          },
+          {
+            "word": "actually",
+            "start": 14.800000190734863,
+            "end": 15.359999656677246
+          },
+          {
+            "word": "runs",
+            "start": 15.359999656677246,
+            "end": 15.619999885559082
+          },
+          {
+            "word": "in",
+            "start": 15.619999885559082,
+            "end": 15.920000076293945
+          },
+          {
+            "word": "production",
+            "start": 15.920000076293945,
+            "end": 16.200000762939453
+          }
+        ]
+      }
+    ],
+    "translation-story": [
+      {
+        "storyId": "translation-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Same Concepts, Different Names. Everything you learned in class maps to something in industry. Linked lists and arrays become choosing the right data store. Big-O analysis becomes performance optimization at scale.",
+        "duration": 14.520000457763672,
+        "words": [
+          {
+            "word": "Same",
+            "start": 0,
+            "end": 0.6000000238418579
+          },
+          {
+            "word": "concepts",
+            "start": 0.6000000238418579,
+            "end": 1.2400000095367432
+          },
+          {
+            "word": "different",
+            "start": 1.7400000095367432,
+            "end": 2
+          },
+          {
+            "word": "names",
+            "start": 2,
+            "end": 2.4600000381469727
+          },
+          {
+            "word": "Everything",
+            "start": 3.2200000286102295,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "you",
+            "start": 3.240000009536743,
+            "end": 3.5
+          },
+          {
+            "word": "learned",
+            "start": 3.5,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "in",
+            "start": 3.700000047683716,
+            "end": 3.940000057220459
+          },
+          {
+            "word": "class",
+            "start": 3.940000057220459,
+            "end": 4.300000190734863
+          },
+          {
+            "word": "maps",
+            "start": 4.300000190734863,
+            "end": 4.78000020980835
+          },
+          {
+            "word": "to",
+            "start": 4.78000020980835,
+            "end": 5.079999923706055
+          },
+          {
+            "word": "something",
+            "start": 5.079999923706055,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "in",
+            "start": 5.360000133514404,
+            "end": 5.579999923706055
+          },
+          {
+            "word": "industry",
+            "start": 5.579999923706055,
+            "end": 5.940000057220459
+          },
+          {
+            "word": "Linked",
+            "start": 6.800000190734863,
+            "end": 6.800000190734863
+          },
+          {
+            "word": "lists",
+            "start": 6.800000190734863,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "and",
+            "start": 7.119999885559082,
+            "end": 7.400000095367432
+          },
+          {
+            "word": "arrays",
+            "start": 7.400000095367432,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "become",
+            "start": 7.71999979019165,
+            "end": 8.319999694824219
+          },
+          {
+            "word": "choosing",
+            "start": 8.319999694824219,
+            "end": 8.619999885559082
+          },
+          {
+            "word": "the",
+            "start": 8.619999885559082,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "right",
+            "start": 8.819999694824219,
+            "end": 9.0600004196167
+          },
+          {
+            "word": "data",
+            "start": 9.0600004196167,
+            "end": 9.34000015258789
+          },
+          {
+            "word": "store",
+            "start": 9.34000015258789,
+            "end": 9.640000343322754
+          },
+          {
+            "word": "Big",
+            "start": 10.420000076293945,
+            "end": 10.5600004196167
+          },
+          {
+            "word": "O",
+            "start": 10.5600004196167,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "analysis",
+            "start": 10.720000267028809,
+            "end": 11.180000305175781
+          },
+          {
+            "word": "becomes",
+            "start": 11.180000305175781,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "performance",
+            "start": 11.680000305175781,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "optimization",
+            "start": 12.260000228881836,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "at",
+            "start": 12.819999694824219,
+            "end": 13.239999771118164
+          },
+          {
+            "word": "scale",
+            "start": 13.239999771118164,
+            "end": 13.479999542236328
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Theory to Practice. Database normalization becomes schema design for real products. UML diagrams become architecture documentation. Software design principles become code review standards.",
+        "duration": 13.75,
+        "words": [
+          {
+            "word": "Theory",
+            "start": 0,
+            "end": 0.5199999809265137
+          },
+          {
+            "word": "to",
+            "start": 0.5199999809265137,
+            "end": 0.9800000190734863
+          },
+          {
+            "word": "practice",
+            "start": 0.9800000190734863,
+            "end": 1.559999942779541
+          },
+          {
+            "word": "Database",
+            "start": 2.2200000286102295,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "normalization",
+            "start": 2.5399999618530273,
+            "end": 3.2799999713897705
+          },
+          {
+            "word": "becomes",
+            "start": 3.2799999713897705,
+            "end": 3.740000009536743
+          },
+          {
+            "word": "schema",
+            "start": 3.740000009536743,
+            "end": 4.099999904632568
+          },
+          {
+            "word": "design",
+            "start": 4.099999904632568,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "for",
+            "start": 4.539999961853027,
+            "end": 4.840000152587891
+          },
+          {
+            "word": "real",
+            "start": 4.840000152587891,
+            "end": 5.159999847412109
+          },
+          {
+            "word": "products",
+            "start": 5.159999847412109,
+            "end": 5.960000038146973
+          },
+          {
+            "word": "UML",
+            "start": 6.659999847412109,
+            "end": 6.940000057220459
+          },
+          {
+            "word": "diagrams",
+            "start": 6.940000057220459,
+            "end": 7.460000038146973
+          },
+          {
+            "word": "become",
+            "start": 7.460000038146973,
+            "end": 7.940000057220459
+          },
+          {
+            "word": "architecture",
+            "start": 7.940000057220459,
+            "end": 8.579999923706055
+          },
+          {
+            "word": "documentation",
+            "start": 8.579999923706055,
+            "end": 9.380000114440918
+          },
+          {
+            "word": "Software",
+            "start": 10.539999961853027,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "design",
+            "start": 10.539999961853027,
+            "end": 10.979999542236328
+          },
+          {
+            "word": "principles",
+            "start": 10.979999542236328,
+            "end": 11.4399995803833
+          },
+          {
+            "word": "become",
+            "start": 11.4399995803833,
+            "end": 12.0600004196167
+          },
+          {
+            "word": "code",
+            "start": 12.0600004196167,
+            "end": 12.479999542236328
+          },
+          {
+            "word": "review",
+            "start": 12.479999542236328,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "standards",
+            "start": 12.819999694824219,
+            "end": 13.300000190734863
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Hash Table Example. In class, you implement a hash table from scratch with collision handling. In industry, you use Python's built-in dict or Redis for distributed caching. Same concept, production-ready tools.",
+        "duration": 15.550000190734863,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "hash",
+            "start": 0.5600000023841858,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "table",
+            "start": 0.6800000071525574,
+            "end": 1
+          },
+          {
+            "word": "example",
+            "start": 1,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "In",
+            "start": 2.380000114440918,
+            "end": 2.5399999618530273
+          },
+          {
+            "word": "class",
+            "start": 2.5399999618530273,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "you",
+            "start": 3.140000104904175,
+            "end": 3.5199999809265137
+          },
+          {
+            "word": "implement",
+            "start": 3.5199999809265137,
+            "end": 3.7799999713897705
+          },
+          {
+            "word": "a",
+            "start": 3.7799999713897705,
+            "end": 4.059999942779541
+          },
+          {
+            "word": "hash",
+            "start": 4.059999942779541,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "table",
+            "start": 4.320000171661377,
+            "end": 4.539999961853027
+          },
+          {
+            "word": "from",
+            "start": 4.539999961853027,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "scratch",
+            "start": 4.880000114440918,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "with",
+            "start": 5.199999809265137,
+            "end": 5.460000038146973
+          },
+          {
+            "word": "collision",
+            "start": 5.460000038146973,
+            "end": 5.800000190734863
+          },
+          {
+            "word": "handling",
+            "start": 5.800000190734863,
+            "end": 6.159999847412109
+          },
+          {
+            "word": "In",
+            "start": 7.099999904632568,
+            "end": 7.260000228881836
+          },
+          {
+            "word": "industry",
+            "start": 7.260000228881836,
+            "end": 7.599999904632568
+          },
+          {
+            "word": "you",
+            "start": 8.020000457763672,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "use",
+            "start": 8.15999984741211,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "Python's",
+            "start": 8.399999618530273,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "built",
+            "start": 9.140000343322754,
+            "end": 9.260000228881836
+          },
+          {
+            "word": "in",
+            "start": 9.260000228881836,
+            "end": 9.460000038146973
+          },
+          {
+            "word": "dict",
+            "start": 9.460000038146973,
+            "end": 9.699999809265137
+          },
+          {
+            "word": "or",
+            "start": 10.079999923706055,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "Redis",
+            "start": 10.460000038146973,
+            "end": 10.640000343322754
+          },
+          {
+            "word": "for",
+            "start": 10.880000114440918,
+            "end": 11.020000457763672
+          },
+          {
+            "word": "distributed",
+            "start": 11.020000457763672,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "caching",
+            "start": 11.520000457763672,
+            "end": 11.899999618530273
+          },
+          {
+            "word": "Same",
+            "start": 12.960000038146973,
+            "end": 13.220000267028809
+          },
+          {
+            "word": "concept",
+            "start": 13.220000267028809,
+            "end": 13.699999809265137
+          },
+          {
+            "word": "production",
+            "start": 14.279999732971191,
+            "end": 14.699999809265137
+          },
+          {
+            "word": "ready",
+            "start": 14.699999809265137,
+            "end": 14.979999542236328
+          },
+          {
+            "word": "tools",
+            "start": 14.979999542236328,
+            "end": 15.319999694824219
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "The Key Insight. Here's the insight: you learned the fundamentals so you can understand and debug the abstractions. Interviewers test the fundamentals. Industry uses the abstractions. You need both.",
+        "duration": 12.399999618530273,
+        "words": [
+          {
+            "word": "The",
+            "start": 0,
+            "end": 0.30000001192092896
+          },
+          {
+            "word": "key",
+            "start": 0.30000001192092896,
+            "end": 0.6800000071525574
+          },
+          {
+            "word": "insight",
+            "start": 0.6800000071525574,
+            "end": 1.2200000286102295
+          },
+          {
+            "word": "Here's",
+            "start": 1.8200000524520874,
+            "end": 1.8799999952316284
+          },
+          {
+            "word": "the",
+            "start": 1.8799999952316284,
+            "end": 2.200000047683716
+          },
+          {
+            "word": "insight",
+            "start": 2.200000047683716,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "You",
+            "start": 2.759999990463257,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "learn",
+            "start": 2.799999952316284,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "the",
+            "start": 3.0799999237060547,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "fundamentals",
+            "start": 3.4200000762939453,
+            "end": 3.700000047683716
+          },
+          {
+            "word": "so",
+            "start": 3.700000047683716,
+            "end": 4
+          },
+          {
+            "word": "you",
+            "start": 4,
+            "end": 4.119999885559082
+          },
+          {
+            "word": "can",
+            "start": 4.119999885559082,
+            "end": 4.380000114440918
+          },
+          {
+            "word": "understand",
+            "start": 4.380000114440918,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "and",
+            "start": 4.880000114440918,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "debug",
+            "start": 5.400000095367432,
+            "end": 5.71999979019165
+          },
+          {
+            "word": "the",
+            "start": 5.71999979019165,
+            "end": 6.099999904632568
+          },
+          {
+            "word": "abstractions",
+            "start": 6.099999904632568,
+            "end": 6.639999866485596
+          },
+          {
+            "word": "Interviewers",
+            "start": 7.21999979019165,
+            "end": 7.71999979019165
+          },
+          {
+            "word": "test",
+            "start": 7.71999979019165,
+            "end": 8.039999961853027
+          },
+          {
+            "word": "the",
+            "start": 8.039999961853027,
+            "end": 8.380000114440918
+          },
+          {
+            "word": "fundamentals",
+            "start": 8.380000114440918,
+            "end": 8.720000267028809
+          },
+          {
+            "word": "Industry",
+            "start": 9.720000267028809,
+            "end": 9.720000267028809
+          },
+          {
+            "word": "uses",
+            "start": 9.720000267028809,
+            "end": 10.079999923706055
+          },
+          {
+            "word": "the",
+            "start": 10.079999923706055,
+            "end": 10.460000038146973
+          },
+          {
+            "word": "abstractions",
+            "start": 10.460000038146973,
+            "end": 11
+          },
+          {
+            "word": "You",
+            "start": 11.520000457763672,
+            "end": 11.65999984741211
+          },
+          {
+            "word": "need",
+            "start": 11.65999984741211,
+            "end": 11.84000015258789
+          },
+          {
+            "word": "both",
+            "start": 11.84000015258789,
+            "end": 12.199999809265137
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Networking → API Design. TCP/IP and protocols become REST, GraphQL, and gRPC. Understanding how the network actually works gives you superpowers when designing and debugging APIs.",
+        "duration": 16.700000762939453,
+        "words": [
+          {
+            "word": "Networking",
+            "start": 0,
+            "end": 1.0399999618530273
+          },
+          {
+            "word": "API",
+            "start": 1.5399999618530273,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "design",
+            "start": 1.659999966621399,
+            "end": 2.380000114440918
+          },
+          {
+            "word": "TCP",
+            "start": 3.059999942779541,
+            "end": 3.319999933242798
+          },
+          {
+            "word": "IP",
+            "start": 3.319999933242798,
+            "end": 4.079999923706055
+          },
+          {
+            "word": "and",
+            "start": 4.440000057220459,
+            "end": 4.71999979019165
+          },
+          {
+            "word": "protocols",
+            "start": 4.71999979019165,
+            "end": 5.039999961853027
+          },
+          {
+            "word": "become",
+            "start": 5.039999961853027,
+            "end": 5.5
+          },
+          {
+            "word": "REST",
+            "start": 5.5,
+            "end": 5.900000095367432
+          },
+          {
+            "word": "GraphQL",
+            "start": 6.539999961853027,
+            "end": 7.019999980926514
+          },
+          {
+            "word": "and",
+            "start": 7.460000038146973,
+            "end": 7.840000152587891
+          },
+          {
+            "word": "gRPC",
+            "start": 7.840000152587891,
+            "end": 8.420000076293945
+          },
+          {
+            "word": "Understanding",
+            "start": 9.319999694824219,
+            "end": 9.739999771118164
+          },
+          {
+            "word": "how",
+            "start": 9.739999771118164,
+            "end": 10.020000457763672
+          },
+          {
+            "word": "the",
+            "start": 10.020000457763672,
+            "end": 10.279999732971191
+          },
+          {
+            "word": "network",
+            "start": 10.279999732971191,
+            "end": 10.539999961853027
+          },
+          {
+            "word": "actually",
+            "start": 10.539999961853027,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "works",
+            "start": 11.199999809265137,
+            "end": 11.5600004196167
+          },
+          {
+            "word": "gives",
+            "start": 11.5600004196167,
+            "end": 12.079999923706055
+          },
+          {
+            "word": "you",
+            "start": 12.079999923706055,
+            "end": 12.380000114440918
+          },
+          {
+            "word": "superpowers",
+            "start": 12.380000114440918,
+            "end": 13
+          },
+          {
+            "word": "when",
+            "start": 13,
+            "end": 13.5
+          },
+          {
+            "word": "designing",
+            "start": 13.5,
+            "end": 13.960000038146973
+          },
+          {
+            "word": "and",
+            "start": 13.960000038146973,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "debugging",
+            "start": 14.899999618530273,
+            "end": 14.899999618530273
+          },
+          {
+            "word": "APIs",
+            "start": 14.899999618530273,
+            "end": 15.380000114440918
+          }
+        ]
+      },
+      {
+        "storyId": "translation-story",
+        "stepId": "step-5",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Industry Ready. By the end of this course, you'll see the connections clearly. Your academic knowledge becomes your competitive advantage. You don't just code—you understand why things work.",
+        "duration": 12.550000190734863,
+        "words": [
+          {
+            "word": "Industry",
+            "start": 0,
+            "end": 0.699999988079071
+          },
+          {
+            "word": "ready",
+            "start": 0.699999988079071,
+            "end": 1.059999942779541
+          },
+          {
+            "word": "By",
+            "start": 1.6200000047683716,
+            "end": 1.659999966621399
+          },
+          {
+            "word": "the",
+            "start": 1.659999966621399,
+            "end": 1.940000057220459
+          },
+          {
+            "word": "end",
+            "start": 1.940000057220459,
+            "end": 2.0799999237060547
+          },
+          {
+            "word": "of",
+            "start": 2.0799999237060547,
+            "end": 2.299999952316284
+          },
+          {
+            "word": "this",
+            "start": 2.299999952316284,
+            "end": 2.4800000190734863
+          },
+          {
+            "word": "course",
+            "start": 2.4800000190734863,
+            "end": 2.799999952316284
+          },
+          {
+            "word": "you'll",
+            "start": 3.240000009536743,
+            "end": 3.4200000762939453
+          },
+          {
+            "word": "see",
+            "start": 3.4200000762939453,
+            "end": 3.559999942779541
+          },
+          {
+            "word": "the",
+            "start": 3.559999942779541,
+            "end": 3.819999933242798
+          },
+          {
+            "word": "connections",
+            "start": 3.819999933242798,
+            "end": 4.199999809265137
+          },
+          {
+            "word": "clearly",
+            "start": 4.199999809265137,
+            "end": 4.739999771118164
+          },
+          {
+            "word": "Your",
+            "start": 5.400000095367432,
+            "end": 5.559999942779541
+          },
+          {
+            "word": "academic",
+            "start": 5.559999942779541,
+            "end": 6.059999942779541
+          },
+          {
+            "word": "knowledge",
+            "start": 6.059999942779541,
+            "end": 6.5
+          },
+          {
+            "word": "becomes",
+            "start": 6.5,
+            "end": 6.920000076293945
+          },
+          {
+            "word": "your",
+            "start": 6.920000076293945,
+            "end": 7.21999979019165
+          },
+          {
+            "word": "competitive",
+            "start": 7.21999979019165,
+            "end": 7.619999885559082
+          },
+          {
+            "word": "advantage",
+            "start": 7.619999885559082,
+            "end": 8.15999984741211
+          },
+          {
+            "word": "You",
+            "start": 9.180000305175781,
+            "end": 9.279999732971191
+          },
+          {
+            "word": "don't",
+            "start": 9.279999732971191,
+            "end": 9.520000457763672
+          },
+          {
+            "word": "just",
+            "start": 9.520000457763672,
+            "end": 9.819999694824219
+          },
+          {
+            "word": "code",
+            "start": 9.819999694824219,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "you",
+            "start": 10.5,
+            "end": 10.699999809265137
+          },
+          {
+            "word": "understand",
+            "start": 10.699999809265137,
+            "end": 11.239999771118164
+          },
+          {
+            "word": "why",
+            "start": 11.239999771118164,
+            "end": 11.680000305175781
+          },
+          {
+            "word": "things",
+            "start": 11.680000305175781,
+            "end": 11.920000076293945
+          },
+          {
+            "word": "work",
+            "start": 11.920000076293945,
+            "end": 12.239999771118164
+          }
+        ]
+      }
+    ],
+    "ai-advantage-story": [
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-0",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Perfect Timing. You're entering the industry at the perfect moment. AI tools let you punch above your experience level from day one. This is a superpower previous generations didn't have.",
+        "duration": 11.109999656677246,
+        "words": [
+          {
+            "word": "Perfect",
+            "start": 0,
+            "end": 0.8199999928474426
+          },
+          {
+            "word": "timing",
+            "start": 0.8199999928474426,
+            "end": 1.1399999856948853
+          },
+          {
+            "word": "You're",
+            "start": 1.659999966621399,
+            "end": 1.8600000143051147
+          },
+          {
+            "word": "entering",
+            "start": 1.8600000143051147,
+            "end": 2.0999999046325684
+          },
+          {
+            "word": "the",
+            "start": 2.0999999046325684,
+            "end": 2.4000000953674316
+          },
+          {
+            "word": "industry",
+            "start": 2.4000000953674316,
+            "end": 2.5999999046325684
+          },
+          {
+            "word": "at",
+            "start": 2.5999999046325684,
+            "end": 2.759999990463257
+          },
+          {
+            "word": "the",
+            "start": 2.759999990463257,
+            "end": 2.940000057220459
+          },
+          {
+            "word": "perfect",
+            "start": 2.940000057220459,
+            "end": 3.299999952316284
+          },
+          {
+            "word": "moment",
+            "start": 3.299999952316284,
+            "end": 3.619999885559082
+          },
+          {
+            "word": "AI",
+            "start": 4.199999809265137,
+            "end": 4.320000171661377
+          },
+          {
+            "word": "tools",
+            "start": 4.320000171661377,
+            "end": 4.639999866485596
+          },
+          {
+            "word": "let",
+            "start": 4.639999866485596,
+            "end": 4.900000095367432
+          },
+          {
+            "word": "you",
+            "start": 4.900000095367432,
+            "end": 5.199999809265137
+          },
+          {
+            "word": "punch",
+            "start": 5.199999809265137,
+            "end": 5.400000095367432
+          },
+          {
+            "word": "above",
+            "start": 5.400000095367432,
+            "end": 5.679999828338623
+          },
+          {
+            "word": "your",
+            "start": 5.679999828338623,
+            "end": 5.880000114440918
+          },
+          {
+            "word": "experience",
+            "start": 5.880000114440918,
+            "end": 6.380000114440918
+          },
+          {
+            "word": "level",
+            "start": 6.380000114440918,
+            "end": 6.619999885559082
+          },
+          {
+            "word": "from",
+            "start": 6.619999885559082,
+            "end": 6.880000114440918
+          },
+          {
+            "word": "day",
+            "start": 6.880000114440918,
+            "end": 7.119999885559082
+          },
+          {
+            "word": "one",
+            "start": 7.119999885559082,
+            "end": 7.559999942779541
+          },
+          {
+            "word": "This",
+            "start": 8,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "is",
+            "start": 8.100000381469727,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "a",
+            "start": 8.239999771118164,
+            "end": 8.479999542236328
+          },
+          {
+            "word": "superpower",
+            "start": 8.479999542236328,
+            "end": 9
+          },
+          {
+            "word": "previous",
+            "start": 9.020000457763672,
+            "end": 9.600000381469727
+          },
+          {
+            "word": "generations",
+            "start": 9.600000381469727,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "didn't",
+            "start": 10.15999984741211,
+            "end": 10.5
+          },
+          {
+            "word": "have",
+            "start": 10.5,
+            "end": 10.819999694824219
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-1",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Understand Faster. Use AI to explain legacy code, map system architecture, and trace data flows. Before asking teammates, get AI to help you understand. You'll ask smarter questions and ramp up faster.",
+        "duration": 15.550000190734863,
+        "words": [
+          {
+            "word": "Understand",
+            "start": 0,
+            "end": 0.8399999737739563
+          },
+          {
+            "word": "faster",
+            "start": 0.8399999737739563,
+            "end": 1.440000057220459
+          },
+          {
+            "word": "Use",
+            "start": 2.319999933242798,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "AI",
+            "start": 2.319999933242798,
+            "end": 2.7799999713897705
+          },
+          {
+            "word": "to",
+            "start": 2.7799999713897705,
+            "end": 3.0799999237060547
+          },
+          {
+            "word": "explain",
+            "start": 3.0799999237060547,
+            "end": 3.5399999618530273
+          },
+          {
+            "word": "legacy",
+            "start": 3.5399999618530273,
+            "end": 4
+          },
+          {
+            "word": "code",
+            "start": 4,
+            "end": 4.420000076293945
+          },
+          {
+            "word": "map",
+            "start": 5.139999866485596,
+            "end": 5.28000020980835
+          },
+          {
+            "word": "system",
+            "start": 5.28000020980835,
+            "end": 5.639999866485596
+          },
+          {
+            "word": "architecture",
+            "start": 5.639999866485596,
+            "end": 6.139999866485596
+          },
+          {
+            "word": "and",
+            "start": 6.380000114440918,
+            "end": 7.059999942779541
+          },
+          {
+            "word": "trace",
+            "start": 7.059999942779541,
+            "end": 7.079999923706055
+          },
+          {
+            "word": "data",
+            "start": 7.079999923706055,
+            "end": 7.480000019073486
+          },
+          {
+            "word": "flows",
+            "start": 7.480000019073486,
+            "end": 7.820000171661377
+          },
+          {
+            "word": "Before",
+            "start": 8.539999961853027,
+            "end": 8.65999984741211
+          },
+          {
+            "word": "asking",
+            "start": 8.65999984741211,
+            "end": 8.979999542236328
+          },
+          {
+            "word": "teammates",
+            "start": 8.979999542236328,
+            "end": 9.539999961853027
+          },
+          {
+            "word": "get",
+            "start": 10.039999961853027,
+            "end": 10.15999984741211
+          },
+          {
+            "word": "AI",
+            "start": 10.15999984741211,
+            "end": 10.619999885559082
+          },
+          {
+            "word": "to",
+            "start": 10.619999885559082,
+            "end": 10.880000114440918
+          },
+          {
+            "word": "help",
+            "start": 10.880000114440918,
+            "end": 11.079999923706055
+          },
+          {
+            "word": "you",
+            "start": 11.079999923706055,
+            "end": 11.520000457763672
+          },
+          {
+            "word": "understand",
+            "start": 11.520000457763672,
+            "end": 11.800000190734863
+          },
+          {
+            "word": "You'll",
+            "start": 12.579999923706055,
+            "end": 12.819999694824219
+          },
+          {
+            "word": "ask",
+            "start": 12.819999694824219,
+            "end": 13.020000457763672
+          },
+          {
+            "word": "smarter",
+            "start": 13.020000457763672,
+            "end": 13.34000015258789
+          },
+          {
+            "word": "questions",
+            "start": 13.34000015258789,
+            "end": 13.899999618530273
+          },
+          {
+            "word": "and",
+            "start": 13.899999618530273,
+            "end": 14.520000457763672
+          },
+          {
+            "word": "ramp",
+            "start": 14.520000457763672,
+            "end": 14.720000267028809
+          },
+          {
+            "word": "up",
+            "start": 14.720000267028809,
+            "end": 15
+          },
+          {
+            "word": "faster",
+            "start": 15,
+            "end": 15.319999694824219
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-2",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Build Smarter. AI generates boilerplate, implements patterns, and writes tests. You focus on design decisions and architecture—the parts that require human judgment. Work at a higher level of abstraction.",
+        "duration": 13.359999656677246,
+        "words": [
+          {
+            "word": "Build",
+            "start": 0,
+            "end": 0.6200000047683716
+          },
+          {
+            "word": "smarter",
+            "start": 0.6200000047683716,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "AI",
+            "start": 2.299999952316284,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "generates",
+            "start": 2.319999933242798,
+            "end": 2.9600000381469727
+          },
+          {
+            "word": "boilerplate",
+            "start": 2.9600000381469727,
+            "end": 3.7200000286102295
+          },
+          {
+            "word": "implements",
+            "start": 4.699999809265137,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "patterns",
+            "start": 4.699999809265137,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "and",
+            "start": 5.760000228881836,
+            "end": 6.199999809265137
+          },
+          {
+            "word": "writes",
+            "start": 6.199999809265137,
+            "end": 6.5
+          },
+          {
+            "word": "tests",
+            "start": 6.5,
+            "end": 6.980000019073486
+          },
+          {
+            "word": "You",
+            "start": 7.639999866485596,
+            "end": 7.860000133514404
+          },
+          {
+            "word": "focus",
+            "start": 7.860000133514404,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "on",
+            "start": 8.100000381469727,
+            "end": 8.399999618530273
+          },
+          {
+            "word": "design",
+            "start": 8.399999618530273,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "decisions",
+            "start": 8.739999771118164,
+            "end": 9.140000343322754
+          },
+          {
+            "word": "and",
+            "start": 9.140000343322754,
+            "end": 9.680000305175781
+          },
+          {
+            "word": "architecture",
+            "start": 9.680000305175781,
+            "end": 10.100000381469727
+          },
+          {
+            "word": "the",
+            "start": 10.84000015258789,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "parts",
+            "start": 11.199999809265137,
+            "end": 11.199999809265137
+          },
+          {
+            "word": "that",
+            "start": 11.199999809265137,
+            "end": 11.5
+          },
+          {
+            "word": "require",
+            "start": 11.5,
+            "end": 11.819999694824219
+          },
+          {
+            "word": "human",
+            "start": 11.819999694824219,
+            "end": 12.300000190734863
+          },
+          {
+            "word": "judgment",
+            "start": 12.300000190734863,
+            "end": 12.640000343322754
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-3",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Learn Continuously. AI explains concepts, finds best practices, and reviews your code. It's like having a senior engineer available 24/7 to answer questions and provide feedback.",
+        "duration": 13.960000038146973,
+        "words": [
+          {
+            "word": "Learn",
+            "start": 0,
+            "end": 0.5600000023841858
+          },
+          {
+            "word": "continuously",
+            "start": 0.5600000023841858,
+            "end": 1.399999976158142
+          },
+          {
+            "word": "AI",
+            "start": 2.6600000858306885,
+            "end": 2.6600000858306885
+          },
+          {
+            "word": "explains",
+            "start": 2.6600000858306885,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "concepts",
+            "start": 3.240000009536743,
+            "end": 3.8399999141693115
+          },
+          {
+            "word": "finds",
+            "start": 4.519999980926514,
+            "end": 4.519999980926514
+          },
+          {
+            "word": "best",
+            "start": 4.519999980926514,
+            "end": 4.880000114440918
+          },
+          {
+            "word": "practices",
+            "start": 4.880000114440918,
+            "end": 5.360000133514404
+          },
+          {
+            "word": "and",
+            "start": 5.78000020980835,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "reviews",
+            "start": 6.300000190734863,
+            "end": 6.300000190734863
+          },
+          {
+            "word": "your",
+            "start": 6.300000190734863,
+            "end": 6.579999923706055
+          },
+          {
+            "word": "code",
+            "start": 6.579999923706055,
+            "end": 6.840000152587891
+          },
+          {
+            "word": "It's",
+            "start": 7.940000057220459,
+            "end": 8.079999923706055
+          },
+          {
+            "word": "like",
+            "start": 8.079999923706055,
+            "end": 8.239999771118164
+          },
+          {
+            "word": "having",
+            "start": 8.239999771118164,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "a",
+            "start": 8.460000038146973,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "senior",
+            "start": 9.020000457763672,
+            "end": 9.020000457763672
+          },
+          {
+            "word": "engineer",
+            "start": 9.020000457763672,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "available",
+            "start": 9.399999618530273,
+            "end": 9.9399995803833
+          },
+          {
+            "word": "24",
+            "start": 9.9399995803833,
+            "end": 10.720000267028809
+          },
+          {
+            "word": "7",
+            "start": 10.720000267028809,
+            "end": 11.140000343322754
+          },
+          {
+            "word": "to",
+            "start": 11.140000343322754,
+            "end": 11.739999771118164
+          },
+          {
+            "word": "answer",
+            "start": 11.739999771118164,
+            "end": 11.979999542236328
+          },
+          {
+            "word": "questions",
+            "start": 11.979999542236328,
+            "end": 12.539999961853027
+          },
+          {
+            "word": "and",
+            "start": 12.539999961853027,
+            "end": 12.880000114440918
+          },
+          {
+            "word": "provide",
+            "start": 12.880000114440918,
+            "end": 13.199999809265137
+          },
+          {
+            "word": "feedback",
+            "start": 13.199999809265137,
+            "end": 13.699999809265137
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-4",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Communicate Better. Draft documentation, prepare for meetings, write clear PRs. Communication is half the job, and AI helps you express technical concepts clearly and professionally.",
+        "duration": 13.699999809265137,
+        "words": [
+          {
+            "word": "Communicate",
+            "start": 0,
+            "end": 0.9200000166893005
+          },
+          {
+            "word": "better",
+            "start": 0.9200000166893005,
+            "end": 1.3600000143051147
+          },
+          {
+            "word": "Draft",
+            "start": 2.319999933242798,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "documentation",
+            "start": 2.319999933242798,
+            "end": 3.0999999046325684
+          },
+          {
+            "word": "Prepare",
+            "start": 4.019999980926514,
+            "end": 4.019999980926514
+          },
+          {
+            "word": "for",
+            "start": 4.019999980926514,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "meetings",
+            "start": 4.679999828338623,
+            "end": 4.679999828338623
+          },
+          {
+            "word": "Write",
+            "start": 5.300000190734863,
+            "end": 5.340000152587891
+          },
+          {
+            "word": "clear",
+            "start": 5.340000152587891,
+            "end": 5.820000171661377
+          },
+          {
+            "word": "PRs",
+            "start": 5.820000171661377,
+            "end": 6.320000171661377
+          },
+          {
+            "word": "Communication",
+            "start": 7.260000228881836,
+            "end": 7.739999771118164
+          },
+          {
+            "word": "is",
+            "start": 7.739999771118164,
+            "end": 8.100000381469727
+          },
+          {
+            "word": "half",
+            "start": 8.100000381469727,
+            "end": 8.34000015258789
+          },
+          {
+            "word": "the",
+            "start": 8.34000015258789,
+            "end": 8.539999961853027
+          },
+          {
+            "word": "job",
+            "start": 8.539999961853027,
+            "end": 8.819999694824219
+          },
+          {
+            "word": "and",
+            "start": 9.239999771118164,
+            "end": 9.399999618530273
+          },
+          {
+            "word": "AI",
+            "start": 9.399999618530273,
+            "end": 9.760000228881836
+          },
+          {
+            "word": "helps",
+            "start": 9.760000228881836,
+            "end": 10.0600004196167
+          },
+          {
+            "word": "you",
+            "start": 10.0600004196167,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "express",
+            "start": 10.739999771118164,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "technical",
+            "start": 10.739999771118164,
+            "end": 11.260000228881836
+          },
+          {
+            "word": "concepts",
+            "start": 11.260000228881836,
+            "end": 11.760000228881836
+          },
+          {
+            "word": "clearly",
+            "start": 11.760000228881836,
+            "end": 12.260000228881836
+          },
+          {
+            "word": "and",
+            "start": 12.260000228881836,
+            "end": 12.84000015258789
+          },
+          {
+            "word": "professionally",
+            "start": 12.84000015258789,
+            "end": 13.220000267028809
+          }
+        ]
+      },
+      {
+        "storyId": "ai-advantage-story",
+        "stepId": "step-5",
+        "voice": "echo",
+        "voiceLabel": "Storyteller (Male UK)",
+        "text": "Your Competitive Edge. Combined with your CS fundamentals, AI makes you formidable. You understand the theory AND you can execute at speed. This course teaches you to wield both together. Let's cross the bridge!",
+        "duration": 15.210000038146973,
+        "words": [
+          {
+            "word": "Your",
+            "start": 0,
+            "end": 0.46000000834465027
+          },
+          {
+            "word": "competitive",
+            "start": 0.46000000834465027,
+            "end": 0.9599999785423279
+          },
+          {
+            "word": "edge",
+            "start": 0.9599999785423279,
+            "end": 1.5199999809265137
+          },
+          {
+            "word": "combined",
+            "start": 2.319999933242798,
+            "end": 2.319999933242798
+          },
+          {
+            "word": "with",
+            "start": 2.319999933242798,
+            "end": 2.5799999237060547
+          },
+          {
+            "word": "your",
+            "start": 2.5799999237060547,
+            "end": 2.859999895095825
+          },
+          {
+            "word": "CS",
+            "start": 2.859999895095825,
+            "end": 3.240000009536743
+          },
+          {
+            "word": "fundamentals",
+            "start": 3.240000009536743,
+            "end": 3.880000114440918
+          },
+          {
+            "word": "AI",
+            "start": 4.460000038146973,
+            "end": 4.699999809265137
+          },
+          {
+            "word": "makes",
+            "start": 4.699999809265137,
+            "end": 4.980000019073486
+          },
+          {
+            "word": "you",
+            "start": 4.980000019073486,
+            "end": 5.239999771118164
+          },
+          {
+            "word": "formidable",
+            "start": 5.239999771118164,
+            "end": 5.739999771118164
+          },
+          {
+            "word": "You",
+            "start": 6.360000133514404,
+            "end": 6.480000019073486
+          },
+          {
+            "word": "understand",
+            "start": 6.480000019073486,
+            "end": 7.039999961853027
+          },
+          {
+            "word": "the",
+            "start": 7.039999961853027,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "theory",
+            "start": 7.579999923706055,
+            "end": 7.579999923706055
+          },
+          {
+            "word": "and",
+            "start": 7.920000076293945,
+            "end": 8.279999732971191
+          },
+          {
+            "word": "you",
+            "start": 8.279999732971191,
+            "end": 8.460000038146973
+          },
+          {
+            "word": "can",
+            "start": 8.460000038146973,
+            "end": 8.739999771118164
+          },
+          {
+            "word": "execute",
+            "start": 8.739999771118164,
+            "end": 9.119999885559082
+          },
+          {
+            "word": "at",
+            "start": 9.119999885559082,
+            "end": 9.5600004196167
+          },
+          {
+            "word": "speed",
+            "start": 9.5600004196167,
+            "end": 9.84000015258789
+          },
+          {
+            "word": "This",
+            "start": 10.579999923706055,
+            "end": 10.739999771118164
+          },
+          {
+            "word": "course",
+            "start": 10.739999771118164,
+            "end": 11.039999961853027
+          },
+          {
+            "word": "teaches",
+            "start": 11.039999961853027,
+            "end": 11.4399995803833
+          },
+          {
+            "word": "you",
+            "start": 11.4399995803833,
+            "end": 11.699999809265137
+          },
+          {
+            "word": "to",
+            "start": 11.699999809265137,
+            "end": 12.15999984741211
+          },
+          {
+            "word": "wield",
+            "start": 12.15999984741211,
+            "end": 12.199999809265137
+          },
+          {
+            "word": "both",
+            "start": 12.199999809265137,
+            "end": 12.699999809265137
+          },
+          {
+            "word": "together",
+            "start": 12.699999809265137,
+            "end": 13.180000305175781
+          },
+          {
+            "word": "Let's",
+            "start": 13.920000076293945,
+            "end": 14.199999809265137
+          },
+          {
+            "word": "cross",
+            "start": 14.199999809265137,
+            "end": 14.460000038146973
+          },
+          {
+            "word": "the",
+            "start": 14.460000038146973,
+            "end": 14.739999771118164
+          },
+          {
+            "word": "bridge",
+            "start": 14.739999771118164,
+            "end": 15.020000457763672
+          }
+        ]
+      }
+    ]
+  }
+}

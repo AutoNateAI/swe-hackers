@@ -1,0 +1,383 @@
+{
+  "pageId": "ch5-capstone1",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "Capstone I: Ship Something Real",
+    "icon": "🔥",
+    "themeColor": "capstone"
+  },
+  "stories": [
+    {
+      "id": "quest-story",
+      "diagramId": "quest",
+      "title": "The Quest: Ship Something Real",
+      "steps": [
+        {
+          "nodeId": "not-school",
+          "icon": "🎯",
+          "title": "This Isn't a School Project",
+          "narration": "This isn't a homework assignment. This is a product. Something that works, that's deployed, that you can demo to a recruiter and say: I built this. Here's how. Here's why.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "deployed",
+          "edges": [{ "from": "not-school", "to": "deployed" }],
+          "icon": "🌐",
+          "title": "Deployed",
+          "narration": "Your project lives on the internet, not just localhost. Anyone with the URL can use it. That means real hosting, real domains, real infrastructure decisions.",
+          "connectsTo": "Not School"
+        },
+        {
+          "nodeId": "tested",
+          "edges": [{ "from": "not-school", "to": "tested" }],
+          "icon": "✅",
+          "title": "Tested",
+          "narration": "Unit tests and integration tests that run automatically in CI. When you push code, GitHub Actions runs your test suite. No manual testing, no hoping it works.",
+          "connectsTo": "Not School"
+        },
+        {
+          "nodeId": "documented",
+          "edges": [{ "from": "not-school", "to": "documented" }],
+          "icon": "📚",
+          "title": "Documented",
+          "narration": "A real README that explains setup. Architecture docs that show how pieces connect. API documentation so others can use your endpoints. Professional communication.",
+          "connectsTo": "Not School"
+        },
+        {
+          "nodeId": "portfolio-piece",
+          "edges": [
+            { "from": "deployed", "to": "portfolio-piece" },
+            { "from": "tested", "to": "portfolio-piece" },
+            { "from": "documented", "to": "portfolio-piece" }
+          ],
+          "icon": "💼",
+          "title": "Interview-Ready",
+          "narration": "When a recruiter asks 'Tell me about a project you've built,' this is your answer. Architecture diagrams, deployed URL, GitHub link, test coverage. Everything a senior engineer would have.",
+          "connectsTo": "All Requirements"
+        }
+      ]
+    },
+    {
+      "id": "architecture-story",
+      "diagramId": "architecture",
+      "title": "Choose Your Path",
+      "steps": [
+        {
+          "nodeId": "choose-path",
+          "icon": "🛤️",
+          "title": "Three Paths to Choose",
+          "narration": "You have three options for your capstone. Each teaches the same production skills but lets you focus on what interests you most. Choose based on what you want in your portfolio.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "dev-tool",
+          "edges": [{ "from": "choose-path", "to": "dev-tool" }],
+          "icon": "🔧",
+          "title": "Option A: Developer Tool",
+          "narration": "Build a CLI or web tool that solves a real developer problem. A dependency analyzer, code snippet manager, git helper, or API mock generator. Tools developers actually need.",
+          "connectsTo": "Choose Path"
+        },
+        {
+          "nodeId": "saas-product",
+          "edges": [{ "from": "choose-path", "to": "saas-product" }],
+          "icon": "☁️",
+          "title": "Option B: SaaS Product",
+          "narration": "Build a web application with authentication, data storage, and real features. A habit tracker, bookmark manager, study group coordinator. Something people would actually use.",
+          "connectsTo": "Choose Path"
+        },
+        {
+          "nodeId": "api-platform",
+          "edges": [{ "from": "choose-path", "to": "api-platform" }],
+          "icon": "🔌",
+          "title": "Option C: API Platform",
+          "narration": "Build a production-ready API that other developers could use. A mock data generator, file conversion service, webhook forwarder. Backend-focused with clean documentation.",
+          "connectsTo": "Choose Path"
+        },
+        {
+          "nodeId": "full-stack",
+          "edges": [
+            { "from": "dev-tool", "to": "full-stack" },
+            { "from": "saas-product", "to": "full-stack" },
+            { "from": "api-platform", "to": "full-stack" }
+          ],
+          "icon": "🏗️",
+          "title": "Full-Stack Architecture",
+          "narration": "All paths lead to the same architecture: Frontend or CLI, FastAPI backend, auth service, PostgreSQL database, Redis cache, and CI/CD with GitHub Actions deploying to Railway or Vercel.",
+          "connectsTo": "All Options"
+        }
+      ]
+    },
+    {
+      "id": "requirements-story",
+      "diagramId": "requirements",
+      "title": "Must-Have Requirements",
+      "steps": [
+        {
+          "nodeId": "four-pillars",
+          "icon": "🏛️",
+          "title": "The Four Pillars",
+          "narration": "Your capstone must meet requirements in four areas: Code Quality, Data Layer, API Layer, and Deployment. Let's break down what production-ready looks like for each.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "code-quality",
+          "edges": [{ "from": "four-pillars", "to": "code-quality" }],
+          "icon": "📝",
+          "title": "Code Quality",
+          "narration": "Clean, documented code that someone else could contribute to. Comprehensive tests with 80 percent plus coverage. Type hints throughout. Formatting with Black and isort.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "data-layer",
+          "edges": [{ "from": "four-pillars", "to": "data-layer" }],
+          "icon": "🗄️",
+          "title": "Data Layer",
+          "narration": "A real database with proper migrations, not just a JSON file. Repository pattern for data access. Caching where appropriate. Your data layer should be swappable.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "api-layer",
+          "edges": [{ "from": "four-pillars", "to": "api-layer" }],
+          "icon": "🔌",
+          "title": "API Layer",
+          "narration": "RESTful API design following best practices. OpenAPI and Swagger documentation that's auto-generated. Authentication, even if simple. Proper error handling with meaningful messages.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "deployment",
+          "edges": [{ "from": "four-pillars", "to": "deployment" }],
+          "icon": "🚀",
+          "title": "Deployment",
+          "narration": "CI/CD pipeline with GitHub Actions that runs tests on every push. Deployed to production on Railway, Vercel, or similar. Environment-based config for dev, staging, and prod. Health checks and monitoring.",
+          "connectsTo": "Four Pillars"
+        },
+        {
+          "nodeId": "production-ready",
+          "edges": [
+            { "from": "code-quality", "to": "production-ready" },
+            { "from": "data-layer", "to": "production-ready" },
+            { "from": "api-layer", "to": "production-ready" },
+            { "from": "deployment", "to": "production-ready" }
+          ],
+          "icon": "✨",
+          "title": "Production Ready",
+          "narration": "Hit all four pillars and you have a production-ready application. Not a toy project—a real system that demonstrates senior-level engineering practices.",
+          "connectsTo": "All Pillars"
+        }
+      ]
+    },
+    {
+      "id": "quality-story",
+      "diagramId": "quality",
+      "title": "School vs Production Quality",
+      "steps": [
+        {
+          "nodeId": "the-difference",
+          "icon": "💎",
+          "title": "The Quality Gap",
+          "narration": "There's a massive gap between 'works on my machine' and 'production quality.' Let's see what separates a school project from a portfolio piece that impresses senior engineers.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "works-vs-deployed",
+          "edges": [{ "from": "the-difference", "to": "works-vs-deployed" }],
+          "icon": "🌐",
+          "title": "Works vs Deployed",
+          "narration": "School projects work on your laptop. Production code is deployed with CI/CD and Docker. Your GitHub repo should have a live URL, not just instructions to run locally.",
+          "connectsTo": "Quality Gap"
+        },
+        {
+          "nodeId": "print-vs-logging",
+          "edges": [{ "from": "the-difference", "to": "print-vs-logging" }],
+          "icon": "📊",
+          "title": "Print vs Structured Logging",
+          "narration": "School projects use print debug. Production uses structured logging with levels—info, warning, error. Logs are searchable, timestamped, and include context.",
+          "connectsTo": "Quality Gap"
+        },
+        {
+          "nodeId": "pass-vs-handle",
+          "edges": [{ "from": "the-difference", "to": "pass-vs-handle" }],
+          "icon": "🛡️",
+          "title": "Pass vs Handle Errors",
+          "narration": "School projects ignore errors with 'if error pass.' Production code has proper error handling with user-friendly messages, error tracking, and graceful degradation.",
+          "connectsTo": "Quality Gap"
+        },
+        {
+          "nodeId": "no-tests-vs-coverage",
+          "edges": [{ "from": "the-difference", "to": "no-tests-vs-coverage" }],
+          "icon": "✅",
+          "title": "No Tests vs 80% Coverage",
+          "narration": "School projects have no tests. Production code has 80 percent plus coverage that runs in CI. Tests aren't optional—they're how you prove your code works.",
+          "connectsTo": "Quality Gap"
+        },
+        {
+          "nodeId": "senior-standard",
+          "edges": [
+            { "from": "works-vs-deployed", "to": "senior-standard" },
+            { "from": "print-vs-logging", "to": "senior-standard" },
+            { "from": "pass-vs-handle", "to": "senior-standard" },
+            { "from": "no-tests-vs-coverage", "to": "senior-standard" }
+          ],
+          "icon": "🏆",
+          "title": "Senior Engineer Standard",
+          "narration": "This is what separates junior from senior. When you ship code that meets these standards, you're not just completing an assignment—you're demonstrating professional engineering practices.",
+          "connectsTo": "All Standards"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "quest-story",
+      "questions": [
+        {
+          "question": "What's the main difference between a school project and a capstone project?",
+          "options": [
+            "Capstone projects are longer",
+            "Capstone projects are deployed, tested, and documented like real products",
+            "Capstone projects use more advanced languages",
+            "Capstone projects don't need to work"
+          ],
+          "correct": 1,
+          "explanation": "A capstone is a product, not homework. It's deployed (live on the internet), tested (CI runs tests automatically), and documented (README, API docs, architecture diagrams)."
+        },
+        {
+          "question": "Why is deployment important for a portfolio piece?",
+          "options": [
+            "It makes the code run faster",
+            "Recruiters can see it's real, not just claims about 'works on my machine'",
+            "It's required by GitHub",
+            "It reduces the need for documentation"
+          ],
+          "correct": 1,
+          "explanation": "A deployed URL proves your project actually works. Anyone can click the link and use it. 'Works on my machine' doesn't impress recruiters—a live demo does."
+        },
+        {
+          "question": "What should you be able to say to a recruiter about your capstone?",
+          "options": [
+            "I followed a tutorial to build it",
+            "I built this. Here's how. Here's why.",
+            "My professor helped me with most of it",
+            "It's just a homework assignment"
+          ],
+          "correct": 1,
+          "explanation": "Own your work. Be ready to explain the architecture, the tradeoffs, and your decision-making process. This is YOUR project that demonstrates YOUR skills."
+        }
+      ]
+    },
+    {
+      "storyId": "architecture-story",
+      "questions": [
+        {
+          "question": "What are the three path options for the capstone?",
+          "options": [
+            "Mobile app, Desktop app, Web app",
+            "Developer Tool, SaaS Product, API Platform",
+            "Frontend, Backend, Full-stack",
+            "Python, JavaScript, Go"
+          ],
+          "correct": 1,
+          "explanation": "The three paths are: Developer Tool (CLI/web tool for devs), SaaS Product (web app with auth and storage), and API Platform (production-ready API for other developers)."
+        },
+        {
+          "question": "What database does the typical architecture use?",
+          "options": [
+            "MongoDB",
+            "SQLite",
+            "PostgreSQL",
+            "JSON files"
+          ],
+          "correct": 2,
+          "explanation": "The typical architecture uses PostgreSQL as the primary database, with Redis for caching. PostgreSQL is a production-grade database used by most professional applications."
+        },
+        {
+          "question": "Where should the capstone be deployed?",
+          "options": [
+            "Only on localhost",
+            "Railway, Vercel, or similar production hosting",
+            "On a USB drive",
+            "Deployment isn't required"
+          ],
+          "correct": 1,
+          "explanation": "Your capstone must be deployed to production hosting like Railway, Vercel, Heroku, or similar. The whole point is having a live URL you can share."
+        }
+      ]
+    },
+    {
+      "storyId": "requirements-story",
+      "questions": [
+        {
+          "question": "What are the four pillars of capstone requirements?",
+          "options": [
+            "Speed, Size, Style, Scale",
+            "Code Quality, Data Layer, API Layer, Deployment",
+            "Frontend, Backend, Database, Tests",
+            "Design, Development, Debugging, Documentation"
+          ],
+          "correct": 1,
+          "explanation": "The four pillars are: Code Quality (tests, types, formatting), Data Layer (database, migrations, caching), API Layer (REST, docs, auth), and Deployment (CI/CD, hosting, monitoring)."
+        },
+        {
+          "question": "What test coverage percentage is expected?",
+          "options": [
+            "10%",
+            "50%",
+            "80%+",
+            "Tests aren't required"
+          ],
+          "correct": 2,
+          "explanation": "80%+ test coverage is expected. Tests should run automatically in CI (GitHub Actions). This proves your code works and makes refactoring safer."
+        },
+        {
+          "question": "What's the Repository pattern used for?",
+          "options": [
+            "Managing Git repositories",
+            "Data access abstraction that makes the data layer swappable",
+            "Creating API documentation",
+            "Running tests"
+          ],
+          "correct": 1,
+          "explanation": "The Repository pattern abstracts data access, so you could swap PostgreSQL for another database without changing your business logic. It's a professional data layer practice."
+        }
+      ]
+    },
+    {
+      "storyId": "quality-story",
+      "questions": [
+        {
+          "question": "What replaces 'print(debug)' in production code?",
+          "options": [
+            "More print statements",
+            "Structured logging with levels (info, warning, error)",
+            "Nothing—debugging isn't needed in production",
+            "Console.log"
+          ],
+          "correct": 1,
+          "explanation": "Production code uses structured logging with levels (info, warning, error). Logs are timestamped, searchable, and include context—not random print statements."
+        },
+        {
+          "question": "What's wrong with 'if error: pass' in production code?",
+          "options": [
+            "The syntax is incorrect",
+            "It silently ignores errors instead of handling them properly",
+            "It's too verbose",
+            "Python doesn't support this pattern"
+          ],
+          "correct": 1,
+          "explanation": "Silently ignoring errors hides bugs and confuses users. Production code has proper error handling with user-friendly messages, logging, and graceful degradation."
+        },
+        {
+          "question": "What demonstrates senior-level engineering practices?",
+          "options": [
+            "Writing code as fast as possible",
+            "Deployed code with CI/CD, tests, logging, and error handling",
+            "Using the newest frameworks",
+            "Writing long comments"
+          ],
+          "correct": 1,
+          "explanation": "Senior engineers ship production-quality code: deployed with CI/CD, comprehensive tests, structured logging, proper error handling. It's about practices, not just code."
+        }
+      ]
+    }
+  ]
+}

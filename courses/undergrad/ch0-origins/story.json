@@ -1,0 +1,281 @@
+{
+  "pageId": "ch0-origins",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "The Bridge",
+    "icon": "🌉",
+    "themeColor": "bridge"
+  },
+  "stories": [
+    {
+      "id": "gap-story",
+      "diagramId": "gap",
+      "title": "The Gap Nobody Talks About",
+      "steps": [
+        {
+          "nodeId": "cs-degree",
+          "icon": "🎓",
+          "title": "Your CS Degree",
+          "narration": "Your CS degree gave you something powerful: the ability to think computationally. Algorithms, data structures, theory of computation—these are timeless fundamentals that never go out of style.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "the-gap",
+          "edges": [{ "from": "cs-degree", "to": "the-gap" }],
+          "icon": "🕳️",
+          "title": "The Hidden Gap",
+          "narration": "But here's the truth nobody tells you: your degree taught you to think, not to ship. Academic programs focus on clean, isolated problems. Industry throws you into messy, evolving systems.",
+          "connectsTo": "CS Degree"
+        },
+        {
+          "nodeId": "academic-world",
+          "edges": [{ "from": "the-gap", "to": "academic-world" }],
+          "icon": "📚",
+          "title": "Academic World",
+          "narration": "In school, you had clear specs, solo projects, and problems with known solutions. You implemented hash maps from scratch and analyzed sorting algorithms. The problems were hard but well-defined.",
+          "connectsTo": "The Gap"
+        },
+        {
+          "nodeId": "industry-world",
+          "edges": [{ "from": "the-gap", "to": "industry-world" }],
+          "icon": "🏢",
+          "title": "Industry Reality",
+          "narration": "In industry, you inherit legacy code with technical debt. Requirements change mid-sprint. You debug across distributed systems. You collaborate with teams who have different opinions. The problems are ambiguous.",
+          "connectsTo": "The Gap"
+        },
+        {
+          "nodeId": "bridge",
+          "edges": [{ "from": "academic-world", "to": "bridge" }, { "from": "industry-world", "to": "bridge" }],
+          "icon": "🌉",
+          "title": "This Is Your Bridge",
+          "narration": "This course is your bridge. We don't replace your fundamentals—we translate them. You'll learn how theory becomes practice, how algorithms become systems, and how to ship code that actually runs in production.",
+          "connectsTo": "Both Worlds"
+        }
+      ]
+    },
+    {
+      "id": "translation-story",
+      "diagramId": "translation",
+      "title": "Your Skills, Translated",
+      "steps": [
+        {
+          "nodeId": "solid-foundation",
+          "icon": "🏗️",
+          "title": "Your Solid Foundation",
+          "narration": "Good news: you already have the foundation. Every concept you learned in school has a direct counterpart in industry. The challenge is learning to see the connections.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "data-structures",
+          "edges": [{ "from": "solid-foundation", "to": "data-structures" }],
+          "icon": "📊",
+          "title": "Data Structures → Databases",
+          "narration": "Arrays, trees, and graphs become database schemas, indexes, and caching strategies. Your understanding of hash maps helps you design efficient queries. The principles transfer directly.",
+          "connectsTo": "Foundation"
+        },
+        {
+          "nodeId": "oop-architecture",
+          "edges": [{ "from": "solid-foundation", "to": "oop-architecture" }],
+          "icon": "🔌",
+          "title": "OOP → System Architecture",
+          "narration": "Encapsulation and inheritance scale up to services, APIs, and contracts. A microservice is just encapsulation at the network level. The patterns you learned apply at every scale.",
+          "connectsTo": "Foundation"
+        },
+        {
+          "nodeId": "algorithms-perf",
+          "edges": [{ "from": "solid-foundation", "to": "algorithms-perf" }],
+          "icon": "⚡",
+          "title": "Algorithms → Performance",
+          "narration": "Your algorithm analysis skills become performance optimization. You'll profile production systems, identify bottlenecks, and make scaling decisions. Big-O still matters—just in new contexts.",
+          "connectsTo": "Foundation"
+        },
+        {
+          "nodeId": "networking-apis",
+          "edges": [{ "from": "solid-foundation", "to": "networking-apis" }],
+          "icon": "🌐",
+          "title": "Networking → API Design",
+          "narration": "TCP/IP and protocols become REST, GraphQL, and gRPC. Understanding how the network actually works gives you superpowers when designing and debugging APIs.",
+          "connectsTo": "Foundation"
+        },
+        {
+          "nodeId": "industry-ready",
+          "edges": [{ "from": "data-structures", "to": "industry-ready" }, { "from": "oop-architecture", "to": "industry-ready" }, { "from": "algorithms-perf", "to": "industry-ready" }, { "from": "networking-apis", "to": "industry-ready" }],
+          "icon": "🚀",
+          "title": "Industry Ready",
+          "narration": "By the end of this course, you'll see the connections clearly. Your academic knowledge becomes your competitive advantage. You don't just code—you understand why things work.",
+          "connectsTo": "All Skills"
+        }
+      ]
+    },
+    {
+      "id": "ai-advantage-story",
+      "diagramId": "ai-advantage",
+      "title": "Your AI Advantage",
+      "steps": [
+        {
+          "nodeId": "perfect-timing",
+          "icon": "⏰",
+          "title": "Perfect Timing",
+          "narration": "You're entering the industry at the perfect moment. AI tools let you punch above your experience level from day one. This is a superpower previous generations didn't have.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "understand-faster",
+          "edges": [{ "from": "perfect-timing", "to": "understand-faster" }],
+          "icon": "🔍",
+          "title": "Understand Faster",
+          "narration": "Use AI to explain legacy code, map system architecture, and trace data flows. Before asking teammates, get AI to help you understand. You'll ask smarter questions and ramp up faster.",
+          "connectsTo": "Perfect Timing"
+        },
+        {
+          "nodeId": "build-smarter",
+          "edges": [{ "from": "perfect-timing", "to": "build-smarter" }],
+          "icon": "🏗️",
+          "title": "Build Smarter",
+          "narration": "AI generates boilerplate, implements patterns, and writes tests. You focus on design decisions and architecture—the parts that require human judgment. Work at a higher level of abstraction.",
+          "connectsTo": "Perfect Timing"
+        },
+        {
+          "nodeId": "learn-continuously",
+          "edges": [{ "from": "perfect-timing", "to": "learn-continuously" }],
+          "icon": "📚",
+          "title": "Learn Continuously",
+          "narration": "AI explains concepts, finds best practices, and reviews your code. It's like having a senior engineer available 24/7 to answer questions and provide feedback.",
+          "connectsTo": "Perfect Timing"
+        },
+        {
+          "nodeId": "communicate-better",
+          "edges": [{ "from": "perfect-timing", "to": "communicate-better" }],
+          "icon": "💬",
+          "title": "Communicate Better",
+          "narration": "Draft documentation, prepare for meetings, write clear PRs. Communication is half the job, and AI helps you express technical concepts clearly and professionally.",
+          "connectsTo": "Perfect Timing"
+        },
+        {
+          "nodeId": "competitive-edge",
+          "edges": [{ "from": "understand-faster", "to": "competitive-edge" }, { "from": "build-smarter", "to": "competitive-edge" }, { "from": "learn-continuously", "to": "competitive-edge" }, { "from": "communicate-better", "to": "competitive-edge" }],
+          "icon": "🏆",
+          "title": "Your Competitive Edge",
+          "narration": "Combined with your CS fundamentals, AI makes you formidable. You understand the theory AND you can execute at speed. This course teaches you to wield both together. Let's cross the bridge!",
+          "connectsTo": "All Advantages"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "gap-story",
+      "questions": [
+        {
+          "question": "What's the main gap between academic and industry coding?",
+          "options": [
+            "Industry uses harder programming languages",
+            "Academic problems are easier",
+            "Industry requires working with ambiguity, legacy code, and teams",
+            "Industry pays more so the work is harder"
+          ],
+          "correct": 2,
+          "explanation": "Industry work involves unclear requirements, inherited codebases, and collaboration—challenges that clean academic problems don't prepare you for directly."
+        },
+        {
+          "question": "Why is your CS degree still valuable in industry?",
+          "options": [
+            "It's required to get past HR",
+            "It taught you fundamentals that translate to production skills",
+            "Companies need people who can implement sorting algorithms",
+            "It proves you can follow instructions"
+          ],
+          "correct": 1,
+          "explanation": "Your CS fundamentals—algorithms, data structures, computational thinking—directly translate to industry skills. You understand WHY things work, not just HOW."
+        },
+        {
+          "question": "What does 'taught to think, not to ship' mean?",
+          "options": [
+            "Academic programs don't teach anything useful",
+            "Industry doesn't value thinking",
+            "School focuses on understanding concepts, not deploying production systems",
+            "You need to think less and ship more"
+          ],
+          "correct": 2,
+          "explanation": "Academic programs prioritize deep understanding of concepts. Industry requires taking that understanding and building reliable systems that serve real users at scale."
+        }
+      ]
+    },
+    {
+      "storyId": "translation-story",
+      "questions": [
+        {
+          "question": "How do data structures translate to industry skills?",
+          "options": [
+            "They don't—industry uses databases instead",
+            "You'll implement red-black trees in production",
+            "Understanding hash maps helps you design efficient database queries",
+            "Data structures are only for interviews"
+          ],
+          "correct": 2,
+          "explanation": "Your knowledge of data structures directly informs database design, caching strategies, and query optimization. The same principles apply at different scales."
+        },
+        {
+          "question": "What's the industry equivalent of OOP principles?",
+          "options": [
+            "Industry abandoned OOP for functional programming",
+            "System architecture: services, APIs, and contracts",
+            "OOP is the same in industry",
+            "There is no equivalent"
+          ],
+          "correct": 1,
+          "explanation": "Encapsulation and inheritance scale up to microservices and API contracts. A service is just encapsulation at the network level—the patterns transfer directly!"
+        },
+        {
+          "question": "Why does Big-O analysis still matter in industry?",
+          "options": [
+            "It doesn't—we have fast computers now",
+            "Only for interview prep",
+            "It guides performance optimization and scaling decisions",
+            "It's required for code reviews"
+          ],
+          "correct": 2,
+          "explanation": "When your code runs millions of times, algorithmic complexity determines if your system scales or crashes. Big-O analysis is crucial for production performance work."
+        }
+      ]
+    },
+    {
+      "storyId": "ai-advantage-story",
+      "questions": [
+        {
+          "question": "Why is now the 'perfect time' to enter the industry?",
+          "options": [
+            "Job market is great",
+            "AI tools let new grads work at a higher level immediately",
+            "Salaries are at all-time highs",
+            "Remote work is more common"
+          ],
+          "correct": 1,
+          "explanation": "AI tools give new grads capabilities that took previous generations years to develop. You can understand codebases faster, generate code, and learn continuously."
+        },
+        {
+          "question": "How should you use AI when joining a new team?",
+          "options": [
+            "Ask AI to do all your work",
+            "Avoid AI to prove your skills",
+            "Use AI to understand the codebase before asking teammates",
+            "Only use AI for writing tests"
+          ],
+          "correct": 2,
+          "explanation": "Use AI to explore and understand the codebase first. You'll ramp up faster, ask smarter questions when you do need help, and impress with your initiative."
+        },
+        {
+          "question": "What's your ultimate competitive advantage?",
+          "options": [
+            "Just AI skills",
+            "Just CS fundamentals",
+            "CS fundamentals combined with AI execution speed",
+            "Working longer hours"
+          ],
+          "correct": 2,
+          "explanation": "Your CS fundamentals help you understand why things work. AI helps you execute at speed. Together, they make you formidable—understanding AND velocity."
+        }
+      ]
+    }
+  ]
+}

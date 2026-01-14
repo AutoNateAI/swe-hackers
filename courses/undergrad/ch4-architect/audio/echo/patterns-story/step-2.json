@@ -1,0 +1,145 @@
+{
+  "storyId": "patterns-story",
+  "stepId": "step-2",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "Caching Layer. Third pattern: caching. Store frequently accessed data in Redis or Memcached. Cache-aside, write-through, or write-behind. Caching turns slow operations into fast ones.",
+  "duration": 13.84000015258789,
+  "words": [
+    {
+      "word": "Caching",
+      "start": 0,
+      "end": 0.47999998927116394
+    },
+    {
+      "word": "layer",
+      "start": 0.47999998927116394,
+      "end": 0.8999999761581421
+    },
+    {
+      "word": "Third",
+      "start": 1.8200000524520874,
+      "end": 1.8200000524520874
+    },
+    {
+      "word": "pattern",
+      "start": 1.8200000524520874,
+      "end": 2.200000047683716
+    },
+    {
+      "word": "caching",
+      "start": 3.0799999237060547,
+      "end": 3.0799999237060547
+    },
+    {
+      "word": "Store",
+      "start": 3.9600000381469727,
+      "end": 3.9600000381469727
+    },
+    {
+      "word": "frequently",
+      "start": 3.9600000381469727,
+      "end": 4.539999961853027
+    },
+    {
+      "word": "accessed",
+      "start": 4.539999961853027,
+      "end": 5
+    },
+    {
+      "word": "data",
+      "start": 5,
+      "end": 5.360000133514404
+    },
+    {
+      "word": "in",
+      "start": 5.360000133514404,
+      "end": 5.739999771118164
+    },
+    {
+      "word": "Redis",
+      "start": 5.739999771118164,
+      "end": 6
+    },
+    {
+      "word": "or",
+      "start": 6,
+      "end": 6.420000076293945
+    },
+    {
+      "word": "Memcached",
+      "start": 6.420000076293945,
+      "end": 6.940000057220459
+    },
+    {
+      "word": "Cache",
+      "start": 7.880000114440918,
+      "end": 7.940000057220459
+    },
+    {
+      "word": "aside",
+      "start": 7.940000057220459,
+      "end": 8.399999618530273
+    },
+    {
+      "word": "write",
+      "start": 8.9399995803833,
+      "end": 9.039999961853027
+    },
+    {
+      "word": "through",
+      "start": 9.039999961853027,
+      "end": 9.300000190734863
+    },
+    {
+      "word": "or",
+      "start": 9.300000190734863,
+      "end": 9.539999961853027
+    },
+    {
+      "word": "write",
+      "start": 9.539999961853027,
+      "end": 9.819999694824219
+    },
+    {
+      "word": "behind",
+      "start": 9.819999694824219,
+      "end": 10.15999984741211
+    },
+    {
+      "word": "Caching",
+      "start": 10.979999542236328,
+      "end": 10.979999542236328
+    },
+    {
+      "word": "turns",
+      "start": 10.979999542236328,
+      "end": 11.399999618530273
+    },
+    {
+      "word": "slow",
+      "start": 11.399999618530273,
+      "end": 11.760000228881836
+    },
+    {
+      "word": "operations",
+      "start": 11.760000228881836,
+      "end": 12.300000190734863
+    },
+    {
+      "word": "into",
+      "start": 12.300000190734863,
+      "end": 12.720000267028809
+    },
+    {
+      "word": "fast",
+      "start": 12.720000267028809,
+      "end": 13.100000381469727
+    },
+    {
+      "word": "ones",
+      "start": 13.100000381469727,
+      "end": 13.380000114440918
+    }
+  ]
+}

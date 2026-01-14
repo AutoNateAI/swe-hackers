@@ -1,0 +1,265 @@
+{
+  "pageId": "ch2-lightning",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "Lightning Paths",
+    "icon": "⚡",
+    "themeColor": "lightning"
+  },
+  "stories": [
+    {
+      "id": "async-story",
+      "diagramId": "async",
+      "title": "Sync vs Async",
+      "steps": [
+        {
+          "nodeId": "sync-problem",
+          "icon": "⏳",
+          "title": "The Waiting Problem",
+          "narration": "In synchronous code, each operation blocks until it completes. Get user data—wait. Get orders—wait. Get reviews—wait. Your total time is the sum of all waiting.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "blocking-io",
+          "edges": [{ "from": "sync-problem", "to": "blocking-io" }],
+          "icon": "🚫",
+          "title": "Blocking I/O",
+          "narration": "Most of that waiting isn't CPU work—it's I/O. Database calls, API requests, file reads. Your program sits idle while waiting for responses.",
+          "connectsTo": "Waiting Problem"
+        },
+        {
+          "nodeId": "async-concept",
+          "edges": [{ "from": "blocking-io", "to": "async-concept" }],
+          "icon": "⚡",
+          "title": "Async to the Rescue",
+          "narration": "Asynchronous code doesn't wait. Start all three requests at once, and your total time becomes the maximum of any single request, not the sum!",
+          "connectsTo": "Blocking I/O"
+        },
+        {
+          "nodeId": "concurrent",
+          "edges": [{ "from": "async-concept", "to": "concurrent" }],
+          "icon": "🔄",
+          "title": "Concurrent Execution",
+          "narration": "With async await and gather, you can fire off multiple operations simultaneously. While one waits for the database, another waits for the API—all at once.",
+          "connectsTo": "Async Concept"
+        },
+        {
+          "nodeId": "scale-impact",
+          "edges": [{ "from": "concurrent", "to": "scale-impact" }],
+          "icon": "📈",
+          "title": "The Scale Impact",
+          "narration": "At scale, this is the difference between handling one thousand and ten thousand requests per second. Same operations, same hardware, dramatically better throughput!",
+          "connectsTo": "Concurrent Execution"
+        }
+      ]
+    },
+    {
+      "id": "events-story",
+      "diagramId": "events",
+      "title": "Event-Driven Architecture",
+      "steps": [
+        {
+          "nodeId": "request-response",
+          "icon": "🔗",
+          "title": "The Coupling Problem",
+          "narration": "In request-response architecture, services call each other directly and wait. Order service calls payment, which calls inventory, which calls shipping. One chain, all waiting.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "publish-subscribe",
+          "edges": [{ "from": "request-response", "to": "publish-subscribe" }],
+          "icon": "📨",
+          "title": "Publish-Subscribe",
+          "narration": "Event-driven flips this model. Services publish events to a message queue. Other services subscribe to events they care about. No direct calls, no waiting!",
+          "connectsTo": "Coupling Problem"
+        },
+        {
+          "nodeId": "decoupling",
+          "edges": [{ "from": "publish-subscribe", "to": "decoupling" }],
+          "icon": "🔓",
+          "title": "Decoupling Benefits",
+          "narration": "Services don't need to know about each other. Add a new analytics consumer? Just subscribe to the events. No changes to the producer needed.",
+          "connectsTo": "Pub-Sub"
+        },
+        {
+          "nodeId": "resilience",
+          "edges": [{ "from": "publish-subscribe", "to": "resilience" }],
+          "icon": "🛡️",
+          "title": "Built-In Resilience",
+          "narration": "If a consumer is down, messages wait in the queue. No data lost. When the consumer recovers, it processes the backlog. The system self-heals!",
+          "connectsTo": "Pub-Sub"
+        },
+        {
+          "nodeId": "instant-response",
+          "edges": [{ "from": "decoupling", "to": "instant-response" }, { "from": "resilience", "to": "instant-response" }],
+          "icon": "⚡",
+          "title": "Instant User Response",
+          "narration": "Best of all, you respond to users immediately. 'Order confirmed!' Then payment, inventory, and shipping process in the background. Users love fast responses!",
+          "connectsTo": "Decoupling + Resilience"
+        }
+      ]
+    },
+    {
+      "id": "patterns-story",
+      "diagramId": "patterns",
+      "title": "Production Patterns",
+      "steps": [
+        {
+          "nodeId": "failure-reality",
+          "icon": "💥",
+          "title": "Failure is Inevitable",
+          "narration": "In production, things fail. Networks hiccup, services crash, databases timeout. Your code must handle failure gracefully, not just hope it doesn't happen.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "retry-backoff",
+          "edges": [{ "from": "failure-reality", "to": "retry-backoff" }],
+          "icon": "🔁",
+          "title": "Retry with Backoff",
+          "narration": "When a call fails, retry—but not immediately! Wait two seconds, then four, then eight. Exponential backoff gives the failing service time to recover.",
+          "connectsTo": "Failure Reality"
+        },
+        {
+          "nodeId": "dead-letter",
+          "edges": [{ "from": "retry-backoff", "to": "dead-letter" }],
+          "icon": "💀",
+          "title": "Dead Letter Queue",
+          "narration": "After max retries, don't lose the message. Send it to a dead letter queue for investigation. Ops can debug why it failed and replay it later.",
+          "connectsTo": "Retry Backoff"
+        },
+        {
+          "nodeId": "circuit-breaker",
+          "edges": [{ "from": "failure-reality", "to": "circuit-breaker" }],
+          "icon": "🔌",
+          "title": "Circuit Breaker",
+          "narration": "If a service is down, stop hammering it! After five failures, the circuit opens—requests fail fast. After thirty seconds, try one request. Success? Circuit closes.",
+          "connectsTo": "Failure Reality"
+        },
+        {
+          "nodeId": "graceful-degradation",
+          "edges": [{ "from": "circuit-breaker", "to": "graceful-degradation" }, { "from": "dead-letter", "to": "graceful-degradation" }],
+          "icon": "✅",
+          "title": "Graceful Degradation",
+          "narration": "Together, these patterns let your system degrade gracefully under failure. Some features may be unavailable, but the core keeps running. That's production-grade reliability!",
+          "connectsTo": "All Patterns"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "async-story",
+      "questions": [
+        {
+          "question": "If three database calls take 100ms, 150ms, and 100ms each, what's the total time with async gather?",
+          "options": [
+            "350ms (sum of all)",
+            "150ms (max of all)",
+            "100ms (min of all)",
+            "116ms (average)"
+          ],
+          "correct": 1,
+          "explanation": "With async gather, all three calls run concurrently. Total time is the maximum of any single call—150ms—not the sum!"
+        },
+        {
+          "question": "What is 'blocking I/O' and why is it a problem?",
+          "options": [
+            "CPU-intensive calculations that slow things down",
+            "Operations that make your program wait idle for external responses",
+            "Memory allocation issues",
+            "Network security blocks"
+          ],
+          "correct": 1,
+          "explanation": "Blocking I/O means your program sits idle waiting for database, API, or file responses. Async lets you do other work during that wait time."
+        },
+        {
+          "question": "At scale, what's the practical difference between sync and async processing?",
+          "options": [
+            "No difference—it's just cleaner code",
+            "Async uses more memory",
+            "The difference between 1,000 and 10,000+ requests per second",
+            "Sync is actually faster for production"
+          ],
+          "correct": 2,
+          "explanation": "Async dramatically improves throughput because the server can handle many concurrent requests instead of processing them one by one."
+        }
+      ]
+    },
+    {
+      "storyId": "events-story",
+      "questions": [
+        {
+          "question": "What happens to messages if a consumer service goes down in event-driven architecture?",
+          "options": [
+            "Messages are lost forever",
+            "Messages wait in the queue until the consumer recovers",
+            "The producer crashes too",
+            "Messages are sent to a different consumer automatically"
+          ],
+          "correct": 1,
+          "explanation": "Messages persist in the queue. When the consumer comes back online, it processes the backlog. No data lost, and the system self-heals."
+        },
+        {
+          "question": "Why is decoupling important in event-driven systems?",
+          "options": [
+            "It makes code run faster",
+            "Services don't need to know about each other—you can add consumers without changing producers",
+            "It reduces memory usage",
+            "It eliminates all bugs"
+          ],
+          "correct": 1,
+          "explanation": "Decoupling means services are independent. Add a new analytics service? Just subscribe to events. No changes to existing services needed."
+        },
+        {
+          "question": "A payment service takes 5 seconds. How should you handle checkout?",
+          "options": [
+            "Make users wait 5 seconds",
+            "Increase the timeout to 10 seconds",
+            "Accept the order immediately, process payment async in background",
+            "Add more payment servers"
+          ],
+          "correct": 2,
+          "explanation": "Accept the order, respond 'Order Confirmed' instantly, then publish a PaymentNeeded event. Users love fast responses!"
+        }
+      ]
+    },
+    {
+      "storyId": "patterns-story",
+      "questions": [
+        {
+          "question": "What is exponential backoff and why use it?",
+          "options": [
+            "Increasing server capacity exponentially",
+            "Waiting longer between each retry attempt to give failing services time to recover",
+            "Reducing request size exponentially",
+            "A type of load balancing"
+          ],
+          "correct": 1,
+          "explanation": "Wait 2s, then 4s, then 8s between retries. This gives the failing service time to recover without overwhelming it with retry requests."
+        },
+        {
+          "question": "What's the purpose of a dead letter queue?",
+          "options": [
+            "To store deleted messages",
+            "To hold messages that failed after max retries for investigation and replay",
+            "To speed up message processing",
+            "To encrypt sensitive messages"
+          ],
+          "correct": 1,
+          "explanation": "Dead letter queues catch messages that repeatedly fail. Ops can investigate why and replay them once the issue is fixed. No data lost!"
+        },
+        {
+          "question": "When does a circuit breaker 'open' and what happens?",
+          "options": [
+            "When requests succeed—it processes faster",
+            "After too many failures—requests fail fast without calling the service",
+            "When the queue is full",
+            "During peak traffic hours"
+          ],
+          "correct": 1,
+          "explanation": "After 5 failures, the circuit opens. Requests fail immediately without calling the struggling service, giving it time to recover."
+        }
+      ]
+    }
+  ]
+}

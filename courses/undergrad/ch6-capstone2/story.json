@@ -1,0 +1,257 @@
+{
+  "pageId": "ch6-capstone2",
+  "courseId": "undergrad",
+  "chapterMeta": {
+    "title": "AI-Augmented Development",
+    "icon": "🌟",
+    "themeColor": "capstone"
+  },
+  "stories": [
+    {
+      "id": "ai-integration-story",
+      "diagramId": "ai-integration",
+      "title": "Real AI Integration",
+      "steps": [
+        {
+          "nodeId": "not-wrapper",
+          "icon": "🚫",
+          "title": "Not Just a Wrapper",
+          "narration": "Here's what separates amateur AI work from professional: anyone can call the ChatGPT API. What makes a real AI integration is the architecture around it.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "prompt-eng",
+          "edges": [{ "from": "not-wrapper", "to": "prompt-eng" }],
+          "icon": "🎨",
+          "title": "Prompt Engineering",
+          "narration": "Your prompts are code too. They need to be documented, tested, and iterated. A well-crafted prompt with structured output format is the foundation of reliable AI integration.",
+          "connectsTo": "Not Just a Wrapper"
+        },
+        {
+          "nodeId": "validation",
+          "edges": [{ "from": "prompt-eng", "to": "validation" }],
+          "icon": "✅",
+          "title": "Output Validation",
+          "narration": "AI outputs are unpredictable. Professional integrations validate every response, handle malformed output gracefully, and never trust AI blindly.",
+          "connectsTo": "Prompt Engineering"
+        },
+        {
+          "nodeId": "system-integration",
+          "edges": [{ "from": "validation", "to": "system-integration" }],
+          "icon": "🔌",
+          "title": "System Integration",
+          "narration": "AI becomes powerful when it connects to real systems—GitHub for code review, databases for context, APIs for action. This is where the magic happens.",
+          "connectsTo": "Output Validation"
+        },
+        {
+          "nodeId": "production-ready",
+          "edges": [{ "from": "system-integration", "to": "production-ready" }],
+          "icon": "🚀",
+          "title": "Production Ready",
+          "narration": "Caching, rate limiting, cost tracking, graceful degradation. These concerns separate demos from real products. Your capstone must address all of them.",
+          "connectsTo": "System Integration"
+        }
+      ]
+    },
+    {
+      "id": "prompt-story",
+      "diagramId": "prompt",
+      "title": "The Art of Prompts",
+      "steps": [
+        {
+          "nodeId": "bad-prompt",
+          "icon": "❌",
+          "title": "Bad Prompts Fail",
+          "narration": "Review this code and find bugs. That's a bad prompt. It's vague, has no context, and produces inconsistent output you can't parse programmatically.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "set-role",
+          "edges": [{ "from": "bad-prompt", "to": "set-role" }],
+          "icon": "🎭",
+          "title": "Set a Role",
+          "narration": "Start with: You are a senior Python developer performing a code review. This gives the AI context and expertise to draw from. Roles dramatically improve output quality.",
+          "connectsTo": "Bad Prompts"
+        },
+        {
+          "nodeId": "be-specific",
+          "edges": [{ "from": "set-role", "to": "be-specific" }],
+          "icon": "📋",
+          "title": "Be Specific",
+          "narration": "List exactly what you want. Analyze for: security vulnerabilities, performance issues, style violations, missing error handling. Specificity gets specific results.",
+          "connectsTo": "Set a Role"
+        },
+        {
+          "nodeId": "structure-output",
+          "edges": [{ "from": "be-specific", "to": "structure-output" }],
+          "icon": "📊",
+          "title": "Structure Output",
+          "narration": "Request JSON with a defined schema. Severity, type, line number, description, suggestion. Now you can parse the output reliably in your code.",
+          "connectsTo": "Be Specific"
+        },
+        {
+          "nodeId": "iterate",
+          "edges": [{ "from": "structure-output", "to": "iterate" }],
+          "icon": "🔄",
+          "title": "Test & Iterate",
+          "narration": "Version your prompts like code. Track what works and what doesn't. The best prompts evolve through iteration, not guesswork.",
+          "connectsTo": "Structure Output"
+        }
+      ]
+    },
+    {
+      "id": "completion-story",
+      "diagramId": "completion",
+      "title": "Course Complete",
+      "steps": [
+        {
+          "nodeId": "six-weeks",
+          "icon": "📅",
+          "title": "Six Weeks Ago",
+          "narration": "Six weeks ago, you had a degree and some code. You could write programs but hadn't built systems. The gap between academia and industry felt vast.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "what-built",
+          "edges": [{ "from": "six-weeks", "to": "what-built" }],
+          "icon": "🏗️",
+          "title": "What You've Built",
+          "narration": "Production data layer. Event-driven pipeline. API integration suite. System design portfolio. A deployed full-stack app. And now, an AI-augmented tool.",
+          "connectsTo": "Six Weeks Ago"
+        },
+        {
+          "nodeId": "interview-ready",
+          "edges": [{ "from": "what-built", "to": "interview-ready" }],
+          "icon": "💼",
+          "title": "Interview Ready",
+          "narration": "The interview question isn't scary—you've designed systems bigger than what they'll ask. The job posting requirements aren't intimidating—you've built things that exceed them.",
+          "connectsTo": "What You've Built"
+        },
+        {
+          "nodeId": "gap-closed",
+          "edges": [{ "from": "interview-ready", "to": "gap-closed" }],
+          "icon": "🏆",
+          "title": "The Gap Is Closed",
+          "narration": "You're not just a CS student anymore. You're an engineer. They taught you to code. We taught you to build. Now go show them what you can do.",
+          "connectsTo": "Interview Ready"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "storyId": "ai-integration-story",
+      "questions": [
+        {
+          "question": "What separates a professional AI integration from 'just a ChatGPT wrapper'?",
+          "options": [
+            "Using a more expensive API",
+            "Prompt engineering, validation, system integration, and production concerns",
+            "Making more API calls",
+            "Having a fancier UI"
+          ],
+          "correct": 1,
+          "explanation": "Professional AI integration requires thoughtful prompt engineering, robust output validation, meaningful system integration, and production concerns like caching and rate limiting."
+        },
+        {
+          "question": "Why is output validation critical in AI integrations?",
+          "options": [
+            "It makes the app faster",
+            "AI outputs are unpredictable and can be malformed or incorrect",
+            "It's required by OpenAI's terms of service",
+            "It reduces API costs"
+          ],
+          "correct": 1,
+          "explanation": "AI outputs are inherently unpredictable. Professional integrations validate every response, handle malformed output gracefully, and never blindly trust AI-generated content."
+        },
+        {
+          "question": "Which production concern is NOT mentioned as essential for AI integration?",
+          "options": [
+            "Caching responses",
+            "Rate limiting API calls",
+            "Using the newest AI model",
+            "Graceful degradation when AI is unavailable"
+          ],
+          "correct": 2,
+          "explanation": "Essential production concerns include caching, rate limiting, cost tracking, and graceful degradation. The specific model version is less important than how you handle the integration."
+        }
+      ]
+    },
+    {
+      "storyId": "prompt-story",
+      "questions": [
+        {
+          "question": "What's the first step in crafting a good prompt?",
+          "options": [
+            "Asking for JSON output",
+            "Setting a role for the AI",
+            "Adding examples",
+            "Making it as short as possible"
+          ],
+          "correct": 1,
+          "explanation": "Setting a role (e.g., 'You are a senior Python developer') gives the AI context and expertise to draw from. This dramatically improves output quality and consistency."
+        },
+        {
+          "question": "Why should you request structured JSON output from AI?",
+          "options": [
+            "It looks more professional",
+            "So you can reliably parse the output in your code",
+            "JSON is faster to generate",
+            "It reduces hallucinations"
+          ],
+          "correct": 1,
+          "explanation": "Structured JSON output with a defined schema (severity, type, line number, etc.) can be reliably parsed by your application, enabling automated processing of AI responses."
+        },
+        {
+          "question": "How should you treat your prompts over time?",
+          "options": [
+            "Write once and never change them",
+            "Copy them from the internet",
+            "Version them like code, track what works, iterate",
+            "Keep them as short as possible"
+          ],
+          "correct": 2,
+          "explanation": "Prompts are code! They should be versioned, documented, tested, and iterated. The best prompts evolve through systematic improvement, not guesswork."
+        }
+      ]
+    },
+    {
+      "storyId": "completion-story",
+      "questions": [
+        {
+          "question": "What have you built across this entire course?",
+          "options": [
+            "Just one full-stack app",
+            "Data layer, event pipeline, API integration, system design portfolio, full-stack app, and AI-augmented tool",
+            "Several coding tutorials",
+            "A collection of algorithm solutions"
+          ],
+          "correct": 1,
+          "explanation": "Across six chapters, you've built a production data layer, event-driven pipeline, API integration suite, system design portfolio, deployed full-stack app, and AI-augmented tool."
+        },
+        {
+          "question": "What's the key difference between coding and building?",
+          "options": [
+            "Building uses more languages",
+            "Coding is just programs; building is designing systems with production concerns",
+            "Building requires a team",
+            "There's no real difference"
+          ],
+          "correct": 1,
+          "explanation": "Coding produces programs. Building produces systems—with architecture, production concerns, testing, deployment, and real-world integration. This course bridged that gap."
+        },
+        {
+          "question": "After completing this course, what should you be able to confidently say in interviews?",
+          "options": [
+            "I can solve any LeetCode problem",
+            "I've built production systems that exceed typical job requirements",
+            "I know every programming language",
+            "I memorized all design patterns"
+          ],
+          "correct": 1,
+          "explanation": "Your portfolio now demonstrates real system design and implementation. You've built things that exceed typical job requirements—the best interview answer is 'let me show you.'"
+        }
+      ]
+    }
+  ]
+}

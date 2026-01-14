@@ -1,0 +1,25 @@
+{
+  "storyId": "auth-errors-story",
+  "stepId": "step-1",
+  "voice": "echo",
+  "voiceLabel": "Storyteller (Male UK)",
+  "text": "API Keys. The simplest auth: a secret key in the header. Great for server-to-server calls. But keys can leak, can't expire gracefully, and don't support fine-grained permissions.",
+  "duration": 0.36000001430511475,
+  "words": [
+    {
+      "word": "MBC",
+      "start": 0,
+      "end": 0
+    },
+    {
+      "word": "뉴스",
+      "start": 0,
+      "end": 0
+    },
+    {
+      "word": "이덕영입니다",
+      "start": 0,
+      "end": 0.2800000011920929
+    }
+  ]
+}
