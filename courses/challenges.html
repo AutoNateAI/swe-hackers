@@ -30,12 +30,17 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="shared/css/marketing.css">
+  <link rel="stylesheet" href="shared/css/challenge-interactive.css">
   
-  <!-- Anime.js -->
+  <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
   
   <!-- Shared Components -->
   <script src="shared/js/navbar.js" defer></script>
+  <script src="shared/js/footer.js" defer></script>
 </head>
 <body>
   
@@ -55,7 +60,7 @@
         <a href="challenges.html" class="nav-link" style="color: var(--accent-primary);">Challenges</a>
       </div>
       
-      <div class="nav-cta">
+      <div class="nav-cta" id="nav-auth">
         <a href="auth/login.html" class="nav-btn secondary">Sign In</a>
         <a href="auth/register.html" class="nav-btn primary">Get Started</a>
       </div>
@@ -78,8 +83,45 @@
     </div>
   </section>
   
-  <!-- Challenge Types -->
-  <section class="section" style="padding-top: 0;">
+  <!-- Streak Display (Authenticated Only) -->
+  <section class="section" id="streak-section" style="padding-top: 0; display: none;">
+    <div class="section-container">
+      <div class="streak-display">
+        <span class="streak-icon">🔥</span>
+        <div class="streak-info">
+          <div class="streak-count" id="streak-count">0 day streak</div>
+          <div class="streak-label">Complete all 3 daily challenges to continue your streak!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Today's Challenges (Dynamic - changes based on auth state) -->
+  <section class="section" id="todays-challenges" style="padding-top: 0;">
+    <div class="section-container">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <h2 class="section-title">Today's Challenges</h2>
+        <p class="section-subtitle" id="challenges-subtitle">
+          Sign in to attempt today's challenges and track your progress.
+        </p>
+      </div>
+      
+      <!-- Challenges Grid - Populated by JS based on auth state -->
+      <div class="daily-challenges-grid" id="challenges-grid">
+        <!-- Challenge cards will be inserted here -->
+      </div>
+      
+      <!-- Sign Up CTA (Unauthenticated only) -->
+      <div id="signup-cta" style="text-align: center; margin-top: 3rem;">
+        <a href="auth/register.html" class="btn btn-primary" style="padding: 1rem 3rem;">
+          Start Competing Today →
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Challenge Categories -->
+  <section class="section" style="background: var(--bg-secondary);">
     <div class="section-container">
       <div class="section-header" style="margin-bottom: 3rem;">
         <h2 class="section-title">Challenge Categories</h2>
@@ -191,7 +233,7 @@
   </section>
   
   <!-- How It Works -->
-  <section class="section" style="background: var(--bg-secondary);">
+  <section class="section">
     <div class="section-container">
       <div class="section-header">
         <div class="section-badge">How It Works</div>
@@ -219,77 +261,6 @@
           <h4 style="margin-bottom: 0.5rem;">Climb the Leaderboard</h4>
           <p style="font-size: 0.9rem; color: var(--text-secondary);">Compete with the community. Weekly and monthly leaderboards with prizes.</p>
         </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Today's Preview -->
-  <section class="section">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-badge">Preview</div>
-        <h2 class="section-title">Today's Challenges</h2>
-        <p class="section-subtitle">
-          Sign in to attempt today's challenges and track your progress.
-        </p>
-      </div>
-      
-      <div class="challenges-preview">
-        
-        <!-- Challenge 1 -->
-        <div class="challenge-preview-card" style="border: 1px solid rgba(255,213,79,0.3);">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <span style="background: rgba(255,213,79,0.2); color: var(--accent-warning); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">PROMPT CRAFT</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">+50 XP</span>
-          </div>
-          <div class="challenge-icon">🎯</div>
-          <h4 class="challenge-type">The Explanation Challenge</h4>
-          <p class="challenge-desc">
-            Write a prompt that makes AI explain quantum computing using only cooking metaphors.
-          </p>
-          <div style="margin-top: 1.5rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: var(--radius-md); text-align: center;">
-            <span style="color: var(--text-muted); font-size: 0.85rem;">🔒 Sign in to attempt</span>
-          </div>
-        </div>
-        
-        <!-- Challenge 2 -->
-        <div class="challenge-preview-card" style="border: 1px solid rgba(121,134,203,0.3);">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <span style="background: rgba(121,134,203,0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">CONTEXT ENGINEERING</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">+75 XP</span>
-          </div>
-          <div class="challenge-icon">🧩</div>
-          <h4 class="challenge-type">The Refactor Brief</h4>
-          <p class="challenge-desc">
-            Given a 200-line legacy function, write the minimal context needed for AI to refactor it safely.
-          </p>
-          <div style="margin-top: 1.5rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: var(--radius-md); text-align: center;">
-            <span style="color: var(--text-muted); font-size: 0.85rem;">🔒 Sign in to attempt</span>
-          </div>
-        </div>
-        
-        <!-- Challenge 3 -->
-        <div class="challenge-preview-card" style="border: 1px solid rgba(77,182,172,0.3);">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <span style="background: rgba(77,182,172,0.2); color: var(--accent-secondary); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">VISUAL</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">+100 XP</span>
-          </div>
-          <div class="challenge-icon">🎨</div>
-          <h4 class="challenge-type">The Animation Challenge</h4>
-          <p class="challenge-desc">
-            Create an anime.js animation that visualizes a sorting algorithm in action.
-          </p>
-          <div style="margin-top: 1.5rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: var(--radius-md); text-align: center;">
-            <span style="color: var(--text-muted); font-size: 0.85rem;">🔒 Sign in to attempt</span>
-          </div>
-        </div>
-        
-      </div>
-      
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="auth/register.html" class="btn btn-primary" style="padding: 1rem 3rem;">
-          Start Competing Today →
-        </a>
       </div>
     </div>
   </section>
@@ -371,7 +342,7 @@
   </section>
   
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" id="footer-placeholder">
     <div class="footer-container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -425,24 +396,276 @@
     </div>
   </footer>
   
-  <!-- Scripts -->
+  <!-- Interactive Components -->
+  <script src="shared/js/interactive/diagram-utils.js"></script>
+  <script src="shared/js/interactive/audio-engine.js"></script>
+  <script src="shared/js/interactive/challenge-diagram.js"></script>
+  <script src="shared/js/activity-tracker.js"></script>
+  
+  <!-- Page Script -->
   <script>
+    // Today's date for challenge IDs
+    const today = new Date().toISOString().split('T')[0];
+    
+    // Challenge intro story data (embedded for simplicity, could be loaded from JSON)
+    const challengeIntros = {
+      'prompt-craft-intro': {
+        id: 'prompt-craft-intro',
+        elements: [
+          { data: { id: 'thinking', label: '🧠 Your Thinking', type: 'concept' } },
+          { data: { id: 'prompt', label: '📝 Prompt', type: 'data' } },
+          { data: { id: 'ai', label: '🤖 AI', type: 'service' } },
+          { data: { id: 'output', label: '✨ Output', type: 'example' } },
+          { data: { source: 'thinking', target: 'prompt' } },
+          { data: { source: 'prompt', target: 'ai' } },
+          { data: { source: 'ai', target: 'output' } }
+        ],
+        steps: [
+          { nodeId: 'thinking', caption: 'The prompt is how you translate your thinking into AI instructions.' },
+          { nodeId: 'output', edges: [{ from: 'thinking', to: 'prompt' }, { from: 'prompt', to: 'ai' }, { from: 'ai', to: 'output' }], caption: 'A great prompt leads to a great output. Let\'s craft one.' }
+        ]
+      },
+      'context-engineering-intro': {
+        id: 'context-engineering-intro',
+        elements: [
+          { data: { id: 'raw-info', label: '📚 Raw Information', type: 'external' } },
+          { data: { id: 'context', label: '🧩 Structured Context', type: 'concept' } },
+          { data: { id: 'ai', label: '🤖 AI', type: 'service' } },
+          { data: { id: 'accuracy', label: '🎯 Accurate Results', type: 'example' } },
+          { data: { source: 'raw-info', target: 'context' } },
+          { data: { source: 'context', target: 'ai' } },
+          { data: { source: 'ai', target: 'accuracy' } }
+        ],
+        steps: [
+          { nodeId: 'raw-info', caption: 'AI can\'t read your mind. It needs the right context.' },
+          { nodeId: 'accuracy', edges: [{ from: 'raw-info', to: 'context' }, { from: 'context', to: 'ai' }, { from: 'ai', to: 'accuracy' }], caption: 'Structure your context well, and accuracy follows.' }
+        ]
+      },
+      'visual-challenge-intro': {
+        id: 'visual-challenge-intro',
+        elements: [
+          { data: { id: 'concept', label: '💭 Concept', type: 'concept' } },
+          { data: { id: 'motion', label: '🎬 Motion Design', type: 'data' } },
+          { data: { id: 'animation', label: '✨ Animation', type: 'example' } },
+          { data: { source: 'concept', target: 'motion' } },
+          { data: { source: 'motion', target: 'animation' } }
+        ],
+        steps: [
+          { nodeId: 'concept', caption: 'Every visualization tells a story through motion.' },
+          { nodeId: 'animation', edges: [{ from: 'concept', to: 'motion' }, { from: 'motion', to: 'animation' }], caption: 'Transform your concept into something users can feel.' }
+        ]
+      }
+    };
+    
+    // Today's challenges data
+    const todaysChallenges = [
+      {
+        id: `challenge-prompt-${today}`,
+        category: 'prompt-craft',
+        categoryLabel: 'PROMPT CRAFT',
+        title: 'The Explanation Challenge',
+        description: 'Write a prompt that makes AI explain quantum computing using only cooking metaphors.',
+        xp: 50,
+        introStory: 'prompt-craft-intro',
+        evaluationType: 'length-check',
+        minLength: 50
+      },
+      {
+        id: `challenge-context-${today}`,
+        category: 'context-engineering',
+        categoryLabel: 'CONTEXT ENGINEERING',
+        title: 'The Refactor Brief',
+        description: 'Given a 200-line legacy function, write the minimal context needed for AI to refactor it safely.',
+        xp: 75,
+        introStory: 'context-engineering-intro',
+        evaluationType: 'keyword-match',
+        keywords: 'function,dependencies,constraints,expected behavior,edge cases'
+      },
+      {
+        id: `challenge-visual-${today}`,
+        category: 'visual',
+        categoryLabel: 'VISUAL',
+        title: 'The Animation Challenge',
+        description: 'Create an anime.js animation that visualizes a sorting algorithm in action.',
+        xp: 100,
+        introStory: 'visual-challenge-intro',
+        evaluationType: 'length-check',
+        minLength: 100
+      }
+    ];
+    
+    // Render challenge card
+    function renderChallengeCard(challenge, isAuthenticated) {
+      const introStory = challengeIntros[challenge.introStory];
+      
+      if (!isAuthenticated) {
+        // Preview mode for unauthenticated users
+        return `
+          <div class="challenge-card challenge-locked">
+            <div class="challenge-header">
+              <span class="challenge-badge ${challenge.category}">${challenge.categoryLabel}</span>
+              <span class="challenge-xp">+${challenge.xp} XP</span>
+            </div>
+            <div class="challenge-content">
+              <h3 class="challenge-title">${challenge.title}</h3>
+              <p class="challenge-description">${challenge.description}</p>
+            </div>
+            <div class="challenge-lock-message">
+              <div class="lock-icon">🔒</div>
+              <p>Sign in to attempt this challenge</p>
+              <a href="auth/login.html" class="btn">Sign In</a>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Full interactive card for authenticated users
+      return `
+        <div class="challenge-card" 
+             data-activity="${challenge.id}" 
+             data-type="challenge"
+             data-points="${challenge.xp}"
+             data-date="${today}"
+             data-category="${challenge.category}"
+             data-evaluation-type="${challenge.evaluationType}"
+             ${challenge.keywords ? `data-keywords="${challenge.keywords}"` : ''}
+             ${challenge.minLength ? `data-min-length="${challenge.minLength}"` : ''}>
+          
+          <!-- Challenge Intro Diagram -->
+          <div class="challenge-intro-container">
+            <div class="challenge-diagram" id="diagram-${challenge.id}" data-story="${challenge.introStory}"></div>
+            <div class="challenge-caption"></div>
+            <div class="audio-settings">
+              <label>🎤 Voice:</label>
+              <select class="voice-select">
+                <option value="ballad">Female Storyteller</option>
+                <option value="echo">Male UK Storyteller</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Challenge Header -->
+          <div class="challenge-header">
+            <span class="challenge-badge ${challenge.category}">${challenge.categoryLabel}</span>
+            <span class="challenge-xp">+${challenge.xp} XP</span>
+          </div>
+          
+          <!-- Challenge Content -->
+          <div class="challenge-content">
+            <h3 class="challenge-title">${challenge.title}</h3>
+            <p class="challenge-description">${challenge.description}</p>
+            
+            <!-- Challenge Input -->
+            <div class="challenge-input-area">
+              <textarea class="challenge-input" placeholder="Enter your response here..."></textarea>
+              <button class="challenge-submit" disabled>Submit Answer</button>
+            </div>
+            
+            <!-- Feedback Area -->
+            <div class="challenge-feedback"></div>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Initialize challenge diagrams
+    function initChallengeDiagrams() {
+      todaysChallenges.forEach(challenge => {
+        const diagramId = `diagram-${challenge.id}`;
+        const container = document.getElementById(diagramId);
+        if (!container) return;
+        
+        const story = challengeIntros[challenge.introStory];
+        if (!story) return;
+        
+        // Initialize audio engine
+        const audioEngine = new AudioNarrationEngine('challenges/audio');
+        
+        // Create diagram
+        const diagram = new ChallengeDiagram(diagramId, story, {
+          audioEngine,
+          audioEnabled: true,
+          canvasHeight: 200
+        });
+        
+        // Store reference
+        container._challengeDiagram = diagram;
+      });
+    }
+    
+    // Check auth state and render appropriate view
+    async function initPage() {
+      const grid = document.getElementById('challenges-grid');
+      const signupCta = document.getElementById('signup-cta');
+      const streakSection = document.getElementById('streak-section');
+      const subtitle = document.getElementById('challenges-subtitle');
+      
+      // Check if user is authenticated
+      let isAuthenticated = false;
+      let userStreak = 0;
+      
+      if (window.AuthService) {
+        try {
+          await window.AuthService.waitForAuthState?.();
+          const user = window.AuthService.getUser?.();
+          isAuthenticated = !!user;
+          
+          if (isAuthenticated && window.DataService) {
+            // Load user streak
+            const streakData = await window.DataService.getChallengeStreak?.();
+            userStreak = streakData?.currentStreak || 0;
+          }
+        } catch (e) {
+          console.log('Auth check failed:', e);
+        }
+      }
+      
+      // Render challenges
+      grid.innerHTML = todaysChallenges.map(c => renderChallengeCard(c, isAuthenticated)).join('');
+      
+      if (isAuthenticated) {
+        // Show authenticated UI
+        signupCta.style.display = 'none';
+        streakSection.style.display = 'block';
+        document.getElementById('streak-count').textContent = `${userStreak} day streak`;
+        subtitle.textContent = 'Complete all 3 challenges to continue your streak!';
+        
+        // Initialize diagrams after render
+        setTimeout(() => {
+          initChallengeDiagrams();
+          
+          // Initialize Activity Tracker
+          if (window.ActivityTracker) {
+            ActivityTracker.init('daily', today);
+          }
+        }, 100);
+      } else {
+        // Show unauthenticated preview UI
+        signupCta.style.display = 'block';
+        streakSection.style.display = 'none';
+      }
+    }
+    
+    // Navigation scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
     });
     
+    // Entry animations
     document.addEventListener('DOMContentLoaded', () => {
       anime({
-        targets: '.feature-card, .challenge-preview-card',
+        targets: '.feature-card, .challenge-card',
         opacity: [0, 1],
         translateY: [30, 0],
         delay: anime.stagger(100),
         duration: 600,
         easing: 'easeOutCubic'
       });
+      
+      // Initialize page
+      initPage();
     });
   </script>
 </body>
 </html>
-

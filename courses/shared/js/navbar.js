@@ -1,73 +1,139 @@
 /**
- * Shared Navbar Component
- * Handles mobile menu, scroll effects, and active link highlighting
+ * Centralized Navbar Component
+ * Single source of truth for navigation across all marketing pages
  * 
- * Usage: Include this script on any page with the marketing-nav
- * <script src="shared/js/navbar.js"></script>
+ * Usage:
+ * 1. Add a container: <div id="navbar-container"></div>
+ * 2. Include script: <script src="shared/js/navbar.js" defer></script>
+ * 3. Call: NavbarComponent.inject('navbar-container')
+ * 
+ * Or for legacy pages with inline nav, just include the script and it will
+ * enhance the existing nav with mobile menu and scroll effects.
  */
 
-(function() {
-  'use strict';
+const NavbarComponent = {
+  template: `
+    <nav class="marketing-nav" id="nav">
+      <div class="nav-container">
+        <a href="{{baseUrl}}index.html" class="nav-logo">
+          <span class="nav-logo-icon">🏛️</span>
+          <span>AutoNateAI</span>
+        </a>
+        
+        <div class="nav-links">
+          <a href="{{baseUrl}}catalog.html" class="nav-link" data-page="catalog">Courses</a>
+          <a href="{{baseUrl}}blog/" class="nav-link" data-page="blog">Blog</a>
+          <a href="{{baseUrl}}partnerships.html" class="nav-link" data-page="partnerships">Partnerships</a>
+          <a href="{{baseUrl}}challenges.html" class="nav-link" data-page="challenges">Challenges</a>
+        </div>
+        
+        <div class="nav-cta">
+          <a href="{{baseUrl}}auth/login.html" class="nav-btn secondary">Sign In</a>
+          <a href="{{baseUrl}}auth/register.html" class="nav-btn primary">Get Started</a>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      </div>
+      
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="{{baseUrl}}catalog.html">Courses</a>
+        <a href="{{baseUrl}}blog/">Blog</a>
+        <a href="{{baseUrl}}partnerships.html">Partnerships</a>
+        <a href="{{baseUrl}}challenges.html">Challenges</a>
+        <div class="mobile-divider"></div>
+        <div class="mobile-cta">
+          <a href="{{baseUrl}}auth/login.html" class="nav-btn secondary">Sign In</a>
+          <a href="{{baseUrl}}auth/register.html" class="nav-btn primary">Get Started</a>
+        </div>
+      </div>
+    </nav>
+  `,
   
-  // Wait for DOM
-  document.addEventListener('DOMContentLoaded', initNavbar);
-  
-  function initNavbar() {
-    const nav = document.getElementById('nav');
-    if (!nav) return;
-    
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    if (!mobileMenuBtn) return;
-    
-    // Determine base path based on current location
-    const basePath = getBasePath();
-    
-    // Inject mobile menu if it doesn't exist
-    let mobileMenu = document.getElementById('mobile-menu');
-    if (!mobileMenu) {
-      mobileMenu = createMobileMenu(basePath);
-      nav.appendChild(mobileMenu);
+  /**
+   * Inject navbar into a container element
+   * @param {string} containerId - ID of the container element
+   * @param {Object} options - Configuration options
+   * @param {string} options.baseUrl - Base URL for links (auto-detected if not provided)
+   * @param {string} options.activePage - Current page to highlight (auto-detected if not provided)
+   */
+  inject(containerId, options = {}) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+      console.warn(`NavbarComponent: Container #${containerId} not found`);
+      return;
     }
     
-    // Setup event listeners
-    setupMobileMenuToggle(mobileMenuBtn, mobileMenu);
-    setupScrollEffect(nav);
-    highlightActiveLink();
-  }
+    const baseUrl = options.baseUrl || this.detectBaseUrl();
+    const html = this.template.replace(/\{\{baseUrl\}\}/g, baseUrl);
+    
+    container.innerHTML = html;
+    
+    const activePage = options.activePage || this.detectCurrentPage();
+    this.highlightActiveLink(activePage);
+    
+    this.setupMobileMenu();
+    this.setupScrollEffect();
+  },
   
-  function getBasePath() {
+  /**
+   * Detect base URL based on current page depth
+   */
+  detectBaseUrl() {
     const path = window.location.pathname;
     
-    // Check if we're in a subdirectory
-    if (path.includes('/blog/') || path.includes('/course/') || path.includes('/auth/') || path.includes('/dashboard/')) {
+    if (path.includes('/blog/') || 
+        path.includes('/course/') || 
+        path.includes('/auth/') || 
+        path.includes('/dashboard/')) {
       return '../';
     }
     return '';
-  }
+  },
   
-  function createMobileMenu(basePath) {
-    const menu = document.createElement('div');
-    menu.className = 'mobile-menu';
-    menu.id = 'mobile-menu';
+  /**
+   * Detect current page for active link highlighting
+   */
+  detectCurrentPage() {
+    const path = window.location.pathname;
     
-    menu.innerHTML = `
-      <a href="${basePath}catalog.html">Courses</a>
-      <a href="${basePath}blog/">Blog</a>
-      <a href="${basePath}consulting.html">Consulting</a>
-      <a href="${basePath}enterprise.html">Enterprise</a>
-      <a href="${basePath}challenges.html">Challenges</a>
-      <div class="mobile-divider"></div>
-      <div class="mobile-cta">
-        <a href="${basePath}auth/login.html" class="nav-btn secondary">Sign In</a>
-        <a href="${basePath}auth/register.html" class="nav-btn primary">Get Started</a>
-      </div>
-    `;
+    if (path.includes('catalog')) return 'catalog';
+    if (path.includes('/blog')) return 'blog';
+    if (path.includes('partnerships') || path.includes('enterprise')) return 'partnerships';
+    if (path.includes('challenges')) return 'challenges';
     
-    return menu;
-  }
+    return '';
+  },
   
-  function setupMobileMenuToggle(btn, menu) {
-    // Toggle on button click
+  /**
+   * Highlight the active navigation link
+   */
+  highlightActiveLink(activePage) {
+    if (!activePage) return;
+    
+    const activeLink = document.querySelector(`[data-page="${activePage}"]`);
+    if (activeLink) {
+      activeLink.style.color = 'var(--accent-primary)';
+    }
+    
+    // Also highlight in mobile menu
+    const mobileLinks = document.querySelectorAll('.mobile-menu a:not(.nav-btn)');
+    mobileLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.includes(activePage)) {
+        link.style.color = 'var(--accent-primary)';
+      }
+    });
+  },
+  
+  /**
+   * Setup mobile menu toggle functionality
+   */
+  setupMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    
+    if (!btn || !menu) return;
+    
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = menu.classList.toggle('active');
@@ -91,43 +157,53 @@
         btn.textContent = '☰';
       }
     });
-  }
+  },
   
-  function setupScrollEffect(nav) {
-    window.addEventListener('scroll', () => {
+  /**
+   * Setup scroll effect for navbar background
+   */
+  setupScrollEffect() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    
+    const handleScroll = () => {
       if (window.scrollY > 50) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
       }
-    });
+    };
     
-    // Check initial scroll position
-    if (window.scrollY > 50) {
-      nav.classList.add('scrolled');
-    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
   }
+};
+
+// Legacy support: Auto-initialize for pages with existing inline nav
+(function() {
+  'use strict';
   
-  function highlightActiveLink() {
-    const path = window.location.pathname;
-    const navLinks = document.querySelectorAll('.nav-links .nav-link, .mobile-menu a:not(.nav-btn)');
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if navbar was injected via NavbarComponent
+    const injectedNav = document.querySelector('#navbar-container #nav');
     
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href) return;
-      
-      // Check if current path matches this link
-      const isActive = 
-        (href.includes('catalog') && path.includes('catalog')) ||
-        (href.includes('blog') && path.includes('/blog')) ||
-        (href.includes('consulting') && path.includes('consulting')) ||
-        (href.includes('enterprise') && path.includes('enterprise')) ||
-        (href.includes('challenges') && path.includes('challenges'));
-      
-      if (isActive) {
-        link.style.color = 'var(--accent-primary)';
+    // If not injected, enhance existing inline nav (legacy support)
+    if (!injectedNav) {
+      const existingNav = document.getElementById('nav');
+      if (existingNav && existingNav.classList.contains('marketing-nav')) {
+        // Setup mobile menu and scroll for legacy inline navbars
+        NavbarComponent.setupMobileMenu();
+        NavbarComponent.setupScrollEffect();
+        
+        // Highlight active link
+        const activePage = NavbarComponent.detectCurrentPage();
+        NavbarComponent.highlightActiveLink(activePage);
       }
-    });
-  }
+    }
+  });
 })();
 
+// Export for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = NavbarComponent;
+}

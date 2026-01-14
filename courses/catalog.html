@@ -36,6 +36,7 @@
   
   <!-- Shared Components -->
   <script src="shared/js/navbar.js" defer></script>
+  <script src="shared/js/footer.js" defer></script>
   
   <style>
     .catalog-hero {
@@ -262,30 +263,8 @@
 </head>
 <body>
   
-  <!-- Navigation -->
-  <nav class="marketing-nav" id="nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-icon">🏛️</span>
-        <span>AutoNateAI</span>
-      </a>
-      
-      <div class="nav-links">
-        <a href="catalog.html" class="nav-link" style="color: var(--accent-primary);">Courses</a>
-        <a href="blog/" class="nav-link">Blog</a>
-        <a href="consulting.html" class="nav-link">Consulting</a>
-        <a href="enterprise.html" class="nav-link">Enterprise</a>
-        <a href="challenges.html" class="nav-link">Challenges</a>
-      </div>
-      
-      <div class="nav-cta">
-        <a href="auth/login.html" class="nav-btn secondary">Sign In</a>
-        <a href="auth/register.html" class="nav-btn primary">Get Started</a>
-      </div>
-      
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-    </div>
-  </nav>
+  <!-- Navigation (injected) -->
+  <div id="navbar-container"></div>
   
   <!-- Hero -->
   <section class="catalog-hero">
@@ -417,86 +396,55 @@
     </form>
   </section>
   
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span>🏛️</span>
-            <span>AutoNateAI</span>
-          </div>
-          <p class="footer-tagline">AI-Augmented Learning for Modern Developers</p>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Courses</h4>
-          <a href="course/apprentice.html">The Apprentice's Path</a>
-          <a href="course/junior.html">The Junior Accelerator</a>
-          <a href="course/senior.html">The Senior Amplifier</a>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Company</h4>
-          <a href="blog/">Blog</a>
-          <a href="consulting.html">Consulting</a>
-          <a href="enterprise.html">Enterprise</a>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Community</h4>
-          <a href="https://discord.gg/Me5N8tCdkC" target="_blank">Discord</a>
-          <a href="challenges.html">Daily Challenges</a>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>© 2024 AutoNateAI. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer (injected) -->
+  <div id="footer-container"></div>
   
   <!-- Scripts -->
   <script>
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.catalog-card');
-    
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Update active state
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.dataset.filter;
-        
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.level === filter) {
-            card.style.display = 'flex';
-            anime({
-              targets: card,
-              opacity: [0, 1],
-              translateY: [20, 0],
-              duration: 400,
-              easing: 'easeOutQuad'
-            });
-          } else {
-            card.style.display = 'none';
-          }
+    // Initialize shared components
+    document.addEventListener('DOMContentLoaded', () => {
+      NavbarComponent.inject('navbar-container');
+      FooterComponent.inject('footer-container');
+      
+      // Filter functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.catalog-card');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active state
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          const filter = btn.dataset.filter;
+          
+          cards.forEach(card => {
+            if (filter === 'all' || card.dataset.level === filter) {
+              card.style.display = 'flex';
+              anime({
+                targets: card,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 400,
+                easing: 'easeOutQuad'
+              });
+            } else {
+              card.style.display = 'none';
+            }
+          });
         });
       });
-    });
-    
-    // Animate cards on load
-    anime({
-      targets: '.catalog-card',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      delay: anime.stagger(100),
-      duration: 600,
-      easing: 'easeOutQuad'
+      
+      // Animate cards on load
+      anime({
+        targets: '.catalog-card',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        delay: anime.stagger(100),
+        duration: 600,
+        easing: 'easeOutQuad'
+      });
     });
   </script>
 </body>
 </html>
-

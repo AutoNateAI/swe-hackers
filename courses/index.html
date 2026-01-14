@@ -37,49 +37,21 @@
   <!-- Anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   
+  <!-- Cytoscape for interactive diagrams -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  
   <!-- Shared Components -->
   <script src="shared/js/navbar.js" defer></script>
+  <script src="shared/js/footer.js" defer></script>
+  <script src="shared/js/interactive/diagram-utils.js" defer></script>
+  <script src="shared/js/interactive/marketing-diagram.js" defer></script>
 </head>
 <body>
   
-  <!-- Navigation -->
-  <nav class="marketing-nav" id="nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-icon">🏛️</span>
-        <span>AutoNateAI</span>
-      </a>
-      
-      <div class="nav-links">
-        <a href="catalog.html" class="nav-link">Courses</a>
-        <a href="blog/" class="nav-link">Blog</a>
-        <a href="consulting.html" class="nav-link">Consulting</a>
-        <a href="enterprise.html" class="nav-link">Enterprise</a>
-        <a href="challenges.html" class="nav-link">Challenges</a>
-      </div>
-      
-      <div class="nav-cta">
-        <a href="auth/login.html" class="nav-btn secondary">Sign In</a>
-        <a href="auth/register.html" class="nav-btn primary">Get Started</a>
-      </div>
-      
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-    </div>
-    
-    <!-- Mobile Menu Dropdown -->
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="catalog.html">Courses</a>
-      <a href="blog/">Blog</a>
-      <a href="consulting.html">Consulting</a>
-      <a href="enterprise.html">Enterprise</a>
-      <a href="challenges.html">Challenges</a>
-      <div class="mobile-divider"></div>
-      <div class="mobile-cta">
-        <a href="auth/login.html" class="nav-btn secondary">Sign In</a>
-        <a href="auth/register.html" class="nav-btn primary">Get Started</a>
-      </div>
-    </div>
-  </nav>
+  <!-- Navigation (injected) -->
+  <div id="navbar-container"></div>
   
   <!-- Hero Section -->
   <section class="hero">
@@ -145,7 +117,138 @@
     </div>
   </section>
   
-  <!-- Problem/Solution Section -->
+  <!-- Interactive Preview Section -->
+  <section class="section interactive-preview" id="preview">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">See It In Action</div>
+        <h2 class="section-title">Interactive Learning, Visualized</h2>
+        <p class="section-subtitle">
+          Watch how our animated diagrams bring concepts to life. These mini-stories help you 
+          understand complex ideas at a glance.
+        </p>
+      </div>
+      
+      <div class="diagrams-showcase">
+        <!-- Stone: Variables -->
+        <div class="marketing-diagram-wrapper">
+          <div class="diagram-header">
+            <div class="diagram-title">
+              <span class="icon">🪨</span>
+              <span>Variables</span>
+              <span class="theme-badge stone">Stone</span>
+            </div>
+            <button class="audio-toggle muted" title="Enable audio">🔇</button>
+          </div>
+          <div class="marketing-diagram-canvas" id="diagram-variables"></div>
+          <div class="marketing-caption">Data finds a home in memory...</div>
+        </div>
+        
+        <!-- Lightning: Data Flow -->
+        <div class="marketing-diagram-wrapper">
+          <div class="diagram-header">
+            <div class="diagram-title">
+              <span class="icon">⚡</span>
+              <span>Data Flow</span>
+              <span class="theme-badge lightning">Lightning</span>
+            </div>
+            <button class="audio-toggle muted" title="Enable audio">🔇</button>
+          </div>
+          <div class="marketing-diagram-canvas" id="diagram-dataflow"></div>
+          <div class="marketing-caption">Input transforms into output...</div>
+        </div>
+        
+        <!-- Magnetism: API -->
+        <div class="marketing-diagram-wrapper">
+          <div class="diagram-header">
+            <div class="diagram-title">
+              <span class="icon">🧲</span>
+              <span>API Connection</span>
+              <span class="theme-badge magnetism">Magnetism</span>
+            </div>
+            <button class="audio-toggle muted" title="Enable audio">🔇</button>
+          </div>
+          <div class="marketing-diagram-canvas" id="diagram-api"></div>
+          <div class="marketing-caption">Systems connect and communicate...</div>
+        </div>
+      </div>
+      
+      <p class="diagrams-hint">
+        <span>✨</span> Try dragging the nodes around — these diagrams are fully interactive
+      </p>
+    </div>
+  </section>
+  
+  <!-- Quick Quiz Section -->
+  <section class="section quick-quiz-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Test Yourself</div>
+        <h2 class="section-title">Think You Get It?</h2>
+        <p class="section-subtitle">
+          Three quick questions. No signup required. See how you'd do in our courses.
+        </p>
+      </div>
+      
+      <div class="quick-quiz" id="landing-quiz">
+        <div class="quiz-questions">
+          <!-- Question 1 -->
+          <div class="quiz-question active" data-question="1">
+            <div class="question-number">1 of 3</div>
+            <h3 class="question-text">What does a variable do?</h3>
+            <div class="question-options">
+              <button class="quiz-option" data-correct="false">Runs your code faster</button>
+              <button class="quiz-option" data-correct="true">Stores data with a name you can reference</button>
+              <button class="quiz-option" data-correct="false">Connects to the internet</button>
+              <button class="quiz-option" data-correct="false">Displays graphics on screen</button>
+            </div>
+            <div class="question-feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="quiz-question" data-question="2">
+            <div class="question-number">2 of 3</div>
+            <h3 class="question-text">In "data flow," what happens to input?</h3>
+            <div class="question-options">
+              <button class="quiz-option" data-correct="false">It gets deleted</button>
+              <button class="quiz-option" data-correct="false">It stays exactly the same</button>
+              <button class="quiz-option" data-correct="true">It gets transformed into output</button>
+              <button class="quiz-option" data-correct="false">It becomes a variable name</button>
+            </div>
+            <div class="question-feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="quiz-question" data-question="3">
+            <div class="question-number">3 of 3</div>
+            <h3 class="question-text">What do APIs enable?</h3>
+            <div class="question-options">
+              <button class="quiz-option" data-correct="false">Faster typing speed</button>
+              <button class="quiz-option" data-correct="false">Better graphics</button>
+              <button class="quiz-option" data-correct="false">Storing passwords</button>
+              <button class="quiz-option" data-correct="true">Different systems to communicate</button>
+            </div>
+            <div class="question-feedback"></div>
+          </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="quiz-results" style="display: none;">
+          <div class="results-score">
+            <span class="score-value">0</span>/3
+          </div>
+          <h3 class="results-title">Nice work!</h3>
+          <p class="results-message">You've got the basics down. Imagine what you could learn with our full interactive courses.</p>
+          <a href="auth/register.html" class="btn btn-primary">
+            Start Learning Free
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Problem Section -->
   <section class="section" style="background: var(--bg-secondary);">
     <div class="section-container">
       <div class="section-header">
@@ -157,29 +260,17 @@
         </p>
       </div>
       
-      <div class="features-grid">
-        <div class="feature-card" style="border-color: var(--accent-error); border-left-width: 3px;">
-          <div class="feature-icon">📺</div>
-          <h3 class="feature-title">Passive Video Watching</h3>
-          <p class="feature-desc">
-            Sitting through 10-hour courses creates an illusion of progress while nothing sticks in long-term memory.
-          </p>
-        </div>
-        
-        <div class="feature-card" style="border-color: var(--accent-error); border-left-width: 3px;">
-          <div class="feature-icon">🏝️</div>
-          <h3 class="feature-title">Learning in Isolation</h3>
-          <p class="feature-desc">
-            No accountability, no community, no one to ask when you're stuck at 2am on a confusing concept.
-          </p>
-        </div>
-        
-        <div class="feature-card" style="border-color: var(--accent-error); border-left-width: 3px;">
-          <div class="feature-icon">🦕</div>
-          <h3 class="feature-title">Outdated Curriculum</h3>
-          <p class="feature-desc">
-            Most courses teach you to write code like it's 2015. AI has changed everything — your learning should too.
-          </p>
+      <div class="problem-diagram-container">
+        <div class="marketing-diagram-wrapper large">
+          <div class="diagram-header">
+            <div class="diagram-title">
+              <span class="icon">🔄</span>
+              <span>The Broken Learning Cycle</span>
+              <span class="theme-badge" style="background: rgba(239, 83, 80, 0.15); color: #ef5350; border-color: rgba(239, 83, 80, 0.3);">Problem</span>
+            </div>
+          </div>
+          <div class="marketing-diagram-canvas large" id="diagram-problem"></div>
+          <div class="marketing-caption">This cycle keeps you stuck. Let's break it.</div>
         </div>
       </div>
     </div>
@@ -197,53 +288,84 @@
         </p>
       </div>
       
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🏗️</div>
-          <h3 class="feature-title">Systems Thinking</h3>
-          <p class="feature-desc">
-            Learn the "Three Forces" — data, control flow, and connections. Understand WHY code works, not just HOW.
-          </p>
+      <!-- Three Forces Diagram -->
+      <div class="approach-showcase">
+        <div class="approach-diagram">
+          <div class="marketing-diagram-wrapper">
+            <div class="diagram-header">
+              <div class="diagram-title">
+                <span class="icon">🏗️</span>
+                <span>The Three Forces</span>
+                <span class="theme-badge stone">Core Model</span>
+              </div>
+            </div>
+            <div class="marketing-diagram-canvas" id="diagram-three-forces"></div>
+            <div class="marketing-caption">Master these three forces and you can build anything.</div>
+          </div>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h3 class="feature-title">AI-Augmented</h3>
-          <p class="feature-desc">
-            Every lesson teaches you to leverage AI as a coding partner. Write less, architect more.
-          </p>
+        <div class="approach-text">
+          <h3>Systems Thinking</h3>
+          <p>Every program is made of three forces working together:</p>
+          <ul class="approach-list">
+            <li><span class="force-icon">🪨</span> <strong>Stone (Data)</strong> — Information that persists and transforms</li>
+            <li><span class="force-icon">⚡</span> <strong>Lightning (Flow)</strong> — Logic that decides what happens when</li>
+            <li><span class="force-icon">🧲</span> <strong>Magnetism (Connections)</strong> — How systems talk to each other</li>
+          </ul>
+          <p class="approach-cta">Understand these, and you'll see the matrix in any codebase.</p>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3 class="feature-title">Track Your Growth</h3>
-          <p class="feature-desc">
-            Our analytics dashboard shows your cognitive progress, quiz mastery, and learning velocity in real-time.
-          </p>
+      </div>
+      
+      <!-- AI Workflow Diagram -->
+      <div class="approach-showcase reverse">
+        <div class="approach-diagram">
+          <div class="marketing-diagram-wrapper">
+            <div class="diagram-header">
+              <div class="diagram-title">
+                <span class="icon">🤖</span>
+                <span>AI-Augmented Workflow</span>
+                <span class="theme-badge lightning">Multiplier</span>
+              </div>
+            </div>
+            <div class="marketing-diagram-canvas" id="diagram-ai-workflow"></div>
+            <div class="marketing-caption">You architect. AI implements. Together, you ship faster.</div>
+          </div>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">🎮</div>
-          <h3 class="feature-title">Interactive Activities</h3>
-          <p class="feature-desc">
-            Quizzes, drag-and-drop exercises, code challenges, and interactive demos — learning by doing.
-          </p>
+        <div class="approach-text">
+          <h3>AI as Your Copilot</h3>
+          <p>Stop writing boilerplate. Start thinking bigger:</p>
+          <ul class="approach-list">
+            <li><span class="force-icon">🎯</span> <strong>You define</strong> — Requirements, architecture, edge cases</li>
+            <li><span class="force-icon">🤖</span> <strong>AI generates</strong> — Code, tests, documentation</li>
+            <li><span class="force-icon">✅</span> <strong>You validate</strong> — Review, refine, ship</li>
+          </ul>
+          <p class="approach-cta">10x your output without sacrificing quality.</p>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">🃏</div>
-          <h3 class="feature-title">Flashcards & Notes</h3>
-          <p class="feature-desc">
-            Built-in spaced repetition tools help you retain what you learn. Never forget a concept again.
-          </p>
+      </div>
+      
+      <!-- Learning Loop Diagram -->
+      <div class="approach-showcase">
+        <div class="approach-diagram">
+          <div class="marketing-diagram-wrapper">
+            <div class="diagram-header">
+              <div class="diagram-title">
+                <span class="icon">📈</span>
+                <span>The Learning Loop</span>
+                <span class="theme-badge magnetism">Growth</span>
+              </div>
+            </div>
+            <div class="marketing-diagram-canvas" id="diagram-learning-loop"></div>
+            <div class="marketing-caption">Learn, practice, track, improve. Repeat.</div>
+          </div>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">👥</div>
-          <h3 class="feature-title">Active Community</h3>
-          <p class="feature-desc">
-            Join our Discord with daily challenges, study groups, and mentorship from experienced developers.
-          </p>
+        <div class="approach-text">
+          <h3>Track Your Growth</h3>
+          <p>See your progress in real-time:</p>
+          <ul class="approach-list">
+            <li><span class="force-icon">🧠</span> <strong>Cognitive Score</strong> — Your overall learning health</li>
+            <li><span class="force-icon">🔥</span> <strong>Streak Tracking</strong> — Build consistent habits</li>
+            <li><span class="force-icon">📊</span> <strong>Quiz Mastery</strong> — Know what you know</li>
+          </ul>
+          <p class="approach-cta">Data-driven learning that actually works.</p>
         </div>
       </div>
     </div>
@@ -421,12 +543,12 @@
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">🏢</div>
-          <h3 class="service-title">For Enterprises</h3>
+          <h3 class="service-title">For Partnerships</h3>
           <p class="service-desc">
             Upskill your engineering team with custom training programs. Track progress, 
             measure ROI, and build an AI-augmented workforce.
           </p>
-          <a href="enterprise.html" class="btn btn-secondary" style="margin-top: 1.5rem;">
+          <a href="partnerships.html" class="btn btn-secondary" style="margin-top: 1.5rem;">
             Learn More →
           </a>
         </div>
@@ -463,67 +585,17 @@
     </div>
   </section>
   
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="footer-logo-icon">🏛️</span>
-            <span>AutoNateAI</span>
-          </div>
-          <p class="footer-desc">
-            AI-augmented learning for developers who want to think like architects and build like pros.
-          </p>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Learning</h4>
-          <ul class="footer-links">
-            <li><a href="course/apprentice.html">Apprentice Path</a></li>
-            <li><a href="course/junior.html">Junior Accelerator</a></li>
-            <li><a href="course/senior.html">Senior Amplifier</a></li>
-            <li><a href="challenges.html">Daily Challenges</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="blog/">Blog</a></li>
-            <li><a href="consulting.html">Consulting</a></li>
-            <li><a href="enterprise.html">Enterprise</a></li>
-            <li><a href="https://discord.gg/Me5N8tCdkC" target="_blank">Discord</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Account</h4>
-          <ul class="footer-links">
-            <li><a href="auth/login.html">Sign In</a></li>
-            <li><a href="auth/register.html">Create Account</a></li>
-            <li><a href="dashboard/">Dashboard</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2026 AutoNateAI. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="https://discord.gg/Me5N8tCdkC" target="_blank" title="Discord">💬</a>
-          <a href="https://github.com/nathanbaker-ao" target="_blank" title="GitHub">🐙</a>
-          <a href="https://twitter.com/autonateai" target="_blank" title="Twitter">🐦</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer (injected) -->
+  <div id="footer-container"></div>
   
   <!-- Scripts -->
   <script>
-    // Navbar is handled by shared/js/navbar.js
-    
-    // Hero animations
+    // Initialize shared components
     document.addEventListener('DOMContentLoaded', () => {
+      NavbarComponent.inject('navbar-container');
+      FooterComponent.inject('footer-container');
+      
+      // Hero animations
       anime({
         targets: '.hero-badge',
         opacity: [0, 1],
@@ -612,6 +684,277 @@
     document.querySelectorAll('.section-container').forEach(section => {
       observer.observe(section);
     });
+    
+    // ============================================
+    // Initialize Marketing Diagrams
+    // ============================================
+    
+    // Wait for MarketingDiagram to be available
+    function initMarketingDiagrams() {
+      if (typeof MarketingDiagram === 'undefined') {
+        setTimeout(initMarketingDiagrams, 100);
+        return;
+      }
+      
+      // Story: Variables (Stone)
+      const variablesStory = {
+        id: 'variables-story',
+        elements: [
+          { data: { id: 'memory', label: '🧠 Memory', type: 'data' } },
+          { data: { id: 'variable', label: '📦 Variable', type: 'concept' } },
+          { data: { source: 'memory', target: 'variable' } }
+        ],
+        steps: [
+          { nodeId: 'memory', caption: 'Your computer has memory — raw storage space waiting to be used...' },
+          { nodeId: 'variable', edges: [{ from: 'memory', to: 'variable' }], caption: 'Variables give that memory a name. Now you can store and retrieve data!' }
+        ]
+      };
+      
+      // Story: Data Flow (Lightning)
+      const dataFlowStory = {
+        id: 'dataflow-story',
+        elements: [
+          { data: { id: 'input', label: '📊 Input', type: 'external' } },
+          { data: { id: 'transform', label: '⚡ Transform', type: 'service' } },
+          { data: { id: 'output', label: '📈 Output', type: 'example' } },
+          { data: { source: 'input', target: 'transform' } },
+          { data: { source: 'transform', target: 'output' } }
+        ],
+        steps: [
+          { nodeId: 'input', caption: 'Data enters your program — raw, unprocessed, full of potential...' },
+          { nodeId: 'output', edges: [{ from: 'input', to: 'transform' }, { from: 'transform', to: 'output' }], caption: 'Your code transforms it into something valuable. That\'s the flow!' }
+        ]
+      };
+      
+      // Story: API Connection (Magnetism)
+      const apiStory = {
+        id: 'api-story',
+        elements: [
+          { data: { id: 'client', label: '💻 Your App', type: 'page' } },
+          { data: { id: 'api', label: '🌐 API', type: 'service' } },
+          { data: { id: 'response', label: '✅ Response', type: 'example' } },
+          { data: { source: 'client', target: 'api' } },
+          { data: { source: 'api', target: 'response' } }
+        ],
+        steps: [
+          { nodeId: 'client', caption: 'Your app needs data from somewhere else...' },
+          { nodeId: 'response', edges: [{ from: 'client', to: 'api' }, { from: 'api', to: 'response' }], caption: 'APIs connect systems. Request sent, response received. Magic!' }
+        ]
+      };
+      
+      // Initialize diagrams (they auto-play on scroll)
+      MarketingDiagram.init('diagram-variables', variablesStory, {
+        canvasHeight: 280,
+        stepDuration: 2500,
+        loopDelay: 2500
+      });
+      
+      MarketingDiagram.init('diagram-dataflow', dataFlowStory, {
+        canvasHeight: 280,
+        stepDuration: 2500,
+        loopDelay: 2500
+      });
+      
+      MarketingDiagram.init('diagram-api', apiStory, {
+        canvasHeight: 280,
+        stepDuration: 2500,
+        loopDelay: 2500
+      });
+      
+      // Story: Broken Learning Cycle (Problem)
+      const problemStory = {
+        id: 'problem-story',
+        elements: [
+          { data: { id: 'watch', label: '📺 Watch Tutorial', type: 'external' } },
+          { data: { id: 'forget', label: '😴 Forget 90%', type: 'auth' } },
+          { data: { id: 'stuck', label: '😫 Get Stuck', type: 'external' } },
+          { data: { id: 'repeat', label: '🔄 Start Over', type: 'external' } },
+          { data: { source: 'watch', target: 'forget' } },
+          { data: { source: 'forget', target: 'stuck' } },
+          { data: { source: 'stuck', target: 'repeat' } },
+          { data: { source: 'repeat', target: 'watch' } }
+        ],
+        steps: [
+          { nodeId: 'watch', caption: 'You watch hours of tutorials, feeling productive...' },
+          { nodeId: 'forget', edges: [{ from: 'watch', to: 'forget' }], caption: 'A week later, you\'ve forgotten almost everything.' },
+          { nodeId: 'stuck', edges: [{ from: 'forget', to: 'stuck' }], caption: 'When you try to build, you get stuck immediately.' },
+          { nodeId: 'repeat', edges: [{ from: 'stuck', to: 'repeat' }, { from: 'repeat', to: 'watch' }], caption: 'So you start another tutorial... and the cycle repeats.' }
+        ]
+      };
+      
+      MarketingDiagram.init('diagram-problem', problemStory, {
+        canvasHeight: 320,
+        stepDuration: 2500,
+        loopDelay: 3000
+      });
+      
+      // Story: Three Forces (Systems Thinking)
+      const threeForcesStory = {
+        id: 'three-forces-story',
+        elements: [
+          { data: { id: 'stone', label: '🪨 Stone\n(Data)', type: 'data' } },
+          { data: { id: 'lightning', label: '⚡ Lightning\n(Flow)', type: 'auth' } },
+          { data: { id: 'magnetism', label: '🧲 Magnetism\n(Connections)', type: 'service' } },
+          { data: { id: 'system', label: '🏛️ Working\nSystem', type: 'example' } },
+          { data: { source: 'stone', target: 'system' } },
+          { data: { source: 'lightning', target: 'system' } },
+          { data: { source: 'magnetism', target: 'system' } }
+        ],
+        steps: [
+          { nodeId: 'stone', caption: 'Data is the foundation — variables, databases, state.' },
+          { nodeId: 'lightning', edges: [{ from: 'stone', to: 'system' }], caption: 'Control flow decides what happens and when.' },
+          { nodeId: 'magnetism', edges: [{ from: 'lightning', to: 'system' }], caption: 'Connections link systems together — APIs, events, imports.' },
+          { nodeId: 'system', edges: [{ from: 'magnetism', to: 'system' }], caption: 'Together, they create any system you can imagine.' }
+        ]
+      };
+      
+      MarketingDiagram.init('diagram-three-forces', threeForcesStory, {
+        canvasHeight: 280,
+        stepDuration: 2500,
+        loopDelay: 2500
+      });
+      
+      // Story: AI Workflow
+      const aiWorkflowStory = {
+        id: 'ai-workflow-story',
+        elements: [
+          { data: { id: 'you', label: '🧠 You\n(Architect)', type: 'concept' } },
+          { data: { id: 'requirements', label: '📋 Requirements', type: 'data' } },
+          { data: { id: 'ai', label: '🤖 AI\n(Generator)', type: 'service' } },
+          { data: { id: 'code', label: '💻 Code', type: 'example' } },
+          { data: { id: 'ship', label: '🚀 Ship It', type: 'example' } },
+          { data: { source: 'you', target: 'requirements' } },
+          { data: { source: 'requirements', target: 'ai' } },
+          { data: { source: 'ai', target: 'code' } },
+          { data: { source: 'code', target: 'you', label: 'review' } },
+          { data: { source: 'you', target: 'ship' } }
+        ],
+        steps: [
+          { nodeId: 'you', caption: 'You think about what to build and why...' },
+          { nodeId: 'requirements', edges: [{ from: 'you', to: 'requirements' }], caption: 'You define requirements, architecture, edge cases.' },
+          { nodeId: 'ai', edges: [{ from: 'requirements', to: 'ai' }], caption: 'AI generates code, tests, and documentation.' },
+          { nodeId: 'code', edges: [{ from: 'ai', to: 'code' }, { from: 'code', to: 'you' }], caption: 'You review, refine, and approve.' },
+          { nodeId: 'ship', edges: [{ from: 'you', to: 'ship' }], caption: 'Ship faster than ever. That\'s the AI advantage.' }
+        ]
+      };
+      
+      MarketingDiagram.init('diagram-ai-workflow', aiWorkflowStory, {
+        canvasHeight: 280,
+        stepDuration: 2200,
+        loopDelay: 2500
+      });
+      
+      // Story: Learning Loop
+      const learningLoopStory = {
+        id: 'learning-loop-story',
+        elements: [
+          { data: { id: 'learn', label: '📚 Learn\nConcept', type: 'concept' } },
+          { data: { id: 'practice', label: '🎮 Practice\nInteractive', type: 'service' } },
+          { data: { id: 'track', label: '📊 Track\nProgress', type: 'data' } },
+          { data: { id: 'improve', label: '📈 Improve\n& Level Up', type: 'example' } },
+          { data: { source: 'learn', target: 'practice' } },
+          { data: { source: 'practice', target: 'track' } },
+          { data: { source: 'track', target: 'improve' } },
+          { data: { source: 'improve', target: 'learn' } }
+        ],
+        steps: [
+          { nodeId: 'learn', caption: 'Learn new concepts through interactive stories...' },
+          { nodeId: 'practice', edges: [{ from: 'learn', to: 'practice' }], caption: 'Practice with quizzes, challenges, and activities.' },
+          { nodeId: 'track', edges: [{ from: 'practice', to: 'track' }], caption: 'Your dashboard tracks everything — scores, streaks, velocity.' },
+          { nodeId: 'improve', edges: [{ from: 'track', to: 'improve' }, { from: 'improve', to: 'learn' }], caption: 'See your growth, identify gaps, keep leveling up.' }
+        ]
+      };
+      
+      MarketingDiagram.init('diagram-learning-loop', learningLoopStory, {
+        canvasHeight: 280,
+        stepDuration: 2500,
+        loopDelay: 2500
+      });
+    }
+    
+    // Start initialization
+    initMarketingDiagrams();
+    
+    // ============================================
+    // Quick Quiz Logic
+    // ============================================
+    
+    (function() {
+      const quiz = document.getElementById('landing-quiz');
+      if (!quiz) return;
+      
+      const questions = quiz.querySelectorAll('.quiz-question');
+      const results = quiz.querySelector('.quiz-results');
+      const scoreValue = quiz.querySelector('.score-value');
+      const resultsTitle = quiz.querySelector('.results-title');
+      const resultsMessage = quiz.querySelector('.results-message');
+      
+      let currentQuestion = 0;
+      let score = 0;
+      
+      questions.forEach((question, qIndex) => {
+        const options = question.querySelectorAll('.quiz-option');
+        const feedback = question.querySelector('.question-feedback');
+        
+        options.forEach(option => {
+          option.addEventListener('click', () => {
+            // Disable all options
+            options.forEach(opt => opt.disabled = true);
+            
+            const isCorrect = option.dataset.correct === 'true';
+            
+            if (isCorrect) {
+              option.classList.add('correct');
+              score++;
+              feedback.textContent = '✓ Correct! You got it.';
+              feedback.className = 'question-feedback show correct';
+            } else {
+              option.classList.add('incorrect');
+              // Highlight the correct one
+              options.forEach(opt => {
+                if (opt.dataset.correct === 'true') {
+                  opt.classList.add('correct');
+                }
+              });
+              feedback.textContent = '✗ Not quite — but now you know!';
+              feedback.className = 'question-feedback show incorrect';
+            }
+            
+            // Move to next question after delay
+            setTimeout(() => {
+              question.classList.remove('active');
+              
+              if (qIndex < questions.length - 1) {
+                questions[qIndex + 1].classList.add('active');
+              } else {
+                // Show results
+                showResults();
+              }
+            }, 1500);
+          });
+        });
+      });
+      
+      function showResults() {
+        quiz.querySelector('.quiz-questions').style.display = 'none';
+        results.style.display = 'block';
+        scoreValue.textContent = score;
+        
+        if (score === 3) {
+          resultsTitle.textContent = 'Perfect score! 🎉';
+          resultsMessage.textContent = 'You clearly have a knack for this. Our courses will take you even further.';
+        } else if (score === 2) {
+          resultsTitle.textContent = 'Nice work!';
+          resultsMessage.textContent = 'You\'ve got the basics down. Imagine what you could learn with our full interactive courses.';
+        } else if (score === 1) {
+          resultsTitle.textContent = 'Good start!';
+          resultsMessage.textContent = 'Everyone starts somewhere. Our courses make these concepts crystal clear.';
+        } else {
+          resultsTitle.textContent = 'No worries!';
+          resultsMessage.textContent = 'That\'s exactly why we built this platform. Let us help you master these concepts.';
+        }
+      }
+    })();
   </script>
 </body>
 </html>

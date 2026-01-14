@@ -36,33 +36,12 @@
   
   <!-- Shared Components -->
   <script src="shared/js/navbar.js" defer></script>
+  <script src="shared/js/footer.js" defer></script>
 </head>
 <body>
   
-  <!-- Navigation -->
-  <nav class="marketing-nav" id="nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-icon">🏛️</span>
-        <span>AutoNateAI</span>
-      </a>
-      
-      <div class="nav-links">
-        <a href="catalog.html" class="nav-link">Courses</a>
-        <a href="blog/" class="nav-link">Blog</a>
-        <a href="consulting.html" class="nav-link" style="color: var(--accent-primary);">Consulting</a>
-        <a href="enterprise.html" class="nav-link">Enterprise</a>
-        <a href="challenges.html" class="nav-link">Challenges</a>
-      </div>
-      
-      <div class="nav-cta">
-        <a href="auth/login.html" class="nav-btn secondary">Sign In</a>
-        <a href="auth/register.html" class="nav-btn primary">Get Started</a>
-      </div>
-      
-      <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-    </div>
-  </nav>
+  <!-- Navigation (injected) -->
+  <div id="navbar-container"></div>
   
   <!-- Hero -->
   <section class="section blog-hero">
@@ -235,69 +214,16 @@
     </div>
   </section>
   
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="footer-logo-icon">🏛️</span>
-            <span>AutoNateAI</span>
-          </div>
-          <p class="footer-desc">
-            AI-augmented learning for developers who want to think like architects and build like pros.
-          </p>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Learning</h4>
-          <ul class="footer-links">
-            <li><a href="course/apprentice.html">Apprentice Path</a></li>
-            <li><a href="course/junior.html">Junior Accelerator</a></li>
-            <li><a href="course/senior.html">Senior Amplifier</a></li>
-            <li><a href="challenges.html">Daily Challenges</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="blog/">Blog</a></li>
-            <li><a href="consulting.html">Consulting</a></li>
-            <li><a href="enterprise.html">Enterprise</a></li>
-            <li><a href="https://discord.gg/Me5N8tCdkC" target="_blank">Discord</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Account</h4>
-          <ul class="footer-links">
-            <li><a href="auth/login.html">Sign In</a></li>
-            <li><a href="auth/register.html">Create Account</a></li>
-            <li><a href="dashboard/">Dashboard</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2026 AutoNateAI. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="https://discord.gg/Me5N8tCdkC" target="_blank" title="Discord">💬</a>
-          <a href="https://github.com/nathanbaker-ao" target="_blank" title="GitHub">🐙</a>
-          <a href="https://twitter.com/autonateai" target="_blank" title="Twitter">🐦</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer (injected) -->
+  <div id="footer-container"></div>
   
   <!-- Scripts -->
   <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    
+    // Initialize shared components
     document.addEventListener('DOMContentLoaded', () => {
+      NavbarComponent.inject('navbar-container');
+      FooterComponent.inject('footer-container');
+      
       anime({
         targets: '.service-card',
         opacity: [0, 1],
@@ -310,4 +236,3 @@
   </script>
 </body>
 </html>
-

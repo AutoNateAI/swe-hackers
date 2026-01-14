@@ -106,6 +106,9 @@ const ActivityTracker = {
       case 'demo':
         this.setupDemoListeners(activity);
         break;
+      case 'challenge':
+        this.setupChallengeListeners(activity);
+        break;
     }
   },
   
@@ -663,6 +666,285 @@ const ActivityTracker = {
       indicator.classList.add('complete');
     }
   },
+
+  // ============================================
+  // CHALLENGE ACTIVITIES
+  // ============================================
+
+  /**
+   * Setup challenge listeners (daily challenges, prompt craft, etc.)
+   */
+  setupChallengeListeners(activity) {
+    const el = activity.element;
+    const submitBtn = el.querySelector('.challenge-submit');
+    const input = el.querySelector('.challenge-input, textarea');
+    
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        const response = input?.value || input?.textContent || '';
+        if (response.trim().length > 0) {
+          this.submitChallengeAnswer(activity.id, response);
+        }
+      });
+    }
+    
+    // Enable submit when input has content
+    if (input && submitBtn) {
+      const checkInput = () => {
+        const value = input.value || input.textContent || '';
+        submitBtn.disabled = value.trim().length === 0;
+      };
+      input.addEventListener('input', checkInput);
+      checkInput();
+    }
+  },
+
+  /**
+   * Submit challenge answer
+   */
+  async submitChallengeAnswer(activityId, response) {
+    const timer = this.activityTimers[activityId];
+    const timeSpentMs = timer ? Date.now() - timer.startTime : 0;
+    const activity = this.activities.find(a => a.id === activityId);
+    
+    if (!activity) {
+      console.error('🎯 Challenge activity not found:', activityId);
+      return;
+    }
+    
+    // Clear any running timer
+    if (timer?.interval) {
+      clearInterval(timer.interval);
+    }
+    
+    // Evaluate the response
+    const evaluation = await this.evaluateChallengeResponse(activityId, response, activity);
+    
+    const attemptData = {
+      activityId,
+      activityType: 'challenge',
+      courseId: this.courseId,
+      lessonId: this.lessonId,
+      attemptNumber: (this.attemptCounts[activityId] || 0) + 1,
+      correct: evaluation.passed,
+      score: evaluation.score,
+      timeSpentMs,
+      response: {
+        text: response,
+        evaluation: evaluation.feedback,
+        category: activity.element.dataset.category || 'general'
+      },
+      startedAt: timer?.startTime ? new Date(timer.startTime).toISOString() : null,
+      completedAt: new Date().toISOString()
+    };
+    
+    console.log('🎯 Submitting challenge answer:', attemptData);
+    
+    this.attemptCounts[activityId] = attemptData.attemptNumber;
+    await this.saveAttemptWithCache(attemptData);
+    this.showChallengeFeedback(activityId, evaluation);
+    delete this.activityTimers[activityId];
+    
+    // Update streak tracking if this is a daily challenge
+    if (this.courseId === 'daily') {
+      this.updateChallengeStreak(activityId, evaluation.passed);
+    }
+    
+    return { correct: evaluation.passed, score: evaluation.score, attemptNumber: attemptData.attemptNumber };
+  },
+
+  /**
+   * Evaluate challenge response
+   * Supports: keyword-match, length-check, ai-review (future)
+   */
+  async evaluateChallengeResponse(activityId, response, activity) {
+    const el = activity.element;
+    const evalType = el.dataset.evaluationType || 'length-check';
+    
+    let evaluation = { passed: false, score: 0, feedback: '' };
+    
+    switch (evalType) {
+      case 'keyword-match': {
+        const keywords = (el.dataset.keywords || '').split(',').map(k => k.trim().toLowerCase());
+        const lowerResponse = response.toLowerCase();
+        const matchedKeywords = keywords.filter(k => k && lowerResponse.includes(k));
+        const matchRatio = keywords.length > 0 ? matchedKeywords.length / keywords.length : 0;
+        
+        evaluation.score = matchRatio;
+        evaluation.passed = matchRatio >= 0.5;
+        evaluation.feedback = matchRatio === 1 
+          ? 'All key concepts covered!'
+          : matchRatio >= 0.5 
+            ? `Good effort! Covered ${matchedKeywords.length}/${keywords.length} key concepts.`
+            : `Try to include more key concepts. Found ${matchedKeywords.length}/${keywords.length}.`;
+        break;
+      }
+      
+      case 'length-check': {
+        const minLength = parseInt(el.dataset.minLength) || 50;
+        const wordCount = response.trim().split(/\s+/).length;
+        const charCount = response.trim().length;
+        
+        evaluation.score = Math.min(1, charCount / (minLength * 2));
+        evaluation.passed = charCount >= minLength && wordCount >= 5;
+        evaluation.feedback = evaluation.passed
+          ? `Great response! ${wordCount} words submitted.`
+          : `Please provide a more detailed response (at least ${minLength} characters).`;
+        break;
+      }
+      
+      case 'ai-review': {
+        // Future: AI evaluation endpoint
+        // For now, use length-check as fallback
+        const wordCount = response.trim().split(/\s+/).length;
+        evaluation.score = Math.min(1, wordCount / 50);
+        evaluation.passed = wordCount >= 10;
+        evaluation.feedback = evaluation.passed
+          ? 'Response submitted for review!'
+          : 'Please provide more detail in your response.';
+        break;
+      }
+      
+      case 'peer-review': {
+        // Peer review always passes initially, score determined later
+        evaluation.score = 0.5;
+        evaluation.passed = true;
+        evaluation.feedback = 'Submitted for peer review. Check back later for feedback!';
+        break;
+      }
+      
+      default:
+        evaluation.score = response.trim().length > 0 ? 1 : 0;
+        evaluation.passed = response.trim().length > 0;
+        evaluation.feedback = 'Response submitted!';
+    }
+    
+    return evaluation;
+  },
+
+  /**
+   * Show challenge feedback UI
+   */
+  showChallengeFeedback(activityId, evaluation) {
+    const activity = this.activities.find(a => a.id === activityId);
+    if (!activity) return;
+    
+    const el = activity.element;
+    const feedbackEl = el.querySelector('.challenge-feedback');
+    const submitBtn = el.querySelector('.challenge-submit');
+    const input = el.querySelector('.challenge-input, textarea');
+    
+    // Update feedback area
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `
+        <div class="feedback-result ${evaluation.passed ? 'success' : 'partial'}">
+          <span class="feedback-icon">${evaluation.passed ? '🎉' : '💡'}</span>
+          <span class="feedback-text">${evaluation.feedback}</span>
+          ${activity.points ? `<span class="feedback-xp">+${Math.round(activity.points * evaluation.score)} XP</span>` : ''}
+        </div>
+      `;
+      feedbackEl.classList.add('visible');
+    }
+    
+    // Update button state
+    if (submitBtn) {
+      submitBtn.textContent = evaluation.passed ? '✅ Submitted!' : '🔄 Try Again';
+      submitBtn.classList.add(evaluation.passed ? 'success' : 'partial');
+      if (evaluation.passed) {
+        submitBtn.disabled = true;
+      }
+    }
+    
+    // Mark input as submitted
+    if (input && evaluation.passed) {
+      input.readOnly = true;
+      input.classList.add('submitted');
+    }
+    
+    // Mark container as complete
+    if (evaluation.passed) {
+      el.classList.add('challenge-complete');
+    }
+    
+    // Show toast
+    const xpEarned = activity.points ? Math.round(activity.points * evaluation.score) : 0;
+    this.showToast(
+      evaluation.passed 
+        ? `🎯 Challenge complete! +${xpEarned} XP`
+        : `💡 ${evaluation.feedback}`
+    );
+  },
+
+  /**
+   * Update daily challenge streak
+   */
+  async updateChallengeStreak(activityId, passed) {
+    if (!passed || !window.DataService) return;
+    
+    try {
+      // Get today's date in YYYY-MM-DD format
+      const today = new Date().toISOString().split('T')[0];
+      
+      // Track this challenge completion
+      await window.DataService.trackChallengeCompletion({
+        challengeId: activityId,
+        date: today,
+        completedAt: new Date().toISOString()
+      });
+      
+      // Check if all daily challenges are complete
+      const todaysChallenges = document.querySelectorAll('[data-activity^="challenge-"][data-date="' + today + '"]');
+      const completedToday = document.querySelectorAll('[data-activity^="challenge-"].challenge-complete[data-date="' + today + '"]');
+      
+      if (todaysChallenges.length > 0 && completedToday.length >= todaysChallenges.length) {
+        // All challenges complete! Update streak
+        await window.DataService.updateChallengeStreak(today);
+        this.showToast('🔥 Daily challenges complete! Streak continued!');
+      }
+    } catch (error) {
+      console.error('🎯 Error updating streak:', error);
+    }
+  },
+
+  /**
+   * Restore challenge visual state
+   */
+  restoreChallengeState(activity, attempt) {
+    const el = activity.element;
+    
+    if (!attempt.correct) return; // Only restore if completed successfully
+    
+    // Show the submitted response
+    const input = el.querySelector('.challenge-input, textarea');
+    if (input && attempt.response?.text) {
+      input.value = attempt.response.text;
+      input.readOnly = true;
+      input.classList.add('submitted');
+    }
+    
+    // Update feedback
+    const feedbackEl = el.querySelector('.challenge-feedback');
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `
+        <div class="feedback-result success">
+          <span class="feedback-icon">✅</span>
+          <span class="feedback-text">Already completed!</span>
+        </div>
+      `;
+      feedbackEl.classList.add('visible');
+    }
+    
+    // Update button
+    const submitBtn = el.querySelector('.challenge-submit');
+    if (submitBtn) {
+      submitBtn.textContent = '✅ Completed';
+      submitBtn.disabled = true;
+      submitBtn.classList.add('success');
+    }
+    
+    // Mark container
+    el.classList.add('challenge-complete', 'activity-completed');
+  },
   
   /**
    * Start timing an activity
@@ -1098,6 +1380,9 @@ const ActivityTracker = {
           break;
         case 'demo':
           this.restoreDemoState(activity, attempt);
+          break;
+        case 'challenge':
+          this.restoreChallengeState(activity, attempt);
           break;
       }
     });

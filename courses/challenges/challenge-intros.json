@@ -1,0 +1,195 @@
+{
+  "pageId": "challenge-intros",
+  "context": "challenge",
+  "stories": [
+    {
+      "id": "prompt-craft-intro",
+      "category": "prompt-craft",
+      "title": "Prompt Craft",
+      "description": "Master the art of clear AI communication",
+      "elements": [
+        { "data": { "id": "thinking", "label": "🧠 Your Thinking", "type": "concept" } },
+        { "data": { "id": "prompt", "label": "📝 Prompt", "type": "data" } },
+        { "data": { "id": "ai", "label": "🤖 AI", "type": "service" } },
+        { "data": { "id": "output", "label": "✨ Output", "type": "example" } },
+        { "data": { "source": "thinking", "target": "prompt" } },
+        { "data": { "source": "prompt", "target": "ai" } },
+        { "data": { "source": "ai", "target": "output" } }
+      ],
+      "steps": [
+        {
+          "nodeId": "thinking",
+          "caption": "The prompt is how you translate your thinking into AI instructions.",
+          "narration": "The prompt is how you translate your thinking into AI instructions."
+        },
+        {
+          "nodeId": "output",
+          "edges": [
+            { "from": "thinking", "to": "prompt" },
+            { "from": "prompt", "to": "ai" },
+            { "from": "ai", "to": "output" }
+          ],
+          "caption": "A great prompt leads to a great output. Let's craft one.",
+          "narration": "A great prompt leads to a great output. Let's craft one."
+        }
+      ]
+    },
+    {
+      "id": "context-engineering-intro",
+      "category": "context-engineering",
+      "title": "Context Engineering",
+      "description": "Structure information for optimal AI consumption",
+      "elements": [
+        { "data": { "id": "raw-info", "label": "📚 Raw Information", "type": "external" } },
+        { "data": { "id": "context", "label": "🧩 Structured Context", "type": "concept" } },
+        { "data": { "id": "ai", "label": "🤖 AI", "type": "service" } },
+        { "data": { "id": "accuracy", "label": "🎯 Accurate Results", "type": "example" } },
+        { "data": { "source": "raw-info", "target": "context" } },
+        { "data": { "source": "context", "target": "ai" } },
+        { "data": { "source": "ai", "target": "accuracy" } }
+      ],
+      "steps": [
+        {
+          "nodeId": "raw-info",
+          "caption": "AI can't read your mind. It needs the right context.",
+          "narration": "AI can't read your mind. It needs the right context to understand your problem."
+        },
+        {
+          "nodeId": "accuracy",
+          "edges": [
+            { "from": "raw-info", "to": "context" },
+            { "from": "context", "to": "ai" },
+            { "from": "ai", "to": "accuracy" }
+          ],
+          "caption": "Structure your context well, and accuracy follows.",
+          "narration": "Structure your context well, and accuracy follows naturally."
+        }
+      ]
+    },
+    {
+      "id": "debug-detective-intro",
+      "category": "code-review",
+      "title": "Debug Detective",
+      "description": "Train your eye for bugs and issues",
+      "elements": [
+        { "data": { "id": "bug", "label": "🐛 Bug", "type": "external" } },
+        { "data": { "id": "investigation", "label": "🔍 Investigation", "type": "concept" } },
+        { "data": { "id": "root-cause", "label": "💡 Root Cause", "type": "data" } },
+        { "data": { "id": "fix", "label": "✅ Fix", "type": "example" } },
+        { "data": { "source": "bug", "target": "investigation" } },
+        { "data": { "source": "investigation", "target": "root-cause" } },
+        { "data": { "source": "root-cause", "target": "fix" } }
+      ],
+      "steps": [
+        {
+          "nodeId": "bug",
+          "caption": "Every bug tells a story. Your job is to read it.",
+          "narration": "Every bug tells a story. Your job is to read it."
+        },
+        {
+          "nodeId": "fix",
+          "edges": [
+            { "from": "bug", "to": "investigation" },
+            { "from": "investigation", "to": "root-cause" },
+            { "from": "root-cause", "to": "fix" }
+          ],
+          "caption": "Find the root cause, and the fix becomes obvious.",
+          "narration": "Find the root cause, and the fix becomes obvious."
+        }
+      ]
+    },
+    {
+      "id": "system-design-intro",
+      "category": "agentic-workflows",
+      "title": "System Design",
+      "description": "Design multi-step AI workflows",
+      "elements": [
+        { "data": { "id": "requirements", "label": "📋 Requirements", "type": "external" } },
+        { "data": { "id": "architecture", "label": "🏗️ Architecture", "type": "concept" } },
+        { "data": { "id": "components", "label": "⚙️ Components", "type": "data" } },
+        { "data": { "id": "system", "label": "🚀 System", "type": "example" } },
+        { "data": { "source": "requirements", "target": "architecture" } },
+        { "data": { "source": "architecture", "target": "components" } },
+        { "data": { "source": "components", "target": "system" } }
+      ],
+      "steps": [
+        {
+          "nodeId": "requirements",
+          "caption": "Great systems start with understanding what you're building.",
+          "narration": "Great systems start with understanding what you're building."
+        },
+        {
+          "nodeId": "system",
+          "edges": [
+            { "from": "requirements", "to": "architecture" },
+            { "from": "architecture", "to": "components" },
+            { "from": "components", "to": "system" }
+          ],
+          "caption": "Break it down, connect the pieces, ship with confidence.",
+          "narration": "Break it down, connect the pieces, ship with confidence."
+        }
+      ]
+    },
+    {
+      "id": "visual-challenge-intro",
+      "category": "visual",
+      "title": "Visual Challenge",
+      "description": "Create beautiful animations and visualizations",
+      "elements": [
+        { "data": { "id": "concept", "label": "💭 Concept", "type": "concept" } },
+        { "data": { "id": "motion", "label": "🎬 Motion Design", "type": "data" } },
+        { "data": { "id": "animation", "label": "✨ Animation", "type": "example" } },
+        { "data": { "source": "concept", "target": "motion" } },
+        { "data": { "source": "motion", "target": "animation" } }
+      ],
+      "steps": [
+        {
+          "nodeId": "concept",
+          "caption": "Every visualization tells a story through motion.",
+          "narration": "Every visualization tells a story through motion."
+        },
+        {
+          "nodeId": "animation",
+          "edges": [
+            { "from": "concept", "to": "motion" },
+            { "from": "motion", "to": "animation" }
+          ],
+          "caption": "Transform your concept into something users can feel.",
+          "narration": "Transform your concept into something users can feel."
+        }
+      ]
+    },
+    {
+      "id": "non-deterministic-intro",
+      "category": "non-deterministic",
+      "title": "Non-Deterministic Thinking",
+      "description": "Handle AI uncertainty like a pro",
+      "elements": [
+        { "data": { "id": "question", "label": "❓ Same Question", "type": "external" } },
+        { "data": { "id": "responses", "label": "🔀 Multiple Answers", "type": "data" } },
+        { "data": { "id": "evaluation", "label": "⚖️ Evaluation", "type": "concept" } },
+        { "data": { "id": "decision", "label": "✅ Best Choice", "type": "example" } },
+        { "data": { "source": "question", "target": "responses" } },
+        { "data": { "source": "responses", "target": "evaluation" } },
+        { "data": { "source": "evaluation", "target": "decision" } }
+      ],
+      "steps": [
+        {
+          "nodeId": "responses",
+          "caption": "AI gives different answers each time. That's a feature, not a bug.",
+          "narration": "AI gives different answers each time. That's a feature, not a bug."
+        },
+        {
+          "nodeId": "decision",
+          "edges": [
+            { "from": "question", "to": "responses" },
+            { "from": "responses", "to": "evaluation" },
+            { "from": "evaluation", "to": "decision" }
+          ],
+          "caption": "Learn to evaluate, compare, and choose wisely.",
+          "narration": "Learn to evaluate, compare, and choose wisely."
+        }
+      ]
+    }
+  ]
+}
