@@ -107,7 +107,7 @@
       </button>
       <button class="tab-btn" data-tab="chapters">
         <span class="tab-icon">📖</span>
-        <span class="tab-text">Chapters</span>
+        <span class="tab-text" id="lessons-tab-text">Chapters</span>
       </button>
       <button class="tab-btn" data-tab="analytics">
         <span class="tab-icon">📊</span>
@@ -135,7 +135,7 @@
             <div class="overview-stat">
               <span class="stat-icon">📚</span>
               <span class="stat-value" id="ov-chapters">0/7</span>
-              <span class="stat-label">Chapters</span>
+              <span class="stat-label" id="ov-chapters-label">Chapters</span>
             </div>
             <div class="overview-stat">
               <span class="stat-icon">⏱️</span>
@@ -227,12 +227,12 @@
           
           <!-- Chapter Progress Table -->
           <div class="analytics-card full-width">
-            <h3 class="card-title">📊 Chapter Breakdown</h3>
+            <h3 class="card-title" id="breakdown-title">📊 Chapter Breakdown</h3>
             <div class="chapter-table-wrapper">
               <table class="chapter-table">
                 <thead>
                   <tr>
-                    <th>Chapter</th>
+                    <th id="breakdown-header-label">Chapter</th>
                     <th>Status</th>
                     <th>Time</th>
                     <th>Quiz</th>
@@ -315,29 +315,40 @@
   <script>
     // Course metadata
     const COURSE_DATA = {
+      'endless-opportunities': {
+        name: "Endless Opportunities",
+        subtitle: "Start your tech journey with Grand Rapids Public Schools",
+        icon: "🚀",
+        color: "#4db6ac",
+        type: "week"
+      },
       apprentice: {
         name: "The Apprentice's Path",
         subtitle: "Master the fundamentals of programming through the Three Forces",
         icon: "🌟",
-        color: "#ffd54f"
+        color: "#ffd54f",
+        type: "chapter"
       },
       undergrad: {
         name: "The Bridge to Industry",
         subtitle: "Transform academic knowledge into professional skills",
         icon: "🎓",
-        color: "#7986cb"
+        color: "#7986cb",
+        type: "chapter"
       },
       junior: {
         name: "The Junior Accelerator",
         subtitle: "Fast-track your career from junior to mid-level in record time",
         icon: "🚀",
-        color: "#4db6ac"
+        color: "#4db6ac",
+        type: "chapter"
       },
       senior: {
         name: "The Senior Amplifier",
         subtitle: "Multiply your impact with AI-augmented development",
         icon: "🎯",
-        color: "#ef5350"
+        color: "#ef5350",
+        type: "chapter"
       }
     };
     
@@ -351,9 +362,20 @@
       { id: 'ch6-capstone2', name: 'Capstone II', icon: '🏆', desc: 'The final challenge' }
     ];
     
+    const WEEKS = [
+      { id: 'week0-intro', name: 'Week 0: Introduction', icon: '👋', desc: 'Getting started with your tech journey' },
+      { id: 'week1-questions', name: 'Week 1: Asking Questions', icon: '❓', desc: 'Learn to ask powerful questions' },
+      { id: 'week2-data', name: 'Week 2: Working with Data', icon: '📊', desc: 'Understand data and information' },
+      { id: 'week3-building', name: 'Week 3: Building Things', icon: '🔨', desc: 'Create your first projects' },
+      { id: 'week4-portfolio', name: 'Week 4: Your Portfolio', icon: '🎨', desc: 'Showcase your work' }
+    ];
+    
     let currentCourseId = null;
     let courseProgress = null;
     let chapterAnalytics = null;
+    let lessons = []; // Will be CHAPTERS or WEEKS based on course type
+    let lessonLabel = 'Chapter'; // Will be 'Chapter' or 'Week'
+    let totalLessons = 7;
     
     // Initialize
     document.addEventListener('DOMContentLoaded', async () => {
@@ -413,6 +435,19 @@
     async function loadCourseData() {
       const course = COURSE_DATA[currentCourseId];
       
+      // Set lesson structure based on course type
+      if (course.type === 'week') {
+        lessons = WEEKS;
+        lessonLabel = 'Week';
+        totalLessons = WEEKS.length;
+        document.getElementById('lessons-tab-text').textContent = 'Weeks';
+      } else {
+        lessons = CHAPTERS;
+        lessonLabel = 'Chapter';
+        totalLessons = CHAPTERS.length;
+        document.getElementById('lessons-tab-text').textContent = 'Chapters';
+      }
+      
       // Set hero info
       document.getElementById('hero-icon').textContent = course.icon;
       document.getElementById('hero-title').textContent = course.name;
@@ -465,7 +500,8 @@
     // Update overview stats
     function updateOverviewStats(progress) {
       const completed = progress.completedLessons || 0;
-      document.getElementById('ov-chapters').textContent = `${completed}/7`;
+      document.getElementById('ov-chapters').textContent = `${completed}/${totalLessons}`;
+      document.getElementById('ov-chapters-label').textContent = lessonLabel === 'Week' ? 'Weeks' : 'Chapters';
       
       // Time
       const timeMs = chapterAnalytics?.totals?.totalTimeMs || 0;
@@ -482,29 +518,29 @@
     
     // Setup continue learning
     function setupContinueLearning() {
-      // Find next incomplete chapter
-      let nextChapter = CHAPTERS[0];
+      // Find next incomplete chapter/week
+      let nextLesson = lessons[0];
       let nextIndex = 0;
       
       if (chapterAnalytics?.chapters) {
         for (let i = 0; i < chapterAnalytics.chapters.length; i++) {
           if (chapterAnalytics.chapters[i].status !== 'completed') {
-            nextChapter = CHAPTERS[i];
+            nextLesson = lessons[i];
             nextIndex = i;
             break;
           }
           // If all complete, show last
           if (i === chapterAnalytics.chapters.length - 1) {
-            nextChapter = CHAPTERS[i];
+            nextLesson = lessons[i];
             nextIndex = i;
           }
         }
       }
       
-      document.getElementById('continue-chapter').textContent = `Chapter ${nextIndex}`;
-      document.getElementById('continue-title').textContent = nextChapter.name;
-      document.getElementById('continue-desc').textContent = nextChapter.desc;
-      document.getElementById('continue-btn').href = `../${currentCourseId}/${nextChapter.id}/`;
+      document.getElementById('continue-chapter').textContent = `${lessonLabel} ${nextIndex}`;
+      document.getElementById('continue-title').textContent = nextLesson.name;
+      document.getElementById('continue-desc').textContent = nextLesson.desc;
+      document.getElementById('continue-btn').href = `../${currentCourseId}/${nextLesson.id}/`;
     }
     
     // Render chapters list
@@ -512,7 +548,7 @@
       const container = document.getElementById('chapters-list');
       container.innerHTML = '';
       
-      CHAPTERS.forEach((chapter, index) => {
+      lessons.forEach((lesson, index) => {
         const analytics = chapterAnalytics?.chapters?.[index] || {};
         const status = analytics.status || 'not_started';
         
@@ -521,10 +557,10 @@
         
         card.innerHTML = `
           <div class="chapter-number">${index}</div>
-          <div class="chapter-icon">${chapter.icon}</div>
+          <div class="chapter-icon">${lesson.icon}</div>
           <div class="chapter-info">
-            <h3 class="chapter-name">${chapter.name}</h3>
-            <p class="chapter-desc">${chapter.desc}</p>
+            <h3 class="chapter-name">${lesson.name}</h3>
+            <p class="chapter-desc">${lesson.desc}</p>
             <div class="chapter-meta">
               <span class="meta-item">
                 <span class="meta-icon">⏱️</span>
@@ -547,7 +583,7 @@
               status === 'in_progress' ? '<span class="status-badge in-progress">In Progress</span>' :
               '<span class="status-badge">Not Started</span>'}
           </div>
-          <a href="../${currentCourseId}/${chapter.id}/" class="chapter-link">
+          <a href="../${currentCourseId}/${lesson.id}/" class="chapter-link">
             ${status === 'completed' ? 'Review' : status === 'in_progress' ? 'Continue' : 'Start'} →
           </a>
         `;
@@ -572,10 +608,14 @@
       
       const totals = chapterAnalytics.totals;
       
+      // Update breakdown title
+      document.getElementById('breakdown-title').textContent = `📊 ${lessonLabel} Breakdown`;
+      document.getElementById('breakdown-header-label').textContent = lessonLabel;
+      
       // Performance metrics
       const quizScore = totals.avgQuizScore || 0;
-      const completionRate = Math.round((totals.completed / 7) * 100);
-      const engagementScore = Math.min(100, Math.round((totals.totalActivities / 14) * 100)); // Assume 2 activities per chapter
+      const completionRate = Math.round((totals.completed / totalLessons) * 100);
+      const engagementScore = Math.min(100, Math.round((totals.totalActivities / (totalLessons * 2)) * 100)); // Assume 2 activities per lesson
       
       document.getElementById('an-quiz-bar').style.width = quizScore + '%';
       document.getElementById('an-quiz-value').textContent = quizScore + '%';
@@ -594,8 +634,8 @@
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>
-            <span class="table-icon">${CHAPTERS[i].icon}</span>
-            ${CHAPTERS[i].name}
+            <span class="table-icon">${lessons[i].icon}</span>
+            ${lessons[i].name}
           </td>
           <td>
             <span class="status-dot ${chapter.status}"></span>
