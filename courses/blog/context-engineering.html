@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== SEO Meta Tags ===== -->
+    <title>
+      Context Engineering: The Skill That Will Define Your AI Career | Blog |
+      AutoNateAI
+    </title>
+    <meta
+      name="description"
+      content="Prompt engineering was just the beginning. Learn why context engineering is the real differentiator for AI-augmented developers and how to master it."
+    />
+    <link
+      rel="canonical"
+      href="https://autonateai.com/blog/context-engineering.html"
+    />
+
+    <!-- ===== OpenGraph Tags ===== -->
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://autonateai.com/blog/context-engineering.html"
+    />
+    <meta
+      property="og:title"
+      content="Context Engineering: The Skill That Will Define Your AI Career | AutoNateAI"
+    />
+    <meta
+      property="og:description"
+      content="Prompt engineering was just the beginning. Learn why context engineering is the real differentiator for AI-augmented developers."
+    />
+    <meta
+      property="og:image"
+      content="https://autonateai.com/assets/blog/context-engineering-og.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="AutoNateAI" />
+    <meta property="article:published_time" content="2025-12-28" />
+    <meta property="article:author" content="Nathan Baker" />
+    <meta property="article:section" content="AI Workflows" />
+
+    <!-- ===== Twitter Cards ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@autonateai" />
+    <meta name="twitter:creator" content="@autonateai" />
+    <meta
+      name="twitter:title"
+      content="Context Engineering: The Skill That Will Define Your AI Career"
+    />
+    <meta
+      name="twitter:description"
+      content="Prompt engineering was just the beginning. Learn why context engineering is the real differentiator for AI-augmented developers."
+    />
+    <meta
+      name="twitter:image"
+      content="https://autonateai.com/assets/blog/context-engineering-og.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Context Engineering - AutoNateAI Blog"
+    />
+
+    <!-- ===== Favicon ===== -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>"
+    />
+
+    <!-- ===== Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Styles ===== -->
+    <link rel="stylesheet" href="../shared/css/marketing.css" />
+    <link rel="stylesheet" href="../shared/css/blog.css" />
+    <link rel="stylesheet" href="../shared/css/blog-post.css" />
+
+    <!-- ===== External Libraries ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+    <!-- ===== Cytoscape (for BlogDiagram) ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+
+    <!-- ===== Shared Scripts ===== -->
+    <script src="../shared/js/navbar.js" defer></script>
+    <script src="../shared/js/blog.js" defer></script>
+    <script src="../shared/js/interactive/diagram-utils.js" defer></script>
+    <script src="../shared/js/interactive/audio-engine.js" defer></script>
+    <script src="../shared/js/interactive/blog-diagram.js" defer></script>
+  </head>
+  <body>
+    <!-- ===== Reading Progress Bar ===== -->
+    <div class="reading-progress"></div>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="marketing-nav" id="nav">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <span class="nav-logo-icon">🏛️</span>
+          <span>AutoNateAI</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="../catalog.html" class="nav-link">Courses</a>
+          <a
+            href="../blog/"
+            class="nav-link"
+            style="color: var(--accent-primary)"
+            >Blog</a
+          >
+          <a href="../consulting.html" class="nav-link">Consulting</a>
+          <a href="../enterprise.html" class="nav-link">Enterprise</a>
+          <a href="../challenges.html" class="nav-link">Challenges</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="../auth/login.html" class="nav-btn secondary">Sign In</a>
+          <a href="../auth/register.html" class="nav-btn primary"
+            >Get Started</a
+          >
+        </div>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      </div>
+    </nav>
+
+    <!-- ===== HERO BLOCK ===== -->
+    <header class="hero-block blog-block">
+      <span class="category-badge">AI Workflows</span>
+      <h1 class="article-title">
+        Context Engineering: The Skill That Will Define Your AI Career
+      </h1>
+      <div class="article-meta">
+        <span>📅 December 28, 2025</span>
+        <span>⏱️ 8 min read</span>
+        <span>✍️ Nathan Baker</span>
+      </div>
+    </header>
+
+    <!-- ===== Article Content ===== -->
+    <article class="article-container">
+      <!-- ===== TEXT BLOCK (Lead) ===== -->
+      <div class="text-block lead blog-block">
+        <p>
+          You've probably heard about "prompt engineering" — the art of crafting
+          the perfect question to get useful AI responses. But here's the thing:
+          <strong>prompts are just the tip of the iceberg</strong>. The real
+          magic happens before you ever type a single word.
+        </p>
+      </div>
+
+      <!-- ===== DIVIDER BLOCK ===== -->
+      <div class="divider-block blog-block">
+        <span class="divider-icon">✦</span>
+      </div>
+
+      <!-- ===== SECTION 1 ===== -->
+      <section class="section-block blog-block">
+        <span class="section-number">1</span>
+        <h2 class="section-title">The Problem With "Just Prompting"</h2>
+        <p class="section-subtitle">Why even perfect prompts can fail</p>
+      </section>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          We've all been there. You craft what feels like a brilliant prompt,
+          hit enter, and... the AI gives you something completely useless.
+          Generic code. Wrong assumptions. Missing the point entirely.
+        </p>
+        <p>
+          The problem isn't your prompt.
+          <strong>The problem is what the AI doesn't know.</strong>
+        </p>
+        <p>
+          Think about it: when you ask a senior developer for help, they don't
+          just hear your question. They see your screen. They know your
+          codebase. They understand your project's constraints. They have
+          <em>context</em>.
+        </p>
+      </div>
+
+      <!-- ===== CALLOUT BLOCK ===== -->
+      <aside class="callout-block info blog-block">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <div class="callout-title">The Context Gap</div>
+          <div class="callout-text">
+            AI models are incredibly capable, but they're working blind. Every
+            session starts fresh. They don't know your tech stack, coding style,
+            project structure, or business requirements — unless you tell them.
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===== BLOG DIAGRAM: Context Flow ===== -->
+      <div class="blog-diagram-container blog-block centered">
+        <div
+          class="blog-diagram"
+          id="context-flow-diagram"
+          data-story="context-flow"
+        ></div>
+        <div class="diagram-caption" id="context-flow-caption"></div>
+        <div class="diagram-controls">
+          <button class="replay-btn">↻ Replay</button>
+          <button class="audio-toggle" title="Toggle audio">🔊</button>
+          <select class="voice-select" title="Select narrator voice">
+            <option value="ballad">Female Narrator</option>
+            <option value="echo">Male UK Narrator</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          This is the fundamental insight behind context engineering:
+          <strong
+            >the quality of your AI output is directly proportional to the
+            quality of context you provide</strong
+          >.
+        </p>
+      </div>
+
+      <!-- ===== SECTION 2 ===== -->
+      <section class="section-block blog-block">
+        <span class="section-number">2</span>
+        <h2 class="section-title">What is Context Engineering?</h2>
+        <p class="section-subtitle">
+          The skill that separates AI users from AI masters
+        </p>
+      </section>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          Context engineering is the deliberate practice of curating,
+          structuring, and delivering the right information to AI systems. It's
+          about building a mental model inside the AI that matches your reality.
+        </p>
+        <p>
+          Unlike prompt engineering (which focuses on <em>how you ask</em>),
+          context engineering focuses on
+          <em>what the AI knows when you ask</em>.
+        </p>
+      </div>
+
+      <!-- ===== COMPARISON BLOCK ===== -->
+      <div class="comparison-block blog-block">
+        <div class="comparison-side bad">
+          <div class="comparison-header">😫 Vague Prompt</div>
+          <div class="comparison-content">
+            <pre>
+"Help me write a function 
+to validate user input"</pre
+            >
+          </div>
+        </div>
+        <div class="comparison-side good">
+          <div class="comparison-header">✨ Rich Context</div>
+          <div class="comparison-content">
+            <pre>
+"I'm building a React form 
+with TypeScript. Validate 
+email format and password 
+strength (8+ chars, 
+1 uppercase, 1 number). 
+Use Zod for schema."</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== BLOG DIAGRAM: Before/After ===== -->
+      <div class="diagram-figure blog-block">
+        <div class="blog-diagram-container">
+          <div
+            class="blog-diagram"
+            id="before-after-diagram"
+            data-story="before-after"
+          ></div>
+          <div class="diagram-caption" id="before-after-caption"></div>
+          <div class="diagram-controls">
+            <button class="replay-btn">↻ Replay</button>
+            <button class="audio-toggle" title="Toggle audio">🔊</button>
+            <select class="voice-select" title="Select narrator voice">
+              <option value="ballad">Female Narrator</option>
+              <option value="echo">Male UK Narrator</option>
+            </select>
+          </div>
+        </div>
+        <div class="figure-caption">
+          <strong>Figure 1:</strong> The transformation from vague requests to
+          precise, actionable AI responses. Notice how rich context eliminates
+          guesswork and produces code you can actually use.
+        </div>
+      </div>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          The second prompt isn't just longer — it's
+          <strong>information-dense</strong>. Every word eliminates ambiguity
+          and guides the AI toward exactly what you need.
+        </p>
+      </div>
+
+      <!-- ===== SECTION 3 ===== -->
+      <section class="section-block blog-block">
+        <span class="section-number">3</span>
+        <h2 class="section-title">The Context Engineering Framework</h2>
+        <p class="section-subtitle">A practical approach you can use today</p>
+      </section>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          After months of experimentation and thousands of AI interactions, I've
+          developed a framework that consistently produces better results. I
+          call it the <strong>SCOPE</strong>
+          framework:
+        </p>
+      </div>
+
+      <!-- ===== TIMELINE BLOCK ===== -->
+      <div class="timeline-block blog-block">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">S — Stack</div>
+          <div class="timeline-title">Define Your Technology Stack</div>
+          <div class="timeline-desc">
+            Languages, frameworks, libraries, and tools. Be specific about
+            versions when it matters. "React 18 with TypeScript 5" beats "a
+            React app."
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">C — Constraints</div>
+          <div class="timeline-title">Specify Your Constraints</div>
+          <div class="timeline-desc">
+            Performance requirements, security needs, accessibility standards,
+            or business rules. What must the solution respect?
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">O — Objective</div>
+          <div class="timeline-title">State Your Objective Clearly</div>
+          <div class="timeline-desc">
+            What specific outcome do you need? Not just "help me" but "generate
+            a production-ready component that does X."
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">P — Patterns</div>
+          <div class="timeline-title">Share Existing Patterns</div>
+          <div class="timeline-desc">
+            Show code examples from your codebase. The AI learns your style,
+            naming conventions, and architectural decisions.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">E — Examples</div>
+          <div class="timeline-title">Provide Input/Output Examples</div>
+          <div class="timeline-desc">
+            Show what success looks like. "Given this input, I expect this
+            output" removes all ambiguity.
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CODE BLOCK ===== -->
+      <div class="code-block blog-block">
+        <div class="code-header">
+          <span class="code-language">Context Example</span>
+          <button class="code-copy">📋 Copy</button>
+        </div>
+        <pre><code class="language-markdown"># SCOPE Context for AI
+
+## Stack
+- Next.js 14 with App Router
+- TypeScript 5.3 (strict mode)
+- Tailwind CSS with shadcn/ui
+- Prisma ORM with PostgreSQL
+
+## Constraints
+- Must be accessible (WCAG 2.1 AA)
+- Mobile-first responsive design
+- No external API calls (privacy)
+- Must handle loading/error states
+
+## Objective
+Create a UserProfileCard component that displays 
+user avatar, name, role, and a "View Profile" button.
+
+## Patterns (from our codebase)
+```tsx
+// We use this pattern for cards:
+export function FeatureCard({ title, icon }: Props) {
+  return (
+    &lt;Card className="p-6 hover:shadow-lg transition-shadow"&gt;
+      &lt;CardHeader&gt;{icon}&lt;/CardHeader&gt;
+      &lt;CardTitle&gt;{title}&lt;/CardTitle&gt;
+    &lt;/Card&gt;
+  );
+}
+```
+
+## Example Output Shape
+Input: { name: "Jane Doe", role: "Admin", avatarUrl: "..." }
+Output: Renders a card matching our design system</code></pre>
+      </div>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          With this context in place, the AI doesn't have to guess. It knows
+          your stack, respects your constraints, understands your objective,
+          follows your patterns, and targets your expected output.
+        </p>
+      </div>
+
+      <!-- ===== QUOTE BLOCK ===== -->
+      <div class="quote-block blog-block">
+        <blockquote>
+          "The best AI interaction feels less like prompting and more like
+          onboarding a brilliant contractor who happens to have amnesia."
+        </blockquote>
+        <cite>— The Context Engineering Mindset</cite>
+      </div>
+
+      <!-- ===== IMAGE BLOCK ===== -->
+      <figure class="image-block blog-block">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%2312121a' width='800' height='400'/%3E%3Ctext x='400' y='180' font-family='Inter,sans-serif' font-size='24' fill='%237986cb' text-anchor='middle'%3E📊 Context Engineering Dashboard%3C/text%3E%3Ctext x='400' y='220' font-family='Inter,sans-serif' font-size='14' fill='%236a6a80' text-anchor='middle'%3E(Visualization of context layers in an AI-augmented IDE)%3C/text%3E%3C/svg%3E"
+          alt="Context Engineering Dashboard showing multiple context layers"
+        />
+        <figcaption class="image-caption">
+          Figure 2: A conceptual view of context layers — from project-level
+          rules down to file-specific annotations. Each layer builds on the
+          previous.
+        </figcaption>
+      </figure>
+
+      <!-- ===== CALLOUT BLOCK (Warning) ===== -->
+      <aside class="callout-block warning blog-block">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-content">
+          <div class="callout-title">Context Window Limits</div>
+          <div class="callout-text">
+            Remember that AI models have context window limits. Don't dump your
+            entire codebase — curate the most relevant files. Quality over
+            quantity. A focused 500 lines beats an overwhelming 5,000.
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===== SECTION 4 ===== -->
+      <section class="section-block blog-block">
+        <span class="section-number">4</span>
+        <h2 class="section-title">Putting It Into Practice</h2>
+        <p class="section-subtitle">Start small, build momentum</p>
+      </section>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          You don't need to apply the full SCOPE framework to every interaction.
+          Start with the most impactful element for your situation:
+        </p>
+        <p>
+          <strong>If the AI gives generic code</strong> → Add Stack context<br />
+          <strong>If it violates your standards</strong> → Add Patterns
+          context<br />
+          <strong>If it misunderstands the goal</strong> → Add Objective
+          clarity<br />
+          <strong>If the output shape is wrong</strong> → Add Examples
+        </p>
+        <p>
+          Over time, you'll develop intuition for what context is missing.
+          You'll start building reusable context files (like `.cursorrules` or
+          project documentation) that automatically enrich every interaction.
+        </p>
+      </div>
+
+      <!-- ===== STATS BLOCK ===== -->
+      <div class="stats-block blog-block">
+        <div class="stat-item">
+          <div class="stat-value" data-value="73" data-suffix="%">73%</div>
+          <div class="stat-label">Fewer Revisions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-value="4" data-suffix="x">4x</div>
+          <div class="stat-label">Faster Iteration</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-value="89" data-suffix="%">89%</div>
+          <div class="stat-label">Usable First-Pass</div>
+        </div>
+      </div>
+
+      <!-- ===== TEXT BLOCK ===== -->
+      <div class="text-block blog-block">
+        <p>
+          These are the results we've seen at AutoNateAI after training
+          developers in context engineering principles. The difference isn't
+          marginal — it's transformational.
+        </p>
+        <p>
+          Context engineering isn't just a technique. It's a mindset shift. It's
+          understanding that
+          <strong>AI is a collaborator that needs onboarding</strong>, not a
+          magic oracle that reads minds.
+        </p>
+      </div>
+
+      <!-- ===== CTA BLOCK ===== -->
+      <div class="cta-block blog-block">
+        <h3 class="cta-title">Ready to Master Context Engineering?</h3>
+        <p class="cta-text">
+          Join our AI Workflows course and learn the complete SCOPE framework
+          with hands-on exercises, real-world examples, and personalized
+          feedback.
+        </p>
+        <a href="../course/junior.html" class="cta-button">
+          Explore the Course →
+        </a>
+      </div>
+
+      <!-- ===== DIVIDER BLOCK ===== -->
+      <div class="divider-block blog-block">
+        <span class="divider-icon">✦</span>
+      </div>
+
+      <!-- ===== AUTHOR BLOCK ===== -->
+      <div class="author-block blog-block">
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%237986cb' cx='50' cy='50' r='50'/%3E%3Ctext x='50' y='60' font-size='40' text-anchor='middle' fill='white'%3ENB%3C/text%3E%3C/svg%3E"
+          alt="Nathan Baker"
+          class="author-avatar"
+        />
+        <div class="author-info">
+          <div class="author-name">Nathan Baker</div>
+          <div class="author-role">Founder, AutoNateAI</div>
+          <div class="author-bio">
+            Nathan is an AI-augmented development specialist who helps
+            developers and teams harness the power of AI tools. When he's not
+            building learning platforms, he's exploring new ways to make
+            human-AI collaboration more effective.
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RELATED BLOCK ===== -->
+      <div
+        class="related-block blog-block"
+        data-auto-load="true"
+        data-current-slug="context-engineering"
+      >
+        <h3 class="related-title">Continue Reading</h3>
+        <div class="related-grid">
+          <!-- Populated by JavaScript from articles.json -->
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Newsletter CTA ===== -->
+    <section class="section" style="background: var(--bg-secondary)">
+      <div class="section-container">
+        <div class="community-card" style="max-width: 700px">
+          <div class="community-icon">📬</div>
+          <h2 class="community-title">Subscribe to Our Newsletter</h2>
+          <p class="community-desc">
+            Get weekly insights on AI-augmented development, new articles, and
+            platform updates delivered to your inbox.
+          </p>
+          <form
+            style="display: flex; gap: 1rem; max-width: 400px; margin: 0 auto"
+          >
+            <input
+              type="email"
+              placeholder="your@email.com"
+              class="form-input"
+              style="flex: 1"
+            />
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="padding: 0.875rem 1.5rem"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="footer-logo-icon">🏛️</span>
+              <span>AutoNateAI</span>
+            </div>
+            <p class="footer-desc">
+              AI-augmented learning for developers who want to think like
+              architects and build like pros.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h4>Learning</h4>
+            <ul class="footer-links">
+              <li><a href="../course/apprentice.html">Apprentice Path</a></li>
+              <li><a href="../course/junior.html">Junior Accelerator</a></li>
+              <li><a href="../course/senior.html">Senior Amplifier</a></li>
+              <li><a href="../challenges.html">Daily Challenges</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul class="footer-links">
+              <li><a href="../blog/">Blog</a></li>
+              <li><a href="../consulting.html">Consulting</a></li>
+              <li><a href="../enterprise.html">Enterprise</a></li>
+              <li>
+                <a href="https://discord.gg/Me5N8tCdkC" target="_blank"
+                  >Discord</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Account</h4>
+            <ul class="footer-links">
+              <li><a href="../auth/login.html">Sign In</a></li>
+              <li><a href="../auth/register.html">Create Account</a></li>
+              <li><a href="../dashboard/">Dashboard</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copy">© 2026 AutoNateAI. All rights reserved.</p>
+          <div class="footer-social">
+            <a
+              href="https://discord.gg/Me5N8tCdkC"
+              target="_blank"
+              title="Discord"
+              >💬</a
+            >
+            <a
+              href="https://github.com/nathanbaker-ao"
+              target="_blank"
+              title="GitHub"
+              >🐙</a
+            >
+            <a
+              href="https://twitter.com/autonateai"
+              target="_blank"
+              title="Twitter"
+              >🐦</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== BlogDiagram Initialization with Audio ===== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize audio engine (loads manifest.json from audio folder)
+        // Audio files should be in courses/blog/audio/ after running generate-audio.js
+        const audioEngine =
+          typeof AudioNarrationEngine !== "undefined"
+            ? new AudioNarrationEngine("audio")
+            : null;
+
+        // ===== Diagram 1: Context Flow =====
+        // Shows: 🧠 Your Knowledge → 📝 Context Window → 🤖 AI Response
+        const contextFlowStory = {
+          id: "context-flow",
+          context: "blog",
+          elements: [
+            {
+              data: {
+                id: "knowledge",
+                label: "🧠 Your\nKnowledge",
+                type: "concept",
+              },
+            },
+            {
+              data: {
+                id: "context",
+                label: "📝 Context\nWindow",
+                type: "service",
+              },
+            },
+            {
+              data: {
+                id: "response",
+                label: "🤖 AI\nResponse",
+                type: "example",
+              },
+            },
+            { data: { source: "knowledge", target: "context" } },
+            { data: { source: "context", target: "response" } },
+          ],
+          steps: [
+            {
+              nodeId: "knowledge",
+              caption:
+                "You have deep knowledge about your project, stack, and goals...",
+              narration:
+                "You have deep knowledge about your project, your tech stack, and your goals. This is invaluable context that the AI doesn't automatically know.",
+            },
+            {
+              nodeId: "response",
+              edges: [
+                { from: "knowledge", to: "context" },
+                { from: "context", to: "response" },
+              ],
+              caption:
+                "Transfer that knowledge through context to get relevant AI output!",
+              narration:
+                "Transfer that knowledge through the context window, and watch the AI transform from generic assistant to expert collaborator!",
+            },
+          ],
+        };
+
+        // ===== Diagram 2: Before/After =====
+        // Shows: 😫 Vague Prompt vs ✨ Rich Context
+        const beforeAfterStory = {
+          id: "before-after",
+          context: "blog",
+          elements: [
+            {
+              data: {
+                id: "vague",
+                label: "😫 Vague\nPrompt",
+                type: "external",
+              },
+            },
+            {
+              data: {
+                id: "generic",
+                label: "🤷 Generic\nOutput",
+                type: "external",
+              },
+            },
+            {
+              data: { id: "rich", label: "✨ Rich\nContext", type: "concept" },
+            },
+            {
+              data: {
+                id: "perfect",
+                label: "🎯 Perfect\nCode",
+                type: "example",
+              },
+            },
+            { data: { source: "vague", target: "generic" } },
+            { data: { source: "rich", target: "perfect" } },
+          ],
+          steps: [
+            {
+              nodeId: "vague",
+              edges: [{ from: "vague", to: "generic" }],
+              caption: "Vague prompts lead to generic, unhelpful responses...",
+              narration:
+                "Vague prompts lead to generic, unhelpful responses. The AI has to guess what you want, and it usually guesses wrong.",
+            },
+            {
+              nodeId: "rich",
+              edges: [{ from: "rich", to: "perfect" }],
+              caption: "Rich context produces precise, usable code!",
+              narration:
+                "But rich context? That produces precise, usable code. Every detail you add eliminates guesswork and guides the AI to exactly what you need!",
+            },
+          ],
+        };
+
+        // Initialize diagrams with audio engine
+        if (typeof BlogDiagram !== "undefined") {
+          BlogDiagram.init("context-flow-diagram", contextFlowStory, {
+            autoPlay: true,
+            loop: false,
+            stepDuration: 2500,
+            pauseBetweenSteps: 500,
+            audioEnabled: true,
+            audioEngine: audioEngine,
+            storyId: "context-flow",
+          });
+
+          BlogDiagram.init("before-after-diagram", beforeAfterStory, {
+            autoPlay: true,
+            loop: false,
+            stepDuration: 2500,
+            pauseBetweenSteps: 500,
+            audioEnabled: true,
+            audioEngine: audioEngine,
+            storyId: "before-after",
+          });
+        }
+      });
+    </script>
+
+    <!-- ===== Navbar Scroll Effect ===== -->
+    <script>
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+      });
+    </script>
+  </body>
+</html>

@@ -1,230 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary Meta Tags -->
-  <title>Blog | AutoNateAI</title>
-  <meta name="description" content="Insights on AI-augmented development, local research, and learning strategies from the AutoNateAI team.">
-  
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://autonateai.com/blog/">
-  <meta property="og:title" content="Blog | AutoNateAI">
-  <meta property="og:description" content="Insights on AI-augmented development, local research, and learning strategies.">
-  <meta property="og:image" content="https://autonateai.com/assets/og-preview.png">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Blog | AutoNateAI">
-  <meta name="twitter:image" content="https://autonateai.com/assets/og-preview.png">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../shared/css/marketing.css">
-  
-  <!-- Anime.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  
-  <!-- Shared Components -->
-  <script src="../shared/js/navbar.js" defer></script>
-  <script src="../shared/js/footer.js" defer></script>
-</head>
-<body>
-  
-  <!-- Navigation (injected) -->
-  <div id="navbar-container"></div>
-  
-  <!-- Blog Hero -->
-  <section class="section blog-hero">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-badge">📝 Blog</div>
-        <h1 class="section-title">Insights & Research</h1>
-        <p class="section-subtitle">
-          Thoughts on AI-augmented development, local research projects, and learning strategies 
-          from the AutoNateAI team.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Featured Article -->
-  <section class="section" style="padding-top: 0;">
-    <div class="section-container">
-      <div style="background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary)); border-radius: var(--radius-lg); padding: 3rem; border: 1px solid rgba(121, 134, 203, 0.3); margin-bottom: 4rem;">
-        <div class="section-badge" style="margin-bottom: 1rem;">Featured</div>
-        <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">
-          How We Built This Learning Platform in 30 Days with AI
-        </h2>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 700px;">
-          A behind-the-scenes look at building AutoNateAI — from architecture decisions to 
-          AI-assisted coding, and the lessons learned along the way.
-        </p>
-        <div style="display: flex; align-items: center; gap: 2rem;">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">Jan 4, 2026 • 12 min read</span>
-          <a href="#" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">
-            Read Article →
-          </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Blog | AutoNateAI</title>
+    <meta
+      name="description"
+      content="Insights on AI-augmented development, local research, and learning strategies from the AutoNateAI team."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://autonateai.com/blog/" />
+    <meta property="og:title" content="Blog | AutoNateAI" />
+    <meta
+      property="og:description"
+      content="Insights on AI-augmented development, local research, and learning strategies."
+    />
+    <meta
+      property="og:image"
+      content="https://autonateai.com/assets/og-preview.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog | AutoNateAI" />
+    <meta
+      name="twitter:image"
+      content="https://autonateai.com/assets/og-preview.png"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/marketing.css" />
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <!-- Shared Components -->
+    <script src="../shared/js/navbar.js" defer></script>
+    <script src="../shared/js/footer.js" defer></script>
+  </head>
+  <body>
+    <!-- Navigation (injected) -->
+    <div id="navbar-container"></div>
+
+    <!-- Blog Hero -->
+    <section class="section blog-hero">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge">📝 Blog</div>
+          <h1 class="section-title">Insights & Research</h1>
+          <p class="section-subtitle">
+            Thoughts on AI-augmented development, local research projects, and
+            learning strategies from the AutoNateAI team.
+          </p>
         </div>
       </div>
-      
-      <!-- Article Grid -->
-      <div class="blog-grid">
-        
-        <!-- Article 1 -->
-        <article class="blog-card">
-          <a href="#" class="blog-link">
-            <div class="blog-image">🤖</div>
-            <div class="blog-content">
-              <span class="blog-category">AI Workflows</span>
-              <h3 class="blog-title">Context Engineering: The Skill That Will Define Your AI Career</h3>
-              <p class="blog-excerpt">
-                Prompt engineering was just the beginning. Learn why context engineering 
-                is the real differentiator for AI-augmented developers.
-              </p>
-              <span class="blog-meta">Dec 28, 2025 • 8 min read</span>
-            </div>
-          </a>
-        </article>
-        
-        <!-- Article 2 -->
-        <article class="blog-card">
-          <a href="#" class="blog-link">
-            <div class="blog-image">🏙️</div>
-            <div class="blog-content">
-              <span class="blog-category">Local Research</span>
-              <h3 class="blog-title">Analyzing Detroit's Traffic Patterns with AI</h3>
-              <p class="blog-excerpt">
-                How we used GPT-4 and Python to analyze public traffic data and discover 
-                patterns in Detroit's morning commute.
-              </p>
-              <span class="blog-meta">Dec 20, 2025 • 10 min read</span>
-            </div>
-          </a>
-        </article>
-        
-        <!-- Article 3 -->
-        <article class="blog-card">
-          <a href="#" class="blog-link">
-            <div class="blog-image">🧠</div>
-            <div class="blog-content">
-              <span class="blog-category">Learning Tips</span>
-              <h3 class="blog-title">The Three Forces: Why We Teach Programming Through Metaphor</h3>
-              <p class="blog-excerpt">
-                Data as stone, control flow as lightning, functions as magnetism — the 
-                pedagogical science behind our curriculum design.
-              </p>
-              <span class="blog-meta">Dec 15, 2025 • 6 min read</span>
-            </div>
-          </a>
-        </article>
-        
-        <!-- Article 4 -->
-        <article class="blog-card">
-          <a href="#" class="blog-link">
-            <div class="blog-image">📊</div>
-            <div class="blog-content">
-              <span class="blog-category">Platform Updates</span>
-              <h3 class="blog-title">Introducing the Cognitive Progress Score</h3>
-              <p class="blog-excerpt">
-                How we designed a composite metric to track learning health — combining 
-                velocity, mastery, streak, and completion.
-              </p>
-              <span class="blog-meta">Dec 10, 2025 • 5 min read</span>
-            </div>
-          </a>
-        </article>
-        
-        <!-- Article 5 -->
-        <article class="blog-card">
-          <a href="#" class="blog-link">
-            <div class="blog-image">⚡</div>
-            <div class="blog-content">
-              <span class="blog-category">AI Workflows</span>
-              <h3 class="blog-title">From 10 Hours to 10 Minutes: Refactoring with Agentic AI</h3>
-              <p class="blog-excerpt">
-                A case study on using Cursor and Claude to refactor a legacy codebase 
-                that would have taken days manually.
-              </p>
-              <span class="blog-meta">Dec 5, 2025 • 7 min read</span>
-            </div>
-          </a>
-        </article>
-        
-        <!-- Article 6 -->
-        <article class="blog-card">
-          <a href="#" class="blog-link">
-            <div class="blog-image">🎓</div>
-            <div class="blog-content">
-              <span class="blog-category">Community</span>
-              <h3 class="blog-title">Meet Our Founding Learners</h3>
-              <p class="blog-excerpt">
-                Spotlight on the first cohort of AutoNateAI students — their backgrounds, 
-                goals, and progress so far.
-              </p>
-              <span class="blog-meta">Dec 1, 2025 • 4 min read</span>
-            </div>
-          </a>
-        </article>
-        
-      </div>
-    </div>
-  </section>
-  
-  <!-- Newsletter CTA -->
-  <section class="section" style="background: var(--bg-secondary);">
-    <div class="section-container">
-      <div class="community-card" style="max-width: 700px;">
-        <div class="community-icon">📬</div>
-        <h2 class="community-title">Subscribe to Our Newsletter</h2>
-        <p class="community-desc">
-          Get weekly insights on AI-augmented development, new articles, and platform updates 
-          delivered to your inbox.
-        </p>
-        <form style="display: flex; gap: 1rem; max-width: 400px; margin: 0 auto;">
-          <input 
-            type="email" 
-            placeholder="your@email.com" 
-            class="form-input" 
-            style="flex: 1;"
+    </section>
+
+    <!-- Featured Article -->
+    <section class="section" style="padding-top: 0">
+      <div class="section-container">
+        <div
+          style="
+            background: linear-gradient(
+              135deg,
+              var(--bg-card),
+              var(--bg-tertiary)
+            );
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            border: 1px solid rgba(121, 134, 203, 0.3);
+            margin-bottom: 4rem;
+          "
+        >
+          <div class="section-badge" style="margin-bottom: 1rem">Featured</div>
+          <h2
+            style="
+              font-family: var(--font-display);
+              font-size: 2rem;
+              margin-bottom: 1rem;
+            "
           >
-          <button type="submit" class="btn btn-primary" style="padding: 0.875rem 1.5rem;">
-            Subscribe
-          </button>
-        </form>
+            How We Built This Learning Platform in 30 Days with AI
+          </h2>
+          <p
+            style="
+              color: var(--text-secondary);
+              margin-bottom: 1.5rem;
+              max-width: 700px;
+            "
+          >
+            A behind-the-scenes look at building AutoNateAI — from architecture
+            decisions to AI-assisted coding, and the lessons learned along the
+            way.
+          </p>
+          <div style="display: flex; align-items: center; gap: 2rem">
+            <span style="font-size: 0.85rem; color: var(--text-muted)"
+              >Jan 4, 2026 • 12 min read</span
+            >
+            <a href="#" class="btn btn-primary" style="padding: 0.75rem 1.5rem">
+              Read Article →
+            </a>
+          </div>
+        </div>
+
+        <!-- Article Grid -->
+        <div class="blog-grid">
+          <!-- Article 1 -->
+          <article class="blog-card">
+            <a href="./context-engineering.html" class="blog-link">
+              <div class="blog-image">🤖</div>
+              <div class="blog-content">
+                <span class="blog-category">AI Workflows</span>
+                <h3 class="blog-title">
+                  Context Engineering: The Skill That Will Define Your AI Career
+                </h3>
+                <p class="blog-excerpt">
+                  Prompt engineering was just the beginning. Learn why context
+                  engineering is the real differentiator for AI-augmented
+                  developers.
+                </p>
+                <span class="blog-meta">Dec 28, 2025 • 8 min read</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="blog-card">
+            <a href="#" class="blog-link">
+              <div class="blog-image">🏙️</div>
+              <div class="blog-content">
+                <span class="blog-category">Local Research</span>
+                <h3 class="blog-title">
+                  Analyzing Detroit's Traffic Patterns with AI
+                </h3>
+                <p class="blog-excerpt">
+                  How we used GPT-4 and Python to analyze public traffic data
+                  and discover patterns in Detroit's morning commute.
+                </p>
+                <span class="blog-meta">Dec 20, 2025 • 10 min read</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="blog-card">
+            <a href="#" class="blog-link">
+              <div class="blog-image">🧠</div>
+              <div class="blog-content">
+                <span class="blog-category">Learning Tips</span>
+                <h3 class="blog-title">
+                  The Three Forces: Why We Teach Programming Through Metaphor
+                </h3>
+                <p class="blog-excerpt">
+                  Data as stone, control flow as lightning, functions as
+                  magnetism — the pedagogical science behind our curriculum
+                  design.
+                </p>
+                <span class="blog-meta">Dec 15, 2025 • 6 min read</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 4 -->
+          <article class="blog-card">
+            <a href="#" class="blog-link">
+              <div class="blog-image">📊</div>
+              <div class="blog-content">
+                <span class="blog-category">Platform Updates</span>
+                <h3 class="blog-title">
+                  Introducing the Cognitive Progress Score
+                </h3>
+                <p class="blog-excerpt">
+                  How we designed a composite metric to track learning health —
+                  combining velocity, mastery, streak, and completion.
+                </p>
+                <span class="blog-meta">Dec 10, 2025 • 5 min read</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 5 -->
+          <article class="blog-card">
+            <a href="#" class="blog-link">
+              <div class="blog-image">⚡</div>
+              <div class="blog-content">
+                <span class="blog-category">AI Workflows</span>
+                <h3 class="blog-title">
+                  From 10 Hours to 10 Minutes: Refactoring with Agentic AI
+                </h3>
+                <p class="blog-excerpt">
+                  A case study on using Cursor and Claude to refactor a legacy
+                  codebase that would have taken days manually.
+                </p>
+                <span class="blog-meta">Dec 5, 2025 • 7 min read</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 6 -->
+          <article class="blog-card">
+            <a href="#" class="blog-link">
+              <div class="blog-image">🎓</div>
+              <div class="blog-content">
+                <span class="blog-category">Community</span>
+                <h3 class="blog-title">Meet Our Founding Learners</h3>
+                <p class="blog-excerpt">
+                  Spotlight on the first cohort of AutoNateAI students — their
+                  backgrounds, goals, and progress so far.
+                </p>
+                <span class="blog-meta">Dec 1, 2025 • 4 min read</span>
+              </div>
+            </a>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Footer (injected) -->
-  <div id="footer-container"></div>
-  
-  <!-- Scripts -->
-  <script>
-    // Initialize shared components
-    document.addEventListener('DOMContentLoaded', () => {
-      NavbarComponent.inject('navbar-container');
-      FooterComponent.inject('footer-container');
-      
-      // Card animations
-      anime({
-        targets: '.blog-card',
-        opacity: [0, 1],
-        translateY: [30, 0],
-        delay: anime.stagger(100),
-        duration: 600,
-        easing: 'easeOutCubic'
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="section" style="background: var(--bg-secondary)">
+      <div class="section-container">
+        <div class="community-card" style="max-width: 700px">
+          <div class="community-icon">📬</div>
+          <h2 class="community-title">Subscribe to Our Newsletter</h2>
+          <p class="community-desc">
+            Get weekly insights on AI-augmented development, new articles, and
+            platform updates delivered to your inbox.
+          </p>
+          <form
+            style="display: flex; gap: 1rem; max-width: 400px; margin: 0 auto"
+          >
+            <input
+              type="email"
+              placeholder="your@email.com"
+              class="form-input"
+              style="flex: 1"
+            />
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="padding: 0.875rem 1.5rem"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (injected) -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script>
+      // Initialize shared components
+      document.addEventListener("DOMContentLoaded", () => {
+        NavbarComponent.inject("navbar-container");
+        FooterComponent.inject("footer-container");
+
+        // Card animations
+        anime({
+          targets: ".blog-card",
+          opacity: [0, 1],
+          translateY: [30, 0],
+          delay: anime.stagger(100),
+          duration: 600,
+          easing: "easeOutCubic",
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
