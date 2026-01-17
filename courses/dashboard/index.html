@@ -717,8 +717,11 @@
       
       const courseId = progress.courseId || progress.id;
       
+      // endless-opportunities doesn't have a course dashboard page yet, so link directly to the lesson
+      const cardLink = isEndlessOpportunities ? nextChapterLink : `course.html?id=${courseId}`;
+      
       card.innerHTML = `
-        <a href="course.html?id=${courseId}" class="course-card-link">
+        <a href="${cardLink}" class="course-card-link">
           <div class="course-banner"></div>
           <div class="course-content">
             <div class="course-header">
