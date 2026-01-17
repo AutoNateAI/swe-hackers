@@ -412,14 +412,17 @@
       loadingScreen.classList.add('hidden');
       dashboard.classList.add('ready');
       
-      // Load course data
-      await loadCourseData();
-      
-      // Setup tabs
+      // Setup tabs immediately (don't wait for data)
       setupTabs();
-      
-      // Setup quick actions
       setupQuickActions();
+      
+      // Load course data
+      try {
+        await loadCourseData();
+      } catch (error) {
+        console.error('Error loading course data:', error);
+        // Continue anyway - tabs should still work
+      }
       
       // Animate entrance
       anime({
@@ -471,9 +474,13 @@
       chapterAnalytics = await window.AnalyticsService.getChapterAnalytics(currentCourseId);
       console.log('📊 Chapter analytics:', chapterAnalytics);
       
-      renderChaptersList();
-      renderAnalytics();
-      setupContinueLearning();
+      try {
+        renderChaptersList();
+        renderAnalytics();
+        setupContinueLearning();
+      } catch (error) {
+        console.error('Error rendering course data:', error);
+      }
     }
     
     // Update progress ring
@@ -604,7 +611,10 @@
     
     // Render analytics
     function renderAnalytics() {
-      if (!chapterAnalytics) return;
+      if (!chapterAnalytics || !chapterAnalytics.totals) {
+        console.warn('No analytics data available');
+        return;
+      }
       
       const totals = chapterAnalytics.totals;
       
@@ -630,24 +640,28 @@
       const tbody = document.getElementById('chapter-table-body');
       tbody.innerHTML = '';
       
-      chapterAnalytics.chapters.forEach((chapter, i) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>
-            <span class="table-icon">${lessons[i].icon}</span>
-            ${lessons[i].name}
-          </td>
-          <td>
-            <span class="status-dot ${chapter.status}"></span>
-            ${chapter.status === 'completed' ? 'Complete' : 
-              chapter.status === 'in_progress' ? 'In Progress' : 'Not Started'}
-          </td>
-          <td>${chapter.timeSpentFormatted || '0m'}</td>
-          <td>${chapter.quizScore !== null ? chapter.quizScore + '%' : '--'}</td>
-          <td>${chapter.activitiesCompleted || 0}</td>
-        `;
-        tbody.appendChild(row);
-      });
+      if (chapterAnalytics.chapters && Array.isArray(chapterAnalytics.chapters)) {
+        chapterAnalytics.chapters.forEach((chapter, i) => {
+          if (i >= lessons.length) return; // Safety check
+          
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>
+              <span class="table-icon">${lessons[i].icon}</span>
+              ${lessons[i].name}
+            </td>
+            <td>
+              <span class="status-dot ${chapter.status}"></span>
+              ${chapter.status === 'completed' ? 'Complete' : 
+                chapter.status === 'in_progress' ? 'In Progress' : 'Not Started'}
+            </td>
+            <td>${chapter.timeSpentFormatted || '0m'}</td>
+            <td>${chapter.quizScore !== null ? chapter.quizScore + '%' : '--'}</td>
+            <td>${chapter.activitiesCompleted || 0}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
       
       // Timeline
       renderTimeline();
