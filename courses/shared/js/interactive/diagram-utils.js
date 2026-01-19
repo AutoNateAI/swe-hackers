@@ -844,3 +844,58 @@ window.DiagramUtils = {
   replayDiagramAnimation,
   setupDiagramScrollAnimation
 };
+
+/**
+ * Fix navbar links to point to the correct course dashboard
+ * Auto-runs on page load for lesson pages
+ */
+(function fixNavbarLinks() {
+  // Get course ID from body data attribute
+  const body = document.body;
+  const courseId = body?.dataset?.course;
+  
+  if (!courseId) return;
+  
+  const courseDashboardUrl = `../../dashboard/course.html?id=${courseId}`;
+  
+  // Course display names
+  const courseNames = {
+    'endless-opportunities': 'Endless Opportunities',
+    'apprentice': 'Apprentice',
+    'undergrad': 'Undergrad',
+    'junior': 'Junior',
+    'senior': 'Senior'
+  };
+  
+  const courseName = courseNames[courseId] || courseId;
+  
+  // Fix nav-links
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && (
+      href.includes('../index.html') ||
+      href.includes('../../course/') ||
+      href.match(/^\.\.\/?$/)
+    )) {
+      link.href = courseDashboardUrl;
+      if (link.textContent.includes('←') || 
+          link.textContent.toLowerCase().includes('course') ||
+          link.textContent.toLowerCase().includes('apprentice') ||
+          link.textContent.toLowerCase().includes('endless')) {
+        link.textContent = `← ${courseName}`;
+      }
+    }
+  });
+  
+  // Fix breadcrumb links
+  document.querySelectorAll('.breadcrumb a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && (
+      href.includes('../index.html') ||
+      href.includes('../../course/')
+    )) {
+      link.href = courseDashboardUrl;
+      link.textContent = courseName;
+    }
+  });
+})();

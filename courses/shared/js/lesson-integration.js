@@ -16,6 +16,9 @@ const LessonIntegration = {
     this.lessonId = lessonId;
     this.startTime = Date.now();
     
+    // Fix navbar links immediately (before auth check)
+    this.fixNavbarLinks();
+    
     // Initialize Firebase
     if (!window.FirebaseApp.init()) {
       console.warn('Firebase not initialized');
@@ -61,6 +64,61 @@ const LessonIntegration = {
     const basePath = '../'.repeat(Math.max(0, depth));
     
     window.location.href = basePath + 'auth/login.html';
+  },
+  
+  /**
+   * Fix navbar links to point to the correct course dashboard
+   * Replaces broken links like ../index.html or ../../course/xxx.html
+   */
+  fixNavbarLinks() {
+    if (!this.courseId) return;
+    
+    const courseDashboardUrl = `../../dashboard/course.html?id=${this.courseId}`;
+    
+    // Course display names for the link text
+    const courseNames = {
+      'endless-opportunities': 'Endless Opportunities',
+      'apprentice': 'Apprentice',
+      'undergrad': 'Undergrad',
+      'junior': 'Junior',
+      'senior': 'Senior'
+    };
+    
+    const courseName = courseNames[this.courseId] || this.courseId;
+    
+    // Find all nav-links containers
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      
+      // Fix links that point to non-existent course pages
+      if (href && (
+        href.includes('../index.html') ||
+        href.includes('../../course/') ||
+        href.match(/^\.\.\/?$/)
+      )) {
+        link.href = courseDashboardUrl;
+        // Update text if it looks like a course link
+        if (link.textContent.includes('←') || 
+            link.textContent.toLowerCase().includes('course') ||
+            link.textContent.includes(courseName)) {
+          link.textContent = `← ${courseName} Dashboard`;
+        }
+      }
+    });
+    
+    // Also fix breadcrumb links
+    const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+    breadcrumbLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && (
+        href.includes('../index.html') ||
+        href.includes('../../course/')
+      )) {
+        link.href = courseDashboardUrl;
+      }
+    });
   },
   
   /**

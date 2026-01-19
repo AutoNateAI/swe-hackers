@@ -617,13 +617,8 @@
         grid.innerHTML = '';
         
         courses.forEach(course => {
-          console.log('📊 Dashboard: Processing course:', course.courseId, {
-            completedLessons: course.completedLessons,
-            progressPercent: course.progressPercent,
-            lessons: course.lessons,
-            lessonKeys: course.lessons ? Object.keys(course.lessons) : 'NO LESSONS'
-          });
-          const courseInfo = COURSES[course.courseId] || course;
+          const courseId = course.courseId || course.id;
+          const courseInfo = COURSES[courseId] || course;
           const card = createCourseCard(course, courseInfo);
           grid.appendChild(card);
         });
@@ -645,77 +640,22 @@
     
     // Create course progress card
     function createCourseCard(progress, courseInfo) {
-      const card = document.createElement('div');
-      card.className = `course-progress-card ${progress.courseId}`;
-      
-      const completedLessons = progress.completedLessons || 0;
-      const progressPercent = progress.progressPercent || 0;
-      
-      // Determine lesson structure based on course ID
-      const isEndlessOpportunities = progress.courseId === 'endless-opportunities';
-      const lessonIds = isEndlessOpportunities 
-        ? ['week0-intro', 'week1-questions', 'week2-data', 'week3-building', 'week4-portfolio']
-        : ['ch0-origins', 'ch1-stone', 'ch2-lightning', 'ch3-magnetism', 'ch4-architect', 'ch5-capstone1', 'ch6-capstone2'];
-      const totalLessons = lessonIds.length;
-      
-      // Find next lesson
-      let nextLesson = 0;
-      let actualCompletedCount = 0;
-      
-      if (progress.lessons) {
-        // Count completed lessons and find next incomplete
-        let foundIncomplete = false;
-        for (let i = 0; i < totalLessons; i++) {
-          const lessonId = lessonIds[i];
-          const lessonProgress = progress.lessons[lessonId];
-          
-          console.log(`📊 Checking lesson ${lessonId}:`, lessonProgress);
-          
-          // Consider complete if marked complete OR 100% viewed
-          const isComplete = lessonProgress?.completed || 
-                            (lessonProgress?.progressPercent >= 100) ||
-                            (lessonProgress?.viewedSections >= lessonProgress?.totalSections);
-          
-          console.log(`📊 ${lessonId} isComplete:`, isComplete, {
-            completed: lessonProgress?.completed,
-            progressPercent: lessonProgress?.progressPercent,
-            viewedSections: lessonProgress?.viewedSections,
-            totalSections: lessonProgress?.totalSections
-          });
-          
-          if (isComplete) {
-            actualCompletedCount++;
-          } else if (!foundIncomplete) {
-            nextLesson = i;
-            foundIncomplete = true;
-          }
-        }
-        
-        // If all complete, show last lesson
-        if (!foundIncomplete) {
-          nextLesson = totalLessons - 1;
-        }
-      } else {
-        console.log('📊 No lessons data found in progress!');
-      }
-      
-      // Use actual count if higher than stored count (in case of sync issues)
-      const displayCompletedLessons = Math.max(completedLessons, actualCompletedCount);
-      
-      console.log('📊 Final card values:', {
-        storedCompletedLessons: completedLessons,
-        actualCompletedCount,
-        displayCompletedLessons,
-        nextLesson,
-        progressPercent
-      });
-      
-      const lessonNames = isEndlessOpportunities
-        ? ['Week 0: Intro', 'Week 1: Questions', 'Week 2: Data', 'Week 3: Building', 'Week 4: Portfolio']
-        : ['Origins', 'Stone', 'Lightning', 'Magnetism', 'Architect', 'Capstone I', 'Capstone II'];
-      const nextChapterLink = getChapterLink(progress.courseId, nextLesson);
-      
       const courseId = progress.courseId || progress.id;
+      
+      const card = document.createElement('div');
+      card.className = `course-progress-card ${courseId}`;
+      
+      // Use DataService for lesson structure and next lesson (single source of truth)
+      const structure = window.DataService.getLessonsStructure(courseId);
+      const totalLessons = structure.totalLessons;
+      const lessonLabel = structure.lessonLabel;
+      
+      // Get completed count using DataService
+      const displayCompletedLessons = window.DataService.getCompletedLessonsCount(progress, courseId);
+      const progressPercent = Math.round((displayCompletedLessons / totalLessons) * 100);
+      
+      // Get next lesson info using DataService
+      const nextLessonInfo = window.DataService.getNextLesson(progress, courseId);
       
       // Link to course dashboard
       const cardLink = `course.html?id=${courseId}`;
@@ -734,7 +674,7 @@
             
             <div class="progress-section">
               <div class="progress-header">
-                <span class="progress-label">${displayCompletedLessons}/${totalLessons} ${isEndlessOpportunities ? 'Weeks' : 'Chapters'} Complete</span>
+                <span class="progress-label">${displayCompletedLessons}/${totalLessons} ${lessonLabel}s Complete</span>
                 <span class="progress-percent">${progressPercent}%</span>
               </div>
               <div class="progress-bar">
@@ -758,24 +698,13 @@
             </div>
             
             <span class="course-action">
-              ${displayCompletedLessons === totalLessons ? 'View Course Dashboard →' : `Continue: ${lessonNames[nextLesson]} →`}
+              ${nextLessonInfo.allComplete ? 'View Course Dashboard →' : `Continue: ${nextLessonInfo.lessonName} →`}
             </span>
           </div>
         </a>
       `;
       
       return card;
-    }
-    
-    // Get chapter link
-    function getChapterLink(courseId, lessonIndex) {
-      if (courseId === 'endless-opportunities') {
-        const weekFolders = ['week0-intro', 'week1-questions', 'week2-data', 'week3-building', 'week4-portfolio'];
-        return `../${courseId}/${weekFolders[lessonIndex]}/`;
-      } else {
-        const chapterFolders = ['ch0-origins', 'ch1-stone', 'ch2-lightning', 'ch3-magnetism', 'ch4-architect', 'ch5-capstone1', 'ch6-capstone2'];
-        return `../${courseId}/${chapterFolders[lessonIndex]}/`;
-      }
     }
     
     // Format time

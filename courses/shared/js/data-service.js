@@ -944,6 +944,167 @@ const DataService = {
       console.error('Error saving activity definition:', error);
       return { success: false, error: error.message };
     }
+  },
+
+  /**
+   * Get next lesson to continue for a course
+   * Returns the next incomplete lesson based on progress data
+   * @param {object} courseProgress - The course progress object with lessons data
+   * @param {string} courseId - The course ID to determine lesson structure
+   * @returns {object} { lessonIndex, lessonId, lessonName, lessonDesc, link, allComplete }
+   */
+  getNextLesson(courseProgress, courseId) {
+    const isEndlessOpportunities = courseId === 'endless-opportunities';
+    
+    // Define lesson structure based on course type
+    const lessons = isEndlessOpportunities 
+      ? [
+          { id: 'week0-intro', name: 'Week 0: Introduction', desc: 'Getting started with your tech journey' },
+          { id: 'week1-questions', name: 'Week 1: Asking Questions', desc: 'Learn to ask powerful questions' },
+          { id: 'week2-data', name: 'Week 2: Working with Data', desc: 'Understand data and information' },
+          { id: 'week3-building', name: 'Week 3: Building Things', desc: 'Create your first projects' },
+          { id: 'week4-portfolio', name: 'Week 4: Your Portfolio', desc: 'Showcase your work' }
+        ]
+      : [
+          { id: 'ch0-origins', name: 'The Origins', desc: 'Where it all began' },
+          { id: 'ch1-stone', name: 'The Stone', desc: 'Data and memory fundamentals' },
+          { id: 'ch2-lightning', name: 'The Lightning', desc: 'Control flow and logic' },
+          { id: 'ch3-magnetism', name: 'The Magnetism', desc: 'Functions and connections' },
+          { id: 'ch4-architect', name: 'The Architect', desc: 'Thinking in systems' },
+          { id: 'ch5-capstone1', name: 'Capstone I', desc: 'Your first project' },
+          { id: 'ch6-capstone2', name: 'Capstone II', desc: 'The final challenge' }
+        ];
+    
+    const lessonLabel = isEndlessOpportunities ? 'Week' : 'Chapter';
+    let nextIndex = 0;
+    let allComplete = false;
+    
+    console.log('📊 getNextLesson for:', courseId);
+    
+    if (courseProgress?.lessons) {
+      // Find the highest-index completed lesson, then return the one after it
+      let highestCompletedIndex = -1;
+      
+      for (let i = 0; i < lessons.length; i++) {
+        const lessonId = lessons[i].id;
+        const lessonData = courseProgress.lessons[lessonId];
+        
+        // Check if this lesson is complete
+        const isComplete = lessonData?.completed || 
+                          lessonData?.progressPercent >= 100 ||
+                          (lessonData?.viewedSections && lessonData?.totalSections && 
+                           lessonData.viewedSections >= lessonData.totalSections);
+        
+        if (isComplete) {
+          highestCompletedIndex = i;
+          console.log(`📊 Found completed: ${lessonId} (index ${i})`);
+        }
+      }
+      
+      if (highestCompletedIndex === -1) {
+        // No lessons complete, start at the beginning
+        nextIndex = 0;
+        console.log('📊 No lessons complete, starting at index 0');
+      } else if (highestCompletedIndex >= lessons.length - 1) {
+        // All lessons complete (or at least the last one is)
+        nextIndex = lessons.length - 1;
+        allComplete = true;
+        console.log('📊 All lessons complete!');
+      } else {
+        // Next lesson is the one after the highest completed
+        nextIndex = highestCompletedIndex + 1;
+        console.log(`📊 Next lesson: index ${nextIndex} (after highest completed: ${highestCompletedIndex})`);
+      }
+    } else {
+      console.log('📊 No lessons data in courseProgress');
+    }
+    
+    const nextLesson = lessons[nextIndex];
+    console.log('📊 Returning next lesson:', nextLesson.name);
+    
+    return {
+      lessonIndex: nextIndex,
+      lessonId: nextLesson.id,
+      lessonName: nextLesson.name,
+      lessonDesc: nextLesson.desc,
+      lessonLabel: lessonLabel,
+      link: `../${courseId}/${nextLesson.id}/`,
+      allComplete,
+      totalLessons: lessons.length
+    };
+  },
+
+  /**
+   * Get the lessons structure for a course
+   * @param {string} courseId - The course ID
+   * @returns {object} { lessons, lessonLabel, totalLessons }
+   */
+  getLessonsStructure(courseId) {
+    const isEndlessOpportunities = courseId === 'endless-opportunities';
+    
+    const lessons = isEndlessOpportunities 
+      ? [
+          { id: 'week0-intro', name: 'Week 0: Introduction', icon: '👋', desc: 'Getting started with your tech journey' },
+          { id: 'week1-questions', name: 'Week 1: Asking Questions', icon: '❓', desc: 'Learn to ask powerful questions' },
+          { id: 'week2-data', name: 'Week 2: Working with Data', icon: '📊', desc: 'Understand data and information' },
+          { id: 'week3-building', name: 'Week 3: Building Things', icon: '🔨', desc: 'Create your first projects' },
+          { id: 'week4-portfolio', name: 'Week 4: Your Portfolio', icon: '🎨', desc: 'Showcase your work' }
+        ]
+      : [
+          { id: 'ch0-origins', name: 'The Origins', icon: '🏛️', desc: 'Where it all began' },
+          { id: 'ch1-stone', name: 'The Stone', icon: '🪨', desc: 'Data and memory fundamentals' },
+          { id: 'ch2-lightning', name: 'The Lightning', icon: '⚡', desc: 'Control flow and logic' },
+          { id: 'ch3-magnetism', name: 'The Magnetism', icon: '🧲', desc: 'Functions and connections' },
+          { id: 'ch4-architect', name: 'The Architect', icon: '🏗️', desc: 'Thinking in systems' },
+          { id: 'ch5-capstone1', name: 'Capstone I', icon: '🎯', desc: 'Your first project' },
+          { id: 'ch6-capstone2', name: 'Capstone II', icon: '🏆', desc: 'The final challenge' }
+        ];
+    
+    return {
+      lessons,
+      lessonLabel: isEndlessOpportunities ? 'Week' : 'Chapter',
+      totalLessons: lessons.length
+    };
+  },
+
+  /**
+   * Calculate completed lessons count from progress data
+   * @param {object} courseProgress - The course progress object with lessons data
+   * @param {string} courseId - The course ID
+   * @returns {number} Number of completed lessons
+   */
+  getCompletedLessonsCount(courseProgress, courseId) {
+    const { lessons } = this.getLessonsStructure(courseId);
+    let completedCount = 0;
+    
+    console.log('📊 getCompletedLessonsCount for:', courseId);
+    console.log('📊 Available lesson keys in progress:', courseProgress?.lessons ? Object.keys(courseProgress.lessons) : 'none');
+    
+    if (courseProgress?.lessons) {
+      for (const lesson of lessons) {
+        const lessonData = courseProgress.lessons[lesson.id];
+        const isComplete = lessonData?.completed || 
+                          lessonData?.progressPercent >= 100 ||
+                          (lessonData?.viewedSections && lessonData?.totalSections && 
+                           lessonData.viewedSections >= lessonData.totalSections);
+        
+        console.log(`📊 Checking ${lesson.id}:`, {
+          found: !!lessonData,
+          completed: lessonData?.completed,
+          progressPercent: lessonData?.progressPercent,
+          viewedSections: lessonData?.viewedSections,
+          totalSections: lessonData?.totalSections,
+          isComplete
+        });
+        
+        if (isComplete) {
+          completedCount++;
+        }
+      }
+    }
+    
+    console.log('📊 Total completed:', completedCount);
+    return completedCount;
   }
 };
 
