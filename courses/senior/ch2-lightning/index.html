@@ -332,7 +332,20 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      // Initialize ActivityTracker for Firestore logging
+      // Initialize Firebase FIRST
+      if (window.FirebaseApp) {
+        window.FirebaseApp.init();
+        console.log('✅ Firebase initialized');
+      }
+      
+      // Initialize AuthService and wait for auth state
+      if (window.AuthService) {
+        window.AuthService.init();
+        await window.AuthService.waitForAuthState();
+        console.log('👤 Auth ready:', window.AuthService.getUser()?.email || 'not signed in');
+      }
+      
+      // Initialize ActivityTracker AFTER auth is ready
       const courseId = document.body.dataset.course;
       const lessonId = document.body.dataset.lesson;
       if (courseId && lessonId && window.ActivityTracker) {
