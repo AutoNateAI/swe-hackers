@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="endless-opportunities" data-lesson="week3-building">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Story 1: Builder Mindset -->
+      <div class="activity-carousels" data-story="builder-mindset-story">
+        <div id="story1-comprehension" class="carousel-container"></div>
+        <div id="story1-application" class="carousel-container"></div>
+        <div id="story1-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Art of Building -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Story 2: Art of Building -->
+      <div class="activity-carousels" data-story="art-of-building-story">
+        <div id="story2-comprehension" class="carousel-container"></div>
+        <div id="story2-application" class="carousel-container"></div>
+        <div id="story2-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Story 3: Clear Prompts -->
+      <div class="activity-carousels" data-story="clear-prompts-story">
+        <div id="story3-comprehension" class="carousel-container"></div>
+        <div id="story3-application" class="carousel-container"></div>
+        <div id="story3-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -450,6 +486,1039 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS
+      // ============================================
+
+      // Story 1: Builder Mindset - Comprehension
+      const story1Comprehension = new ActivityCarousel('story1-comprehension', {
+        type: 'comprehension',
+        sectionId: 'builder-mindset',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'bm-quiz-old-way',
+            question: 'What does the "old way" of building websites and tools require?',
+            options: [
+              'A good idea and creativity',
+              'Years of learning coding',
+              'Access to AI tools',
+              'Permission from tech companies'
+            ],
+            correct: 1,
+            explanation: 'The old way required years of learning to code before you could build anything. AI changes this completely.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'bm-quiz-new-reality',
+            question: 'What makes the "new reality" of building different?',
+            options: [
+              'You still need to learn coding, but it\'s faster',
+              'You describe what you want in plain English and AI builds it',
+              'AI does everything automatically without your input',
+              'You need to buy special software'
+            ],
+            correct: 1,
+            explanation: '"You describe what you want in plain English, and the AI builds it for you. No coding experience needed."',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'bm-tf-coding-required',
+            statement: 'According to the lesson, you still need some coding experience to build with AI.',
+            correct: false,
+            explanation: '"No coding experience needed—just clear communication and creative ideas." The barrier is communication, not programming.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'bm-tf-consumer-creator',
+            statement: 'The lesson says most people "just use the internet" while you can now "build it."',
+            correct: true,
+            explanation: '"Most people just use the internet—you build it!" Going from consumer to creator is the transformation AI enables.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'bm-fill-process',
+            statement: 'The building process is: Think It → ___ It → AI Builds It → It\'s Live!',
+            correctAnswers: ['Describe', 'describe', 'Say', 'say', 'Communicate', 'communicate'],
+            caseSensitive: false,
+            hints: ['What do you do with your idea to communicate it to AI?'],
+            explanation: 'Describing your idea clearly is the key step - it bridges imagination and creation.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'bm-fill-superpower',
+            statement: 'The lesson says "Your ___ starts with imagination."',
+            correctAnswers: ['superpower', 'super power'],
+            caseSensitive: false,
+            hints: ['What extraordinary ability do you have?'],
+            explanation: 'Imagination is your superpower - ideas are the seeds of everything AI can build.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'bm-quiz-shine',
+            question: 'Where do your "communication skills shine" in the building process?',
+            options: [
+              'When sharing your project online',
+              'When describing your idea to AI clearly and specifically',
+              'When explaining your project to friends',
+              'When writing the code yourself'
+            ],
+            correct: 1,
+            explanation: '"This is where your communication skills shine!" - describing clearly to AI determines what gets built.',
+            points: 10
+          }
+        ]
+      });
+      story1Comprehension.init();
+
+      // Story 1: Builder Mindset - Application
+      const story1Application = new ActivityCarousel('story1-application', {
+        type: 'application',
+        sectionId: 'builder-mindset',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'bm-seq-build-process',
+            instruction: 'Put the building process in the correct order:',
+            items: [
+              { id: 'b1', text: '💭 Think It - Imagine what would be useful' },
+              { id: 'b2', text: '💬 Describe It - Put your idea into clear words' },
+              { id: 'b3', text: '🤖 AI Builds It - AI generates the code' },
+              { id: 'b4', text: '🚀 It\'s Live! - Share your creation' }
+            ],
+            correctOrder: ['b1', 'b2', 'b3', 'b4'],
+            hints: {
+              partial: 'Start with imagination, end with sharing.',
+              wrong: 'Ideas come first, then communication, then building, then sharing.'
+            },
+            explanation: 'The process flows from imagination through communication to AI execution to publishing.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'bm-dd-old-vs-new',
+            instruction: 'Sort these requirements into "Old Way" vs "New Way":',
+            items: [
+              { id: 'o1', text: 'Years of coding classes' },
+              { id: 'o2', text: 'Clear communication skills' },
+              { id: 'o3', text: 'Computer science degree' },
+              { id: 'o4', text: 'Creative ideas' },
+              { id: 'o5', text: 'Memorizing programming syntax' },
+              { id: 'o6', text: 'Ability to describe what you want' }
+            ],
+            zones: [
+              { id: 'old', label: '📚 Old Way', correct: ['o1', 'o3', 'o5'] },
+              { id: 'new', label: '✨ New Way (AI)', correct: ['o2', 'o4', 'o6'] }
+            ],
+            explanation: 'The old way required technical training. The new way requires imagination and communication.',
+            points: 25
+          },
+          {
+            type: 'connect-edges',
+            id: 'bm-ce-roles',
+            instruction: 'Connect each player to their role in AI-assisted building:',
+            nodes: [
+              { id: 'you', label: '👤 You' },
+              { id: 'ai', label: '🤖 AI' },
+              { id: 'ideas', label: '💡 Ideas & Vision' },
+              { id: 'code', label: '💻 Code & Implementation' },
+              { id: 'direction', label: '🎯 Direction & Decisions' },
+              { id: 'execution', label: '⚙️ Technical Execution' }
+            ],
+            solution: {
+              edges: [
+                { source: 'you', target: 'ideas' },
+                { source: 'you', target: 'direction' },
+                { source: 'ai', target: 'code' },
+                { source: 'ai', target: 'execution' }
+              ]
+            },
+            nodeDescriptions: {
+              'you': 'The human creator',
+              'ai': 'The AI assistant',
+              'ideas': 'Creative concepts and goals',
+              'code': 'Working software',
+              'direction': 'What to build and why',
+              'execution': 'How to implement technically'
+            },
+            explanation: 'You provide vision and direction; AI handles technical implementation.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'bm-quiz-apply-idea',
+            question: 'You have an idea for a countdown timer for your favorite podcast release. Using the builder mindset, what\'s your first step?',
+            options: [
+              'Google "how to code a countdown timer"',
+              'Think about exactly what features you want and how it should look',
+              'Wait until you learn JavaScript',
+              'Ask a programmer friend to build it'
+            ],
+            correct: 1,
+            explanation: 'Builder mindset: Think It first! Clarify your vision before describing it to AI.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'bm-dd-consumer-creator',
+            instruction: 'Sort these actions into "Consumer" vs "Creator" mindset:',
+            items: [
+              { id: 'c1', text: 'Scrolling through apps others made' },
+              { id: 'c2', text: 'Building a tool to solve a problem you have' },
+              { id: 'c3', text: 'Wishing someone would make an app for X' },
+              { id: 'c4', text: 'Describing an idea to AI and building it' },
+              { id: 'c5', text: 'Waiting for someone else to create what you need' }
+            ],
+            zones: [
+              { id: 'consumer', label: '📱 Consumer Mindset', correct: ['c1', 'c3', 'c5'] },
+              { id: 'creator', label: '🛠️ Creator Mindset', correct: ['c2', 'c4'] }
+            ],
+            explanation: 'Consumers wait and use; creators identify needs and build solutions.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'bm-seq-going-live',
+            instruction: 'Order these steps for going from "idea" to "sharing your creation":',
+            items: [
+              { id: 'l1', text: 'Have a creative idea for something useful' },
+              { id: 'l2', text: 'Write a clear description of what you want' },
+              { id: 'l3', text: 'Give the description to AI and get code' },
+              { id: 'l4', text: 'Test it and refine as needed' },
+              { id: 'l5', text: 'Share the link and say "I made this!"' }
+            ],
+            correctOrder: ['l1', 'l2', 'l3', 'l4', 'l5'],
+            hints: {
+              partial: 'Ideas come first, sharing comes last.',
+              wrong: 'You need an idea before you can describe it.'
+            },
+            explanation: 'The complete cycle: Imagine → Describe → Build → Test → Share.',
+            points: 20
+          }
+        ]
+      });
+      story1Application.init();
+
+      // Story 1: Builder Mindset - Synthesis
+      const story1Synthesis = new ActivityCarousel('story1-synthesis', {
+        type: 'synthesis',
+        sectionId: 'builder-mindset',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'bm-scenario-nonprofit',
+            scenario: 'A local nonprofit needs a simple event registration page. They have no budget for a developer. In the "old way," they\'d be stuck.',
+            question: 'Using the builder mindset, how could someone with no coding experience help them? Walk through the 4-step process.',
+            evaluation: {
+              keywords: ['think', 'describe', 'ai', 'build', 'registration', 'form', 'event', 'live', 'share', 'features'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Think It: What information needs to be collected? (name, email, event selection). Describe It: "A registration form for nonprofit events with fields for name, email, event selection, and a submit button." AI Builds It: AI generates the HTML/CSS/JS. It\'s Live: Host on free platform, share link with nonprofit.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'bm-predict-two-people',
+            setup: {
+              type: 'text',
+              content: 'Person A has a great idea but thinks "I can\'t build this because I don\'t know how to code." Person B has the same idea and thinks "I\'ll describe this to AI and see what happens."'
+            },
+            question: 'After one month, where will each person be with their idea?',
+            correctAnswer: 'Person B',
+            acceptableVariants: ['B', 'second person', 'AI user', 'builder'],
+            explanation: 'Person B will likely have a working prototype or finished project. Person A will still be waiting, dreaming, or trying to learn coding. The builder mindset enables action.',
+            commonMistakes: {
+              'A': 'Waiting to "be ready" often means never starting. Person B acts with available tools.',
+              'both': 'Very different outcomes. Action beats waiting.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'bm-reflect-your-idea',
+            prompt: 'Think of something you\'ve wished existed - a tool, website, or app that would solve a problem for you or people you know. Using the builder mindset, describe how you could actually create it now using AI.',
+            thinkingPrompts: [
+              'What problem does it solve?',
+              'What would it look like?',
+              'What features does it need?',
+              'How would you describe it to AI?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'I (wish|want|need|would)', label: 'Personal need identified', points: 5 },
+                { pattern: '(solve|help|fix|make easier)', label: 'Problem awareness', points: 4 },
+                { pattern: '(feature|button|page|form)', label: 'Specific features', points: 4 },
+                { pattern: '(describe|tell AI|prompt)', label: 'Builder process', points: 5 },
+                { pattern: '(could|can|will|going to)', label: 'Action orientation', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'bm-scenario-student',
+            scenario: 'A high school student wants to create a study tool for their class. Old mindset: "I need to take CS classes first." Builder mindset: "I\'ll describe what I need."',
+            question: 'What advantages does the builder mindset give this student? How does it change what\'s possible for them?',
+            evaluation: {
+              keywords: ['immediate', 'now', 'learn', 'create', 'share', 'solve', 'waiting', 'barrier', 'confidence', 'build'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Advantages: They can create something immediately instead of waiting years. They can learn by doing - seeing what AI creates teaches them. They can solve their actual problem now. They build confidence as a creator. They can share with classmates and get feedback. They\'re not limited by technical knowledge, only by imagination and communication.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'bm-predict-mindset-practice',
+            setup: {
+              type: 'text',
+              content: 'Someone decides to build one small thing per week for a month using AI: Week 1: a personal timer. Week 2: a quiz for friends. Week 3: a simple portfolio page. Week 4: a tool for a family member.'
+            },
+            question: 'How will their relationship with technology and creation change after this month?',
+            correctAnswer: 'confident',
+            acceptableVariants: ['empowered', 'capable', 'creator', 'builder', 'different', 'transformed', 'comfortable'],
+            explanation: 'They\'ll shift from consumer to creator mindset. Technology will feel like a tool they wield, not a mystery they depend on. They\'ll see problems as buildable solutions rather than wishes.',
+            commonMistakes: {
+              'nothing': 'Consistent practice fundamentally changes perspective. Building weekly creates the creator identity.',
+              'expert': 'They won\'t be experts, but they\'ll be confident that they CAN build things - that\'s the transformation.'
+            },
+            points: 15
+          },
+          {
+            type: 'graph-builder',
+            id: 'bm-graph-your-project',
+            instruction: 'Build a diagram of YOUR first AI project idea: What problem does it solve? What are the main features? How would you share it?',
+            nodeTypes: [
+              { type: 'problem', label: '❓ Problem', color: '#ef5350' },
+              { type: 'idea', label: '💡 Your Idea', color: '#ffd54f' },
+              { type: 'feature', label: '⚙️ Feature', color: '#42a5f5' },
+              { type: 'user', label: '👤 Who Uses It', color: '#66bb6a' },
+              { type: 'share', label: '🚀 Share How', color: '#ab47bc' }
+            ],
+            validation: {
+              requiredNodes: ['problem', 'idea'],
+              requiredEdges: [
+                { from: 'problem', to: 'idea' }
+              ],
+              optionalNodes: ['feature', 'user', 'share'],
+              minNodes: 2,
+              maxNodes: 7
+            },
+            hints: [
+              'Start with a real problem you or someone has',
+              'Your idea should address that problem',
+              'Think about 2-3 key features',
+              'Who would benefit from this?'
+            ],
+            points: 30
+          }
+        ]
+      });
+      story1Synthesis.init();
+
+      // Story 2: Art of Building - Comprehension
+      const story2Comprehension = new ActivityCarousel('story2-comprehension', {
+        type: 'comprehension',
+        sectionId: 'art-of-building',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'ab-quiz-conversation',
+            question: 'The lesson compares building with AI to what?',
+            options: [
+              'Taking a test',
+              'Having a conversation with a super-smart helper',
+              'Following a recipe exactly',
+              'Solving a math problem'
+            ],
+            correct: 1,
+            explanation: '"Building with AI is like having a conversation with a super-smart helper." It\'s collaborative and iterative.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'ab-quiz-first-try',
+            question: 'According to the lesson, who gets things perfect on the first try?',
+            options: [
+              'Professional developers',
+              'People who use better AI tools',
+              'Nobody - everyone iterates',
+              'Only very experienced builders'
+            ],
+            correct: 2,
+            explanation: '"Professional developers do this too—nobody gets it perfect on the first try!" Iteration is normal.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'ab-tf-remembers',
+            statement: 'AI remembers your conversation and builds on previous work during a session.',
+            correct: true,
+            explanation: '"It remembers your conversation and builds on previous work." This enables iterative refinement.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'ab-tf-one-shot',
+            statement: 'You should try to get everything right in your first description to AI.',
+            correct: false,
+            explanation: 'The lesson emphasizes iteration: describe, preview, refine, iterate. You\'re expected to make multiple passes.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'ab-fill-iterate',
+            statement: 'Great builders ___. Each round gets you closer to your vision.',
+            correctAnswers: ['iterate', 'keep iterating', 'refine'],
+            caseSensitive: false,
+            hints: ['What do you do repeatedly to improve?'],
+            explanation: '"Great builders iterate. Each round gets you closer to your vision."',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'ab-fill-preview',
+            statement: 'Save the file, open it in your ___, and see what AI created.',
+            correctAnswers: ['browser', 'web browser'],
+            caseSensitive: false,
+            hints: ['Where do you view websites?'],
+            explanation: 'Previewing in a browser lets you see exactly what your users will see.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'ab-quiz-feedback',
+            question: 'What should you do when previewing AI\'s creation?',
+            options: [
+              'Accept whatever it made',
+              'Start over if it\'s not perfect',
+              'Evaluate what works and what doesn\'t, then ask for changes',
+              'Wait a day before looking at it'
+            ],
+            correct: 2,
+            explanation: '"Does it match your vision? What works? What doesn\'t? This is your feedback moment."',
+            points: 10
+          }
+        ]
+      });
+      story2Comprehension.init();
+
+      // Story 2: Art of Building - Application
+      const story2Application = new ActivityCarousel('story2-application', {
+        type: 'application',
+        sectionId: 'art-of-building',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'ab-seq-iteration',
+            instruction: 'Put the iterative building process in order:',
+            items: [
+              { id: 'i1', text: '📝 Describe your vision clearly' },
+              { id: 'i2', text: '👀 Preview the result in browser' },
+              { id: 'i3', text: '🔧 Ask for specific changes' },
+              { id: 'i4', text: '🔄 Repeat until it matches your vision' }
+            ],
+            correctOrder: ['i1', 'i2', 'i3', 'i4'],
+            hints: {
+              partial: 'Start with description, end with iteration.',
+              wrong: 'You need to describe before you can preview what AI made.'
+            },
+            explanation: 'The cycle: Describe → Preview → Refine → Iterate. Repeat as needed.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'ab-dd-feedback-types',
+            instruction: 'Sort these into "Good Feedback to AI" vs "Unhelpful Feedback":',
+            items: [
+              { id: 'f1', text: '"This is wrong"' },
+              { id: 'f2', text: '"Make the header blue instead of green"' },
+              { id: 'f3', text: '"I don\'t like it"' },
+              { id: 'f4', text: '"Add a button that says Submit at the bottom"' },
+              { id: 'f5', text: '"Make it better"' },
+              { id: 'f6', text: '"Move the image to the left side"' }
+            ],
+            zones: [
+              { id: 'good', label: '✅ Good Feedback', correct: ['f2', 'f4', 'f6'] },
+              { id: 'bad', label: '❌ Unhelpful Feedback', correct: ['f1', 'f3', 'f5'] }
+            ],
+            explanation: 'Good feedback is specific and actionable. Vague feedback leaves AI guessing.',
+            points: 25
+          },
+          {
+            type: 'connect-edges',
+            id: 'ab-ce-iteration-benefits',
+            instruction: 'Connect each aspect of iteration to its benefit:',
+            nodes: [
+              { id: 'describe', label: '📝 Clear Description' },
+              { id: 'preview', label: '👀 Preview Result' },
+              { id: 'refine', label: '🔧 Specific Changes' },
+              { id: 'good-start', label: '🎯 Good First Attempt' },
+              { id: 'see-gaps', label: '🔍 See What\'s Missing' },
+              { id: 'targeted-fix', label: '🎪 Targeted Improvements' }
+            ],
+            solution: {
+              edges: [
+                { source: 'describe', target: 'good-start' },
+                { source: 'preview', target: 'see-gaps' },
+                { source: 'refine', target: 'targeted-fix' }
+              ]
+            },
+            nodeDescriptions: {
+              'describe': 'Starting clearly',
+              'preview': 'Checking the output',
+              'refine': 'Requesting changes',
+              'good-start': 'AI understands better',
+              'see-gaps': 'Know what to fix',
+              'targeted-fix': 'Efficient improvements'
+            },
+            explanation: 'Each step in the process serves a specific purpose in getting to your vision.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'ab-quiz-scenario',
+            question: 'AI builds a quiz app but the colors are too dark to read. What\'s the best approach?',
+            options: [
+              'Start over with a completely new prompt',
+              'Tell AI: "Change the text color to white and the background to a lighter shade"',
+              'Accept it - you can\'t change individual elements',
+              'Ask AI to "make it look better"'
+            ],
+            correct: 1,
+            explanation: 'Specific feedback works best. AI remembers context, so targeted changes are efficient.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'ab-seq-conversation-flow',
+            instruction: 'Order this "conversation" with AI from start to finish:',
+            items: [
+              { id: 'c1', text: '"Build a recipe card with name, ingredients, and instructions"' },
+              { id: 'c2', text: '[AI creates first version]' },
+              { id: 'c3', text: '"Add a cooking time field at the top"' },
+              { id: 'c4', text: '"Make the ingredients list bulleted"' },
+              { id: 'c5', text: '"Perfect! Now add a print button"' }
+            ],
+            correctOrder: ['c1', 'c2', 'c3', 'c4', 'c5'],
+            hints: {
+              partial: 'Start with the initial request.',
+              wrong: 'AI has to create something before you can refine it.'
+            },
+            explanation: 'Building is a conversation: initial request → AI creates → you refine → repeat.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'ab-dd-when-iterate',
+            instruction: 'Sort these situations: "Need More Iteration" vs "Good Enough to Ship":',
+            items: [
+              { id: 's1', text: 'Core feature is completely broken' },
+              { id: 's2', text: 'Colors aren\'t your favorite but work fine' },
+              { id: 's3', text: 'Missing a required input field' },
+              { id: 's4', text: 'Font size could be slightly larger' },
+              { id: 's5', text: 'Submit button doesn\'t work' }
+            ],
+            zones: [
+              { id: 'iterate', label: '🔧 Need More Iteration', correct: ['s1', 's3', 's5'] },
+              { id: 'ship', label: '🚀 Good Enough to Ship', correct: ['s2', 's4'] }
+            ],
+            explanation: 'Iterate on broken functionality. Minor preferences can be improved later or accepted.',
+            points: 20
+          }
+        ]
+      });
+      story2Application.init();
+
+      // Story 2: Art of Building - Synthesis
+      const story2Synthesis = new ActivityCarousel('story2-synthesis', {
+        type: 'synthesis',
+        sectionId: 'art-of-building',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'ab-scenario-frustration',
+            scenario: 'You\'ve been building a project for an hour. You describe, preview, refine - but each fix seems to break something else. You\'re getting frustrated.',
+            question: 'Using the lesson\'s approach, what should you do? What might be causing this cycle?',
+            evaluation: {
+              keywords: ['step back', 'start', 'simpler', 'clear', 'specific', 'break down', 'smaller', 'one thing', 'conflict', 'requirements'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Step back and consider: Maybe your requirements conflict with each other. Try breaking the project into smaller pieces. Start with the simplest version that works, then add features one at a time. Each change should be small and specific. If stuck, describe the problem to AI and ask it to explain what\'s happening.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'ab-predict-perfectionist',
+            setup: {
+              type: 'text',
+              content: 'Person A keeps iterating endlessly, never satisfied, searching for "perfect." Person B iterates until it works well enough, then ships and gets feedback from real users.'
+            },
+            question: 'After 3 months, who has learned more about building? Why?',
+            correctAnswer: 'Person B',
+            acceptableVariants: ['B', 'second', 'shipper', 'the one who ships'],
+            explanation: 'Person B learns from real-world feedback and has likely built multiple projects. Person A may still be on their first project. Shipping creates learning opportunities that endless polishing doesn\'t.',
+            commonMistakes: {
+              'A': 'Perfectionism often prevents learning. Real feedback is more valuable than imagined improvements.',
+              'both': 'Very different learning curves. Shipping exposes you to lessons polishing never reveals.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'ab-reflect-iteration',
+            prompt: 'Think of a time you tried something creative (art, writing, cooking, anything) and your first attempt wasn\'t great. How did iteration help? What would have happened if you gave up after the first try?',
+            thinkingPrompts: [
+              'What did your first attempt look like?',
+              'How did each revision improve it?',
+              'What would you have missed if you stopped early?',
+              'How does this apply to building with AI?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'first (try|attempt|version)', label: 'First attempt identified', points: 5 },
+                { pattern: '(improved|better|changed|refined)', label: 'Iteration recognized', points: 5 },
+                { pattern: '(learned|discovered|realized)', label: 'Learning from iteration', points: 4 },
+                { pattern: '(gave up|stopped|quit)', label: 'Persistence reflection', points: 4 },
+                { pattern: '(AI|build|project)', label: 'Application to AI building', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'ab-scenario-professional',
+            scenario: 'You learn that professional software teams do "code reviews" and "multiple iterations" on every feature. Some features go through 10+ rounds of feedback.',
+            question: 'How does knowing this change your expectations about your own building process? What mindset does this suggest?',
+            evaluation: {
+              keywords: ['normal', 'expected', 'professional', 'iteration', 'feedback', 'improve', 'perfect', 'process', 'patient', 'learn'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'This shows iteration is normal and expected, not a sign of failure. If professionals with years of experience still iterate 10+ times, beginners should expect even more. The mindset: building is a process, not a one-shot event. Patience with iteration is part of the craft. Each round teaches you something.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'ab-predict-conversation-skill',
+            setup: {
+              type: 'text',
+              content: 'Someone practices the "conversation with AI" approach for a month, building small projects weekly. They get better at describing, previewing, and giving specific feedback.'
+            },
+            question: 'How will this skill transfer to other areas of their life beyond AI building?',
+            correctAnswer: 'communication',
+            acceptableVariants: ['describing', 'feedback', 'clarity', 'specificity', 'collaboration', 'iteration'],
+            explanation: 'They\'ll get better at communicating clearly, giving specific feedback, and iterating in any collaborative situation - at work, in relationships, in learning. The "describe clearly → evaluate → refine" pattern applies everywhere.',
+            commonMistakes: {
+              'nothing': 'Communication and iteration skills are highly transferable to work, relationships, and learning.',
+              'only AI': 'The skills apply far beyond AI - any collaborative or creative work.'
+            },
+            points: 15
+          },
+          {
+            type: 'graph-builder',
+            id: 'ab-graph-iteration-flow',
+            instruction: 'Build a diagram of YOUR typical iteration process: What do you describe first? What feedback do you give? When do you know you\'re done?',
+            nodeTypes: [
+              { type: 'start', label: '📝 Initial Description', color: '#42a5f5' },
+              { type: 'preview', label: '👀 Preview', color: '#ffd54f' },
+              { type: 'feedback', label: '🔧 Feedback', color: '#ff7043' },
+              { type: 'repeat', label: '🔄 Iterate', color: '#ab47bc' },
+              { type: 'done', label: '✅ Ship It!', color: '#66bb6a' }
+            ],
+            validation: {
+              requiredNodes: ['start', 'done'],
+              requiredEdges: [],
+              optionalNodes: ['preview', 'feedback', 'repeat'],
+              minNodes: 2,
+              maxNodes: 6
+            },
+            hints: [
+              'Start with your description',
+              'Show the loop of preview → feedback',
+              'Include how you know when to stop',
+              'It\'s okay if your process has many loops!'
+            ],
+            points: 30
+          }
+        ]
+      });
+      story2Synthesis.init();
+
+      // Story 3: Clear Prompts - Comprehension
+      const story3Comprehension = new ActivityCarousel('story3-comprehension', {
+        type: 'comprehension',
+        sectionId: 'clear-prompts',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'cp-quiz-quality',
+            question: 'According to the lesson, what does the quality of AI\'s output depend on?',
+            options: [
+              'How expensive the AI tool is',
+              'How long you spend on it',
+              'How well you describe what you want',
+              'How much coding experience you have'
+            ],
+            correct: 2,
+            explanation: '"The quality of what AI builds depends entirely on how well you describe it."',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'cp-quiz-vague',
+            question: 'Why is "Make me a website" a bad prompt?',
+            options: [
+              'Websites are too complicated for AI',
+              'AI doesn\'t make websites',
+              'It\'s too vague - AI has to guess everything',
+              'You need to say "please"'
+            ],
+            correct: 2,
+            explanation: '"What kind of website? What should it do? What should it look like? The AI has to guess—and it will probably guess wrong."',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'cp-tf-three-parts',
+            statement: 'A good prompt should specify WHAT it is, the FEATURES it needs, and the STYLE/look.',
+            correct: true,
+            explanation: 'The lesson breaks down good prompts into: Type + Topic (WHAT), Functionality (FEATURES), Look & Feel (STYLE).',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'cp-tf-short-better',
+            statement: 'Shorter prompts are always better because they\'re easier for AI to understand.',
+            correct: false,
+            explanation: 'Vague, short prompts get vague results. Specific, detailed prompts get better results. Length matters less than clarity.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'cp-fill-clear-in',
+            statement: 'Clear descriptions in = ___ results out.',
+            correctAnswers: ['clear', 'good', 'better', 'specific'],
+            caseSensitive: false,
+            hints: ['What kind of results do clear descriptions produce?'],
+            explanation: '"Vague descriptions get vague results. Clear descriptions get exactly what you want."',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'cp-fill-example',
+            statement: 'The lesson\'s good prompt example is about a ___ about Grand Rapids history.',
+            correctAnswers: ['quiz', 'quiz webpage', 'quiz page'],
+            caseSensitive: false,
+            hints: ['What type of interactive content?'],
+            explanation: 'The example prompt: "A quiz webpage about Grand Rapids history" - clear type and topic.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'cp-quiz-style-example',
+            question: 'In the lesson\'s example, what style was specified?',
+            options: [
+              'Retro 1990s design',
+              'Modern look, blue color scheme, clean design',
+              'Dark mode with neon colors',
+              'No style was mentioned'
+            ],
+            correct: 1,
+            explanation: '"Modern look, blue color scheme, clean design" - specific style guidance helps AI match your vision.',
+            points: 10
+          }
+        ]
+      });
+      story3Comprehension.init();
+
+      // Story 3: Clear Prompts - Application
+      const story3Application = new ActivityCarousel('story3-application', {
+        type: 'application',
+        sectionId: 'clear-prompts',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'cp-dd-vague-vs-clear',
+            instruction: 'Sort these prompts into "Too Vague" vs "Specific Enough":',
+            items: [
+              { id: 'p1', text: '"Make me an app"' },
+              { id: 'p2', text: '"A timer with start/stop/reset buttons and a countdown display"' },
+              { id: 'p3', text: '"Build something cool"' },
+              { id: 'p4', text: '"A contact form with name, email, message fields and submit button"' },
+              { id: 'p5', text: '"I need a website for my thing"' },
+              { id: 'p6', text: '"A recipe card showing title, ingredients list, and step-by-step instructions"' }
+            ],
+            zones: [
+              { id: 'vague', label: '❌ Too Vague', correct: ['p1', 'p3', 'p5'] },
+              { id: 'specific', label: '✅ Specific Enough', correct: ['p2', 'p4', 'p6'] }
+            ],
+            explanation: 'Good prompts specify what it is, what it does, and what it includes.',
+            points: 25
+          },
+          {
+            type: 'sequence',
+            id: 'cp-seq-improve-prompt',
+            instruction: 'Order these from most vague to most specific:',
+            items: [
+              { id: 'pr1', text: '"Make something"' },
+              { id: 'pr2', text: '"Make a website"' },
+              { id: 'pr3', text: '"Make a quiz website"' },
+              { id: 'pr4', text: '"Make a quiz website about history with 5 questions"' },
+              { id: 'pr5', text: '"Make a quiz website about GR history, 5 questions, scoring, blue design"' }
+            ],
+            correctOrder: ['pr1', 'pr2', 'pr3', 'pr4', 'pr5'],
+            hints: {
+              partial: 'Each step should add more detail than the last.',
+              wrong: 'Start with the least information, end with the most.'
+            },
+            explanation: 'Each level adds specificity: type → topic → features → style.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'cp-ce-prompt-parts',
+            instruction: 'Connect each prompt element to what it specifies:',
+            nodes: [
+              { id: 'what', label: '🎯 WHAT' },
+              { id: 'features', label: '📋 FEATURES' },
+              { id: 'style', label: '🎨 STYLE' },
+              { id: 'quiz', label: 'Quiz about history' },
+              { id: 'scoring', label: '5 questions, scoring' },
+              { id: 'blue', label: 'Modern, blue, clean' }
+            ],
+            solution: {
+              edges: [
+                { source: 'what', target: 'quiz' },
+                { source: 'features', target: 'scoring' },
+                { source: 'style', target: 'blue' }
+              ]
+            },
+            nodeDescriptions: {
+              'what': 'Type and topic',
+              'features': 'Functionality',
+              'style': 'Look and feel',
+              'quiz': 'Defines the content type',
+              'scoring': 'Defines what it does',
+              'blue': 'Defines appearance'
+            },
+            explanation: 'Good prompts cover all three: what it is, what it does, how it looks.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'cp-quiz-rewrite',
+            question: 'Someone says: "Make me a portfolio." What question would MOST improve this prompt?',
+            options: [
+              'How fast should it load?',
+              'What sections do you need? (About, Projects, Contact, etc.)',
+              'What programming language should it use?',
+              'How many visitors do you expect?'
+            ],
+            correct: 1,
+            explanation: 'Knowing the sections (features) transforms a vague prompt into something AI can build correctly.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'cp-dd-prompt-building',
+            instruction: 'Build a good prompt by putting these pieces in a logical order:',
+            items: [
+              { id: 'pb1', text: 'Type: A countdown timer webpage' },
+              { id: 'pb2', text: 'Features: Days/hours/minutes/seconds, for a specific date' },
+              { id: 'pb3', text: 'Style: Dark theme, large numbers, festive colors' },
+              { id: 'pb4', text: 'Extra: Show a celebration animation when it reaches zero' }
+            ],
+            zones: [
+              { id: 'order1', label: '1️⃣ First', correct: ['pb1'] },
+              { id: 'order2', label: '2️⃣ Second', correct: ['pb2'] },
+              { id: 'order3', label: '3️⃣ Third', correct: ['pb3'] },
+              { id: 'order4', label: '4️⃣ Fourth', correct: ['pb4'] }
+            ],
+            explanation: 'Good prompt structure: What → Features → Style → Extras. Start broad, get specific.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'cp-seq-question-to-prompt',
+            instruction: 'Order these questions to build a complete prompt:',
+            items: [
+              { id: 'q1', text: 'What type of thing am I building?' },
+              { id: 'q2', text: 'What specific functionality does it need?' },
+              { id: 'q3', text: 'What should it look like?' },
+              { id: 'q4', text: 'Are there any special behaviors or interactions?' }
+            ],
+            correctOrder: ['q1', 'q2', 'q3', 'q4'],
+            hints: {
+              partial: 'Start with the most fundamental question.',
+              wrong: 'Before features, you need to know what you\'re building.'
+            },
+            explanation: 'The prompt-building process: Type → Features → Style → Special behaviors.',
+            points: 20
+          }
+        ]
+      });
+      story3Application.init();
+
+      // Story 3: Clear Prompts - Synthesis
+      const story3Synthesis = new ActivityCarousel('story3-synthesis', {
+        type: 'synthesis',
+        sectionId: 'clear-prompts',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'cp-scenario-improve',
+            scenario: 'Your friend wants AI to build them a study tool. Their prompt: "Make me something to help me study."',
+            question: 'What questions would you ask them to turn this vague prompt into a specific one? What information is missing?',
+            evaluation: {
+              keywords: ['what', 'type', 'subject', 'features', 'flashcards', 'quiz', 'timer', 'style', 'look', 'functions'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Questions to ask: What type of study tool? (flashcards, quiz, timer, notes?) What subject? What features? (track progress? spaced repetition? timer?) What should it look like? Better prompt: "A flashcard app for Spanish vocabulary with flip animations, progress tracking, and a clean modern design."',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'cp-predict-vague-results',
+            setup: {
+              type: 'text',
+              content: 'Person A asks AI: "Build me a portfolio." Person B asks AI: "Build a portfolio webpage for a graphic designer with: Hero section with name and tagline, Projects gallery with thumbnails, About section, Contact form. Style: Minimal, black and white, large images."'
+            },
+            question: 'Compare the likely results. What will each person get?',
+            correctAnswer: 'Person B',
+            acceptableVariants: ['B', 'specific one', 'second', 'detailed prompt'],
+            explanation: 'Person A will get a generic template that may not fit their needs. Person B will get something close to their vision on the first try. Clear prompts save iteration time.',
+            commonMistakes: {
+              'A': 'Vague prompts force AI to guess. Person A will need many more iterations.',
+              'same': 'Very different outcomes. Specificity dramatically improves first attempts.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'cp-reflect-communication',
+            prompt: 'Think about times you\'ve asked someone for help but didn\'t get what you needed. Was your request clear enough? How does clear communication with AI parallel clear communication with people?',
+            thinkingPrompts: [
+              'When have you gotten unexpected results from unclear requests?',
+              'What makes a request clear vs vague?',
+              'How would being more specific have helped?',
+              'How is this similar to prompting AI?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: '(asked|requested|told)', label: 'Communication example', points: 5 },
+                { pattern: '(unclear|vague|specific|clear)', label: 'Clarity awareness', points: 5 },
+                { pattern: '(expected|wanted|got)', label: 'Expectation vs result', points: 4 },
+                { pattern: '(AI|prompt|describe)', label: 'AI parallel', points: 4 },
+                { pattern: '(learn|realize|now)', label: 'Insight gained', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'cp-scenario-client',
+            scenario: 'Imagine you\'re helping a friend\'s small business. They say: "I need a website for my bakery." You know from the lesson that this is too vague.',
+            question: 'What specific questions would you ask to build a good prompt? Create the final prompt you\'d give to AI.',
+            evaluation: {
+              keywords: ['menu', 'hours', 'location', 'contact', 'photos', 'order', 'about', 'style', 'colors', 'pages', 'sections'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Questions: What pages? (Home, Menu, About, Contact) What features? (Online ordering? Photo gallery? Hours/location?) What style? (Cozy, modern, rustic?) Final prompt: "A bakery website with: Homepage with featured items, Menu page with photos and prices, About page with bakery story, Contact with hours/location/map. Style: Warm, cozy, beige and brown colors, handwritten-style fonts."',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'cp-predict-prompt-skill',
+            setup: {
+              type: 'text',
+              content: 'Someone practices writing clear prompts every day for a month. They start vague and gradually learn what details matter.'
+            },
+            question: 'What "real world" skill are they actually developing? How will this help them beyond AI?',
+            correctAnswer: 'communication',
+            acceptableVariants: ['clarity', 'specification', 'requirements', 'specificity', 'describing', 'articulation'],
+            explanation: 'They\'re learning to communicate clearly, think through requirements, and specify what they want. This helps in job descriptions, project briefs, client communication, collaboration - anywhere clear communication matters.',
+            commonMistakes: {
+              'prompting': 'Yes, but more broadly: they\'re learning general communication and specification skills.',
+              'nothing': 'Clear communication is one of the most valuable professional skills.'
+            },
+            points: 15
+          },
+          {
+            type: 'graph-builder',
+            id: 'cp-graph-prompt-structure',
+            instruction: 'Build a diagram showing the structure of a great prompt: Start with the basic type and branch out to features, style, and any extras.',
+            nodeTypes: [
+              { type: 'type', label: '🎯 Type', color: '#ef5350' },
+              { type: 'topic', label: '📚 Topic', color: '#ff7043' },
+              { type: 'feature', label: '⚙️ Feature', color: '#42a5f5' },
+              { type: 'style', label: '🎨 Style', color: '#ab47bc' },
+              { type: 'extra', label: '✨ Extra', color: '#66bb6a' }
+            ],
+            validation: {
+              requiredNodes: ['type', 'feature', 'style'],
+              requiredEdges: [],
+              optionalNodes: ['topic', 'extra'],
+              minNodes: 3,
+              maxNodes: 8
+            },
+            hints: [
+              'Start with what TYPE of thing you\'re building',
+              'Add multiple features - what does it DO?',
+              'Include style - what does it LOOK like?',
+              'Optional extras for special behaviors'
+            ],
+            points: 30
+          }
+        ]
+      });
+      story3Synthesis.init();
+
+      console.log('🛠️ Week 3 activity carousels initialized!');
     });
   </script>
 </body>
