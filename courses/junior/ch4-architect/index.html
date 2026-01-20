@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="junior" data-lesson="ch4-architect">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Code Trap Section -->
+      <div class="activity-carousels" data-story="code-trap-story">
+        <div id="code-trap-comprehension" class="carousel-container"></div>
+        <div id="code-trap-application" class="carousel-container"></div>
+        <div id="code-trap-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Design-First Workflow -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Workflow Section -->
+      <div class="activity-carousels" data-story="workflow-story">
+        <div id="workflow-comprehension" class="carousel-container"></div>
+        <div id="workflow-application" class="carousel-container"></div>
+        <div id="workflow-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for AI Power Section -->
+      <div class="activity-carousels" data-story="ai-power-story">
+        <div id="ai-power-comprehension" class="carousel-container"></div>
+        <div id="ai-power-application" class="carousel-container"></div>
+        <div id="ai-power-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
