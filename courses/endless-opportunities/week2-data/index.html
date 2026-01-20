@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="endless-opportunities" data-lesson="week2-data">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Story 1: Data Mindset -->
+      <div class="activity-carousels" data-story="data-mindset-story">
+        <div id="story1-comprehension" class="carousel-container"></div>
+        <div id="story1-application" class="carousel-container"></div>
+        <div id="story1-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Two Algorithms -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Story 2: Two Algorithms -->
+      <div class="activity-carousels" data-story="algorithms-story">
+        <div id="story2-comprehension" class="carousel-container"></div>
+        <div id="story2-application" class="carousel-container"></div>
+        <div id="story2-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Story 3: Collecting and Analyzing -->
+      <div class="activity-carousels" data-story="analysis-story">
+        <div id="story3-comprehension" class="carousel-container"></div>
+        <div id="story3-application" class="carousel-container"></div>
+        <div id="story3-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -436,6 +472,1039 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS
+      // ============================================
+
+      // Story 1: Data Mindset - Comprehension
+      const story1Comprehension = new ActivityCarousel('story1-comprehension', {
+        type: 'comprehension',
+        sectionId: 'data-mindset',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'dm-quiz-superpower',
+            question: 'What "superpower" does the lesson describe?',
+            options: [
+              'The ability to code complex algorithms',
+              'The ability to see data everywhere',
+              'The ability to memorize statistics',
+              'The ability to create viral content'
+            ],
+            correct: 1,
+            explanation: 'The superpower is the ability to see data everywhere - recognizing that every post, review, and comment contains valuable information waiting to be discovered.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dm-quiz-phone-book',
+            question: 'Why is social media compared to a "phone book"?',
+            options: [
+              'Because you can find phone numbers there',
+              'Because it\'s outdated technology',
+              'Because it\'s millions of people sharing their thoughts, problems, and wants for free',
+              'Because it organizes people alphabetically'
+            ],
+            correct: 2,
+            explanation: 'Social media is like a massive phone book of data - millions of people freely sharing what they think, need, and struggle with. It\'s a goldmine for problem solvers.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'dm-tf-scrolling',
+            statement: 'Most people scroll past information without seeing the data it contains.',
+            correct: true,
+            explanation: 'The lesson explicitly states that "most people scroll past information without seeing it." Developing the data mindset means learning to see what others miss.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'dm-tf-data-insight',
+            statement: 'Data and insight are the same thing.',
+            correct: false,
+            explanation: 'Data is raw information (numbers, comments, reviews). Insight is the UNDERSTANDING you gain when you analyze data. The progression is: Data → Analysis → Insight → Solutions.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'dm-fill-data-becomes',
+            statement: 'Data, when you know how to collect and analyze it, becomes ___.',
+            correctAnswers: ['insight', 'insights', 'understanding'],
+            caseSensitive: false,
+            hints: ['What does data become after analysis?'],
+            explanation: 'Data becomes insight through analysis. Insight is understanding, and understanding leads to solutions.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'dm-fill-everywhere',
+            statement: 'Reviews reveal what people love and hate. Comments show real reactions. Data is literally ___ once you learn to see it.',
+            correctAnswers: ['everywhere', 'all around', 'around us'],
+            caseSensitive: false,
+            hints: ['Think about where data can be found'],
+            explanation: 'Data is everywhere - in social media, reviews, comments, local listings, news, public stats. The skill is learning to see it.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dm-quiz-problem-solvers',
+            question: 'According to the lesson, how do "problem solvers" operate?',
+            options: [
+              'They wait for data to come to them',
+              'They use expensive software to find data',
+              'They turn data into insight, insight into understanding, understanding into solutions',
+              'They only look at official statistics'
+            ],
+            correct: 2,
+            explanation: 'Problem solvers follow the chain: Data → Insight → Understanding → Solutions. They actively see and collect data everywhere.',
+            points: 10
+          }
+        ]
+      });
+      story1Comprehension.init();
+
+      // Story 1: Data Mindset - Application
+      const story1Application = new ActivityCarousel('story1-application', {
+        type: 'application',
+        sectionId: 'data-mindset',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'dm-dd-data-sources',
+            instruction: 'Categorize these as data sources or NOT useful data sources:',
+            items: [
+              { id: 'd1', text: 'Customer reviews on Amazon' },
+              { id: 'd2', text: 'Random thoughts in your head' },
+              { id: 'd3', text: 'Comments on YouTube videos' },
+              { id: 'd4', text: 'Reddit discussions' },
+              { id: 'd5', text: 'Dreams you had last night' },
+              { id: 'd6', text: 'Twitter/X conversations' }
+            ],
+            zones: [
+              { id: 'useful', label: '📊 Useful Data Sources', correct: ['d1', 'd3', 'd4', 'd6'] },
+              { id: 'not-useful', label: '❌ Not Data Sources', correct: ['d2', 'd5'] }
+            ],
+            explanation: 'External sources where people share real opinions and problems (reviews, comments, discussions) are data. Internal thoughts and dreams aren\'t collectible data.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'dm-seq-data-to-solution',
+            instruction: 'Put the problem-solving chain in order:',
+            items: [
+              { id: 's1', text: '📊 Raw Data (comments, reviews, posts)' },
+              { id: 's2', text: '🔍 Analysis (finding patterns)' },
+              { id: 's3', text: '💡 Insight (understanding what it means)' },
+              { id: 's4', text: '🔧 Solution (taking action)' }
+            ],
+            correctOrder: ['s1', 's2', 's3', 's4'],
+            hints: {
+              partial: 'Start with the raw material and end with the action.',
+              wrong: 'You can\'t analyze what you haven\'t collected.'
+            },
+            explanation: 'The chain is: Data → Analysis → Insight → Solution. Each step builds on the previous one.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'dm-ce-data-types',
+            instruction: 'Connect each platform to what type of data it\'s best for:',
+            nodes: [
+              { id: 'amazon', label: '🛒 Amazon' },
+              { id: 'twitter', label: '🐦 Twitter/X' },
+              { id: 'reddit', label: '💬 Reddit' },
+              { id: 'yelp', label: '⭐ Yelp' },
+              { id: 'product', label: '📦 Product Opinions' },
+              { id: 'trends', label: '📈 Real-time Trends' },
+              { id: 'deep', label: '🔍 Deep Discussions' },
+              { id: 'local', label: '📍 Local Business Reviews' }
+            ],
+            solution: {
+              edges: [
+                { source: 'amazon', target: 'product' },
+                { source: 'twitter', target: 'trends' },
+                { source: 'reddit', target: 'deep' },
+                { source: 'yelp', target: 'local' }
+              ]
+            },
+            nodeDescriptions: {
+              'amazon': 'E-commerce reviews',
+              'twitter': 'Fast-moving conversations',
+              'reddit': 'Community discussions',
+              'yelp': 'Business reviews',
+              'product': 'What people think of products',
+              'trends': 'What\'s happening now',
+              'deep': 'Detailed opinions and advice',
+              'local': 'Neighborhood insights'
+            },
+            explanation: 'Different platforms are better for different types of data. Knowing where to look is part of the data mindset.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'dm-quiz-scenario-cafe',
+            question: 'You want to start a café. Where would you look to understand what customers want?',
+            options: [
+              'Only ask friends and family',
+              'Read Yelp reviews of competing cafés to see what people praise and complain about',
+              'Guess based on your own preferences',
+              'Wait until you open to find out'
+            ],
+            correct: 1,
+            explanation: 'Reviews of competitors are free data! They reveal what customers love (keep doing it) and hate (opportunity to do better). Data mindset = look before you leap.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'dm-dd-mindset-behaviors',
+            instruction: 'Sort these behaviors into "Data Mindset" vs "Missing Data":',
+            items: [
+              { id: 'b1', text: 'Reads reviews before buying anything' },
+              { id: 'b2', text: 'Scrolls past without noticing patterns' },
+              { id: 'b3', text: 'Takes notes on repeated complaints' },
+              { id: 'b4', text: 'Assumes they know what people want' },
+              { id: 'b5', text: 'Searches for trends before starting a project' }
+            ],
+            zones: [
+              { id: 'data-mindset', label: '👁️ Data Mindset', correct: ['b1', 'b3', 'b5'] },
+              { id: 'missing', label: '😴 Missing Data', correct: ['b2', 'b4'] }
+            ],
+            explanation: 'Data mindset means actively looking, collecting, and learning. Missing data means assuming or ignoring what\'s available.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'dm-seq-see-data',
+            instruction: 'Put these steps in order for "learning to see data":',
+            items: [
+              { id: 'l1', text: 'Notice you\'re surrounded by information' },
+              { id: 'l2', text: 'Realize most is opinions, problems, and needs' },
+              { id: 'l3', text: 'Start capturing patterns systematically' },
+              { id: 'l4', text: 'Turn patterns into actionable insights' }
+            ],
+            correctOrder: ['l1', 'l2', 'l3', 'l4'],
+            hints: {
+              partial: 'Start with awareness, end with action.',
+              wrong: 'You must first notice before you can capture.'
+            },
+            explanation: 'The progression: Awareness → Recognition → Collection → Application. Each step builds the data mindset.',
+            points: 20
+          }
+        ]
+      });
+      story1Application.init();
+
+      // Story 1: Data Mindset - Synthesis
+      const story1Synthesis = new ActivityCarousel('story1-synthesis', {
+        type: 'synthesis',
+        sectionId: 'data-mindset',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'dm-scenario-restaurant',
+            scenario: 'You\'re thinking about opening a taco truck. Most people would just pick a location and hope for the best. But you have the data mindset.',
+            question: 'What free data sources would you use to decide where to park your truck and what to put on your menu?',
+            evaluation: {
+              keywords: ['yelp', 'google', 'reviews', 'competitors', 'reddit', 'social', 'maps', 'trends', 'instagram', 'twitter', 'local'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Data sources: Yelp reviews of nearby tacos (what do people love/hate?), Google Maps for foot traffic, Reddit local subreddits (what food do people want?), Instagram location tags (where do foodies gather?), competitor menus and prices. All free, all valuable.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dm-predict-two-entrepreneurs',
+            setup: {
+              type: 'text',
+              content: 'Entrepreneur A has a great idea and immediately starts building. Entrepreneur B has the same idea but first spends a week reading competitor reviews, Reddit discussions, and social media to understand what customers actually want.'
+            },
+            question: 'Who is more likely to succeed? Why?',
+            correctAnswer: 'Entrepreneur B',
+            acceptableVariants: ['B', 'the second one', 'second', 'data person'],
+            explanation: 'Entrepreneur B will likely succeed because they built based on real data about customer needs, not assumptions. A might build something nobody wants. The data mindset reduces risk dramatically.',
+            commonMistakes: {
+              'A': 'Speed without data often leads to building the wrong thing. "Fast failure" is still failure.',
+              'both': 'Data-informed decisions consistently outperform assumption-based ones.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'dm-reflect-hidden-data',
+            prompt: 'Think about your daily routine - scrolling social media, reading reviews, browsing websites. What data have you been seeing but not "seeing"? Where is there hidden information about problems, needs, or opportunities?',
+            thinkingPrompts: [
+              'What complaints do you notice repeatedly?',
+              'What questions do people ask that don\'t have good answers?',
+              'What frustrations do people express?',
+              'What gaps exist between what people want and what\'s available?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'I (noticed|saw|read|observed)', label: 'Personal observation', points: 5 },
+                { pattern: '(complain|frustrat|want|need|problem)', label: 'Problem identification', points: 5 },
+                { pattern: '(pattern|repeated|common|trend)', label: 'Pattern recognition', points: 4 },
+                { pattern: '(opportunity|gap|could|should)', label: 'Opportunity thinking', points: 4 },
+                { pattern: '(now I|going to|will start)', label: 'Action orientation', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'dm-scenario-job-search',
+            scenario: 'You\'re job hunting and want to stand out. Traditional approach: apply to jobs and hope. Data mindset approach: use data strategically.',
+            question: 'How could you use the data mindset to find better opportunities and prepare better applications?',
+            evaluation: {
+              keywords: ['linkedin', 'glassdoor', 'reviews', 'company', 'employees', 'culture', 'skills', 'trends', 'research', 'connect', 'network'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Data approach: Read Glassdoor reviews to understand company culture and interview questions. Check LinkedIn to see what skills employees have. Research company news and trends. Find employees to connect with. Analyze job descriptions to find common requirements. All this data shapes a targeted, informed application.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dm-predict-data-habit',
+            setup: {
+              type: 'text',
+              content: 'Someone decides to practice the "data mindset" for 30 days. Every time they scroll social media, they note recurring problems, complaints, and unmet needs instead of just consuming content.'
+            },
+            question: 'What will they notice after 30 days that they couldn\'t see before?',
+            correctAnswer: 'patterns',
+            acceptableVariants: ['opportunities', 'problems', 'needs', 'trends', 'gaps', 'insights'],
+            explanation: 'They\'ll start seeing patterns - repeated complaints, common frustrations, unmet needs, gaps in the market. What was once noise becomes signal. The data mindset reveals opportunities invisible to passive scrollers.',
+            commonMistakes: {
+              'nothing': 'Deliberate practice always changes perception. Data mindset becomes automatic with practice.',
+              'tired': 'Active observation is more engaging than passive scrolling, not less.'
+            },
+            points: 15
+          },
+          {
+            type: 'graph-builder',
+            id: 'dm-graph-data-ecosystem',
+            instruction: 'Build a diagram showing your personal "data ecosystem" - what platforms/sources could you use to find data about problems in an area that interests you?',
+            nodeTypes: [
+              { type: 'topic', label: '🎯 Your Interest Area', color: '#ef5350' },
+              { type: 'social', label: '📱 Social Platform', color: '#42a5f5' },
+              { type: 'reviews', label: '⭐ Review Site', color: '#ffd54f' },
+              { type: 'forum', label: '💬 Forum/Community', color: '#66bb6a' },
+              { type: 'insight', label: '💡 Insight Found', color: '#ab47bc' }
+            ],
+            validation: {
+              requiredNodes: ['topic'],
+              requiredEdges: [],
+              optionalNodes: ['social', 'reviews', 'forum', 'insight'],
+              minNodes: 3,
+              maxNodes: 7
+            },
+            hints: [
+              'Start with a topic you\'re genuinely interested in',
+              'What platforms would have relevant discussions?',
+              'Where would people leave reviews or feedback?'
+            ],
+            points: 30
+          }
+        ]
+      });
+      story1Synthesis.init();
+
+      // Story 2: Two Algorithms - Comprehension
+      const story2Comprehension = new ActivityCarousel('story2-comprehension', {
+        type: 'comprehension',
+        sectionId: 'algorithms',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'al-quiz-two-types',
+            question: 'What are the two types of algorithms the lesson discusses?',
+            options: [
+              'Fast and slow algorithms',
+              'Search algorithms and recommendation algorithms',
+              'Simple and complex algorithms',
+              'Free and paid algorithms'
+            ],
+            correct: 1,
+            explanation: 'The two algorithms are Search (you control what to find) and Recommendation (the platform controls what you see).',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'al-quiz-search-control',
+            question: 'Who is in control when you use a search algorithm?',
+            options: [
+              'The platform',
+              'The advertisers',
+              'You',
+              'Random chance'
+            ],
+            correct: 2,
+            explanation: 'With search, YOU decide what to find. You have a goal, you search for it. Better search terms = better results.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'al-tf-recommendation',
+            statement: 'Recommendation algorithms are designed to keep you watching, not necessarily to help you.',
+            correct: true,
+            explanation: 'Recommendation algorithms optimize for engagement (keeping you on the platform) rather than for your benefit or learning goals.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'al-tf-problem-solvers',
+            statement: 'Problem solvers use recommendation algorithms more than search because they\'re more efficient.',
+            correct: false,
+            explanation: 'The opposite is true. "Problem solvers use search more than recommendation. They know what they\'re looking for and go get it."',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'al-fill-tiktok',
+            statement: 'Your TikTok feed, YouTube homepage, and Instagram Explore are all examples of ___ algorithms.',
+            correctAnswers: ['recommendation', 'recommender', 'recommendation-based'],
+            caseSensitive: false,
+            hints: ['What type of algorithm decides what you see without you searching?'],
+            explanation: 'These feeds use recommendation algorithms - they watch what you engage with and show you more of the same.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'al-fill-intentional',
+            statement: 'The lesson advises: "Don\'t let algorithms choose your information for you. Be ___."',
+            correctAnswers: ['intentional', 'deliberate', 'purposeful'],
+            caseSensitive: false,
+            hints: ['What\'s the opposite of passive?'],
+            explanation: 'Being intentional means actively choosing what information you consume rather than letting algorithms decide.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'al-quiz-better-search',
+            question: 'According to the lesson, what skill makes search more effective?',
+            options: [
+              'Typing faster',
+              'Using better search terms',
+              'Clicking more links',
+              'Spending more time'
+            ],
+            correct: 1,
+            explanation: '"Better search terms equal better results. This is a skill." Learning to search effectively is part of the data mindset.',
+            points: 10
+          }
+        ]
+      });
+      story2Comprehension.init();
+
+      // Story 2: Two Algorithms - Application
+      const story2Application = new ActivityCarousel('story2-application', {
+        type: 'application',
+        sectionId: 'algorithms',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'al-dd-algorithm-type',
+            instruction: 'Categorize each behavior by algorithm type:',
+            items: [
+              { id: 'a1', text: 'Googling "how to start a business"' },
+              { id: 'a2', text: 'Scrolling your TikTok For You page' },
+              { id: 'a3', text: 'YouTube searching "Python tutorial"' },
+              { id: 'a4', text: 'Watching what Instagram suggests' },
+              { id: 'a5', text: 'Searching Amazon for specific product reviews' },
+              { id: 'a6', text: 'Netflix "Because you watched..." suggestions' }
+            ],
+            zones: [
+              { id: 'search', label: '🔍 Search (You Control)', correct: ['a1', 'a3', 'a5'] },
+              { id: 'recommend', label: '📲 Recommendation (They Control)', correct: ['a2', 'a4', 'a6'] }
+            ],
+            explanation: 'Search = you decide what to find. Recommendation = the platform decides what you see.',
+            points: 25
+          },
+          {
+            type: 'sequence',
+            id: 'al-seq-intentional',
+            instruction: 'Put these steps in order for "being intentional" with information:',
+            items: [
+              { id: 'i1', text: 'Know what you want to learn' },
+              { id: 'i2', text: 'Search specifically for it' },
+              { id: 'i3', text: 'Evaluate if results answer your question' },
+              { id: 'i4', text: 'Refine search if needed' }
+            ],
+            correctOrder: ['i1', 'i2', 'i3', 'i4'],
+            hints: {
+              partial: 'Start with knowing your goal.',
+              wrong: 'You can\'t search effectively without knowing what you want.'
+            },
+            explanation: 'Intentional learning: Goal → Search → Evaluate → Refine. This loop beats passive consumption.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'al-ce-algorithm-effects',
+            instruction: 'Connect each algorithm type to its effects:',
+            nodes: [
+              { id: 'search', label: '🔍 Search' },
+              { id: 'recommend', label: '📲 Recommendation' },
+              { id: 'control', label: '🎯 You Control' },
+              { id: 'passive', label: '😴 Passive Consumption' },
+              { id: 'goal', label: '✅ Goal-Directed' },
+              { id: 'engagement', label: '⏰ Maximizes Time on Platform' }
+            ],
+            solution: {
+              edges: [
+                { source: 'search', target: 'control' },
+                { source: 'search', target: 'goal' },
+                { source: 'recommend', target: 'passive' },
+                { source: 'recommend', target: 'engagement' }
+              ]
+            },
+            nodeDescriptions: {
+              'search': 'You decide what to find',
+              'recommend': 'Platform decides what you see',
+              'control': 'Active decision-making',
+              'passive': 'Receiving without choosing',
+              'goal': 'Working toward an outcome',
+              'engagement': 'Designed to keep you watching'
+            },
+            explanation: 'Search enables control and goal-directed behavior. Recommendation drives passive consumption and platform engagement.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'al-quiz-learning-scenario',
+            question: 'You want to learn about investing. Which approach reflects the data mindset?',
+            options: [
+              'Wait for TikTok to show you finance videos',
+              'Search YouTube for "investing for beginners" and specific questions',
+              'Scroll until something interesting appears',
+              'Let Netflix recommend a documentary'
+            ],
+            correct: 1,
+            explanation: 'Search with intention! You know what you want to learn, so go find it rather than hoping algorithms serve it up.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'al-dd-habits',
+            instruction: 'Sort these habits into "Empowering" vs "Controlled by Algorithms":',
+            items: [
+              { id: 'h1', text: 'Opening YouTube with a specific search in mind' },
+              { id: 'h2', text: 'Scrolling until something catches your eye' },
+              { id: 'h3', text: 'Setting a goal before going online' },
+              { id: 'h4', text: 'Clicking every recommended video' },
+              { id: 'h5', text: 'Researching before making decisions' }
+            ],
+            zones: [
+              { id: 'empower', label: '💪 Empowering', correct: ['h1', 'h3', 'h5'] },
+              { id: 'controlled', label: '🎮 Algorithm-Controlled', correct: ['h2', 'h4'] }
+            ],
+            explanation: 'Empowering habits involve intention and goals. Controlled habits let platforms direct your attention.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'al-seq-search-skill',
+            instruction: 'Order these from basic to advanced search skills:',
+            items: [
+              { id: 'sk1', text: 'Type simple keyword ("cooking")' },
+              { id: 'sk2', text: 'Use specific phrases ("how to cook pasta al dente")' },
+              { id: 'sk3', text: 'Add filters and operators (site:reddit.com, exact quotes)' },
+              { id: 'sk4', text: 'Refine based on results quality' }
+            ],
+            correctOrder: ['sk1', 'sk2', 'sk3', 'sk4'],
+            hints: {
+              partial: 'Start with the simplest, end with the most refined.',
+              wrong: 'Basic searches are single words; advanced add specificity and operators.'
+            },
+            explanation: 'Search skill progression: basic keywords → specific phrases → operators and filters → refinement.',
+            points: 20
+          }
+        ]
+      });
+      story2Application.init();
+
+      // Story 2: Two Algorithms - Synthesis
+      const story2Synthesis = new ActivityCarousel('story2-synthesis', {
+        type: 'synthesis',
+        sectionId: 'algorithms',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'al-scenario-time-audit',
+            scenario: 'You track your screen time for a week. You find: 3 hours/day on TikTok recommendations, 30 minutes on intentional YouTube searches, 2 hours on Instagram recommendations.',
+            question: 'Using the lesson\'s framework, what does this reveal about who controls your information diet? What would you change?',
+            evaluation: {
+              keywords: ['recommendation', 'control', 'intentional', 'search', 'time', 'platform', 'passive', 'goal', 'reduce', 'increase'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'This reveals 5+ hours daily controlled by algorithms vs. 30 minutes you control. The platform is directing most of your information intake. Changes: Set time limits on recommendation feeds, increase intentional search time, have goals before opening apps, use search-first instead of scrolling.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'al-predict-two-students',
+            setup: {
+              type: 'text',
+              content: 'Student A learns by watching whatever YouTube recommends on their homepage. Student B learns by searching for specific topics they want to understand and following a curriculum.'
+            },
+            question: 'After 6 months of daily learning, who will have more coherent, useful knowledge? Why?',
+            correctAnswer: 'Student B',
+            acceptableVariants: ['B', 'the second student', 'second', 'searcher', 'intentional'],
+            explanation: 'Student B will have structured, goal-directed knowledge that builds on itself. Student A will have scattered, random information based on what algorithms served. Intention beats randomness.',
+            commonMistakes: {
+              'A': 'Recommendations optimize for engagement, not learning. Random content doesn\'t build systematic knowledge.',
+              'both': 'Intentional learning dramatically outperforms passive consumption over time.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'al-reflect-algorithm-audit',
+            prompt: 'Think about your own information consumption. How much is search-driven (you chose it) vs. recommendation-driven (algorithm chose it)? What\'s one change you could make to be more intentional?',
+            thinkingPrompts: [
+              'How do you typically start a browsing session?',
+              'Do you have goals before opening apps?',
+              'Which platforms control most of your attention?',
+              'What would "more intentional" look like for you?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'I (usually|typically|often|always)', label: 'Self-awareness', points: 5 },
+                { pattern: '(scroll|feed|recommended|algorithm)', label: 'Algorithm recognition', points: 4 },
+                { pattern: '(search|intentional|goal|purpose)', label: 'Intention awareness', points: 4 },
+                { pattern: '(will|could|should|going to)', label: 'Change commitment', points: 5 },
+                { pattern: '(specific|concrete|exact)', label: 'Actionable plan', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'al-scenario-breaking-news',
+            scenario: 'Breaking news happens. Person A sees a TikTok video about it and forms an opinion. Person B searches multiple news sources, reads different perspectives, and then forms an opinion.',
+            question: 'Compare the quality of their opinions. What are the risks of algorithm-driven vs. search-driven information on important topics?',
+            evaluation: {
+              keywords: ['bias', 'perspective', 'multiple', 'sources', 'verify', 'filter bubble', 'echo chamber', 'quality', 'one-sided', 'research'],
+              minWords: 40,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Person A risks getting one-sided, possibly biased information - whatever went viral. Person B gets multiple perspectives and can evaluate credibility. Risks of algorithm-driven: filter bubbles, misinformation spread, emotional manipulation. Search-driven allows verification and nuance.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'al-predict-search-practice',
+            setup: {
+              type: 'text',
+              content: 'Someone decides to practice "search-first" for 30 days. Rule: before opening any recommendation feed, they must have a specific question or goal and search for it first.'
+            },
+            question: 'What changes will they notice in their information quality and time usage?',
+            correctAnswer: 'focused',
+            acceptableVariants: ['efficient', 'productive', 'better', 'less time', 'more learning', 'less scrolling', 'intentional'],
+            explanation: 'They\'ll notice: less time wasted scrolling, more focused learning, better information quality, more retained knowledge, feeling more in control. Search-first creates intentional information consumption.',
+            commonMistakes: {
+              'nothing': 'Intentional habits always create noticeable changes. A month of search-first transforms information consumption.',
+              'harder': 'It gets easier with practice. The initial friction of having a goal gives way to efficient, targeted learning.'
+            },
+            points: 15
+          },
+          {
+            type: 'graph-builder',
+            id: 'al-graph-information-diet',
+            instruction: 'Build a diagram showing your ideal "information diet" - what sources would you search intentionally vs. limit recommendation exposure?',
+            nodeTypes: [
+              { type: 'you', label: '👤 You', color: '#42a5f5' },
+              { type: 'search', label: '🔍 Search Source', color: '#66bb6a' },
+              { type: 'limit', label: '⚠️ Limit/Control', color: '#ef5350' },
+              { type: 'goal', label: '🎯 Learning Goal', color: '#ffd54f' },
+              { type: 'insight', label: '💡 Knowledge Gained', color: '#ab47bc' }
+            ],
+            validation: {
+              requiredNodes: ['you', 'search'],
+              requiredEdges: [
+                { from: 'you', to: 'search' }
+              ],
+              optionalNodes: ['limit', 'goal', 'insight'],
+              minNodes: 3,
+              maxNodes: 7
+            },
+            hints: [
+              'Start with yourself at the center',
+              'What sources would you actively search?',
+              'What recommendation feeds would you limit?'
+            ],
+            points: 30
+          }
+        ]
+      });
+      story2Synthesis.init();
+
+      // Story 3: Analysis - Comprehension
+      const story3Comprehension = new ActivityCarousel('story3-comprehension', {
+        type: 'comprehension',
+        sectionId: 'analysis',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'an-quiz-collection',
+            question: 'According to the lesson, is data collection complicated?',
+            options: [
+              'Yes, it requires special software',
+              'Yes, it requires a degree',
+              'No, it\'s just being intentional about gathering information',
+              'No, but it requires coding skills'
+            ],
+            correct: 2,
+            explanation: '"Data collection isn\'t complicated. It\'s just being intentional about gathering information instead of passively scrolling past it."',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'an-quiz-pattern',
+            question: 'What is "The Pattern" for data collection?',
+            options: [
+              'Collect everything → Sort later',
+              'Define what you want → Find where data lives → Collect systematically → Look for patterns',
+              'Ask AI to do it',
+              'Wait for data to come to you'
+            ],
+            correct: 1,
+            explanation: 'The collection pattern is: Define → Find → Collect → Analyze. Simple process, powerful results.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'an-tf-patterns',
+            statement: 'If ten reviews mention slow service, that\'s a pattern worth noting.',
+            correct: true,
+            explanation: 'Repeated mentions are patterns. "If ten reviews mention slow service, that\'s a pattern. Patterns reveal truth."',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'an-tf-gaps',
+            statement: 'Gaps in data (unmet needs) represent opportunities.',
+            correct: false,
+            explanation: 'Wait - this IS true! "Gaps equal opportunities. Every unmet need is a potential solution waiting to be built."',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'an-fill-six-levels',
+            statement: 'Once you see patterns, use your ___ deep skills to understand root causes.',
+            correctAnswers: ['six levels', '6 levels', 'six-levels', '6-levels'],
+            caseSensitive: false,
+            hints: ['Remember the framework from Week 1?'],
+            explanation: 'The six levels deep framework from Week 1 applies here too - dig into WHY patterns exist, not just WHAT they are.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'an-fill-action',
+            statement: 'Analysis without ___ is just trivia.',
+            correctAnswers: ['action', 'actions', 'doing something'],
+            caseSensitive: false,
+            hints: ['What makes analysis useful?'],
+            explanation: '"Analysis without action is just trivia." The point of data analysis is to inform decisions and take action.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'an-quiz-conclusions',
+            question: 'According to the lesson, when does data become "useful"?',
+            options: [
+              'When you collect enough of it',
+              'When it informs action',
+              'When you share it with others',
+              'When experts validate it'
+            ],
+            correct: 1,
+            explanation: '"This is where data becomes useful — when it informs action." Data → Insight → Action is the complete cycle.',
+            points: 10
+          }
+        ]
+      });
+      story3Comprehension.init();
+
+      // Story 3: Analysis - Application
+      const story3Application = new ActivityCarousel('story3-application', {
+        type: 'application',
+        sectionId: 'analysis',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'an-seq-collection-pattern',
+            instruction: 'Put "The Pattern" for data collection in order:',
+            items: [
+              { id: 'p1', text: '📋 Define what you want to know' },
+              { id: 'p2', text: '📍 Identify where the data lives' },
+              { id: 'p3', text: '📥 Collect systematically' },
+              { id: 'p4', text: '🔍 Look for patterns' }
+            ],
+            correctOrder: ['p1', 'p2', 'p3', 'p4'],
+            hints: {
+              partial: 'Start with your goal, end with analysis.',
+              wrong: 'You can\'t collect without knowing what and where.'
+            },
+            explanation: 'The pattern: Define → Find → Collect → Analyze. Each step enables the next.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'an-seq-analysis-flow',
+            instruction: 'Order these analysis steps from the lesson:',
+            items: [
+              { id: 'a1', text: '🔬 Look for patterns' },
+              { id: 'a2', text: '❓ Ask why (6 levels deep)' },
+              { id: 'a3', text: '🕳️ Find gaps (opportunities)' },
+              { id: 'a4', text: '📝 Draw conclusions (recommendations)' }
+            ],
+            correctOrder: ['a1', 'a2', 'a3', 'a4'],
+            hints: {
+              partial: 'Start with seeing patterns, end with actionable conclusions.',
+              wrong: 'You need to see patterns before you can ask why they exist.'
+            },
+            explanation: 'Analysis flow: Patterns → Why → Gaps → Conclusions. Each step goes deeper.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'an-ce-data-analysis',
+            instruction: 'Connect each analysis activity to what it reveals:',
+            nodes: [
+              { id: 'patterns', label: '🔍 Finding Patterns' },
+              { id: 'why', label: '❓ Asking Why' },
+              { id: 'gaps', label: '🕳️ Finding Gaps' },
+              { id: 'trends', label: '📈 Trends & Themes' },
+              { id: 'root', label: '🌱 Root Causes' },
+              { id: 'opportunity', label: '💡 Opportunities' }
+            ],
+            solution: {
+              edges: [
+                { source: 'patterns', target: 'trends' },
+                { source: 'why', target: 'root' },
+                { source: 'gaps', target: 'opportunity' }
+              ]
+            },
+            nodeDescriptions: {
+              'patterns': 'Noticing repeated themes',
+              'why': 'Digging deeper with questions',
+              'gaps': 'Finding unmet needs',
+              'trends': 'What keeps appearing',
+              'root': 'Underlying reasons',
+              'opportunity': 'Problems waiting to be solved'
+            },
+            explanation: 'Different analysis activities reveal different things: patterns → trends, why → causes, gaps → opportunities.',
+            points: 25
+          },
+          {
+            type: 'drag-drop',
+            id: 'an-dd-analysis-vs-trivia',
+            instruction: 'Sort these outcomes into "Useful Analysis" vs "Just Trivia":',
+            items: [
+              { id: 't1', text: 'Knowing that 73% of reviews mention X' },
+              { id: 't2', text: 'Understanding WHY customers complain about X and how to fix it' },
+              { id: 't3', text: 'Having a spreadsheet of data but no conclusions' },
+              { id: 't4', text: 'A recommendation based on patterns that leads to action' },
+              { id: 't5', text: 'Reading 100 reviews without noting anything' }
+            ],
+            zones: [
+              { id: 'useful', label: '📊 Useful Analysis', correct: ['t2', 't4'] },
+              { id: 'trivia', label: '📚 Just Trivia', correct: ['t1', 't3', 't5'] }
+            ],
+            explanation: 'Useful analysis leads to understanding and action. Trivia is information without insight or application.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'an-quiz-restaurant-reviews',
+            question: 'You read 50 restaurant reviews. 15 mention "great food but slow service." Using the analysis framework, what\'s your next step?',
+            options: [
+              'Count exactly how many said this',
+              'Ask WHY service is slow (6 levels deep)',
+              'Stop analyzing - you found a pattern',
+              'Ignore it - 15 isn\'t enough'
+            ],
+            correct: 1,
+            explanation: 'You found a pattern (repeated complaint). Next step: Ask WHY service is slow. Root cause analysis leads to actionable insights.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'an-seq-gap-to-solution',
+            instruction: 'Order these steps from "finding a gap" to "taking action":',
+            items: [
+              { id: 'g1', text: 'Notice people asking for something that doesn\'t exist' },
+              { id: 'g2', text: 'Validate the gap is real (multiple sources)' },
+              { id: 'g3', text: 'Design a solution that addresses the gap' },
+              { id: 'g4', text: 'Take action (build, recommend, share)' }
+            ],
+            correctOrder: ['g1', 'g2', 'g3', 'g4'],
+            hints: {
+              partial: 'Start with observation, end with action.',
+              wrong: 'Validate before designing - make sure the gap is real.'
+            },
+            explanation: 'Gap → Validate → Design → Act. Don\'t skip validation - confirm the need exists.',
+            points: 20
+          }
+        ]
+      });
+      story3Application.init();
+
+      // Story 3: Analysis - Synthesis
+      const story3Synthesis = new ActivityCarousel('story3-synthesis', {
+        type: 'synthesis',
+        sectionId: 'analysis',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'an-scenario-gym',
+            scenario: 'You\'re analyzing reviews for local gyms in your area. You read 100 reviews across 5 gyms. Pattern: "Great equipment but crowded 5-7pm." Pattern: "Love the classes but schedule changes randomly." Gap: Several people asking for 24-hour access but no gym offers it.',
+            question: 'Using the full analysis framework, what insights and recommendations would you draw? How would you go deeper?',
+            evaluation: {
+              keywords: ['why', 'crowded', 'schedule', 'hours', 'opportunity', 'solution', 'recommend', 'pattern', 'gap', 'expand', 'staff', 'off-peak'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Insights: Crowding (ask why - limited hours? not enough equipment?), schedule chaos (management issue?), 24-hour demand (clear gap). Recommendations: A gym could differentiate with 24-hour access, reliable class schedules, or off-peak incentives. Going deeper: WHY are gyms crowded at 5-7? (work schedules) → Could a gym near offices offer lunch-hour specials?',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'an-predict-two-analysts',
+            setup: {
+              type: 'text',
+              content: 'Analyst A reads 100 reviews and creates a list of everything mentioned. Analyst B reads the same reviews but specifically looks for patterns, asks "why" for each pattern, and identifies gaps.'
+            },
+            question: 'Whose analysis will be more valuable for decision-making? Why?',
+            correctAnswer: 'Analyst B',
+            acceptableVariants: ['B', 'second', 'the second analyst', 'pattern finder'],
+            explanation: 'Analyst B\'s work will be actionable. They have organized insights (patterns), understanding (why), and opportunities (gaps). Analyst A has raw data without synthesis - that\'s just trivia.',
+            commonMistakes: {
+              'A': 'More data without organization isn\'t more valuable. Patterns + understanding + gaps = actionable.',
+              'both': 'Very different outputs - one is organized insight, the other is raw information.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'an-reflect-personal-analysis',
+            prompt: 'Think of a decision you made recently without much data (choosing a product, restaurant, service, etc.). How would you have approached it differently using the data collection and analysis framework from this lesson?',
+            thinkingPrompts: [
+              'What did you base your decision on?',
+              'What data sources could you have checked?',
+              'What patterns might you have found?',
+              'What gaps or opportunities might have influenced your choice?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'I (chose|picked|decided|went)', label: 'Past decision identified', points: 5 },
+                { pattern: '(could have|would have|should have)', label: 'Alternative approach', points: 5 },
+                { pattern: '(pattern|review|data|information)', label: 'Data awareness', points: 4 },
+                { pattern: '(better|different|more informed)', label: 'Improvement recognition', points: 4 },
+                { pattern: '(next time|future|now I)', label: 'Future application', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'an-scenario-app-idea',
+            scenario: 'You have an idea for a local events app. Before building anything, you want to use data to validate and refine the idea.',
+            question: 'Using the complete framework (data mindset + algorithms + analysis), describe how you would research this idea. What would you search for? What patterns and gaps would you look for?',
+            evaluation: {
+              keywords: ['search', 'reddit', 'review', 'competitor', 'pattern', 'gap', 'complain', 'want', 'need', 'event', 'local', 'facebook', 'meetup'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 12
+            },
+            modelAnswer: 'Search (not recommend): "local events app reviews", "[city] events reddit", "Meetup app problems". Data sources: App store reviews of competitors, local subreddits, Facebook event groups. Patterns to find: Common complaints about existing apps, features people want, when/how people discover events. Gaps: What events are hard to find? What audiences are underserved? This validates before building.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'an-predict-data-practice',
+            setup: {
+              type: 'text',
+              content: 'Someone practices the full framework from this week for 3 months: seeing data everywhere, using search over recommendations, collecting systematically, finding patterns, asking why, and identifying gaps.'
+            },
+            question: 'How will this person see opportunities differently than before?',
+            correctAnswer: 'everywhere',
+            acceptableVariants: ['more', 'clearly', 'better', 'constantly', 'automatically', 'pattern', 'patterns', 'opportunities'],
+            explanation: 'They\'ll see opportunities everywhere because they\'ve trained to: notice data, recognize patterns, understand causes, and spot gaps. What others scroll past, they capture. The data mindset becomes automatic.',
+            commonMistakes: {
+              'same': 'Three months of deliberate practice fundamentally changes perception.',
+              'overwhelmed': 'With practice, pattern recognition becomes efficient, not overwhelming.'
+            },
+            points: 15
+          },
+          {
+            type: 'graph-builder',
+            id: 'an-graph-full-framework',
+            instruction: 'Build a complete diagram of the data analysis framework from this lesson: from raw data sources through patterns, "why" analysis, gaps, to conclusions and actions.',
+            nodeTypes: [
+              { type: 'source', label: '📊 Data Source', color: '#42a5f5' },
+              { type: 'collect', label: '📥 Collect', color: '#66bb6a' },
+              { type: 'pattern', label: '🔍 Pattern', color: '#ffd54f' },
+              { type: 'why', label: '❓ Ask Why', color: '#ff7043' },
+              { type: 'gap', label: '🕳️ Gap/Opportunity', color: '#ab47bc' },
+              { type: 'action', label: '🎯 Action/Solution', color: '#ef5350' }
+            ],
+            validation: {
+              requiredNodes: ['source', 'pattern', 'action'],
+              requiredEdges: [
+                { from: 'source', to: 'pattern' }
+              ],
+              optionalNodes: ['collect', 'why', 'gap'],
+              minNodes: 3,
+              maxNodes: 8
+            },
+            hints: [
+              'Start with where data comes from',
+              'Show the analysis steps in order',
+              'End with what you do with the insights'
+            ],
+            points: 30
+          }
+        ]
+      });
+      story3Synthesis.init();
+
+      console.log('📊 Week 2 activity carousels initialized!');
     });
   </script>
 </body>
