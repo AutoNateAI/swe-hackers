@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="junior" data-lesson="ch3-magnetism">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Integration Trap Section -->
+      <div class="activity-carousels" data-story="integration-trap-story">
+        <div id="integration-trap-comprehension" class="carousel-container"></div>
+        <div id="integration-trap-application" class="carousel-container"></div>
+        <div id="integration-trap-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: The Integration Checklist -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Checklist Section -->
+      <div class="activity-carousels" data-story="checklist-story">
+        <div id="checklist-comprehension" class="carousel-container"></div>
+        <div id="checklist-application" class="carousel-container"></div>
+        <div id="checklist-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Resilience Section -->
+      <div class="activity-carousels" data-story="resilience-story">
+        <div id="resilience-comprehension" class="carousel-container"></div>
+        <div id="resilience-application" class="carousel-container"></div>
+        <div id="resilience-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -438,6 +474,959 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS - INTEGRATION TRAP SECTION
+      // ============================================
+
+      const integrationTrapComprehension = new ActivityCarousel('integration-trap-comprehension', {
+        type: 'comprehension',
+        sectionId: 'integration-trap',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'trap-quiz-1',
+            question: 'What\'s the fundamental mindset shift between junior and senior API integration?',
+            options: [
+              'Seniors write more code',
+              'Seniors hope APIs work; juniors plan for failures',
+              'Juniors hope APIs work; seniors plan for failures',
+              'Seniors use different programming languages'
+            ],
+            correct: 2,
+            explanation: 'Juniors hope it works and ship it. Seniors ask "what could go wrong?" and build protection before it does.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'trap-quiz-2',
+            question: 'Why is "copy the example from docs" a junior approach?',
+            options: [
+              'Documentation is always wrong',
+              'Examples show the happy path, not production edge cases',
+              'You should never read documentation',
+              'Examples are written in old syntax'
+            ],
+            correct: 1,
+            explanation: 'Docs examples prove the API works. They don\'t show error handling, rate limiting, retries, or monitoring—the things that matter in production.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'trap-tf-1',
+            statement: 'If an API integration works in development, it will work the same way in production.',
+            correct: false,
+            explanation: 'Production has higher traffic, real money, real users, and real consequences. Dev testing doesn\'t expose rate limits, network issues, or scale problems.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'trap-tf-2',
+            statement: 'The 3am page is often the result of not planning for API failures.',
+            correct: true,
+            explanation: 'Most production incidents from integrations happen because developers assumed the happy path. No retry logic = no recovery from transient failures.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'trap-fill-1',
+            statement: 'Juniors ___ APIs work. Seniors ___ for when they don\'t.',
+            correctAnswers: ['hope', 'plan'],
+            caseSensitive: false,
+            hints: ['Two different mindsets toward failure'],
+            explanation: 'The senior mindset is proactive: plan for failure before it happens.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'trap-fill-2',
+            statement: 'The difference between junior and senior isn\'t years of experience—it\'s asking what could go ___ before it does.',
+            correctAnswers: ['wrong', 'fail', 'break'],
+            caseSensitive: false,
+            hints: ['Anticipating problems before they happen'],
+            explanation: 'Seniors proactively identify failure modes and build protection before deploying.',
+            points: 10
+          }
+        ]
+      });
+      integrationTrapComprehension.init();
+
+      const integrationTrapApplication = new ActivityCarousel('integration-trap-application', {
+        type: 'application',
+        sectionId: 'integration-trap',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'trap-seq-1',
+            instruction: 'Order these from junior approach (top) to senior approach (bottom):',
+            items: [
+              { id: 's1', text: 'Copy example from docs, test locally, ship' },
+              { id: 's2', text: 'Add basic error handling after seeing failures' },
+              { id: 's3', text: 'Plan for all failure modes before writing code' },
+              { id: 's4', text: 'Build resilience patterns (retry, circuit breaker) upfront' }
+            ],
+            correctOrder: ['s1', 's2', 's3', 's4'],
+            hints: {
+              partial: 'Junior is reactive, senior is proactive.',
+              wrong: 'Progress from reactive → proactive'
+            },
+            explanation: 'The journey: copy-paste → reactive fixes → proactive planning → built-in resilience.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'trap-dd-1',
+            instruction: 'Categorize these questions as Junior (reactive) or Senior (proactive):',
+            items: [
+              { id: 'j1', text: '"Does it work in my local environment?"' },
+              { id: 's1', text: '"What if the API times out?"' },
+              { id: 'j2', text: '"Are the tests passing?"' },
+              { id: 's2', text: '"What if we hit rate limits?"' },
+              { id: 's3', text: '"What happens when the service is completely down?"' },
+              { id: 'j3', text: '"Did the example code work?"' }
+            ],
+            zones: [
+              { id: 'junior', label: '👶 Junior Questions', correct: ['j1', 'j2', 'j3'] },
+              { id: 'senior', label: '🧓 Senior Questions', correct: ['s1', 's2', 's3'] }
+            ],
+            explanation: 'Junior questions focus on happy path. Senior questions anticipate failures.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'trap-connect-1',
+            instruction: 'Connect each API failure scenario to its consequence:',
+            nodes: [
+              { id: 'no-retry', label: '🚫 No Retry Logic' },
+              { id: 'no-timeout', label: '⏰ No Timeout' },
+              { id: 'no-rate-limit', label: '🚦 No Rate Awareness' },
+              { id: 'transient-fail', label: '💥 Transient Failures Break App' },
+              { id: 'hang', label: '🔄 Requests Hang Forever' },
+              { id: 'blocked', label: '🛑 API Blocks Your Requests' }
+            ],
+            solution: {
+              edges: [
+                { source: 'no-retry', target: 'transient-fail' },
+                { source: 'no-timeout', target: 'hang' },
+                { source: 'no-rate-limit', target: 'blocked' }
+              ]
+            },
+            explanation: 'Each missing protection leads to a specific failure mode in production.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'trap-quiz-apply-1',
+            question: 'You\'re reviewing a PR that integrates with Stripe. The code works, tests pass. What\'s the senior question to ask?',
+            options: [
+              '"Does it compile?"',
+              '"What happens when Stripe is slow, returns errors, or rate limits us?"',
+              '"Is the code well-formatted?"',
+              '"Did you use the latest SDK version?"'
+            ],
+            correct: 1,
+            explanation: 'Working code isn\'t enough. Senior review asks about failure handling: timeouts, errors, rate limits, monitoring.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'trap-seq-2',
+            instruction: 'Order these events in a typical "junior integration disaster":',
+            items: [
+              { id: 'e1', text: 'Integration works in dev, code gets shipped' },
+              { id: 'e2', text: 'Marketing campaign drives 10x traffic' },
+              { id: 'e3', text: 'API starts rate limiting requests' },
+              { id: 'e4', text: 'No retry logic means all requests fail' },
+              { id: 'e5', text: '3am page, production outage' }
+            ],
+            correctOrder: ['e1', 'e2', 'e3', 'e4', 'e5'],
+            hints: {
+              partial: 'It starts fine, then traffic spikes reveal the gaps.',
+              wrong: 'Ship → Traffic spike → Rate limits → Failures → Outage'
+            },
+            explanation: 'This is the classic "worked in dev, broke in prod" pattern. Senior planning prevents it.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'trap-dd-2',
+            instruction: 'Match each integration component to its purpose:',
+            items: [
+              { id: 'c1', text: 'Retry with backoff' },
+              { id: 'c2', text: 'Circuit breaker' },
+              { id: 'c3', text: 'Timeout settings' }
+            ],
+            zones: [
+              { id: 'transient', label: '🔄 Recover from Transient Failures', correct: ['c1'] },
+              { id: 'cascade', label: '🛡️ Prevent Cascading Failures', correct: ['c2'] },
+              { id: 'hang', label: '⏰ Prevent Indefinite Waiting', correct: ['c3'] }
+            ],
+            explanation: 'Each pattern protects against a different failure mode.',
+            points: 15
+          }
+        ]
+      });
+      integrationTrapApplication.init();
+
+      const integrationTrapSynthesis = new ActivityCarousel('integration-trap-synthesis', {
+        type: 'synthesis',
+        sectionId: 'integration-trap',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'trap-scenario-1',
+            scenario: 'You\'re asked to integrate with a third-party shipping API. The API has rate limits of 100 requests/minute. Your site gets 200 orders/hour on average, but 2000/hour during sales.',
+            question: 'What problems do you foresee, and how would you design for them?',
+            evaluation: {
+              keywords: ['rate limit', 'queue', 'burst', 'throttle', 'backoff', 'retry', 'sales', 'spike'],
+              minWords: 45,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: 'Problems: During sales, 2000/hour = 33/minute average, but bursts could exceed 100/min. Design: 1) Queue shipping requests, 2) Process queue at <100/min rate, 3) Add retry with backoff for rate limit errors, 4) Alert if queue grows too large, 5) Have fallback for critical orders.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'trap-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Integration code:\n- Calls payment API directly on checkout\n- No retry logic\n- No timeout configured\n- Returns error to user on any API failure\n\nScenario: Payment API has a 5-second hiccup where 20% of requests timeout.'
+            },
+            question: 'What happens to users during this 5-second hiccup?',
+            correctAnswer: '20% fail',
+            acceptableVariants: ['20% of checkouts fail', 'failures', 'errors', 'users see errors', 'lost sales'],
+            explanation: 'Without retry logic, every failed request means a lost sale. With retry, most would succeed on the second attempt. A 5-second hiccup becomes a significant revenue loss.',
+            commonMistakes: {
+              'nothing': 'Without protection, transient API issues directly impact users.'
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'trap-scenario-2',
+            scenario: 'A junior on your team says: "I tested the integration manually 10 times and it worked every time. Why do we need all this retry and circuit breaker stuff?"',
+            question: 'How would you explain the importance of resilience patterns?',
+            evaluation: {
+              keywords: ['production', 'scale', 'network', 'failure', 'transient', 'eventually', 'users', 'money'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Explain: 10 manual tests don\'t simulate production scale. At 10,000 requests/day, even 0.1% failure rate = 10 failures/day. Network issues, API hiccups, rate limits all happen in production but not in manual testing. Retry handles transient issues; circuit breaker prevents cascading failures.',
+            points: 25
+          },
+          {
+            type: 'reflection',
+            id: 'trap-reflect-1',
+            prompt: 'Think about an integration you\'ve built or used. Did it have proper error handling? What would happen if the external service went down for 5 minutes?',
+            thinkingPrompts: [
+              'What retry logic exists (if any)?',
+              'What happens to users during an outage?',
+              'Would you be paged at 3am?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: '(no|didn\'t have|missing)', label: 'Honest assessment', points: 5 },
+                { pattern: '(retry|timeout|circuit)', label: 'Technical awareness', points: 5 },
+                { pattern: '(users|customers|impact)', label: 'User focus', points: 5 },
+                { pattern: '(should|would|improve)', label: 'Improvement mindset', points: 5 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'graph-builder',
+            id: 'trap-graph-1',
+            instruction: 'Build a diagram showing: App → (retry logic) → (circuit breaker) → External API',
+            nodeTypes: [
+              { type: 'app', label: '📱 Your App', color: '#42a5f5' },
+              { type: 'retry', label: '🔄 Retry', color: '#66bb6a' },
+              { type: 'circuit', label: '🛡️ Circuit Breaker', color: '#ffa726' },
+              { type: 'api', label: '🌐 External API', color: '#7986cb' }
+            ],
+            validation: {
+              requiredNodes: ['app', 'retry', 'circuit', 'api'],
+              requiredEdges: [
+                { from: 'app', to: 'retry' },
+                { from: 'retry', to: 'circuit' },
+                { from: 'circuit', to: 'api' }
+              ],
+              optionalNodes: [],
+              minNodes: 4,
+              maxNodes: 5
+            },
+            hints: [
+              'Requests flow from your app through protection layers',
+              'Retry handles transient failures',
+              'Circuit breaker prevents cascading failures'
+            ],
+            points: 30
+          },
+          {
+            type: 'scenario',
+            id: 'trap-scenario-3',
+            scenario: 'Your company\'s checkout uses a third-party payment API. Last month there were 3 incidents where the API was slow (2-5 seconds response time instead of 200ms). Each incident lasted 10-15 minutes.',
+            question: 'What metrics would you monitor, and what alerts would you set up?',
+            evaluation: {
+              keywords: ['latency', 'p95', 'p99', 'error rate', 'timeout', 'alert', 'threshold', 'baseline'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Monitor: 1) Response latency (p50, p95, p99), 2) Error rate %, 3) Timeout count. Alerts: 1) p95 latency > 1s (warn), > 3s (page), 2) Error rate > 1% (warn), > 5% (page), 3) Set timeouts at 5s to fail fast. Compare against baseline to detect degradation.',
+            points: 25
+          }
+        ]
+      });
+      integrationTrapSynthesis.init();
+
+      // ============================================
+      // ACTIVITY CAROUSELS - CHECKLIST SECTION
+      // ============================================
+
+      const checklistComprehension = new ActivityCarousel('checklist-comprehension', {
+        type: 'comprehension',
+        sectionId: 'checklist',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'check-quiz-1',
+            question: 'Where should API keys be stored?',
+            options: [
+              'In source code for easy access',
+              'In environment variables committed to git',
+              'In a secrets vault with separate keys per environment',
+              'In a shared team document'
+            ],
+            correct: 2,
+            explanation: 'API keys in code or git are security risks. Use a secrets vault (AWS Secrets Manager, HashiCorp Vault) with different keys for dev/staging/prod.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'check-quiz-2',
+            question: 'What is "graceful degradation"?',
+            options: [
+              'Slowly removing features over time',
+              'Having fallback behavior when a dependency fails',
+              'Gradually increasing API calls',
+              'Deprecating old API versions'
+            ],
+            correct: 1,
+            explanation: 'Graceful degradation means your app still works (maybe with reduced functionality) when a dependency fails. Example: show cached data when API is down.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'check-tf-1',
+            statement: 'Average latency is the most important metric to monitor.',
+            correct: false,
+            explanation: 'Average hides bad experiences. p95/p99 show the experience of your slowest users—the ones who complain. Average of 100ms can hide 1% of requests taking 5 seconds.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'check-tf-2',
+            statement: 'You should test failure scenarios (API returns 500) not just success paths.',
+            correct: true,
+            explanation: 'Testing only happy paths means you don\'t know how your code behaves when things go wrong. Simulate 500s, timeouts, and rate limits in tests.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'check-fill-1',
+            statement: 'Track not just average latency, but ___, ___, and ___ percentiles.',
+            correctAnswers: ['p50', 'p95', 'p99'],
+            caseSensitive: false,
+            hints: ['Percentiles that show the experience of most and slowest users'],
+            explanation: 'p50 (median), p95, and p99 show how latency varies. p99 shows the slowest 1% of requests.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'check-fill-2',
+            statement: 'Use ___ for unit tests, and ___ environments for integration tests.',
+            correctAnswers: ['mocks', 'sandbox'],
+            caseSensitive: false,
+            hints: ['Don\'t hit real APIs in unit tests'],
+            explanation: 'Mocks isolate unit tests from external dependencies. Sandbox environments let you test real API behavior without affecting production.',
+            points: 10
+          }
+        ]
+      });
+      checklistComprehension.init();
+
+      const checklistApplication = new ActivityCarousel('checklist-application', {
+        type: 'application',
+        sectionId: 'checklist',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'check-seq-1',
+            instruction: 'Order the integration checklist items:',
+            items: [
+              { id: 'c1', text: 'Authentication & Security (secrets vault, key rotation)' },
+              { id: 'c2', text: 'Error Handling (retry, circuit breaker, timeouts)' },
+              { id: 'c3', text: 'Rate Limiting (know limits, throttle, queue)' },
+              { id: 'c4', text: 'Monitoring (latency, errors, business metrics)' },
+              { id: 'c5', text: 'Testing (mocks, sandbox, failure scenarios)' }
+            ],
+            correctOrder: ['c1', 'c2', 'c3', 'c4', 'c5'],
+            hints: {
+              partial: 'Security first, testing last.',
+              wrong: 'Auth → Errors → Rates → Monitor → Test'
+            },
+            explanation: 'Start with security foundations, build error handling, respect rate limits, add monitoring, then test everything.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'check-dd-1',
+            instruction: 'Categorize each practice by checklist area:',
+            items: [
+              { id: 'a1', text: 'Store keys in vault, not code' },
+              { id: 'e1', text: 'Implement exponential backoff' },
+              { id: 'r1', text: 'Queue requests during traffic bursts' },
+              { id: 'm1', text: 'Track p95 latency' },
+              { id: 't1', text: 'Simulate API 500 errors in tests' },
+              { id: 'a2', text: 'Different keys for dev/staging/prod' }
+            ],
+            zones: [
+              { id: 'auth', label: '🔐 Auth & Security', correct: ['a1', 'a2'] },
+              { id: 'error', label: '⚠️ Error Handling', correct: ['e1'] },
+              { id: 'rate', label: '🚦 Rate Limiting', correct: ['r1'] },
+              { id: 'monitor', label: '📊 Monitoring', correct: ['m1'] },
+              { id: 'test', label: '🧪 Testing', correct: ['t1'] }
+            ],
+            explanation: 'Each practice belongs to a specific layer of production readiness.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'check-connect-1',
+            instruction: 'Connect each checklist item to what it prevents:',
+            nodes: [
+              { id: 'secrets', label: '🔐 Secrets Vault' },
+              { id: 'circuit', label: '🛡️ Circuit Breaker' },
+              { id: 'throttle', label: '🚦 Client Throttling' },
+              { id: 'leaked-keys', label: '🔓 Leaked API Keys' },
+              { id: 'cascade', label: '💥 Cascading Failures' },
+              { id: 'rate-block', label: '🛑 Rate Limit Blocks' }
+            ],
+            solution: {
+              edges: [
+                { source: 'secrets', target: 'leaked-keys' },
+                { source: 'circuit', target: 'cascade' },
+                { source: 'throttle', target: 'rate-block' }
+              ]
+            },
+            explanation: 'Each checklist item is protection against a specific failure mode.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'check-quiz-apply-1',
+            question: 'Your monitoring shows average latency of 150ms but users complain about slowness. What metric should you check?',
+            options: [
+              'Total request count',
+              'p95 and p99 latency',
+              'Database query count',
+              'Memory usage'
+            ],
+            correct: 1,
+            explanation: 'Average of 150ms might hide that 5% of requests take 3 seconds. p95/p99 reveal the experience of your slowest users.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'check-dd-2',
+            instruction: 'Sort these testing approaches from least to most comprehensive:',
+            items: [
+              { id: 't1', text: 'Manual testing of happy path' },
+              { id: 't2', text: 'Unit tests with mocks' },
+              { id: 't3', text: 'Integration tests with sandbox' },
+              { id: 't4', text: 'Failure scenario tests (500s, timeouts)' }
+            ],
+            zones: [
+              { id: 'least', label: '🔴 Least Comprehensive', correct: ['t1'] },
+              { id: 'basic', label: '🟡 Basic', correct: ['t2'] },
+              { id: 'good', label: '🟢 Good', correct: ['t3'] },
+              { id: 'best', label: '🌟 Most Comprehensive', correct: ['t4'] }
+            ],
+            explanation: 'Best testing covers: mocked unit tests → sandbox integration → failure scenarios.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'check-seq-2',
+            instruction: 'Order these from "something broke" to "everything\'s fine":',
+            items: [
+              { id: 's1', text: 'Error rate > 50% - Critical failure' },
+              { id: 's2', text: 'Error rate > 5% - Major issue' },
+              { id: 's3', text: 'Error rate > 1% - Warning' },
+              { id: 's4', text: 'Error rate < 0.1% - Healthy' }
+            ],
+            correctOrder: ['s1', 's2', 's3', 's4'],
+            hints: {
+              partial: 'Higher error rates are worse.',
+              wrong: 'Critical → Major → Warning → Healthy'
+            },
+            explanation: 'Set alert thresholds: >50% = critical (page), >5% = major, >1% = warning, <0.1% = healthy.',
+            points: 15
+          }
+        ]
+      });
+      checklistApplication.init();
+
+      const checklistSynthesis = new ActivityCarousel('checklist-synthesis', {
+        type: 'synthesis',
+        sectionId: 'checklist',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'check-scenario-1',
+            scenario: 'You\'re reviewing a new developer\'s Stripe integration. They\'ve hardcoded the API key in the source file and committed it to git. The key works and payments go through.',
+            question: 'What\'s wrong with this, and how would you help them fix it?',
+            evaluation: {
+              keywords: ['security', 'git', 'exposed', 'vault', 'rotate', 'environment', 'revoke', 'secret'],
+              minWords: 45,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: 'Problems: 1) Key is exposed in git history forever, 2) Anyone with repo access has production access, 3) Can\'t rotate without code change. Fix: 1) Revoke that key immediately, 2) Move to secrets vault or env vars, 3) Educate on security practices, 4) Consider git history cleanup if repo is public.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'check-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Monitoring setup:\n- Average latency alert: > 500ms\n- Error rate alert: > 10%\n\nReality:\n- Average latency: 200ms\n- p99 latency: 8 seconds\n- Error rate: 3%'
+            },
+            question: 'Will any alerts fire? What\'s the problem with this monitoring?',
+            correctAnswer: 'no alerts',
+            acceptableVariants: ['no', 'neither', 'none', 'no alerts fire', 'nothing fires'],
+            explanation: 'No alerts fire! But 1% of users wait 8 seconds and 3% see errors. Monitoring misses real issues. Need p95/p99 alerts and lower error threshold.',
+            commonMistakes: {
+              'yes': 'Check the math: average is 200ms (under 500ms threshold), error rate is 3% (under 10% threshold). Neither alert fires despite real user pain.'
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'check-scenario-2',
+            scenario: 'Your team\'s payment API integration has no failure scenario tests. You propose adding tests that simulate 500 errors and timeouts. A teammate says "That\'s overkill—the API rarely fails."',
+            question: 'How would you argue for including failure scenario tests?',
+            evaluation: {
+              keywords: ['production', 'rare', 'impact', 'cost', 'users', 'revenue', 'confidence', 'know', 'prevent'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Argue: 1) "Rarely fails" still means it fails sometimes, 2) Payment failures = lost revenue, 3) We don\'t know how our code behaves without testing, 4) Finding bugs in tests is cheaper than finding them in production, 5) Gives confidence to deploy changes.',
+            points: 25
+          },
+          {
+            type: 'reflection',
+            id: 'check-reflect-1',
+            prompt: 'Review an integration in your current or past project against the checklist: Auth, Error Handling, Rate Limiting, Monitoring, Testing. Which areas are strongest? Which need work?',
+            thinkingPrompts: [
+              'Are API keys in a vault or in code?',
+              'What happens when the API is slow or down?',
+              'What alerts would fire if things went wrong?',
+              'Are failure scenarios tested?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(strong|good|have)', label: 'Identifies strengths', points: 4 },
+                { pattern: '(missing|weak|need|no)', label: 'Identifies gaps', points: 4 },
+                { pattern: '(auth|key|secret)', label: 'Auth awareness', points: 4 },
+                { pattern: '(retry|timeout|circuit)', label: 'Error handling', points: 4 },
+                { pattern: '(monitor|alert|metric)', label: 'Monitoring', points: 4 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'graph-builder',
+            id: 'check-graph-1',
+            instruction: 'Build the integration checklist flow: Auth → Error Handling → Rate Limiting → Monitoring → Testing',
+            nodeTypes: [
+              { type: 'auth', label: '🔐 Auth', color: '#ef5350' },
+              { type: 'error', label: '⚠️ Errors', color: '#ff7043' },
+              { type: 'rate', label: '🚦 Rates', color: '#ffa726' },
+              { type: 'monitor', label: '📊 Monitor', color: '#66bb6a' },
+              { type: 'test', label: '🧪 Test', color: '#42a5f5' }
+            ],
+            validation: {
+              requiredNodes: ['auth', 'error', 'rate', 'monitor', 'test'],
+              requiredEdges: [
+                { from: 'auth', to: 'error' },
+                { from: 'error', to: 'rate' },
+                { from: 'rate', to: 'monitor' },
+                { from: 'monitor', to: 'test' }
+              ],
+              optionalNodes: [],
+              minNodes: 5,
+              maxNodes: 6
+            },
+            hints: [
+              'This is a sequential checklist',
+              'Each layer builds on the previous',
+              'Security comes first, testing validates everything'
+            ],
+            points: 30
+          },
+          {
+            type: 'scenario',
+            id: 'check-scenario-3',
+            scenario: 'You need to rotate your payment API key due to a suspected leak. How would you do this with zero downtime?',
+            question: 'Describe a safe key rotation process.',
+            evaluation: {
+              keywords: ['new key', 'deploy', 'old', 'parallel', 'test', 'revoke', 'vault', 'zero downtime'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Process: 1) Generate new key in payment provider, 2) Add new key to secrets vault, 3) Deploy code that uses new key, 4) Verify payments work with new key, 5) Revoke old key only after confirming new key works. Never delete old key before verifying new one.',
+            points: 25
+          }
+        ]
+      });
+      checklistSynthesis.init();
+
+      // ============================================
+      // ACTIVITY CAROUSELS - RESILIENCE SECTION
+      // ============================================
+
+      const resilienceComprehension = new ActivityCarousel('resilience-comprehension', {
+        type: 'comprehension',
+        sectionId: 'resilience',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'res-quiz-1',
+            question: 'Why use exponential backoff (1s, 2s, 4s) instead of fixed delays?',
+            options: [
+              'It\'s more mathematically elegant',
+              'Fixed delays are against API terms of service',
+              'It gives overloaded systems progressively more time to recover',
+              'To make code more complex'
+            ],
+            correct: 2,
+            explanation: 'If a service is overloaded, hammering it every second makes things worse. Exponential backoff spreads retries out, giving breathing room.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'res-quiz-2',
+            question: 'What\'s the purpose of the circuit breaker\'s "half-open" state?',
+            options: [
+              'To save memory',
+              'To test if the service has recovered before fully reopening',
+              'To process requests at half speed',
+              'It\'s an error state'
+            ],
+            correct: 1,
+            explanation: 'Half-open allows a few test requests to check if the service recovered. Success = close circuit; failure = stay open. Enables automatic recovery.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'res-tf-1',
+            statement: 'In distributed systems, failure is a certainty, not just a possibility.',
+            correct: true,
+            explanation: 'Networks drop packets, services crash, APIs hit limits. Resilience isn\'t about preventing failure—it\'s about surviving it gracefully.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'res-tf-2',
+            statement: 'A circuit breaker should immediately retry when it detects a failure.',
+            correct: false,
+            explanation: 'A circuit breaker does the opposite—when failures pile up, it OPENS and fails fast without retrying. This prevents cascading failures and gives the service time to recover.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'res-fill-1',
+            statement: 'Circuit breaker states: ___ (normal) → ___ (fail fast) → ___ (test recovery).',
+            correctAnswers: ['closed', 'open', 'half-open'],
+            caseSensitive: false,
+            hints: ['Like an electrical circuit breaker'],
+            explanation: 'Closed = normal operation. Open = fail fast. Half-open = testing if service recovered.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'res-fill-2',
+            statement: 'When retrying, always set a ___ attempts limit so you don\'t retry forever.',
+            correctAnswers: ['max', 'maximum', 'limit on'],
+            caseSensitive: false,
+            hints: ['Don\'t retry indefinitely'],
+            explanation: 'Unlimited retries can queue up forever. Set a max (e.g., 3 attempts) and handle the permanent failure gracefully.',
+            points: 10
+          }
+        ]
+      });
+      resilienceComprehension.init();
+
+      const resilienceApplication = new ActivityCarousel('resilience-application', {
+        type: 'application',
+        sectionId: 'resilience',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'res-seq-1',
+            instruction: 'Order the circuit breaker state transitions:',
+            items: [
+              { id: 's1', text: 'Closed: Normal operation, tracking failures' },
+              { id: 's2', text: 'Failures exceed threshold' },
+              { id: 's3', text: 'Open: Fail fast, don\'t call service' },
+              { id: 's4', text: 'Timeout expires, allow test requests' },
+              { id: 's5', text: 'Half-open: Test if service recovered' },
+              { id: 's6', text: 'Tests succeed: Return to Closed' }
+            ],
+            correctOrder: ['s1', 's2', 's3', 's4', 's5', 's6'],
+            hints: {
+              partial: 'Follow the state machine: Closed → Open → Half-Open → Closed',
+              wrong: 'Normal → Threshold → Open → Wait → Test → Recover'
+            },
+            explanation: 'Circuit breaker lifecycle: track failures → trip → wait → test → recover.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'res-dd-1',
+            instruction: 'Match each resilience pattern to what it handles:',
+            items: [
+              { id: 'r1', text: 'Retry with exponential backoff' },
+              { id: 'r2', text: 'Circuit breaker' },
+              { id: 'r3', text: 'Timeout' }
+            ],
+            zones: [
+              { id: 'transient', label: '🔄 Transient Failures', correct: ['r1'] },
+              { id: 'cascade', label: '💥 Cascading Failures', correct: ['r2'] },
+              { id: 'slow', label: '🐌 Slow/Hung Services', correct: ['r3'] }
+            ],
+            explanation: 'Each pattern addresses a different failure mode: retry = temporary failures, circuit breaker = persistent failures, timeout = slow services.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'res-connect-1',
+            instruction: 'Connect each scenario to the appropriate circuit breaker action:',
+            nodes: [
+              { id: 's-success', label: '✅ Request Succeeds' },
+              { id: 's-fail-once', label: '❌ Single Failure' },
+              { id: 's-fail-many', label: '💥 Many Failures' },
+              { id: 'a-pass', label: '➡️ Pass Through' },
+              { id: 'a-retry', label: '🔄 Retry with Backoff' },
+              { id: 'a-open', label: '🚫 Open Circuit' }
+            ],
+            solution: {
+              edges: [
+                { source: 's-success', target: 'a-pass' },
+                { source: 's-fail-once', target: 'a-retry' },
+                { source: 's-fail-many', target: 'a-open' }
+              ]
+            },
+            explanation: 'Success = pass through. Single failure = retry. Many failures = open circuit and fail fast.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'res-quiz-apply-1',
+            question: 'Your payment API is returning 500 errors for 20% of requests. Should the circuit breaker open?',
+            options: [
+              'Yes - any errors mean open the circuit',
+              'No - 20% errors means 80% success, retry the failures',
+              'It depends on your configured threshold',
+              'Circuit breakers don\'t apply to payment APIs'
+            ],
+            correct: 2,
+            explanation: 'Whether to open depends on your threshold. 20% might be acceptable for retries, or it might indicate a serious problem. Configure thresholds based on your SLA.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'res-seq-2',
+            instruction: 'Order these exponential backoff delays from first retry to last:',
+            items: [
+              { id: 'd1', text: '1 second wait' },
+              { id: 'd2', text: '2 seconds wait' },
+              { id: 'd3', text: '4 seconds wait' },
+              { id: 'd4', text: '8 seconds wait (or give up)' }
+            ],
+            correctOrder: ['d1', 'd2', 'd3', 'd4'],
+            hints: {
+              partial: 'Each delay doubles the previous.',
+              wrong: '1s → 2s → 4s → 8s (exponential)'
+            },
+            explanation: 'Exponential backoff: 1s, 2s, 4s, 8s... Each retry waits longer, giving the service more time to recover.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'res-dd-2',
+            instruction: 'Classify these situations by how the circuit breaker should respond:',
+            items: [
+              { id: 'a1', text: 'API returns 503 for 3 consecutive requests' },
+              { id: 'a2', text: 'API latency spikes to 10 seconds' },
+              { id: 'a3', text: 'One request times out, next succeeds' }
+            ],
+            zones: [
+              { id: 'open', label: '🚫 Consider Opening Circuit', correct: ['a1', 'a2'] },
+              { id: 'retry', label: '🔄 Just Retry', correct: ['a3'] }
+            ],
+            explanation: 'Consecutive failures or extreme latency suggests a real problem—consider opening. Isolated failures are normal, just retry.',
+            points: 20
+          }
+        ]
+      });
+      resilienceApplication.init();
+
+      const resilienceSynthesis = new ActivityCarousel('resilience-synthesis', {
+        type: 'synthesis',
+        sectionId: 'resilience',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'res-scenario-1',
+            scenario: 'Your app calls a payment API. The API starts returning 500 errors for 100% of requests. You have retry logic but no circuit breaker. What happens?',
+            question: 'Describe the cascade of problems that occurs.',
+            evaluation: {
+              keywords: ['retry', 'queue', 'timeout', 'backup', 'thread', 'memory', 'cascade', 'worse', 'overwhelm'],
+              minWords: 45,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: 'Without a circuit breaker: 1) Every request retries 3 times, 2) Request queue grows 3x faster than normal, 3) Threads/connections get tied up waiting, 4) Your app becomes slow/unresponsive, 5) You\'re making the API\'s problem worse by hammering it. Cascading failure.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'res-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Circuit breaker config:\n- Failure threshold: 5 failures in 60 seconds\n- Open timeout: 30 seconds\n- Half-open test requests: 3\n\nScenario: API fails for 2 minutes, then recovers.'
+            },
+            question: 'Describe what the circuit breaker does during this 2-minute outage.',
+            correctAnswer: 'opens',
+            acceptableVariants: ['opens', 'opens then half-open', 'trips', 'circuit opens', 'fail fast'],
+            explanation: 'Timeline: 0-60s: Hits 5 failures → opens. 60s-90s: Open, fails fast. 90s: Half-open, tests. 90s-120s: If API recovered, tests pass → closes. Returns to normal.',
+            commonMistakes: {
+              'keeps retrying': 'The circuit breaker\'s job is to STOP retrying when things are bad.'
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'res-scenario-2',
+            scenario: 'A junior developer asks: "If the API is down, why not just keep retrying until it works? That way no requests fail."',
+            question: 'Explain why unlimited retries are dangerous.',
+            evaluation: {
+              keywords: ['queue', 'memory', 'overwhelm', 'cascade', 'thread', 'resource', 'worse', 'blocking'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Explain: 1) Queued retries consume memory, 2) Threads waiting for retries can\'t handle new requests, 3) You overwhelm the failing service when it tries to recover, 4) Your app becomes slow for ALL users, not just API users, 5) You turn their problem into your outage.',
+            points: 25
+          },
+          {
+            type: 'reflection',
+            id: 'res-reflect-1',
+            prompt: 'Think about a system you\'ve worked on. If a key dependency (database, API, service) went down for 5 minutes, what would happen? Do you have resilience patterns in place?',
+            thinkingPrompts: [
+              'Would your app crash or degrade gracefully?',
+              'Would you even know it happened?',
+              'How would users be affected?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: '(crash|fail|break)', label: 'Honest about failures', points: 5 },
+                { pattern: '(retry|circuit|timeout)', label: 'Resilience awareness', points: 5 },
+                { pattern: '(graceful|fallback|degrade)', label: 'Graceful degradation', points: 5 },
+                { pattern: '(should|need|improve)', label: 'Improvement focus', points: 5 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'graph-builder',
+            id: 'res-graph-1',
+            instruction: 'Build the circuit breaker state machine: Closed → (failures) → Open → (timeout) → Half-Open → (success) → Closed',
+            nodeTypes: [
+              { type: 'closed', label: '✅ Closed', color: '#66bb6a' },
+              { type: 'open', label: '🚫 Open', color: '#ef5350' },
+              { type: 'halfopen', label: '🔧 Half-Open', color: '#ffa726' }
+            ],
+            validation: {
+              requiredNodes: ['closed', 'open', 'halfopen'],
+              requiredEdges: [
+                { from: 'closed', to: 'open' },
+                { from: 'open', to: 'halfopen' },
+                { from: 'halfopen', to: 'closed' }
+              ],
+              optionalNodes: [],
+              minNodes: 3,
+              maxNodes: 4
+            },
+            hints: [
+              'This is a state machine with 3 states',
+              'Failures cause Closed → Open',
+              'Recovery goes: Open → Half-Open → Closed'
+            ],
+            points: 30
+          },
+          {
+            type: 'scenario',
+            id: 'res-scenario-3',
+            scenario: 'You\'re designing a new service that calls 3 external APIs. Each API has different reliability characteristics. How would you configure resilience differently for each?',
+            question: 'Describe how you\'d customize retry and circuit breaker settings for: 1) High-reliability payment API, 2) Occasionally slow search API, 3) Unreliable legacy API.',
+            evaluation: {
+              keywords: ['timeout', 'threshold', 'retry', 'fallback', 'different', 'aggressive', 'lenient', 'configure'],
+              minWords: 50,
+              pointsPerKeyword: 4,
+              depthBonus: 15
+            },
+            modelAnswer: 'Payment API: Low retry count (2), strict circuit breaker (5 failures), short timeout (3s)—payments must be reliable. Search API: Higher timeout (10s), more retries (3), lenient circuit breaker—slowness is acceptable. Legacy API: Aggressive circuit breaker (3 failures), long timeout, fallback to cached data—expect failures.',
+            points: 25
+          }
+        ]
+      });
+      resilienceSynthesis.init();
+
+      console.log('🎠 All activity carousels initialized for Junior Ch3: The Pull Between');
     });
   </script>
 </body>
