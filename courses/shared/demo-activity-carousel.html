@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/lesson-interactive.css">
   <link rel="stylesheet" href="css/activity-carousel.css">
+  <link rel="stylesheet" href="css/challenge-puzzle.css">
   <style>
     .demo-header {
       text-align: center;
@@ -91,7 +92,7 @@
     <!-- Section 2: Application Carousel -->
     <section class="demo-section">
       <h2>⚡ Application Carousel</h2>
-      <p>More quiz activities - other types will show as placeholders until implemented.</p>
+      <p>Test sequence ordering, drag-drop matching, and connect-edges graph activities.</p>
       
       <div id="application-carousel"></div>
       
@@ -101,10 +102,10 @@
       </div>
     </section>
 
-    <!-- Section 3: Synthesis Carousel with placeholder -->
+    <!-- Section 3: Synthesis Carousel -->
     <section class="demo-section">
       <h2>🔧 Synthesis Carousel</h2>
-      <p>Includes an unregistered activity type to show the placeholder behavior.</p>
+      <p>Testing scenario analysis and prediction activities for deeper thinking.</p>
       
       <div id="synthesis-carousel"></div>
     </section>
@@ -139,10 +140,21 @@ carousel.init();</pre>
 
   <!-- Load Dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
   
   <!-- Load Activity System (in correct order) -->
   <script src="js/interactive/base-activity.js"></script>
+  <script src="js/interactive/challenge-puzzle.js"></script>
   <script src="js/interactive/activities/quiz-activity.js"></script>
+  <script src="js/interactive/activities/true-false-activity.js"></script>
+  <script src="js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="js/interactive/activities/sequence-activity.js"></script>
+  <script src="js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="js/interactive/activities/scenario-activity.js"></script>
+  <script src="js/interactive/activities/prediction-activity.js"></script>
+  <script src="js/interactive/activities/reflection-activity.js"></script>
+  <script src="js/interactive/activities/graph-builder-activity.js"></script>
   <script src="js/interactive/activity-carousel.js"></script>
   
   <script>
@@ -199,6 +211,46 @@ carousel.init();</pre>
             correct: 1,
             explanation: 'The = operator is the assignment operator. It creates a variable (if it doesn\'t exist) and stores the value on the right side.',
             points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'tf-case-sensitive',
+            statement: 'In Python, variable names are case-sensitive. For example, "name" and "Name" are different variables.',
+            correct: true,
+            explanation: 'Python treats uppercase and lowercase letters as different characters. So "name", "Name", and "NAME" are all different variables.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'tf-immutable-variables',
+            statement: 'Once a variable is created in Python, its value can never be changed.',
+            correct: false,
+            explanation: 'Variables can be reassigned at any time. The "variable" name comes from the fact that values can vary!',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'fill-assignment-operator',
+            statement: 'The ___ operator is used to assign a value to a variable in Python.',
+            correctAnswers: ['=', 'equals', 'assignment', 'equal sign', 'equals sign'],
+            caseSensitive: false,
+            hints: ['It looks like a mathematical symbol'],
+            explanation: 'The = (equals sign) is the assignment operator. It stores the value on the right into the variable on the left.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'fill-variable-container',
+            statement: 'A variable is a named ___ that stores data in computer memory.',
+            correctAnswers: ['container', 'box', 'location', 'space', 'place', 'storage'],
+            caseSensitive: false,
+            hints: ['Think of it like a labeled storage unit'],
+            explanation: 'Variables are containers (or boxes) that hold data values. The name helps you find and use the stored data.',
+            points: 10
           }
         ]
       });
@@ -236,16 +288,67 @@ carousel.init();</pre>
             points: 15
           },
           {
-            type: 'sequence',  // Not registered yet - will show placeholder
+            type: 'sequence',
             id: 'seq-variable-creation',
-            instruction: 'Put these steps in order to create a variable:',
+            instruction: 'Put these steps in order to explain how Python creates a variable:',
             items: [
-              { id: 's1', text: 'Computer reserves memory' },
+              { id: 's1', text: 'Computer reserves memory space' },
               { id: 's2', text: 'You write: name = "Alice"' },
-              { id: 's3', text: 'Value stored in memory' }
+              { id: 's3', text: 'Value "Alice" is stored in memory' },
+              { id: 's4', text: 'Name "name" points to that memory location' }
             ],
-            correctOrder: ['s2', 's1', 's3'],
+            correctOrder: ['s2', 's1', 's3', 's4'],
+            hints: {
+              partial: 'Memory must be reserved before the value can be stored there.',
+              wrong: 'Think about what has to happen first - you write the code!'
+            },
+            explanation: 'When you assign a variable, Python first parses your code, reserves memory, stores the value, and creates a reference.',
             points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'match-datatypes',
+            instruction: 'Match each Python data type to its example value:',
+            items: [
+              { id: 'val-str', text: '"Hello World"' },
+              { id: 'val-int', text: '42' },
+              { id: 'val-bool', text: 'True' },
+              { id: 'val-list', text: '[1, 2, 3]' }
+            ],
+            zones: [
+              { id: 'type-str', label: 'String', correct: 'val-str' },
+              { id: 'type-int', label: 'Integer', correct: 'val-int' },
+              { id: 'type-bool', label: 'Boolean', correct: 'val-bool' },
+              { id: 'type-list', label: 'List', correct: 'val-list' }
+            ],
+            explanation: 'Strings use quotes, integers are whole numbers, booleans are True/False, and lists use square brackets.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'connect-data-flow',
+            instruction: 'Connect the components to show how data flows when a user submits a form:',
+            nodes: [
+              { id: 'user', label: '👤 User' },
+              { id: 'browser', label: '🌐 Browser' },
+              { id: 'server', label: '📡 Server' },
+              { id: 'database', label: '🗄️ Database' }
+            ],
+            solution: {
+              edges: [
+                { source: 'user', target: 'browser' },
+                { source: 'browser', target: 'server' },
+                { source: 'server', target: 'database' }
+              ]
+            },
+            nodeDescriptions: {
+              'user': 'The person filling out the form',
+              'browser': 'The web browser (Chrome, Firefox, etc.)',
+              'server': 'The backend that processes the request',
+              'database': 'Where the data is stored permanently'
+            },
+            explanation: 'Data flows from user → browser (form submission) → server (processing) → database (storage).',
+            points: 25
           },
           {
             type: 'quiz',
@@ -275,7 +378,7 @@ carousel.init();</pre>
       setInterval(updateApplicationStatus, 1000);
       
       // ============================================
-      // SYNTHESIS CAROUSEL (with placeholders)
+      // SYNTHESIS CAROUSEL (Scenario + Prediction activities)
       // ============================================
       const synthesisCarousel = new ActivityCarousel('synthesis-carousel', {
         type: 'synthesis',
@@ -283,30 +386,128 @@ carousel.init();</pre>
         title: 'Think Deeper',
         activities: [
           {
-            type: 'reflection',  // Not registered - placeholder
-            id: 'reflect-variables',
-            prompt: 'Before learning about variables, how did you think computers remembered things?',
-            minWords: 30,
-            points: 20
+            type: 'scenario',
+            id: 'scenario-debug-type',
+            scenario: "You're debugging a Python program. The variable 'count' should be 10, but when you print it, you see '10' (with quotes). The program crashes when you try to add 5 to it with: result = count + 5",
+            question: "What's the likely issue and how would you fix it?",
+            evaluation: {
+              keywords: ['string', 'integer', 'type', 'convert', 'int()', 'int', 'cast', 'str'],
+              minWords: 20,
+              pointsPerKeyword: 5,
+              depthBonus: 10
+            },
+            modelAnswer: "The issue is a type mismatch. The variable 'count' is a string ('10') instead of an integer (10). This often happens when reading from files or user input. Fix it by converting: count = int(count) before doing math operations.",
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'predict-reference-vs-value',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'numbers = [1, 2, 3]\nresult = numbers\nresult.append(4)\nprint(len(numbers))'
+            },
+            question: 'What will this code print?',
+            correctAnswer: '4',
+            acceptableVariants: ['4', 'four', '4.0'],
+            explanation: "Lists in Python are mutable and assigned by reference. When result = numbers, both variables point to the same list in memory. Modifying result also modifies numbers because they're the same object.",
+            commonMistakes: {
+              '3': "Lists are reference types - result and numbers point to the same list, not a copy. Any changes to one affect both."
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'scenario-cart-storage',
+            scenario: "You're building a shopping cart for an e-commerce site. A user adds 3 items to their cart, then closes their browser tab. When they return the next day, the cart is empty.",
+            question: "What type of storage was likely used? Explain what storage option would keep the cart persistent.",
+            evaluation: {
+              keywords: ['session', 'temporary', 'memory', 'localStorage', 'database', 'cookie', 'persistent'],
+              minWords: 25,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: "The cart likely used session storage or in-memory storage. Session storage only persists while the browser tab is open, and is cleared when closed. For a persistent cart, localStorage (browser-based, persists across sessions) or a database (server-side, persists indefinitely) would be needed.",
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'predict-variable-swap',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'x = 5\ny = x\nx = 10\nprint(y)'
+            },
+            question: 'What will this code print?',
+            correctAnswer: '5',
+            acceptableVariants: ['5', 'five', '5.0'],
+            explanation: "When y = x is executed, y gets the VALUE 5, not a reference to x. In Python, integers are immutable. Changing x later doesn't affect y because they're independent copies of the value.",
+            commonMistakes: {
+              '10': "You might think y is linked to x, but integers in Python are copied by value, not by reference. y stores 5, not 'whatever x is'."
+            },
+            points: 15
           },
           {
             type: 'quiz',
             id: 'quiz-synthesis',
-            question: 'A shopping cart loses items when you close the browser. What type of storage is likely being used?',
+            question: 'Which statement best describes the difference between mutable and immutable data types?',
             options: [
-              'Session storage (temporary)',
-              'Database storage (permanent)',
-              'Local storage (browser)',
-              'File storage (disk)'
+              'Mutable types can be changed after creation; immutable types cannot',
+              'Mutable types are faster; immutable types are slower',
+              'Mutable types use less memory; immutable types use more',
+              'Mutable types are for numbers; immutable types are for text'
             ],
             correct: 0,
-            explanation: 'Session storage only lasts while the browser tab is open. For persistent carts, you\'d use a database or localStorage.',
+            explanation: 'Mutable types (like lists and dictionaries) can be modified in place. Immutable types (like integers, strings, and tuples) cannot be changed - operations create new objects instead.',
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'reflect-learning-journey',
+            prompt: "Think about a time you struggled to learn something new (coding or otherwise). What finally made it 'click'? How might that insight help you learn programming concepts?",
+            thinkingPrompts: [
+              'What was the breakthrough moment?',
+              'What resource or explanation finally helped?',
+              'How can you apply that learning strategy here?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: 'I (remember|recall|struggled|tried)', label: 'Personal experience', points: 5 },
+                { pattern: '(finally|eventually|breakthrough|clicked)', label: 'Growth narrative', points: 5 },
+                { pattern: '(learn|understand|realize|apply)', label: 'Learning awareness', points: 4 },
+                { pattern: '(because|since|so that)', label: 'Reasoning', points: 3 },
+                { pattern: '\\?', label: 'Curiosity', points: 3 }
+              ],
+              maxScore: 20
+            },
             points: 20
           },
           {
-            type: 'graph-builder',  // Not registered - placeholder
+            type: 'graph-builder',
             id: 'build-data-flow',
-            instruction: 'Build a diagram showing how data flows from user input to storage',
+            instruction: 'Build a simple data flow diagram: User enters data → App processes it → Database stores it',
+            nodeTypes: [
+              { type: 'user', label: '👤 User', color: '#ef5350' },
+              { type: 'app', label: '📱 App', color: '#7986cb' },
+              { type: 'database', label: '🗄️ Database', color: '#66bb6a' },
+              { type: 'api', label: '🔌 API', color: '#ffd54f' }
+            ],
+            validation: {
+              requiredNodes: ['user', 'app', 'database'],
+              requiredEdges: [
+                { from: 'user', to: 'app' },
+                { from: 'app', to: 'database' }
+              ],
+              optionalNodes: ['api'],
+              minNodes: 3,
+              maxNodes: 6
+            },
+            hints: [
+              'Start with the User - they initiate the data flow',
+              'The App processes information before storage',
+              'Data flows from User → App → Database'
+            ],
             points: 30
           }
         ]
