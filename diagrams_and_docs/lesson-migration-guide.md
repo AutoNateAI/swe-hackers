@@ -296,7 +296,14 @@ Use these prompts to spin up multiple Cursor agents to migrate lessons in parall
 Migrate ALL Apprentice course lessons to the new activity tracking system.
 
 Course path: courses/apprentice/
-Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch5-capstone1, ch6-capstone2
+Lessons (7 total - DO NOT SKIP ANY):
+- ch0-origins (intro chapter - HAS ACTIVITIES)
+- ch1-stone
+- ch2-lightning
+- ch3-magnetism
+- ch4-architect
+- ch5-capstone1
+- ch6-capstone2
 
 For EACH lesson (index.html):
 
@@ -339,7 +346,14 @@ Test by verifying console shows:
 Migrate ALL Junior course lessons to the new activity tracking system.
 
 Course path: courses/junior/
-Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch5-capstone1, ch6-capstone2
+Lessons (7 total - DO NOT SKIP ANY):
+- ch0-origins (intro chapter - HAS ACTIVITIES)
+- ch1-stone
+- ch2-lightning
+- ch3-magnetism
+- ch4-architect
+- ch5-capstone1
+- ch6-capstone2
 
 [Same instructions as Agent 1]
 ```
@@ -352,7 +366,14 @@ Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch
 Migrate ALL Senior course lessons to the new activity tracking system.
 
 Course path: courses/senior/
-Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch5-capstone1, ch6-capstone2
+Lessons (7 total - DO NOT SKIP ANY):
+- ch0-origins (intro chapter - HAS ACTIVITIES)
+- ch1-stone
+- ch2-lightning
+- ch3-magnetism
+- ch4-architect
+- ch5-capstone1
+- ch6-capstone2
 
 [Same instructions as Agent 1]
 ```
@@ -365,7 +386,14 @@ Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch
 Migrate ALL Undergrad course lessons to the new activity tracking system.
 
 Course path: courses/undergrad/
-Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch5-capstone1, ch6-capstone2
+Lessons (7 total - DO NOT SKIP ANY):
+- ch0-origins (intro chapter - HAS ACTIVITIES)
+- ch1-stone
+- ch2-lightning
+- ch3-magnetism
+- ch4-architect
+- ch5-capstone1
+- ch6-capstone2
 
 [Same instructions as Agent 1]
 ```
@@ -378,9 +406,14 @@ Lessons: ch0-origins, ch1-stone, ch2-lightning, ch3-magnetism, ch4-architect, ch
 Migrate ALL Endless Opportunities course lessons to the new activity tracking system.
 
 Course path: courses/endless-opportunities/
-Lessons: week0-intro, week1-questions, week2-data, week3-building, week4-portfolio
+Lessons (5 total - DO NOT SKIP ANY):
+- week0-intro (intro week - HAS ACTIVITIES)
+- week1-questions (ALREADY MIGRATED - use as reference)
+- week2-data
+- week3-building
+- week4-portfolio
 
-NOTE: week1-questions has already been migrated. Use it as a reference.
+NOTE: week1-questions has already been migrated. Use it as a reference for the correct pattern.
 
 [Same instructions as Agent 1]
 ```
