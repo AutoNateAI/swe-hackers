@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="senior" data-lesson="ch2-lightning">
   <header class="header">
@@ -115,20 +116,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="distributed-challenge-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 1: The Distributed Challenge -->
+      <div class="activity-carousels" data-story="distributed-challenge-story">
+        <div id="distributed-comprehension" class="carousel-container"></div>
+        <div id="distributed-application" class="carousel-container"></div>
+        <div id="distributed-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -194,20 +186,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="ai-debugging-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 2: AI-Augmented Debugging -->
+      <div class="activity-carousels" data-story="ai-debugging-story">
+        <div id="ai-debug-comprehension" class="carousel-container"></div>
+        <div id="ai-debug-application" class="carousel-container"></div>
+        <div id="ai-debug-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -273,20 +256,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="investigation-framework-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 3: The Investigation Framework -->
+      <div class="activity-carousels" data-story="investigation-framework-story">
+        <div id="framework-comprehension" class="carousel-container"></div>
+        <div id="framework-application" class="carousel-container"></div>
+        <div id="framework-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -332,6 +306,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -435,6 +423,962 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS
+      // ============================================
+
+      // ----------------------------------------
+      // STORY 1: THE DISTRIBUTED CHALLENGE
+      // ----------------------------------------
+
+      const distributedComprehension = new ActivityCarousel('distributed-comprehension', {
+        type: 'comprehension',
+        sectionId: 'distributed',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'dist-quiz-1',
+            question: 'Why are distributed bugs harder to debug than single-service bugs?',
+            options: [
+              'The code is more complex in distributed systems',
+              'They span multiple services, involve timing dependencies, and require cross-team coordination',
+              'There are more lines of code to read',
+              'The programming languages are always different'
+            ],
+            correct: 1,
+            explanation: 'Distributed bugs involve multiple services (often owned by different teams), race conditions, cascading failures, and timing dependencies that are invisible when examining one service in isolation.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'dist-tf-1',
+            statement: 'If you\'re an expert in your own service, debugging distributed issues across other services should be equally straightforward.',
+            correct: false,
+            explanation: 'This is the core challenge! Expertise in YOUR service doesn\'t transfer to debugging issues that span services you\'ve never seen. You need system-wide debugging skills and tools like AI to bridge knowledge gaps.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'dist-fill-1',
+            statement: 'Distributed bugs take ___ times longer to resolve than single-service bugs.',
+            correctAnswers: ['5', 'five', '5x'],
+            caseSensitive: false,
+            hints: ['Think about the MTTR statistics mentioned'],
+            explanation: 'Distributed bugs have 5x longer MTTR (Mean Time To Resolution). This is because they require understanding systems you don\'t own, correlating data across boundaries, and coordinating multiple teams.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dist-quiz-2',
+            question: 'What percentage of production incidents involve multiple services?',
+            options: [
+              '25%',
+              '50%',
+              '73%',
+              '90%'
+            ],
+            correct: 2,
+            explanation: '73% of incidents involve multiple services. This means system-wide debugging skills aren\'t optional—they\'re essential for handling most production issues.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'dist-tf-2',
+            statement: 'The hardest bugs typically live within a single service where you can use traditional debugging tools.',
+            correct: false,
+            explanation: 'The HARD bugs live in the spaces between services—race conditions, cascading failures, data inconsistencies. Traditional single-service debugging tools can\'t see these cross-boundary issues.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'dist-quiz-3',
+            question: 'What makes cascading failures particularly difficult to debug?',
+            options: [
+              'They always start in the database',
+              'The initial failure triggers secondary failures in other services, obscuring the root cause',
+              'They only happen at night',
+              'They require physical hardware inspection'
+            ],
+            correct: 1,
+            explanation: 'Cascading failures propagate through the system. By the time you see symptoms, multiple services are failing, making it hard to identify which failure was the trigger vs. which are downstream effects.',
+            points: 10
+          }
+        ]
+      });
+      distributedComprehension.init();
+
+      const distributedApplication = new ActivityCarousel('distributed-application', {
+        type: 'application',
+        sectionId: 'distributed',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'dist-seq-1',
+            instruction: 'Order how a typical cascading failure propagates through a microservices system:',
+            items: [
+              { id: 'c1', text: 'Database query becomes slow due to missing index' },
+              { id: 'c2', text: 'Service A\'s connection pool fills up waiting for database' },
+              { id: 'c3', text: 'Service B times out waiting for Service A' },
+              { id: 'c4', text: 'Service C receives errors from Service B and retries' },
+              { id: 'c5', text: 'Retry storm overwhelms Service B, total system degradation' }
+            ],
+            correctOrder: ['c1', 'c2', 'c3', 'c4', 'c5'],
+            hints: {
+              partial: 'Failures cascade from the root cause outward through dependencies.',
+              wrong: 'Start with the initial trigger, then follow the dependency chain.'
+            },
+            explanation: 'Cascading failures follow dependency chains. A slow database leads to connection pool exhaustion, which causes timeouts upstream, which triggers retries, which creates a feedback loop.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'dist-dd-1',
+            instruction: 'Categorize these bug types by where they typically live:',
+            items: [
+              { id: 'b1', text: 'Null pointer exception' },
+              { id: 'b2', text: 'Race condition between services' },
+              { id: 'b3', text: 'SQL syntax error' },
+              { id: 'b4', text: 'Data inconsistency after partial failure' },
+              { id: 'b5', text: 'Timeout cascading through 4 services' },
+              { id: 'b6', text: 'Off-by-one error in loop' }
+            ],
+            zones: [
+              { id: 'single', label: 'Single-Service Bugs', correct: ['b1', 'b3', 'b6'] },
+              { id: 'distributed', label: 'Distributed Bugs', correct: ['b2', 'b4', 'b5'] }
+            ],
+            explanation: 'Single-service bugs are visible within one codebase. Distributed bugs involve timing, partial failures, and cross-service interactions that no single service can see.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'dist-connect-1',
+            instruction: 'Connect each challenge of distributed debugging to its consequence:',
+            nodes: [
+              { id: 'multi-team', label: '👥 Multi-Team\nOwnership' },
+              { id: 'timing', label: '⏱️ Timing\nDependencies' },
+              { id: 'partial', label: '💔 Partial\nFailures' },
+              { id: 'coord', label: '📅 Coordination\nOverhead' },
+              { id: 'race', label: '🏃 Race\nConditions' },
+              { id: 'inconsistent', label: '🔀 Data\nInconsistency' }
+            ],
+            solution: {
+              edges: [
+                { source: 'multi-team', target: 'coord' },
+                { source: 'timing', target: 'race' },
+                { source: 'partial', target: 'inconsistent' }
+              ]
+            },
+            explanation: 'Multi-team ownership creates coordination overhead. Timing dependencies enable race conditions. Partial failures lead to data inconsistency.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'dist-quiz-apply-1',
+            question: 'You see errors in Service C\'s logs. Services A and B show no errors. What should you suspect?',
+            options: [
+              'The bug is definitely in Service C',
+              'Service C might be affected by issues in services that DON\'T log errors but degrade silently',
+              'There\'s no distributed issue since only C has errors',
+              'Restart Service C and the problem will resolve'
+            ],
+            correct: 1,
+            explanation: 'Silent degradation is common! Services A or B might be slow (not erroring) but causing timeouts downstream. The absence of errors doesn\'t mean absence of problems.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'dist-seq-2',
+            instruction: 'Order the typical escalation path for a distributed incident:',
+            items: [
+              { id: 'e1', text: 'Single service team investigates their logs' },
+              { id: 'e2', text: 'Realizes issue spans multiple services' },
+              { id: 'e3', text: 'Escalates to additional teams' },
+              { id: 'e4', text: 'Teams spend time getting context on each other\'s services' },
+              { id: 'e5', text: 'Finally coordinate to identify cross-service root cause' }
+            ],
+            correctOrder: ['e1', 'e2', 'e3', 'e4', 'e5'],
+            hints: {
+              partial: 'Escalation happens when you realize the scope is larger than expected.',
+              wrong: 'Start with the initial response, then follow the discovery process.'
+            },
+            explanation: 'This slow escalation pattern is why distributed bugs take 5x longer. An AI-augmented approach can identify the cross-service nature immediately, saving hours.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'dist-dd-2',
+            instruction: 'Match each symptom to what it might indicate in a distributed system:',
+            items: [
+              { id: 's1', text: 'Increasing latency with no errors' },
+              { id: 's2', text: '50% of requests fail randomly' },
+              { id: 's3', text: 'Failures only during peak hours' },
+              { id: 's4', text: 'Same operation sometimes succeeds, sometimes fails' }
+            ],
+            zones: [
+              { id: 'resource', label: 'Resource Exhaustion', correct: ['s1', 's3'] },
+              { id: 'race', label: 'Race Condition / Timing', correct: ['s2', 's4'] }
+            ],
+            explanation: 'Resource exhaustion shows as latency increases and peak-hour failures. Race conditions show as intermittent failures that depend on timing.',
+            points: 20
+          }
+        ]
+      });
+      distributedApplication.init();
+
+      const distributedSynthesis = new ActivityCarousel('distributed-synthesis', {
+        type: 'synthesis',
+        sectionId: 'distributed',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'dist-scenario-1',
+            scenario: 'It\'s 3 AM. PagerDuty wakes you up. The checkout service is returning 500 errors for 30% of requests. You\'re the on-call engineer for checkout, but you suspect the issue is upstream.',
+            question: 'How do you quickly determine if this is a checkout issue or a distributed issue, and what\'s your next move if it\'s distributed?',
+            evaluation: {
+              keywords: ['upstream', 'dependency', 'logs', 'metrics', 'latency', 'correlation', 'trace', 'timeout', 'error rate', 'cascade'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'First: Check if checkout\'s dependencies (payment, inventory, user service) show elevated latency or error rates. If checkout\'s own metrics look healthy but calls to dependencies are timing out, it\'s distributed. Next: Pull logs from checkout showing the failing requests\' correlation IDs. Trace those IDs through dependency services. Feed this to AI to correlate patterns across services.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'dist-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Service A depends on Service B. Service B depends on Service C. Service C\'s database becomes slow (200ms → 2000ms response time). All services have 30-second timeout settings.'
+            },
+            question: 'What symptoms will you see in Service A\'s metrics first?',
+            correctAnswer: 'latency increase',
+            acceptableVariants: ['latency', 'slow', 'response time', 'p99', 'higher latency', 'delayed'],
+            explanation: 'With 30s timeouts, no errors occur initially—just latency increases. A\'s requests wait for B, B waits for C, C waits for database. You\'ll see latency creep up before any timeout errors appear.',
+            commonMistakes: {
+              'errors': 'With 30s timeouts and 2s database, no timeouts yet. Latency increases are the first symptom.',
+              'nothing': 'The slowness will propagate up the chain as increased latency.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'dist-scenario-2',
+            scenario: 'Your team wants to improve distributed debugging capabilities. Management asks: "Why can\'t our existing APM tool handle this?" You need to explain the gap.',
+            question: 'Explain what traditional APM tools miss about distributed debugging and why AI augmentation helps.',
+            evaluation: {
+              keywords: ['correlation', 'context', 'hypothesis', 'pattern', 'cross-service', 'timeline', 'root cause', 'AI', 'synthesis'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'APM shows metrics and traces but doesn\'t synthesize them into hypotheses. Humans must manually correlate timelines, identify patterns, and generate theories. AI can: (1) Ingest logs/metrics from all services simultaneously, (2) Identify correlations humans would take hours to find, (3) Generate ranked hypotheses with supporting evidence. APM shows what happened; AI helps determine why.',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'dist-reflect-1',
+            prompt: 'Think about the most difficult distributed bug you\'ve encountered. What made it hard? How long did it take to resolve? What would have been different with AI-augmented debugging?',
+            thinkingPrompts: [
+              'How many services were involved?',
+              'What was the key insight that led to resolution?',
+              'Where did you spend the most time: gathering data, analyzing, or coordinating?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|my|me|we)', label: 'Personal experience', points: 5 },
+                { pattern: '(service|distributed|cross)', label: 'Distributed context', points: 5 },
+                { pattern: '(hour|day|time|long)', label: 'Time awareness', points: 4 },
+                { pattern: '(AI|would have|could have)', label: 'AI application', points: 4 },
+                { pattern: '(correlat|pattern|hypothes)', label: 'Analysis focus', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dist-predict-2',
+            setup: {
+              type: 'text',
+              content: 'A company decides that each team is only responsible for debugging their own service. No one is responsible for cross-service issues until they escalate to management.'
+            },
+            question: 'What will happen to their MTTR for distributed incidents over the next year?',
+            correctAnswer: 'increase',
+            acceptableVariants: ['go up', 'get worse', 'longer', 'higher', 'rise', 'worsen'],
+            explanation: 'Without ownership of cross-service debugging, every distributed issue requires escalation, context-sharing, and coordination. MTTR will increase as the organizational structure doesn\'t match the technical reality that 73% of incidents span services.',
+            commonMistakes: {
+              'decrease': 'Siloed ownership conflicts with distributed systems reality.',
+              'stay same': 'The mismatch between ownership model and architecture will create friction.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'dist-scenario-3',
+            scenario: 'You\'re designing a new microservices architecture. Given what you\'ve learned about distributed debugging challenges, what would you build in from the start?',
+            question: 'Propose 3 architectural decisions that would make future distributed debugging easier.',
+            evaluation: {
+              keywords: ['correlation ID', 'trace', 'centralized logging', 'metrics', 'circuit breaker', 'timeout', 'health check', 'observability', 'alert', 'dashboard'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Three decisions: (1) Correlation IDs from edge to database—every request gets a UUID that propagates through all service calls for easy tracing. (2) Centralized logging with structured fields—all services log to the same platform with consistent fields (service name, correlation ID, error codes). (3) Circuit breakers with failure metrics—services fail fast and report failure rates, making cascading failures visible immediately.',
+            points: 30
+          }
+        ]
+      });
+      distributedSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: AI-AUGMENTED DEBUGGING
+      // ----------------------------------------
+
+      const aiDebugComprehension = new ActivityCarousel('ai-debug-comprehension', {
+        type: 'comprehension',
+        sectionId: 'ai-debug',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'ai-quiz-1',
+            question: 'What should you feed AI when debugging a distributed system issue?',
+            options: [
+              'Only logs from your own service',
+              'Just the error message',
+              'Logs from multiple services, metrics, and deployment history',
+              'The source code of all services'
+            ],
+            correct: 2,
+            explanation: 'Give AI the full picture: logs from all affected services, metrics showing the problem, deployment history, and recent config changes. Context is everything for AI to identify correlations.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'ai-tf-1',
+            statement: 'AI can spot correlations in logs from multiple services faster than humans can manually review them.',
+            correct: true,
+            explanation: 'This is the AI advantage! AI can process logs from 10 services simultaneously, finding timestamp correlations and patterns that would take humans hours to identify manually.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'ai-fill-1',
+            statement: 'AI reconstructs the ___ of events to show what happened first, second, and third across services.',
+            correctAnswers: ['sequence', 'order', 'timeline', 'chain'],
+            caseSensitive: false,
+            hints: ['What shows the order in which things happened?'],
+            explanation: 'AI reconstructs the sequence/timeline of events across services. First the database slowed, then connections piled up, then timeouts cascaded. Understanding sequence reveals causality.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'ai-quiz-2',
+            question: 'Why does AI rank hypotheses by likelihood?',
+            options: [
+              'To make reports look professional',
+              'So you can test the most probable causes first and find the issue faster',
+              'Because AI likes making lists',
+              'To avoid testing any hypotheses'
+            ],
+            correct: 1,
+            explanation: 'Ranking by likelihood lets you test the most probable causes first. If hypothesis #1 is confirmed, you\'ve saved hours. If not, move to #2. Systematic and efficient.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'ai-tf-2',
+            statement: 'AI-generated hypotheses should be trusted without verification since AI analyzed all the data.',
+            correct: false,
+            explanation: 'AI generates hypotheses—YOU verify them. AI might miss context, misinterpret patterns, or hallucinate connections. Your job is to test hypotheses against reality.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'ai-quiz-3',
+            question: 'What is the "Amplified Advantage" in distributed debugging?',
+            options: [
+              'Having more engineers work on the problem',
+              'AI generates hypotheses in minutes that you test in order of likelihood, finding root cause 5x faster',
+              'Using more expensive monitoring tools',
+              'Writing more comprehensive unit tests'
+            ],
+            correct: 1,
+            explanation: 'The Amplified Advantage: AI rapidly generates and ranks hypotheses based on all the data. You test them in order of likelihood, finding root cause 5x faster than traditional debugging.',
+            points: 10
+          }
+        ]
+      });
+      aiDebugComprehension.init();
+
+      const aiDebugApplication = new ActivityCarousel('ai-debug-application', {
+        type: 'application',
+        sectionId: 'ai-debug',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'ai-seq-1',
+            instruction: 'Order the AI-augmented debugging workflow:',
+            items: [
+              { id: 'w1', text: 'Gather logs, metrics, and deployment history' },
+              { id: 'w2', text: 'Feed data to AI and ask for patterns' },
+              { id: 'w3', text: 'AI identifies correlations across services' },
+              { id: 'w4', text: 'AI reconstructs event sequence' },
+              { id: 'w5', text: 'AI generates ranked hypotheses' },
+              { id: 'w6', text: 'You test hypotheses in order of likelihood' }
+            ],
+            correctOrder: ['w1', 'w2', 'w3', 'w4', 'w5', 'w6'],
+            hints: {
+              partial: 'Start with gathering, end with testing.',
+              wrong: 'Data first, then AI analysis, then human verification.'
+            },
+            explanation: 'The workflow: Gather data → Feed AI → Correlations → Sequence → Hypotheses → Test. Each step builds on the previous.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'ai-dd-1',
+            instruction: 'Match each AI prompt to the debugging phase where you\'d use it:',
+            items: [
+              { id: 'p1', text: '"What patterns do you see in these metrics?"' },
+              { id: 'p2', text: '"Correlate errors across Service A, B, and C logs"' },
+              { id: 'p3', text: '"Given this sequence, what are the top 5 root causes?"' },
+              { id: 'p4', text: '"What evidence would confirm the database hypothesis?"' }
+            ],
+            zones: [
+              { id: 'pattern', label: 'Pattern Discovery', correct: ['p1'] },
+              { id: 'correlation', label: 'Correlation Analysis', correct: ['p2'] },
+              { id: 'hypothesis', label: 'Hypothesis Generation', correct: ['p3'] },
+              { id: 'verification', label: 'Verification Planning', correct: ['p4'] }
+            ],
+            explanation: 'Different prompts for different phases: pattern discovery → correlation → hypothesis generation → verification planning.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'ai-connect-1',
+            instruction: 'Connect each AI capability to what it replaces in traditional debugging:',
+            nodes: [
+              { id: 'ai-correlate', label: '🤖 AI Correlates\nLogs' },
+              { id: 'ai-sequence', label: '🤖 AI Reconstructs\nTimeline' },
+              { id: 'ai-hypotheses', label: '🤖 AI Generates\nHypotheses' },
+              { id: 'human-scroll', label: '👤 Manual Log\nScrolling' },
+              { id: 'human-timeline', label: '👤 Spreadsheet\nTimestamps' },
+              { id: 'human-brainstorm', label: '👤 Team\nBrainstorming' }
+            ],
+            solution: {
+              edges: [
+                { source: 'ai-correlate', target: 'human-scroll' },
+                { source: 'ai-sequence', target: 'human-timeline' },
+                { source: 'ai-hypotheses', target: 'human-brainstorm' }
+              ]
+            },
+            explanation: 'AI replaces tedious manual work: log scrolling → correlation, spreadsheet timelines → automatic sequencing, team brainstorming → hypothesis generation.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'ai-quiz-apply-1',
+            question: 'AI gives you 3 hypotheses. #1 has 70% likelihood but requires 2 hours to test. #2 has 50% likelihood but takes 10 minutes to test. What\'s the optimal approach?',
+            options: [
+              'Always test #1 first because it\'s most likely',
+              'Test #2 first since it\'s faster—if negative, then test #1',
+              'Test both simultaneously with different team members',
+              'Ask AI for more hypotheses before testing any'
+            ],
+            correct: 1,
+            explanation: 'Consider effort vs. likelihood. If #2 is quick and has decent odds (50%), test it first. You might solve the issue in 10 minutes. If negative, you\'ve only lost 10 minutes before testing #1.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'ai-seq-2',
+            instruction: 'Order how to prompt AI for increasingly specific debugging help:',
+            items: [
+              { id: 'b1', text: '"Analyze these logs from 5 services"' },
+              { id: 'b2', text: '"What correlations do you see around 14:32 UTC?"' },
+              { id: 'b3', text: '"The connection pool exhaustion started in Service B. What upstream could cause this?"' },
+              { id: 'b4', text: '"Generate SQL to check if the users table has locking issues"' }
+            ],
+            correctOrder: ['b1', 'b2', 'b3', 'b4'],
+            hints: {
+              partial: 'Move from broad to specific as you narrow down.',
+              wrong: 'Start with general analysis, end with specific queries.'
+            },
+            explanation: 'Prompt progression: Broad analysis → Time-specific correlation → Causal chain → Specific verification query. Each step narrows the focus.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'ai-dd-2',
+            instruction: 'Categorize what YOU do vs what AI does in augmented debugging:',
+            items: [
+              { id: 'a1', text: 'Decide which services\' logs to gather' },
+              { id: 'a2', text: 'Correlate timestamps across 10 log files' },
+              { id: 'a3', text: 'Determine if hypothesis makes sense for your architecture' },
+              { id: 'a4', text: 'Generate ranked list of possible root causes' },
+              { id: 'a5', text: 'Execute the fix once root cause is found' },
+              { id: 'a6', text: 'Synthesize patterns from metrics and logs' }
+            ],
+            zones: [
+              { id: 'you', label: 'You Do', correct: ['a1', 'a3', 'a5'] },
+              { id: 'ai', label: 'AI Does', correct: ['a2', 'a4', 'a6'] }
+            ],
+            explanation: 'You provide: direction (what to gather), judgment (does this make sense), action (implement fixes). AI provides: correlation, hypothesis generation, pattern synthesis.',
+            points: 20
+          }
+        ]
+      });
+      aiDebugApplication.init();
+
+      const aiDebugSynthesis = new ActivityCarousel('ai-debug-synthesis', {
+        type: 'synthesis',
+        sectionId: 'ai-debug',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'ai-scenario-1',
+            scenario: 'AI analyzes your incident logs and returns: "High likelihood (85%): Database connection pool exhaustion. Medium (40%): Third-party rate limiting. Low (15%): Memory leak from deploy." You know the database was just upgraded yesterday.',
+            question: 'How does your knowledge change how you prioritize testing these hypotheses?',
+            evaluation: {
+              keywords: ['context', 'database', 'upgrade', 'change', 'recent', 'correlate', 'verify', 'prioritize', 'likelihood', 'deployment'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'The database upgrade is critical context AI might not have weighted properly. Test database hypothesis FIRST despite "high" likelihood—the upgrade creates a strong correlation. Check: Did the pool settings change? Did connection behavior change? Also verify: Did issues start exactly after upgrade? Your contextual knowledge (recent upgrade) should boost your confidence in this hypothesis.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'ai-predict-1',
+            setup: {
+              type: 'code',
+              language: 'text',
+              code: 'AI Hypothesis Output:\n1. Database slow (80% likely) - Evidence: Latency correlates with DB metrics\n2. Service B timeout config (60% likely) - Evidence: 30s timeout matches failure pattern\n3. Network partition (20% likely) - Evidence: Some request patterns suggest split'
+            },
+            question: 'You verify #1 and find the database is actually performing fine. What should you do next?',
+            correctAnswer: 'test hypothesis 2',
+            acceptableVariants: ['test #2', 'hypothesis 2', 'Service B', 'timeout config', 'second hypothesis', 'move to 2'],
+            explanation: 'Move to hypothesis #2. The ranking system works even when #1 is wrong. Don\'t start over—the 60% hypothesis is now your best bet. Also: Ask AI why it was confident about database (learning opportunity).',
+            commonMistakes: {
+              'ask for new hypotheses': 'The existing ranked list is still valid. Test in order.',
+              'start over': 'The remaining hypotheses are still ranked by likelihood. Continue systematically.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'ai-scenario-2',
+            scenario: 'Your colleague says: "I don\'t trust AI for debugging. It might miss something important or lead us down the wrong path. I\'d rather rely on my experience and read the logs myself."',
+            question: 'How would you explain the value proposition of AI-augmented debugging while acknowledging valid concerns?',
+            evaluation: {
+              keywords: ['speed', 'volume', 'correlation', 'verify', 'judgment', 'augment', 'not replace', 'hypothesis', 'systematic', 'experience'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Valid concern—AI can miss context and make mistakes. That\'s why it\'s "augmented" not "automated." Here\'s the value: AI processes 10 services\' logs in minutes, finding correlations that take humans hours. YOU still verify everything. Your experience judges whether AI\'s hypotheses make sense. AI handles volume and pattern matching; you provide judgment and context. It\'s not about trusting AI blindly—it\'s about AI doing the tedious correlation work so you can focus on verification.',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'ai-reflect-1',
+            prompt: 'Think about how you currently debug distributed issues. What\'s your biggest time sink? How could AI address that specific bottleneck?',
+            thinkingPrompts: [
+              'Where do you spend the most time: gathering data, analyzing, or coordinating?',
+              'What correlations do you wish you could find faster?',
+              'What questions would you ask if you had instant analysis of all logs?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|my|me)', label: 'Personal reflection', points: 5 },
+                { pattern: '(time|hours|minutes)', label: 'Time awareness', points: 5 },
+                { pattern: '(correlat|pattern|across)', label: 'Analysis focus', points: 4 },
+                { pattern: '(AI|automat|tool)', label: 'Tool application', points: 4 },
+                { pattern: '(bottleneck|slow|tedious)', label: 'Pain point awareness', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'ai-scenario-3',
+            scenario: 'You\'re building an AI-augmented debugging workflow for your team. You need to decide what data to automatically collect and feed to AI when incidents occur.',
+            question: 'Design the automatic data collection: What 5 data sources would you configure to feed AI immediately when an alert fires?',
+            evaluation: {
+              keywords: ['logs', 'metrics', 'deployment', 'config', 'trace', 'alert', 'service', 'dependency', 'change', 'timeline'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Five automatic data sources: (1) Logs from affected service + its dependencies (±30 min window), (2) Metrics: latency, error rate, throughput for all services in the call path, (3) Recent deployments: last 24 hours across all potentially related services, (4) Recent config changes: feature flags, env vars, infrastructure changes, (5) Distributed traces for a sample of failing requests. This gives AI full context automatically.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'ai-predict-2',
+            setup: {
+              type: 'text',
+              content: 'A team adopts AI-augmented debugging but only feeds it logs from the alerting service, not dependencies. They don\'t include deployment history or config changes.'
+            },
+            question: 'What type of root causes will this setup consistently miss?',
+            correctAnswer: 'upstream',
+            acceptableVariants: ['upstream issues', 'dependency', 'deployment-related', 'config changes', 'cross-service', 'cascading'],
+            explanation: 'Without dependency logs, AI can\'t see upstream causes. Without deployment/config history, AI can\'t correlate changes with symptoms. This setup will miss cascading failures, recent deployment issues, and config-related bugs—likely 50%+ of distributed issues.',
+            commonMistakes: {
+              'nothing': 'Limited data severely restricts AI\'s correlation capabilities.',
+              'all of them': 'It will catch single-service issues visible in logs. But cross-service root causes will be invisible.'
+            },
+            points: 20
+          }
+        ]
+      });
+      aiDebugSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: THE INVESTIGATION FRAMEWORK
+      // ----------------------------------------
+
+      const frameworkComprehension = new ActivityCarousel('framework-comprehension', {
+        type: 'comprehension',
+        sectionId: 'framework',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'fw-quiz-1',
+            question: 'What is the FIRST phase in the Investigation Framework?',
+            options: [
+              'AI Analysis',
+              'GATHER: Collect logs, metrics, and deployment history',
+              'Generate hypotheses',
+              'Document findings'
+            ],
+            correct: 1,
+            explanation: 'GATHER comes first (10 min). Collect metrics from affected services, logs from ±30 min window, deployment history, and config changes. You can\'t analyze what you don\'t have.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'fw-tf-1',
+            statement: 'The GATHER phase should take as long as needed to collect all possible data before moving forward.',
+            correct: false,
+            explanation: 'GATHER is time-boxed to 10 minutes! Collect what you can quickly. You can always get more data later. Don\'t let data gathering become analysis paralysis.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'fw-fill-1',
+            statement: 'Phase 2 is AI ___, where you ask AI to find patterns and correlations in the gathered data.',
+            correctAnswers: ['analysis', 'ANALYSIS'],
+            caseSensitive: false,
+            hints: ['What do you do with data after gathering it?'],
+            explanation: 'Phase 2 is AI ANALYSIS (15 min). Ask AI: What patterns do you see? What correlates across services? Given deployment history, what could have changed?',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'fw-quiz-2',
+            question: 'What happens in the HYPOTHESES phase?',
+            options: [
+              'AI fixes the bug automatically',
+              'You ask AI for the top 5 root causes, ranked by likelihood and effort to test',
+              'You deploy a fix and hope it works',
+              'You escalate to management'
+            ],
+            correct: 1,
+            explanation: 'HYPOTHESES (10 min): Ask AI for the 5 most likely root causes. What evidence would confirm each? Rank by likelihood AND effort to test. Identify quick wins.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'fw-tf-2',
+            statement: 'The DOCUMENT phase at the end is optional if you\'re in a hurry to get back to bed.',
+            correct: false,
+            explanation: 'DOCUMENT (15 min) is essential! It creates organizational memory: incident reports, prevention action items, updated runbooks. Future you (and colleagues) will thank present you.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'fw-quiz-3',
+            question: 'Why does the INVESTIGATE phase have "varies" for time instead of a fixed duration?',
+            options: [
+              'The framework is poorly designed',
+              'Testing hypotheses takes as long as it takes—sometimes 5 minutes, sometimes hours',
+              'You should skip this phase when rushed',
+              'AI does this phase automatically'
+            ],
+            correct: 1,
+            explanation: 'INVESTIGATE time varies because verification takes as long as needed. A quick hypothesis might take 5 minutes to confirm. A complex one might take hours. The framework gives structure, not rigid timelines.',
+            points: 10
+          }
+        ]
+      });
+      frameworkComprehension.init();
+
+      const frameworkApplication = new ActivityCarousel('framework-application', {
+        type: 'application',
+        sectionId: 'framework',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'fw-seq-1',
+            instruction: 'Order the 5 phases of the Investigation Framework:',
+            items: [
+              { id: 'p1', text: 'GATHER (10 min)' },
+              { id: 'p2', text: 'AI ANALYSIS (15 min)' },
+              { id: 'p3', text: 'HYPOTHESES (10 min)' },
+              { id: 'p4', text: 'INVESTIGATE (varies)' },
+              { id: 'p5', text: 'DOCUMENT (15 min)' }
+            ],
+            correctOrder: ['p1', 'p2', 'p3', 'p4', 'p5'],
+            hints: {
+              partial: 'Gather data before you can analyze it.',
+              wrong: 'The framework follows a logical progression from data to documentation.'
+            },
+            explanation: 'The 5 phases: GATHER → AI ANALYSIS → HYPOTHESES → INVESTIGATE → DOCUMENT. Total structured time: ~50 min plus investigation.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'fw-dd-1',
+            instruction: 'Match each activity to its framework phase:',
+            items: [
+              { id: 'a1', text: 'Pull logs from ±30 min window' },
+              { id: 'a2', text: 'Ask AI what patterns it sees in metrics' },
+              { id: 'a3', text: 'Rank root causes by likelihood' },
+              { id: 'a4', text: 'Test the highest likelihood hypothesis' },
+              { id: 'a5', text: 'Create action items for prevention' },
+              { id: 'a6', text: 'Check recent deployment history' }
+            ],
+            zones: [
+              { id: 'gather', label: '1. GATHER', correct: ['a1', 'a6'] },
+              { id: 'analysis', label: '2. AI ANALYSIS', correct: ['a2'] },
+              { id: 'hypotheses', label: '3. HYPOTHESES', correct: ['a3'] },
+              { id: 'investigate', label: '4. INVESTIGATE', correct: ['a4'] },
+              { id: 'document', label: '5. DOCUMENT', correct: ['a5'] }
+            ],
+            explanation: 'Each phase has specific activities: gather (logs, deploys) → analyze (patterns) → hypothesize (rank causes) → investigate (test) → document (action items).',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'fw-connect-1',
+            instruction: 'Connect each phase to what it produces:',
+            nodes: [
+              { id: 'gather', label: '1️⃣ GATHER' },
+              { id: 'analyze', label: '2️⃣ AI ANALYSIS' },
+              { id: 'hypotheses', label: '3️⃣ HYPOTHESES' },
+              { id: 'data-set', label: '📊 Complete\nData Set' },
+              { id: 'patterns', label: '🔗 Patterns &\nCorrelations' },
+              { id: 'ranked', label: '📋 Ranked\nRoot Causes' }
+            ],
+            solution: {
+              edges: [
+                { source: 'gather', target: 'data-set' },
+                { source: 'analyze', target: 'patterns' },
+                { source: 'hypotheses', target: 'ranked' }
+              ]
+            },
+            explanation: 'GATHER produces a complete data set. AI ANALYSIS produces patterns and correlations. HYPOTHESES produces ranked root causes.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'fw-quiz-apply-1',
+            question: 'You\'re at minute 8 of GATHER but only have logs from 2 of 5 relevant services. What do you do?',
+            options: [
+              'Extend GATHER to 30 minutes to get everything',
+              'Move forward with what you have—you can gather more later if needed',
+              'Cancel the investigation until all data is available',
+              'Skip directly to INVESTIGATE'
+            ],
+            correct: 1,
+            explanation: 'Move forward! Time-boxing prevents analysis paralysis. AI can identify patterns with partial data. If analysis reveals you need more, go back and gather specifically what\'s missing.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'fw-seq-2',
+            instruction: 'Order the prompts you\'d use in the AI ANALYSIS phase:',
+            items: [
+              { id: 'q1', text: '"What patterns do you see in these metrics?"' },
+              { id: 'q2', text: '"Correlate these logs across all 5 services"' },
+              { id: 'q3', text: '"Given this deployment history, what could have changed?"' },
+              { id: 'q4', text: '"What additional data would help clarify the root cause?"' }
+            ],
+            correctOrder: ['q1', 'q2', 'q3', 'q4'],
+            hints: {
+              partial: 'Start with broad pattern discovery, end with gap identification.',
+              wrong: 'Progress from patterns → correlations → change analysis → gaps.'
+            },
+            explanation: 'AI ANALYSIS prompts: patterns → cross-service correlations → change analysis → gap identification. Systematic exploration of the data.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'fw-dd-2',
+            instruction: 'Match each documentation artifact to its purpose:',
+            items: [
+              { id: 'd1', text: 'Incident Report' },
+              { id: 'd2', text: 'Prevention Action Items' },
+              { id: 'd3', text: 'Updated Runbook' }
+            ],
+            zones: [
+              { id: 'record', label: 'Record What Happened', correct: ['d1'] },
+              { id: 'prevent', label: 'Prevent Recurrence', correct: ['d2'] },
+              { id: 'future', label: 'Help Future Responders', correct: ['d3'] }
+            ],
+            explanation: 'Documentation serves three purposes: recording history (incident report), preventing recurrence (action items), and helping future responders (runbooks).',
+            points: 20
+          }
+        ]
+      });
+      frameworkApplication.init();
+
+      const frameworkSynthesis = new ActivityCarousel('framework-synthesis', {
+        type: 'synthesis',
+        sectionId: 'framework',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'fw-scenario-1',
+            scenario: 'It\'s 2 AM, the site is down, and management is asking for updates every 10 minutes. A colleague wants to skip the framework and "just start debugging randomly." They say the framework adds overhead.',
+            question: 'How would you respond? Does the framework still make sense under pressure?',
+            evaluation: {
+              keywords: ['time-box', 'systematic', 'panic', 'random', 'faster', 'structure', 'hypothesis', 'wasted', 'parallel', 'document'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'The framework ESPECIALLY helps under pressure because it prevents panic-driven random debugging. "Random debugging" wastes time on unlikely causes. The framework: 10 min to gather, 15 min for AI analysis, 10 min for hypotheses—in 35 minutes you have a ranked list of what to test. Random debugging might spend 35 minutes on the wrong service entirely. Structure beats chaos when stakes are high.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'fw-predict-1',
+            setup: {
+              type: 'text',
+              content: 'A team uses the framework but always skips the DOCUMENT phase because "we need to move on to the next incident."'
+            },
+            question: 'What organizational problem will emerge after 6 months of skipping documentation?',
+            correctAnswer: 'repeat',
+            acceptableVariants: ['repeated', 'same issues', 'recurring', 'no learning', 'reinvent', 'knowledge loss', 'same bugs'],
+            explanation: 'Without documentation, the organization loses institutional memory. The same issues will recur, and new team members will have to rediscover solutions. Skipping DOCUMENT creates a cycle of repeated work.',
+            commonMistakes: {
+              'nothing': 'Documentation debt compounds. Knowledge walks out the door.',
+              'slower response': 'True in the long run, but the specific problem is repeated incidents.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'fw-scenario-2',
+            scenario: 'You\'ve completed the Investigation Framework and found the root cause: a race condition in Service B that only manifests under high load. Fix deployed, incident resolved. Now you\'re in the DOCUMENT phase.',
+            question: 'What specific items would you include in your documentation to maximize value for future responders?',
+            evaluation: {
+              keywords: ['symptom', 'root cause', 'timeline', 'hypothesis', 'fix', 'reproduce', 'detect', 'prevent', 'runbook', 'alert'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Documentation should include: (1) Symptoms: what alerted us, what users saw, which services showed errors. (2) Root cause: race condition details, why it only manifests under load. (3) Timeline: when issue started, when detected, when resolved. (4) What worked: which hypotheses we tested, which AI prompts were useful. (5) Fix: what we changed, how to verify it worked. (6) Prevention: new alert to detect similar patterns, load testing recommendation. (7) Runbook update: step-by-step for next time.',
+            points: 30
+          },
+          {
+            type: 'graph-builder',
+            id: 'fw-graph-1',
+            instruction: 'Build a flow diagram showing how the 5 framework phases connect, including any feedback loops:',
+            nodeTypes: [
+              { type: 'gather', label: '1️⃣ GATHER', color: '#4a9eff' },
+              { type: 'analyze', label: '2️⃣ ANALYZE', color: '#66bb6a' },
+              { type: 'hypotheses', label: '3️⃣ HYPOTHESES', color: '#ffd54f' },
+              { type: 'investigate', label: '4️⃣ INVESTIGATE', color: '#ff9800' },
+              { type: 'document', label: '5️⃣ DOCUMENT', color: '#9c27b0' }
+            ],
+            validation: {
+              requiredNodes: ['gather', 'analyze', 'hypotheses', 'investigate', 'document'],
+              requiredEdges: [
+                { from: 'gather', to: 'analyze' },
+                { from: 'analyze', to: 'hypotheses' },
+                { from: 'hypotheses', to: 'investigate' }
+              ],
+              optionalNodes: [],
+              minNodes: 5,
+              maxNodes: 5
+            },
+            hints: [
+              'The framework flows from GATHER through DOCUMENT',
+              'Consider: what happens if investigation reveals you need more data?',
+              'The phases build on each other sequentially'
+            ],
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'fw-reflect-1',
+            prompt: 'Think about how your team currently handles incidents. Which of the 5 framework phases does your team do well? Which phases are typically skipped or rushed? What would improve?',
+            thinkingPrompts: [
+              'Do you have a systematic way to gather data?',
+              'Do you use AI or similar tools for analysis?',
+              'Do you always document learnings?'
+            ],
+            evaluation: {
+              minWords: 70,
+              depthIndicators: [
+                { pattern: '(we|our|team)', label: 'Team context', points: 5 },
+                { pattern: '(gather|analyze|hypothes|investigate|document)', label: 'Phase reference', points: 5 },
+                { pattern: '(skip|rush|miss|forget)', label: 'Gap awareness', points: 4 },
+                { pattern: '(improve|better|should|could)', label: 'Improvement mindset', points: 4 },
+                { pattern: '(AI|tool|automat)', label: 'Tooling awareness', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'fw-scenario-3',
+            scenario: 'You want to propose adopting the Investigation Framework to your team, but some members think it\'s "too bureaucratic" and prefer their ad-hoc approaches.',
+            question: 'Design a pilot program to demonstrate the framework\'s value without forcing adoption.',
+            evaluation: {
+              keywords: ['pilot', 'measure', 'MTTR', 'compare', 'optional', 'volunteer', 'track', 'results', 'iterate', 'feedback'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Pilot proposal: (1) Volunteer-based: anyone can use framework for next incident. (2) Measure outcomes: track MTTR for framework vs. ad-hoc incidents. (3) Document both: record what worked and didn\'t. (4) 30-day trial: enough incidents to see patterns. (5) Retrospective: share results, let data speak. (6) Iterate: adjust framework based on feedback. Don\'t mandate—let results convince skeptics.',
+            points: 30
+          }
+        ]
+      });
+      frameworkSynthesis.init();
+
+      console.log('🎠 All activity carousels initialized for Senior Ch 2: Lightning');
     });
   </script>
 </body>
