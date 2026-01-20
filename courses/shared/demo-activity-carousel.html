@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Carousel Demo | SWE Hackers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/lesson-interactive.css">
+  <link rel="stylesheet" href="css/activity-carousel.css">
+  <style>
+    .demo-header {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .demo-header h1 {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .demo-header p {
+      color: var(--text-secondary);
+    }
+    .demo-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .demo-section {
+      margin-bottom: 3rem;
+    }
+    .demo-section h2 {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-primary);
+      display: inline-block;
+    }
+    .demo-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .demo-code {
+      background: #0d1117;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #e6edf3;
+    }
+    .demo-status {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .demo-status h4 {
+      margin-bottom: 0.5rem;
+      color: var(--accent-secondary);
+    }
+  </style>
+</head>
+<body data-course="demo" data-lesson="activity-carousel-test">
+  <div class="demo-header">
+    <h1>🎠 Activity Carousel Demo</h1>
+    <p>Testing Phase 1: Foundation Components</p>
+  </div>
+
+  <div class="demo-content">
+    <!-- Section 1: Comprehension Carousel -->
+    <section class="demo-section">
+      <h2>🧠 Comprehension Carousel</h2>
+      <p>Testing quiz activities with the new BaseActivity pattern.</p>
+      
+      <div id="comprehension-carousel"></div>
+      
+      <div class="demo-status" id="comprehension-status">
+        <h4>Carousel Status:</h4>
+        <pre>Loading...</pre>
+      </div>
+    </section>
+
+    <!-- Section 2: Application Carousel -->
+    <section class="demo-section">
+      <h2>⚡ Application Carousel</h2>
+      <p>More quiz activities - other types will show as placeholders until implemented.</p>
+      
+      <div id="application-carousel"></div>
+      
+      <div class="demo-status" id="application-status">
+        <h4>Carousel Status:</h4>
+        <pre>Loading...</pre>
+      </div>
+    </section>
+
+    <!-- Section 3: Synthesis Carousel with placeholder -->
+    <section class="demo-section">
+      <h2>🔧 Synthesis Carousel</h2>
+      <p>Includes an unregistered activity type to show the placeholder behavior.</p>
+      
+      <div id="synthesis-carousel"></div>
+    </section>
+
+    <!-- Usage Example -->
+    <section class="demo-section">
+      <h2>📝 Usage Example</h2>
+      <p>Here's how to create an activity carousel:</p>
+      
+      <div class="demo-code">
+<pre>// Create a carousel with activities
+const carousel = new ActivityCarousel('my-carousel', {
+  type: 'comprehension',
+  sectionId: 'variables',
+  activities: [
+    {
+      type: 'quiz',
+      id: 'quiz-1',
+      question: 'What is a variable?',
+      options: ['A loop', 'A container for data', 'A function'],
+      correct: 1,
+      explanation: 'Variables store data in memory.',
+      points: 10
+    }
+  ]
+});
+
+carousel.init();</pre>
+      </div>
+    </section>
+  </div>
+
+  <!-- Load Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  
+  <!-- Load Activity System (in correct order) -->
+  <script src="js/interactive/base-activity.js"></script>
+  <script src="js/interactive/activities/quiz-activity.js"></script>
+  <script src="js/interactive/activity-carousel.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🎠 Activity Carousel Demo Starting...');
+      console.log('📦 Registered activity types:', ActivityRegistry.getTypes());
+      
+      // ============================================
+      // COMPREHENSION CAROUSEL
+      // ============================================
+      const comprehensionCarousel = new ActivityCarousel('comprehension-carousel', {
+        type: 'comprehension',
+        sectionId: 'variables',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'quiz-what-is-variable',
+            question: 'What is a variable in programming?',
+            options: [
+              'A type of loop that repeats code',
+              'A named container that stores data in memory',
+              'A function that returns a value',
+              'A file on your computer'
+            ],
+            correct: 1,
+            explanation: 'A variable is a named container that holds data. Think of it like a labeled box where you can store information.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'quiz-variable-naming',
+            question: 'Which is a valid Python variable name?',
+            options: [
+              '2fast',
+              'my-variable',
+              'user_name',
+              'class'
+            ],
+            correct: 2,
+            explanation: 'Variable names must start with a letter or underscore, can contain letters, numbers, and underscores, and cannot be reserved keywords like "class".',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'quiz-assignment',
+            question: 'What does x = 5 do?',
+            options: [
+              'Checks if x equals 5',
+              'Creates a variable x and assigns it the value 5',
+              'Prints the number 5',
+              'Deletes the variable x'
+            ],
+            correct: 1,
+            explanation: 'The = operator is the assignment operator. It creates a variable (if it doesn\'t exist) and stores the value on the right side.',
+            points: 10
+          }
+        ]
+      });
+      
+      comprehensionCarousel.init();
+      
+      // Update status display
+      const updateComprehensionStatus = () => {
+        const status = comprehensionCarousel.getStatus();
+        document.querySelector('#comprehension-status pre').textContent = JSON.stringify(status, null, 2);
+      };
+      updateComprehensionStatus();
+      setInterval(updateComprehensionStatus, 1000);
+      
+      // ============================================
+      // APPLICATION CAROUSEL
+      // ============================================
+      const applicationCarousel = new ActivityCarousel('application-carousel', {
+        type: 'application',
+        sectionId: 'variables',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'quiz-output-prediction',
+            question: 'What will this code print?\n\nname = "Alice"\nprint("Hello, " + name)',
+            options: [
+              'Hello, name',
+              'Hello, Alice',
+              '"Hello, " + name',
+              'Error'
+            ],
+            correct: 1,
+            explanation: 'The + operator concatenates (joins) strings. The variable name contains "Alice", so it prints "Hello, Alice".',
+            points: 15
+          },
+          {
+            type: 'sequence',  // Not registered yet - will show placeholder
+            id: 'seq-variable-creation',
+            instruction: 'Put these steps in order to create a variable:',
+            items: [
+              { id: 's1', text: 'Computer reserves memory' },
+              { id: 's2', text: 'You write: name = "Alice"' },
+              { id: 's3', text: 'Value stored in memory' }
+            ],
+            correctOrder: ['s2', 's1', 's3'],
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'quiz-data-types',
+            question: 'Which data type would you use to store someone\'s age?',
+            options: [
+              'String (text)',
+              'Integer (whole number)',
+              'Boolean (true/false)',
+              'List (collection)'
+            ],
+            correct: 1,
+            explanation: 'Age is a whole number, so an integer (int) is the best choice. You could use a string, but then you couldn\'t do math with it.',
+            points: 10
+          }
+        ]
+      });
+      
+      applicationCarousel.init();
+      
+      // Update status display
+      const updateApplicationStatus = () => {
+        const status = applicationCarousel.getStatus();
+        document.querySelector('#application-status pre').textContent = JSON.stringify(status, null, 2);
+      };
+      updateApplicationStatus();
+      setInterval(updateApplicationStatus, 1000);
+      
+      // ============================================
+      // SYNTHESIS CAROUSEL (with placeholders)
+      // ============================================
+      const synthesisCarousel = new ActivityCarousel('synthesis-carousel', {
+        type: 'synthesis',
+        sectionId: 'variables',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'reflection',  // Not registered - placeholder
+            id: 'reflect-variables',
+            prompt: 'Before learning about variables, how did you think computers remembered things?',
+            minWords: 30,
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'quiz-synthesis',
+            question: 'A shopping cart loses items when you close the browser. What type of storage is likely being used?',
+            options: [
+              'Session storage (temporary)',
+              'Database storage (permanent)',
+              'Local storage (browser)',
+              'File storage (disk)'
+            ],
+            correct: 0,
+            explanation: 'Session storage only lasts while the browser tab is open. For persistent carts, you\'d use a database or localStorage.',
+            points: 20
+          },
+          {
+            type: 'graph-builder',  // Not registered - placeholder
+            id: 'build-data-flow',
+            instruction: 'Build a diagram showing how data flows from user input to storage',
+            points: 30
+          }
+        ]
+      });
+      
+      synthesisCarousel.init();
+      
+      console.log('🎠 All carousels initialized!');
+    });
+  </script>
+</body>
+</html>
