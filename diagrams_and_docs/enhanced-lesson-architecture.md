@@ -1094,24 +1094,116 @@ With the foundation complete, each activity type can be built **independently** 
 | [#23](https://github.com/nathanbaker-ao/swe-hackers/issues/23) | Graph Builder | Synthesis | 🔴 Complex |
 | [#24](https://github.com/nathanbaker-ao/swe-hackers/issues/24) | Reflection Prompt | Synthesis | 🟢 Easy |
 
-### Kickoff Template for Each Agent
+### Copy-Paste Agent Prompts
 
-When starting a new Cursor session, provide this context:
+Open 4 new Cursor agent windows and paste one prompt into each:
+
+---
+
+#### 🟢 Agent 1: Comprehension Activities (Easy Wins)
 
 ```
-Read these files for context:
-1. @diagrams_and_docs/enhanced-lesson-architecture.md (full architecture)
-2. @courses/shared/js/interactive/base-activity.js (base class to extend)
-3. @courses/shared/js/interactive/activities/quiz-activity.js (example implementation)
+I'm implementing activity types for the SWE Hackers learning platform. Read these files for context:
 
-Then implement the activity from this GitHub issue:
-https://github.com/nathanbaker-ao/swe-hackers/issues/{ISSUE_NUMBER}
+1. @diagrams_and_docs/enhanced-lesson-architecture.md - Full architecture design
+2. @courses/shared/js/interactive/base-activity.js - BaseActivity class to extend
+3. @courses/shared/js/interactive/activities/quiz-activity.js - Example implementation
 
-Add your implementation to:
-@courses/shared/demo-activity-carousel.html
+Your tasks are GitHub issues #16 and #17:
+- #16: True/False with Reasoning - https://github.com/nathanbaker-ao/swe-hackers/issues/16
+- #17: Fill-in-the-Blank - https://github.com/nathanbaker-ao/swe-hackers/issues/17
 
-for visual testing.
+For each activity:
+1. Create the activity file in `courses/shared/js/interactive/activities/`
+2. Extend BaseActivity and implement render(), validate(), getResult()
+3. Register with ActivityRegistry.register('type-name', ClassName)
+4. Add a test activity to @courses/shared/demo-activity-carousel.html in the comprehension carousel
+
+Start with #16 (True/False), then do #17 (Fill-in-Blank). Each issue has full specs, data structures, and CSS.
 ```
+
+---
+
+#### 🟡 Agent 2: Application Activities (Drag & Drop)
+
+```
+I'm implementing activity types for the SWE Hackers learning platform. Read these files for context:
+
+1. @diagrams_and_docs/enhanced-lesson-architecture.md - Full architecture design
+2. @courses/shared/js/interactive/base-activity.js - BaseActivity class to extend
+3. @courses/shared/js/interactive/activities/quiz-activity.js - Example implementation
+4. @courses/shared/js/interactive/challenge-puzzle.js - Existing Cytoscape.js patterns to reuse
+
+Your tasks are GitHub issues #18, #19, and #20:
+- #18: Sequence Ordering - https://github.com/nathanbaker-ao/swe-hackers/issues/18
+- #19: Connect-Edges (Graph) - https://github.com/nathanbaker-ao/swe-hackers/issues/19
+- #20: Drag-Drop Matching - https://github.com/nathanbaker-ao/swe-hackers/issues/20
+
+For each activity:
+1. Create the activity file in `courses/shared/js/interactive/activities/`
+2. Extend BaseActivity and implement render(), validate(), getResult()
+3. Register with ActivityRegistry.register('type-name', ClassName)
+4. Add a test activity to @courses/shared/demo-activity-carousel.html in the application carousel
+
+Note: #19 should WRAP the existing ChallengePuzzle class, don't reinvent it. Add Cytoscape.js CDN to demo page if needed.
+
+Start with #18 (Sequence), then #20 (Drag-Drop), then #19 (Connect-Edges). Each issue has full specs.
+```
+
+---
+
+#### 🟡 Agent 3: Synthesis Activities (Text-Based)
+
+```
+I'm implementing activity types for the SWE Hackers learning platform. Read these files for context:
+
+1. @diagrams_and_docs/enhanced-lesson-architecture.md - Full architecture design
+2. @courses/shared/js/interactive/base-activity.js - BaseActivity class to extend
+3. @courses/shared/js/interactive/activities/quiz-activity.js - Example implementation
+
+Your tasks are GitHub issues #21 and #22:
+- #21: Scenario Analysis - https://github.com/nathanbaker-ao/swe-hackers/issues/21
+- #22: Prediction/Hypothesis - https://github.com/nathanbaker-ao/swe-hackers/issues/22
+
+For each activity:
+1. Create the activity file in `courses/shared/js/interactive/activities/`
+2. Extend BaseActivity and implement render(), validate(), getResult()
+3. Register with ActivityRegistry.register('type-name', ClassName)
+4. Add a test activity to @courses/shared/demo-activity-carousel.html in the synthesis carousel
+
+These are text-based activities with keyword evaluation and depth scoring. Each issue has the evaluation logic specs.
+
+Start with #21 (Scenario), then #22 (Prediction). Each issue has full specs, data structures, and CSS.
+```
+
+---
+
+#### 🔴 Agent 4: Synthesis Activities (Creative)
+
+```
+I'm implementing activity types for the SWE Hackers learning platform. Read these files for context:
+
+1. @diagrams_and_docs/enhanced-lesson-architecture.md - Full architecture design
+2. @courses/shared/js/interactive/base-activity.js - BaseActivity class to extend
+3. @courses/shared/js/interactive/activities/quiz-activity.js - Example implementation
+4. @courses/shared/js/interactive/challenge-puzzle.js - Cytoscape.js patterns for Graph Builder
+
+Your tasks are GitHub issues #23 and #24:
+- #23: Graph Builder - https://github.com/nathanbaker-ao/swe-hackers/issues/23
+- #24: Reflection Prompt - https://github.com/nathanbaker-ao/swe-hackers/issues/24
+
+For each activity:
+1. Create the activity file in `courses/shared/js/interactive/activities/`
+2. Extend BaseActivity and implement render(), validate(), getResult()
+3. Register with ActivityRegistry.register('type-name', ClassName)
+4. Add a test activity to @courses/shared/demo-activity-carousel.html in the synthesis carousel
+
+Note: #23 (Graph Builder) uses Cytoscape.js - add the CDN to demo page if not already there. #24 (Reflection) is simpler - textarea with depth indicator evaluation.
+
+Start with #24 (Reflection - easier), then #23 (Graph Builder). Each issue has full specs, data structures, and CSS.
+```
+
+---
 
 ### Why This Works
 
