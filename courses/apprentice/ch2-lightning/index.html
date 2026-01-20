@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="apprentice" data-lesson="ch2-lightning">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Control Flow -->
+      <div class="activity-carousels" data-story="control-flow-story">
+        <div id="control-flow-comprehension" class="carousel-container"></div>
+        <div id="control-flow-application" class="carousel-container"></div>
+        <div id="control-flow-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Decisions -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Decisions -->
+      <div class="activity-carousels" data-story="decisions-story">
+        <div id="decisions-comprehension" class="carousel-container"></div>
+        <div id="decisions-application" class="carousel-container"></div>
+        <div id="decisions-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Loops -->
+      <div class="activity-carousels" data-story="loops-story">
+        <div id="loops-comprehension" class="carousel-container"></div>
+        <div id="loops-application" class="carousel-container"></div>
+        <div id="loops-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -460,6 +496,994 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS
+      // ============================================
+
+      // ----------------------------------------
+      // STORY 1: CONTROL FLOW - Activity Carousels
+      // ----------------------------------------
+
+      // Comprehension Carousel - Control Flow
+      const controlFlow_Comprehension = new ActivityCarousel('control-flow-comprehension', {
+        type: 'comprehension',
+        sectionId: 'control-flow',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'cf-quiz-definition',
+            question: 'What is control flow in programming?',
+            options: [
+              'The speed at which a program executes',
+              'The order in which statements execute, including decisions and repetition',
+              'The amount of memory a program uses',
+              'The way data moves between files'
+            ],
+            correct: 1,
+            explanation: 'Control flow determines which lines of code run and in what order. It includes decisions (branching) and loops (repetition).',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'cf-quiz-linear-vs-branching',
+            question: 'What\'s the difference between a linear program and one with branching?',
+            options: [
+              'Linear programs are faster',
+              'Branching programs can take different paths based on conditions',
+              'Linear programs use more memory',
+              'There is no significant difference'
+            ],
+            correct: 1,
+            explanation: 'Linear programs execute top to bottom with no choices. Branching lets the program take different paths based on conditions—making it dynamic and responsive!',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'cf-tf-programs-always-linear',
+            statement: 'Without control flow, programs can still make decisions and repeat actions.',
+            correct: false,
+            explanation: 'Without control flow, programs run straight through—no decisions, no repetition. Control flow is what gives programs the ability to "think" and "loop".',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'cf-tf-games-use-branching',
+            statement: 'Video games use branching to respond to player input.',
+            correct: true,
+            explanation: 'Exactly! When you press a button, the game checks "if button pressed, do action." This branching logic is what makes games interactive.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'cf-fill-branching',
+            statement: '___ lets programs take different paths based on conditions, using if/elif/else.',
+            correctAnswers: ['branching', 'control flow', 'conditionals'],
+            caseSensitive: false,
+            hints: ['What do we call it when code splits into different paths?'],
+            explanation: 'Branching (using conditionals like if/elif/else) allows programs to make decisions and execute different code based on conditions.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'cf-fill-repetition',
+            statement: '___ allows programs to execute the same code multiple times using for or while.',
+            correctAnswers: ['loops', 'looping', 'repetition', 'iteration'],
+            caseSensitive: false,
+            hints: ['What lets you repeat code without writing it multiple times?'],
+            explanation: 'Loops (for and while) let you repeat code. Instead of writing print() 100 times, you write one loop that runs 100 iterations.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'cf-quiz-smart-programs',
+            question: 'What makes a program "smart" in terms of control flow?',
+            options: [
+              'Using many variables',
+              'Having lots of comments',
+              'Being able to make decisions and repeat actions based on conditions',
+              'Running very quickly'
+            ],
+            correct: 2,
+            explanation: '"Smart" programs respond to different inputs, make decisions, and efficiently repeat tasks—all made possible by branching and loops!',
+            points: 10
+          }
+        ]
+      });
+      controlFlow_Comprehension.init();
+
+      // Application Carousel - Control Flow
+      const controlFlow_Application = new ActivityCarousel('control-flow-application', {
+        type: 'application',
+        sectionId: 'control-flow',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'cf-dd-flow-types',
+            instruction: 'Match each control flow concept to its description:',
+            items: [
+              { id: 'desc-seq', text: 'Code runs top to bottom, line by line' },
+              { id: 'desc-branch', text: 'Code chooses different paths based on conditions' },
+              { id: 'desc-loop', text: 'Code repeats a block multiple times' }
+            ],
+            zones: [
+              { id: 'type-sequential', label: 'Sequential', correct: 'desc-seq' },
+              { id: 'type-branching', label: 'Branching', correct: 'desc-branch' },
+              { id: 'type-looping', label: 'Looping', correct: 'desc-loop' }
+            ],
+            explanation: 'Sequential = straight line, Branching = choices (if/else), Looping = repetition (for/while). These three patterns are the building blocks of all programs!',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'cf-seq-game-logic',
+            instruction: 'Order these steps to show how a game handles player input:',
+            items: [
+              { id: 'wait', text: 'Program waits for input' },
+              { id: 'check', text: 'Check: Did player press a button?' },
+              { id: 'action', text: 'If yes: Execute the corresponding action' },
+              { id: 'loop', text: 'Repeat the process (game loop)' }
+            ],
+            correctOrder: ['wait', 'check', 'action', 'loop'],
+            hints: {
+              partial: 'Think about the order: wait → check → respond → repeat',
+              wrong: 'Games constantly wait for input, check it, respond, and repeat!'
+            },
+            explanation: 'This is the game loop pattern: wait for input → check what was pressed → respond → loop back. Every interactive game uses this pattern!',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'cf-connect-flow-diagram',
+            instruction: 'Connect to show how control flow works in a program:',
+            nodes: [
+              { id: 'start', label: '▶️ Start' },
+              { id: 'condition', label: '❓ Condition' },
+              { id: 'path-a', label: '✅ Path A' },
+              { id: 'path-b', label: '❌ Path B' },
+              { id: 'end', label: '⏹️ End' }
+            ],
+            solution: {
+              edges: [
+                { source: 'start', target: 'condition' },
+                { source: 'condition', target: 'path-a' },
+                { source: 'condition', target: 'path-b' },
+                { source: 'path-a', target: 'end' },
+                { source: 'path-b', target: 'end' }
+              ]
+            },
+            nodeDescriptions: {
+              'start': 'Program begins execution',
+              'condition': 'if statement checks True/False',
+              'path-a': 'Runs if condition is True',
+              'path-b': 'Runs if condition is False (else)',
+              'end': 'Both paths rejoin'
+            },
+            explanation: 'This is a branching flowchart: start → check condition → take one path → converge at end. The condition determines which path runs.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'cf-quiz-which-construct',
+            question: 'A program needs to keep asking for a password until the correct one is entered. Which control flow is best?',
+            options: [
+              'Sequential (just run once)',
+              'Branching (if/else)',
+              'Looping (while)',
+              'No control flow needed'
+            ],
+            correct: 2,
+            explanation: 'A while loop is perfect—keep looping "while password is wrong." The loop continues until the condition becomes False (correct password entered).',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'cf-dd-real-examples',
+            instruction: 'Match each real-world example to its control flow type:',
+            items: [
+              { id: 'ex-recipe', text: 'Following a recipe step by step' },
+              { id: 'ex-traffic', text: 'A traffic light changing based on sensors' },
+              { id: 'ex-factory', text: 'A factory robot repeating the same task' }
+            ],
+            zones: [
+              { id: 'zone-seq', label: 'Sequential', correct: 'ex-recipe' },
+              { id: 'zone-branch', label: 'Branching', correct: 'ex-traffic' },
+              { id: 'zone-loop', label: 'Looping', correct: 'ex-factory' }
+            ],
+            explanation: 'Recipe = sequential steps. Traffic light = if/else conditions. Factory robot = repeating loop. Control flow patterns are everywhere!',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'cf-quiz-combine',
+            question: 'Can a program use both branching AND looping together?',
+            options: [
+              'No, you must choose one',
+              'Yes, and most complex programs do!',
+              'Only in certain programming languages',
+              'Only with special libraries'
+            ],
+            correct: 1,
+            explanation: 'Real programs mix all control flow types! A loop might contain if statements, an if might contain loops. This combination creates powerful, flexible programs.',
+            points: 15
+          }
+        ]
+      });
+      controlFlow_Application.init();
+
+      // Synthesis Carousel - Control Flow
+      const controlFlow_Synthesis = new ActivityCarousel('control-flow-synthesis', {
+        type: 'synthesis',
+        sectionId: 'control-flow',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'cf-scenario-vending',
+            scenario: 'You\'re designing a vending machine program. It needs to: 1) Show menu, 2) Accept money, 3) Check if enough money for selection, 4) Dispense item or ask for more money, 5) Keep running for more customers.',
+            question: 'What control flow structures would you use and where?',
+            evaluation: {
+              keywords: ['loop', 'while', 'if', 'condition', 'repeat', 'check', 'branch', 'else'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Use a while loop to keep the machine running for multiple customers. Inside, use if/elif/else to check: if enough money → dispense item, elif not enough → show amount needed, else invalid selection. The main loop keeps repeating until machine is shut down.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'cf-predict-infinite-loop',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'x = 0\nwhile x < 5:\n    print(x)\n    # Forgot to add x = x + 1'
+            },
+            question: 'What will happen when this code runs?',
+            correctAnswer: 'Infinite loop printing 0 forever',
+            acceptableVariants: ['infinite loop', 'forever', 'never stops', 'infinite', '0 0 0 0'],
+            explanation: 'Without incrementing x, the condition x < 5 is always True (0 < 5), so the loop never ends! This is a common bug called an infinite loop.',
+            commonMistakes: {
+              '0 1 2 3 4': 'Look carefully—x is never incremented, so it stays 0 forever.',
+              'error': 'No syntax error—the code runs, it just runs forever!'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'cf-reflect-linear-limit',
+            prompt: 'Before learning control flow, what kinds of programs would be impossible to write with just sequential (linear) code? Give specific examples.',
+            thinkingPrompts: [
+              'What about interactive programs?',
+              'What if you need to process 1000 items?',
+              'What about programs that respond to user choices?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(game|interactive|respond)', label: 'Interactive programs', points: 5 },
+                { pattern: '(repeat|many|100|1000)', label: 'Repetition need', points: 4 },
+                { pattern: '(impossible|cant|couldnt)', label: 'Understanding limitations', points: 4 },
+                { pattern: '(user|input|choice)', label: 'User interaction', points: 4 },
+                { pattern: '(example|like|such as)', label: 'Specific examples', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'cf-scenario-traffic-light',
+            scenario: 'Design the logic for a smart traffic light. It should: stay green while no cars waiting, turn yellow, then red when cars are detected waiting at the cross street.',
+            question: 'Describe the control flow logic (conditions and loops) you would use.',
+            evaluation: {
+              keywords: ['while', 'if', 'sensor', 'wait', 'loop', 'condition', 'green', 'red', 'yellow'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Main loop runs continuously. Inside: while no cars detected on cross street, stay green. When cars detected (if sensor triggers), change to yellow, wait, then red. After cross-street traffic clears, switch back to green and repeat the cycle.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'cf-predict-nested',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'for i in range(2):\n    for j in range(3):\n        print(i, j)'
+            },
+            question: 'How many times will print execute?',
+            correctAnswer: '6',
+            acceptableVariants: ['6', 'six', '6 times'],
+            explanation: 'The outer loop runs 2 times (i=0, i=1). For each outer iteration, the inner loop runs 3 times. Total: 2 × 3 = 6 prints. Nested loops multiply!',
+            commonMistakes: {
+              '5': '2 × 3 = 6, not 5. Count each combination.',
+              '3': 'The inner loop runs fully for EACH iteration of the outer loop.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'cf-quiz-synthesis',
+            question: 'Why is control flow considered one of the most fundamental concepts in programming?',
+            options: [
+              'It makes code look more professional',
+              'It allows programs to make decisions and repeat tasks—enabling dynamic behavior',
+              'It makes programs run faster',
+              'It\'s required by Python but not other languages'
+            ],
+            correct: 1,
+            explanation: 'Control flow transforms static scripts into dynamic programs. Without it, we couldn\'t write interactive software, games, or anything that responds to input or processes data at scale.',
+            points: 15
+          }
+        ]
+      });
+      controlFlow_Synthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: DECISIONS - Activity Carousels
+      // ----------------------------------------
+
+      // Comprehension Carousel - Decisions
+      const decisions_Comprehension = new ActivityCarousel('decisions-comprehension', {
+        type: 'comprehension',
+        sectionId: 'decisions',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'dec-quiz-comparison-equals',
+            question: 'What does == do in Python?',
+            options: [
+              'Assigns a value to a variable',
+              'Checks if two values are equal',
+              'Adds two numbers',
+              'Creates a new variable'
+            ],
+            correct: 1,
+            explanation: '== is the equality comparison operator. It returns True if both sides are equal, False otherwise. Don\'t confuse it with = (assignment)!',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dec-quiz-if-purpose',
+            question: 'What does an if statement do?',
+            options: [
+              'Repeats code multiple times',
+              'Executes code only if a condition is True',
+              'Defines a function',
+              'Prints output to screen'
+            ],
+            correct: 1,
+            explanation: 'The if statement is a gatekeeper—it checks a condition and only runs the indented code if that condition is True.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'dec-tf-elif-order',
+            statement: 'In an if/elif/else chain, Python checks conditions from bottom to top.',
+            correct: false,
+            explanation: 'Python checks from TOP to BOTTOM. The first True condition runs, then all others are skipped—even if they would also be True!',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'dec-tf-else-required',
+            statement: 'Every if statement must have an else clause.',
+            correct: false,
+            explanation: 'else is optional! You can have just "if" (do something only if True), or "if/else", or "if/elif/else". Use what you need.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'dec-fill-indentation',
+            statement: 'Python uses ___ to show which code belongs inside an if statement.',
+            correctAnswers: ['indentation', 'indent', 'spaces', '4 spaces', 'whitespace'],
+            caseSensitive: false,
+            hints: ['How does Python know which code is "inside" the if block?'],
+            explanation: 'Indentation (typically 4 spaces) tells Python which code is controlled by the if statement. The indented code only runs when the condition is True.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'dec-fill-else-catchall',
+            statement: 'The ___ clause catches all cases not matched by if or elif.',
+            correctAnswers: ['else', 'else:'],
+            caseSensitive: false,
+            hints: ['What runs when no other condition is True?'],
+            explanation: 'else is the catch-all—if no if or elif condition was True, the else block runs. It\'s your "otherwise" or "default" case.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dec-quiz-operators',
+            question: 'Which comparison returns True?',
+            options: [
+              '5 > 10',
+              '3 == "3"',
+              '7 != 7',
+              '4 <= 4'
+            ],
+            correct: 3,
+            explanation: '4 <= 4 means "4 is less than OR equal to 4"—which is True! The others: 5>10 is False, 3=="3" is False (different types), 7!=7 is False.',
+            points: 10
+          }
+        ]
+      });
+      decisions_Comprehension.init();
+
+      // Application Carousel - Decisions
+      const decisions_Application = new ActivityCarousel('decisions-application', {
+        type: 'application',
+        sectionId: 'decisions',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'dec-dd-operators',
+            instruction: 'Match each comparison operator to its meaning:',
+            items: [
+              { id: 'mean-equal', text: 'Equal to' },
+              { id: 'mean-notequal', text: 'Not equal to' },
+              { id: 'mean-greater', text: 'Greater than' },
+              { id: 'mean-lesseq', text: 'Less than or equal' }
+            ],
+            zones: [
+              { id: 'op-eq', label: '==', correct: 'mean-equal' },
+              { id: 'op-ne', label: '!=', correct: 'mean-notequal' },
+              { id: 'op-gt', label: '>', correct: 'mean-greater' },
+              { id: 'op-le', label: '<=', correct: 'mean-lesseq' }
+            ],
+            explanation: '== checks equality, != checks inequality, > is greater than, <= is less than or equal. These return True or False!',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'dec-seq-grade-checker',
+            instruction: 'Order these conditions for a grade checker (highest grade first):',
+            items: [
+              { id: 'c-a', text: 'if score >= 90: grade = "A"' },
+              { id: 'c-b', text: 'elif score >= 80: grade = "B"' },
+              { id: 'c-c', text: 'elif score >= 70: grade = "C"' },
+              { id: 'c-f', text: 'else: grade = "F"' }
+            ],
+            correctOrder: ['c-a', 'c-b', 'c-c', 'c-f'],
+            hints: {
+              partial: 'Check highest grade first, then work down.',
+              wrong: 'Start with A (highest), then B, C, and F as the catch-all.'
+            },
+            explanation: 'Order matters! If you checked >= 70 first, a score of 95 would get a C. Always check from highest to lowest.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'dec-quiz-output',
+            question: 'What will this print?\n\nx = 15\nif x > 20:\n    print("big")\nelif x > 10:\n    print("medium")\nelse:\n    print("small")',
+            options: [
+              'big',
+              'medium',
+              'small',
+              'big medium'
+            ],
+            correct: 1,
+            explanation: 'x=15. Is 15>20? No. Is 15>10? Yes! So "medium" prints and the else is skipped. Only ONE branch executes.',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'dec-connect-logic',
+            instruction: 'Connect to show how Python evaluates an if/elif/else chain:',
+            nodes: [
+              { id: 'if-check', label: 'if condition?' },
+              { id: 'if-true', label: 'if block runs' },
+              { id: 'elif-check', label: 'elif condition?' },
+              { id: 'elif-true', label: 'elif block runs' },
+              { id: 'else-runs', label: 'else block runs' }
+            ],
+            solution: {
+              edges: [
+                { source: 'if-check', target: 'if-true' },
+                { source: 'if-check', target: 'elif-check' },
+                { source: 'elif-check', target: 'elif-true' },
+                { source: 'elif-check', target: 'else-runs' }
+              ]
+            },
+            nodeDescriptions: {
+              'if-check': 'First condition is checked',
+              'if-true': 'Runs if if-condition is True',
+              'elif-check': 'Checked only if if-condition was False',
+              'elif-true': 'Runs if elif-condition is True',
+              'else-runs': 'Runs if all conditions were False'
+            },
+            explanation: 'It\'s a cascade: check if → if True, run and done. If False → check elif → if True, run and done. If all False → else runs.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'dec-quiz-logical',
+            question: 'What does `if age >= 18 and has_license:` check?',
+            options: [
+              'Either age is 18+ OR has license',
+              'Both age is 18+ AND has license must be True',
+              'Age is greater than 18, license doesn\'t matter',
+              'This is invalid Python syntax'
+            ],
+            correct: 1,
+            explanation: 'The "and" operator requires BOTH conditions to be True. The person must be 18+ AND have a license for the whole condition to be True.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'dec-dd-logic-ops',
+            instruction: 'Match each logical operator to its behavior:',
+            items: [
+              { id: 'beh-both', text: 'Both conditions must be True' },
+              { id: 'beh-either', text: 'At least one condition must be True' },
+              { id: 'beh-flip', text: 'Flips True to False (and vice versa)' }
+            ],
+            zones: [
+              { id: 'log-and', label: 'and', correct: 'beh-both' },
+              { id: 'log-or', label: 'or', correct: 'beh-either' },
+              { id: 'log-not', label: 'not', correct: 'beh-flip' }
+            ],
+            explanation: 'and = both True, or = at least one True, not = opposite. These combine conditions for complex logic!',
+            points: 20
+          }
+        ]
+      });
+      decisions_Application.init();
+
+      // Synthesis Carousel - Decisions
+      const decisions_Synthesis = new ActivityCarousel('decisions-synthesis', {
+        type: 'synthesis',
+        sectionId: 'decisions',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'dec-scenario-login',
+            scenario: 'You\'re building a login system. Users have 3 attempts to enter the correct password. After 3 failures, lock them out.',
+            question: 'Describe the if/elif/else logic you would use (combining with a loop from the next section conceptually).',
+            evaluation: {
+              keywords: ['if', 'correct', 'else', 'attempt', 'count', 'lock', 'password', 'check', 'wrong'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Track attempts with a counter. Each time: if password correct → login successful, break out. else → increment attempts, check if attempts >= 3 → lock account, otherwise prompt again. The if checks success, else handles failures with additional logic.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dec-predict-order-matters',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'score = 85\nif score >= 60:\n    print("Pass")\nelif score >= 80:\n    print("Good")\nelif score >= 90:\n    print("Excellent")'
+            },
+            question: 'What will print, and why might this be a bug?',
+            correctAnswer: 'Pass (but should be Good)',
+            acceptableVariants: ['Pass', 'pass', '"Pass"'],
+            explanation: 'It prints "Pass" because score >= 60 is True and checked first! But 85 should be "Good". The conditions are in the wrong order—always check highest first.',
+            commonMistakes: {
+              'Good': 'The code checks >= 60 FIRST. 85 >= 60 is True, so "Pass" prints and the rest is skipped.',
+              'Excellent Pass Good': 'Only ONE branch runs in if/elif/else—whichever matches first.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'dec-reflect-real-decisions',
+            prompt: 'Think about decisions you make every day (what to eat, which route to take, etc.). How are these similar to if/elif/else logic in programming?',
+            thinkingPrompts: [
+              'Do you check conditions in a certain order?',
+              'What\'s your "else" (default choice)?',
+              'Do some decisions depend on multiple conditions (like "and")?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(if|check|condition)', label: 'Conditional thinking', points: 4 },
+                { pattern: '(else|otherwise|default)', label: 'Default/fallback', points: 4 },
+                { pattern: '(and|both|multiple)', label: 'Combined conditions', points: 4 },
+                { pattern: '(everyday|daily|example)', label: 'Real-world connection', points: 5 },
+                { pattern: '(I think|I realize|similar)', label: 'Personal insight', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'dec-scenario-thermostat',
+            scenario: 'Design a smart thermostat: if temp < 65, turn on heat. If temp > 75, turn on AC. If 65-75, turn off both. Also, if user is away, always turn off everything.',
+            question: 'Write the if/elif/else logic, including how to handle the "user away" condition.',
+            evaluation: {
+              keywords: ['if', 'elif', 'else', 'away', 'temp', 'heat', 'AC', 'and', 'or', 'off'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'First check: if user_away → turn off everything, done. Then check temperature: if temp < 65 → heat on. elif temp > 75 → AC on. else (65-75) → both off. The user_away check comes first because it overrides temperature logic.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dec-predict-nested',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'x = 10\ny = 5\nif x > 5:\n    if y > 3:\n        print("A")\n    else:\n        print("B")\nelse:\n    print("C")'
+            },
+            question: 'What will this print?',
+            correctAnswer: 'A',
+            acceptableVariants: ['A', '"A"', 'a'],
+            explanation: 'x=10 > 5 is True, so we enter the outer if. Then y=5 > 3 is True, so we enter the inner if and print "A". Nested ifs check conditions in layers!',
+            commonMistakes: {
+              'C': 'x > 5 is True, so we DON\'T go to else.',
+              'B': 'y > 3 is True (5 > 3), so we print A, not B.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'dec-quiz-synthesis',
+            question: 'Why is the order of conditions in if/elif/else so important?',
+            options: [
+              'Python requires alphabetical order',
+              'The first True condition runs and all others are skipped',
+              'Conditions run simultaneously',
+              'Order doesn\'t actually matter'
+            ],
+            correct: 1,
+            explanation: 'Python checks top to bottom, stops at the first True. Wrong order = wrong results! Always put more specific/restrictive conditions first.',
+            points: 15
+          }
+        ]
+      });
+      decisions_Synthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: LOOPS - Activity Carousels
+      // ----------------------------------------
+
+      // Comprehension Carousel - Loops
+      const loops_Comprehension = new ActivityCarousel('loops-comprehension', {
+        type: 'comprehension',
+        sectionId: 'loops',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'loop-quiz-for-purpose',
+            question: 'When should you use a for loop?',
+            options: [
+              'When you don\'t know how many times to repeat',
+              'When you know how many times to repeat (or have a sequence to iterate)',
+              'When you want to run code only once',
+              'When you need to exit a program'
+            ],
+            correct: 1,
+            explanation: 'for loops are perfect when you know the count (for i in range(10)) or have a sequence to process (for item in list).',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'loop-quiz-while-purpose',
+            question: 'When should you use a while loop?',
+            options: [
+              'When you know exactly how many iterations',
+              'When repetition depends on a condition that might change unpredictably',
+              'When processing a list',
+              'Never—for loops are always better'
+            ],
+            correct: 1,
+            explanation: 'while loops are ideal when you don\'t know how many iterations—like "keep asking until correct answer" or "run until user quits".',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'loop-tf-range-inclusive',
+            statement: 'range(1, 5) generates the numbers 1, 2, 3, 4, 5.',
+            correct: false,
+            explanation: 'range() stops BEFORE the end number! range(1, 5) gives 1, 2, 3, 4. To get 1-5, use range(1, 6).',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'loop-tf-break-exits',
+            statement: 'The break statement immediately exits the current loop.',
+            correct: true,
+            explanation: 'break is the emergency exit—it stops the loop immediately, even if there are more iterations left. Continue after the loop.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'loop-fill-continue',
+            statement: 'The ___ statement skips the rest of the current iteration and moves to the next one.',
+            correctAnswers: ['continue', 'continue statement'],
+            caseSensitive: false,
+            hints: ['What keyword skips to the next iteration without exiting the loop?'],
+            explanation: 'continue says "skip the rest of this iteration, go to the next one." Unlike break, the loop keeps running!',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'loop-fill-range-start',
+            statement: 'By default, range(5) starts counting at ___, not 1.',
+            correctAnswers: ['0', 'zero'],
+            caseSensitive: false,
+            hints: ['Python starts counting from what number?'],
+            explanation: 'Python counts from 0! range(5) gives 0, 1, 2, 3, 4. This is consistent with how lists are indexed.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'loop-quiz-infinite',
+            question: 'What happens if a while loop\'s condition never becomes False?',
+            options: [
+              'The loop runs once and stops',
+              'Python automatically stops it after 1000 iterations',
+              'The loop runs forever (infinite loop)',
+              'An error is raised'
+            ],
+            correct: 2,
+            explanation: 'An infinite loop! The program gets stuck. Always make sure the condition can eventually become False, or use break to exit.',
+            points: 10
+          }
+        ]
+      });
+      loops_Comprehension.init();
+
+      // Application Carousel - Loops
+      const loops_Application = new ActivityCarousel('loops-application', {
+        type: 'application',
+        sectionId: 'loops',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'loop-seq-for-anatomy',
+            instruction: 'Order the parts of a for loop as they appear in code:',
+            items: [
+              { id: 'keyword', text: 'for keyword' },
+              { id: 'variable', text: 'Loop variable (i)' },
+              { id: 'in', text: 'in keyword' },
+              { id: 'sequence', text: 'Sequence/range' },
+              { id: 'colon', text: 'Colon :' },
+              { id: 'body', text: 'Indented code block' }
+            ],
+            correctOrder: ['keyword', 'variable', 'in', 'sequence', 'colon', 'body'],
+            hints: {
+              partial: 'Start with "for", then variable, then "in"...',
+              wrong: 'Think: for i in range(5):'
+            },
+            explanation: 'for [variable] in [sequence]: [body]. The variable takes each value from the sequence, and the body runs each time.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'loop-dd-range-params',
+            instruction: 'Match each range() call to what it generates:',
+            items: [
+              { id: 'gen-5', text: '0, 1, 2, 3, 4' },
+              { id: 'gen-2to5', text: '2, 3, 4' },
+              { id: 'gen-odds', text: '1, 3, 5, 7, 9' },
+              { id: 'gen-down', text: '5, 4, 3, 2, 1' }
+            ],
+            zones: [
+              { id: 'range-5', label: 'range(5)', correct: 'gen-5' },
+              { id: 'range-2-5', label: 'range(2, 5)', correct: 'gen-2to5' },
+              { id: 'range-1-10-2', label: 'range(1, 10, 2)', correct: 'gen-odds' },
+              { id: 'range-5-0--1', label: 'range(5, 0, -1)', correct: 'gen-down' }
+            ],
+            explanation: 'range(stop), range(start, stop), range(start, stop, step). Negative step counts down. Remember: stops BEFORE the end!',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'loop-quiz-output',
+            question: 'What will this print?\n\nfor i in range(3):\n    print(i * 2)',
+            options: [
+              '0 1 2',
+              '2 4 6',
+              '0 2 4',
+              '1 2 3'
+            ],
+            correct: 2,
+            explanation: 'range(3) gives 0, 1, 2. Multiply each by 2: 0×2=0, 1×2=2, 2×2=4. Output: 0, 2, 4.',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'loop-connect-while-flow',
+            instruction: 'Connect to show how a while loop executes:',
+            nodes: [
+              { id: 'start', label: '▶️ Start' },
+              { id: 'check', label: '❓ Check condition' },
+              { id: 'body', label: '📋 Run body' },
+              { id: 'exit', label: '🚪 Exit loop' }
+            ],
+            solution: {
+              edges: [
+                { source: 'start', target: 'check' },
+                { source: 'check', target: 'body' },
+                { source: 'check', target: 'exit' },
+                { source: 'body', target: 'check' }
+              ]
+            },
+            nodeDescriptions: {
+              'start': 'while loop begins',
+              'check': 'Is condition True?',
+              'body': 'Execute the indented code',
+              'exit': 'Condition is False, leave loop'
+            },
+            explanation: 'Check condition → if True, run body, loop back to check. If False, exit. The loop continues until condition is False!',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'loop-quiz-break',
+            question: 'What will this print?\n\nfor i in range(5):\n    if i == 3:\n        break\n    print(i)',
+            options: [
+              '0 1 2 3 4',
+              '0 1 2',
+              '0 1 2 3',
+              '3'
+            ],
+            correct: 1,
+            explanation: 'i goes 0, 1, 2 (prints each), then i=3 triggers break before print. Loop exits. Output: 0, 1, 2.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'loop-dd-scenarios',
+            instruction: 'Match each scenario to the best loop type:',
+            items: [
+              { id: 'use-for', text: 'for loop' },
+              { id: 'use-while', text: 'while loop' },
+              { id: 'use-for2', text: 'for loop' },
+              { id: 'use-while2', text: 'while loop' }
+            ],
+            zones: [
+              { id: 'scen-10', label: 'Print numbers 1 to 10', correct: 'use-for' },
+              { id: 'scen-guess', label: 'Keep guessing until correct', correct: 'use-while' },
+              { id: 'scen-list', label: 'Process each item in a list', correct: 'use-for2' },
+              { id: 'scen-server', label: 'Run until user types "quit"', correct: 'use-while2' }
+            ],
+            explanation: 'Known iterations/sequences = for loop. Unknown iterations based on condition = while loop. Choose based on what you know upfront!',
+            points: 20
+          }
+        ]
+      });
+      loops_Application.init();
+
+      // Synthesis Carousel - Loops
+      const loops_Synthesis = new ActivityCarousel('loops-synthesis', {
+        type: 'synthesis',
+        sectionId: 'loops',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'loop-scenario-password',
+            scenario: 'Build a password checker: keep asking the user for a password until they either enter the correct one OR fail 3 times.',
+            question: 'Which loop type would you use and why? Describe the logic.',
+            evaluation: {
+              keywords: ['while', 'attempt', 'count', 'break', 'correct', 'condition', 'or', 'exit'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Use a while loop since we don\'t know how many attempts. Loop while attempts < 3 AND not correct. Each iteration: get input, if correct → break, else increment attempts. After loop, check if correct or locked out.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'loop-predict-sum',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'total = 0\nfor num in [1, 2, 3, 4, 5]:\n    total = total + num\nprint(total)'
+            },
+            question: 'What will this print?',
+            correctAnswer: '15',
+            acceptableVariants: ['15', 'fifteen'],
+            explanation: 'The loop adds each number: 0+1=1, 1+2=3, 3+3=6, 6+4=10, 10+5=15. This pattern (accumulator) is super common for summing values!',
+            commonMistakes: {
+              '5': 'We\'re adding TO total, not replacing it. All numbers get added.',
+              '12345': 'This would be concatenation. We\'re doing math (adding).'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'loop-reflect-efficiency',
+            prompt: 'Imagine you need to process 1 million records. Why is a loop so much more practical than writing 1 million lines of code? What other benefits do loops provide?',
+            thinkingPrompts: [
+              'What if the number of items changes?',
+              'What about maintaining the code?',
+              'Can you modify behavior by changing one line?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(efficient|save|time|practical)', label: 'Efficiency awareness', points: 4 },
+                { pattern: '(change|update|modify|maintain)', label: 'Maintainability', points: 5 },
+                { pattern: '(flexible|dynamic|any number)', label: 'Flexibility', points: 4 },
+                { pattern: '(error|mistake|bug)', label: 'Error prevention', points: 4 },
+                { pattern: '(million|thousand|many)', label: 'Scale thinking', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'loop-scenario-search',
+            scenario: 'You have a list of 1000 names and need to find if "Alice" is in it. Once found, you don\'t need to keep looking.',
+            question: 'How would you use a loop with break to efficiently search? Why is break important here?',
+            evaluation: {
+              keywords: ['for', 'if', 'break', 'found', 'stop', 'efficient', 'exit', 'search'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Use for name in names: if name == "Alice": print("Found!") and break. Without break, you\'d check all 1000 names even if Alice was first! Break makes it efficient by stopping early when found.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'loop-predict-continue',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'for i in range(5):\n    if i == 2:\n        continue\n    print(i)'
+            },
+            question: 'What will this print?',
+            correctAnswer: '0 1 3 4',
+            acceptableVariants: ['0 1 3 4', '0, 1, 3, 4', '0134'],
+            explanation: 'continue skips the rest of the current iteration. When i=2, continue skips print(i), so 2 is never printed. Output: 0, 1, 3, 4.',
+            commonMistakes: {
+              '0 1 2 3 4': 'continue SKIPS the print when i=2.',
+              '0 1': 'continue doesn\'t EXIT the loop, it just skips to the next iteration.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'loop-quiz-synthesis',
+            question: 'What\'s the most important thing to ensure when writing a while loop?',
+            options: [
+              'Use exactly 4 spaces for indentation',
+              'That the condition will eventually become False (or use break)',
+              'Always include an else clause',
+              'Only loop 10 times maximum'
+            ],
+            correct: 1,
+            explanation: 'An infinite loop is the biggest danger! Always ensure your condition changes OR you have a break. Otherwise, your program runs forever.',
+            points: 15
+          }
+        ]
+      });
+      loops_Synthesis.init();
+
+      console.log('✅ All activity carousels initialized for Ch2: Lightning');
     });
   </script>
 </body>
