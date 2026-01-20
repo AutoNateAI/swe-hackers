@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="junior" data-lesson="ch0-origins">
   <header class="header">
@@ -129,6 +130,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Mindset Section -->
+      <div class="activity-carousels" data-story="mindset-story">
+        <div id="mindset-comprehension" class="carousel-container"></div>
+        <div id="mindset-application" class="carousel-container"></div>
+        <div id="mindset-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Your Accelerated Path -->
@@ -207,6 +215,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Acceleration Section -->
+      <div class="activity-carousels" data-story="acceleration-story">
+        <div id="acceleration-comprehension" class="carousel-container"></div>
+        <div id="acceleration-application" class="carousel-container"></div>
+        <div id="acceleration-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -287,6 +302,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Skills Section -->
+      <div class="activity-carousels" data-story="skills-story">
+        <div id="skills-comprehension" class="carousel-container"></div>
+        <div id="skills-application" class="carousel-container"></div>
+        <div id="skills-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -331,6 +353,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -440,6 +476,968 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS - MINDSET SECTION
+      // ============================================
+
+      // Mindset Comprehension Carousel
+      const mindsetComprehension = new ActivityCarousel('mindset-comprehension', {
+        type: 'comprehension',
+        sectionId: 'mindset',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'mindset-quiz-1',
+            question: 'What is the PRIMARY difference between how juniors and seniors approach a new task?',
+            options: [
+              'Seniors type faster and know more shortcuts',
+              'Seniors ask "why" before asking "how"',
+              'Seniors have more years of experience',
+              'Seniors use more advanced programming languages'
+            ],
+            correct: 1,
+            explanation: 'The key mindset shift is asking "Why are we building this?" before "How do I build it?" This ensures you\'re solving the right problem.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'mindset-quiz-2',
+            question: 'According to the lesson, what does a senior engineer do that a mid-level engineer doesn\'t?',
+            options: [
+              'Fixes bugs faster',
+              'Writes more code per day',
+              'Designs systems where certain bug classes cannot exist',
+              'Has more meetings'
+            ],
+            correct: 2,
+            explanation: 'Juniors fix bugs, mid-levels prevent bugs, but seniors design systems architecturally so that entire categories of bugs are impossible.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'mindset-tf-1',
+            statement: 'Juniors who work in isolation and avoid asking questions tend to grow faster than those who communicate early and often.',
+            correct: false,
+            explanation: 'Actually, juniors who communicate early and clarify requirements grow faster. Working in isolation often leads to building the wrong thing or missing important context.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'mindset-tf-2',
+            statement: 'Measuring your progress by lines of code written is a junior mindset pattern.',
+            correct: true,
+            explanation: 'Seniors measure progress by impact delivered, not code volume. Sometimes the best code is code you don\'t write at all.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'mindset-fill-1',
+            statement: 'A junior fixes bugs. A mid-level prevents bugs. A senior designs ___ where certain bugs cannot exist.',
+            correctAnswers: ['systems', 'architectures', 'structures', 'solutions'],
+            caseSensitive: false,
+            hints: ['Think about the level above individual code'],
+            explanation: 'Senior engineers think at the systems level, creating architectures that make entire categories of bugs impossible.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'mindset-fill-2',
+            statement: 'Seniors use AI as a ___ partner, not just a code generator.',
+            correctAnswers: ['thinking', 'thought', 'design', 'collaborative', 'learning'],
+            caseSensitive: false,
+            hints: ['AI helps you explore ideas and catch blind spots'],
+            explanation: 'AI is most powerful when used to explore designs, review approaches, and accelerate learning—not just generate code.',
+            points: 10
+          }
+        ]
+      });
+      mindsetComprehension.init();
+
+      // Mindset Application Carousel
+      const mindsetApplication = new ActivityCarousel('mindset-application', {
+        type: 'application',
+        sectionId: 'mindset',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'mindset-seq-1',
+            instruction: 'Put these steps in the order a SENIOR engineer would approach a new feature request:',
+            items: [
+              { id: 's1', text: 'Clarify requirements with stakeholders' },
+              { id: 's2', text: 'Design the solution architecture' },
+              { id: 's3', text: 'Consider edge cases and failure modes' },
+              { id: 's4', text: 'Write the implementation code' },
+              { id: 's5', text: 'Test and iterate' }
+            ],
+            correctOrder: ['s1', 's2', 's3', 's4', 's5'],
+            hints: {
+              partial: 'Seniors understand the problem before designing the solution.',
+              wrong: 'Think about what needs to happen before you can write good code.'
+            },
+            explanation: 'Seniors clarify first, design second, then implement. This prevents building the wrong thing.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'mindset-dd-1',
+            instruction: 'Match each behavior to whether it\'s a Junior Trap or Senior Approach:',
+            items: [
+              { id: 'b1', text: 'Ask "How do I do this?" immediately' },
+              { id: 'b2', text: 'Understand the "why" before coding' },
+              { id: 'b3', text: 'Measure progress by lines of code' },
+              { id: 'b4', text: 'Measure progress by impact delivered' },
+              { id: 'b5', text: 'Work in isolation, afraid to ask questions' },
+              { id: 'b6', text: 'Communicate early and clarify requirements' }
+            ],
+            zones: [
+              { id: 'junior', label: '🐢 Junior Trap', correct: ['b1', 'b3', 'b5'] },
+              { id: 'senior', label: '🚀 Senior Approach', correct: ['b2', 'b4', 'b6'] }
+            ],
+            explanation: 'Senior approaches focus on understanding, impact, and communication. Junior traps focus on code output and isolation.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'mindset-connect-1',
+            instruction: 'Connect each mindset to its typical outcome:',
+            nodes: [
+              { id: 'ask-how', label: '❓ Ask How First' },
+              { id: 'ask-why', label: '💡 Ask Why First' },
+              { id: 'fix-symptoms', label: '🩹 Fix Symptoms' },
+              { id: 'fix-root', label: '🎯 Fix Root Cause' },
+              { id: 'wrong-thing', label: '❌ Build Wrong Thing' },
+              { id: 'right-thing', label: '✅ Build Right Thing' }
+            ],
+            solution: {
+              edges: [
+                { source: 'ask-how', target: 'fix-symptoms' },
+                { source: 'ask-how', target: 'wrong-thing' },
+                { source: 'ask-why', target: 'fix-root' },
+                { source: 'ask-why', target: 'right-thing' }
+              ]
+            },
+            explanation: 'Asking "why" first leads to solving root causes and building the right thing. Asking "how" first often leads to fixing symptoms or building the wrong solution.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'mindset-scenario-quiz-1',
+            question: 'Your manager asks you to add a "quick fix" for a bug that\'s been reported 3 times. What\'s the senior approach?',
+            options: [
+              'Immediately fix the specific bug as fast as possible',
+              'Ask why this bug keeps occurring and if there\'s a systemic issue',
+              'Tell the manager you\'re too busy',
+              'Add error handling to hide the bug from users'
+            ],
+            correct: 1,
+            explanation: 'Seniors look for patterns. If a bug appears 3 times, there\'s likely a systemic issue. Fixing the root cause prevents future occurrences.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'mindset-seq-2',
+            instruction: 'Order these from JUNIOR mindset (top) to SENIOR mindset (bottom):',
+            items: [
+              { id: 'm1', text: 'Fix this specific bug right now' },
+              { id: 'm2', text: 'Prevent similar bugs from happening' },
+              { id: 'm3', text: 'Design systems where this bug category is impossible' }
+            ],
+            correctOrder: ['m1', 'm2', 'm3'],
+            hints: {
+              partial: 'Think about increasing levels of proactiveness.',
+              wrong: 'Junior = reactive, Senior = proactive systems design'
+            },
+            explanation: 'The progression is: reactive fixing → proactive prevention → systematic elimination. Seniors operate at the highest level.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'mindset-dd-2',
+            instruction: 'Sort these AI usage patterns into effective vs ineffective approaches:',
+            items: [
+              { id: 'ai1', text: 'Use AI to generate entire features without review' },
+              { id: 'ai2', text: 'Use AI as a thinking partner for design exploration' },
+              { id: 'ai3', text: 'Copy-paste AI code without understanding it' },
+              { id: 'ai4', text: 'Ask AI to explain unfamiliar concepts' },
+              { id: 'ai5', text: 'Let AI catch blind spots in your approach' },
+              { id: 'ai6', text: 'Skip learning because AI can do it for you' }
+            ],
+            zones: [
+              { id: 'effective', label: '✅ Effective Use', correct: ['ai2', 'ai4', 'ai5'] },
+              { id: 'ineffective', label: '❌ Ineffective Use', correct: ['ai1', 'ai3', 'ai6'] }
+            ],
+            explanation: 'Effective AI use maintains your growth while accelerating work. Ineffective use creates dependency without learning.',
+            points: 20
+          }
+        ]
+      });
+      mindsetApplication.init();
+
+      // Mindset Synthesis Carousel
+      const mindsetSynthesis = new ActivityCarousel('mindset-synthesis', {
+        type: 'synthesis',
+        sectionId: 'mindset',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'mindset-scenario-1',
+            scenario: 'You\'re a new developer on a team. A senior asks you to implement a feature. You\'re unsure about some requirements but feel embarrassed to ask "dumb questions." The deadline is in 3 days.',
+            question: 'What would a senior-minded developer do in this situation, and why?',
+            evaluation: {
+              keywords: ['ask', 'clarify', 'requirements', 'communicate', 'early', 'stakeholder', 'understand', 'before'],
+              minWords: 30,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'A senior-minded developer would immediately schedule time to clarify requirements, even if it feels uncomfortable. They know that spending 30 minutes clarifying can save 30 hours of rework. There are no "dumb questions"—only expensive assumptions.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'mindset-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Developer A: Immediately starts coding when given a task, works long hours, measures success by commits per day.\n\nDeveloper B: Spends first 20% of time understanding requirements, asks lots of questions, measures success by user impact.'
+            },
+            question: 'Which developer will likely reach senior level faster, and why?',
+            correctAnswer: 'B',
+            acceptableVariants: ['b', 'developer b', 'second', 'the second one', 'developer B'],
+            explanation: 'Developer B demonstrates senior thinking patterns: understanding before acting, asking questions, and focusing on impact. Developer A\'s approach often leads to rework and slower real progress.',
+            commonMistakes: {
+              'A': 'Working more hours doesn\'t equal faster growth. Understanding the problem first prevents wasted effort.'
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'mindset-scenario-2',
+            scenario: 'Your team keeps having the same types of bugs: null pointer exceptions throughout the codebase. Each time one appears, it gets fixed individually. This has happened 15 times in the past month.',
+            question: 'What would a senior engineer propose to address this pattern?',
+            evaluation: {
+              keywords: ['system', 'architecture', 'pattern', 'prevent', 'null', 'type', 'design', 'root cause', 'category'],
+              minWords: 35,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: 'A senior would propose a systematic solution: maybe enabling strict null checks in TypeScript, introducing Optional types, or creating coding standards with required null handling. The goal is to make this category of bugs impossible, not just fix each one.',
+            points: 25
+          },
+          {
+            type: 'reflection',
+            id: 'mindset-reflect-1',
+            prompt: 'Think about a time you jumped into coding before fully understanding the problem. What happened? What would you do differently now?',
+            thinkingPrompts: [
+              'What assumptions did you make?',
+              'How much time was spent on rework?',
+              'What questions should you have asked first?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'I (assumed|thought|believed)', label: 'Personal reflection', points: 5 },
+                { pattern: '(rework|redo|rewrite|change)', label: 'Recognized cost', points: 5 },
+                { pattern: '(should have|would now|next time)', label: 'Future application', points: 5 },
+                { pattern: '(ask|clarify|understand)', label: 'Senior mindset', points: 5 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'graph-builder',
+            id: 'mindset-graph-1',
+            instruction: 'Build a diagram showing the feedback loop of the senior mindset: Understanding → Design → Implementation → Feedback → (back to Understanding)',
+            nodeTypes: [
+              { type: 'understand', label: '🤔 Understand', color: '#66bb6a' },
+              { type: 'design', label: '📐 Design', color: '#42a5f5' },
+              { type: 'implement', label: '💻 Implement', color: '#7986cb' },
+              { type: 'feedback', label: '🔄 Feedback', color: '#ffa726' }
+            ],
+            validation: {
+              requiredNodes: ['understand', 'design', 'implement', 'feedback'],
+              requiredEdges: [
+                { from: 'understand', to: 'design' },
+                { from: 'design', to: 'implement' },
+                { from: 'implement', to: 'feedback' }
+              ],
+              optionalNodes: [],
+              minNodes: 4,
+              maxNodes: 6
+            },
+            hints: [
+              'Start with Understanding - seniors always begin here',
+              'Each phase flows into the next',
+              'The cycle repeats - feedback leads back to understanding'
+            ],
+            points: 30
+          },
+          {
+            type: 'scenario',
+            id: 'mindset-scenario-3',
+            scenario: 'You\'re in a code review. The reviewer (a senior) keeps asking "Why did you do it this way?" for every design decision. You feel defensive.',
+            question: 'How should you interpret and respond to these questions?',
+            evaluation: {
+              keywords: ['learn', 'understand', 'reasoning', 'improve', 'not attack', 'growth', 'explain', 'think'],
+              minWords: 30,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'These questions are opportunities to learn, not attacks. The senior is teaching you to articulate your reasoning—a key senior skill. They might also be revealing blind spots you missed. Respond by explaining your thinking and asking what alternatives they\'d consider.',
+            points: 25
+          }
+        ]
+      });
+      mindsetSynthesis.init();
+
+      // ============================================
+      // ACTIVITY CAROUSELS - ACCELERATION SECTION
+      // ============================================
+
+      // Acceleration Comprehension Carousel
+      const accelerationComprehension = new ActivityCarousel('acceleration-comprehension', {
+        type: 'comprehension',
+        sectionId: 'acceleration',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'accel-quiz-1',
+            question: 'How long does the traditional path from junior to senior typically take?',
+            options: [
+              '1-2 years',
+              '2-3 years',
+              '5-10 years',
+              '15+ years'
+            ],
+            correct: 2,
+            explanation: 'Traditionally, the junior to senior journey takes 5-10 years of accumulated experience. AI-assisted learning can compress this significantly.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'accel-quiz-2',
+            question: 'According to the course, how fast can AI tools accelerate learning?',
+            options: [
+              '2x faster',
+              '5x faster',
+              '10x faster',
+              '100x faster'
+            ],
+            correct: 2,
+            explanation: 'AI tools can accelerate learning by 10x, reducing boilerplate time by 80% so you can focus on what matters: systems thinking.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'accel-tf-1',
+            statement: 'With AI tools and deliberate practice, you can reach senior-level thinking in 12-24 months.',
+            correct: true,
+            explanation: 'The course claims that with the right approach and AI collaboration, you can compress the 5-10 year timeline to 12-24 months.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'accel-tf-2',
+            statement: 'AI acceleration means you can skip learning fundamentals and jump straight to senior topics.',
+            correct: false,
+            explanation: 'AI acceleration doesn\'t skip learning—it compresses it. You still need to understand fundamentals, but AI helps you learn them faster and apply them sooner.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'accel-fill-1',
+            statement: 'AI tools can reduce time spent on ___ by 80%, letting you focus on architecture.',
+            correctAnswers: ['boilerplate', 'repetitive code', 'routine code', 'tedious tasks', 'boilerplate code'],
+            caseSensitive: false,
+            hints: ['Think about the repetitive coding that doesn\'t require much thinking'],
+            explanation: 'AI handles boilerplate code quickly, freeing you to focus on design decisions and systems thinking.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'accel-fill-2',
+            statement: 'At the mid-level stage (6-12 months), developers start seeing ___ and understanding codebases faster.',
+            correctAnswers: ['patterns', 'design patterns', 'code patterns', 'recurring patterns'],
+            caseSensitive: false,
+            hints: ['What do experienced developers recognize that juniors miss?'],
+            explanation: 'Pattern recognition is a key mid-level skill. You start seeing common solutions and architectures across different codebases.',
+            points: 10
+          }
+        ]
+      });
+      accelerationComprehension.init();
+
+      // Acceleration Application Carousel
+      const accelerationApplication = new ActivityCarousel('acceleration-application', {
+        type: 'application',
+        sectionId: 'acceleration',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'accel-seq-1',
+            instruction: 'Order these milestones in the accelerated career path from earliest to latest:',
+            items: [
+              { id: 'm1', text: 'Junior: Learning syntax and basic patterns' },
+              { id: 'm2', text: 'Mid-level: Pattern recognition, faster codebase understanding' },
+              { id: 'm3', text: 'Senior: Systems design, architectural decisions' },
+              { id: 'm4', text: 'Architect: Cross-system thinking, organizational impact' }
+            ],
+            correctOrder: ['m1', 'm2', 'm3', 'm4'],
+            hints: {
+              partial: 'Think about expanding scope at each level.',
+              wrong: 'Junior → Mid → Senior → Architect'
+            },
+            explanation: 'Each level expands your scope: from code to patterns to systems to organizations.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'accel-dd-1',
+            instruction: 'Match each skill focus to the appropriate career stage:',
+            items: [
+              { id: 's1', text: 'Learning language syntax' },
+              { id: 's2', text: 'Recognizing design patterns' },
+              { id: 's3', text: 'Making architectural decisions' },
+              { id: 's4', text: 'Leading feature development' },
+              { id: 's5', text: 'Understanding basic algorithms' },
+              { id: 's6', text: 'Designing for scale and resilience' }
+            ],
+            zones: [
+              { id: 'junior', label: '👶 Junior (0-6 mo)', correct: ['s1', 's5'] },
+              { id: 'mid', label: '🧑‍💻 Mid (6-12 mo)', correct: ['s2', 's4'] },
+              { id: 'senior', label: '🏗️ Senior (12-24 mo)', correct: ['s3', 's6'] }
+            ],
+            explanation: 'Skills evolve from syntax mastery to pattern recognition to systems design.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'accel-connect-1',
+            instruction: 'Connect each AI use case to the skill it accelerates:',
+            nodes: [
+              { id: 'ai-code', label: '🤖 AI Code Gen' },
+              { id: 'ai-explain', label: '📖 AI Explanations' },
+              { id: 'ai-review', label: '🔍 AI Review' },
+              { id: 'faster-impl', label: '⚡ Faster Implementation' },
+              { id: 'deeper-learn', label: '📚 Deeper Learning' },
+              { id: 'catch-bugs', label: '🐛 Catch Issues Early' }
+            ],
+            solution: {
+              edges: [
+                { source: 'ai-code', target: 'faster-impl' },
+                { source: 'ai-explain', target: 'deeper-learn' },
+                { source: 'ai-review', target: 'catch-bugs' }
+              ]
+            },
+            explanation: 'Different AI capabilities accelerate different aspects of your growth.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'accel-quiz-apply-1',
+            question: 'A junior developer wants to learn a new framework. What\'s the AI-accelerated approach?',
+            options: [
+              'Ask AI to write all the code, copy-paste without understanding',
+              'Read documentation cover-to-cover, then start coding',
+              'Use AI to explain concepts, build small projects, ask AI to review your code',
+              'Watch 40 hours of video tutorials first'
+            ],
+            correct: 2,
+            explanation: 'The accelerated approach combines AI explanations, hands-on practice, and AI code review. This creates a tight feedback loop for rapid learning.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'accel-seq-2',
+            instruction: 'Order these activities for an effective AI-assisted learning session:',
+            items: [
+              { id: 'a1', text: 'Ask AI to explain the concept you\'re learning' },
+              { id: 'a2', text: 'Try implementing it yourself' },
+              { id: 'a3', text: 'Ask AI to review your implementation' },
+              { id: 'a4', text: 'Iterate based on feedback' },
+              { id: 'a5', text: 'Explain the concept back (rubber duck with AI)' }
+            ],
+            correctOrder: ['a1', 'a2', 'a3', 'a4', 'a5'],
+            hints: {
+              partial: 'Learn → Practice → Review → Iterate → Solidify',
+              wrong: 'Start with understanding, end with teaching'
+            },
+            explanation: 'Effective learning follows: understand → practice → feedback → iterate → solidify through teaching.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'accel-dd-2',
+            instruction: 'Categorize these activities by their impact on growth acceleration:',
+            items: [
+              { id: 'h1', text: 'Building real projects with AI assistance' },
+              { id: 'h2', text: 'Memorizing syntax without practice' },
+              { id: 'h3', text: 'Asking AI to explain errors you encounter' },
+              { id: 'l1', text: 'Watching tutorials passively' },
+              { id: 'h4', text: 'Code review with AI feedback' },
+              { id: 'l2', text: 'Only reading without coding' }
+            ],
+            zones: [
+              { id: 'high', label: '🚀 High Impact', correct: ['h1', 'h3', 'h4'] },
+              { id: 'low', label: '🐌 Low Impact', correct: ['h2', 'l1', 'l2'] }
+            ],
+            explanation: 'Active practice with feedback accelerates growth. Passive consumption without application doesn\'t stick.',
+            points: 20
+          }
+        ]
+      });
+      accelerationApplication.init();
+
+      // Acceleration Synthesis Carousel
+      const accelerationSynthesis = new ActivityCarousel('acceleration-synthesis', {
+        type: 'synthesis',
+        sectionId: 'acceleration',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'accel-scenario-1',
+            scenario: 'You\'ve been a developer for 6 months. Your friend who started at the same time still struggles with basic tasks, while you\'re already handling complex features. You both have access to AI tools.',
+            question: 'What differences in approach likely caused this gap?',
+            evaluation: {
+              keywords: ['practice', 'deliberate', 'understand', 'feedback', 'review', 'ask', 'learn', 'active', 'not just generate'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'The difference is likely in HOW AI is used. You probably used AI to understand concepts, reviewed its explanations, practiced implementing yourself, and used AI review for feedback. Your friend might just copy-paste AI output without understanding.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'accel-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Two developers start learning React:\n\nDev A: Spends 2 hours reading docs, then asks AI to build a complete app, ships it.\n\nDev B: Spends 30 min with AI explaining core concepts, builds a small component, asks AI to review it, iterates 5 times.'
+            },
+            question: 'After one month of this pattern, who will be more capable at React development?',
+            correctAnswer: 'B',
+            acceptableVariants: ['b', 'dev b', 'developer b', 'second one', 'the second'],
+            explanation: 'Dev B\'s tight feedback loops build real understanding. Dev A ships fast but learns slow—they\'ll struggle to debug or modify their AI-generated code.',
+            commonMistakes: {
+              'A': 'Shipping fast isn\'t learning fast. Without understanding, Dev A can\'t troubleshoot or extend their code.'
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'accel-scenario-2',
+            scenario: 'Your company gives everyone access to AI coding tools. Some developers 2x their output immediately, while others show no improvement. Management is confused.',
+            question: 'What explains this difference, and what would you recommend?',
+            evaluation: {
+              keywords: ['mindset', 'how they use', 'thinking partner', 'understand', 'review', 'training', 'workflow'],
+              minWords: 45,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: 'The difference is in usage patterns. High performers use AI as a thinking partner, maintaining understanding while accelerating output. Low performers might not know how to prompt effectively or might distrust the tools. Recommend training on AI collaboration patterns.',
+            points: 25
+          },
+          {
+            type: 'reflection',
+            id: 'accel-reflect-1',
+            prompt: 'Think about how you currently use AI tools. Are you closer to "code generator" usage or "thinking partner" usage? What\'s one change you could make this week to accelerate your learning?',
+            thinkingPrompts: [
+              'When do you use AI? For what tasks?',
+              'Do you understand the code AI generates?',
+              'How often do you ask AI to explain things?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: 'I (use|tend to|usually)', label: 'Self-awareness', points: 5 },
+                { pattern: '(could|should|will try|want to)', label: 'Growth intent', points: 5 },
+                { pattern: '(explain|understand|learn)', label: 'Learning focus', points: 5 },
+                { pattern: '(review|feedback|check)', label: 'Feedback seeking', points: 5 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'graph-builder',
+            id: 'accel-graph-1',
+            instruction: 'Build the AI-accelerated learning loop: Learn from AI → Practice → Get AI Review → Improve → (cycle back)',
+            nodeTypes: [
+              { type: 'learn', label: '📖 Learn', color: '#42a5f5' },
+              { type: 'practice', label: '💪 Practice', color: '#66bb6a' },
+              { type: 'review', label: '🔍 Review', color: '#ffa726' },
+              { type: 'improve', label: '📈 Improve', color: '#7986cb' }
+            ],
+            validation: {
+              requiredNodes: ['learn', 'practice', 'review', 'improve'],
+              requiredEdges: [
+                { from: 'learn', to: 'practice' },
+                { from: 'practice', to: 'review' },
+                { from: 'review', to: 'improve' }
+              ],
+              optionalNodes: [],
+              minNodes: 4,
+              maxNodes: 5
+            },
+            hints: [
+              'This is a continuous cycle, not a one-time process',
+              'Each step feeds into the next',
+              'The loop should close—improvement leads back to learning'
+            ],
+            points: 30
+          },
+          {
+            type: 'scenario',
+            id: 'accel-scenario-3',
+            scenario: 'A bootcamp grad asks you for advice: "I\'ve been applying for jobs for 3 months with no luck. I can build apps with AI help but freeze in technical interviews when asked to explain my code."',
+            question: 'What\'s their likely problem and how would you advise them to change their approach?',
+            evaluation: {
+              keywords: ['understand', 'not just generate', 'explain', 'learn', 'fundamentals', 'practice', 'without AI', 'concepts'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'They\'ve used AI as a code generator without building understanding. Advise: 1) Ask AI to explain concepts, not just generate code. 2) Practice implementing without AI sometimes. 3) Can they explain AI code line-by-line? If not, study it until they can.',
+            points: 25
+          }
+        ]
+      });
+      accelerationSynthesis.init();
+
+      // ============================================
+      // ACTIVITY CAROUSELS - SKILLS SECTION
+      // ============================================
+
+      // Skills Comprehension Carousel
+      const skillsComprehension = new ActivityCarousel('skills-comprehension', {
+        type: 'comprehension',
+        sectionId: 'skills',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'skills-quiz-1',
+            question: 'According to the lesson, what\'s the most important insight about senior-level skills?',
+            options: [
+              'They require knowing more programming languages',
+              'They\'re mostly about writing more code faster',
+              'They\'re about HOW you think, not how much code you write',
+              'They require expensive certifications'
+            ],
+            correct: 2,
+            explanation: 'The skills that accelerate growth are thinking skills: codebase navigation, data flow tracing, design-first thinking, and AI collaboration.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'skills-quiz-2',
+            question: 'Which chapter focuses on understanding large codebases quickly?',
+            options: [
+              'Chapter 0: The Acceleration Point',
+              'Chapter 1: Codebase Mastery',
+              'Chapter 2: Data Flow Tracing',
+              'Chapter 4: Design First'
+            ],
+            correct: 1,
+            explanation: 'Chapter 1 covers Codebase Navigation—the ability to jump into any codebase and understand it in hours, not weeks.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'skills-tf-1',
+            statement: 'Senior engineers can understand million-line codebases in hours, not weeks.',
+            correct: true,
+            explanation: 'This is a key senior skill. They use patterns, architecture understanding, and navigation techniques to quickly find what they need.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'skills-tf-2',
+            statement: 'Design-first thinking is only important for large projects, not small features.',
+            correct: false,
+            explanation: 'Even small features benefit from design thinking. 30 minutes of design can save hours of rework on any size task.',
+            requireReasoning: true,
+            minReasoningWords: 8,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'skills-fill-1',
+            statement: 'Taking 30 minutes to ___ can save 30 hours of rework.',
+            correctAnswers: ['design', 'plan', 'think', 'architect'],
+            caseSensitive: false,
+            hints: ['What should you do before coding?'],
+            explanation: 'Design-first thinking prevents expensive mistakes. A small time investment in planning yields massive returns.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'skills-fill-2',
+            statement: 'Data flow tracing asks: Where does data come from? Where does it go? What ___ it along the way?',
+            correctAnswers: ['transforms', 'changes', 'modifies', 'processes'],
+            caseSensitive: false,
+            hints: ['Data rarely stays the same as it moves through a system'],
+            explanation: 'Understanding data transformations is key to debugging and designing systems.',
+            points: 10
+          }
+        ]
+      });
+      skillsComprehension.init();
+
+      // Skills Application Carousel
+      const skillsApplication = new ActivityCarousel('skills-application', {
+        type: 'application',
+        sectionId: 'skills',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'skills-dd-1',
+            instruction: 'Match each skill to the chapter where it\'s covered:',
+            items: [
+              { id: 'codebase', text: 'Codebase Navigation' },
+              { id: 'dataflow', text: 'Data Flow Tracing' },
+              { id: 'design', text: 'Design First Thinking' },
+              { id: 'ai', text: 'AI Collaboration' }
+            ],
+            zones: [
+              { id: 'ch1', label: '📗 Chapter 1', correct: ['codebase'] },
+              { id: 'ch2', label: '📘 Chapter 2', correct: ['dataflow'] },
+              { id: 'ch4', label: '📙 Chapter 4', correct: ['design'] },
+              { id: 'all', label: '📚 Throughout Course', correct: ['ai'] }
+            ],
+            explanation: 'Each chapter focuses on a key skill, while AI collaboration is woven throughout.',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'skills-connect-1',
+            instruction: 'Connect each skill to the problem it solves:',
+            nodes: [
+              { id: 'nav', label: '🗺️ Codebase Navigation' },
+              { id: 'flow', label: '⚡ Data Flow Tracing' },
+              { id: 'design', label: '📐 Design First' },
+              { id: 'lost', label: '😵 Getting lost in large codebases' },
+              { id: 'bug', label: '🐛 Mysterious data bugs' },
+              { id: 'rework', label: '🔄 Excessive rework' }
+            ],
+            solution: {
+              edges: [
+                { source: 'nav', target: 'lost' },
+                { source: 'flow', target: 'bug' },
+                { source: 'design', target: 'rework' }
+              ]
+            },
+            explanation: 'Each skill directly addresses a common junior developer struggle.',
+            points: 25
+          },
+          {
+            type: 'sequence',
+            id: 'skills-seq-1',
+            instruction: 'When debugging a data issue, put these steps in the optimal order:',
+            items: [
+              { id: 'd1', text: 'Identify where the data originates (source)' },
+              { id: 'd2', text: 'Trace each transformation the data undergoes' },
+              { id: 'd3', text: 'Find where the data reaches its destination (sink)' },
+              { id: 'd4', text: 'Identify where the data becomes incorrect' }
+            ],
+            correctOrder: ['d1', 'd2', 'd4', 'd3'],
+            hints: {
+              partial: 'Start at the source, end at finding the bug.',
+              wrong: 'Follow the data from beginning to end, noting where it goes wrong.'
+            },
+            explanation: 'Data flow debugging follows the data from source through transformations to find where it becomes incorrect.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'skills-quiz-apply-1',
+            question: 'You\'re joining a new team with a 500,000 line codebase. What\'s the senior approach to getting productive quickly?',
+            options: [
+              'Read every file from top to bottom',
+              'Wait for someone to explain everything to you',
+              'Identify entry points, trace key flows, map architecture',
+              'Only look at files assigned to your first task'
+            ],
+            correct: 2,
+            explanation: 'Seniors use strategic navigation: find entry points (APIs, main functions), trace key user flows, and map the high-level architecture.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'skills-dd-2',
+            instruction: 'Categorize these approaches to understanding code:',
+            items: [
+              { id: 'a1', text: 'Find the entry point and trace from there' },
+              { id: 'a2', text: 'Read files alphabetically' },
+              { id: 'a3', text: 'Ask AI to explain the architecture' },
+              { id: 'a4', text: 'Wait until you need to change something' },
+              { id: 'a5', text: 'Map data flows through the system' },
+              { id: 'a6', text: 'Memorize every file name' }
+            ],
+            zones: [
+              { id: 'effective', label: '✅ Effective Strategies', correct: ['a1', 'a3', 'a5'] },
+              { id: 'ineffective', label: '❌ Ineffective Strategies', correct: ['a2', 'a4', 'a6'] }
+            ],
+            explanation: 'Effective strategies are purposeful and trace flows. Ineffective strategies are passive or arbitrary.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'skills-seq-2',
+            instruction: 'Order these design-first steps for adding a new feature:',
+            items: [
+              { id: 'f1', text: 'Clarify what the feature should accomplish' },
+              { id: 'f2', text: 'Identify which existing systems it will touch' },
+              { id: 'f3', text: 'Sketch the data flow for the new feature' },
+              { id: 'f4', text: 'Consider edge cases and error handling' },
+              { id: 'f5', text: 'Write the implementation code' }
+            ],
+            correctOrder: ['f1', 'f2', 'f3', 'f4', 'f5'],
+            hints: {
+              partial: 'Implementation comes last, after thorough planning.',
+              wrong: 'Start with understanding, end with code.'
+            },
+            explanation: 'Design-first means: understand → scope → design → handle edges → implement.',
+            points: 20
+          }
+        ]
+      });
+      skillsApplication.init();
+
+      // Skills Synthesis Carousel
+      const skillsSynthesis = new ActivityCarousel('skills-synthesis', {
+        type: 'synthesis',
+        sectionId: 'skills',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'skills-scenario-1',
+            scenario: 'You join a new company and are assigned your first bug fix. The bug is in a codebase you\'ve never seen before. Your senior colleague fixes similar bugs in 2 hours, but it takes you 2 days.',
+            question: 'What skills from this chapter would help you close this gap?',
+            evaluation: {
+              keywords: ['navigation', 'codebase', 'trace', 'data flow', 'entry point', 'architecture', 'patterns', 'AI'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Codebase navigation skills would help most. The senior likely quickly finds entry points, traces the relevant data flow, and understands the architecture. They might also use AI to explain unfamiliar patterns. Practice these skills to close the gap.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'skills-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Two juniors approach the same debugging task:\n\nJunior A: Starts changing code randomly, hoping to fix the bug.\n\nJunior B: First traces the data flow to find where it breaks, then makes targeted changes.'
+            },
+            question: 'Who will likely fix the bug faster and with fewer side effects?',
+            correctAnswer: 'B',
+            acceptableVariants: ['b', 'junior b', 'the second', 'second one'],
+            explanation: 'Junior B\'s systematic approach (data flow tracing) leads to targeted fixes. Junior A\'s random changes might create new bugs and take much longer.',
+            commonMistakes: {
+              'A': 'Random changes rarely fix bugs—they usually create new ones. Systematic tracing is much more efficient.'
+            },
+            points: 15
+          },
+          {
+            type: 'scenario',
+            id: 'skills-scenario-2',
+            scenario: 'You spend 3 days implementing a feature, then discover during code review that your approach won\'t scale and needs to be completely rewritten.',
+            question: 'Which skill from this chapter could have prevented this? How would you apply it?',
+            evaluation: {
+              keywords: ['design', 'plan', 'before', 'first', 'architecture', 'scale', 'review', 'discuss', 'upfront'],
+              minWords: 40,
+              pointsPerKeyword: 4,
+              depthBonus: 10
+            },
+            modelAnswer: 'Design-first thinking. Before coding, you should have discussed the approach, considered scale requirements, and maybe sketched the architecture. A 30-minute design review with the team could have saved 3 days.',
+            points: 25
+          },
+          {
+            type: 'reflection',
+            id: 'skills-reflect-1',
+            prompt: 'Which of the four skills (Codebase Navigation, Data Flow Tracing, Design First, AI Collaboration) is currently your weakest? What specific step will you take this week to improve it?',
+            thinkingPrompts: [
+              'Where do you struggle most in your daily work?',
+              'What would improve your productivity the most?',
+              'What specific practice could you start today?'
+            ],
+            evaluation: {
+              minWords: 50,
+              depthIndicators: [
+                { pattern: '(weakest|struggle|need to improve)', label: 'Self-awareness', points: 5 },
+                { pattern: '(will|plan to|going to|start)', label: 'Commitment', points: 5 },
+                { pattern: '(this week|today|tomorrow|daily)', label: 'Specific timeline', points: 5 },
+                { pattern: '(practice|try|work on)', label: 'Action-oriented', points: 5 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'graph-builder',
+            id: 'skills-graph-1',
+            instruction: 'Build a diagram showing how the four critical skills connect: Codebase Nav → Data Flow → Design → AI Collaboration (which enhances all)',
+            nodeTypes: [
+              { type: 'codebase', label: '🗺️ Codebase Nav', color: '#66bb6a' },
+              { type: 'dataflow', label: '⚡ Data Flow', color: '#ffa726' },
+              { type: 'design', label: '📐 Design First', color: '#42a5f5' },
+              { type: 'ai', label: '🤖 AI Collab', color: '#7986cb' }
+            ],
+            validation: {
+              requiredNodes: ['codebase', 'dataflow', 'design', 'ai'],
+              requiredEdges: [
+                { from: 'codebase', to: 'dataflow' },
+                { from: 'dataflow', to: 'design' }
+              ],
+              optionalNodes: [],
+              minNodes: 4,
+              maxNodes: 5
+            },
+            hints: [
+              'Understanding the codebase enables tracing data flow',
+              'Data flow understanding informs design decisions',
+              'AI enhances all the other skills'
+            ],
+            points: 30
+          },
+          {
+            type: 'scenario',
+            id: 'skills-scenario-3',
+            scenario: 'Your team is debugging a production issue where user data occasionally disappears. Everyone is looking at different parts of the system randomly.',
+            question: 'How would you apply data flow tracing to systematically find the bug?',
+            evaluation: {
+              keywords: ['trace', 'source', 'destination', 'transform', 'where', 'flow', 'systematic', 'step by step'],
+              minWords: 45,
+              pointsPerKeyword: 4,
+              depthBonus: 12
+            },
+            modelAnswer: 'Apply systematic data flow tracing: 1) Identify where user data enters the system, 2) Map each transformation and storage point, 3) Find where data should flow vs where it actually flows, 4) Look for conditional paths where data might get dropped. This beats random searching.',
+            points: 25
+          }
+        ]
+      });
+      skillsSynthesis.init();
+
+      console.log('🎠 All activity carousels initialized for Junior Ch0: Origins');
     });
   </script>
 </body>
