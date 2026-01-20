@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="apprentice" data-lesson="ch1-stone">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Variables -->
+      <div class="activity-carousels" data-story="variables-story">
+        <div id="variables-comprehension" class="carousel-container"></div>
+        <div id="variables-application" class="carousel-container"></div>
+        <div id="variables-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Data Types -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Data Types -->
+      <div class="activity-carousels" data-story="datatypes-story">
+        <div id="datatypes-comprehension" class="carousel-container"></div>
+        <div id="datatypes-application" class="carousel-container"></div>
+        <div id="datatypes-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Input/Output -->
+      <div class="activity-carousels" data-story="input-output-story">
+        <div id="input-output-comprehension" class="carousel-container"></div>
+        <div id="input-output-application" class="carousel-container"></div>
+        <div id="input-output-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -449,6 +485,990 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS
+      // ============================================
+
+      // ----------------------------------------
+      // STORY 1: VARIABLES - Activity Carousels
+      // ----------------------------------------
+
+      // Comprehension Carousel - Variables
+      const variables_Comprehension = new ActivityCarousel('variables-comprehension', {
+        type: 'comprehension',
+        sectionId: 'variables',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'var-quiz-what-is-variable',
+            question: 'What is the best analogy for a variable in Python?',
+            options: [
+              'A calculator that does math',
+              'A labeled box that stores a value',
+              'A keyboard that types letters',
+              'A screen that displays output'
+            ],
+            correct: 1,
+            explanation: 'A variable is like a labeled box—you put something inside (the value), give it a name (the label), and can retrieve it later. The computer remembers what\'s in each box!',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'var-quiz-equals-sign',
+            question: 'In Python, what does the = sign do?',
+            options: [
+              'Checks if two things are equal',
+              'Assigns a value to a variable (puts something in the box)',
+              'Adds two numbers together',
+              'Creates a new function'
+            ],
+            correct: 1,
+            explanation: 'The single = is the assignment operator. It takes the value on the right and puts it INTO the variable on the left. score = 100 means "put 100 into the box labeled score".',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'var-tf-change-value',
+            statement: 'Once you create a variable with a value, that value can never be changed.',
+            correct: false,
+            explanation: 'Variables can be changed! That\'s why they\'re called "variables"—their values can vary. You can write score = 100 and later score = 200 to update it.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'var-tf-case-sensitive',
+            statement: 'In Python, "Name" and "name" are the same variable.',
+            correct: false,
+            explanation: 'Python is case-sensitive! "Name", "name", and "NAME" are three completely different variables. This is a common source of bugs for beginners.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'var-fill-syntax',
+            statement: 'To create a variable in Python, write the ___ first, then an equals sign, then the value.',
+            correctAnswers: ['variable name', 'name', 'variable', 'identifier'],
+            caseSensitive: false,
+            hints: ['What goes on the left side of the = sign?'],
+            explanation: 'Python syntax: variable_name = value. The name comes first (left of =), then the value (right of =). Example: player_score = 0',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'var-fill-memory',
+            statement: 'Variables give computers the ability to ___ information while a program runs.',
+            correctAnswers: ['remember', 'store', 'save', 'keep', 'hold'],
+            caseSensitive: false,
+            hints: ['What do variables help computers do with data?'],
+            explanation: 'Variables are computer memory! Without them, a program would forget everything immediately. Variables let you store information and use it later.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'var-quiz-valid-name',
+            question: 'Which of these is a valid Python variable name?',
+            options: [
+              '2players',
+              'player-score',
+              'player_score',
+              'class'
+            ],
+            correct: 2,
+            explanation: 'Variable names must start with a letter or underscore, contain only letters, numbers, and underscores, and not be Python keywords. "player_score" follows all rules!',
+            points: 10
+          }
+        ]
+      });
+      variables_Comprehension.init();
+
+      // Application Carousel - Variables
+      const variables_Application = new ActivityCarousel('variables-application', {
+        type: 'application',
+        sectionId: 'variables',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'var-seq-variable-creation',
+            instruction: 'Put these steps in order to explain how Python creates a variable:',
+            items: [
+              { id: 'write', text: 'You write: player_name = "Alex"' },
+              { id: 'reserve', text: 'Python reserves space in memory' },
+              { id: 'store', text: 'The value "Alex" is stored in memory' },
+              { id: 'label', text: 'The name "player_name" points to that memory location' }
+            ],
+            correctOrder: ['write', 'reserve', 'store', 'label'],
+            hints: {
+              partial: 'First you write the code, then Python does the work...',
+              wrong: 'Think about what happens first—you write the code!'
+            },
+            explanation: 'When you assign a variable: 1) You write the code, 2) Python finds memory space, 3) Stores the value, 4) Links the name to that location.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'var-dd-syntax-parts',
+            instruction: 'Match each part of the assignment: score = 100',
+            items: [
+              { id: 'item-name', text: 'The variable name (label)' },
+              { id: 'item-operator', text: 'The assignment operator' },
+              { id: 'item-value', text: 'The value being stored' }
+            ],
+            zones: [
+              { id: 'zone-score', label: 'score', correct: 'item-name' },
+              { id: 'zone-equals', label: '=', correct: 'item-operator' },
+              { id: 'zone-100', label: '100', correct: 'item-value' }
+            ],
+            explanation: '"score" is the name (what we call the box), "=" means "put into", "100" is the value we\'re storing.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'var-quiz-output-prediction',
+            question: 'What will this code print?\n\nx = 5\ny = x\nx = 10\nprint(y)',
+            options: [
+              '5',
+              '10',
+              '15',
+              'Error'
+            ],
+            correct: 0,
+            explanation: 'When y = x runs, y gets the VALUE 5 (a copy), not a link to x. Changing x later doesn\'t affect y. So y stays 5!',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'var-connect-memory-flow',
+            instruction: 'Connect to show how variable assignment flows:',
+            nodes: [
+              { id: 'code', label: '✍️ Code' },
+              { id: 'python', label: '🐍 Python' },
+              { id: 'memory', label: '💾 Memory' },
+              { id: 'name', label: '📛 Name' }
+            ],
+            solution: {
+              edges: [
+                { source: 'code', target: 'python' },
+                { source: 'python', target: 'memory' },
+                { source: 'name', target: 'memory' }
+              ]
+            },
+            nodeDescriptions: {
+              'code': 'What you write: x = 5',
+              'python': 'Python interprets your code',
+              'memory': 'Where the value is stored',
+              'name': 'The variable name points to memory'
+            },
+            explanation: 'You write code → Python processes it → allocates memory for the value → links the variable name to that memory location.',
+            points: 25
+          },
+          {
+            type: 'sequence',
+            id: 'var-seq-reassignment',
+            instruction: 'A variable score starts at 0, gains 10 points, then loses 3. Order the code:',
+            items: [
+              { id: 'init', text: 'score = 0' },
+              { id: 'add', text: 'score = score + 10' },
+              { id: 'sub', text: 'score = score - 3' },
+              { id: 'show', text: 'print(score)  # Shows 7' }
+            ],
+            correctOrder: ['init', 'add', 'sub', 'show'],
+            hints: {
+              partial: 'Start by creating the variable, then modify it...',
+              wrong: 'You must create a variable before you can use it!'
+            },
+            explanation: 'Variables can be updated by reassigning them. score = score + 10 means "take current score, add 10, store back in score".',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'var-quiz-naming-convention',
+            question: 'You\'re creating a variable to store a user\'s email address. Which name follows Python conventions?',
+            options: [
+              'userEmailAddress',
+              'user_email_address',
+              'UserEmailAddress',
+              'useremailaddress'
+            ],
+            correct: 1,
+            explanation: 'Python convention is snake_case: lowercase words separated by underscores. user_email_address is readable and follows Python style.',
+            points: 15
+          }
+        ]
+      });
+      variables_Application.init();
+
+      // Synthesis Carousel - Variables
+      const variables_Synthesis = new ActivityCarousel('variables-synthesis', {
+        type: 'synthesis',
+        sectionId: 'variables',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'var-scenario-code-review',
+            scenario: 'You\'re reviewing a teammate\'s code and see this:\n\nx = 42\ny = "hello"\nz = x + y',
+            question: 'What problem will this code have? How would you explain this to your teammate?',
+            evaluation: {
+              keywords: ['type', 'error', 'string', 'integer', 'number', 'add', 'cannot', 'different', 'mismatch'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'This code will cause a TypeError! You can\'t add an integer (42) and a string ("hello") together. Python doesn\'t know what 42 + "hello" should produce. To fix it, either convert both to strings for concatenation (str(x) + y) or make sure both are numbers for math.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'var-predict-swap',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'a = "first"\nb = "second"\na = b\nb = a\nprint(a, b)'
+            },
+            question: 'What will this code print?',
+            correctAnswer: 'second second',
+            acceptableVariants: ['second second', 'second, second', '"second" "second"'],
+            explanation: 'Tricky! After a = b, both a and b point to "second". Then b = a just keeps b as "second". To swap properly, you need a temporary variable: temp = a, a = b, b = temp.',
+            commonMistakes: {
+              'first second': 'By the time b = a runs, a has already changed to "second"!',
+              'second first': 'Close thinking, but trace through step by step.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'var-reflect-naming',
+            prompt: 'Professional developers say "code is read more often than it\'s written." How does this change how you think about naming variables? What makes a variable name good or bad?',
+            thinkingPrompts: [
+              'What if you read this code 6 months from now?',
+              'What if a teammate needs to understand your code?',
+              'Single letters like x vs descriptive names like user_count?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(readable|read|understand|clear)', label: 'Readability focus', points: 5 },
+                { pattern: '(descriptive|meaningful|explain)', label: 'Descriptiveness', points: 5 },
+                { pattern: '(team|other|colleague|future)', label: 'Collaboration mindset', points: 4 },
+                { pattern: '(x|y|temp|single letter)', label: 'Concrete examples', points: 4 },
+                { pattern: '(because|since|so that)', label: 'Reasoning', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'var-scenario-debug',
+            scenario: 'A student\'s program crashes with "NameError: name \'playerscore\' is not defined" but they swear they created the variable earlier with: player_score = 100',
+            question: 'What\'s the bug and how would you help them understand what went wrong?',
+            evaluation: {
+              keywords: ['underscore', 'spelling', 'case', 'typo', 'name', 'different', 'player_score', 'playerscore'],
+              minWords: 20,
+              pointsPerKeyword: 4,
+              depthBonus: 8
+            },
+            modelAnswer: 'The bug is a typo! They created player_score (with underscore) but tried to use playerscore (no underscore). Python sees these as completely different variable names. Variable names must match exactly, including underscores and capitalization.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'var-predict-multiple-assignment',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'x = y = z = 0\nx = 1\ny = 2\nprint(x, y, z)'
+            },
+            question: 'What will this print?',
+            correctAnswer: '1 2 0',
+            acceptableVariants: ['1 2 0', '1, 2, 0', '(1, 2, 0)'],
+            explanation: 'x = y = z = 0 gives all three the value 0. But integers are immutable—when you change x to 1, it doesn\'t affect y or z. Each reassignment is independent.',
+            commonMistakes: {
+              '1 2 1': 'Integers aren\'t linked—changing x doesn\'t change z.',
+              '0 0 0': 'The reassignments x = 1 and y = 2 do change those variables.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'var-quiz-synthesis',
+            question: 'Why is it important to understand that a variable is just a NAME pointing to a VALUE, not the value itself?',
+            options: [
+              'It helps you type faster',
+              'It explains why you can reassign variables and why multiple variables can point to the same value',
+              'It makes programs run faster',
+              'It\'s just technical trivia, not useful in practice'
+            ],
+            correct: 1,
+            explanation: 'Understanding the name→value relationship explains reassignment, aliasing (two names, same value), and memory. This mental model prevents many bugs!',
+            points: 15
+          }
+        ]
+      });
+      variables_Synthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: DATA TYPES - Activity Carousels
+      // ----------------------------------------
+
+      // Comprehension Carousel - Data Types
+      const datatypes_Comprehension = new ActivityCarousel('datatypes-comprehension', {
+        type: 'comprehension',
+        sectionId: 'datatypes',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'dt-quiz-string-def',
+            question: 'What is a string in Python?',
+            options: [
+              'A sequence of text characters enclosed in quotes',
+              'A piece of rope in a program',
+              'A type of number',
+              'A list of items'
+            ],
+            correct: 0,
+            explanation: 'A string is text—a sequence of characters wrapped in quotes. "Hello" or \'World\' are both strings. The quotes tell Python to treat it as text, not code.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dt-quiz-int-vs-float',
+            question: 'What\'s the difference between an int and a float?',
+            options: [
+              'int is for text, float is for numbers',
+              'int is for whole numbers, float is for decimals',
+              'int is positive, float is negative',
+              'There is no difference'
+            ],
+            correct: 1,
+            explanation: 'int (integer) stores whole numbers like 42, -7, 0. float stores decimal numbers like 3.14, -0.5, 100.0. The decimal point makes it a float!',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'dt-tf-quotes-matter',
+            statement: 'In Python, "42" and 42 are exactly the same thing.',
+            correct: false,
+            explanation: '"42" is a STRING (two characters: 4 and 2). 42 is an INTEGER (a number). You can do math with 42, but "42" is just text that happens to look like a number.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'dt-tf-bool-values',
+            statement: 'Booleans in Python can only be True or False (exactly those words, capitalized).',
+            correct: true,
+            explanation: 'Python booleans are exactly True and False (capital T and F). Not "true", not 1/0, not yes/no—only True and False are boolean values.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'dt-fill-string-quotes',
+            statement: 'To create a string in Python, wrap text in ___ marks.',
+            correctAnswers: ['quote', 'quotes', 'quotation', 'quotation marks', '"', '\''],
+            caseSensitive: false,
+            hints: ['What surrounds text to make it a string?'],
+            explanation: 'Strings are wrapped in quotes—either single (\') or double ("). "Hello" and \'Hello\' are both valid strings.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'dt-fill-bool-purpose',
+            statement: 'Booleans (True/False) are useful for representing ___ or no questions.',
+            correctAnswers: ['yes', 'true', 'on', 'binary'],
+            caseSensitive: false,
+            hints: ['Boolean answers are like yes/___ answers'],
+            explanation: 'Booleans represent yes/no, true/false, on/off states. Is the user logged in? True or False. Is the game over? True or False.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'dt-quiz-type-function',
+            question: 'If you run type(3.14), what will Python return?',
+            options: [
+              '<class \'str\'>',
+              '<class \'int\'>',
+              '<class \'float\'>',
+              '<class \'bool\'>'
+            ],
+            correct: 2,
+            explanation: '3.14 has a decimal point, making it a float. The type() function tells you what kind of data you\'re working with—very useful for debugging!',
+            points: 10
+          }
+        ]
+      });
+      datatypes_Comprehension.init();
+
+      // Application Carousel - Data Types
+      const datatypes_Application = new ActivityCarousel('datatypes-application', {
+        type: 'application',
+        sectionId: 'datatypes',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'dt-dd-values-to-types',
+            instruction: 'Match each value to its correct data type:',
+            items: [
+              { id: 'val-hello', text: '"Hello World"' },
+              { id: 'val-42', text: '42' },
+              { id: 'val-pi', text: '3.14159' },
+              { id: 'val-true', text: 'True' }
+            ],
+            zones: [
+              { id: 'type-str', label: 'str (string)', correct: 'val-hello' },
+              { id: 'type-int', label: 'int (integer)', correct: 'val-42' },
+              { id: 'type-float', label: 'float', correct: 'val-pi' },
+              { id: 'type-bool', label: 'bool (boolean)', correct: 'val-true' }
+            ],
+            explanation: '"Hello World" is text (string), 42 is a whole number (int), 3.14159 has a decimal (float), True is a boolean.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'dt-seq-convert-string-to-int',
+            instruction: 'You received "25" from user input and need to add 5 to it. Order the steps:',
+            items: [
+              { id: 'input', text: 'age_text = "25"  # From input()' },
+              { id: 'convert', text: 'age_number = int(age_text)' },
+              { id: 'add', text: 'next_year = age_number + 5' },
+              { id: 'print', text: 'print(next_year)  # Shows 30' }
+            ],
+            correctOrder: ['input', 'convert', 'add', 'print'],
+            hints: {
+              partial: 'You need to convert before you can do math!',
+              wrong: 'Start with the text, convert it, then do math.'
+            },
+            explanation: 'Strings can\'t do math! Convert "25" to integer 25 with int(), then you can add 5 to get 30.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'dt-quiz-addition-types',
+            question: 'What happens if you run: "Hello" + "World"?',
+            options: [
+              'Error - can\'t add strings',
+              'HelloWorld (concatenation)',
+              'Hello World (with space)',
+              'The sum of their ASCII values'
+            ],
+            correct: 1,
+            explanation: 'The + operator with strings does concatenation—joining them together. "Hello" + "World" = "HelloWorld". For a space, use "Hello " + "World".',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'dt-connect-conversions',
+            instruction: 'Connect to show which conversions are valid:',
+            nodes: [
+              { id: 'str-42', label: '"42"' },
+              { id: 'int-42', label: '42' },
+              { id: 'float-42', label: '42.0' },
+              { id: 'str-hello', label: '"hello"' }
+            ],
+            solution: {
+              edges: [
+                { source: 'str-42', target: 'int-42' },
+                { source: 'str-42', target: 'float-42' },
+                { source: 'int-42', target: 'float-42' },
+                { source: 'int-42', target: 'str-42' }
+              ]
+            },
+            nodeDescriptions: {
+              'str-42': 'String "42" - can convert to number',
+              'int-42': 'Integer 42',
+              'float-42': 'Float 42.0',
+              'str-hello': 'String "hello" - cannot become a number'
+            },
+            explanation: '"42" can become 42 or 42.0. 42 can become 42.0. But "hello" cannot become a number—what number would it be?',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'dt-quiz-bool-context',
+            question: 'In Python, which value is considered False in a boolean context?',
+            options: [
+              '"False" (the string)',
+              '0 (the number)',
+              'Both are False',
+              'Neither is False'
+            ],
+            correct: 1,
+            explanation: '0 is "falsy" in Python—it acts like False in conditions. But "False" (the string) is "truthy" because it\'s a non-empty string! Only empty string "" is falsy.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'dt-dd-operations',
+            instruction: 'Match each operation to what it does:',
+            items: [
+              { id: 'op-concat', text: 'Joins text together' },
+              { id: 'op-add', text: 'Adds numbers mathematically' },
+              { id: 'op-convert', text: 'Turns text into a number' },
+              { id: 'op-type', text: 'Shows what kind of data you have' }
+            ],
+            zones: [
+              { id: 'func-plus-str', label: '"a" + "b"', correct: 'op-concat' },
+              { id: 'func-plus-num', label: '1 + 2', correct: 'op-add' },
+              { id: 'func-int', label: 'int("5")', correct: 'op-convert' },
+              { id: 'func-type', label: 'type(x)', correct: 'op-type' }
+            ],
+            explanation: '+ means different things for strings vs numbers. int() converts, type() inspects. Context matters!',
+            points: 20
+          }
+        ]
+      });
+      datatypes_Application.init();
+
+      // Synthesis Carousel - Data Types
+      const datatypes_Synthesis = new ActivityCarousel('datatypes-synthesis', {
+        type: 'synthesis',
+        sectionId: 'datatypes',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'dt-scenario-type-error',
+            scenario: 'A user enters their age as "25" and your program calculates: birth_year = 2024 - age. The program crashes with "TypeError: unsupported operand type(s) for -: \'int\' and \'str\'"',
+            question: 'Explain what happened and how to fix it.',
+            evaluation: {
+              keywords: ['string', 'integer', 'convert', 'int()', 'input', 'type', 'subtract', 'text', 'number'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'The input() function always returns a string, so "25" is text, not a number. You can\'t subtract text from a number! Fix it by converting: age = int(input("Age? ")). Now age is the integer 25, and 2024 - age works correctly.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dt-predict-string-multiplication',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'message = "Ha"\nlaughs = 3\nresult = message * laughs\nprint(result)'
+            },
+            question: 'What will this print?',
+            correctAnswer: 'HaHaHa',
+            acceptableVariants: ['HaHaHa', 'hahaha', 'Ha Ha Ha'],
+            explanation: 'In Python, string * number repeats the string! "Ha" * 3 = "HaHaHa". This is a handy shortcut for creating repeated patterns.',
+            commonMistakes: {
+              'Error': 'String multiplication is actually valid in Python—it repeats the string!',
+              '3Ha': 'The string comes first and gets repeated, not combined with the number.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'dt-reflect-type-importance',
+            prompt: 'Dynamically typed languages like Python don\'t require you to declare types. Why do you think it\'s still important to understand data types, even when Python figures them out automatically?',
+            thinkingPrompts: [
+              'What happens when types mismatch?',
+              'How does knowing types help you debug?',
+              'What about when you need to convert between types?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(error|bug|crash|problem)', label: 'Error awareness', points: 5 },
+                { pattern: '(debug|fix|find|understand)', label: 'Problem solving', points: 4 },
+                { pattern: '(convert|int|str|type)', label: 'Technical terms', points: 4 },
+                { pattern: '(even though|although|while)', label: 'Nuanced thinking', points: 4 },
+                { pattern: '(I think|because|since)', label: 'Reasoning', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'dt-scenario-user-input',
+            scenario: 'You\'re building a tip calculator. Users enter the bill amount and tip percentage. Both come from input() as strings. Calculate the tip.',
+            question: 'Write pseudocode or explain the steps to correctly calculate the tip from string inputs.',
+            evaluation: {
+              keywords: ['float', 'int', 'convert', 'input', 'divide', 'multiply', 'percentage', '100'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: '1) Get bill as string: bill_text = input("Bill amount: ")\n2) Convert to float (decimals for money): bill = float(bill_text)\n3) Get tip percentage, convert: tip_percent = float(input("Tip %: "))\n4) Calculate: tip = bill * (tip_percent / 100)\n5) Print the result formatted nicely.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'dt-predict-bool-comparison',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'x = "5"\ny = 5\nprint(x == y)'
+            },
+            question: 'What will this print?',
+            correctAnswer: 'False',
+            acceptableVariants: ['False', 'false', 'FALSE'],
+            explanation: 'A string "5" is not equal to an integer 5—they\'re different types! Python doesn\'t automatically convert for comparison. "5" == 5 is False.',
+            commonMistakes: {
+              'True': 'Python doesn\'t auto-convert for ==. "5" (string) and 5 (int) are different.',
+              'Error': 'No error—Python can compare different types, it just returns False.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'dt-quiz-synthesis-types',
+            question: 'A professional developer says: "I always check the type of data coming from external sources." Why is this good practice?',
+            options: [
+              'It makes the code longer and more impressive',
+              'External data (user input, files, APIs) can be unexpected types, causing crashes',
+              'Python requires type checking for all variables',
+              'It makes the program run faster'
+            ],
+            correct: 1,
+            explanation: 'Data from outside your program (users, files, networks) is unpredictable. Validating and converting types prevents crashes and security issues. Defensive coding!',
+            points: 15
+          }
+        ]
+      });
+      datatypes_Synthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: INPUT/OUTPUT - Activity Carousels
+      // ----------------------------------------
+
+      // Comprehension Carousel - Input/Output
+      const inputOutput_Comprehension = new ActivityCarousel('input-output-comprehension', {
+        type: 'comprehension',
+        sectionId: 'input-output',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'io-quiz-print-purpose',
+            question: 'What does the print() function do in Python?',
+            options: [
+              'Sends a document to a printer',
+              'Displays text/values on the screen',
+              'Creates a new variable',
+              'Reads input from the user'
+            ],
+            correct: 1,
+            explanation: 'print() displays output on the screen (console). print("Hello") shows "Hello". It\'s how your program talks to the user!',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'io-quiz-input-return',
+            question: 'What does input() return in Python?',
+            options: [
+              'Whatever type the user enters',
+              'Always an integer',
+              'Always a string',
+              'Nothing (None)'
+            ],
+            correct: 2,
+            explanation: 'input() ALWAYS returns a string! Even if the user types 42, Python gives you "42" as text. This is the #1 gotcha for beginners.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'io-tf-input-pause',
+            statement: 'The input() function pauses program execution until the user presses Enter.',
+            correct: true,
+            explanation: 'Yes! When input() runs, the program stops and waits. The user types their response, presses Enter, and then the program continues with that value.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'io-tf-print-newline',
+            statement: 'Each print() statement automatically adds a new line at the end.',
+            correct: true,
+            explanation: 'By default, print() adds a newline (\\n) at the end. That\'s why multiple prints appear on separate lines. You can change this with end="" parameter.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'io-fill-input-argument',
+            statement: 'The text inside input("___") is called the prompt—it tells the user what to type.',
+            correctAnswers: ['prompt', 'message', 'question', 'text'],
+            caseSensitive: false,
+            hints: ['What do we call the text that asks the user something?'],
+            explanation: 'The string passed to input() is the prompt. input("Name? ") displays "Name? " and waits for the user to type.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'io-fill-convert-function',
+            statement: 'To convert a string from input() into a number, use the ___ function.',
+            correctAnswers: ['int', 'int()', 'float', 'float()'],
+            caseSensitive: false,
+            hints: ['What function turns "42" into 42?'],
+            explanation: 'Use int() for whole numbers, float() for decimals. age = int(input("Age? ")) gets input and immediately converts it.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'io-quiz-concatenation',
+            question: 'What will print("Hello, " + name) display if name = "Alex"?',
+            options: [
+              'Hello, name',
+              'Hello, Alex',
+              'Hello, + name',
+              'Error'
+            ],
+            correct: 1,
+            explanation: 'The + operator concatenates (joins) strings. "Hello, " + "Alex" = "Hello, Alex". Variables are replaced with their values!',
+            points: 10
+          }
+        ]
+      });
+      inputOutput_Comprehension.init();
+
+      // Application Carousel - Input/Output
+      const inputOutput_Application = new ActivityCarousel('input-output-application', {
+        type: 'application',
+        sectionId: 'input-output',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'io-seq-greeting-program',
+            instruction: 'Put these lines in order to create a greeting program:',
+            items: [
+              { id: 'ask', text: 'name = input("What is your name? ")' },
+              { id: 'greet', text: 'print("Hello, " + name + "!")' },
+              { id: 'ask-age', text: 'age = int(input("How old are you? "))' },
+              { id: 'next-year', text: 'print("Next year you will be", age + 1)' }
+            ],
+            correctOrder: ['ask', 'greet', 'ask-age', 'next-year'],
+            hints: {
+              partial: 'Get the name first, then greet, then ask for age...',
+              wrong: 'Start by asking for the name!'
+            },
+            explanation: 'Get name → greet → get age (and convert!) → do math with age. The int() is crucial for the math to work.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'io-dd-functions',
+            instruction: 'Match each function to its purpose:',
+            items: [
+              { id: 'purpose-display', text: 'Display output to user' },
+              { id: 'purpose-get', text: 'Get text input from user' },
+              { id: 'purpose-convert-int', text: 'Convert text to whole number' },
+              { id: 'purpose-convert-str', text: 'Convert number to text' }
+            ],
+            zones: [
+              { id: 'func-print', label: 'print()', correct: 'purpose-display' },
+              { id: 'func-input', label: 'input()', correct: 'purpose-get' },
+              { id: 'func-int', label: 'int()', correct: 'purpose-convert-int' },
+              { id: 'func-str', label: 'str()', correct: 'purpose-convert-str' }
+            ],
+            explanation: 'print() outputs, input() inputs (as string), int() converts to integer, str() converts to string. These four functions are used constantly!',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'io-quiz-fstring',
+            question: 'What will this f-string print?\n\nname = "Alex"\nage = 25\nprint(f"{name} is {age} years old")',
+            options: [
+              '{name} is {age} years old',
+              'name is age years old',
+              'Alex is 25 years old',
+              'Error - invalid syntax'
+            ],
+            correct: 2,
+            explanation: 'f-strings (f"...") replace {variable} with the variable\'s value. They\'re the modern, readable way to combine strings and variables!',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'io-connect-data-flow',
+            instruction: 'Connect to show how data flows in an input/output program:',
+            nodes: [
+              { id: 'user', label: '👤 User' },
+              { id: 'input', label: '📥 input()' },
+              { id: 'variable', label: '📦 Variable' },
+              { id: 'print', label: '📤 print()' },
+              { id: 'screen', label: '🖥️ Screen' }
+            ],
+            solution: {
+              edges: [
+                { source: 'user', target: 'input' },
+                { source: 'input', target: 'variable' },
+                { source: 'variable', target: 'print' },
+                { source: 'print', target: 'screen' }
+              ]
+            },
+            nodeDescriptions: {
+              'user': 'Types input on keyboard',
+              'input': 'Captures user typing as string',
+              'variable': 'Stores the value',
+              'print': 'Formats output',
+              'screen': 'Displays to user'
+            },
+            explanation: 'User → input() → variable (storage) → print() → screen. Data flows in from user, gets processed, flows out to display.',
+            points: 25
+          },
+          {
+            type: 'sequence',
+            id: 'io-seq-calculator',
+            instruction: 'Build a simple calculator that adds two numbers from user input:',
+            items: [
+              { id: 'get-a', text: 'a = float(input("First number: "))' },
+              { id: 'get-b', text: 'b = float(input("Second number: "))' },
+              { id: 'calc', text: 'result = a + b' },
+              { id: 'show', text: 'print(f"Sum: {result}")' }
+            ],
+            correctOrder: ['get-a', 'get-b', 'calc', 'show'],
+            hints: {
+              partial: 'Get both numbers first, then calculate, then display.',
+              wrong: 'You need to get inputs before you can add them!'
+            },
+            explanation: 'Get first number (convert to float) → get second → add them → display result. The float() allows decimals.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'io-quiz-common-error',
+            question: 'This code crashes: age = input("Age: ") + 1. What\'s the fix?',
+            options: [
+              'age = input("Age: " + 1)',
+              'age = int(input("Age: ")) + 1',
+              'age = input(int("Age: ")) + 1',
+              'age = input("Age: 1")'
+            ],
+            correct: 1,
+            explanation: 'input() returns a string, and you can\'t add 1 to a string. Wrap input() in int() to convert, then add: int(input("Age: ")) + 1',
+            points: 15
+          }
+        ]
+      });
+      inputOutput_Application.init();
+
+      // Synthesis Carousel - Input/Output
+      const inputOutput_Synthesis = new ActivityCarousel('input-output-synthesis', {
+        type: 'synthesis',
+        sectionId: 'input-output',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'io-scenario-crash',
+            scenario: 'Your calculator program asks for a number, but when a user types "hello" instead of a number, the program crashes with ValueError: invalid literal for int().',
+            question: 'Why did this happen and how might a professional developer handle this situation?',
+            evaluation: {
+              keywords: ['convert', 'invalid', 'error', 'try', 'except', 'validate', 'check', 'handle', 'crash'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'int() can\'t convert "hello" to a number—it\'s not numeric text! Professional developers use try/except to catch errors gracefully, or validate input before converting. Show a friendly message like "Please enter a number" instead of crashing.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'io-predict-separator',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'print("one", "two", "three", sep="-")'
+            },
+            question: 'What will this print?',
+            correctAnswer: 'one-two-three',
+            acceptableVariants: ['one-two-three', 'one - two - three'],
+            explanation: 'The sep parameter changes what goes between items. Default is space, but sep="-" puts dashes instead. Very useful for formatting!',
+            commonMistakes: {
+              'one two three': 'The sep parameter changes the separator from the default space.',
+              'onetwothree': 'sep="-" means dashes between items, not nothing.'
+            },
+            points: 15
+          },
+          {
+            type: 'reflection',
+            id: 'io-reflect-user-experience',
+            prompt: 'Think about programs you use daily. How do they guide users to enter correct input? What can we learn from good (and bad) user input experiences?',
+            thinkingPrompts: [
+              'What makes a form frustrating to fill out?',
+              'How do good apps prevent user errors?',
+              'What happens when you enter wrong data in professional software?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(clear|helpful|guide|explain)', label: 'Good UX awareness', points: 5 },
+                { pattern: '(frustrating|annoying|confusing)', label: 'Bad UX awareness', points: 4 },
+                { pattern: '(validate|check|error message)', label: 'Technical solutions', points: 5 },
+                { pattern: '(app|website|software|form)', label: 'Real examples', points: 4 },
+                { pattern: '(I think|I notice|for example)', label: 'Personal insight', points: 3 }
+              ],
+              maxScore: 21
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'io-scenario-design',
+            scenario: 'You\'re building a simple text adventure game. The player needs to choose between options like "go north", "pick up sword", or "talk to wizard".',
+            question: 'How would you use input() and print() to create an interactive experience? What would you print, what would you ask for input?',
+            evaluation: {
+              keywords: ['print', 'input', 'prompt', 'describe', 'choice', 'option', 'display', 'scene', 'response'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Use print() to describe the scene: "You are in a dark forest. You see a path north and a glowing sword on the ground." Then input() for choices: "What do you do? " Store their choice in a variable, then use if statements (next chapter!) to respond appropriately with more print() statements.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'io-predict-end-parameter',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'print("Loading", end="")\nprint(".", end="")\nprint(".", end="")\nprint(".")'
+            },
+            question: 'What will this display?',
+            correctAnswer: 'Loading...',
+            acceptableVariants: ['Loading...', 'Loading . . .'],
+            explanation: 'end="" removes the newline, so everything prints on one line. The last print() has the default newline, ending the line after. Result: "Loading..."',
+            commonMistakes: {
+              'Loading\\n.\\n.\\n.': 'The end="" prevents newlines between prints.',
+              'Error': 'The end parameter is valid and very useful for progress indicators!'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'io-quiz-synthesis',
+            question: 'Why is it important that input() always returns a string, even if the user types a number?',
+            options: [
+              'It\'s a bug in Python that hasn\'t been fixed',
+              'Consistency—developers always know what type they\'re getting and can convert as needed',
+              'Strings take less memory than numbers',
+              'Numbers are harder for computers to process'
+            ],
+            correct: 1,
+            explanation: 'Consistency is key! If input() tried to guess types, it would be unpredictable. Always getting a string lets developers explicitly convert when needed—no surprises.',
+            points: 15
+          }
+        ]
+      });
+      inputOutput_Synthesis.init();
+
+      console.log('✅ All activity carousels initialized for Ch1: Stone');
     });
   </script>
 </body>
