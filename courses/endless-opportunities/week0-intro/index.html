@@ -164,28 +164,13 @@
           </div>
         </div>
 
-        <div class="quiz-card" id="problem-game-story-quiz">
-          <div class="quiz-header">
-            <h4>📝 Check Your Understanding</h4>
-            <div class="quiz-progress">
-              <span class="answered">0</span>/<span class="total">3</span>
-              answered
-              <span class="score"></span>
-            </div>
-          </div>
-          <div class="quiz-carousel"></div>
-          <div class="quiz-nav">
-            <button class="quiz-nav-btn prev" disabled>← Prev</button>
-            <div class="quiz-dots"></div>
-            <button class="quiz-nav-btn next">Next →</button>
-          </div>
-        </div>
-
         <!-- Activity Carousels for Story 1: Problem Game -->
         <div class="activity-carousels" data-story="problem-game-story">
           <div id="story1-comprehension" class="carousel-container"></div>
           <div id="story1-application" class="carousel-container"></div>
           <div id="story1-synthesis" class="carousel-container"></div>
+          <!-- Quiz carousel (knowledge check) after activities -->
+          <div id="story1-quiz" class="carousel-container"></div>
         </div>
       </section>
 
@@ -284,28 +269,13 @@
           </div>
         </div>
 
-        <div class="quiz-card" id="ai-revolution-story-quiz">
-          <div class="quiz-header">
-            <h4>📝 Check Your Understanding</h4>
-            <div class="quiz-progress">
-              <span class="answered">0</span>/<span class="total">3</span>
-              answered
-              <span class="score"></span>
-            </div>
-          </div>
-          <div class="quiz-carousel"></div>
-          <div class="quiz-nav">
-            <button class="quiz-nav-btn prev" disabled>← Prev</button>
-            <div class="quiz-dots"></div>
-            <button class="quiz-nav-btn next">Next →</button>
-          </div>
-        </div>
-
         <!-- Activity Carousels for Story 2: AI Revolution -->
         <div class="activity-carousels" data-story="ai-revolution-story">
           <div id="story2-comprehension" class="carousel-container"></div>
           <div id="story2-application" class="carousel-container"></div>
           <div id="story2-synthesis" class="carousel-container"></div>
+          <!-- Quiz carousel (knowledge check) after activities -->
+          <div id="story2-quiz" class="carousel-container"></div>
         </div>
       </section>
 
@@ -395,28 +365,13 @@
           </div>
         </div>
 
-        <div class="quiz-card" id="six-levels-story-quiz">
-          <div class="quiz-header">
-            <h4>📝 Check Your Understanding</h4>
-            <div class="quiz-progress">
-              <span class="answered">0</span>/<span class="total">3</span>
-              answered
-              <span class="score"></span>
-            </div>
-          </div>
-          <div class="quiz-carousel"></div>
-          <div class="quiz-nav">
-            <button class="quiz-nav-btn prev" disabled>← Prev</button>
-            <div class="quiz-dots"></div>
-            <button class="quiz-nav-btn next">Next →</button>
-          </div>
-        </div>
-
         <!-- Activity Carousels for Story 3: Six Levels Deep -->
         <div class="activity-carousels" data-story="six-levels-story">
           <div id="story3-comprehension" class="carousel-container"></div>
           <div id="story3-application" class="carousel-container"></div>
           <div id="story3-synthesis" class="carousel-container"></div>
+          <!-- Quiz carousel (knowledge check) after activities -->
+          <div id="story3-quiz" class="carousel-container"></div>
         </div>
       </section>
 
@@ -467,13 +422,12 @@
     <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
 
-    <!-- Interactive Engines -->
-    <script src="../../shared/js/interactive/diagram-utils.js"></script>
-    <script src="../../shared/js/interactive/audio-engine.js"></script>
-    <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
-    <script src="../../shared/js/interactive/quiz-system.js"></script>
+  <!-- Interactive Engines -->
+  <script src="../../shared/js/interactive/diagram-utils.js"></script>
+  <script src="../../shared/js/interactive/audio-engine.js"></script>
+  <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
 
-    <!-- Activity Carousel System -->
+  <!-- Activity Carousel System -->
       <!-- Firebase & Activity Tracking -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -731,19 +685,35 @@
         });
 
         // ============================================
-        // INITIALIZE QUIZZES
+        // INITIALIZE QUIZ CAROUSELS (using ActivityCarousel)
         // ============================================
 
-        const storyToQuiz = {
-          "problem-game-story": "problem-game-story-quiz",
-          "ai-revolution-story": "ai-revolution-story-quiz",
-          "six-levels-story": "six-levels-story-quiz",
+        const storyToQuizContainer = {
+          'problem-game-story': 'story1-quiz',
+          'ai-revolution-story': 'story2-quiz',
+          'six-levels-story': 'story3-quiz'
         };
 
-        pageData.quizzes.forEach((quiz) => {
-          const containerId = storyToQuiz[quiz.storyId];
+        pageData.quizzes.forEach(quiz => {
+          const containerId = storyToQuizContainer[quiz.storyId];
           if (!containerId) return;
-          new Quiz(containerId, quiz.questions);
+          
+          // Transform quiz questions to ActivityCarousel format
+          const quizActivities = quiz.questions.map((q, i) => ({
+            type: 'quiz',
+            id: `${quiz.storyId}-quiz-${i + 1}`,
+            question: q.question,
+            options: q.options,
+            correct: q.correct,
+            explanation: q.explanation
+          }));
+          
+          new ActivityCarousel(containerId, {
+            type: 'knowledge-check',
+            sectionId: quiz.storyId,
+            title: '📝 Knowledge Check',
+            activities: quizActivities
+          });
         });
 
         // ============================================

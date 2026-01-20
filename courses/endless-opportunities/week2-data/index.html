@@ -116,27 +116,13 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="data-mindset-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
-      </div>
-
       <!-- Activity Carousels for Story 1: Data Mindset -->
       <div class="activity-carousels" data-story="data-mindset-story">
         <div id="story1-comprehension" class="carousel-container"></div>
         <div id="story1-application" class="carousel-container"></div>
         <div id="story1-synthesis" class="carousel-container"></div>
+        <!-- Quiz carousel (knowledge check) after activities -->
+        <div id="story1-quiz" class="carousel-container"></div>
       </div>
     </section>
 
@@ -202,27 +188,13 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="algorithms-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
-      </div>
-
       <!-- Activity Carousels for Story 2: Two Algorithms -->
       <div class="activity-carousels" data-story="algorithms-story">
         <div id="story2-comprehension" class="carousel-container"></div>
         <div id="story2-application" class="carousel-container"></div>
         <div id="story2-synthesis" class="carousel-container"></div>
+        <!-- Quiz carousel (knowledge check) after activities -->
+        <div id="story2-quiz" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,27 +260,13 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="analysis-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
-      </div>
-
       <!-- Activity Carousels for Story 3: Collecting and Analyzing -->
       <div class="activity-carousels" data-story="analysis-story">
         <div id="story3-comprehension" class="carousel-container"></div>
         <div id="story3-application" class="carousel-container"></div>
         <div id="story3-synthesis" class="carousel-container"></div>
+        <!-- Quiz carousel (knowledge check) after activities -->
+        <div id="story3-quiz" class="carousel-container"></div>
       </div>
     </section>
 
@@ -353,7 +311,6 @@
   <script src="../../shared/js/interactive/diagram-utils.js"></script>
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
-  <script src="../../shared/js/interactive/quiz-system.js"></script>
 
   <!-- Activity Carousel System -->
     <!-- Firebase & Activity Tracking -->
@@ -487,20 +444,35 @@
       });
 
       // ============================================
-      // INITIALIZE QUIZZES
+      // INITIALIZE QUIZ CAROUSELS (using ActivityCarousel)
       // ============================================
 
-      const storyToQuiz = {
-        'data-mindset-story': 'data-mindset-quiz',
-        'algorithms-story': 'algorithms-quiz',
-        'analysis-story': 'analysis-quiz'
+      const storyToQuizContainer = {
+        'data-mindset-story': 'story1-quiz',
+        'algorithms-story': 'story2-quiz',
+        'analysis-story': 'story3-quiz'
       };
 
       pageData.quizzes.forEach(quiz => {
-        const containerId = storyToQuiz[quiz.storyId];
+        const containerId = storyToQuizContainer[quiz.storyId];
         if (!containerId) return;
-
-        new Quiz(containerId, quiz.questions);
+        
+        // Transform quiz questions to ActivityCarousel format
+        const quizActivities = quiz.questions.map((q, i) => ({
+          type: 'quiz',
+          id: `${quiz.storyId}-quiz-${i + 1}`,
+          question: q.question,
+          options: q.options,
+          correct: q.correct,
+          explanation: q.explanation
+        }));
+        
+        new ActivityCarousel(containerId, {
+          type: 'knowledge-check',
+          sectionId: quiz.storyId,
+          title: '📝 Knowledge Check',
+          activities: quizActivities
+        });
       });
 
       // ============================================
