@@ -305,7 +305,6 @@
   <script src="../../shared/js/interactive/diagram-utils.js"></script>
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
-  <script src="../../shared/js/interactive/quiz-system.js"></script>
 
   <!-- Activity Carousel System -->
     <!-- Firebase & Activity Tracking -->
@@ -435,23 +434,6 @@
           story.steps,
           { audioEngine, storyId: story.id }
         );
-      });
-
-      // ============================================
-      // INITIALIZE QUIZZES
-      // ============================================
-
-      const storyToQuiz = {
-        'distributed-challenge-story': 'distributed-challenge-quiz',
-        'ai-debugging-story': 'ai-debugging-quiz',
-        'investigation-framework-story': 'investigation-framework-quiz'
-      };
-
-      pageData.quizzes.forEach(quiz => {
-        const containerId = storyToQuiz[quiz.storyId];
-        if (!containerId) return;
-
-        new Quiz(containerId, quiz.questions);
       });
 
       // ============================================

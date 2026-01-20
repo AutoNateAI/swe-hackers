@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="senior" data-lesson="ch5-capstone1">
   <header class="header">
@@ -115,20 +116,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="initiative-scale-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 1: Initiative & Scale -->
+      <div class="activity-carousels" data-story="initiative-scale-story">
+        <div id="initiative-comprehension" class="carousel-container"></div>
+        <div id="initiative-application" class="carousel-container"></div>
+        <div id="initiative-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -194,20 +186,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="process-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 2: Process & Methodology -->
+      <div class="activity-carousels" data-story="process-story">
+        <div id="process-comprehension" class="carousel-container"></div>
+        <div id="process-application" class="carousel-container"></div>
+        <div id="process-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -273,20 +256,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="leadership-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 3: Technical Leadership -->
+      <div class="activity-carousels" data-story="leadership-story">
+        <div id="leadership-comprehension" class="carousel-container"></div>
+        <div id="leadership-application" class="carousel-container"></div>
+        <div id="leadership-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -341,7 +315,20 @@
   <script src="../../shared/js/interactive/diagram-utils.js"></script>
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
-  <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -455,21 +442,946 @@
       });
 
       // ============================================
-      // INITIALIZE QUIZZES
+      // ACTIVITY CAROUSELS
       // ============================================
 
-      const storyToQuiz = {
-        'initiative-scale-story': 'initiative-scale-quiz',
-        'process-story': 'process-quiz',
-        'leadership-story': 'leadership-quiz'
-      };
+      // ----------------------------------------
+      // STORY 1: INITIATIVE & SCALE
+      // ----------------------------------------
 
-      pageData.quizzes.forEach(quiz => {
-        const containerId = storyToQuiz[quiz.storyId];
-        if (!containerId) return;
-
-        new Quiz(containerId, quiz.questions);
+      const initiativeComprehension = new ActivityCarousel('initiative-comprehension', {
+        type: 'comprehension',
+        sectionId: 'initiative',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'init-quiz-1',
+            question: 'What distinguishes an "initiative" from a "project" in scale?',
+            options: [
+              'Initiatives are smaller and faster',
+              'Initiatives are 3+ months, cross-team, with organizational impact',
+              'Projects require more documentation',
+              'There\'s no real difference'
+            ],
+            correct: 1,
+            explanation: 'An initiative is 3+ months scope, involves cross-team coordination, and has organizational impact. Projects are smaller (1-2 months) with defined boundaries.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'init-tf-1',
+            statement: 'A "major initiative" can be completed by one person if they use AI effectively.',
+            correct: true,
+            explanation: 'With AI, you can move at team speed as an individual contributor. You can take on initiatives that would traditionally require a dedicated team.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'init-quiz-2',
+            question: 'What\'s the "AI Advantage" for leading major initiatives?',
+            options: [
+              'AI writes all the code for you',
+              'AI replaces the need for stakeholders',
+              'You can move at team speed as an individual, taking on larger scope',
+              'AI eliminates the need for planning'
+            ],
+            correct: 2,
+            explanation: 'AI amplifies your capabilities so you can take on initiatives that would traditionally require a dedicated team. You move at team speed while remaining an IC.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'init-fill-1',
+            statement: 'A feature takes 1-2 weeks. A project takes 1-2 months. An initiative takes ___ months or more.',
+            correctAnswers: ['3', 'three', '3+', 'three+'],
+            caseSensitive: false,
+            hints: ['What\'s the minimum duration for initiative scale?'],
+            explanation: 'Initiatives are 3+ months in scope, involve cross-team coordination, and have organizational impact.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'init-quiz-3',
+            question: 'Which of these is a good example of a "major initiative"?',
+            options: [
+              'Adding a button to the UI',
+              'Fixing a bug in production',
+              'Platform migration from one cloud provider to another',
+              'Writing unit tests for a module'
+            ],
+            correct: 2,
+            explanation: 'Platform migrations are classic major initiatives — 3+ months, cross-team coordination, organizational impact. The other options are features or tasks.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'init-tf-2',
+            statement: 'You should aim for the smallest possible scope when picking an initiative.',
+            correct: false,
+            explanation: 'The goal is to pick something that "moves the needle for the entire organization." Think big: platform migrations, architecture transformations, security overhauls.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          }
+        ]
       });
+      initiativeComprehension.init();
+
+      const initiativeApplication = new ActivityCarousel('initiative-application', {
+        type: 'application',
+        sectionId: 'initiative',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'init-seq-1',
+            instruction: 'Order these from smallest to largest scope:',
+            items: [
+              { id: 's1', text: 'Feature: Add export to CSV button' },
+              { id: 's2', text: 'Project: Build new reporting dashboard' },
+              { id: 's3', text: 'Initiative: Platform migration to Kubernetes' }
+            ],
+            correctOrder: ['s1', 's2', 's3'],
+            hints: {
+              partial: 'Features are days/weeks, projects are months, initiatives are 3+ months with cross-team impact.',
+              wrong: 'Think about scope: features < projects < initiatives.'
+            },
+            explanation: 'Features (1-2 weeks) < Projects (1-2 months) < Initiatives (3+ months, cross-team, org impact).',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'init-dd-1',
+            instruction: 'Categorize each work item by scale:',
+            items: [
+              { id: 'w1', text: 'Monolith to microservices migration' },
+              { id: 'w2', text: 'Add dark mode toggle' },
+              { id: 'w3', text: 'Developer experience transformation' },
+              { id: 'w4', text: 'Build API endpoint for user profiles' },
+              { id: 'w5', text: 'Infrastructure modernization program' },
+              { id: 'w6', text: 'Fix N+1 query in dashboard' }
+            ],
+            zones: [
+              { id: 'feature', label: 'Feature (1-2 weeks)', correct: ['w2', 'w4', 'w6'] },
+              { id: 'initiative', label: 'Initiative (3+ months)', correct: ['w1', 'w3', 'w5'] }
+            ],
+            explanation: 'Initiatives are transformational: migrations, modernizations, overhauls. Features are contained tasks.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'init-connect-1',
+            instruction: 'Connect each initiative type to its key impact:',
+            nodes: [
+              { id: 'platform', label: '☁️ Platform\nMigration' },
+              { id: 'security', label: '🔒 Security\nOverhaul' },
+              { id: 'devex', label: '👨‍💻 DevEx\nTransform' },
+              { id: 'cost', label: '💰 Cost\nReduction' },
+              { id: 'risk', label: '⚠️ Risk\nReduction' },
+              { id: 'velocity', label: '🚀 Eng\nVelocity' }
+            ],
+            solution: {
+              edges: [
+                { source: 'platform', target: 'cost' },
+                { source: 'security', target: 'risk' },
+                { source: 'devex', target: 'velocity' }
+              ]
+            },
+            explanation: 'Platform migrations often reduce costs. Security overhauls reduce risk. DevEx transforms increase engineering velocity.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'init-quiz-apply-1',
+            question: 'Your org has tech debt causing frequent production incidents. What initiative scale is appropriate?',
+            options: [
+              'Feature: Fix the specific bugs causing incidents',
+              'Project: Build monitoring dashboard',
+              'Initiative: System-wide reliability and observability overhaul',
+              'No change needed'
+            ],
+            correct: 2,
+            explanation: 'Frequent incidents suggest systemic issues requiring an initiative-scale response: comprehensive reliability and observability overhaul across the organization.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'init-seq-2',
+            instruction: 'Order how initiative impact compounds over time:',
+            items: [
+              { id: 'i1', text: 'You complete the initiative' },
+              { id: 'i2', text: 'Immediate impact: system improved' },
+              { id: 'i3', text: 'Secondary impact: other teams adopt patterns' },
+              { id: 'i4', text: 'Org impact: culture shifts toward the new approach' },
+              { id: 'i5', text: 'Career impact: you\'re known as the person who led it' }
+            ],
+            correctOrder: ['i1', 'i2', 'i3', 'i4', 'i5'],
+            hints: {
+              partial: 'Impact flows: completion → immediate → adoption → culture → career.',
+              wrong: 'Think about ripple effects from individual to org to career.'
+            },
+            explanation: 'Initiative impact compounds: technical improvement → team adoption → org culture shift → career reputation.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'init-dd-2',
+            instruction: 'Match each initiative characteristic to its definition:',
+            items: [
+              { id: 'd1', text: '3+ months duration' },
+              { id: 'd2', text: 'Cross-team coordination' },
+              { id: 'd3', text: 'Organizational impact' }
+            ],
+            zones: [
+              { id: 'scope', label: 'Scope Characteristic', correct: ['d1'] },
+              { id: 'coordination', label: 'Coordination Characteristic', correct: ['d2'] },
+              { id: 'impact', label: 'Impact Characteristic', correct: ['d3'] }
+            ],
+            explanation: 'Three defining characteristics: 3+ months (scope), cross-team (coordination), organizational (impact).',
+            points: 20
+          }
+        ]
+      });
+      initiativeApplication.init();
+
+      const initiativeSynthesis = new ActivityCarousel('initiative-synthesis', {
+        type: 'synthesis',
+        sectionId: 'initiative',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'init-scenario-1',
+            scenario: 'You\'re a senior engineer at a company with a painful deployment process. Deploys take 4 hours, happen only on Tuesdays, and frequently fail. Leadership hasn\'t prioritized fixing it.',
+            question: 'How would you frame this as an initiative and convince leadership it\'s worth the investment?',
+            evaluation: {
+              keywords: ['initiative', 'business', 'cost', 'velocity', 'risk', 'hours', 'productivity', 'ROI', 'impact', 'stakeholder'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Frame as CI/CD Modernization Initiative: Calculate the business impact—4 hours × engineers × weekly = massive productivity loss. Quantify risk of Tuesday-only deploys (delayed fixes, lost revenue). Propose 3-month initiative with phases: automated testing, parallel deploys, continuous deployment. Show ROI: investment of X engineering months returns Y hours/week permanently. Present in business terms leadership cares about.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'init-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Engineer A consistently picks feature-level work. Engineer B takes on one major initiative per year. Both are technically skilled.'
+            },
+            question: 'After 3 years, who is more likely to be promoted to Staff Engineer?',
+            correctAnswer: 'B',
+            acceptableVariants: ['b', 'engineer b', 'second', 'initiative'],
+            explanation: 'Engineer B is more likely to reach Staff level. Staff roles require demonstrated ability to lead cross-team, org-impacting work. Initiative experience directly builds and demonstrates those skills.',
+            commonMistakes: {
+              'A': 'Feature work shows competence but not Staff-level scope. Initiatives demonstrate leadership.',
+              'same': 'Scope of impact is a key differentiator for Staff-level promotions.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'init-scenario-2',
+            scenario: 'A colleague says: "I don\'t need to lead initiatives. I just want to write good code and let managers handle the big stuff."',
+            question: 'What would you say about how initiative leadership affects technical growth and career trajectory?',
+            evaluation: {
+              keywords: ['growth', 'scope', 'impact', 'career', 'staff', 'principal', 'skills', 'judgment', 'leverage', 'multiply'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Good code is necessary but not sufficient for senior growth. Staff/Principal levels require demonstrating judgment at org scale, not just code quality. Initiative leadership develops skills you can\'t get from feature work: stakeholder management, cross-team coordination, risk assessment. Plus, AI is commoditizing "just code"—your leverage multiplies when you lead the work AI can\'t.',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'init-reflect-1',
+            prompt: 'Think about your current organization. What major pain points exist that no one is addressing? Which could become an initiative that would change how the org operates?',
+            thinkingPrompts: [
+              'What processes are painful and inefficient?',
+              'What technical debt causes recurring problems?',
+              'What capabilities would transform your team\'s effectiveness?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|we|our)', label: 'Personal context', points: 5 },
+                { pattern: '(pain|problem|issue|debt)', label: 'Problem identification', points: 5 },
+                { pattern: '(initiative|project|transform)', label: 'Scale thinking', points: 4 },
+                { pattern: '(impact|change|improve)', label: 'Impact focus', points: 4 },
+                { pattern: '(team|org|cross)', label: 'Organizational scope', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'init-predict-2',
+            setup: {
+              type: 'text',
+              content: 'An org has 50 engineers. They add AI coding assistants to everyone\'s workflow. One engineer starts leading initiatives using AI to move at team speed.'
+            },
+            question: 'What happens to that engineer\'s relative value compared to engineers who only use AI for feature work?',
+            correctAnswer: 'increases',
+            acceptableVariants: ['higher', 'grows', 'more', 'greater', 'amplified', 'multiplied'],
+            explanation: 'Their value increases significantly. Everyone gets the same AI boost for features, so feature work becomes commoditized. The engineer who leads initiatives stands out—they\'re using AI to take on scope others can\'t match.',
+            commonMistakes: {
+              'same': 'AI for features is table stakes. Initiative leadership with AI is differentiated.',
+              'decreases': 'Initiative leadership becomes MORE valuable as AI handles routine work.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'init-scenario-3',
+            scenario: 'You want to lead a major initiative, but you\'ve never done one before. Your manager is hesitant to give you that responsibility.',
+            question: 'How would you demonstrate readiness and build the case for being given initiative ownership?',
+            evaluation: {
+              keywords: ['prove', 'demonstrate', 'track record', 'smaller', 'scope', 'support', 'mentor', 'risk', 'plan', 'milestone'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Build a track record: Lead a smaller project successfully first. Volunteer to co-lead an initiative with a more experienced engineer. Propose a detailed plan showing you understand the risks and have mitigation strategies. Offer to start with Phase 1 only—demonstrate success before expanding scope. Ask what specific concerns your manager has and address them directly. Show you\'ve thought through stakeholders, dependencies, and success metrics.',
+            points: 30
+          }
+        ]
+      });
+      initiativeSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: PROCESS & METHODOLOGY
+      // ----------------------------------------
+
+      const processComprehension = new ActivityCarousel('process-comprehension', {
+        type: 'comprehension',
+        sectionId: 'process',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'proc-quiz-1',
+            question: 'What should happen on Day 1 of an initiative kickoff?',
+            options: [
+              'Start coding immediately',
+              'Problem definition — get crystal clear on what you\'re solving and why',
+              'Assign tasks to the team',
+              'Present to executives'
+            ],
+            correct: 1,
+            explanation: 'Day 1 is about problem definition: What are we solving? What\'s the impact? What\'s the cost of NOT solving it? Who are stakeholders? Clarity prevents wasted effort.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'proc-tf-1',
+            statement: 'Socialization is optional if your technical design is strong enough.',
+            correct: false,
+            explanation: 'Great designs fail without buy-in. Socialization gathers feedback, builds support, and catches blind spots. It\'s not optional—it\'s critical.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'proc-quiz-2',
+            question: 'Why is "socialization" a critical step in the process?',
+            options: [
+              'It\'s required by company policy',
+              'Great designs fail without buy-in; you need stakeholder feedback',
+              'It gives you time to rest',
+              'Socialization is optional for good engineers'
+            ],
+            correct: 1,
+            explanation: 'Even the best technical design fails without organizational buy-in. Socialization gathers feedback, builds support, and catches blind spots.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'proc-fill-1',
+            statement: 'Day 2 uses your Chapter 4 ___ process for rapid design exploration.',
+            correctAnswers: ['AI-augmented', 'AI augmented', 'design', 'AI-Augmented Design'],
+            caseSensitive: false,
+            hints: ['What approach accelerates design work?'],
+            explanation: 'Day 2 uses AI-augmented design from Chapter 4—generating options, analyzing trade-offs, creating detailed design docs in hours instead of weeks.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'proc-quiz-3',
+            question: 'What\'s the purpose of executing Phase 1 during the kickoff week?',
+            options: [
+              'To complete the entire initiative',
+              'To demonstrate early progress and validate the approach',
+              'To avoid planning',
+              'To skip the design phase'
+            ],
+            correct: 1,
+            explanation: 'Phase 1 demonstrates early progress, validates your approach with real work, and builds momentum. It proves the initiative is real and moving forward.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'proc-tf-2',
+            statement: 'The 5-day kickoff process should be followed exactly without adaptation.',
+            correct: false,
+            explanation: 'The process is a framework, not a rigid checklist. Adapt it to your context while maintaining the core elements: clarity, design, socialization, planning, execution.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          }
+        ]
+      });
+      processComprehension.init();
+
+      const processApplication = new ActivityCarousel('process-application', {
+        type: 'application',
+        sectionId: 'process',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'proc-seq-1',
+            instruction: 'Order the 5-day initiative kickoff process:',
+            items: [
+              { id: 'd1', text: 'Day 1: Problem Definition' },
+              { id: 'd2', text: 'Day 2: AI-Augmented Design' },
+              { id: 'd3', text: 'Day 3: Socialization' },
+              { id: 'd4', text: 'Day 4: Planning' },
+              { id: 'd5', text: 'Day 5: Kickoff' }
+            ],
+            correctOrder: ['d1', 'd2', 'd3', 'd4', 'd5'],
+            hints: {
+              partial: 'Start with problem, design second, socialize third, plan fourth, kick off fifth.',
+              wrong: 'The sequence builds: understand → design → get buy-in → plan → execute.'
+            },
+            explanation: 'The 5-day process: Problem → Design → Socialize → Plan → Kickoff. Each day builds on the previous.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'proc-dd-1',
+            instruction: 'Match each day to its key output:',
+            items: [
+              { id: 'o1', text: 'Clear problem statement and stakeholder map' },
+              { id: 'o2', text: 'Design doc with options and trade-offs' },
+              { id: 'o3', text: 'Stakeholder buy-in and refined design' },
+              { id: 'o4', text: 'Workstreams, timeline, and milestones' },
+              { id: 'o5', text: 'Official commitment and Phase 1 started' }
+            ],
+            zones: [
+              { id: 'day1', label: 'Day 1: Problem Definition', correct: ['o1'] },
+              { id: 'day2', label: 'Day 2: AI-Augmented Design', correct: ['o2'] },
+              { id: 'day3', label: 'Day 3: Socialization', correct: ['o3'] },
+              { id: 'day4', label: 'Day 4: Planning', correct: ['o4'] },
+              { id: 'day5', label: 'Day 5: Kickoff', correct: ['o5'] }
+            ],
+            explanation: 'Each day has a specific output: problem clarity → design doc → buy-in → plan → commitment.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'proc-connect-1',
+            instruction: 'Connect each day to its key question:',
+            nodes: [
+              { id: 'day1', label: '📋 Day 1' },
+              { id: 'day2', label: '🎨 Day 2' },
+              { id: 'day3', label: '🤝 Day 3' },
+              { id: 'q1', label: '"What problem\nare we solving?"' },
+              { id: 'q2', label: '"How should\nwe solve it?"' },
+              { id: 'q3', label: '"Does everyone\nagree?"' }
+            ],
+            solution: {
+              edges: [
+                { source: 'day1', target: 'q1' },
+                { source: 'day2', target: 'q2' },
+                { source: 'day3', target: 'q3' }
+              ]
+            },
+            explanation: 'Day 1: What\'s the problem? Day 2: How to solve it? Day 3: Does everyone agree?',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'proc-quiz-apply-1',
+            question: 'You finish Day 2 with a solid design. A senior engineer says "this won\'t work with our current auth system." What should you do?',
+            options: [
+              'Ignore them and proceed to Day 4',
+              'Go back to Day 1 and start over',
+              'This is exactly why Day 3 (Socialization) matters—incorporate feedback and iterate',
+              'Cancel the initiative'
+            ],
+            correct: 2,
+            explanation: 'This is why socialization matters! Feedback like this improves the design. Incorporate it and iterate—that\'s the process working correctly.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'proc-seq-2',
+            instruction: 'Order what happens after the kickoff week:',
+            items: [
+              { id: 'e1', text: 'Execute Phase 1' },
+              { id: 'e2', text: 'Demonstrate early progress' },
+              { id: 'e3', text: 'Document learnings' },
+              { id: 'e4', text: 'Retrospect and iterate' },
+              { id: 'e5', text: 'Continue to next phase' }
+            ],
+            correctOrder: ['e1', 'e2', 'e3', 'e4', 'e5'],
+            hints: {
+              partial: 'Execute first, then show progress, then learn, then improve, then continue.',
+              wrong: 'The cycle: execute → demonstrate → document → retrospect → continue.'
+            },
+            explanation: 'Post-kickoff cycle: Execute → Demonstrate → Document → Retrospect → Continue. This repeats for each phase.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'proc-dd-2',
+            instruction: 'Categorize activities by which day they belong to:',
+            items: [
+              { id: 'a1', text: 'Calculate cost of NOT solving the problem' },
+              { id: 'a2', text: 'Generate 2-3 architecture options with AI' },
+              { id: 'a3', text: 'Present to key stakeholders and gather feedback' },
+              { id: 'a4', text: 'Break initiative into workstreams' }
+            ],
+            zones: [
+              { id: 'def', label: 'Day 1: Problem Definition', correct: ['a1'] },
+              { id: 'design', label: 'Day 2: AI-Augmented Design', correct: ['a2'] },
+              { id: 'social', label: 'Day 3: Socialization', correct: ['a3'] },
+              { id: 'plan', label: 'Day 4: Planning', correct: ['a4'] }
+            ],
+            explanation: 'Each activity fits its day: costs → Day 1, options → Day 2, feedback → Day 3, workstreams → Day 4.',
+            points: 20
+          }
+        ]
+      });
+      processApplication.init();
+
+      const processSynthesis = new ActivityCarousel('process-synthesis', {
+        type: 'synthesis',
+        sectionId: 'process',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'proc-scenario-1',
+            scenario: 'You\'re on Day 3 (Socialization) of your initiative. A VP says "I like the direction, but I need to see a working prototype before I commit resources." This wasn\'t in your plan.',
+            question: 'How do you adapt the process to address this request while maintaining momentum?',
+            evaluation: {
+              keywords: ['adapt', 'prototype', 'AI', 'quick', 'demonstrate', 'MVP', 'phase 1', 'iterate', 'stakeholder', 'commit'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Adapt the process: Day 4 becomes prototype day instead of planning. Use AI to rapidly build a proof-of-concept that demonstrates the core value proposition. Show it to the VP on Day 5. Get conditional commitment: "If the prototype validates the approach, we proceed with full planning." Turn the objection into an early validation opportunity. The process is a framework, not a prison.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'proc-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Two engineers start similar initiatives. Engineer A follows the 5-day process rigorously. Engineer B skips Day 3 (Socialization) to "save time" and starts coding on Day 3.'
+            },
+            question: 'After 2 months, which initiative is more likely to be on track?',
+            correctAnswer: 'A',
+            acceptableVariants: ['a', 'engineer a', 'first', 'process'],
+            explanation: 'Engineer A\'s initiative is more likely to succeed. Skipping socialization means missing feedback, blind spots, and buy-in. Engineer B will likely hit organizational resistance that derails progress.',
+            commonMistakes: {
+              'B': 'Saving a day costs weeks of rework when stakeholders resist.',
+              'same': 'Socialization catches problems early that compound later.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'proc-scenario-2',
+            scenario: 'Your manager wants you to start an initiative but skip the first week of preparation. "We need to show progress immediately. Just start coding and we\'ll figure out the details later."',
+            question: 'How do you push back constructively while addressing their underlying concern about showing progress?',
+            evaluation: {
+              keywords: ['progress', 'risk', 'rework', 'clarity', 'stakeholder', 'milestone', 'quick win', 'parallel', 'demonstrate'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Address the underlying concern: "I hear you want visible progress. Here\'s what I can show by end of week: Day 1 deliverable is a clear problem statement and stakeholder map—visible artifact. Day 2: design doc with options—another visible artifact. Day 3: stakeholder presentations—visible activity. By Day 5: Phase 1 started with first commit. That\'s more visible progress than jumping into code that might need to be thrown away."',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'proc-reflect-1',
+            prompt: 'Think about a project that went off track in your experience. At which day of the 5-day process was the root cause? What would have been different if that day had been done well?',
+            thinkingPrompts: [
+              'Was the problem well-defined from the start?',
+              'Did the design consider enough options?',
+              'Did stakeholders have a chance to provide input?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|we|my)', label: 'Personal experience', points: 5 },
+                { pattern: '(day|problem|design|socialize|plan)', label: 'Process awareness', points: 5 },
+                { pattern: '(miss|skip|lack|without)', label: 'Gap identification', points: 4 },
+                { pattern: '(would have|could have|should have)', label: 'Counterfactual', points: 4 },
+                { pattern: '(learn|realize|understand)', label: 'Insight', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'proc-scenario-3',
+            scenario: 'It\'s Day 5 (Kickoff). You present your plan, but a key stakeholder says "This timeline is too aggressive. We can\'t commit to this." You need their support.',
+            question: 'How do you handle this objection while maintaining initiative momentum?',
+            evaluation: {
+              keywords: ['listen', 'understand', 'concern', 'adjust', 'scope', 'phase', 'milestone', 'negotiate', 'commitment', 'adapt'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'First, understand their specific concern: "What part feels too aggressive? Let\'s look at it together." Maybe scope is too big for timeline—propose phasing. Maybe dependencies aren\'t clear—clarify what\'s parallel vs. sequential. Offer to commit to Phase 1 only, then reassess. Get partial commitment rather than none. Ask: "What would need to be true for you to commit to this?" Address that directly.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'proc-predict-2',
+            setup: {
+              type: 'text',
+              content: 'An engineer does Day 1 (Problem Definition) thoroughly but realizes on Day 2 that the problem is actually much bigger than initially scoped.'
+            },
+            question: 'What should they do?',
+            correctAnswer: 'rescope',
+            acceptableVariants: ['go back', 'redefine', 'adjust', 'narrow', 'iterate', 'revisit'],
+            explanation: 'Go back and rescope. Day 1 learnings inform Day 2; if the scope is wrong, fix it now. Better to spend an extra day on problem definition than to build the wrong solution. The process is iterative, not linear.',
+            commonMistakes: {
+              'continue': 'Proceeding with wrong scope wastes all subsequent work.',
+              'cancel': 'Rescoping is normal—big problems often need to be phased.'
+            },
+            points: 20
+          }
+        ]
+      });
+      processSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: TECHNICAL LEADERSHIP
+      // ----------------------------------------
+
+      const leadershipComprehension = new ActivityCarousel('leadership-comprehension', {
+        type: 'comprehension',
+        sectionId: 'leadership',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'lead-quiz-1',
+            question: 'What do executives care about when you present an initiative?',
+            options: [
+              'Clean architecture and elegant code',
+              'Business impact: revenue, risk, and velocity',
+              'The specific programming languages used',
+              'How many lines of code will be written'
+            ],
+            correct: 1,
+            explanation: 'Executives care about business outcomes — revenue, risk reduction, and velocity. Translate your technical work into business impact to get buy-in.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'lead-tf-1',
+            statement: 'AI can handle the leadership work of an initiative for you.',
+            correct: false,
+            explanation: 'Leadership skills—communication, alignment, relationship building—are human skills AI can\'t do for you. AI handles technical work; you provide leadership.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'lead-quiz-2',
+            question: 'What\'s the key insight about "AI + Leadership"?',
+            options: [
+              'AI can do the leadership work for you',
+              'AI eliminates the need for stakeholder communication',
+              'AI frees time from technical work, which you invest in human skills',
+              'Leadership is no longer needed with AI'
+            ],
+            correct: 2,
+            explanation: 'AI accelerates the technical work, which frees up your time. Invest that time in communication, alignment, and relationship building—the human skills that make initiatives succeed.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'lead-fill-1',
+            statement: 'If stakeholders have to ___ how the initiative is going, you\'re not communicating enough.',
+            correctAnswers: ['ask', 'question', 'inquire'],
+            caseSensitive: false,
+            hints: ['What action means they\'re in the dark?'],
+            explanation: 'If stakeholders have to ask, you\'re not communicating enough. Clear milestones, regular updates, and visible metrics should proactively answer this question.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'lead-quiz-3',
+            question: 'If stakeholders have to ask "how is the initiative going?", what does that indicate?',
+            options: [
+              'The initiative is going well',
+              'You\'re not communicating enough about progress',
+              'Stakeholders are too involved',
+              'Everything is on track'
+            ],
+            correct: 1,
+            explanation: 'If stakeholders have to ask, you\'re not communicating enough. Clear milestones, regular updates, and visible metrics should proactively answer this question.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'lead-tf-2',
+            statement: 'Technical excellence is sufficient for initiative success.',
+            correct: false,
+            explanation: 'Technical excellence is necessary but not sufficient. Initiatives require leadership: vision communication, stakeholder management, progress visibility, and risk adaptation.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          }
+        ]
+      });
+      leadershipComprehension.init();
+
+      const leadershipApplication = new ActivityCarousel('leadership-application', {
+        type: 'application',
+        sectionId: 'leadership',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'lead-seq-1',
+            instruction: 'Order the technical leadership skills from foundation to advanced:',
+            items: [
+              { id: 'l1', text: 'Vision Communication: Explain WHY it matters' },
+              { id: 'l2', text: 'Stakeholder Management: Build buy-in' },
+              { id: 'l3', text: 'Progress Visibility: Keep everyone informed' },
+              { id: 'l4', text: 'Risk & Adaptation: Adjust when needed' }
+            ],
+            correctOrder: ['l1', 'l2', 'l3', 'l4'],
+            hints: {
+              partial: 'Start with vision, then stakeholders, then visibility, then adaptation.',
+              wrong: 'Build from: why → who → how → adapt.'
+            },
+            explanation: 'Leadership progression: Vision (why) → Stakeholders (who) → Visibility (progress) → Adaptation (flexibility).',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'lead-dd-1',
+            instruction: 'Match each leadership skill to its key question:',
+            items: [
+              { id: 'q1', text: '"Why does this matter in business terms?"' },
+              { id: 'q2', text: '"Who needs to buy in and what are their concerns?"' },
+              { id: 'q3', text: '"How do others know we\'re on track?"' },
+              { id: 'q4', text: '"What could go wrong and how do we adapt?"' }
+            ],
+            zones: [
+              { id: 'vision', label: 'Vision Communication', correct: ['q1'] },
+              { id: 'stakeholder', label: 'Stakeholder Management', correct: ['q2'] },
+              { id: 'visibility', label: 'Progress Visibility', correct: ['q3'] },
+              { id: 'risk', label: 'Risk & Adaptation', correct: ['q4'] }
+            ],
+            explanation: 'Each skill answers a key question: Vision → Why. Stakeholders → Who. Visibility → Progress. Risk → Adaptation.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'lead-connect-1',
+            instruction: 'Connect each executive concern to how you address it:',
+            nodes: [
+              { id: 'rev', label: '💰 Revenue\nImpact' },
+              { id: 'risk', label: '⚠️ Risk\nReduction' },
+              { id: 'vel', label: '🚀 Eng\nVelocity' },
+              { id: 'ans1', label: '"Saves $X/month\nin ops costs"' },
+              { id: 'ans2', label: '"Reduces incident\nfrequency by Y%"' },
+              { id: 'ans3', label: '"Deploys go from\n4hrs to 15min"' }
+            ],
+            solution: {
+              edges: [
+                { source: 'rev', target: 'ans1' },
+                { source: 'risk', target: 'ans2' },
+                { source: 'vel', target: 'ans3' }
+              ]
+            },
+            explanation: 'Translate technical work into business language: cost savings, risk reduction, velocity improvement.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'lead-quiz-apply-1',
+            question: 'You\'re presenting a platform migration to executives. What framing is most effective?',
+            options: [
+              '"We\'ll use Kubernetes instead of ECS because it\'s more elegant"',
+              '"This migration reduces infrastructure costs by 30% and cuts deploy time from 4 hours to 15 minutes"',
+              '"The new architecture has better separation of concerns"',
+              '"This is the industry standard approach"'
+            ],
+            correct: 1,
+            explanation: 'Executives care about business outcomes. Frame in terms they understand: cost reduction, time savings, risk mitigation—not technical elegance.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'lead-seq-2',
+            instruction: 'Order how to handle a scope change request mid-initiative:',
+            items: [
+              { id: 'c1', text: 'Understand the request and its business driver' },
+              { id: 'c2', text: 'Assess impact on timeline, scope, and resources' },
+              { id: 'c3', text: 'Present options with trade-offs' },
+              { id: 'c4', text: 'Get explicit decision on which trade-off to accept' },
+              { id: 'c5', text: 'Communicate the change to all stakeholders' }
+            ],
+            correctOrder: ['c1', 'c2', 'c3', 'c4', 'c5'],
+            hints: {
+              partial: 'Understand → Assess → Present → Decide → Communicate.',
+              wrong: 'Don\'t react immediately. Understand, analyze, then communicate.'
+            },
+            explanation: 'Change handling: Understand → Assess → Present options → Get decision → Communicate. No reactive adjustments.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'lead-dd-2',
+            instruction: 'Categorize activities as Technical Work or Leadership Work:',
+            items: [
+              { id: 't1', text: 'Writing code for Phase 1' },
+              { id: 't2', text: 'Presenting progress to stakeholders' },
+              { id: 't3', text: 'Designing the architecture' },
+              { id: 't4', text: 'Building relationships with skeptics' },
+              { id: 't5', text: 'Adjusting scope based on feedback' },
+              { id: 't6', text: 'Creating documentation' }
+            ],
+            zones: [
+              { id: 'tech', label: 'Technical Work (AI can help)', correct: ['t1', 't3', 't6'] },
+              { id: 'lead', label: 'Leadership Work (Human-only)', correct: ['t2', 't4', 't5'] }
+            ],
+            explanation: 'AI helps with code, design, docs. Humans do presentations, relationships, scope decisions.',
+            points: 20
+          }
+        ]
+      });
+      leadershipApplication.init();
+
+      const leadershipSynthesis = new ActivityCarousel('leadership-synthesis', {
+        type: 'synthesis',
+        sectionId: 'leadership',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'lead-scenario-1',
+            scenario: 'A key stakeholder is skeptical of your initiative. They\'ve seen similar efforts fail before and think this is "just another tech project that won\'t deliver." They have significant influence.',
+            question: 'How do you build a relationship with this skeptic and address their concerns?',
+            evaluation: {
+              keywords: ['listen', 'understand', 'concern', 'history', 'different', 'evidence', 'milestone', 'involve', 'small win', 'trust'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'First, understand their history: "What went wrong before? What specifically concerns you?" Listen more than talk. Acknowledge their valid concerns. Show how this initiative is different: specific mitigations for past failure modes. Involve them: "What would you need to see to feel confident?" Build trust through small wins—hit your first milestone and show them. Convert skeptics into advocates by earning trust through results.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'lead-predict-1',
+            setup: {
+              type: 'text',
+              content: 'An engineer leading an initiative spends 80% of time on technical work and 20% on communication/stakeholder management. Another spends 50% on technical (using AI heavily) and 50% on leadership.'
+            },
+            question: 'After 3 months, whose initiative is more likely to have organizational support?',
+            correctAnswer: '50/50',
+            acceptableVariants: ['second', 'second engineer', 'leadership', 'balanced', '50-50', 'b'],
+            explanation: 'The 50/50 engineer likely has more support. Initiative success depends on organizational buy-in, not just technical excellence. AI lets you maintain technical velocity while investing in leadership.',
+            commonMistakes: {
+              '80/20': 'Technical excellence without support means blocked initiatives.',
+              'same': 'Leadership time directly correlates with stakeholder support.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'lead-scenario-2',
+            scenario: 'You\'re leading an initiative when a major technical risk materializes: a key dependency won\'t be available for 2 months. Your stakeholders don\'t know yet.',
+            question: 'How do you communicate this setback while maintaining confidence in the initiative?',
+            evaluation: {
+              keywords: ['proactive', 'early', 'transparent', 'options', 'impact', 'mitigation', 'adapt', 'timeline', 'plan', 'confidence'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Communicate proactively—don\'t wait for them to find out. Frame it constructively: "We discovered a dependency risk. Here\'s the impact and here are our options." Present 2-3 options with trade-offs: (1) wait and extend timeline, (2) build workaround and maintain timeline, (3) adjust scope. Come with a recommendation. Show you\'re in control: "This is how initiative leadership works—we identify risks early and adapt."',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'lead-reflect-1',
+            prompt: 'Think about a technical leader you admire. Which of the four leadership skills (vision, stakeholders, visibility, adaptation) are they strongest at? What specific behaviors demonstrate that skill?',
+            thinkingPrompts: [
+              'How do they communicate the "why" of their work?',
+              'How do they build relationships with stakeholders?',
+              'How do they keep people informed of progress?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(they|their|person)', label: 'Leader observation', points: 5 },
+                { pattern: '(vision|stakeholder|visibility|adaptation)', label: 'Skill identification', points: 5 },
+                { pattern: '(behavior|action|do|does)', label: 'Specific behaviors', points: 4 },
+                { pattern: '(learn|admire|respect)', label: 'Learning orientation', points: 4 },
+                { pattern: '(I|my|me)', label: 'Personal application', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'lead-scenario-3',
+            scenario: 'You\'ve been heads-down on technical work for 3 weeks. You realize you haven\'t sent a stakeholder update in that time. A VP asks in a meeting: "What\'s happening with that initiative?"',
+            question: 'How do you recover from this communication gap and prevent it from happening again?',
+            evaluation: {
+              keywords: ['acknowledge', 'update', 'cadence', 'regular', 'system', 'automated', 'dashboard', 'milestone', 'proactive', 'schedule'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'In the moment: Give a confident update without apologizing excessively. After the meeting: Send a comprehensive written update to all stakeholders. Going forward: Establish a regular cadence—weekly written updates, bi-weekly syncs. Create a system: calendar reminder, dashboard, or automated status report. Make visibility a habit, not an afterthought. The gap happened because I prioritized technical work over leadership work—rebalance.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'lead-predict-2',
+            setup: {
+              type: 'text',
+              content: 'Two initiatives have identical technical progress. Initiative A has weekly stakeholder updates and visible metrics. Initiative B has no updates—"we\'ll share when it\'s done."'
+            },
+            question: 'When both hit an unexpected blocker, which will get resources to help unblock?',
+            correctAnswer: 'A',
+            acceptableVariants: ['a', 'initiative a', 'first', 'visible'],
+            explanation: 'Initiative A will get resources. Stakeholders are invested through visibility—they know the progress and value. Initiative B\'s stakeholders have no connection and no reason to prioritize helping.',
+            commonMistakes: {
+              'B': 'Stakeholders help what they know and care about. Silence creates distance.',
+              'same': 'Visibility creates organizational investment in success.'
+            },
+            points: 20
+          }
+        ]
+      });
+      leadershipSynthesis.init();
+
+      console.log('🎠 All activity carousels initialized for Senior Ch 5: Capstone 1');
     });
   </script>
 </body>

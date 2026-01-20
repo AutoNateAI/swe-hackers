@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="senior" data-lesson="ch6-capstone2">
   <header class="header">
@@ -115,20 +116,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="skills-review-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 1: Skills Review -->
+      <div class="activity-carousels" data-story="skills-review-story">
+        <div id="skills-comprehension" class="carousel-container"></div>
+        <div id="skills-application" class="carousel-container"></div>
+        <div id="skills-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -194,20 +186,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="playbook-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 2: Your Playbook -->
+      <div class="activity-carousels" data-story="playbook-story">
+        <div id="playbook-comprehension" class="carousel-container"></div>
+        <div id="playbook-application" class="carousel-container"></div>
+        <div id="playbook-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -273,20 +256,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="amplification-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 3: Amplification -->
+      <div class="activity-carousels" data-story="amplification-story">
+        <div id="amplification-comprehension" class="carousel-container"></div>
+        <div id="amplification-application" class="carousel-container"></div>
+        <div id="amplification-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -341,7 +315,20 @@
   <script src="../../shared/js/interactive/diagram-utils.js"></script>
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
-  <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -460,20 +447,905 @@
       });
 
       // ============================================
-      // INITIALIZE QUIZZES
+      // ACTIVITY CAROUSELS
       // ============================================
 
-      const storyToQuiz = {
-        'skills-review-story': 'skills-review-quiz',
-        'playbook-story': 'playbook-quiz',
-        'amplification-story': 'amplification-quiz'
-      };
+      // ----------------------------------------
+      // STORY 1: SKILLS REVIEW
+      // ----------------------------------------
 
-      pageData.quizzes.forEach(quiz => {
-        const containerId = storyToQuiz[quiz.storyId];
-        if (!containerId) return;
-        new Quiz(containerId, quiz.questions);
+      const skillsComprehension = new ActivityCarousel('skills-comprehension', {
+        type: 'comprehension',
+        sectionId: 'skills',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'skills-quiz-1',
+            question: 'What makes the combination of these skills so powerful with AI?',
+            options: [
+              'AI does all the work for you',
+              'You can give AI context, verify output, and direct with clear designs',
+              'You no longer need to understand the code',
+              'AI replaces the need for these skills'
+            ],
+            correct: 1,
+            explanation: 'Your skills make AI effective. You provide context, verify quality, and direct with clear designs. Without these skills, AI output is generic and unreliable.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'skills-tf-1',
+            statement: 'Each skill you\'ve learned in this course works independently—they don\'t build on each other.',
+            correct: false,
+            explanation: 'The skills compound. Rapid acquisition feeds into debugging. Debugging informs platform strategy. Strategy enables better design. Together, they make you amplified.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'skills-quiz-2',
+            question: 'What does "rapid acquisition" mean in this context?',
+            options: [
+              'Quickly buying new software',
+              'Fast hiring of engineers',
+              'Mastering codebases in hours instead of weeks',
+              'Rapid typing speed'
+            ],
+            correct: 2,
+            explanation: 'Rapid acquisition is the skill of quickly understanding and navigating any codebase using AI assistance—turning weeks of ramp-up into hours.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'skills-fill-1',
+            statement: 'You\'re not just using AI—you\'re ___ by it.',
+            correctAnswers: ['multiplied', 'amplified', 'enhanced', 'augmented'],
+            caseSensitive: false,
+            hints: ['What does AI do to your capabilities?'],
+            explanation: 'The goal is to be multiplied by AI. You provide the skills (context, verification, direction); AI provides the scale.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'skills-quiz-3',
+            question: 'How do these skills relate to each other?',
+            options: [
+              'They\'re completely independent',
+              'You only need one of them',
+              'They build on each other and combine for maximum amplification',
+              'They conflict with each other'
+            ],
+            correct: 2,
+            explanation: 'The skills compound. Rapid acquisition feeds into debugging. Debugging informs platform strategy. Strategy enables better design. Together, they create amplification.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'skills-tf-2',
+            statement: 'An "amplified engineer" is one who has been replaced by AI.',
+            correct: false,
+            explanation: 'An amplified engineer is the opposite—someone who has learned to use AI to multiply their own impact. You\'re not replaced; you\'re enhanced.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          }
+        ]
       });
+      skillsComprehension.init();
+
+      const skillsApplication = new ActivityCarousel('skills-application', {
+        type: 'application',
+        sectionId: 'skills',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'skills-seq-1',
+            instruction: 'Order the skills from Chapter 1 (Stone) through Chapter 4 (Architect):',
+            items: [
+              { id: 's1', text: 'Ch1: Rapid Acquisition (Master any codebase)' },
+              { id: 's2', text: 'Ch2: System Debugging (Distributed systems)' },
+              { id: 's3', text: 'Ch3: Platform Strategy (Integration patterns)' },
+              { id: 's4', text: 'Ch4: AI-Augmented Design (Faster architecture)' }
+            ],
+            correctOrder: ['s1', 's2', 's3', 's4'],
+            hints: {
+              partial: 'Think about which skills build on others: understand → debug → integrate → design.',
+              wrong: 'The order follows the course: Stone → Lightning → Magnetism → Architect.'
+            },
+            explanation: 'Skills build: First understand code, then debug systems, then integrate platforms, finally design architecture.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'skills-dd-1',
+            instruction: 'Match each skill to its key capability:',
+            items: [
+              { id: 'c1', text: 'Master any codebase in hours, not weeks' },
+              { id: 'c2', text: 'Systematically investigate distributed issues' },
+              { id: 'c3', text: 'Design integration patterns that scale' },
+              { id: 'c4', text: 'Design systems faster without sacrificing quality' }
+            ],
+            zones: [
+              { id: 'acquisition', label: 'Rapid Acquisition (Ch1)', correct: ['c1'] },
+              { id: 'debugging', label: 'System Debugging (Ch2)', correct: ['c2'] },
+              { id: 'strategy', label: 'Platform Strategy (Ch3)', correct: ['c3'] },
+              { id: 'design', label: 'AI-Augmented Design (Ch4)', correct: ['c4'] }
+            ],
+            explanation: 'Each chapter builds a specific capability that compounds with the others.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'skills-connect-1',
+            instruction: 'Connect each skill to what it enables:',
+            nodes: [
+              { id: 'acq', label: '🪨 Rapid\nAcquisition' },
+              { id: 'debug', label: '⚡ System\nDebugging' },
+              { id: 'strat', label: '🧲 Platform\nStrategy' },
+              { id: 'und', label: '📖 Understanding\nCode Fast' },
+              { id: 'fix', label: '🔧 Finding\nRoot Causes' },
+              { id: 'scale', label: '📈 Scalable\nIntegrations' }
+            ],
+            solution: {
+              edges: [
+                { source: 'acq', target: 'und' },
+                { source: 'debug', target: 'fix' },
+                { source: 'strat', target: 'scale' }
+              ]
+            },
+            explanation: 'Acquisition → Understanding. Debugging → Root causes. Strategy → Scalable integrations.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'skills-quiz-apply-1',
+            question: 'You join a new team with an unfamiliar codebase and immediately face a production incident. Which skills do you use first?',
+            options: [
+              'Only Chapter 4 (Design a new system)',
+              'Chapter 1 (Rapid Acquisition) to understand, then Chapter 2 (Debugging) to investigate',
+              'Skip to Chapter 3 (Platform Strategy)',
+              'None of them—wait until you\'ve fully onboarded'
+            ],
+            correct: 1,
+            explanation: 'Use skills in combination: first rapidly acquire understanding of the codebase, then apply debugging skills to investigate the incident.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'skills-seq-2',
+            instruction: 'Order how skills compound for a major initiative:',
+            items: [
+              { id: 'i1', text: 'Understand existing systems (Rapid Acquisition)' },
+              { id: 'i2', text: 'Investigate current problems (System Debugging)' },
+              { id: 'i3', text: 'Plan integration approach (Platform Strategy)' },
+              { id: 'i4', text: 'Design the solution (AI-Augmented Design)' },
+              { id: 'i5', text: 'Lead the initiative (Chapter 5 skills)' }
+            ],
+            correctOrder: ['i1', 'i2', 'i3', 'i4', 'i5'],
+            hints: {
+              partial: 'Start with understanding, end with leading.',
+              wrong: 'Skills sequence: understand → diagnose → plan → design → lead.'
+            },
+            explanation: 'For initiatives, skills stack: understand current state → diagnose problems → plan approach → design solution → lead execution.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'skills-dd-2',
+            instruction: 'Categorize how AI helps with each skill:',
+            items: [
+              { id: 'h1', text: 'Generates documentation and summaries' },
+              { id: 'h2', text: 'Creates hypotheses and investigation paths' },
+              { id: 'h3', text: 'Suggests integration patterns and generates code' },
+              { id: 'h4', text: 'Produces design options and trade-off analysis' }
+            ],
+            zones: [
+              { id: 'acq', label: 'Rapid Acquisition', correct: ['h1'] },
+              { id: 'debug', label: 'System Debugging', correct: ['h2'] },
+              { id: 'strat', label: 'Platform Strategy', correct: ['h3'] },
+              { id: 'design', label: 'AI-Augmented Design', correct: ['h4'] }
+            ],
+            explanation: 'AI helps differently for each skill: docs for acquisition, hypotheses for debugging, patterns for strategy, options for design.',
+            points: 20
+          }
+        ]
+      });
+      skillsApplication.init();
+
+      const skillsSynthesis = new ActivityCarousel('skills-synthesis', {
+        type: 'synthesis',
+        sectionId: 'skills',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'skills-scenario-1',
+            scenario: 'A colleague says: "I\'ve been coding for 10 years. I don\'t need AI to make me better. My experience is what matters."',
+            question: 'How would you explain the relationship between experience and AI amplification?',
+            evaluation: {
+              keywords: ['experience', 'judgment', 'context', 'amplify', 'multiply', 'enhance', 'leverage', 'combine', 'faster', 'more'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Experience and AI amplify EACH OTHER. Your 10 years of judgment is MORE valuable with AI, not less. AI handles mechanical work; your experience provides irreplaceable judgment about what\'s right for your context. Think of it like power tools—a master carpenter is even more effective with them. AI doesn\'t replace experience; it multiplies its impact.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'skills-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Engineer A has 5 years experience and masters AI-augmented skills. Engineer B has 10 years experience but refuses to learn AI tools. Both work on similar projects.'
+            },
+            question: 'After 2 years, who will have more impact on their organization?',
+            correctAnswer: 'A',
+            acceptableVariants: ['a', 'engineer a', 'first', 'ai'],
+            explanation: 'Engineer A will likely have more impact. AI amplification lets them take on larger scope and move faster. Experience matters, but experience + AI > experience alone.',
+            commonMistakes: {
+              'B': 'Experience alone will increasingly lag behind AI-amplified capability.',
+              'same': 'The compounding effect of AI skills creates divergent trajectories.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'skills-reflect-1',
+            prompt: 'Reflect on your journey through this course. Which skill felt most transformative? What specifically changed about how you work?',
+            thinkingPrompts: [
+              'Which chapter had the biggest "aha" moment for you?',
+              'What do you do differently now than before the course?',
+              'How has your relationship with AI tools changed?'
+            ],
+            evaluation: {
+              minWords: 70,
+              depthIndicators: [
+                { pattern: '(I|my|me)', label: 'Personal reflection', points: 5 },
+                { pattern: '(before|after|now|used to)', label: 'Change awareness', points: 5 },
+                { pattern: '(chapter|skill|rapid|debug|strategy|design)', label: 'Course content', points: 4 },
+                { pattern: '(transform|change|different|improve)', label: 'Transformation', points: 4 },
+                { pattern: '(AI|tool|prompt)', label: 'AI integration', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'skills-scenario-2',
+            scenario: 'Your company is hiring. You\'re asked: "What skills should we look for in senior engineers in the AI age?"',
+            question: 'How would you describe the ideal skill profile based on what you\'ve learned?',
+            evaluation: {
+              keywords: ['judgment', 'context', 'verify', 'direct', 'design', 'communicate', 'learn', 'adapt', 'multiply', 'leverage'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Look for: (1) Strong judgment—can evaluate AI output and make decisions AI can\'t. (2) Context awareness—understands how to give AI the right information. (3) Verification skills—knows how to check AI work for quality and correctness. (4) Design ability—can direct AI with clear specifications. (5) Communication—leadership skills AI can\'t do. (6) Adaptability—willing to continuously learn as AI evolves.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'skills-predict-2',
+            setup: {
+              type: 'text',
+              content: 'In 5 years, AI capabilities will be significantly more advanced than today. Some engineers invest in AI-augmented skills now; others wait.'
+            },
+            question: 'What advantage do early adopters have?',
+            correctAnswer: 'compound',
+            acceptableVariants: ['compounding', 'head start', 'experience', 'learning', 'accumulated', 'foundation'],
+            explanation: 'Early adopters gain compounding advantage. They build judgment about AI strengths/weaknesses, develop effective workflows, and continuously improve. As AI advances, their foundation lets them adapt faster.',
+            commonMistakes: {
+              'none': 'The skills and judgment built now transfer to future AI capabilities.',
+              'small': 'Compounding effects mean early investment pays exponentially.'
+            },
+            points: 20
+          }
+        ]
+      });
+      skillsSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: YOUR PLAYBOOK
+      // ----------------------------------------
+
+      const playbookComprehension = new ActivityCarousel('playbook-comprehension', {
+        type: 'comprehension',
+        sectionId: 'playbook',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'play-quiz-1',
+            question: 'What is an engineering playbook?',
+            options: [
+              'A video game about engineering',
+              'Your documented system for using AI to multiply your impact',
+              'A book about football plays',
+              'The company\'s official documentation'
+            ],
+            correct: 1,
+            explanation: 'A playbook is YOUR personal, tested, documented system for how you use AI. It includes prompts, processes, verification steps, and continuous improvement.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'play-tf-1',
+            statement: 'A playbook is something you create once and never change.',
+            correct: false,
+            explanation: 'A playbook is never finished—it evolves as AI capabilities evolve. Continuous improvement is a core part of the playbook concept.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'play-quiz-2',
+            question: 'Why document your prompts in a library?',
+            options: [
+              'To impress your manager',
+              'Because prompts expire after one use',
+              'So you can reuse, refine, and share what works',
+              'AI requires written documentation'
+            ],
+            correct: 2,
+            explanation: 'A prompts library captures what works. You reuse effective prompts, refine them over time, and share with teammates—compounding effectiveness.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'play-fill-1',
+            statement: 'A playbook separates casual AI users from ___ engineers.',
+            correctAnswers: ['amplified', 'effective', 'professional', 'systematic'],
+            caseSensitive: false,
+            hints: ['What kind of engineer uses AI to multiply impact?'],
+            explanation: 'A playbook is what separates casual AI users from amplified engineers. It\'s the difference between random AI use and systematic multiplication.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'play-quiz-3',
+            question: 'Why is continuous improvement part of the playbook?',
+            options: [
+              'It\'s just nice to have',
+              'AI capabilities evolve, so your playbook must evolve too',
+              'Management requires documentation',
+              'It\'s not actually important'
+            ],
+            correct: 1,
+            explanation: 'AI tools improve constantly. What works today might be outdated tomorrow, and new capabilities emerge. Your playbook must evolve to stay amplified.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'play-tf-2',
+            statement: 'You should keep your playbook private and not share it with your team.',
+            correct: false,
+            explanation: 'Sharing learnings with your team compounds everyone\'s effectiveness. A great playbook shared multiplies impact across the whole team.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          }
+        ]
+      });
+      playbookComprehension.init();
+
+      const playbookApplication = new ActivityCarousel('playbook-application', {
+        type: 'application',
+        sectionId: 'playbook',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'play-seq-1',
+            instruction: 'Order the playbook sections from foundation to advanced:',
+            items: [
+              { id: 'p1', text: 'Acquisition Protocol (learning codebases)' },
+              { id: 'p2', text: 'Debugging Workflow (investigating issues)' },
+              { id: 'p3', text: 'Design Process (architecture work)' },
+              { id: 'p4', text: 'Code Generation Standards (delegation & review)' },
+              { id: 'p5', text: 'Continuous Improvement (evolving the playbook)' }
+            ],
+            correctOrder: ['p1', 'p2', 'p3', 'p4', 'p5'],
+            hints: {
+              partial: 'Follow the course structure: acquire → debug → design → code → improve.',
+              wrong: 'Build from understanding to creation to continuous improvement.'
+            },
+            explanation: 'Playbook sections mirror the skill progression: understand → investigate → design → create → improve.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'play-dd-1',
+            instruction: 'Match each playbook section to what it documents:',
+            items: [
+              { id: 'd1', text: 'Best prompts for learning codebases, verification checklists' },
+              { id: 'd2', text: 'Hypothesis generation prompts, investigation frameworks' },
+              { id: 'd3', text: 'Requirements synthesis, trade-off analysis templates' },
+              { id: 'd4', text: 'What to delegate, review standards, testing requirements' }
+            ],
+            zones: [
+              { id: 'acq', label: 'Acquisition Protocol', correct: ['d1'] },
+              { id: 'debug', label: 'Debugging Workflow', correct: ['d2'] },
+              { id: 'design', label: 'Design Process', correct: ['d3'] },
+              { id: 'code', label: 'Code Generation Standards', correct: ['d4'] }
+            ],
+            explanation: 'Each section documents different aspects of your AI workflow.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'play-connect-1',
+            instruction: 'Connect each playbook element to its purpose:',
+            nodes: [
+              { id: 'prompts', label: '📝 Prompt\nLibrary' },
+              { id: 'checklist', label: '✅ Verification\nChecklists' },
+              { id: 'templates', label: '📋 Documentation\nTemplates' },
+              { id: 'reuse', label: '🔄 Reuse\nWhat Works' },
+              { id: 'catch', label: '🎯 Catch\nAI Errors' },
+              { id: 'speed', label: '⚡ Speed Up\nOutput' }
+            ],
+            solution: {
+              edges: [
+                { source: 'prompts', target: 'reuse' },
+                { source: 'checklist', target: 'catch' },
+                { source: 'templates', target: 'speed' }
+              ]
+            },
+            explanation: 'Prompts → reuse effective patterns. Checklists → catch errors. Templates → speed up output.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'play-quiz-apply-1',
+            question: 'You discover a prompt that works amazingly well for debugging. What\'s the playbook approach?',
+            options: [
+              'Keep it in your head for next time',
+              'Document it in your playbook with context about when and why it works',
+              'Use it once and forget it',
+              'Keep it secret so others can\'t copy you'
+            ],
+            correct: 1,
+            explanation: 'Document what works! Include when to use it, why it works, and any variations. Your future self and teammates will thank you.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'play-seq-2',
+            instruction: 'Order the continuous improvement cycle:',
+            items: [
+              { id: 'c1', text: 'Use a playbook technique on a real task' },
+              { id: 'c2', text: 'Track what worked and what didn\'t' },
+              { id: 'c3', text: 'Refine the technique based on results' },
+              { id: 'c4', text: 'Update the playbook with improvements' },
+              { id: 'c5', text: 'Share learnings with the team' }
+            ],
+            correctOrder: ['c1', 'c2', 'c3', 'c4', 'c5'],
+            hints: {
+              partial: 'Use → Track → Refine → Update → Share.',
+              wrong: 'The cycle: apply → observe → improve → document → share.'
+            },
+            explanation: 'Continuous improvement: Use → Track → Refine → Update → Share. Then repeat.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'play-dd-2',
+            instruction: 'Categorize these as Playbook Elements vs Not Playbook:',
+            items: [
+              { id: 'e1', text: 'Your best prompts for code review' },
+              { id: 'e2', text: 'Random thoughts about AI' },
+              { id: 'e3', text: 'Verification checklist for generated code' },
+              { id: 'e4', text: 'Company org chart' },
+              { id: 'e5', text: 'Time targets for codebase onboarding' },
+              { id: 'e6', text: 'Meeting notes from last week' }
+            ],
+            zones: [
+              { id: 'playbook', label: 'Playbook Elements', correct: ['e1', 'e3', 'e5'] },
+              { id: 'not', label: 'Not Playbook', correct: ['e2', 'e4', 'e6'] }
+            ],
+            explanation: 'Playbook elements are systematic, tested, actionable. Random notes and org info don\'t qualify.',
+            points: 20
+          }
+        ]
+      });
+      playbookApplication.init();
+
+      const playbookSynthesis = new ActivityCarousel('playbook-synthesis', {
+        type: 'synthesis',
+        sectionId: 'playbook',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'play-scenario-1',
+            scenario: 'You\'re starting to build your playbook from scratch. You have limited time and want maximum impact.',
+            question: 'What would you document FIRST, and why? What structure would you use?',
+            evaluation: {
+              keywords: ['frequent', 'high-impact', 'prompts', 'verify', 'checklist', 'template', 'reuse', 'iterate', 'simple', 'start'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Start with what you do MOST frequently—that\'s where repetition pays off. For me: (1) Code review prompts I use daily. (2) Verification checklist for generated code—catches errors before they become bugs. Structure: Keep it simple—a single document organized by task type. Don\'t over-engineer. Start small, improve as you use it.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'play-predict-1',
+            setup: {
+              type: 'text',
+              content: 'Two engineers use AI equally. Engineer A documents prompts and processes in a playbook. Engineer B uses AI ad-hoc without documentation.'
+            },
+            question: 'After 6 months, whose AI usage will be more effective?',
+            correctAnswer: 'A',
+            acceptableVariants: ['a', 'engineer a', 'first', 'playbook', 'documented'],
+            explanation: 'Engineer A will be more effective. The playbook creates compounding improvement: what works gets refined, what doesn\'t gets dropped. Engineer B repeats the same experiments.',
+            commonMistakes: {
+              'B': 'Without documentation, there\'s no systematic improvement.',
+              'same': 'Documentation enables compounding; ad-hoc use stays flat.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'play-reflect-1',
+            prompt: 'Think about your current AI usage. What techniques do you use repeatedly that should be documented? What gaps exist in your process that a playbook could fill?',
+            thinkingPrompts: [
+              'What prompts do you type over and over?',
+              'Where do you often make mistakes with AI output?',
+              'What would help you be more consistent?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|my|me)', label: 'Personal context', points: 5 },
+                { pattern: '(prompt|template|checklist)', label: 'Playbook elements', points: 5 },
+                { pattern: '(repeat|often|always)', label: 'Pattern awareness', points: 4 },
+                { pattern: '(gap|miss|need)', label: 'Gap identification', points: 4 },
+                { pattern: '(improve|better|should)', label: 'Improvement intent', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'play-scenario-2',
+            scenario: 'A new engineer joins your team. They\'ve never used AI tools systematically. You want to onboard them effectively.',
+            question: 'How would you use your playbook to help them become amplified faster?',
+            evaluation: {
+              keywords: ['share', 'playbook', 'start', 'simple', 'practice', 'verify', 'adapt', 'feedback', 'iterate', 'pair'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Share relevant sections of my playbook as a starting point—they don\'t need to reinvent everything. Start with high-impact, simple techniques (like code review prompts). Pair with them on real tasks, showing how I use the playbook. Have them practice with verification checklists—builds trust in AI output.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'play-predict-2',
+            setup: {
+              type: 'text',
+              content: 'A team creates a shared playbook that everyone contributes to. Another team lets each engineer maintain their own private playbook.'
+            },
+            question: 'Which team will have better AI practices after 1 year?',
+            correctAnswer: 'shared',
+            acceptableVariants: ['first', 'team a', 'shared playbook', 'together', 'collective'],
+            explanation: 'The shared playbook team will likely be stronger. They benefit from collective learning—best practices spread, mistakes are learned from once. Private playbooks duplicate effort and miss cross-pollination.',
+            commonMistakes: {
+              'private': 'Individual playbooks have value but miss team learning effects.',
+              'same': 'Shared learning compounds; isolated learning is linear.'
+            },
+            points: 20
+          }
+        ]
+      });
+      playbookSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: AMPLIFICATION
+      // ----------------------------------------
+
+      const amplificationComprehension = new ActivityCarousel('amplification-comprehension', {
+        type: 'comprehension',
+        sectionId: 'amplification',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'amp-quiz-1',
+            question: 'What\'s the biggest gain from being an amplified engineer?',
+            options: [
+              'Working fewer hours',
+              'Taking on projects 10x bigger in scope',
+              'Not needing to think anymore',
+              'Replacing your teammates'
+            ],
+            correct: 1,
+            explanation: 'The biggest win is scope expansion. When AI handles repetitive work, you can take on projects that would have been impossible before—10x bigger impact.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'amp-tf-1',
+            statement: 'Being "amplified" means AI does your job for you.',
+            correct: false,
+            explanation: 'Amplified means AI MULTIPLIES your capability. You still provide judgment, context, and direction—AI provides scale. You\'re more effective, not replaced.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'amp-quiz-2',
+            question: 'How should you track amplification?',
+            options: [
+              'Just guess if it\'s helping',
+              'Ask AI how much faster you are',
+              'Measure time and effort before vs after on real tasks',
+              'Counting lines of code'
+            ],
+            correct: 2,
+            explanation: 'Track real tasks with before/after comparisons. How long would it take without AI? How long did it actually take? What worked well? What needs improvement?',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'amp-fill-1',
+            statement: 'Speed gains: 5x faster codebase onboarding, 3x faster incident resolution, ___ faster design cycles.',
+            correctAnswers: ['2x', '2', 'two', 'twice'],
+            caseSensitive: false,
+            hints: ['What\'s the multiplier for design cycles?'],
+            explanation: 'Achievable gains with systematic AI use: 5x onboarding, 3x debugging, 2x design. These aren\'t aspirational—they\'re what the course enables.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'amp-quiz-3',
+            question: 'What happens to engineers who embrace AI effectively?',
+            options: [
+              'They get replaced by AI',
+              'They stay at the same level',
+              'They take on bigger roles, responsibility, and impact',
+              'They become AI developers'
+            ],
+            correct: 2,
+            explanation: 'Amplified engineers don\'t just keep their jobs—they grow. Bigger roles, more responsibility, greater impact. AI is a multiplier for those who master it.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'amp-tf-2',
+            statement: 'The goal of amplification is to work fewer hours while maintaining the same output.',
+            correct: false,
+            explanation: 'The goal is GREATER impact, not just less work. Yes, you\'re more efficient—but you use that efficiency to take on bigger scope, not just to coast.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          }
+        ]
+      });
+      amplificationComprehension.init();
+
+      const amplificationApplication = new ActivityCarousel('amplification-application', {
+        type: 'application',
+        sectionId: 'amplification',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'amp-seq-1',
+            instruction: 'Order these amplification metrics from easiest to hardest to achieve:',
+            items: [
+              { id: 'm1', text: '5x faster codebase onboarding' },
+              { id: 'm2', text: '3x faster incident resolution' },
+              { id: 'm3', text: '2x faster design cycles' },
+              { id: 'm4', text: '10x scope expansion on projects' }
+            ],
+            correctOrder: ['m1', 'm2', 'm3', 'm4'],
+            hints: {
+              partial: 'Onboarding is most mechanical; scope expansion requires full skill integration.',
+              wrong: 'Progress from mechanical tasks to complex judgment tasks to scope expansion.'
+            },
+            explanation: 'Easier wins: onboarding (mechanical), debugging (systematic). Harder wins: design (judgment), scope expansion (everything combined).',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'amp-dd-1',
+            instruction: 'Match each metric type to how you measure it:',
+            items: [
+              { id: 'h1', text: 'Compare time to productive on new vs old projects' },
+              { id: 'h2', text: 'Track incident MTTR before and after AI use' },
+              { id: 'h3', text: 'Measure design doc completion time' },
+              { id: 'h4', text: 'Compare project scope you take on vs before' }
+            ],
+            zones: [
+              { id: 'onboard', label: 'Onboarding Speed', correct: ['h1'] },
+              { id: 'debug', label: 'Debugging Speed', correct: ['h2'] },
+              { id: 'design', label: 'Design Speed', correct: ['h3'] },
+              { id: 'scope', label: 'Scope Expansion', correct: ['h4'] }
+            ],
+            explanation: 'Each metric has a clear measurement approach. Track before/after to prove amplification.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'amp-connect-1',
+            instruction: 'Connect each amplification type to its career impact:',
+            nodes: [
+              { id: 'speed', label: '⚡ Speed\nGains' },
+              { id: 'scope', label: '🎯 Scope\nExpansion' },
+              { id: 'quality', label: '✨ Quality\nMaintained' },
+              { id: 'prod', label: '📈 Higher\nProductivity' },
+              { id: 'bigger', label: '🚀 Bigger\nProjects' },
+              { id: 'trust', label: '🤝 More\nTrust' }
+            ],
+            solution: {
+              edges: [
+                { source: 'speed', target: 'prod' },
+                { source: 'scope', target: 'bigger' },
+                { source: 'quality', target: 'trust' }
+              ]
+            },
+            explanation: 'Speed → productivity. Scope → bigger projects. Quality → trust. All compound into career growth.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'amp-quiz-apply-1',
+            question: 'You completed a design doc in 1 week that previously took 3 weeks. What\'s the amplification factor?',
+            options: [
+              '2x',
+              '3x',
+              '4x',
+              '1x'
+            ],
+            correct: 1,
+            explanation: '3 weeks → 1 week = 3x amplification. This is the design cycle improvement the course enables.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'amp-seq-2',
+            instruction: 'Order what happens as your amplification increases:',
+            items: [
+              { id: 'a1', text: 'You deliver faster on current scope' },
+              { id: 'a2', text: 'You take on slightly larger projects' },
+              { id: 'a3', text: 'You\'re trusted with initiative-scale work' },
+              { id: 'a4', text: 'You\'re seen as a force multiplier for the team' },
+              { id: 'a5', text: 'You\'re considered for leadership roles' }
+            ],
+            correctOrder: ['a1', 'a2', 'a3', 'a4', 'a5'],
+            hints: {
+              partial: 'Start with immediate impact, end with career growth.',
+              wrong: 'The progression: speed → scope → trust → reputation → leadership.'
+            },
+            explanation: 'Amplification compounds: faster → bigger scope → trusted → team multiplier → leadership.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'amp-dd-2',
+            instruction: 'Categorize these as AI helps vs You provide:',
+            items: [
+              { id: 'i1', text: 'Generating code and documentation' },
+              { id: 'i2', text: 'Judgment about what\'s right for your context' },
+              { id: 'i3', text: 'Synthesizing requirements from scattered inputs' },
+              { id: 'i4', text: 'Building stakeholder relationships' },
+              { id: 'i5', text: 'Creating design options rapidly' },
+              { id: 'i6', text: 'Making trade-off decisions' }
+            ],
+            zones: [
+              { id: 'ai', label: 'AI Provides', correct: ['i1', 'i3', 'i5'] },
+              { id: 'you', label: 'You Provide', correct: ['i2', 'i4', 'i6'] }
+            ],
+            explanation: 'AI handles mechanical work (generation, synthesis). You provide judgment, relationships, and decisions.',
+            points: 20
+          }
+        ]
+      });
+      amplificationApplication.init();
+
+      const amplificationSynthesis = new ActivityCarousel('amplification-synthesis', {
+        type: 'synthesis',
+        sectionId: 'amplification',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'amp-scenario-1',
+            scenario: 'Your manager asks: "How do I know you\'re actually more effective with AI, not just appearing faster?" They want proof.',
+            question: 'How would you demonstrate measurable amplification to a skeptical manager?',
+            evaluation: {
+              keywords: ['measure', 'before', 'after', 'time', 'scope', 'quality', 'data', 'compare', 'track', 'specific'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Show data, not claims: (1) Before/after time comparisons on similar tasks—"Design docs that took 3 weeks now take 1 week." (2) Scope comparison—"I took on the platform migration that would normally need a team." (3) Quality metrics—"Bug rates and review feedback are same or better." (4) Specific examples with timestamps.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'amp-predict-1',
+            setup: {
+              type: 'text',
+              content: 'The engineering job market in 5 years: AI capabilities are significantly more advanced. Some engineers invested in amplification skills; others continued traditional approaches.'
+            },
+            question: 'What happens to career trajectories of these two groups?',
+            correctAnswer: 'diverge',
+            acceptableVariants: ['split', 'separate', 'different', 'gap', 'widen', 'accelerate'],
+            explanation: 'Career trajectories diverge significantly. Amplified engineers take on larger scope, demonstrate more impact, and advance faster. Those who didn\'t invest compete for shrinking traditional roles.',
+            commonMistakes: {
+              'same': 'AI changes the value equation; amplification skills become essential.',
+              'traditional wins': 'Traditional skills remain necessary but insufficient for maximum impact.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'amp-reflect-1',
+            prompt: 'This is the final reflection of the course. What are you committing to do differently starting tomorrow? What specific actions will maintain your amplification?',
+            thinkingPrompts: [
+              'What one technique will you use every day?',
+              'How will you continue building your playbook?',
+              'What bigger project will you take on?'
+            ],
+            evaluation: {
+              minWords: 70,
+              depthIndicators: [
+                { pattern: '(I|will|commit|going to)', label: 'Commitment', points: 5 },
+                { pattern: '(tomorrow|daily|weekly|every)', label: 'Timing', points: 5 },
+                { pattern: '(specific|action|do|practice)', label: 'Concrete actions', points: 4 },
+                { pattern: '(playbook|prompt|verify)', label: 'Course concepts', points: 4 },
+                { pattern: '(project|initiative|scope)', label: 'Ambition', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'amp-scenario-2',
+            scenario: 'You\'ve completed this course and feel genuinely amplified. A friend asks: "Was it worth it? What\'s actually different about how you work?"',
+            question: 'How would you explain the transformation to someone who hasn\'t experienced it?',
+            evaluation: {
+              keywords: ['scope', 'speed', 'judgment', 'multiply', 'context', 'verify', 'confidence', 'playbook', 'systematic', 'impact'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'The difference is scope and confidence. Before: I could handle X-sized projects. Now: I can handle 3-5X. The speed is part of it—onboarding, debugging, design all faster. But the bigger change is how I THINK about work. I have a systematic playbook. I know when to use AI and when my judgment is essential.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'amp-predict-2',
+            setup: {
+              type: 'text',
+              content: 'You complete this course and apply the techniques consistently for 1 year. You also share learnings with your team and help them become amplified.'
+            },
+            question: 'What is your likely impact on the organization after 1 year?',
+            correctAnswer: 'multiplied',
+            acceptableVariants: ['compounded', 'significant', 'large', 'substantial', 'team-wide', 'exponential'],
+            explanation: 'Your impact multiplies beyond just your own work. By helping your team become amplified, you create a force multiplier effect. Your personal amplification compounds with team amplification.',
+            commonMistakes: {
+              'small': 'Personal amplification + team multiplication creates significant organizational impact.',
+              'same': 'Sharing knowledge compounds impact; hoarding it limits it.'
+            },
+            points: 20
+          }
+        ]
+      });
+      amplificationSynthesis.init();
+
+      console.log('🎠 All activity carousels initialized for Senior Ch 6: Capstone 2');
     });
   </script>
 </body>

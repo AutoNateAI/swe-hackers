@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="senior" data-lesson="ch4-architect">
   <header class="header">
@@ -115,20 +116,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="acceleration-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 1: Design at Speed -->
+      <div class="activity-carousels" data-story="acceleration-story">
+        <div id="acceleration-comprehension" class="carousel-container"></div>
+        <div id="acceleration-application" class="carousel-container"></div>
+        <div id="acceleration-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -194,20 +186,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="process-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 2: AI-Augmented Process -->
+      <div class="activity-carousels" data-story="process-story">
+        <div id="process-comprehension" class="carousel-container"></div>
+        <div id="process-application" class="carousel-container"></div>
+        <div id="process-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -273,20 +256,11 @@
         </div>
       </div>
 
-      <div class="quiz-card" id="prompts-quiz">
-        <div class="quiz-header">
-          <h4>📝 Check Your Understanding</h4>
-          <div class="quiz-progress">
-            <span class="answered">0</span>/<span class="total">3</span> answered
-            <span class="score"></span>
-          </div>
-        </div>
-        <div class="quiz-carousel"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn prev" disabled>← Prev</button>
-          <div class="quiz-dots"></div>
-          <button class="quiz-nav-btn next">Next →</button>
-        </div>
+      <!-- Activity Carousels for Story 3: Design Prompts -->
+      <div class="activity-carousels" data-story="prompts-story">
+        <div id="prompts-comprehension" class="carousel-container"></div>
+        <div id="prompts-application" class="carousel-container"></div>
+        <div id="prompts-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -341,7 +315,20 @@
   <script src="../../shared/js/interactive/diagram-utils.js"></script>
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
-  <script src="../../shared/js/interactive/quiz-system.js"></script>
+
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -466,21 +453,943 @@
       });
 
       // ============================================
-      // INITIALIZE QUIZZES
+      // ACTIVITY CAROUSELS
       // ============================================
 
-      const storyToQuiz = {
-        'acceleration-story': 'acceleration-quiz',
-        'process-story': 'process-quiz',
-        'prompts-story': 'prompts-quiz'
-      };
+      // ----------------------------------------
+      // STORY 1: DESIGN AT SPEED
+      // ----------------------------------------
 
-      pageData.quizzes.forEach(quiz => {
-        const containerId = storyToQuiz[quiz.storyId];
-        if (!containerId) return;
-
-        new Quiz(containerId, quiz.questions);
+      const accelerationComprehension = new ActivityCarousel('acceleration-comprehension', {
+        type: 'comprehension',
+        sectionId: 'acceleration',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'accel-quiz-1',
+            question: 'What\'s the main reason AI accelerates design work?',
+            options: [
+              'AI makes better decisions than humans',
+              'AI handles mechanical work (synthesis, drafting) so you focus on judgment',
+              'AI eliminates the need for design reviews',
+              'AI writes better code than humans'
+            ],
+            correct: 1,
+            explanation: 'AI excels at mechanical tasks—synthesizing inputs, generating options, drafting docs. You excel at judgment and context. Combining them eliminates waste without cutting quality.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'accel-tf-1',
+            statement: 'AI-augmented design sacrifices quality for speed.',
+            correct: false,
+            explanation: 'The amplified approach maintains quality while eliminating waste. AI handles mechanical work; you apply judgment. Same quality, faster delivery—not quality cuts for speed.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'accel-quiz-2',
+            question: 'In the amplified timeline, what happens in Days 1-2?',
+            options: [
+              'Implementation begins immediately',
+              'AI synthesizes requirements from scattered inputs',
+              'Design reviews are conducted',
+              'The team takes planning meetings'
+            ],
+            correct: 1,
+            explanation: 'AI quickly synthesizes requirements from meeting notes, Slack threads, and tickets—work that traditionally takes a week of human effort.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'accel-fill-1',
+            statement: 'AI is amazing at generating ___; you\'re amazing at judgment—combine them.',
+            correctAnswers: ['options', 'alternatives', 'possibilities', 'choices'],
+            caseSensitive: false,
+            hints: ['What does AI produce for you to evaluate?'],
+            explanation: 'AI generates options and documentation rapidly. You apply irreplaceable judgment and organizational context. Together, you\'re faster than either alone.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'accel-tf-2',
+            statement: 'The traditional 8-week design timeline is compressed to 5 weeks using AI assistance.',
+            correct: true,
+            explanation: 'Traditional 8 weeks becomes amplified 5 weeks. The 37% time savings comes from AI handling mechanical work while you focus on high-value judgment.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'accel-quiz-3',
+            question: 'Where does most design time go in the traditional approach?',
+            options: [
+              'Making critical decisions',
+              'Mechanical work: synthesizing, researching, drafting',
+              'Attending meetings with stakeholders',
+              'Writing implementation code'
+            ],
+            correct: 1,
+            explanation: 'Most time is spent on mechanical work—synthesizing requirements, researching prior art, drafting documentation. Your unique value (judgment) gets only a fraction of time.',
+            points: 10
+          }
+        ]
       });
+      accelerationComprehension.init();
+
+      const accelerationApplication = new ActivityCarousel('acceleration-application', {
+        type: 'application',
+        sectionId: 'acceleration',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'accel-seq-1',
+            instruction: 'Order the amplified design timeline from start to finish:',
+            items: [
+              { id: 't1', text: 'AI synthesizes requirements from scattered inputs (Days 1-2)' },
+              { id: 't2', text: 'AI researches prior art and generates options (Days 3-5)' },
+              { id: 't3', text: 'You apply judgment and make trade-off decisions (Week 2)' },
+              { id: 't4', text: 'AI drafts documentation while you refine (Week 3)' },
+              { id: 't5', text: 'Design review and iteration (Weeks 4-5)' }
+            ],
+            correctOrder: ['t1', 't2', 't3', 't4', 't5'],
+            hints: {
+              partial: 'Start with gathering, then research, then decide, then document.',
+              wrong: 'AI handles early mechanical work; you apply judgment mid-process.'
+            },
+            explanation: 'The amplified timeline: AI gathers → AI researches → You decide → AI documents → Review. Each phase leverages the right capability.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'accel-dd-1',
+            instruction: 'Categorize these tasks as AI-handled or Human-judgment:',
+            items: [
+              { id: 'a1', text: 'Synthesizing requirements from Slack threads' },
+              { id: 'a2', text: 'Deciding which trade-off to make' },
+              { id: 'a3', text: 'Researching how others solved similar problems' },
+              { id: 'a4', text: 'Applying organizational context to options' },
+              { id: 'a5', text: 'Drafting initial documentation' },
+              { id: 'a6', text: 'Choosing between architectural approaches' }
+            ],
+            zones: [
+              { id: 'ai', label: 'AI-Handled (Mechanical)', correct: ['a1', 'a3', 'a5'] },
+              { id: 'human', label: 'Human Judgment (Irreplaceable)', correct: ['a2', 'a4', 'a6'] }
+            ],
+            explanation: 'AI handles synthesis, research, and drafting. Humans handle decisions, context application, and architectural choices.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'accel-connect-1',
+            instruction: 'Connect each bottleneck to its AI solution:',
+            nodes: [
+              { id: 'scattered', label: '📋 Scattered\nRequirements' },
+              { id: 'research', label: '🔍 Prior Art\nResearch' },
+              { id: 'docs', label: '📝 Documentation\nDrafting' },
+              { id: 'synth', label: '🤖 AI\nSynthesis' },
+              { id: 'survey', label: '🤖 AI\nSurvey' },
+              { id: 'draft', label: '🤖 AI\nDrafting' }
+            ],
+            solution: {
+              edges: [
+                { source: 'scattered', target: 'synth' },
+                { source: 'research', target: 'survey' },
+                { source: 'docs', target: 'draft' }
+              ]
+            },
+            explanation: 'Each traditional bottleneck has an AI solution: scattered inputs → AI synthesis, research needs → AI survey, documentation → AI drafting.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'accel-quiz-apply-1',
+            question: 'You have meeting notes, Slack threads, and stakeholder emails about requirements. What\'s your first AI-augmented step?',
+            options: [
+              'Start coding immediately to save time',
+              'Have AI synthesize requirements and identify ambiguities',
+              'Schedule more meetings to clarify everything',
+              'Write documentation from scratch'
+            ],
+            correct: 1,
+            explanation: 'Feed AI your scattered inputs first. Ask it to synthesize requirements, identify ambiguities, and suggest clarifying questions. This is the amplified approach.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'accel-seq-2',
+            instruction: 'Order how judgment and AI work together in design:',
+            items: [
+              { id: 'j1', text: 'AI generates 2-3 architectural options' },
+              { id: 'j2', text: 'You evaluate options against organizational context' },
+              { id: 'j3', text: 'You make the final decision on approach' },
+              { id: 'j4', text: 'AI drafts documentation for your chosen approach' },
+              { id: 'j5', text: 'You refine and correct AI output' }
+            ],
+            correctOrder: ['j1', 'j2', 'j3', 'j4', 'j5'],
+            hints: {
+              partial: 'AI generates, you evaluate and decide, AI documents, you refine.',
+              wrong: 'The pattern is: AI proposes → You decide → AI documents → You validate.'
+            },
+            explanation: 'AI generates options, you evaluate with context and decide, AI documents, you refine. This division maximizes both capabilities.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'accel-dd-2',
+            instruction: 'Match each time savings to its source:',
+            items: [
+              { id: 's1', text: 'Days 1-2: Requirements synthesis' },
+              { id: 's2', text: 'Days 3-5: Prior art research' },
+              { id: 's3', text: 'Week 3: Documentation drafting' }
+            ],
+            zones: [
+              { id: 'ai-heavy', label: 'AI Does 80%+ (Big Time Savings)', correct: ['s1', 's2', 's3'] }
+            ],
+            explanation: 'All three phases are AI-heavy mechanical work. AI handles synthesis, research, and drafting—you review and refine.',
+            points: 20
+          }
+        ]
+      });
+      accelerationApplication.init();
+
+      const accelerationSynthesis = new ActivityCarousel('acceleration-synthesis', {
+        type: 'synthesis',
+        sectionId: 'acceleration',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'accel-scenario-1',
+            scenario: 'Your manager says: "We need the system design for the new payment platform in 4 weeks instead of the usual 8. Can you do it without sacrificing quality?"',
+            question: 'How would you use the amplified approach to deliver quality design in half the time?',
+            evaluation: {
+              keywords: ['AI', 'synthesize', 'requirements', 'options', 'judgment', 'draft', 'documentation', 'review', 'iterate'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Yes, with the amplified approach: Week 1—AI synthesizes requirements and researches prior art in days instead of weeks. Week 2—AI generates 2-3 architecture options; I apply judgment to decide. Week 3—AI drafts documentation while I refine. Week 4—Reviews and iteration. Quality maintained because MY judgment is still the core—AI just eliminates mechanical waste.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'accel-predict-1',
+            setup: {
+              type: 'text',
+              content: 'An architect insists on writing all documentation manually, saying "AI can\'t understand our specific context." They take 3 weeks on documentation while an AI-augmented peer takes 1 week.'
+            },
+            question: 'What is the actual quality difference likely to be?',
+            correctAnswer: 'minimal',
+            acceptableVariants: ['same', 'none', 'little', 'negligible', 'similar', 'equivalent'],
+            explanation: 'Quality difference is likely minimal. AI-augmented documentation includes human review and refinement. The manual approach isn\'t inherently better—it\'s just slower. Context can be added during refinement.',
+            commonMistakes: {
+              'manual is better': 'Manual isn\'t inherently better; both include human judgment. One is just faster.',
+              'AI is better': 'AI drafts are a starting point, not final. Human refinement matters.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'accel-scenario-2',
+            scenario: 'A colleague argues: "Using AI for design work is cheating. Real architects do the work themselves." How would you respond?',
+            question: 'Explain why AI-augmented design is professional, not cheating, and what the real skill shift is.',
+            evaluation: {
+              keywords: ['tool', 'judgment', 'mechanical', 'leverage', 'multiply', 'focus', 'valuable', 'irreplaceable', 'professional'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'AI is a tool like any other professional tool. The skill shift is from "doing mechanical work" to "directing AI effectively and applying judgment." Real architects make decisions—they don\'t prove themselves by manually typing documentation. I use AI to multiply my impact, focusing my irreplaceable judgment where it matters most. That\'s professional efficiency, not cheating.',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'accel-reflect-1',
+            prompt: 'Think about your current design process. Where do you spend the most time on mechanical work? How much of that could AI handle if you learned to direct it effectively?',
+            thinkingPrompts: [
+              'How long does requirements gathering typically take you?',
+              'How much time do you spend researching how others solved similar problems?',
+              'What percentage of your documentation time is drafting vs. thinking?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|my|me)', label: 'Personal reflection', points: 5 },
+                { pattern: '(hours|days|weeks|time)', label: 'Time awareness', points: 5 },
+                { pattern: '(mechanical|repetitive|draft)', label: 'Waste identification', points: 4 },
+                { pattern: '(AI|automat|tool)', label: 'Automation potential', points: 4 },
+                { pattern: '(judgment|decision|think)', label: 'Value focus', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'accel-predict-2',
+            setup: {
+              type: 'text',
+              content: 'Company A trains all architects on AI-augmented design. Company B bans AI use in design work "to ensure quality." Both compete for the same contracts.'
+            },
+            question: 'After 1 year, which company will win more contracts?',
+            correctAnswer: 'A',
+            acceptableVariants: ['a', 'company a', 'first', 'ai-trained'],
+            explanation: 'Company A will likely win more contracts. They can deliver quality designs faster, respond to RFPs quicker, and take on more work. Company B\'s "quality" argument doesn\'t hold if both produce good designs—but A delivers faster.',
+            commonMistakes: {
+              'B': 'Speed without quality loss is a competitive advantage.',
+              'same': 'Velocity differences compound over time into significant market advantage.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'accel-scenario-3',
+            scenario: 'You\'re mentoring a junior architect who has never used AI for design work. They\'re skeptical and say "I need to learn to do it the hard way first."',
+            question: 'How would you guide them on learning design fundamentals while also developing AI-augmented skills?',
+            evaluation: {
+              keywords: ['fundamentals', 'judgment', 'learn', 'AI', 'tool', 'understand', 'verify', 'both', 'parallel', 'complement'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Valid concern—fundamentals matter. My approach: Learn both in parallel. Use AI to generate options, but deeply understand WHY each option works or fails. AI accelerates exposure to patterns; you build judgment by evaluating them. Don\'t skip understanding—use AI to see more examples faster. The "hard way" isn\'t manual typing; it\'s developing judgment. AI helps you see more to judge against.',
+            points: 30
+          }
+        ]
+      });
+      accelerationSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: THE AI-AUGMENTED PROCESS
+      // ----------------------------------------
+
+      const processComprehension = new ActivityCarousel('process-comprehension', {
+        type: 'comprehension',
+        sectionId: 'process',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'proc-quiz-1',
+            question: 'Which phase should be "YOU-heavy" (your judgment dominant)?',
+            options: [
+              'Requirements synthesis',
+              'Prior art research',
+              'Trade-off analysis and decisions',
+              'Documentation generation'
+            ],
+            correct: 2,
+            explanation: 'Trade-off analysis requires YOUR judgment—what AI doesn\'t know about your org, team, constraints, and what you\'d regret in 2 years. This is irreplaceable human insight.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'proc-tf-1',
+            statement: 'Phase 1 (Requirements Synthesis) is AI-heavy because AI can synthesize scattered inputs faster than humans.',
+            correct: true,
+            explanation: 'Requirements synthesis is AI-heavy. Feed AI meeting notes, Slack threads, tickets—it synthesizes requirements, identifies ambiguities, and suggests clarifying questions.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'proc-fill-1',
+            statement: 'In Phase 3 (Design Generation), ask AI to propose 2-3 ___ with trade-offs.',
+            correctAnswers: ['architectures', 'options', 'alternatives', 'approaches', 'designs'],
+            caseSensitive: false,
+            hints: ['What do you evaluate before deciding?'],
+            explanation: 'Ask for 2-3 architecture options with trade-offs. You\'re not accepting AI\'s design—you\'re using AI to rapidly explore the solution space.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'proc-quiz-2',
+            question: 'What should you ask AI during Phase 6 (Review Preparation)?',
+            options: [
+              'What\'s the best programming language?',
+              'What questions will reviewers ask? What are the weakest parts?',
+              'How much will this cost?',
+              'Who should attend the review meeting?'
+            ],
+            correct: 1,
+            explanation: 'AI can anticipate reviewer questions and identify weak points in your design. Walk into reviews prepared for tough questions and skeptical critique.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'proc-tf-2',
+            statement: 'In Phase 5 (Documentation), you should write everything from scratch without AI help.',
+            correct: false,
+            explanation: 'Let AI draft the design doc from your decisions. You refine and correct inaccuracies. AI generates diagrams from descriptions. Draft fast, polish carefully.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'proc-quiz-3',
+            question: 'What\'s the purpose of Phase 2 (Prior Art Research)?',
+            options: [
+              'To copy existing solutions exactly',
+              'To understand how others solved similar problems and known pitfalls',
+              'To find reasons not to do the project',
+              'To generate marketing materials'
+            ],
+            correct: 1,
+            explanation: 'Ask AI how others have solved similar problems. What patterns exist? What are the known pitfalls? AI can survey the landscape faster than you can read documentation.',
+            points: 10
+          }
+        ]
+      });
+      processComprehension.init();
+
+      const processApplication = new ActivityCarousel('process-application', {
+        type: 'application',
+        sectionId: 'process',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'proc-seq-1',
+            instruction: 'Order the 6 phases of AI-augmented design:',
+            items: [
+              { id: 'p1', text: 'Requirements Synthesis [AI Heavy]' },
+              { id: 'p2', text: 'Prior Art Research [AI Heavy]' },
+              { id: 'p3', text: 'Design Generation [AI + You]' },
+              { id: 'p4', text: 'Trade-off Analysis [YOU Heavy]' },
+              { id: 'p5', text: 'Documentation [AI + You]' },
+              { id: 'p6', text: 'Review Preparation [AI Heavy]' }
+            ],
+            correctOrder: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'],
+            hints: {
+              partial: 'Start with gathering requirements, end with review prep.',
+              wrong: 'The flow: gather → research → generate → decide → document → prepare.'
+            },
+            explanation: 'Six phases in order. AI-heavy at start and end, YOU-heavy in the middle for decisions.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'proc-dd-1',
+            instruction: 'Categorize each phase by who does most of the work:',
+            items: [
+              { id: 'ph1', text: 'Phase 1: Requirements Synthesis' },
+              { id: 'ph2', text: 'Phase 2: Prior Art Research' },
+              { id: 'ph3', text: 'Phase 4: Trade-off Analysis' },
+              { id: 'ph4', text: 'Phase 6: Review Preparation' }
+            ],
+            zones: [
+              { id: 'ai-heavy', label: 'AI-Heavy', correct: ['ph1', 'ph2', 'ph4'] },
+              { id: 'you-heavy', label: 'YOU-Heavy', correct: ['ph3'] }
+            ],
+            explanation: 'Phases 1, 2, 6 are AI-heavy (mechanical work). Phase 4 is YOU-heavy (judgment).',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'proc-connect-1',
+            instruction: 'Connect each phase to its key output:',
+            nodes: [
+              { id: 'requirements', label: '📋 Requirements\nSynthesis' },
+              { id: 'research', label: '🔍 Prior Art\nResearch' },
+              { id: 'generation', label: '🎨 Design\nGeneration' },
+              { id: 'reqs-doc', label: '📝 Clear\nRequirements' },
+              { id: 'patterns', label: '🔄 Known\nPatterns' },
+              { id: 'options', label: '📊 2-3\nOptions' }
+            ],
+            solution: {
+              edges: [
+                { source: 'requirements', target: 'reqs-doc' },
+                { source: 'research', target: 'patterns' },
+                { source: 'generation', target: 'options' }
+              ]
+            },
+            explanation: 'Requirements → Clear requirements. Research → Known patterns. Generation → 2-3 options.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'proc-quiz-apply-1',
+            question: 'You\'re about to enter a design review. What AI prompt helps you prepare?',
+            options: [
+              '"Make my design perfect"',
+              '"What questions will reviewers ask? What are the weakest parts of this design?"',
+              '"Write a summary of the meeting"',
+              '"Who should I invite to the review?"'
+            ],
+            correct: 1,
+            explanation: 'Ask AI to anticipate reviewer questions and identify weaknesses. Walk into reviews prepared for tough questions and skeptical critique.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'proc-seq-2',
+            instruction: 'Order the prompts for Phase 2 (Prior Art Research):',
+            items: [
+              { id: 'r1', text: '"How have others solved similar problems?"' },
+              { id: 'r2', text: '"What patterns exist for this type of system?"' },
+              { id: 'r3', text: '"What are the known pitfalls to avoid?"' },
+              { id: 'r4', text: '"What trade-offs did similar systems make?"' }
+            ],
+            correctOrder: ['r1', 'r2', 'r3', 'r4'],
+            hints: {
+              partial: 'Start broad, then get specific about patterns and pitfalls.',
+              wrong: 'Progress from general solutions to specific patterns to pitfalls to trade-offs.'
+            },
+            explanation: 'Research flow: similar solutions → patterns → pitfalls → trade-offs. Broad to specific.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'proc-dd-2',
+            instruction: 'Match each phase to the right mindset:',
+            items: [
+              { id: 'm1', text: 'Phase 1-2: "Let AI do the heavy lifting"' },
+              { id: 'm2', text: 'Phase 3: "Explore the solution space"' },
+              { id: 'm3', text: 'Phase 4: "Apply my unique context"' },
+              { id: 'm4', text: 'Phase 5-6: "AI drafts, I refine"' }
+            ],
+            zones: [
+              { id: 'gather', label: 'Gathering Phase', correct: ['m1'] },
+              { id: 'explore', label: 'Exploration Phase', correct: ['m2'] },
+              { id: 'decide', label: 'Decision Phase', correct: ['m3'] },
+              { id: 'finalize', label: 'Finalization Phase', correct: ['m4'] }
+            ],
+            explanation: 'Mindsets shift through the process: let AI work → explore options → apply judgment → finalize.',
+            points: 20
+          }
+        ]
+      });
+      processApplication.init();
+
+      const processSynthesis = new ActivityCarousel('process-synthesis', {
+        type: 'synthesis',
+        sectionId: 'process',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'proc-scenario-1',
+            scenario: 'Your team is designing a new microservices architecture. You have meeting notes, 50 Slack threads, and requirements scattered across 3 different documents. Stakeholders keep adding new requirements.',
+            question: 'How would you use the 6-phase process to bring order to this chaos and deliver a solid design?',
+            evaluation: {
+              keywords: ['synthesize', 'AI', 'requirements', 'research', 'options', 'trade-off', 'judgment', 'document', 'review'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Phase 1: Feed AI all scattered inputs—let it synthesize requirements and identify ambiguities. Send AI summary to stakeholders for validation. Phase 2: AI researches microservices patterns and pitfalls. Phase 3: Generate 2-3 architecture options. Phase 4: Apply MY judgment—what does AI not know about our team, timeline, existing systems? Phase 5: AI drafts design doc. Phase 6: AI anticipates reviewer questions. The process brings order through structure.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'proc-predict-1',
+            setup: {
+              type: 'text',
+              content: 'An architect skips Phase 4 (Trade-off Analysis), letting AI decide which architecture to use based on its generated options.'
+            },
+            question: 'What type of problem will likely emerge in 6 months?',
+            correctAnswer: 'context',
+            acceptableVariants: ['organizational', 'team', 'fit', 'mismatch', 'integration', 'culture'],
+            explanation: 'AI lacks organizational context. The chosen architecture might not fit the team\'s skills, existing systems, compliance requirements, or timeline. Phase 4 applies irreplaceable human judgment.',
+            commonMistakes: {
+              'technical bugs': 'AI can generate technically sound designs. The issue is organizational fit.',
+              'nothing': 'Skipping human judgment always has consequences—they just surface later.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'proc-scenario-2',
+            scenario: 'A junior architect asks: "Why do I need to understand the process if AI is doing most of the work? Can\'t I just ask AI to design the whole system?"',
+            question: 'Explain why understanding the process matters even when AI does heavy lifting.',
+            evaluation: {
+              keywords: ['judgment', 'context', 'direction', 'verify', 'quality', 'understand', 'decision', 'irreplaceable'],
+              minWords: 50,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'The process matters because: (1) You direct AI—without understanding the process, you can\'t ask good questions. (2) You verify AI output—without knowledge, you can\'t spot errors. (3) You apply context AI doesn\'t have—organizational realities, team skills, timeline. AI does mechanical work; you provide irreplaceable direction and judgment. The process is your playbook for when to do what.',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'proc-reflect-1',
+            prompt: 'Think about your last design project. Which phases took the longest? Which would have benefited most from AI assistance? How would you have applied this 6-phase framework?',
+            thinkingPrompts: [
+              'How much time did you spend gathering and synthesizing requirements?',
+              'Did you research prior art systematically?',
+              'How did you decide between options?'
+            ],
+            evaluation: {
+              minWords: 70,
+              depthIndicators: [
+                { pattern: '(I|my|me)', label: 'Personal reflection', points: 5 },
+                { pattern: '(phase|step|process)', label: 'Process awareness', points: 5 },
+                { pattern: '(time|week|day|hours)', label: 'Time analysis', points: 4 },
+                { pattern: '(AI|automat|tool)', label: 'AI application', points: 4 },
+                { pattern: '(would have|could have)', label: 'Counterfactual', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'proc-scenario-3',
+            scenario: 'You\'re teaching the 6-phase process to your team. One senior colleague says: "I\'ve been designing systems for 15 years without AI. Why change now?"',
+            question: 'How would you make the case for AI-augmented design to an experienced skeptic?',
+            evaluation: {
+              keywords: ['time', 'mechanical', 'judgment', 'leverage', 'multiply', 'experience', 'amplify', 'faster', 'quality'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Your 15 years of judgment is MORE valuable with AI, not less. AI handles the mechanical work you\'ve been doing manually—synthesis, research, drafting. Your experience means you can VERIFY AI output better than juniors and DIRECT AI more effectively. Same judgment, faster execution. Your experience becomes amplified, not replaced. Would you refuse to use a compiler because you can write assembly?',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'proc-predict-2',
+            setup: {
+              type: 'text',
+              content: 'Team A uses the 6-phase process with AI. Team B uses traditional design methods. Both have 5 weeks to design a new system.'
+            },
+            question: 'What quality of Phase 6 (Review Preparation) will Team A have compared to Team B?',
+            correctAnswer: 'better',
+            acceptableVariants: ['superior', 'more thorough', 'more prepared', 'higher', 'stronger'],
+            explanation: 'Team A will have better review prep. AI can anticipate reviewer questions and identify weak points systematically. Team B relies on individual memory and limited time. AI-augmented review prep is more thorough.',
+            commonMistakes: {
+              'same': 'AI can systematically analyze designs for weaknesses in ways humans miss.',
+              'worse': 'AI review prep augments human preparation, it doesn\'t replace it.'
+            },
+            points: 20
+          }
+        ]
+      });
+      processSynthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: THE ART OF DESIGN PROMPTS
+      // ----------------------------------------
+
+      const promptsComprehension = new ActivityCarousel('prompts-comprehension', {
+        type: 'comprehension',
+        sectionId: 'prompts',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'prompt-quiz-1',
+            question: 'Why does "Design a payment system" produce poor AI output?',
+            options: [
+              'Payment systems are too complex for AI',
+              'The prompt lacks context, constraints, and specific questions',
+              'AI doesn\'t understand payments',
+              'You should never ask AI about payments'
+            ],
+            correct: 1,
+            explanation: 'Vague prompts get generic output. Effective prompts include context (your situation), constraints (team, budget, timeline), and specific questions to answer.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'prompt-tf-1',
+            statement: 'Longer prompts always produce better AI output.',
+            correct: false,
+            explanation: 'Length doesn\'t equal quality. A prompt needs the RIGHT information: context, constraints, specific questions. A long rambling prompt is worse than a concise focused one.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'prompt-fill-1',
+            statement: 'Pattern 1: Always explain your ___ before asking for solutions.',
+            correctAnswers: ['context', 'situation', 'background', 'circumstances'],
+            caseSensitive: false,
+            hints: ['What information about YOUR specific environment?'],
+            explanation: 'Context transforms generic advice into specific guidance. Current scale, expected growth, tech stack, team expertise—AI needs to know your situation.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'prompt-quiz-2',
+            question: 'What makes constraints "explicit" in a prompt?',
+            options: [
+              'Listing them in bullet points',
+              'Stating team size, timeline, budget, tech stack, and compliance requirements',
+              'Using technical jargon',
+              'Making the prompt longer'
+            ],
+            correct: 1,
+            explanation: 'Explicit constraints tell AI about your real-world limitations. A solution perfect for a 10-person team fails with 4 engineers. Make constraints concrete.',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'prompt-tf-2',
+            statement: 'You should ask AI for "the best" solution rather than multiple options.',
+            correct: false,
+            explanation: 'Ask for 2-3 alternatives with trade-offs, not one "best" answer. You make the decision—AI shows you the landscape of possibilities. That\'s the architect\'s advantage.',
+            requireReasoning: true,
+            minReasoningWords: 10,
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'prompt-quiz-3',
+            question: 'Why request 2-3 options instead of asking for "the best" solution?',
+            options: [
+              'AI can\'t determine what\'s best',
+              'More options means more work for you',
+              'You make the decision—AI shows you the landscape of possibilities',
+              'It\'s just a convention'
+            ],
+            correct: 2,
+            explanation: 'Requesting options with trade-offs lets YOU make the informed decision. AI explores the solution space; you apply judgment to choose. That\'s the architect\'s advantage!',
+            points: 10
+          }
+        ]
+      });
+      promptsComprehension.init();
+
+      const promptsApplication = new ActivityCarousel('prompts-application', {
+        type: 'application',
+        sectionId: 'prompts',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'prompt-seq-1',
+            instruction: 'Order the 4 prompt patterns from first to last:',
+            items: [
+              { id: 'pt1', text: 'Pattern 1: Context First (your situation)' },
+              { id: 'pt2', text: 'Pattern 2: Constraints Explicit (limitations)' },
+              { id: 'pt3', text: 'Pattern 3: Specific Questions (exact needs)' },
+              { id: 'pt4', text: 'Pattern 4: Request Options (2-3 with trade-offs)' }
+            ],
+            correctOrder: ['pt1', 'pt2', 'pt3', 'pt4'],
+            hints: {
+              partial: 'Start with context, end with requesting options.',
+              wrong: 'The flow: situation → limitations → questions → options.'
+            },
+            explanation: '4 patterns in order: Context → Constraints → Specific Questions → Request Options. Build from general to specific.',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'prompt-dd-1',
+            instruction: 'Categorize these prompt elements:',
+            items: [
+              { id: 'e1', text: '"We have 4 engineers and 3 months"' },
+              { id: 'e2', text: '"Our current system handles 1000 req/sec"' },
+              { id: 'e3', text: '"Should we use event sourcing or CRUD?"' },
+              { id: 'e4', text: '"Give me 2-3 database options with trade-offs"' }
+            ],
+            zones: [
+              { id: 'context', label: 'Context (Situation)', correct: ['e2'] },
+              { id: 'constraints', label: 'Constraints (Limitations)', correct: ['e1'] },
+              { id: 'questions', label: 'Specific Questions', correct: ['e3'] },
+              { id: 'options', label: 'Request Options', correct: ['e4'] }
+            ],
+            explanation: 'Scale is context. Team/time is constraint. Specific choice is question. Trade-off request is options.',
+            points: 20
+          },
+          {
+            type: 'connect-edges',
+            id: 'prompt-connect-1',
+            instruction: 'Connect each vague prompt to its improved version:',
+            nodes: [
+              { id: 'vague1', label: '"Design a\npayment system"' },
+              { id: 'vague2', label: '"How should I\nscale my database?"' },
+              { id: 'vague3', label: '"What\'s the best\narchitecture?"' },
+              { id: 'good1', label: '"For a B2B SaaS with\n1000 daily transactions..."' },
+              { id: 'good2', label: '"Our PostgreSQL handles\n100k reads/day..."' },
+              { id: 'good3', label: '"Given 4 engineers and\nSOC2 compliance..."' }
+            ],
+            solution: {
+              edges: [
+                { source: 'vague1', target: 'good1' },
+                { source: 'vague2', target: 'good2' },
+                { source: 'vague3', target: 'good3' }
+              ]
+            },
+            explanation: 'Each vague prompt becomes specific with context. Payment → B2B SaaS context. Database → current scale. Architecture → team + compliance.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'prompt-quiz-apply-1',
+            question: 'Which prompt will produce the most useful AI output for database selection?',
+            options: [
+              '"What database should I use?"',
+              '"Our e-commerce platform has 10K daily users, 500K products, needs real-time inventory. Team knows PostgreSQL. Compare PostgreSQL, MongoDB, and DynamoDB for this use case."',
+              '"Tell me about databases"',
+              '"Best database for web apps"'
+            ],
+            correct: 1,
+            explanation: 'The second prompt includes context (e-commerce, scale), constraints (team knows PostgreSQL), specific question (compare options), and requests trade-offs.',
+            points: 15
+          },
+          {
+            type: 'sequence',
+            id: 'prompt-seq-2',
+            instruction: 'Build a good design prompt piece by piece:',
+            items: [
+              { id: 'b1', text: '"We\'re building an order management system..."' },
+              { id: 'b2', text: '"...for 10,000 daily orders with 99.9% uptime requirement..."' },
+              { id: 'b3', text: '"...team has 3 backend engineers, limited DevOps..."' },
+              { id: 'b4', text: '"...propose 2-3 architecture options with trade-offs"' }
+            ],
+            correctOrder: ['b1', 'b2', 'b3', 'b4'],
+            hints: {
+              partial: 'Start with what you\'re building, end with what you want.',
+              wrong: 'Flow: what → scale/requirements → team → request.'
+            },
+            explanation: 'Build prompts: What (order system) → Requirements (scale, uptime) → Constraints (team) → Request (options).',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'prompt-dd-2',
+            instruction: 'Match each constraint type to its example:',
+            items: [
+              { id: 'c1', text: '"4 engineers with Python expertise"' },
+              { id: 'c2', text: '"$50k/month infrastructure budget"' },
+              { id: 'c3', text: '"Must be live in 3 months"' },
+              { id: 'c4', text: '"HIPAA compliance required"' }
+            ],
+            zones: [
+              { id: 'team', label: 'Team Constraint', correct: ['c1'] },
+              { id: 'budget', label: 'Budget Constraint', correct: ['c2'] },
+              { id: 'timeline', label: 'Timeline Constraint', correct: ['c3'] },
+              { id: 'compliance', label: 'Compliance Constraint', correct: ['c4'] }
+            ],
+            explanation: 'Four constraint types: team (skills, size), budget (money), timeline (deadlines), compliance (regulations).',
+            points: 20
+          }
+        ]
+      });
+      promptsApplication.init();
+
+      const promptsSynthesis = new ActivityCarousel('prompts-synthesis', {
+        type: 'synthesis',
+        sectionId: 'prompts',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'prompt-scenario-1',
+            scenario: 'You need to design a real-time notification system. Your context: Mobile app with 500K daily active users, need push notifications within 2 seconds, team has AWS experience but limited mobile expertise, 2-month timeline.',
+            question: 'Write a design prompt using all 4 patterns that would get useful architectural guidance.',
+            evaluation: {
+              keywords: ['context', '500K', 'mobile', 'AWS', 'real-time', '2 seconds', '2 months', 'options', 'trade-offs', 'push'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Context: We\'re building a real-time notification system for a mobile app with 500K DAU. Users need push notifications within 2 seconds of events. Constraints: 2-month timeline, team has strong AWS experience but limited mobile dev expertise. We\'re considering AWS SNS, Firebase FCM, and OneSignal. Request: Propose 2-3 architecture options comparing these services. For each, explain: latency characteristics, cost at our scale, integration complexity given our team skills, and trade-offs.',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'prompt-predict-1',
+            setup: {
+              type: 'code',
+              language: 'text',
+              code: 'Prompt A: "Design a caching layer"\n\nPrompt B: "We have an e-commerce API with 10K req/min, 80% read traffic, 50ms p99 target. Our Django app uses PostgreSQL. Team knows Redis. Design a caching layer. Give 2-3 options with trade-offs for cache invalidation strategies."'
+            },
+            question: 'How much more useful (as a multiplier) is Prompt B compared to Prompt A?',
+            correctAnswer: '10x',
+            acceptableVariants: ['10', 'ten', '10 times', 'much more', 'significantly', '5x', '5', 'five'],
+            explanation: 'Prompt B is roughly 10x more useful. It includes context (traffic, tech stack), constraints (latency target), specific questions (invalidation), and requests options. Prompt A gets generic advice.',
+            commonMistakes: {
+              'same': 'Without context and constraints, AI can only give generic advice.',
+              '2x': 'The difference is much larger. Specific prompts get specific answers.'
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'prompt-scenario-2',
+            scenario: 'A colleague shares their AI prompt: "I need to build a microservices architecture. What should I do?" and complains that AI gave useless generic advice.',
+            question: 'Rewrite their prompt using the 4 patterns to get useful architectural guidance.',
+            evaluation: {
+              keywords: ['context', 'scale', 'team', 'constraint', 'specific', 'options', 'trade-offs', 'current', 'timeline'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Rewritten: "Context: We\'re breaking a Django monolith into microservices. Currently 50K daily users, expecting 3x growth in 12 months. Constraints: 5 engineers, limited Kubernetes experience, 6-month timeline, need to maintain service during migration. Questions: What services should we extract first? How do we handle data consistency across services? Request: Propose 2-3 migration strategies with trade-offs for our team size and timeline."',
+            points: 30
+          },
+          {
+            type: 'reflection',
+            id: 'prompt-reflect-1',
+            prompt: 'Think about prompts you\'ve written to AI recently. Which of the 4 patterns do you use consistently? Which do you often forget? How would adding the missing patterns improve your results?',
+            thinkingPrompts: [
+              'Do you usually provide context about your situation?',
+              'Do you state constraints explicitly?',
+              'Do you ask specific questions or vague ones?',
+              'Do you request options with trade-offs?'
+            ],
+            evaluation: {
+              minWords: 60,
+              depthIndicators: [
+                { pattern: '(I|my|me)', label: 'Personal reflection', points: 5 },
+                { pattern: '(context|constraint|specific|options)', label: 'Pattern awareness', points: 5 },
+                { pattern: '(forget|miss|skip|often)', label: 'Self-awareness', points: 4 },
+                { pattern: '(improve|better|would)', label: 'Improvement focus', points: 4 },
+                { pattern: '(prompt|ask|request)', label: 'Prompting focus', points: 3 }
+              ],
+              maxScore: 25
+            },
+            points: 25
+          },
+          {
+            type: 'scenario',
+            id: 'prompt-scenario-3',
+            scenario: 'You\'re creating a prompt template library for your team to use when designing systems. Each template should follow the 4 patterns.',
+            question: 'Design a template for "API Gateway Design" that team members can fill in with their specifics.',
+            evaluation: {
+              keywords: ['context', 'scale', 'traffic', 'team', 'constraint', 'timeline', 'options', 'trade-offs', 'authentication', 'rate limiting'],
+              minWords: 60,
+              pointsPerKeyword: 3,
+              depthBonus: 15
+            },
+            modelAnswer: 'Template: "Context: We\'re designing an API Gateway for [describe your system]. Current scale: [X requests/day], expected growth: [Y% over Z months]. Tech stack: [list current technologies]. Constraints: Team has [X engineers] with experience in [Y]. Timeline: [Z months]. Budget: [if relevant]. Compliance: [any requirements]. Questions: [2-3 specific questions about auth, rate limiting, routing, etc.] Request: Propose 2-3 gateway solutions (Kong, AWS API Gateway, custom) with trade-offs for our context."',
+            points: 30
+          },
+          {
+            type: 'prediction',
+            id: 'prompt-predict-2',
+            setup: {
+              type: 'text',
+              content: 'Engineer A always uses detailed prompts with all 4 patterns. Engineer B uses quick one-sentence prompts "to save time." Both ask AI the same number of questions daily.'
+            },
+            question: 'After 6 months, whose designs will have fewer issues in production?',
+            correctAnswer: 'A',
+            acceptableVariants: ['a', 'engineer a', 'first', 'detailed prompts'],
+            explanation: 'Engineer A\'s designs will have fewer issues. Better prompts → better AI guidance → better decisions → fewer production problems. The "saved time" from short prompts costs much more in rework and issues.',
+            commonMistakes: {
+              'B': 'Quick prompts save minutes but cost hours in rework.',
+              'same': 'Prompt quality directly impacts design quality and production outcomes.'
+            },
+            points: 20
+          }
+        ]
+      });
+      promptsSynthesis.init();
+
+      console.log('🎠 All activity carousels initialized for Senior Ch 4: Architect');
     });
   </script>
 </body>
