@@ -1030,6 +1030,98 @@ flowchart LR
 
 ---
 
+## Parallel Agent Development Workflow
+
+```mermaid
+flowchart TB
+    subgraph Phase1["✅ Phase 1: Foundation (Complete)"]
+        F1["BaseActivity class"]
+        F2["ActivityRegistry"]
+        F3["ActivityCarousel"]
+        F4["Demo page"]
+    end
+
+    subgraph Parallel["🚀 Phases 2-4: Parallel Agent Execution"]
+        subgraph Agent1["Cursor Agent 1"]
+            A1["#16: True/False"]
+            A2["#17: Fill-in-Blank"]
+        end
+
+        subgraph Agent2["Cursor Agent 2"]
+            B1["#18: Sequence Ordering"]
+            B2["#19: Connect-Edges"]
+            B3["#20: Drag-Drop"]
+        end
+
+        subgraph Agent3["Cursor Agent 3"]
+            C1["#21: Scenario Analysis"]
+            C2["#22: Prediction"]
+        end
+
+        subgraph Agent4["Cursor Agent 4"]
+            C3["#23: Graph Builder"]
+            C4["#24: Reflection"]
+        end
+    end
+
+    Phase1 --> Parallel
+
+    style Phase1 fill:#1a472a,stroke:#66bb6a,stroke-width:2px,color:#fff
+    style Parallel fill:#16213e,stroke:#4a9eff,stroke-width:2px,color:#fff
+```
+
+### The Strategy: Parallel Cursor Agents
+
+With the foundation complete, each activity type can be built **independently** by separate Cursor sessions. Each agent:
+
+1. **Reads this design doc** for overall architecture
+2. **Reads their assigned GitHub issue** for detailed implementation specs
+3. **Creates the activity file** extending `BaseActivity`
+4. **Adds to the demo page** for visual testing
+5. **Registers with `ActivityRegistry`**
+
+### GitHub Issues (Parallel-Agent Ready)
+
+| Issue | Activity Type | Carousel | Complexity |
+|-------|--------------|----------|------------|
+| [#16](https://github.com/nathanbaker-ao/swe-hackers/issues/16) | True/False with Reasoning | Comprehension | 🟢 Easy |
+| [#17](https://github.com/nathanbaker-ao/swe-hackers/issues/17) | Fill-in-the-Blank | Comprehension | 🟢 Easy |
+| [#18](https://github.com/nathanbaker-ao/swe-hackers/issues/18) | Sequence Ordering | Application | 🟡 Medium |
+| [#19](https://github.com/nathanbaker-ao/swe-hackers/issues/19) | Connect-Edges (Graph) | Application | 🟡 Medium |
+| [#20](https://github.com/nathanbaker-ao/swe-hackers/issues/20) | Drag-Drop Matching | Application | 🟡 Medium |
+| [#21](https://github.com/nathanbaker-ao/swe-hackers/issues/21) | Scenario Analysis | Synthesis | 🟡 Medium |
+| [#22](https://github.com/nathanbaker-ao/swe-hackers/issues/22) | Prediction/Hypothesis | Synthesis | 🟡 Medium |
+| [#23](https://github.com/nathanbaker-ao/swe-hackers/issues/23) | Graph Builder | Synthesis | 🔴 Complex |
+| [#24](https://github.com/nathanbaker-ao/swe-hackers/issues/24) | Reflection Prompt | Synthesis | 🟢 Easy |
+
+### Kickoff Template for Each Agent
+
+When starting a new Cursor session, provide this context:
+
+```
+Read these files for context:
+1. @diagrams_and_docs/enhanced-lesson-architecture.md (full architecture)
+2. @courses/shared/js/interactive/base-activity.js (base class to extend)
+3. @courses/shared/js/interactive/activities/quiz-activity.js (example implementation)
+
+Then implement the activity from this GitHub issue:
+https://github.com/nathanbaker-ao/swe-hackers/issues/{ISSUE_NUMBER}
+
+Add your implementation to:
+@courses/shared/demo-activity-carousel.html
+
+for visual testing.
+```
+
+### Why This Works
+
+- **No dependencies between activities** — Each extends `BaseActivity` independently
+- **Self-contained issues** — Each issue has full specs, data structure, UI, CSS
+- **Shared demo page** — All agents add to the same demo page for testing
+- **Automatic registration** — `ActivityRegistry.register()` makes activities available to carousels
+
+---
+
 ## Implementation Phases
 
 ```mermaid
@@ -1037,10 +1129,10 @@ gantt
     title Enhanced Lesson Implementation
     dateFormat YYYY-MM-DD
     
-    section Phase 1: Foundation
-    ActivityCarousel component    :p1a, 2026-01-20, 3d
-    BaseActivity class            :p1b, after p1a, 2d
-    Activity type registry        :p1c, after p1b, 1d
+    section Phase 1: Foundation ✅
+    ActivityCarousel component    :done, p1a, 2026-01-20, 1d
+    BaseActivity class            :done, p1b, 2026-01-20, 1d
+    Activity type registry        :done, p1c, 2026-01-20, 1d
     
     section Phase 2: Comprehension
     Enhanced Quiz (existing)      :p2a, after p1c, 1d
