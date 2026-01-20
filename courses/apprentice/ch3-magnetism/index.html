@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/css/lesson-interactive.css">
+  <link rel="stylesheet" href="../../shared/css/activity-carousel.css">
 </head>
 <body data-course="apprentice" data-lesson="ch3-magnetism">
   <header class="header">
@@ -130,6 +131,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Functions -->
+      <div class="activity-carousels" data-story="functions-story">
+        <div id="functions-comprehension" class="carousel-container"></div>
+        <div id="functions-application" class="carousel-container"></div>
+        <div id="functions-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Story 2: Parameters -->
@@ -208,6 +216,13 @@
           <div class="quiz-dots"></div>
           <button class="quiz-nav-btn next">Next →</button>
         </div>
+      </div>
+
+      <!-- Activity Carousels for Parameters -->
+      <div class="activity-carousels" data-story="parameters-story">
+        <div id="parameters-comprehension" class="carousel-container"></div>
+        <div id="parameters-application" class="carousel-container"></div>
+        <div id="parameters-synthesis" class="carousel-container"></div>
       </div>
     </section>
 
@@ -288,6 +303,13 @@
           <button class="quiz-nav-btn next">Next →</button>
         </div>
       </div>
+
+      <!-- Activity Carousels for Return Values -->
+      <div class="activity-carousels" data-story="return-story">
+        <div id="return-comprehension" class="carousel-container"></div>
+        <div id="return-application" class="carousel-container"></div>
+        <div id="return-synthesis" class="carousel-container"></div>
+      </div>
     </section>
 
     <!-- Next Steps -->
@@ -332,6 +354,20 @@
   <script src="../../shared/js/interactive/audio-engine.js"></script>
   <script src="../../shared/js/interactive/storytelling-diagram.js"></script>
   <script src="../../shared/js/interactive/quiz-system.js"></script>
+  
+  <!-- Activity Carousel System -->
+  <script src="../../shared/js/interactive/base-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/quiz-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/true-false-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/fill-blank-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/sequence-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/drag-drop-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/connect-edges-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/scenario-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/prediction-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/reflection-activity.js"></script>
+  <script src="../../shared/js/interactive/activities/graph-builder-activity.js"></script>
+  <script src="../../shared/js/interactive/activity-carousel.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -436,6 +472,945 @@
 
         new Quiz(containerId, quiz.questions);
       });
+
+      // ============================================
+      // ACTIVITY CAROUSELS
+      // ============================================
+
+      // ----------------------------------------
+      // STORY 1: FUNCTIONS - Activity Carousels
+      // ----------------------------------------
+
+      const functions_Comprehension = new ActivityCarousel('functions-comprehension', {
+        type: 'comprehension',
+        sectionId: 'functions',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'func-quiz-definition',
+            question: 'What is a function in programming?',
+            options: [
+              'A type of variable',
+              'A reusable block of code that performs a specific task',
+              'A way to print text',
+              'A type of loop'
+            ],
+            correct: 1,
+            explanation: 'A function is like a machine—put inputs in, it does its work, and produces output. You write it once and can use it many times!',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'func-quiz-def-keyword',
+            question: 'What keyword creates a function in Python?',
+            options: ['function', 'def', 'create', 'func'],
+            correct: 1,
+            explanation: '"def" (short for define) tells Python you\'re creating a function. Example: def greet():',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'func-tf-call-parentheses',
+            statement: 'To call a function, you must include parentheses after its name.',
+            correct: true,
+            explanation: 'The parentheses tell Python to execute the function. greet() calls it; greet (no parentheses) just refers to the function object.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'func-tf-multiple-calls',
+            statement: 'Once you call a function, you cannot call it again.',
+            correct: false,
+            explanation: 'Functions can be called unlimited times! That\'s the whole point—write once, use forever. This is the DRY principle.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'func-fill-dry',
+            statement: 'DRY stands for "Don\'t ___ Yourself" — functions help follow this principle.',
+            correctAnswers: ['Repeat', 'repeat'],
+            caseSensitive: false,
+            hints: ['If you write the same code twice, you\'re doing what?'],
+            explanation: 'DRY = Don\'t Repeat Yourself. Functions let you write code once and call it whenever needed instead of copy-pasting.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'func-fill-indentation',
+            statement: 'The code inside a function must be ___ to show it belongs to the function.',
+            correctAnswers: ['indented', 'indent', 'indentation'],
+            caseSensitive: false,
+            hints: ['How does Python know which code is "inside" the function?'],
+            explanation: 'Indentation (4 spaces) tells Python which code belongs to the function. Everything indented under def runs when called.',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'func-quiz-anatomy',
+            question: 'Which is the correct way to define a function called "greet"?',
+            options: ['function greet():', 'def greet():', 'create greet:', 'def greet[]'],
+            correct: 1,
+            explanation: 'def + function name + parentheses + colon. The parentheses hold parameters (empty if none), colon starts the body.',
+            points: 10
+          }
+        ]
+      });
+      functions_Comprehension.init();
+
+      const functions_Application = new ActivityCarousel('functions-application', {
+        type: 'application',
+        sectionId: 'functions',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'sequence',
+            id: 'func-seq-create-function',
+            instruction: 'Order the steps to create and use a function:',
+            items: [
+              { id: 'def', text: 'Write "def function_name():"' },
+              { id: 'body', text: 'Add indented code for what the function does' },
+              { id: 'call', text: 'Call the function with function_name()' },
+              { id: 'result', text: 'Function executes its code' }
+            ],
+            correctOrder: ['def', 'body', 'call', 'result'],
+            hints: {
+              partial: 'First define, then call, then it runs.',
+              wrong: 'You must define a function before you can call it!'
+            },
+            explanation: 'Define with def → write the body → call it → it runs. The function doesn\'t run until you call it!',
+            points: 20
+          },
+          {
+            type: 'drag-drop',
+            id: 'func-dd-parts',
+            instruction: 'Match each part of "def greet():" to its purpose:',
+            items: [
+              { id: 'p-keyword', text: 'Starts function definition' },
+              { id: 'p-name', text: 'Name to call the function' },
+              { id: 'p-parens', text: 'Hold parameters (inputs)' },
+              { id: 'p-colon', text: 'Starts the function body' }
+            ],
+            zones: [
+              { id: 'z-def', label: 'def', correct: 'p-keyword' },
+              { id: 'z-greet', label: 'greet', correct: 'p-name' },
+              { id: 'z-paren', label: '()', correct: 'p-parens' },
+              { id: 'z-colon', label: ':', correct: 'p-colon' }
+            ],
+            explanation: 'def = keyword, greet = function name, () = parameters, : = starts body. Every function needs all four!',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'func-quiz-multiple-calls',
+            question: 'What will this print?\n\ndef say_hi():\n    print("Hi!")\n\nsay_hi()\nsay_hi()\nsay_hi()',
+            options: ['Hi!', 'Hi! Hi! Hi! (three times)', 'Error', 'Nothing'],
+            correct: 1,
+            explanation: 'Each call to say_hi() runs the function. Three calls = three "Hi!" outputs. Reusability in action!',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'func-connect-flow',
+            instruction: 'Connect to show how function definition and calling relate:',
+            nodes: [
+              { id: 'define', label: 'def greet():' },
+              { id: 'body', label: 'print("Hello")' },
+              { id: 'call1', label: 'greet()' },
+              { id: 'output', label: '"Hello" printed' }
+            ],
+            solution: {
+              edges: [
+                { source: 'define', target: 'body' },
+                { source: 'call1', target: 'body' },
+                { source: 'body', target: 'output' }
+              ]
+            },
+            nodeDescriptions: {
+              'define': 'Creates the function (stored but not run)',
+              'body': 'The code inside the function',
+              'call1': 'Tells Python to run the function',
+              'output': 'Result of running the function'
+            },
+            explanation: 'def creates the function. When you call greet(), Python finds the definition and runs the body.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'func-quiz-without-call',
+            question: 'What happens if you define a function but never call it?',
+            options: [
+              'It runs automatically',
+              'Error occurs',
+              'The code inside never runs',
+              'Python deletes it'
+            ],
+            correct: 2,
+            explanation: 'Functions only run when called! Defining is like writing a recipe—nothing cooks until you actually make it.',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'func-dd-dry-benefits',
+            instruction: 'Match each DRY benefit to its explanation:',
+            items: [
+              { id: 'b-maintain', text: 'Change code in one place, affects all uses' },
+              { id: 'b-readable', text: 'Functions have descriptive names' },
+              { id: 'b-less', text: 'Write once, use many times' }
+            ],
+            zones: [
+              { id: 'z-easy', label: 'Easier maintenance', correct: 'b-maintain' },
+              { id: 'z-read', label: 'More readable', correct: 'b-readable' },
+              { id: 'z-less-code', label: 'Less code', correct: 'b-less' }
+            ],
+            explanation: 'DRY makes code easier to maintain (one change), more readable (named functions), and shorter (no copy-paste).',
+            points: 20
+          }
+        ]
+      });
+      functions_Application.init();
+
+      const functions_Synthesis = new ActivityCarousel('functions-synthesis', {
+        type: 'synthesis',
+        sectionId: 'functions',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'func-scenario-refactor',
+            scenario: 'You\'re reviewing code that prints the same welcome message in 5 different places. Each time a bug needs fixing, you have to find and change all 5 places.',
+            question: 'How would you refactor this using a function? What are the benefits?',
+            evaluation: {
+              keywords: ['function', 'def', 'call', 'one place', 'reuse', 'DRY', 'fix', 'change'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Create a def welcome(): function with the message. Replace all 5 copy-pasted blocks with welcome() calls. Now if there\'s a bug, fix it once in the function definition—all 5 uses are automatically fixed. This is DRY in action!',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'func-predict-order',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'def first():\n    print("A")\n\ndef second():\n    print("B")\n\nsecond()\nfirst()\nsecond()'
+            },
+            question: 'What will this print?',
+            correctAnswer: 'B A B',
+            acceptableVariants: ['B A B', 'BAB', 'B, A, B'],
+            explanation: 'Functions are called in the order they appear in the code, not the order they\'re defined. second() → "B", first() → "A", second() → "B".',
+            commonMistakes: {
+              'A B B': 'Order of definition doesn\'t matter—order of CALLS does.',
+              'A B': 'Count the calls: second(), first(), second() = 3 outputs.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'func-reflect-machines',
+            prompt: 'The "magic machine" metaphor describes functions as black boxes—you don\'t need to know how they work inside, just what goes in and what comes out. Where else in life do you use "black boxes" this way?',
+            thinkingPrompts: [
+              'Appliances, cars, apps...',
+              'Do you need to understand how they work to use them?',
+              'What are the benefits of not needing to know the details?'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(car|phone|microwave|app)', label: 'Real examples', points: 5 },
+                { pattern: '(dont need|dont have to|just)', label: 'Abstraction understanding', points: 4 },
+                { pattern: '(inside|how it works|details)', label: 'Black box concept', points: 4 },
+                { pattern: '(simple|easier|convenient)', label: 'Benefits', points: 4 },
+                { pattern: '(I think|realize|similar)', label: 'Personal connection', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'func-scenario-naming',
+            scenario: 'A colleague names their functions: do_thing(), process(), helper(), and stuff(). You have no idea what these functions do without reading their code.',
+            question: 'Why are good function names important? Give examples of better names for common tasks.',
+            evaluation: {
+              keywords: ['readable', 'understand', 'descriptive', 'purpose', 'self-documenting', 'calculate', 'validate', 'get'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Good names make code self-documenting—you can understand what it does without reading inside. Examples: calculate_total_price() instead of process(), validate_email() instead of helper(), get_user_data() instead of stuff(). Names should describe the action and what it operates on.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'func-predict-scope',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'def set_x():\n    x = 10\n\nset_x()\nprint(x)'
+            },
+            question: 'What will happen?',
+            correctAnswer: 'Error - x is not defined',
+            acceptableVariants: ['error', 'NameError', 'not defined', 'undefined'],
+            explanation: 'Variables created inside a function are local—they don\'t exist outside! x only lives inside set_x(). This is called scope.',
+            commonMistakes: {
+              '10': 'x inside the function is LOCAL—it doesn\'t affect the outside.',
+              'Nothing': 'The print will try to run and cause an error.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'func-quiz-synthesis',
+            question: 'What\'s the main reason functions are considered fundamental to programming?',
+            options: [
+              'They make code run faster',
+              'They enable code reuse, organization, and abstraction',
+              'They are required by Python',
+              'They create variables'
+            ],
+            correct: 1,
+            explanation: 'Functions are fundamental because they enable reuse (DRY), organization (group related code), and abstraction (hide complexity behind simple names). Every large program relies on functions!',
+            points: 15
+          }
+        ]
+      });
+      functions_Synthesis.init();
+
+      // ----------------------------------------
+      // STORY 2: PARAMETERS - Activity Carousels
+      // ----------------------------------------
+
+      const parameters_Comprehension = new ActivityCarousel('parameters-comprehension', {
+        type: 'comprehension',
+        sectionId: 'parameters',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'param-quiz-definition',
+            question: 'What are parameters in a function?',
+            options: [
+              'The output of a function',
+              'Variables that receive input values when the function is called',
+              'Error messages',
+              'The function\'s name'
+            ],
+            correct: 1,
+            explanation: 'Parameters are like ingredient slots—when you call the function, you fill them with actual values (arguments).',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'param-quiz-syntax',
+            question: 'In def greet(name):, what is "name"?',
+            options: ['A string', 'A parameter', 'A function call', 'A return value'],
+            correct: 1,
+            explanation: '"name" is a parameter—a placeholder that will hold whatever value you pass when calling greet("Alex").',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'param-tf-multiple',
+            statement: 'A function can only have one parameter.',
+            correct: false,
+            explanation: 'Functions can have zero, one, or many parameters! def add(a, b, c): has three. Use commas to separate them.',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'param-tf-order',
+            statement: 'When calling a function, arguments must be in the same order as the parameters.',
+            correct: true,
+            explanation: 'By default, arguments match parameters by position. greet("Alex", 25) → name="Alex", age=25 if defined as def greet(name, age).',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'param-fill-argument',
+            statement: 'Parameters are in the function definition; ___ are the actual values passed when calling.',
+            correctAnswers: ['arguments', 'args', 'values'],
+            caseSensitive: false,
+            hints: ['Parameters receive what when the function is called?'],
+            explanation: 'Parameter = variable in definition, Argument = actual value passed. def greet(name) has parameter "name"; greet("Alex") has argument "Alex".',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'param-fill-separator',
+            statement: 'Multiple parameters are separated by ___ in the function definition.',
+            correctAnswers: ['commas', 'comma', ','],
+            caseSensitive: false,
+            hints: ['What punctuation goes between parameters?'],
+            explanation: 'def add(a, b): — commas separate parameters. Same for calling: add(5, 3).',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'param-quiz-recipe',
+            question: 'The "recipe" metaphor means:',
+            options: [
+              'Functions only work with food data',
+              'Same function + different inputs = different outputs',
+              'You must cook before coding',
+              'Parameters are optional'
+            ],
+            correct: 1,
+            explanation: 'Like a recipe that makes different dishes with different ingredients, a function produces different results with different arguments!',
+            points: 10
+          }
+        ]
+      });
+      parameters_Comprehension.init();
+
+      const parameters_Application = new ActivityCarousel('parameters-application', {
+        type: 'application',
+        sectionId: 'parameters',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'param-dd-mapping',
+            instruction: 'For def greet(name, age): greet("Alex", 25), match parameters to arguments:',
+            items: [
+              { id: 'arg-alex', text: '"Alex"' },
+              { id: 'arg-25', text: '25' }
+            ],
+            zones: [
+              { id: 'param-name', label: 'name =', correct: 'arg-alex' },
+              { id: 'param-age', label: 'age =', correct: 'arg-25' }
+            ],
+            explanation: 'Arguments map to parameters by position: first argument → first parameter, second → second. "Alex" → name, 25 → age.',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'param-seq-add-param',
+            instruction: 'Order the steps to add a parameter to a function:',
+            items: [
+              { id: 'identify', text: 'Identify what input the function needs' },
+              { id: 'add-param', text: 'Add parameter name inside parentheses' },
+              { id: 'use-param', text: 'Use the parameter inside the function body' },
+              { id: 'pass-arg', text: 'Pass an argument when calling' }
+            ],
+            correctOrder: ['identify', 'add-param', 'use-param', 'pass-arg'],
+            hints: {
+              partial: 'First figure out what input you need, then add it.',
+              wrong: 'Think: plan → define → implement → use.'
+            },
+            explanation: 'Design what you need → add to definition → use in body → call with real values.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'param-quiz-output',
+            question: 'What will this print?\n\ndef double(x):\n    print(x * 2)\n\ndouble(7)',
+            options: ['7', '14', 'x * 2', 'Error'],
+            correct: 1,
+            explanation: 'double(7) sets x=7, then prints 7*2 = 14. The parameter x receives the argument 7.',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'param-connect-flow',
+            instruction: 'Connect to show how arguments flow into parameters:',
+            nodes: [
+              { id: 'call', label: 'add(5, 3)' },
+              { id: 'param-a', label: 'a = 5' },
+              { id: 'param-b', label: 'b = 3' },
+              { id: 'body', label: 'return a + b' },
+              { id: 'result', label: '8' }
+            ],
+            solution: {
+              edges: [
+                { source: 'call', target: 'param-a' },
+                { source: 'call', target: 'param-b' },
+                { source: 'param-a', target: 'body' },
+                { source: 'param-b', target: 'body' },
+                { source: 'body', target: 'result' }
+              ]
+            },
+            nodeDescriptions: {
+              'call': 'Function called with two arguments',
+              'param-a': 'First argument → first parameter',
+              'param-b': 'Second argument → second parameter',
+              'body': 'Uses parameters in calculation',
+              'result': 'Returns computed value'
+            },
+            explanation: 'Arguments flow into parameters by position, then the body uses them to produce a result.',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'param-quiz-wrong-count',
+            question: 'def greet(name, age): is called with greet("Alex"). What happens?',
+            options: [
+              'Works fine, age is 0',
+              'Works fine, age is empty',
+              'TypeError: missing required argument',
+              'Prints "Alex"'
+            ],
+            correct: 2,
+            explanation: 'Python requires all parameters to receive arguments (unless they have defaults). Missing age causes a TypeError!',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'param-dd-terms',
+            instruction: 'Match the terms to their definitions:',
+            items: [
+              { id: 'def-param', text: 'Variable in function definition' },
+              { id: 'def-arg', text: 'Actual value passed to function' },
+              { id: 'def-call', text: 'Using the function with values' }
+            ],
+            zones: [
+              { id: 'term-param', label: 'Parameter', correct: 'def-param' },
+              { id: 'term-arg', label: 'Argument', correct: 'def-arg' },
+              { id: 'term-call', label: 'Function call', correct: 'def-call' }
+            ],
+            explanation: 'Parameter = variable slot, Argument = actual value, Call = executing the function.',
+            points: 20
+          }
+        ]
+      });
+      parameters_Application.init();
+
+      const parameters_Synthesis = new ActivityCarousel('parameters-synthesis', {
+        type: 'synthesis',
+        sectionId: 'parameters',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'param-scenario-design',
+            scenario: 'You need to write a function that calculates the total cost of an order: item price × quantity + shipping fee.',
+            question: 'What parameters would you use? Design the function signature and explain each parameter.',
+            evaluation: {
+              keywords: ['price', 'quantity', 'shipping', 'parameter', 'multiply', 'add', 'total', 'return'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'def calculate_total(price, quantity, shipping): Three parameters: price (cost per item), quantity (how many), shipping (delivery fee). The function would return price * quantity + shipping. This makes the function flexible—works for any order!',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'param-predict-swap',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'def subtract(a, b):\n    return a - b\n\nprint(subtract(10, 3))\nprint(subtract(3, 10))'
+            },
+            question: 'What will each print statement output?',
+            correctAnswer: '7, -7',
+            acceptableVariants: ['7 and -7', '7, -7', '7 -7', '7 then -7'],
+            explanation: 'First call: a=10, b=3, 10-3=7. Second call: a=3, b=10, 3-10=-7. Order matters! Same function, different arguments, different results.',
+            commonMistakes: {
+              '7 7': 'a-b is not the same as b-a. Order of arguments matters!',
+              '-7 7': 'The first call is 10-3=7, second is 3-10=-7.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'param-reflect-flexibility',
+            prompt: 'Parameters make functions flexible—the same function can handle different data. Why is this flexibility important for writing useful, reusable code?',
+            thinkingPrompts: [
+              'What if you had to write a separate function for every different input?',
+              'How do libraries and frameworks use parameters?',
+              'Think about print() or len()—they work on different inputs.'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(reuse|reusable|flexible)', label: 'Reusability', points: 5 },
+                { pattern: '(different|various|any)', label: 'Flexibility understanding', points: 4 },
+                { pattern: '(one function|single|same)', label: 'Consolidation', points: 4 },
+                { pattern: '(library|built-in|print|len)', label: 'Real examples', points: 4 },
+                { pattern: '(I think|realize|important)', label: 'Personal insight', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'param-scenario-default',
+            scenario: 'You\'re designing a greeting function. Most users want "Hello" as the greeting, but some want custom greetings like "Hi" or "Hey".',
+            question: 'How would you design this function to be convenient for the common case but flexible for special cases? (Hint: default parameters)',
+            evaluation: {
+              keywords: ['default', 'optional', 'greeting', 'Hello', 'parameter', 'customize', 'override'],
+              minWords: 25,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'def greet(name, greeting="Hello"): The greeting parameter has a default value. Call greet("Alex") and you get "Hello Alex". Call greet("Alex", "Hey") and you get "Hey Alex". Default makes the common case easy while allowing customization.',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'param-predict-default',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'def power(base, exp=2):\n    return base ** exp\n\nprint(power(3))\nprint(power(2, 10))'
+            },
+            question: 'What will each print?',
+            correctAnswer: '9, 1024',
+            acceptableVariants: ['9 and 1024', '9, 1024', '9 1024'],
+            explanation: 'First call: base=3, exp defaults to 2, 3²=9. Second call: base=2, exp=10, 2¹⁰=1024. The default only applies when argument not provided!',
+            commonMistakes: {
+              '6, 1024': 'exp defaults to 2 (squaring), not multiplying: 3**2=9.',
+              '9, 4': 'The second call provides 10, overriding the default 2.'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'param-quiz-synthesis',
+            question: 'Why do parameters make functions more useful than functions without parameters?',
+            options: [
+              'They run faster',
+              'They let the same function work with different data',
+              'They use less memory',
+              'They\'re required by Python'
+            ],
+            correct: 1,
+            explanation: 'Parameters enable one function to handle infinite scenarios. A calculate_area(width, height) function works for any room, not just hardcoded values!',
+            points: 15
+          }
+        ]
+      });
+      parameters_Synthesis.init();
+
+      // ----------------------------------------
+      // STORY 3: RETURN VALUES - Activity Carousels
+      // ----------------------------------------
+
+      const return_Comprehension = new ActivityCarousel('return-comprehension', {
+        type: 'comprehension',
+        sectionId: 'return',
+        title: 'Check Your Understanding',
+        activities: [
+          {
+            type: 'quiz',
+            id: 'ret-quiz-difference',
+            question: 'What\'s the difference between print() and return?',
+            options: [
+              'They do the same thing',
+              'print() displays on screen; return gives a value back to use in code',
+              'return displays on screen; print() gives a value back',
+              'print() is for numbers, return is for text'
+            ],
+            correct: 1,
+            explanation: 'print() shows output to humans. return gives a value back to your code so you can store it, use it in calculations, or pass it to other functions!',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'ret-quiz-capture',
+            question: 'What does "result = add(5, 3)" do?',
+            options: [
+              'Creates a function named result',
+              'Prints 8 to the screen',
+              'Stores the returned value (8) in the variable result',
+              'Causes an error'
+            ],
+            correct: 2,
+            explanation: 'If add() returns a value, that value gets stored in result. This is how you capture and use returned values!',
+            points: 10
+          },
+          {
+            type: 'true-false',
+            id: 'ret-tf-print-capture',
+            statement: 'You can capture the value that print() displays and use it in calculations.',
+            correct: false,
+            explanation: 'print() returns None, not the displayed value. You can\'t do x = print("5") and then use x as 5—x would be None!',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'true-false',
+            id: 'ret-tf-stops-function',
+            statement: 'The return statement immediately exits the function.',
+            correct: true,
+            explanation: 'When Python hits return, the function ends immediately. Any code after return in the same block won\'t run!',
+            requireReasoning: true,
+            minReasoningWords: 5,
+            points: 15
+          },
+          {
+            type: 'fill-blank',
+            id: 'ret-fill-none',
+            statement: 'If a function doesn\'t have a return statement, it returns ___ by default.',
+            correctAnswers: ['None', 'none', 'nothing'],
+            caseSensitive: false,
+            hints: ['What\'s Python\'s way of saying "no value"?'],
+            explanation: 'Functions without return (or with bare return) return None. This is Python\'s "no value" placeholder.',
+            points: 10
+          },
+          {
+            type: 'fill-blank',
+            id: 'ret-fill-chain',
+            statement: 'Return values let you ___ function calls together in calculations.',
+            correctAnswers: ['chain', 'combine', 'connect', 'use'],
+            caseSensitive: false,
+            hints: ['What can you do with returned values?'],
+            explanation: 'Because return gives actual values, you can chain: add(multiply(2, 3), 4). Inner function returns to outer function!',
+            points: 10
+          },
+          {
+            type: 'quiz',
+            id: 'ret-quiz-vs-print',
+            question: 'Which function lets you use the result in other calculations?',
+            options: [
+              'def show(x): print(x)',
+              'def get(x): return x',
+              'Both work the same',
+              'Neither allows this'
+            ],
+            correct: 1,
+            explanation: 'get(5) + 10 works because get returns 5. show(5) + 10 fails because show returns None (print doesn\'t count)!',
+            points: 10
+          }
+        ]
+      });
+      return_Comprehension.init();
+
+      const return_Application = new ActivityCarousel('return-application', {
+        type: 'application',
+        sectionId: 'return',
+        title: 'Apply What You Learned',
+        activities: [
+          {
+            type: 'drag-drop',
+            id: 'ret-dd-print-vs-return',
+            instruction: 'Categorize each statement as true for print() or return:',
+            items: [
+              { id: 'f-display', text: 'Displays text on screen' },
+              { id: 'f-value', text: 'Gives value back to code' },
+              { id: 'f-none', text: 'Calling function gives None' },
+              { id: 'f-store', text: 'Result can be stored in variable' }
+            ],
+            zones: [
+              { id: 'z-print', label: 'print()', correct: 'f-display' },
+              { id: 'z-ret1', label: 'return (gives value)', correct: 'f-value' },
+              { id: 'z-print2', label: 'print() result', correct: 'f-none' },
+              { id: 'z-ret2', label: 'return (storable)', correct: 'f-store' }
+            ],
+            explanation: 'print() shows to humans (returns None). return gives values to code (can be stored and used).',
+            points: 20
+          },
+          {
+            type: 'sequence',
+            id: 'ret-seq-calculation',
+            instruction: 'Order what happens when running: result = calculate(5)',
+            items: [
+              { id: 'call', text: 'calculate(5) is called' },
+              { id: 'run', text: 'Function body executes with x=5' },
+              { id: 'ret', text: 'return statement sends value back' },
+              { id: 'store', text: 'Returned value is stored in result' }
+            ],
+            correctOrder: ['call', 'run', 'ret', 'store'],
+            hints: {
+              partial: 'Call → execute → return → store.',
+              wrong: 'First the function is called, then it runs, then returns.'
+            },
+            explanation: 'Call triggers execution, body runs, return sends value back, variable captures it.',
+            points: 20
+          },
+          {
+            type: 'quiz',
+            id: 'ret-quiz-output',
+            question: 'What will this print?\n\ndef double(x):\n    return x * 2\n\nprint(double(5) + double(3))',
+            options: ['8', '10', '16', 'Error'],
+            correct: 2,
+            explanation: 'double(5)=10, double(3)=6, 10+6=16. Return values can be used directly in expressions!',
+            points: 15
+          },
+          {
+            type: 'connect-edges',
+            id: 'ret-connect-flow',
+            instruction: 'Connect to show how return values flow:',
+            nodes: [
+              { id: 'func', label: 'def add(a,b): return a+b' },
+              { id: 'call', label: 'x = add(2, 3)' },
+              { id: 'value', label: '5' },
+              { id: 'variable', label: 'x holds 5' },
+              { id: 'use', label: 'print(x + 1)' }
+            ],
+            solution: {
+              edges: [
+                { source: 'call', target: 'func' },
+                { source: 'func', target: 'value' },
+                { source: 'value', target: 'variable' },
+                { source: 'variable', target: 'use' }
+              ]
+            },
+            nodeDescriptions: {
+              'func': 'Function with return statement',
+              'call': 'Calling and assigning',
+              'value': 'The returned value',
+              'variable': 'Value stored in x',
+              'use': 'Using x in further code'
+            },
+            explanation: 'Call → function runs and returns → value captured → used later. This is the power of return!',
+            points: 25
+          },
+          {
+            type: 'quiz',
+            id: 'ret-quiz-after-return',
+            question: 'What will this print?\n\ndef test():\n    return 5\n    print("Hello")\n\ntest()',
+            options: ['Hello', '5', 'Nothing', '5 then Hello'],
+            correct: 2,
+            explanation: 'return exits immediately! The print("Hello") never runs. Also, we\'re not printing the return value, just calling test().',
+            points: 15
+          },
+          {
+            type: 'drag-drop',
+            id: 'ret-dd-when-to-use',
+            instruction: 'Match each scenario to whether you should use print() or return:',
+            items: [
+              { id: 'use-print', text: 'Use print()' },
+              { id: 'use-return', text: 'Use return' },
+              { id: 'use-print2', text: 'Use print()' },
+              { id: 'use-return2', text: 'Use return' }
+            ],
+            zones: [
+              { id: 'scen-debug', label: 'Show debug info to developer', correct: 'use-print' },
+              { id: 'scen-calc', label: 'Calculate value for other code', correct: 'use-return' },
+              { id: 'scen-user', label: 'Display message to user', correct: 'use-print2' },
+              { id: 'scen-chain', label: 'Chain with other functions', correct: 'use-return2' }
+            ],
+            explanation: 'print() for showing to humans. return for giving values to other code.',
+            points: 20
+          }
+        ]
+      });
+      return_Application.init();
+
+      const return_Synthesis = new ActivityCarousel('return-synthesis', {
+        type: 'synthesis',
+        sectionId: 'return',
+        title: 'Think Deeper',
+        activities: [
+          {
+            type: 'scenario',
+            id: 'ret-scenario-calculator',
+            scenario: 'You\'re building a calculator with functions for add, subtract, multiply, divide. Your colleague uses print() inside each function to show results.',
+            question: 'What problems will this cause? How would you fix it using return?',
+            evaluation: {
+              keywords: ['return', 'chain', 'store', 'variable', 'calculation', 'None', 'use', 'combine'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'With print(), you can\'t chain calculations like add(multiply(2,3), 4) because multiply returns None. You can\'t store results in variables for later use. Fix: use return instead of print in each function. Now multiply(2,3) returns 6, which can be used anywhere!',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'ret-predict-area',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'def area(w, h):\n    return w * h\n\nroom1 = area(10, 12)\nroom2 = area(8, 8)\ntotal = room1 + room2\nprint(f"Total: {total} sq ft")'
+            },
+            question: 'What will this print?',
+            correctAnswer: 'Total: 184 sq ft',
+            acceptableVariants: ['184', 'Total: 184', '184 sq ft'],
+            explanation: 'room1=120 (10×12), room2=64 (8×8), total=184. Return values let you build complex calculations from simple functions!',
+            commonMistakes: {
+              'None': 'The function uses return, so area() gives back actual values.',
+              'Error': 'This code is valid—return enables these calculations.'
+            },
+            points: 20
+          },
+          {
+            type: 'reflection',
+            id: 'ret-reflect-real-world',
+            prompt: 'Think about real-world machines or processes that take input and produce output (not just display it). How does this relate to functions with return values?',
+            thinkingPrompts: [
+              'A vending machine takes money, gives product...',
+              'A factory takes raw materials, produces goods...',
+              'An ATM takes card/PIN, gives cash/receipt...'
+            ],
+            evaluation: {
+              minWords: 40,
+              depthIndicators: [
+                { pattern: '(machine|factory|atm|vending)', label: 'Real examples', points: 5 },
+                { pattern: '(input|output|takes|gives|produces)', label: 'I/O understanding', points: 4 },
+                { pattern: '(return|function|code)', label: 'Programming connection', points: 4 },
+                { pattern: '(use|next|further|chain)', label: 'Downstream use', points: 4 },
+                { pattern: '(I think|similar|like)', label: 'Personal insight', points: 3 }
+              ],
+              maxScore: 20
+            },
+            points: 20
+          },
+          {
+            type: 'scenario',
+            id: 'ret-scenario-validation',
+            scenario: 'You need a function that checks if a password is valid (8+ characters, has a number). It should return True or False so other code can decide what to do.',
+            question: 'Why return True/False instead of printing "Valid" or "Invalid"? Give an example of how the calling code would use the return value.',
+            evaluation: {
+              keywords: ['return', 'True', 'False', 'if', 'condition', 'check', 'decision', 'boolean'],
+              minWords: 30,
+              pointsPerKeyword: 3,
+              depthBonus: 10
+            },
+            modelAnswer: 'Returning True/False lets calling code make decisions: if is_valid(password): allow_login() else: show_error(). If you just print, the calling code can\'t check the result programmatically. Boolean returns enable conditional logic!',
+            points: 25
+          },
+          {
+            type: 'prediction',
+            id: 'ret-predict-none',
+            setup: {
+              type: 'code',
+              language: 'python',
+              code: 'def greet(name):\n    print(f"Hello {name}!")\n\nresult = greet("Alex")\nprint(type(result))'
+            },
+            question: 'What type will be printed?',
+            correctAnswer: '<class \'NoneType\'>',
+            acceptableVariants: ['NoneType', 'None', 'none'],
+            explanation: 'greet() has no return statement, so it returns None automatically. result captures None, and type(None) is NoneType.',
+            commonMistakes: {
+              'str': 'The print() inside doesn\'t count as return. greet() returns None.',
+              'function': 'We\'re calling greet(), not referring to it. We get its return value (None).'
+            },
+            points: 15
+          },
+          {
+            type: 'quiz',
+            id: 'ret-quiz-synthesis',
+            question: 'Why is return considered more powerful than print() for functions?',
+            options: [
+              'return is faster',
+              'return lets the function\'s result be used anywhere in the program',
+              'return shows more colors',
+              'print() doesn\'t work inside functions'
+            ],
+            correct: 1,
+            explanation: 'Return makes functions into building blocks—combine them, chain them, store their results. This composability is the foundation of complex programs!',
+            points: 15
+          }
+        ]
+      });
+      return_Synthesis.init();
+
+      console.log('✅ All activity carousels initialized for Ch3: Magnetism');
     });
   </script>
 </body>
