@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brittany Parker - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      color: #333;
+      background: #fff;
+      padding: 0.55in 0.65in;
+      max-width: 8.5in;
+    }
+    
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #2c5282;
+      padding-bottom: 12px;
+    }
+    
+    h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 6px;
+    }
+    
+    .contact {
+      font-size: 10pt;
+      color: #4a5568;
+    }
+    
+    /* Section Headers */
+    h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #2c5282;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #cbd5e0;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+      margin-top: 16px;
+    }
+    
+    /* Summary */
+    .summary {
+      font-size: 10pt;
+      color: #4a5568;
+      margin-bottom: 4px;
+      text-align: center;
+      font-style: italic;
+    }
+    
+    /* Entry blocks */
+    .entry {
+      margin-bottom: 10px;
+    }
+    
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    
+    .entry-title {
+      font-weight: 600;
+      color: #1a202c;
+    }
+    
+    .entry-subtitle {
+      font-weight: 400;
+      color: #2c5282;
+    }
+    
+    .entry-date {
+      font-size: 9.5pt;
+      color: #718096;
+      font-style: italic;
+    }
+    
+    .entry-description {
+      color: #4a5568;
+      margin-top: 2px;
+    }
+    
+    /* Lists */
+    ul {
+      margin-left: 18px;
+      color: #4a5568;
+    }
+    
+    li {
+      margin-bottom: 2px;
+    }
+    
+    /* Skills section */
+    .skills-table {
+      width: 100%;
+    }
+    
+    .skills-row {
+      display: flex;
+      margin-bottom: 4px;
+    }
+    
+    .skills-label {
+      font-weight: 600;
+      color: #1a202c;
+      width: 100px;
+      flex-shrink: 0;
+    }
+    
+    .skills-value {
+      color: #4a5568;
+    }
+    
+    /* Current Focus - simple list style */
+    .focus-item {
+      margin-bottom: 8px;
+    }
+    
+    .focus-item strong {
+      color: #1a202c;
+    }
+    
+    .focus-item span {
+      color: #4a5568;
+    }
+
+    @media print {
+      body {
+        padding: 0.4in 0.5in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Brittany Parker</h1>
+    <div class="contact">Grand Rapids, MI &nbsp;|&nbsp; bparker49442@gmail.com &nbsp;|&nbsp; 231-329-3682</div>
+  </header>
+
+  <p class="summary">Builder and lifelong learner with a Computer Science foundation, currently collaborating with engineers on real-world software projects while deepening expertise in AI and algorithms.</p>
+
+  <h2>Current Focus</h2>
+  <div class="focus-item">
+    <strong>Engineering Collaboration:</strong> <span>Contributing to an education technology platform alongside software engineers—weekly meetings, feature development, and shipping real code in production.</span>
+  </div>
+  <div class="focus-item">
+    <strong>AI & Machine Learning:</strong> <span>Taking courses and building AI-powered tools, exploring practical applications in software development.</span>
+  </div>
+  <div class="focus-item">
+    <strong>Data Structures & Algorithms:</strong> <span>Deep-diving into CS fundamentals to strengthen foundation for complex technical challenges.</span>
+  </div>
+
+  <h2>Technical Skills</h2>
+  <div class="skills-table">
+    <div class="skills-row">
+      <span class="skills-label">Languages:</span>
+      <span class="skills-value">C# (Primary), JavaScript, HTML, CSS, Java</span>
+    </div>
+    <div class="skills-row">
+      <span class="skills-label">Concepts:</span>
+      <span class="skills-value">Object-Oriented Programming, Dependency Injection, Modular Design, Separation of Concerns</span>
+    </div>
+    <div class="skills-row">
+      <span class="skills-label">Applications:</span>
+      <span class="skills-value">Desktop GUI Development, Game Development (2D/3D), Web Development</span>
+    </div>
+    <div class="skills-row">
+      <span class="skills-label">Tools:</span>
+      <span class="skills-value">Visual Studio, Git, Windows Imaging, Microsoft Office</span>
+    </div>
+    <div class="skills-row">
+      <span class="skills-label">Learning:</span>
+      <span class="skills-value">AI/ML, Data Structures, Algorithms, Modern Web Frameworks</span>
+    </div>
+  </div>
+
+  <h2>Technical Projects</h2>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Game Development <span class="entry-subtitle">— C#</span></span>
+    </div>
+    <ul>
+      <li>Built 2D and 3D platformers with physics engines, camera systems, and real-time rendering</li>
+      <li>Developed Super Mario-style mechanics with scene management and game loop architecture</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Desktop Applications <span class="entry-subtitle">— C#, Windows Forms</span></span>
+    </div>
+    <ul>
+      <li>Personal Finance Tracker, Weather Forecasting App, Note-Taking System</li>
+      <li>Full GUI applications with data persistence and user-centered design</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Console Applications <span class="entry-subtitle">— C#</span></span>
+    </div>
+    <ul>
+      <li>Calculator, Todo List Manager, Password Generator, Tic-Tac-Toe</li>
+      <li>Focus on clean architecture, algorithm design, and modular code</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Davenport University <span class="entry-subtitle">— Computer Science Coursework</span></span>
+      <span class="entry-date">2015 – 2019</span>
+    </div>
+    <div class="entry-description">Visual Studio, C# programming, software design principles, object-oriented fundamentals</div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Collegiate Athlete <span class="entry-subtitle">— Track & Field</span></span>
+    </div>
+    <div class="entry-description">Invited to compete in Australia during senior year of high school; continued as D2 athlete at Davenport. Developed discipline, performance analysis, and competitive mindset through data-driven training.</div>
+  </div>
+
+  <h2>Professional Experience</h2>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Windows 10 Deployment Technician <span class="entry-subtitle">— MCPc, Inc.</span></span>
+      <span class="entry-date">Nov 2019 – May 2020</span>
+    </div>
+    <div class="entry-description">Configured, imaged, and deployed Windows 10 devices for enterprise clients including Meijer, Steelcase, and Spectrum Health. Coordinated with cross-functional teams, installed security configurations, and ensured seamless OS migrations under tight deadlines.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">GOA Lead <span class="entry-subtitle">— Avflight</span></span>
+      <span class="entry-date">Sep 2020 – Sep 2021</span>
+    </div>
+    <div class="entry-description">Led ground operations team under strict FAA safety and compliance requirements. Coordinated with multiple departments in fast-paced, time-sensitive aviation environment.</div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Customer Service Agent <span class="entry-subtitle">— Randstad</span></span>
+      <span class="entry-date">Aug 2024 – Oct 2024</span>
+    </div>
+    <div class="entry-description">Provided benefits enrollment support with clear communication, high data accuracy, and empathetic problem-solving in a metrics-driven environment.</div>
+  </div>
+</body>
+</html>
