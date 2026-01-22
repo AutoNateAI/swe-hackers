@@ -47,6 +47,7 @@
   <script src="shared/js/footer.js" defer></script>
   <script src="shared/js/interactive/diagram-utils.js" defer></script>
   <script src="shared/js/interactive/marketing-diagram.js" defer></script>
+  <script src="shared/js/marketing-diagram.js" defer></script>
 </head>
 <body>
   
@@ -371,42 +372,163 @@
     </div>
   </section>
   
-  <!-- Platform Preview Section -->
-  <section class="section platform-preview" id="platform">
+  <!-- Interactive Platform Preview Section -->
+  <section class="section interactive-preview-section" id="platform">
     <div class="section-container">
       <div class="section-header">
         <div class="section-badge">The Platform</div>
-        <h2 class="section-title">A Beautiful Learning Experience</h2>
+        <h2 class="section-title">Your Learning Journey, Visualized</h2>
         <p class="section-subtitle">
-          Dark mode by default, stunning animations, and an interface that makes you want to keep learning.
+          See how our platform takes you from beginner to AI-augmented developer with interactive lessons, 
+          progress tracking, and community support.
         </p>
       </div>
       
-      <div class="preview-container">
-        <!-- Analytics screenshot -->
-        <img src="assets/screenshots/analytics0preview.png" alt="AutoNateAI Course Analytics showing performance overview, quiz accuracy, and chapter breakdown" style="width: 100%; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
-        <p style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;">Track your cognitive progress in real-time</p>
-        
-        <div class="preview-features">
-          <div class="preview-feature">
-            <div class="preview-feature-icon">🧠</div>
-            <div class="preview-feature-title">Cognitive Score</div>
-            <div class="preview-feature-desc">Composite metric of your learning health</div>
+      <!-- Tab Navigation -->
+      <div class="preview-tabs" style="margin: 0 auto 2rem;">
+        <button class="preview-tab active" data-tab="flow">Platform Flow</button>
+        <button class="preview-tab" data-tab="journey">Learning Paths</button>
+        <button class="preview-tab" data-tab="analytics">Analytics</button>
+      </div>
+      
+      <!-- Tab Content: Platform Flow -->
+      <div class="preview-tab-content active" data-content="flow">
+        <div class="preview-layout">
+          <div class="preview-content">
+            <h3>From Curiosity to Mastery</h3>
+            <p>
+              Our platform guides you through every step — from your first lesson to becoming a 
+              systems-thinking developer who can leverage AI as a coding partner.
+            </p>
+            
+            <ul class="preview-features-list">
+              <li>
+                <span class="feature-icon">🏠</span>
+                <span>Explore courses and learning paths tailored to your level</span>
+              </li>
+              <li>
+                <span class="feature-icon">📊</span>
+                <span>Track your progress with real-time analytics dashboard</span>
+              </li>
+              <li>
+                <span class="feature-icon">⚡</span>
+                <span>Test your skills with interactive quizzes and activities</span>
+              </li>
+              <li>
+                <span class="feature-icon">💬</span>
+                <span>Connect with peers and mentors in our Discord community</span>
+              </li>
+            </ul>
+            
+            <button class="replay-btn" onclick="platformDiagram.replay()">
+              <span>▶</span> Replay Animation
+            </button>
           </div>
-          <div class="preview-feature">
-            <div class="preview-feature-icon">📈</div>
-            <div class="preview-feature-title">Learning Velocity</div>
-            <div class="preview-feature-desc">Lessons per week with trend analysis</div>
+          
+          <div class="preview-diagram-wrapper">
+            <div id="platform-flow-diagram" class="marketing-diagram"></div>
           </div>
-          <div class="preview-feature">
-            <div class="preview-feature-icon">🎯</div>
-            <div class="preview-feature-title">Quiz Mastery</div>
-            <div class="preview-feature-desc">First-try accuracy by topic</div>
+        </div>
+      </div>
+      
+      <!-- Tab Content: Learning Journey -->
+      <div class="preview-tab-content" data-content="journey">
+        <div class="preview-layout reverse">
+          <div class="preview-content">
+            <h3>Choose Your Path</h3>
+            <p>
+              Whether you're just starting out or looking to multiply your impact, we have a learning 
+              path designed for you. Each course builds on systems thinking and AI-augmented workflows.
+            </p>
+            
+            <div class="tour-steps">
+              <div class="tour-step active" data-node="beginner">
+                <div class="tour-step-number">1</div>
+                <div class="tour-step-content">
+                  <h5>The Apprentice's Path</h5>
+                  <p>Start from zero with the "Three Forces" narrative — data, control flow, and connections.</p>
+                </div>
+              </div>
+              <div class="tour-step" data-node="junior">
+                <div class="tour-step-number">2</div>
+                <div class="tour-step-content">
+                  <h5>Junior Accelerator</h5>
+                  <p>Skip the 5-year grind. Learn to think like a senior engineer with AI assistance.</p>
+                </div>
+              </div>
+              <div class="tour-step" data-node="senior">
+                <div class="tour-step-number">3</div>
+                <div class="tour-step-content">
+                  <h5>Senior Amplifier</h5>
+                  <p>Multiply your impact with agentic workflows and advanced architecture patterns.</p>
+                </div>
+              </div>
+            </div>
+            
+            <button class="replay-btn" onclick="journeyDiagram.replay()">
+              <span>▶</span> Replay Animation
+            </button>
           </div>
-          <div class="preview-feature">
-            <div class="preview-feature-icon">🔥</div>
-            <div class="preview-feature-title">Active Streak</div>
-            <div class="preview-feature-desc">Build consistent daily habits</div>
+          
+          <div class="preview-diagram-wrapper">
+            <div id="learning-journey-diagram" class="marketing-diagram"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tab Content: Analytics -->
+      <div class="preview-tab-content" data-content="analytics">
+        <div class="preview-layout">
+          <div class="preview-content">
+            <h3>Track Your Growth</h3>
+            <p>
+              Our analytics dashboard gives you real-time insights into your learning progress, 
+              helping you understand your strengths and areas for improvement.
+            </p>
+            
+            <div class="interactive-demo-card">
+              <div class="demo-header">
+                <div class="demo-header-icon">📊</div>
+                <div class="demo-header-text">
+                  <h4>Your Progress Dashboard</h4>
+                  <p>Real-time learning analytics</p>
+                </div>
+              </div>
+              
+              <div class="demo-stats">
+                <div class="demo-stat">
+                  <div class="demo-stat-value">78</div>
+                  <div class="demo-stat-label">Cognitive Score</div>
+                </div>
+                <div class="demo-stat">
+                  <div class="demo-stat-value">92%</div>
+                  <div class="demo-stat-label">Quiz Accuracy</div>
+                </div>
+                <div class="demo-stat">
+                  <div class="demo-stat-value">7</div>
+                  <div class="demo-stat-label">Day Streak</div>
+                </div>
+              </div>
+            </div>
+            
+            <ul class="preview-features-list" style="margin-top: 1.5rem;">
+              <li>
+                <span class="feature-icon">🧠</span>
+                <span>Cognitive Score — composite metric of your learning health</span>
+              </li>
+              <li>
+                <span class="feature-icon">📈</span>
+                <span>Learning Velocity — lessons per week with trend analysis</span>
+              </li>
+              <li>
+                <span class="feature-icon">🎯</span>
+                <span>Quiz Mastery — first-try accuracy by topic</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="preview-diagram-wrapper">
+            <img src="assets/screenshots/analytics0preview.png" alt="AutoNateAI Course Analytics" style="width: 100%; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 80px rgba(0,0,0,0.4);">
           </div>
         </div>
       </div>
@@ -591,6 +713,10 @@
   <!-- Scripts -->
   <script>
     // Initialize shared components
+    
+    // Marketing Diagram instances
+    let platformDiagram = null;
+    let journeyDiagram = null;
     document.addEventListener('DOMContentLoaded', () => {
       NavbarComponent.inject('navbar-container');
       FooterComponent.inject('footer-container');
@@ -657,7 +783,118 @@
         duration: 600,
         easing: 'easeOutCubic'
       });
+      
+      // Initialize Platform Preview Diagrams
+      initPlatformDiagrams();
+      
+      // Setup Tab Navigation
+      setupPreviewTabs();
+      
+      // Setup Tour Step Interactivity
+      setupTourSteps();
     });
+    
+    // Initialize the interactive marketing diagrams
+    function initPlatformDiagrams() {
+      // Platform Flow Diagram
+      platformDiagram = new PlatformDiagram('platform-flow-diagram', {
+        autoPlay: true,
+        autoPlayDelay: 800,
+        nodeAnimationDuration: 500,
+        edgeAnimationDuration: 350
+      });
+      platformDiagram.setData(PLATFORM_FLOW_DATA.nodes, PLATFORM_FLOW_DATA.edges);
+      
+      // Learning Journey Diagram  
+      journeyDiagram = new PlatformDiagram('learning-journey-diagram', {
+        autoPlay: false, // Will play when tab is activated
+        nodeAnimationDuration: 600,
+        edgeAnimationDuration: 400
+      });
+      journeyDiagram.setData(LEARNING_JOURNEY_DATA.nodes, LEARNING_JOURNEY_DATA.edges);
+    }
+    
+    // Setup the preview tab navigation
+    function setupPreviewTabs() {
+      const tabs = document.querySelectorAll('.preview-tab');
+      const contents = document.querySelectorAll('.preview-tab-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const targetTab = tab.dataset.tab;
+          
+          // Update active tab
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Update active content
+          contents.forEach(content => {
+            content.classList.remove('active');
+            if (content.dataset.content === targetTab) {
+              content.classList.add('active');
+              
+              // Trigger diagram animation when journey tab becomes active
+              if (targetTab === 'journey' && journeyDiagram && !journeyDiagram.hasAnimated) {
+                setTimeout(() => journeyDiagram.animate(), 300);
+              }
+            }
+          });
+        });
+      });
+    }
+    
+    // Setup tour step interactivity (for learning journey section)
+    function setupTourSteps() {
+      const tourSteps = document.querySelectorAll('.tour-step');
+      
+      tourSteps.forEach(step => {
+        step.addEventListener('click', () => {
+          // Update active step
+          tourSteps.forEach(s => s.classList.remove('active'));
+          step.classList.add('active');
+          
+          // Highlight corresponding node in diagram
+          const nodeId = step.dataset.node;
+          if (nodeId && journeyDiagram) {
+            const nodeEl = document.querySelector(`#learning-journey-diagram [data-node-id="${nodeId}"]`);
+            if (nodeEl) {
+              // Flash the node
+              const rect = nodeEl.querySelector('rect');
+              if (rect) {
+                const originalStroke = rect.getAttribute('stroke');
+                rect.setAttribute('stroke', '#4db6ac');
+                rect.setAttribute('stroke-width', '4');
+                setTimeout(() => {
+                  rect.setAttribute('stroke', originalStroke);
+                  rect.setAttribute('stroke-width', '2');
+                }, 600);
+              }
+            }
+          }
+        });
+        
+        // Hover effect
+        step.addEventListener('mouseenter', () => {
+          const nodeId = step.dataset.node;
+          if (nodeId && journeyDiagram) {
+            const nodeEl = document.querySelector(`#learning-journey-diagram [data-node-id="${nodeId}"]`);
+            if (nodeEl) {
+              journeyDiagram.highlightNode(nodeEl);
+            }
+          }
+        });
+        
+        step.addEventListener('mouseleave', () => {
+          const nodeId = step.dataset.node;
+          if (nodeId && journeyDiagram) {
+            const nodeEl = document.querySelector(`#learning-journey-diagram [data-node-id="${nodeId}"]`);
+            if (nodeEl && !step.classList.contains('active')) {
+              journeyDiagram.unhighlightNode(nodeEl);
+            }
+          }
+        });
+      });
+    }
     
     // Intersection Observer for scroll animations
     const observerOptions = {
@@ -669,7 +906,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           anime({
-            targets: entry.target.querySelectorAll('.feature-card, .course-card, .service-card, .preview-feature'),
+            targets: entry.target.querySelectorAll('.feature-card, .course-card, .service-card, .preview-feature, .tour-step'),
             opacity: [0, 1],
             translateY: [30, 0],
             delay: anime.stagger(100),

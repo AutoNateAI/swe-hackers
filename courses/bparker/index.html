@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Architect's Return | Brittany's Learning Journey</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-tertiary: #1a1a2e;
+      --bg-card: #16162a;
+      
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b8;
+      --text-muted: #6a6a80;
+      
+      --accent-stone: #8d6e63;
+      --accent-lightning: #ffd54f;
+      --accent-magnetism: #7986cb;
+      --accent-architect: #4db6ac;
+      --accent-fire: #ef5350;
+      --accent-star: #ab47bc;
+      
+      --gradient-stone: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+      --gradient-lightning: linear-gradient(135deg, #ffd54f 0%, #ff8f00 100%);
+      --gradient-magnetism: linear-gradient(135deg, #7986cb 0%, #3f51b5 100%);
+      --gradient-architect: linear-gradient(135deg, #4db6ac 0%, #26a69a 100%);
+      --gradient-fire: linear-gradient(135deg, #ef5350 0%, #d32f2f 100%);
+      --gradient-star: linear-gradient(135deg, #ab47bc 0%, #7b1fa2 100%);
+      
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 30px rgba(121, 134, 203, 0.3);
+    }
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(141, 110, 99, 0.2) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 213, 79, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 80%, rgba(121, 134, 203, 0.15) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: var(--bg-tertiary);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-icons {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .hero-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .hero-icon:nth-child(2) { animation-delay: 0.3s; }
+    .hero-icon:nth-child(3) { animation-delay: 0.6s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-magnetism) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .scroll-prompt {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      animation: bounce 2s infinite;
+    }
+    
+    .scroll-prompt svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+    
+    /* Forces Section */
+    .forces-section {
+      padding: 6rem 2rem;
+      background: var(--bg-secondary);
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .forces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    @media (max-width: 768px) {
+      .forces-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .force-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .force-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .force-card.stone { border-top: 3px solid var(--accent-stone); }
+    .force-card.lightning { border-top: 3px solid var(--accent-lightning); }
+    .force-card.magnetism { border-top: 3px solid var(--accent-magnetism); }
+    
+    .force-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .force-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .force-card.stone .force-name { color: var(--accent-stone); }
+    .force-card.lightning .force-name { color: var(--accent-lightning); }
+    .force-card.magnetism .force-name { color: var(--accent-magnetism); }
+    
+    .force-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    /* Diagram */
+    .diagram-container {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+    
+    /* Chapters Section */
+    .chapters-section {
+      padding: 6rem 2rem;
+    }
+    
+    .chapter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .chapter-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .chapter-card:hover {
+      transform: translateX(10px);
+      border-color: var(--accent-magnetism);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .chapter-card.locked {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    @media (max-width: 768px) {
+      .chapter-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+    
+    .chapter-number {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+    
+    .chapter-card[data-chapter="0"] .chapter-number { background: var(--gradient-magnetism); }
+    .chapter-card[data-chapter="1"] .chapter-number { background: var(--gradient-stone); }
+    .chapter-card[data-chapter="2"] .chapter-number { background: var(--gradient-lightning); color: #000; }
+    .chapter-card[data-chapter="3"] .chapter-number { background: var(--gradient-magnetism); }
+    .chapter-card[data-chapter="4"] .chapter-number { background: var(--gradient-architect); }
+    .chapter-card[data-chapter="5"] .chapter-number { background: var(--gradient-fire); }
+    .chapter-card[data-chapter="6"] .chapter-number { background: var(--gradient-star); }
+    
+    .chapter-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+    
+    .chapter-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .chapter-meta {
+      display: flex;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    
+    .chapter-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .chapter-arrow {
+      color: var(--accent-magnetism);
+      font-size: 1.5rem;
+    }
+    
+    /* Progress Tracker */
+    .progress-section {
+      padding: 4rem 2rem;
+      background: var(--bg-secondary);
+    }
+    
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .progress-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .progress-week {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .progress-week.current {
+      border-color: var(--accent-magnetism);
+      box-shadow: 0 0 20px rgba(121, 134, 203, 0.2);
+    }
+    
+    .progress-week.completed {
+      border-color: #4caf50;
+      background: rgba(76, 175, 80, 0.1);
+    }
+    
+    .week-number {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    
+    .week-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .week-title {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+    
+    .progress-week .status {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    
+    /* Quote Section */
+    .quote-section {
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    
+    .quote-block {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      border-left: 4px solid var(--accent-architect);
+      position: relative;
+    }
+    
+    .quote-block::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 2rem;
+      font-size: 6rem;
+      color: var(--accent-architect);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+    }
+    
+    .quote-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      background: var(--gradient-magnetism);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(121, 134, 203, 0.4);
+    }
+    
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    footer a {
+      color: var(--accent-magnetism);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">🎓 A 6-Week Journey</span>
+      
+      <div class="hero-icons">
+        <span class="hero-icon">🪨</span>
+        <span class="hero-icon">⚡</span>
+        <span class="hero-icon">🧲</span>
+      </div>
+      
+      <h1>The Architect's Return</h1>
+      
+      <p class="hero-subtitle">
+        Reclaim your power and master the new world of AI-augmented development. 
+        From knowing code to thinking in systems.
+      </p>
+      
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span>📚</span>
+          <span>6 Chapters</span>
+        </div>
+        <div class="meta-item">
+          <span>⏱️</span>
+          <span>6 Weeks</span>
+        </div>
+        <div class="meta-item">
+          <span>🔨</span>
+          <span>6 Projects</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-prompt">
+      <span>Begin your journey</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+  
+  <!-- Forces Section -->
+  <section class="forces-section">
+    <div class="container">
+      <h2 class="section-title">The Three Forces</h2>
+      <p class="section-subtitle">
+        Every system you'll build is an interplay of these three fundamental forces.
+      </p>
+      
+      <div class="forces-grid">
+        <div class="force-card stone">
+          <div class="force-icon">🪨</div>
+          <div class="force-name">Stone</div>
+          <p class="force-desc">Persistence & Memory. Variables, databases, state that endures.</p>
+        </div>
+        
+        <div class="force-card lightning">
+          <div class="force-icon">⚡</div>
+          <div class="force-name">Lightning</div>
+          <p class="force-desc">Flow & Transformation. Data moving through functions and APIs.</p>
+        </div>
+        
+        <div class="force-card magnetism">
+          <div class="force-icon">🧲</div>
+          <div class="force-name">Magnetism</div>
+          <p class="force-desc">Connection & Interface. The invisible contracts that bind systems.</p>
+        </div>
+      </div>
+      
+      <div class="diagram-container">
+        <div class="mermaid">
+graph LR
+    STONE["🪨 Stone<br/>Data at Rest"] --> LIGHTNING["⚡ Lightning<br/>Data in Motion"]
+    LIGHTNING --> MAGNET["🧲 Magnetism<br/>Systems United"]
+    MAGNET --> STONE
+    
+    style STONE fill:#8d6e63,color:#fff,stroke:#6d4c41
+    style LIGHTNING fill:#ffd54f,color:#000,stroke:#ff8f00
+    style MAGNET fill:#7986cb,color:#fff,stroke:#3f51b5
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Chapters Section -->
+  <section class="chapters-section">
+    <div class="container">
+      <h2 class="section-title">Your Quest Map</h2>
+      <p class="section-subtitle">
+        Each chapter builds on the last. Master the forces, then combine them.
+      </p>
+      
+      <div class="chapter-list">
+        <a href="ch0-origins/index.html" class="chapter-card" data-chapter="0">
+          <div class="chapter-number">🌅</div>
+          <div class="chapter-info">
+            <h3>Prologue: The Awakening</h3>
+            <p>You were once a builder. Now you're back to reclaim your power.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>📖 Introduction</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+        
+        <a href="ch1-stone/index.html" class="chapter-card" data-chapter="1">
+          <div class="chapter-number">1</div>
+          <div class="chapter-info">
+            <h3>Chapter 1: The Stone Remembers</h3>
+            <p>Variables, data structures, state, and persistence. The foundation of all systems.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>🪨 Stone</span>
+            <span>⏱️ Week 1</span>
+            <span>🔨 Memory Keeper</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+        
+        <a href="ch2-lightning/index.html" class="chapter-card" data-chapter="2">
+          <div class="chapter-number">2</div>
+          <div class="chapter-info">
+            <h3>Chapter 2: Lightning Paths</h3>
+            <p>Functions, pipelines, async/await. Data in motion, transforming as it flows.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>⚡ Lightning</span>
+            <span>⏱️ Week 2</span>
+            <span>🔨 Flow Tracker</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+        
+        <a href="ch3-magnetism/index.html" class="chapter-card" data-chapter="3">
+          <div class="chapter-number">3</div>
+          <div class="chapter-info">
+            <h3>Chapter 3: The Pull Between</h3>
+            <p>APIs, interfaces, protocols. The invisible contracts that bind systems together.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>🧲 Magnetism</span>
+            <span>⏱️ Week 3</span>
+            <span>🔨 Interface Bridge</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+        
+        <a href="ch4-architect/index.html" class="chapter-card" data-chapter="4">
+          <div class="chapter-number">4</div>
+          <div class="chapter-info">
+            <h3>Chapter 4: The Age of Architects</h3>
+            <p>Diagrams, system thinking, AI-augmented development. Become the architect.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>🏛️ Paradigm</span>
+            <span>⏱️ Week 4</span>
+            <span>🔨 System Canvas</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+        
+        <a href="ch5-capstone1/index.html" class="chapter-card" data-chapter="5">
+          <div class="chapter-number">5</div>
+          <div class="chapter-info">
+            <h3>Capstone I: The Living Archive</h3>
+            <p>Combine all three forces. Build a real system that persists, transforms, and connects.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>🔥 Integration</span>
+            <span>⏱️ Week 5</span>
+            <span>🔨 Knowledge Base</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+        
+        <a href="ch6-capstone2/index.html" class="chapter-card" data-chapter="6">
+          <div class="chapter-number">6</div>
+          <div class="chapter-info">
+            <h3>Capstone II: The Oracle Engine</h3>
+            <p>Channel the AI spirits. Build a system that thinks, learns, and assists.</p>
+          </div>
+          <div class="chapter-meta">
+            <span>🌟 AI Mastery</span>
+            <span>⏱️ Week 6</span>
+            <span>🔨 AI Assistant</span>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Progress Section -->
+  <section class="progress-section">
+    <div class="container">
+      <h2 class="section-title">Progress Tracker</h2>
+      <p class="section-subtitle">6 weeks, 6 projects, 3 forces mastered, 1 architect awakened.</p>
+      
+      <div class="progress-grid">
+        <div class="progress-week">
+          <div class="week-number">Week 1</div>
+          <div class="week-icon">🪨</div>
+          <div class="week-title">Stone</div>
+          <div class="status">⬜ Not Started</div>
+        </div>
+        
+        <div class="progress-week">
+          <div class="week-number">Week 2</div>
+          <div class="week-icon">⚡</div>
+          <div class="week-title">Lightning</div>
+          <div class="status">⬜ Not Started</div>
+        </div>
+        
+        <div class="progress-week">
+          <div class="week-number">Week 3</div>
+          <div class="week-icon">🧲</div>
+          <div class="week-title">Magnetism</div>
+          <div class="status">⬜ Not Started</div>
+        </div>
+        
+        <div class="progress-week">
+          <div class="week-number">Week 4</div>
+          <div class="week-icon">🏛️</div>
+          <div class="week-title">Architect</div>
+          <div class="status">⬜ Not Started</div>
+        </div>
+        
+        <div class="progress-week">
+          <div class="week-number">Week 5</div>
+          <div class="week-icon">🔥</div>
+          <div class="week-title">Capstone I</div>
+          <div class="status">⬜ Not Started</div>
+        </div>
+        
+        <div class="progress-week">
+          <div class="week-number">Week 6</div>
+          <div class="week-icon">🌟</div>
+          <div class="week-title">Capstone II</div>
+          <div class="status">⬜ Not Started</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Quote Section -->
+  <section class="quote-section">
+    <div class="quote-block">
+      <p class="quote-text">
+        The stone remembers. The lightning transforms. The magnetism connects. 
+        And the architect... the architect sees it all.
+      </p>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <a href="ch0-origins/index.html" class="cta-btn">
+      <span>Begin Your Return</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>The Architect's Return • A personalized learning journey for <strong>Brittany Parker</strong></p>
+    <p style="margin-top: 0.5rem;">
+      <a href="../index.html">← Back to Course Catalog</a>
+    </p>
+  </footer>
+  
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#7986cb',
+        primaryTextColor: '#e8e8f0',
+        primaryBorderColor: '#3f51b5',
+        lineColor: '#6a6a80',
+        secondaryColor: '#1a1a2e',
+        tertiaryColor: '#12121a'
+      }
+    });
+  </script>
+</body>
+</html>

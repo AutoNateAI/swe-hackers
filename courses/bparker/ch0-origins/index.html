@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prologue: The Awakening | The Architect's Return</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-magnetism);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(121, 134, 203, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(171, 71, 188, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-magnetism);
+    }
+    
+    .story-block::before {
+      color: var(--accent-magnetism);
+    }
+    
+    /* Background section */
+    .background-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .background-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .background-item {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .background-item h4 {
+      color: var(--accent-magnetism);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .background-item p {
+      color: var(--text-primary);
+      margin: 0;
+    }
+    
+    /* Journey Timeline */
+    .journey-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+    
+    .journey-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-stone), var(--accent-lightning), var(--accent-magnetism));
+      transform: translateX(-50%);
+    }
+    
+    @media (max-width: 768px) {
+      .journey-timeline::before {
+        left: 20px;
+      }
+    }
+    
+    .journey-step {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .journey-step:nth-child(odd) {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    
+    @media (max-width: 768px) {
+      .journey-step,
+      .journey-step:nth-child(odd) {
+        flex-direction: row;
+        text-align: left;
+        padding-left: 60px;
+      }
+    }
+    
+    .journey-content {
+      flex: 1;
+      max-width: 45%;
+    }
+    
+    @media (max-width: 768px) {
+      .journey-content {
+        max-width: 100%;
+      }
+    }
+    
+    .journey-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 3px solid var(--accent-magnetism);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    
+    .journey-content h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .journey-content p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    /* Creed section */
+    .creed-block {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin: 3rem 0;
+      text-align: center;
+      border: 1px solid rgba(121, 134, 203, 0.3);
+    }
+    
+    .creed-block h3 {
+      color: var(--accent-architect);
+      margin-bottom: 2rem;
+    }
+    
+    .creed-text {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--text-primary);
+    }
+    
+    .creed-text span {
+      color: var(--accent-magnetism);
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="story" title="Your Story"></div>
+    <div class="progress-dot" data-section="forces" title="The Forces"></div>
+    <div class="progress-dot" data-section="journey" title="The Journey"></div>
+    <div class="progress-dot" data-section="creed" title="The Creed"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Prologue • The Awakening</span>
+        <div class="hero-icon">🌅</div>
+        <h1>The Architect's Return</h1>
+        <p class="hero-subtitle">
+          You were once a builder. Years ago, you walked through the digital realm with confidence. 
+          Now you're back — and the world has changed.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Begin your story</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         YOUR STORY
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="story">
+      <div class="section-content">
+        <h2 class="fade-in">📖 Your Story</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            You understood the ancient languages — the structured elegance of C#, the visual poetry 
+            of HTML and CSS, the dynamic pulse of JavaScript. You built things that <em>worked</em>. 
+            A fingerprint scanner that could read identity from five different surfaces. Decision 
+            trees that learned from data and made choices like a mind learning to think.
+          </p>
+        </div>
+        
+        <p class="fade-in">
+          Then life pulled you away. The realm continued without you. New powers emerged. 
+          New tools. New ways of building.
+        </p>
+        
+        <div class="background-grid fade-in">
+          <div class="background-item">
+            <h4>📚 Education</h4>
+            <p>Computer Science @ Davenport University (Grand Rapids)</p>
+          </div>
+          <div class="background-item">
+            <h4>💻 Languages</h4>
+            <p>C#, HTML, CSS, JavaScript</p>
+          </div>
+          <div class="background-item">
+            <h4>⏰ Gap</h4>
+            <p>3-5 years since active programming</p>
+          </div>
+          <div class="background-item">
+            <h4>🎯 Goal</h4>
+            <p>AI-augmented systems thinker & architect</p>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in">
+          <h3>🌟 The New Reality</h3>
+          <p>
+            There are <strong>AI spirits</strong> now — entities that can write code, explain systems, 
+            generate entire applications from a whisper of intent. Some builders have become lazy, 
+            letting the spirits do all the work. Others have learned to <em>direct</em> them, 
+            becoming more powerful than ever before.
+          </p>
+          <p style="margin-bottom: 0;">
+            <strong>You're not here to start over. You're here to reclaim what you knew and master what's new.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE THREE FORCES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="forces">
+      <div class="section-content">
+        <h2 class="fade-in">⚡ The Three Forces</h2>
+        
+        <p class="fade-in">
+          In the realm of systems, three fundamental forces shape everything. Master these, 
+          and you can build anything.
+        </p>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Forces That Shape All Systems</div>
+          <div class="mermaid">
+graph TD
+    subgraph FORCES["⚡ The Three Forces"]
+        STONE["🪨 STONE<br/>Persistence & Memory"]
+        LIGHTNING["⚡ LIGHTNING<br/>Flow & Transformation"]
+        MAGNET["🧲 MAGNETISM<br/>Connection & Interface"]
+    end
+
+    STONE --> |"Data at rest"| LIGHTNING
+    LIGHTNING --> |"Data in motion"| MAGNET
+    MAGNET --> |"Systems united"| STONE
+
+    style STONE fill:#8d6e63,color:#fff
+    style LIGHTNING fill:#ffd54f,color:#000
+    style MAGNET fill:#7986cb,color:#fff
+          </div>
+        </div>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card stone">
+            <div class="concept-card-icon">🪨</div>
+            <h4>Stone</h4>
+            <p>
+              The force of persistence. Variables that hold memory. Databases that remember. 
+              State that endures. Like bedrock beneath a mountain, Stone is what remains when 
+              the lightning fades.
+            </p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">⚡</div>
+            <h4>Lightning</h4>
+            <p>
+              The force of transformation. Data flowing through functions. Events triggering actions. 
+              APIs crackling with requests and responses. Lightning is energy — it moves, it changes, it <em>does</em>.
+            </p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🧲</div>
+            <h4>Magnetism</h4>
+            <p>
+              The force of connection. Interfaces that pull systems together. Contracts that bind 
+              components. The invisible attraction between a client and a server, a user and an application.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE JOURNEY
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="journey">
+      <div class="section-content">
+        <h2 class="fade-in">🗺️ Your Quest Map</h2>
+        
+        <p class="fade-in">
+          Six weeks. Six projects. Three forces mastered. One architect awakened.
+        </p>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Path Ahead</div>
+          <div class="mermaid">
+graph LR
+    A[🏔️ Chapter 1<br/>The Stone Remembers] --> B[⚡ Chapter 2<br/>Lightning Paths]
+    B --> C[🧲 Chapter 3<br/>The Pull Between]
+    C --> D[🏛️ Chapter 4<br/>The Age of Architects]
+    D --> E[🔥 Capstone I<br/>The Living Archive]
+    E --> F[🌟 Capstone II<br/>The Oracle Engine]
+
+    style A fill:#8d6e63,color:#fff
+    style B fill:#ffd54f,color:#000
+    style C fill:#7986cb,color:#fff
+    style D fill:#4db6ac,color:#fff
+    style E fill:#ef5350,color:#fff
+    style F fill:#ab47bc,color:#fff
+          </div>
+        </div>
+        
+        <div class="journey-timeline fade-in">
+          <div class="journey-step">
+            <div class="journey-content">
+              <h4>Week 1: The Stone Remembers</h4>
+              <p>Variables, data structures, state, and persistence. Build the Memory Keeper.</p>
+            </div>
+            <div class="journey-icon">🪨</div>
+          </div>
+          
+          <div class="journey-step">
+            <div class="journey-content">
+              <h4>Week 2: Lightning Paths</h4>
+              <p>Functions, pipelines, async/await, error handling. Build the Flow Tracker.</p>
+            </div>
+            <div class="journey-icon">⚡</div>
+          </div>
+          
+          <div class="journey-step">
+            <div class="journey-content">
+              <h4>Week 3: The Pull Between</h4>
+              <p>APIs, interfaces, protocols, integration. Build the Interface Bridge.</p>
+            </div>
+            <div class="journey-icon">🧲</div>
+          </div>
+          
+          <div class="journey-step">
+            <div class="journey-content">
+              <h4>Week 4: The Age of Architects</h4>
+              <p>Diagrams, system thinking, AI-augmented development. Create the System Canvas.</p>
+            </div>
+            <div class="journey-icon">🏛️</div>
+          </div>
+          
+          <div class="journey-step">
+            <div class="journey-content">
+              <h4>Week 5: Capstone I</h4>
+              <p>Combine all forces. Build the Living Archive — a real personal knowledge base.</p>
+            </div>
+            <div class="journey-icon">🔥</div>
+          </div>
+          
+          <div class="journey-step">
+            <div class="journey-content">
+              <h4>Week 6: Capstone II</h4>
+              <p>Master AI integration. Build the Oracle Engine — your AI-powered assistant.</p>
+            </div>
+            <div class="journey-icon">🌟</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE ARCHITECT'S CREED
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="creed">
+      <div class="section-content">
+        <h2 class="fade-in">🏛️ The Architect's Creed</h2>
+        
+        <div class="creed-block fade-in">
+          <h3>Your New Identity</h3>
+          <div class="creed-text">
+            I am not a typist. <span>I am a thinker.</span><br>
+            I do not write code. <span>I design systems.</span><br>
+            I do not memorize syntax. <span>I understand patterns.</span><br>
+            I do not compete with AI. <span>I direct it.</span><br><br>
+            The diagram is my language.<br>
+            The system is my vision.<br>
+            The AI is my tool.<br><br>
+            <span style="color: var(--accent-architect);">I am an Architect.</span>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in">
+          <h3>🚀 Ready to Begin?</h3>
+          <p>
+            Your journey doesn't end here. It <strong>begins</strong> here. 
+            The realm needs builders who understand systems deeply. Who can see the whole 
+            while crafting the parts. Who can direct AI to build faster while knowing enough 
+            to guide it true.
+          </p>
+          <a href="../ch1-stone/index.html" class="cta-btn">
+            <span>Continue to Chapter 1: The Stone Remembers</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Course Home
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch1-stone/index.html'">
+      Chapter 1: Stone
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>

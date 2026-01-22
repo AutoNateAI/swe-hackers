@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3: The Pull Between | The Architect's Return</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-magnetism);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(121, 134, 203, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(63, 81, 181, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-magnetism);
+    }
+    
+    .story-block::before {
+      color: var(--accent-magnetism);
+    }
+    
+    /* API Request/Response visualization */
+    .api-flow {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .api-exchange {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      .api-exchange {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .api-side {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+    
+    .api-side h4 {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    
+    .api-side.client {
+      border-left: 3px solid var(--accent-magnetism);
+    }
+    
+    .api-side.server {
+      border-right: 3px solid #4caf50;
+    }
+    
+    .api-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+    }
+    
+    .api-arrow .request {
+      color: var(--accent-magnetism);
+    }
+    
+    .api-arrow .response {
+      color: #4caf50;
+    }
+    
+    /* HTTP methods badges */
+    .http-method {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .http-method.get { background: #4caf50; color: white; }
+    .http-method.post { background: #2196f3; color: white; }
+    .http-method.put { background: #ff9800; color: white; }
+    .http-method.delete { background: #f44336; color: white; }
+    
+    /* Status codes */
+    .status-code {
+      font-family: var(--font-mono);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+    
+    .status-code.success { background: rgba(76, 175, 80, 0.2); color: #4caf50; }
+    .status-code.error { background: rgba(244, 67, 54, 0.2); color: #f44336; }
+    .status-code.redirect { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
+    
+    /* Interface contract box */
+    .contract-box {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--accent-magnetism);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .contract-box h4 {
+      color: var(--accent-magnetism);
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+    }
+    
+    .contract-terms {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .contract-terms {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .contract-term {
+      background: var(--bg-primary);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    
+    .contract-term .term-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    
+    .contract-term .term-value {
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="intro" title="Introduction"></div>
+    <div class="progress-dot" data-section="interfaces" title="Interfaces"></div>
+    <div class="progress-dot" data-section="apis" title="APIs"></div>
+    <div class="progress-dot" data-section="integration" title="Integration"></div>
+    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Chapter 3 • Week 3</span>
+        <div class="hero-icon">🧲</div>
+        <h1>The Pull Between</h1>
+        <p class="hero-subtitle">
+          No system exists alone. The most powerful architectures are those that know 
+          how to reach out — and how to be reached. This is Magnetism: the invisible 
+          contracts that bind separate things into one.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Connect the systems</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         INTRODUCTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="intro">
+      <div class="section-content">
+        <h2 class="fade-in">🧲 The Force of Connection</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Stone holds. Lightning moves. But neither matters if systems can't <em>connect</em>. 
+            Magnetism is about interfaces — the promises systems make to each other.
+          </p>
+        </div>
+        
+        <p class="fade-in">
+          Magnetism is about <strong>connection</strong>. In code, this means:
+        </p>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">📋</div>
+            <h4>Interfaces</h4>
+            <p>Contracts that define what something can do. The promise, not the implementation.</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🌐</div>
+            <h4>APIs</h4>
+            <p>The language systems use to talk to each other. Request, respond, repeat.</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">📜</div>
+            <h4>Protocols</h4>
+            <p>Agreed-upon rules for communication. HTTP, WebSocket, GraphQL.</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🔗</div>
+            <h4>Integration</h4>
+            <p>Making separate systems work as one. The art of connection.</p>
+          </div>
+        </div>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Systems Connected by Magnetism</div>
+          <div class="mermaid">
+flowchart TB
+    subgraph SYSTEM_A["System A"]
+        A_IMPL["Implementation"]
+    end
+
+    subgraph SYSTEM_B["System B"]
+        B_IMPL["Implementation"]
+    end
+
+    INTERFACE["🧲 Interface Contract"]
+
+    A_IMPL --> |"exposes"| INTERFACE
+    INTERFACE --> |"consumed by"| B_IMPL
+
+    style INTERFACE fill:#7986cb,color:#fff
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         INTERFACES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="interfaces">
+      <div class="section-content">
+        <h2 class="fade-in">📋 Interfaces: The Contract</h2>
+        
+        <p class="fade-in">
+          An <strong>interface</strong> is a promise. It says "I will provide these capabilities" 
+          without specifying <em>how</em>. The caller doesn't need to know the implementation details — 
+          they just need to know what they can ask for.
+        </p>
+        
+        <div class="contract-box fade-in">
+          <h4>🤝 Interface Contract: WeatherService</h4>
+          <div class="contract-terms">
+            <div class="contract-term">
+              <div class="term-label">Method</div>
+              <div class="term-value">get_current_weather(city: str)</div>
+            </div>
+            <div class="contract-term">
+              <div class="term-label">Returns</div>
+              <div class="term-value">WeatherData { temp, humidity, description }</div>
+            </div>
+            <div class="contract-term">
+              <div class="term-label">Errors</div>
+              <div class="term-value">CityNotFound, ServiceUnavailable</div>
+            </div>
+            <div class="contract-term">
+              <div class="term-label">Promise</div>
+              <div class="term-value">Response within 5 seconds</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod
+<span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass
+
+<span class="decorator">@dataclass</span>
+<span class="keyword">class</span> <span class="function">WeatherData</span>:
+    <span class="variable">temp</span>: <span class="variable">float</span>
+    <span class="variable">humidity</span>: <span class="variable">int</span>
+    <span class="variable">description</span>: <span class="variable">str</span>
+
+<span class="comment"># The Interface - what we promise to provide</span>
+<span class="keyword">class</span> <span class="function">WeatherService</span>(ABC):
+    <span class="decorator">@abstractmethod</span>
+    <span class="keyword">def</span> <span class="function">get_current</span>(self, city: <span class="variable">str</span>) -> WeatherData:
+        <span class="string">"""Get current weather for a city."""</span>
+        <span class="keyword">pass</span>
+    
+    <span class="decorator">@abstractmethod</span>
+    <span class="keyword">def</span> <span class="function">get_forecast</span>(self, city: <span class="variable">str</span>, days: <span class="variable">int</span>) -> <span class="variable">list</span>[WeatherData]:
+        <span class="string">"""Get weather forecast for N days."""</span>
+        <span class="keyword">pass</span>
+
+<span class="comment"># Implementation 1: OpenWeatherMap</span>
+<span class="keyword">class</span> <span class="function">OpenWeatherMapService</span>(WeatherService):
+    <span class="keyword">def</span> <span class="function">get_current</span>(self, city: <span class="variable">str</span>) -> WeatherData:
+        <span class="comment"># Calls OpenWeatherMap API...</span>
+        <span class="keyword">pass</span>
+
+<span class="comment"># Implementation 2: WeatherAPI</span>
+<span class="keyword">class</span> <span class="function">WeatherAPIService</span>(WeatherService):
+    <span class="keyword">def</span> <span class="function">get_current</span>(self, city: <span class="variable">str</span>) -> WeatherData:
+        <span class="comment"># Calls WeatherAPI.com...</span>
+        <span class="keyword">pass</span>
+
+<span class="comment"># Your app doesn't care which implementation!</span>
+<span class="keyword">def</span> <span class="function">display_weather</span>(service: WeatherService, city: <span class="variable">str</span>):
+    data = service.<span class="function">get_current</span>(city)
+    <span class="function">print</span>(<span class="string">f"</span>{city}<span class="string">: </span>{data.temp}<span class="string">°F, </span>{data.description}<span class="string">"</span>)</code></pre>
+          </div>
+          <div class="code-caption">
+            <p>
+              <span class="icon">🧲</span>
+              <strong>Key insight:</strong> The interface is the contract. You can swap implementations 
+              without changing the code that uses them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         REST APIs
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="apis">
+      <div class="section-content">
+        <h2 class="fade-in">🌐 REST APIs: The Common Tongue</h2>
+        
+        <p class="fade-in">
+          REST (Representational State Transfer) is the most common way systems talk to each other 
+          over HTTP. It uses standard methods and status codes that everyone understands.
+        </p>
+        
+        <div class="api-flow fade-in">
+          <div class="api-exchange">
+            <div class="api-side client">
+              <h4>👤 Client (Your App)</h4>
+              <p><span class="http-method get">GET</span> /api/weather?city=Grand+Rapids</p>
+              <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+                Headers: Authorization: Bearer abc123
+              </p>
+            </div>
+            
+            <div class="api-arrow">
+              <div class="request">→ Request →</div>
+              <div class="response">← Response ←</div>
+            </div>
+            
+            <div class="api-side server">
+              <h4>🖥️ Server (Weather API)</h4>
+              <p><span class="status-code success">200 OK</span></p>
+              <pre style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--text-secondary);">{
+  "temp": 42,
+  "humidity": 65,
+  "description": "Partly Cloudy"
+}</pre>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">HTTP Methods</h3>
+        
+        <table class="comparison-table fade-in">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Purpose</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="http-method get">GET</span></td>
+              <td>Read data</td>
+              <td><code>GET /users/123</code></td>
+            </tr>
+            <tr>
+              <td><span class="http-method post">POST</span></td>
+              <td>Create new data</td>
+              <td><code>POST /users</code></td>
+            </tr>
+            <tr>
+              <td><span class="http-method put">PUT</span></td>
+              <td>Update existing data</td>
+              <td><code>PUT /users/123</code></td>
+            </tr>
+            <tr>
+              <td><span class="http-method delete">DELETE</span></td>
+              <td>Remove data</td>
+              <td><code>DELETE /users/123</code></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3 class="fade-in">Status Codes</h3>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">✅</div>
+            <h4>2xx Success</h4>
+            <p>200 OK, 201 Created, 204 No Content. The request worked!</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--warning);">
+            <div class="concept-card-icon">↩️</div>
+            <h4>3xx Redirect</h4>
+            <p>301 Moved, 304 Not Modified. Look somewhere else.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--error);">
+            <div class="concept-card-icon">❌</div>
+            <h4>4xx Client Error</h4>
+            <p>400 Bad Request, 401 Unauthorized, 404 Not Found. You made a mistake.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-fire);">
+            <div class="concept-card-icon">💥</div>
+            <h4>5xx Server Error</h4>
+            <p>500 Internal Error, 503 Unavailable. Server made a mistake.</p>
+          </div>
+        </div>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">import</span> requests
+
+<span class="comment"># Making API requests with the requests library</span>
+<span class="keyword">def</span> <span class="function">get_weather</span>(city: <span class="variable">str</span>, api_key: <span class="variable">str</span>) -> <span class="variable">dict</span>:
+    <span class="variable">url</span> = <span class="string">f"https://api.weatherapi.com/v1/current.json"</span>
+    <span class="variable">params</span> = {<span class="string">"key"</span>: api_key, <span class="string">"q"</span>: city}
+    
+    <span class="keyword">try</span>:
+        <span class="variable">response</span> = requests.<span class="function">get</span>(url, params=params, timeout=<span class="number">5</span>)
+        response.<span class="function">raise_for_status</span>()  <span class="comment"># Raises exception for 4xx/5xx</span>
+        <span class="keyword">return</span> response.<span class="function">json</span>()
+    
+    <span class="keyword">except</span> requests.exceptions.HTTPError <span class="keyword">as</span> e:
+        <span class="keyword">if</span> response.status_code == <span class="number">401</span>:
+            <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"Invalid API key"</span>)
+        <span class="keyword">elif</span> response.status_code == <span class="number">404</span>:
+            <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">f"City not found: </span>{city}<span class="string">"</span>)
+        <span class="keyword">raise</span>
+    
+    <span class="keyword">except</span> requests.exceptions.Timeout:
+        <span class="keyword">raise</span> <span class="function">ConnectionError</span>(<span class="string">"API request timed out"</span>)
+
+<span class="comment"># Usage</span>
+<span class="variable">weather</span> = get_weather(<span class="string">"Grand Rapids"</span>, <span class="string">"your_api_key"</span>)
+<span class="function">print</span>(<span class="string">f"Temperature: </span>{weather[<span class="string">'current'</span>][<span class="string">'temp_f'</span>]}<span class="string">°F"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         INTEGRATION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="integration">
+      <div class="section-content">
+        <h2 class="fade-in">🔗 Integration: Working with External Systems</h2>
+        
+        <p class="fade-in">
+          When you depend on external systems, things can go wrong. Networks fail, 
+          APIs change, rate limits hit. Good integration code handles these gracefully.
+        </p>
+        
+        <div class="cta-box fade-in" style="border-color: var(--accent-magnetism);">
+          <h3>🛡️ The Golden Rules of API Integration</h3>
+          <p>
+            <strong>1. Always set timeouts</strong> — Never wait forever<br>
+            <strong>2. Handle errors gracefully</strong> — Users shouldn't see stack traces<br>
+            <strong>3. Retry with backoff</strong> — Temporary failures happen<br>
+            <strong>4. Cache when possible</strong> — Don't hammer the API<br>
+            <strong>5. Log everything</strong> — You'll need to debug this later
+          </p>
+        </div>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Robust API Integration Pattern</div>
+          <div class="mermaid">
+sequenceDiagram
+    participant U as User
+    participant A as Your App
+    participant C as Cache
+    participant API as External API
+
+    U->>A: Request data
+    A->>C: Check cache
+    alt Cache hit
+        C-->>A: Return cached data
+    else Cache miss
+        A->>API: API request
+        alt Success
+            API-->>A: Response
+            A->>C: Store in cache
+        else Error/Timeout
+            A->>A: Retry with backoff
+            A->>API: Retry request
+        end
+    end
+    A-->>U: Display result
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         QUIZ
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="quiz">
+      <div class="section-content">
+        <div class="quiz-container" data-answer="C">
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3 class="quiz-title">Knowledge Check</h3>
+          </div>
+          
+          <div class="quiz-progress">
+            <div class="quiz-progress-dot active"></div>
+            <div class="quiz-progress-dot"></div>
+          </div>
+          
+          <p class="quiz-question">
+            A 401 HTTP status code means:
+          </p>
+          
+          <div class="quiz-options">
+            <div class="quiz-option" data-value="A">
+              <span class="quiz-option-letter">A</span>
+              <span>The resource was not found</span>
+            </div>
+            <div class="quiz-option" data-value="B">
+              <span class="quiz-option-letter">B</span>
+              <span>The server had an internal error</span>
+            </div>
+            <div class="quiz-option" data-value="C">
+              <span class="quiz-option-letter">C</span>
+              <span>Authentication is required or failed</span>
+            </div>
+            <div class="quiz-option" data-value="D">
+              <span class="quiz-option-letter">D</span>
+              <span>The request was successful</span>
+            </div>
+          </div>
+          
+          <div class="quiz-feedback" 
+               data-correct-msg="Correct! 401 Unauthorized means you need to authenticate. Check your API key or login credentials."
+               data-incorrect-msg="401 means Unauthorized — you need valid authentication credentials to access this resource.">
+          </div>
+          
+          <button class="quiz-btn" disabled>Check Answer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         CHAPTER PROJECT
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Chapter Project: The Interface Bridge</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Build a <strong>Weather Dashboard</strong> that pulls data from a real API and 
+            displays it meaningfully. This project reinforces API integration, error handling, 
+            and working with external systems.
+          </p>
+        </div>
+        
+        <div class="terminal fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span class="terminal-input">python weather_dashboard.py "Grand Rapids, MI"</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #7986cb;">🌤️ Weather for Grand Rapids, MI</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output"></span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">Current: 42°F, Partly Cloudy</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">Humidity: 65%</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output"></span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">📅 3-Day Forecast:</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ffd54f;">   Tomorrow:  45°F ⛅</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ffd54f;">   Wednesday: 38°F 🌧️</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ffd54f;">   Thursday:  41°F ☀️</span>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">Requirements</h3>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🔌</div>
+            <h4>API Connection</h4>
+            <p>Connect to a free weather API (OpenWeatherMap, WeatherAPI, etc.)</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🔐</div>
+            <h4>Authentication</h4>
+            <p>Handle API key management (don't commit secrets!)</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🔄</div>
+            <h4>Data Transform</h4>
+            <p>Convert API response into your own data structure</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">⚠️</div>
+            <h4>Error Handling</h4>
+            <p>Handle API down, invalid city, rate limited scenarios</p>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in">
+          <h3>📦 Deliverables</h3>
+          <p>
+            Create your work in <code>bparker/ch3-magnetism/</code>. Include:<br>
+            • <code>weather_dashboard.py</code> — Your implementation<br>
+            • <code>README.md</code> — Sequence diagram showing app ↔ API interaction<br>
+            • <code>.env.example</code> — Template for API key (never commit real keys!)
+          </p>
+          <p><strong>Reflection:</strong> What did you learn about depending on external systems?</p>
+          <a href="../ch4-architect/index.html" class="cta-btn">
+            <span>Continue to Chapter 4: The Age of Architects</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch2-lightning/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Chapter 2: Lightning
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch4-architect/index.html'">
+      Chapter 4: Architect
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>

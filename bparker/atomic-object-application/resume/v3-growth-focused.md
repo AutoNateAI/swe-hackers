@@ -52,13 +52,13 @@ Deep-diving into fundamentals to strengthen my computer science foundation and p
 Visual Studio, C# programming, software design principles
 
 **Collegiate Athlete** — Track & Field  
-Invited to compete in Australia and Hawaii. Developed discipline, performance optimization, and competitive mindset through data-driven training.
+Invited to compete in Australia during my senior year of high school and later ran college track as well. Developed discipline, performance optimization, and competitive mindset through data-driven training.
 
 ---
 
 ## Professional Experience
 
-**Customer Service Agent** — Randstad (Aug 2024 – Present)  
+**Customer Service Agent** — Randstad (Aug 2024 – Oct 2024)  
 Clear communication, data accuracy, empathetic problem-solving in metrics-driven environment
 
 **Windows 10 Deployment Technician** — MCPc, Inc. (Nov 2019 – May 2020)  

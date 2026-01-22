@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone I: The Living Archive | The Architect's Return</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-fire);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(239, 83, 80, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(211, 47, 47, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-fire);
+    }
+    
+    .story-block::before {
+      color: var(--accent-fire);
+    }
+    
+    /* Force integration visualization */
+    .force-integration {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .force-integration {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .force-column {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .force-column.stone { border-top: 3px solid var(--accent-stone); }
+    .force-column.lightning { border-top: 3px solid var(--accent-lightning); }
+    .force-column.magnetism { border-top: 3px solid var(--accent-magnetism); }
+    
+    .force-column h4 {
+      font-family: var(--font-display);
+      margin-bottom: 1rem;
+    }
+    
+    .force-column.stone h4 { color: var(--accent-stone); }
+    .force-column.lightning h4 { color: var(--accent-lightning); }
+    .force-column.magnetism h4 { color: var(--accent-magnetism); }
+    
+    .force-column ul {
+      list-style: none;
+      text-align: left;
+    }
+    
+    .force-column li {
+      padding: 0.5rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .force-column li:last-child {
+      border-bottom: none;
+    }
+    
+    /* Deliverables checklist */
+    .deliverables-list {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .deliverable-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .deliverable-item:last-child {
+      border-bottom: none;
+    }
+    
+    .deliverable-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .deliverable-content h4 {
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+    
+    .deliverable-content p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin: 0;
+    }
+    
+    /* Capstone badge */
+    .capstone-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, var(--accent-fire), #d32f2f);
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: white;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="convergence" title="Convergence"></div>
+    <div class="progress-dot" data-section="requirements" title="Requirements"></div>
+    <div class="progress-dot" data-section="architecture" title="Architecture"></div>
+    <div class="progress-dot" data-section="deliverables" title="Deliverables"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Capstone I • Week 5</span>
+        <div class="hero-icon">🔥</div>
+        <h1>The Living Archive</h1>
+        <p class="hero-subtitle">
+          The forces converge. Stone to hold. Lightning to move. Magnetism to connect. 
+          Now you build something that lives — something that persists, transforms, 
+          and reaches out to the world.
+        </p>
+        <div class="capstone-badge">
+          🏆 Capstone Project
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Bring the forces together</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE CONVERGENCE
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="convergence">
+      <div class="section-content">
+        <h2 class="fade-in">🔥 The Convergence</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Your first capstone. This is not a toy. This is a <strong>real system</strong> 
+            that combines everything you've learned. Stone, Lightning, and Magnetism — 
+            working together as one.
+          </p>
+        </div>
+        
+        <p class="fade-in">
+          You will build a <strong>Personal Knowledge Base</strong> — a system that stores 
+          information you want to remember, processes and organizes it, and integrates 
+          with external services.
+        </p>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Living Archive System</div>
+          <div class="mermaid">
+flowchart TB
+    subgraph INPUT["📥 Input Sources"]
+        WEB["Web Clipper"]
+        MANUAL["Manual Entry"]
+        API_IN["API Import"]
+    end
+
+    subgraph CORE["🔥 The Living Archive"]
+        PROCESS["⚡ Process & Tag"]
+        STORE["🪨 Persistent Storage"]
+        SEARCH["🔍 Search & Retrieve"]
+    end
+
+    subgraph OUTPUT["📤 Output"]
+        CLI["Command Line"]
+        API_OUT["REST API"]
+        EXPORT["Export (JSON/MD)"]
+    end
+
+    INPUT --> CORE
+    CORE --> OUTPUT
+
+    style PROCESS fill:#ffd54f,color:#000
+    style STORE fill:#8d6e63,color:#fff
+    style SEARCH fill:#7986cb,color:#fff
+          </div>
+        </div>
+        
+        <div class="force-integration fade-in">
+          <div class="force-column stone">
+            <h4>🪨 Stone</h4>
+            <ul>
+              <li>Store entries with metadata</li>
+              <li>Real database (SQLite) or JSON</li>
+              <li>Full-text search capability</li>
+              <li>Data persistence across restarts</li>
+            </ul>
+          </div>
+          
+          <div class="force-column lightning">
+            <h4>⚡ Lightning</h4>
+            <ul>
+              <li>Auto-generate tags from content</li>
+              <li>Support Markdown formatting</li>
+              <li>Transform for different outputs</li>
+              <li>Data validation pipeline</li>
+            </ul>
+          </div>
+          
+          <div class="force-column magnetism">
+            <h4>🧲 Magnetism</h4>
+            <ul>
+              <li>REST API for entries</li>
+              <li>Import from external sources</li>
+              <li>Webhook notifications (optional)</li>
+              <li>Clean interface contracts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         REQUIREMENTS
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="requirements">
+      <div class="section-content">
+        <h2 class="fade-in">📋 Requirements</h2>
+        
+        <h3 class="fade-in">Stone (Persistence)</h3>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Data Model</span>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="comment"># Entry schema</span>
+{
+    <span class="string">"id"</span>: <span class="string">"unique-uuid"</span>,
+    <span class="string">"title"</span>: <span class="string">"Entry title"</span>,
+    <span class="string">"content"</span>: <span class="string">"The actual content (Markdown supported)"</span>,
+    <span class="string">"tags"</span>: [<span class="string">"tag1"</span>, <span class="string">"tag2"</span>],
+    <span class="string">"source_url"</span>: <span class="string">"https://example.com/article"</span>,
+    <span class="string">"created_at"</span>: <span class="string">"2024-01-15T10:30:00Z"</span>,
+    <span class="string">"updated_at"</span>: <span class="string">"2024-01-15T14:20:00Z"</span>
+}</code></pre>
+          </div>
+        </div>
+        
+        <ul class="fade-in" style="color: var(--text-secondary); padding-left: 1.5rem;">
+          <li>Store entries with: title, content, tags, source URL, timestamps</li>
+          <li>Use SQLite database OR structured JSON files</li>
+          <li>Support full-text search across titles and content</li>
+        </ul>
+        
+        <h3 class="fade-in">Lightning (Transformation)</h3>
+        
+        <ul class="fade-in" style="color: var(--text-secondary); padding-left: 1.5rem;">
+          <li>Auto-generate tags from content (simple keyword extraction)</li>
+          <li>Support Markdown formatting in content</li>
+          <li>Transform entries for different outputs (JSON, Markdown, summary)</li>
+        </ul>
+        
+        <h3 class="fade-in">Magnetism (Integration)</h3>
+        
+        <ul class="fade-in" style="color: var(--text-secondary); padding-left: 1.5rem;">
+          <li>REST API to add/retrieve entries programmatically</li>
+          <li>Import from at least one external source</li>
+          <li><strong>Bonus:</strong> Webhook/notification when new entries added</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         ARCHITECTURE
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="architecture">
+      <div class="section-content">
+        <h2 class="fade-in">🏗️ Suggested Architecture</h2>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">System Architecture</div>
+          <div class="mermaid">
+flowchart TB
+    subgraph CLI["🖥️ CLI Interface"]
+        ADD["add command"]
+        SEARCH["search command"]
+        LIST["list command"]
+        EXPORT["export command"]
+    end
+
+    subgraph API["🌐 REST API"]
+        POST_ENTRY["POST /entries"]
+        GET_ENTRY["GET /entries/:id"]
+        GET_ALL["GET /entries"]
+        DELETE["DELETE /entries/:id"]
+    end
+
+    subgraph CORE["⚙️ Core Logic"]
+        PROCESSOR["Entry Processor"]
+        TAGGER["Auto-Tagger"]
+        SEARCHER["Search Engine"]
+    end
+
+    subgraph STORAGE["🗄️ Storage"]
+        DB[(SQLite/JSON)]
+    end
+
+    CLI --> CORE
+    API --> CORE
+    CORE --> STORAGE
+          </div>
+        </div>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Project Structure</span>
+          </div>
+          <div class="code-content">
+            <pre><code>bparker/capstone-1-archive/
+├── README.md              <span class="comment"># Setup instructions + screenshots</span>
+├── docs/
+│   ├── ARCHITECTURE.md    <span class="comment"># System design with diagrams</span>
+│   └── ADR-001.md         <span class="comment"># Key design decision documented</span>
+├── src/
+│   ├── __init__.py
+│   ├── main.py            <span class="comment"># CLI entry point</span>
+│   ├── api.py             <span class="comment"># REST API (Flask/FastAPI)</span>
+│   ├── storage.py         <span class="comment"># Database operations</span>
+│   ├── processor.py       <span class="comment"># Entry processing/tagging</span>
+│   └── models.py          <span class="comment"># Data models</span>
+├── tests/
+│   └── test_storage.py
+├── data/
+│   └── archive.db         <span class="comment"># SQLite database</span>
+└── demo.md                <span class="comment"># Walkthrough of features</span></code></pre>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in" style="border-color: var(--accent-fire);">
+          <h3>💡 Architecture Decision Record (ADR)</h3>
+          <p>
+            Document at least ONE key design decision you made. For example:<br><br>
+            <strong>ADR-001: Database Choice</strong><br>
+            <em>Context:</em> Need to persist entries with search capability<br>
+            <em>Decision:</em> Use SQLite with FTS5 for full-text search<br>
+            <em>Consequences:</em> Simple setup, no server needed, good search performance
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         DELIVERABLES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="deliverables">
+      <div class="section-content">
+        <h2 class="fade-in">📦 Deliverables</h2>
+        
+        <div class="deliverables-list fade-in">
+          <div class="deliverable-item">
+            <div class="deliverable-icon">📁</div>
+            <div class="deliverable-content">
+              <h4>Working Code</h4>
+              <p>Complete implementation in <code>bparker/capstone-1-archive/</code></p>
+            </div>
+          </div>
+          
+          <div class="deliverable-item">
+            <div class="deliverable-icon">📖</div>
+            <div class="deliverable-content">
+              <h4>README.md</h4>
+              <p>Setup instructions, screenshots, and how to run the project</p>
+            </div>
+          </div>
+          
+          <div class="deliverable-item">
+            <div class="deliverable-icon">📐</div>
+            <div class="deliverable-content">
+              <h4>ARCHITECTURE.md</h4>
+              <p>System design document with Mermaid diagrams</p>
+            </div>
+          </div>
+          
+          <div class="deliverable-item">
+            <div class="deliverable-icon">📝</div>
+            <div class="deliverable-content">
+              <h4>ADR-001.md</h4>
+              <p>At least one Architecture Decision Record</p>
+            </div>
+          </div>
+          
+          <div class="deliverable-item">
+            <div class="deliverable-icon">🎬</div>
+            <div class="deliverable-content">
+              <h4>demo.md</h4>
+              <p>Walkthrough demonstrating all features</p>
+            </div>
+          </div>
+          
+          <div class="deliverable-item">
+            <div class="deliverable-icon">🎤</div>
+            <div class="deliverable-content">
+              <h4>Presentation</h4>
+              <p>5-slide summary + live demo</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="terminal fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span class="terminal-input">python -m archive add</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">Title: Understanding REST APIs</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">Content: REST uses standard HTTP methods...</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">Source URL: https://developer.mozilla.org/...</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output success">✓ Entry saved! Auto-tags: [api, http, rest, web]</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output"></span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span class="terminal-input">python -m archive search "api"</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ef5350;">Found 3 entries:</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">1. Understanding REST APIs [api, http, rest]</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">2. GraphQL vs REST [api, graphql, rest]</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">3. API Authentication Patterns [api, auth, jwt]</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in">
+          <h3>🎯 Success Criteria</h3>
+          <p>
+            Your Living Archive should demonstrate mastery of all three forces:<br>
+            <strong>Stone:</strong> Data persists across restarts, search works<br>
+            <strong>Lightning:</strong> Auto-tagging and transformation work<br>
+            <strong>Magnetism:</strong> API endpoints functional, imports work
+          </p>
+          <a href="../ch6-capstone2/index.html" class="cta-btn">
+            <span>Continue to Capstone II: The Oracle Engine</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch4-architect/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Chapter 4: Architect
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch6-capstone2/index.html'">
+      Capstone II: Oracle
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>

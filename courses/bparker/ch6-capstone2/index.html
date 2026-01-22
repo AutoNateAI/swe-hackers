@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone II: The Oracle Engine | The Architect's Return</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-star);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(171, 71, 188, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(123, 31, 162, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(255, 213, 79, 0.1) 0%, transparent 40%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-star);
+    }
+    
+    .story-block::before {
+      color: var(--accent-star);
+    }
+    
+    /* Capstone badge */
+    .capstone-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, var(--accent-star), #7b1fa2);
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: white;
+      margin: 1rem 0;
+    }
+    
+    /* Domain options */
+    .domain-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .domain-options {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .domain-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .domain-card:hover {
+      border-color: var(--accent-star);
+      transform: translateY(-5px);
+    }
+    
+    .domain-card .domain-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .domain-card h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .domain-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .domain-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .domain-card li {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding: 0.25rem 0;
+    }
+    
+    .domain-card li::before {
+      content: "→ ";
+      color: var(--accent-star);
+    }
+    
+    /* AI integration visualization */
+    .ai-flow {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--accent-star);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .ai-flow h4 {
+      color: var(--accent-star);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .ai-steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .ai-step {
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+    }
+    
+    .ai-step-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent-star);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      font-size: 1.25rem;
+    }
+    
+    .ai-step-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    
+    .ai-arrow {
+      color: var(--accent-star);
+      font-size: 1.25rem;
+    }
+    
+    @media (max-width: 768px) {
+      .ai-arrow {
+        transform: rotate(90deg);
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* Prompt template box */
+    .prompt-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--accent-star);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .prompt-box h4 {
+      color: var(--accent-star);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .prompt-template {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .prompt-template .variable {
+      color: var(--accent-lightning);
+      background: rgba(255, 213, 79, 0.1);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+    }
+    
+    /* Epilogue styling */
+    .epilogue {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin: 3rem 0;
+      text-align: center;
+      border: 1px solid rgba(171, 71, 188, 0.3);
+    }
+    
+    .epilogue h3 {
+      color: var(--accent-star);
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .epilogue p {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }
+    
+    .epilogue .signature {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="quest" title="The Quest"></div>
+    <div class="progress-dot" data-section="domains" title="Choose Domain"></div>
+    <div class="progress-dot" data-section="integration" title="AI Integration"></div>
+    <div class="progress-dot" data-section="deliverables" title="Deliverables"></div>
+    <div class="progress-dot" data-section="epilogue" title="Epilogue"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Capstone II • Week 6</span>
+        <div class="hero-icon">🌟</div>
+        <h1>The Oracle Engine</h1>
+        <p class="hero-subtitle">
+          There is a new force in the realm — one that didn't exist when you first 
+          walked these paths. The AI spirits. They can read, write, explain, generate. 
+          You will build an Oracle — a system that channels this power for a real purpose.
+        </p>
+        <div class="capstone-badge">
+          🏆 Final Capstone Project
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Channel the AI spirits</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         THE QUEST
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="quest">
+      <div class="section-content">
+        <h2 class="fade-in">🌟 The Final Quest</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Your final capstone. Here you integrate <strong>AI</strong> as a core 
+            capability — not a gimmick, but a genuine enhancement to a real-world system. 
+            You will build an AI-powered assistant for a specific domain.
+          </p>
+        </div>
+        
+        <p class="fade-in">
+          This project demonstrates the ultimate skill of the modern architect: 
+          <strong>directing AI to amplify your capabilities</strong>. You understand 
+          the system, you design the prompts, you verify the output.
+        </p>
+        
+        <div class="ai-flow fade-in">
+          <h4>🌟 The AI Integration Loop</h4>
+          <div class="ai-steps">
+            <div class="ai-step">
+              <div class="ai-step-icon">👤</div>
+              <div class="ai-step-label">User Input</div>
+            </div>
+            <div class="ai-arrow">→</div>
+            <div class="ai-step">
+              <div class="ai-step-icon">⚡</div>
+              <div class="ai-step-label">Build Prompt</div>
+            </div>
+            <div class="ai-arrow">→</div>
+            <div class="ai-step">
+              <div class="ai-step-icon">🤖</div>
+              <div class="ai-step-label">AI Provider</div>
+            </div>
+            <div class="ai-arrow">→</div>
+            <div class="ai-step">
+              <div class="ai-step-icon">⚡</div>
+              <div class="ai-step-label">Parse Response</div>
+            </div>
+            <div class="ai-arrow">→</div>
+            <div class="ai-step">
+              <div class="ai-step-icon">🪨</div>
+              <div class="ai-step-label">Store/Cache</div>
+            </div>
+            <div class="ai-arrow">→</div>
+            <div class="ai-step">
+              <div class="ai-step-icon">📤</div>
+              <div class="ai-step-label">Present</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         CHOOSE YOUR DOMAIN
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="domains">
+      <div class="section-content">
+        <h2 class="fade-in">🎯 Choose Your Domain</h2>
+        
+        <p class="fade-in">
+          Select one of these domains for your Oracle Engine, or propose your own:
+        </p>
+        
+        <div class="domain-options fade-in">
+          <div class="domain-card">
+            <div class="domain-icon">💻</div>
+            <h4>Option A: Code Companion</h4>
+            <p>An assistant that helps developers understand and improve code.</p>
+            <ul>
+              <li>Explain code snippets in plain English</li>
+              <li>Generate documentation from code</li>
+              <li>Suggest improvements or identify issues</li>
+              <li>Learn from feedback</li>
+            </ul>
+          </div>
+          
+          <div class="domain-card">
+            <div class="domain-icon">📚</div>
+            <h4>Option B: Learning Guide</h4>
+            <p>A personalized tutor that adapts to your learning style.</p>
+            <ul>
+              <li>Generate learning paths for topics</li>
+              <li>Quiz the user and adapt to level</li>
+              <li>Summarize articles or documentation</li>
+              <li>Track progress and suggest next steps</li>
+            </ul>
+          </div>
+          
+          <div class="domain-card">
+            <div class="domain-icon">📊</div>
+            <h4>Option C: Data Analyst</h4>
+            <p>An AI that helps you understand and visualize data.</p>
+            <ul>
+              <li>Accept CSV/JSON data uploads</li>
+              <li>Generate insights and summaries</li>
+              <li>Create visualizations from natural language</li>
+              <li>Answer questions about the data</li>
+            </ul>
+          </div>
+          
+          <div class="domain-card">
+            <div class="domain-icon">🎨</div>
+            <h4>Option D: Your Proposal</h4>
+            <p>Propose your own domain (get approval first).</p>
+            <ul>
+              <li>Must involve data input</li>
+              <li>Must involve AI processing</li>
+              <li>Must produce meaningful output</li>
+              <li>Must solve a real problem you care about</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         AI INTEGRATION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="integration">
+      <div class="section-content">
+        <h2 class="fade-in">🤖 AI Integration Requirements</h2>
+        
+        <h3 class="fade-in">The Three Forces in AI Context</h3>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card stone">
+            <div class="concept-card-icon">🪨</div>
+            <h4>Stone</h4>
+            <p>Persist user sessions/history. Store AI responses for review. Cache frequent queries.</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">⚡</div>
+            <h4>Lightning</h4>
+            <p>Clean data flow input → AI → output. Handle streaming responses. Transform AI output.</p>
+          </div>
+          
+          <div class="concept-card magnetism">
+            <div class="concept-card-icon">🧲</div>
+            <h4>Magnetism</h4>
+            <p>Integrate with AI provider (OpenAI, Anthropic, etc.). Handle rate limits, errors, timeouts.</p>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">Prompt Engineering</h3>
+        
+        <p class="fade-in">
+          The key to good AI integration is good prompts. Create reusable prompt templates:
+        </p>
+        
+        <div class="prompt-box fade-in">
+          <h4>Example: Code Explanation Prompt</h4>
+          <div class="prompt-template">
+You are a helpful code tutor. Explain the following code to a developer 
+who is returning to programming after a few years away.
+
+<span class="variable">{{language}}</span> code:
+```
+<span class="variable">{{code}}</span>
+```
+
+Explain:
+1. What this code does overall
+2. Key concepts used (with brief explanations)
+3. Any potential issues or improvements
+
+Keep explanations clear and practical.
+          </div>
+        </div>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">AI Integration Architecture</div>
+          <div class="mermaid">
+flowchart LR
+    USER["👤 User Input"] --> APP["🌟 Your App"]
+    APP --> PROMPT["⚡ Build Prompt"]
+    PROMPT --> AI["🤖 AI Provider"]
+    AI --> PARSE["⚡ Parse Response"]
+    PARSE --> STORE["🪨 Store/Cache"]
+    STORE --> OUTPUT["📤 Present to User"]
+
+    style AI fill:#ab47bc,color:#fff
+    style APP fill:#ab47bc,color:#fff
+          </div>
+        </div>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python - AI Integration Pattern</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">import</span> openai
+<span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache
+
+<span class="keyword">class</span> <span class="function">OracleEngine</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, api_key: <span class="variable">str</span>):
+        self.<span class="variable">client</span> = openai.<span class="function">OpenAI</span>(api_key=api_key)
+        self.<span class="variable">history</span> = []
+    
+    <span class="keyword">def</span> <span class="function">build_prompt</span>(self, template: <span class="variable">str</span>, **kwargs) -> <span class="variable">str</span>:
+        <span class="string">"""Fill in prompt template with variables."""</span>
+        <span class="keyword">return</span> template.<span class="function">format</span>(**kwargs)
+    
+    <span class="decorator">@lru_cache</span>(maxsize=<span class="number">100</span>)  <span class="comment"># Cache responses!</span>
+    <span class="keyword">def</span> <span class="function">query</span>(self, prompt: <span class="variable">str</span>, system_message: <span class="variable">str</span> = <span class="string">""</span>) -> <span class="variable">str</span>:
+        <span class="string">"""Send query to AI and get response."""</span>
+        messages = []
+        <span class="keyword">if</span> system_message:
+            messages.<span class="function">append</span>({<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: system_message})
+        messages.<span class="function">append</span>({<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: prompt})
+        
+        response = self.<span class="variable">client</span>.chat.completions.<span class="function">create</span>(
+            model=<span class="string">"gpt-4"</span>,
+            messages=messages,
+            max_tokens=<span class="number">1000</span>
+        )
+        
+        result = response.choices[<span class="number">0</span>].message.content
+        self.<span class="function">_store_history</span>(prompt, result)
+        <span class="keyword">return</span> result
+    
+    <span class="keyword">def</span> <span class="function">_store_history</span>(self, prompt, response):
+        <span class="string">"""Store interaction for later review."""</span>
+        self.<span class="variable">history</span>.<span class="function">append</span>({
+            <span class="string">"prompt"</span>: prompt,
+            <span class="string">"response"</span>: response,
+            <span class="string">"timestamp"</span>: datetime.<span class="function">now</span>().<span class="function">isoformat</span>()
+        })</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         DELIVERABLES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="deliverables">
+      <div class="section-content">
+        <h2 class="fade-in">📦 Deliverables</h2>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Project Structure</span>
+          </div>
+          <div class="code-content">
+            <pre><code>bparker/capstone-2-oracle/
+├── README.md              <span class="comment"># What it does, how to run it</span>
+├── docs/
+│   ├── ARCHITECTURE.md    <span class="comment"># Full system design</span>
+│   ├── AI-INTEGRATION.md  <span class="comment"># How you use AI, prompt strategies</span>
+│   └── ADR-001.md         <span class="comment"># Key decisions</span>
+├── src/
+│   ├── main.py            <span class="comment"># Entry point</span>
+│   ├── oracle.py          <span class="comment"># AI integration layer</span>
+│   ├── prompts/           <span class="comment"># Prompt templates</span>
+│   │   ├── explain.txt
+│   │   └── summarize.txt
+│   └── ...
+├── tests/
+└── .env.example           <span class="comment"># Template for API keys</span></code></pre>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">Presentation Requirements</h3>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">🎬</div>
+            <h4>10-Slide Deck</h4>
+            <p>Tell the story of your Oracle. Problem, solution, architecture, demo, learnings.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">🎤</div>
+            <h4>Live Demo</h4>
+            <p>Show real AI interactions. Handle unexpected inputs gracefully.</p>
+          </div>
+          
+          <div class="concept-card" style="border-top: 3px solid var(--accent-star);">
+            <div class="concept-card-icon">🤔</div>
+            <h4>Reflection</h4>
+            <p>What did you learn about working with AI? What surprised you?</p>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in" style="border-color: var(--accent-star);">
+          <h3>🎯 Success Criteria</h3>
+          <p>
+            <strong>Stone:</strong> Session history persisted, responses cached<br>
+            <strong>Lightning:</strong> Clean data flow, proper error handling<br>
+            <strong>Magnetism:</strong> AI integration works, rate limits handled<br>
+            <strong>AI Mastery:</strong> Thoughtful prompts, useful outputs
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         EPILOGUE
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="epilogue">
+      <div class="section-content">
+        <h2 class="fade-in">🌅 Epilogue: The Architect Awakened</h2>
+        
+        <div class="epilogue fade-in">
+          <h3>Welcome Back, Architect</h3>
+          
+          <p>
+            You came back to a changed world.
+          </p>
+          
+          <p>
+            You relearned the ancient forces — Stone, Lightning, Magnetism. 
+            You built systems that persist, transform, and connect. 
+            You read the ruins of others' code and found wisdom in their designs.
+          </p>
+          
+          <p>
+            And you learned to work with the new power — the AI spirits 
+            that can amplify everything you do.
+          </p>
+          
+          <p style="font-weight: 600; color: var(--accent-star);">
+            You are no longer just a coder. You are an <strong>Architect</strong>.
+          </p>
+          
+          <p>
+            The realm needs builders who understand systems deeply. 
+            Who can see the whole while crafting the parts. 
+            Who can direct AI to build faster while knowing enough to guide it true.
+          </p>
+          
+          <p style="font-weight: 600;">
+            Your journey doesn't end here. It <em>begins</em> here.
+          </p>
+          
+          <p class="signature">
+            — The stone remembers. The lightning transforms. The magnetism connects. 
+            And the architect... the architect sees it all.
+          </p>
+        </div>
+        
+        <div class="cta-box fade-in">
+          <h3>🏆 Congratulations!</h3>
+          <p>
+            You've completed <strong>The Architect's Return</strong>. 
+            Six weeks, six projects, three forces mastered.
+          </p>
+          <a href="../index.html" class="cta-btn" style="background: linear-gradient(135deg, #ab47bc, #7b1fa2);">
+            <span>Return to Course Home</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9,22 9,12 15,12 15,22"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch5-capstone1/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Capstone I: Archive
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../index.html'">
+      Course Home
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9,22 9,12 15,12 15,22"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>

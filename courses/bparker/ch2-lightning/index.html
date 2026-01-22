@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2: Lightning Paths | The Architect's Return</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../shared/css/lesson.css">
+  
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --chapter-color: var(--accent-lightning);
+    }
+    
+    .hero::before {
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(255, 213, 79, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(255, 143, 0, 0.15) 0%, transparent 50%);
+    }
+    
+    .story-block {
+      border-left-color: var(--accent-lightning);
+    }
+    
+    .story-block::before {
+      color: var(--accent-lightning);
+    }
+    
+    /* Pipeline visualization */
+    .pipeline-demo {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 213, 79, 0.2);
+    }
+    
+    .pipeline-steps {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .pipeline-step {
+      flex: 1;
+      min-width: 120px;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .pipeline-step.active {
+      border-color: var(--accent-lightning);
+      background: rgba(255, 213, 79, 0.1);
+    }
+    
+    .pipeline-step .step-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pipeline-step .step-name {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-primary);
+    }
+    
+    .pipeline-step .step-data {
+      font-size: 0.75rem;
+      color: var(--accent-lightning);
+      margin-top: 0.25rem;
+    }
+    
+    .pipeline-arrow {
+      color: var(--accent-lightning);
+      font-size: 1.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .pipeline-arrow {
+        transform: rotate(90deg);
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* Function box */
+    .function-box {
+      background: var(--bg-primary);
+      border: 2px solid var(--accent-lightning);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    
+    .function-header {
+      background: rgba(255, 213, 79, 0.1);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 213, 79, 0.2);
+    }
+    
+    .function-header h4 {
+      font-family: var(--font-mono);
+      color: var(--accent-lightning);
+      margin: 0;
+    }
+    
+    .function-body {
+      padding: 1.5rem;
+    }
+    
+    .function-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    
+    .function-io {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.5rem;
+      text-align: center;
+    }
+    
+    .function-io .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    
+    .function-io .value {
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      font-size: 1.1rem;
+    }
+    
+    .function-process {
+      background: var(--accent-lightning);
+      color: var(--bg-primary);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.5rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+    
+    /* Async visualization */
+    .async-timeline {
+      position: relative;
+      padding: 2rem 0;
+      margin: 2rem 0;
+    }
+    
+    .async-track {
+      height: 4px;
+      background: var(--bg-tertiary);
+      border-radius: 2px;
+      position: relative;
+    }
+    
+    .async-event {
+      position: absolute;
+      top: -30px;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    
+    .async-event .event-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--accent-lightning);
+      border-radius: 50%;
+      margin: 0 auto 0.5rem;
+    }
+    
+    .async-event .event-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    
+    .async-event.waiting .event-dot {
+      background: var(--accent-stone);
+    }
+    
+    .async-event.complete .event-dot {
+      background: #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Progress Tracker (Side) -->
+  <nav class="progress-tracker">
+    <div class="progress-dot active" data-section="hero" title="Start"></div>
+    <div class="progress-dot" data-section="intro" title="Introduction"></div>
+    <div class="progress-dot" data-section="functions" title="Functions"></div>
+    <div class="progress-dot" data-section="pipelines" title="Pipelines"></div>
+    <div class="progress-dot" data-section="async" title="Async/Await"></div>
+    <div class="progress-dot" data-section="quiz" title="Quiz"></div>
+    <div class="progress-dot" data-section="project" title="Project"></div>
+  </nav>
+
+  <main class="lesson-container">
+    
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero section" data-section="hero">
+      <div class="hero-content">
+        <span class="hero-chapter">Chapter 2 • Week 2</span>
+        <div class="hero-icon">⚡</div>
+        <h1>Lightning Paths</h1>
+        <p class="hero-subtitle">
+          Lightning doesn't wait. It finds the path of least resistance and strikes. 
+          Your code must learn to flow the same way — transforming data as it moves.
+        </p>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Let the data flow</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         INTRODUCTION
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="intro">
+      <div class="section-content">
+        <h2 class="fade-in">⚡ The Force of Flow</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            The stone holds memory, but memory alone is useless. Data must <em>move</em>. 
+            It must be transformed, filtered, mapped, reduced. This is the way of Lightning.
+          </p>
+        </div>
+        
+        <p class="fade-in">
+          Lightning is about <strong>flow</strong> — data in motion. In code, this means:
+        </p>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">🔧</div>
+            <h4>Functions</h4>
+            <p>Transformation machines. Input goes in, process happens, output comes out.</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">🔗</div>
+            <h4>Pipelines</h4>
+            <p>Chains of transformations. Data flows through, changing at each step.</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">🎯</div>
+            <h4>Events</h4>
+            <p>Triggers that start the lightning. User clicks, data arrives, timers fire.</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">🌐</div>
+            <h4>APIs</h4>
+            <p>The channels through which lightning travels between systems.</p>
+          </div>
+        </div>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">The Lightning Realm</div>
+          <div class="mermaid">
+flowchart LR
+    subgraph LIGHTNING_REALM["⚡ The Lightning Realm"]
+        VAR["Variables<br/><i>short-term memory</i>"]
+        FUNC["Functions<br/><i>transformation</i>"]
+        PIPE["Pipelines<br/><i>chained flow</i>"]
+        API["APIs<br/><i>external channels</i>"]
+    end
+
+    VAR --> FUNC --> PIPE --> API
+    
+    style VAR fill:#8d6e63,color:#fff
+    style FUNC fill:#ffd54f,color:#000
+    style PIPE fill:#ffd54f,color:#000
+    style API fill:#7986cb,color:#fff
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FUNCTIONS
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="functions">
+      <div class="section-content">
+        <h2 class="fade-in">🔧 Functions: The Transformation Machines</h2>
+        
+        <p class="fade-in">
+          A function is simple: <strong>input → process → output</strong>. 
+          Think of it like a machine in a factory. Raw material goes in, 
+          something happens inside, and a finished product comes out.
+        </p>
+        
+        <div class="function-box fade-in">
+          <div class="function-header">
+            <h4>def double(x):</h4>
+          </div>
+          <div class="function-body">
+            <div class="function-diagram">
+              <div class="function-io">
+                <div class="label">Input</div>
+                <div class="value">5</div>
+              </div>
+              <span style="font-size: 2rem; color: var(--accent-lightning);">→</span>
+              <div class="function-process">× 2</div>
+              <span style="font-size: 2rem; color: var(--accent-lightning);">→</span>
+              <div class="function-io">
+                <div class="label">Output</div>
+                <div class="value">10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">Pure Functions: The Gold Standard</h3>
+        
+        <p class="fade-in">
+          A <strong>pure function</strong> always gives the same output for the same input, 
+          and has no side effects. They're predictable, testable, and composable.
+        </p>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="comment"># PURE: Same input always gives same output</span>
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+<span class="comment"># PURE: No side effects, just transforms data</span>
+<span class="keyword">def</span> <span class="function">format_name</span>(first, last):
+    <span class="keyword">return</span> <span class="string">f"</span>{first} {last}<span class="string">"</span>.<span class="function">title</span>()
+
+<span class="comment"># IMPURE: Modifies external state</span>
+<span class="variable">total</span> = <span class="number">0</span>
+<span class="keyword">def</span> <span class="function">add_to_total</span>(x):
+    <span class="keyword">global</span> total
+    total += x  <span class="comment"># Side effect!</span>
+    <span class="keyword">return</span> total
+
+<span class="comment"># IMPURE: Depends on external state</span>
+<span class="keyword">import</span> random
+<span class="keyword">def</span> <span class="function">roll_dice</span>():
+    <span class="keyword">return</span> random.<span class="function">randint</span>(<span class="number">1</span>, <span class="number">6</span>)  <span class="comment"># Different each time!</span></code></pre>
+          </div>
+          <div class="code-caption">
+            <p>
+              <span class="icon">💡</span>
+              <strong>Key insight:</strong> Pure functions are easier to test, debug, and reuse. 
+              Aim for pure functions when possible, isolate impure ones when necessary.
+            </p>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">Higher-Order Functions</h3>
+        
+        <p class="fade-in">
+          Functions that take other functions as arguments or return them. 
+          These are the power tools of functional programming.
+        </p>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="comment"># map: Apply a function to every item</span>
+<span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+<span class="variable">doubled</span> = <span class="function">list</span>(<span class="function">map</span>(<span class="keyword">lambda</span> x: x * <span class="number">2</span>, numbers))
+<span class="comment"># [2, 4, 6, 8, 10]</span>
+
+<span class="comment"># filter: Keep only items that pass a test</span>
+<span class="variable">evens</span> = <span class="function">list</span>(<span class="function">filter</span>(<span class="keyword">lambda</span> x: x % <span class="number">2</span> == <span class="number">0</span>, numbers))
+<span class="comment"># [2, 4]</span>
+
+<span class="comment"># List comprehensions: Pythonic way (preferred!)</span>
+<span class="variable">doubled</span> = [x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> numbers]
+<span class="variable">evens</span> = [x <span class="keyword">for</span> x <span class="keyword">in</span> numbers <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+
+<span class="comment"># reduce: Combine all items into one</span>
+<span class="keyword">from</span> functools <span class="keyword">import</span> reduce
+<span class="variable">total</span> = <span class="function">reduce</span>(<span class="keyword">lambda</span> acc, x: acc + x, numbers, <span class="number">0</span>)
+<span class="comment"># 15</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PIPELINES
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="pipelines">
+      <div class="section-content">
+        <h2 class="fade-in">🔗 Pipelines: Chained Transformations</h2>
+        
+        <p class="fade-in">
+          A pipeline is a series of transformations applied one after another. 
+          Data flows in, gets transformed at each step, and flows out changed.
+        </p>
+        
+        <div class="pipeline-demo fade-in">
+          <div class="pipeline-steps">
+            <div class="pipeline-step active">
+              <div class="step-icon">📥</div>
+              <div class="step-name">Raw Data</div>
+              <div class="step-data">1,247 records</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">
+              <div class="step-icon">🔍</div>
+              <div class="step-name">Filter</div>
+              <div class="step-data">Last 30 days</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">
+              <div class="step-icon">🏷️</div>
+              <div class="step-name">Categorize</div>
+              <div class="step-data">By type</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">
+              <div class="step-icon">📊</div>
+              <div class="step-name">Aggregate</div>
+              <div class="step-data">Sum totals</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-step">
+              <div class="step-icon">📤</div>
+              <div class="step-name">Output</div>
+              <div class="step-data">Report</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="diagram-container scale-in">
+          <div class="diagram-title">Data Pipeline Flow</div>
+          <div class="mermaid">
+flowchart LR
+    INPUT["📥 Input"] --> F1["⚡ Transform"]
+    F1 --> F2["⚡ Filter"]
+    F2 --> F3["⚡ Map"]
+    F3 --> OUTPUT["📤 Output"]
+
+    style F1 fill:#ffd54f,color:#000
+    style F2 fill:#ffd54f,color:#000
+    style F3 fill:#ffd54f,color:#000
+          </div>
+        </div>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="comment"># Example: Transaction Processing Pipeline</span>
+
+<span class="keyword">def</span> <span class="function">load_transactions</span>(filepath):
+    <span class="string">"""Load raw transaction data."""</span>
+    <span class="keyword">with</span> <span class="function">open</span>(filepath) <span class="keyword">as</span> f:
+        <span class="keyword">return</span> json.<span class="function">load</span>(f)
+
+<span class="keyword">def</span> <span class="function">filter_recent</span>(transactions, days=<span class="number">30</span>):
+    <span class="string">"""Keep only transactions from last N days."""</span>
+    cutoff = datetime.<span class="function">now</span>() - timedelta(days=days)
+    <span class="keyword">return</span> [t <span class="keyword">for</span> t <span class="keyword">in</span> transactions <span class="keyword">if</span> t[<span class="string">'date'</span>] >= cutoff]
+
+<span class="keyword">def</span> <span class="function">categorize</span>(transactions):
+    <span class="string">"""Group transactions by category."""</span>
+    categories = {}
+    <span class="keyword">for</span> t <span class="keyword">in</span> transactions:
+        cat = t.<span class="function">get</span>(<span class="string">'category'</span>, <span class="string">'Other'</span>)
+        categories.<span class="function">setdefault</span>(cat, []).<span class="function">append</span>(t)
+    <span class="keyword">return</span> categories
+
+<span class="keyword">def</span> <span class="function">sum_by_category</span>(categorized):
+    <span class="string">"""Sum amounts per category."""</span>
+    <span class="keyword">return</span> {cat: <span class="function">sum</span>(t[<span class="string">'amount'</span>] <span class="keyword">for</span> t <span class="keyword">in</span> txns) 
+            <span class="keyword">for</span> cat, txns <span class="keyword">in</span> categorized.<span class="function">items</span>()}
+
+<span class="comment"># The Pipeline - compose the functions</span>
+<span class="keyword">def</span> <span class="function">process_transactions</span>(filepath):
+    <span class="variable">raw</span> = load_transactions(filepath)      <span class="comment"># Step 1: Load</span>
+    <span class="variable">recent</span> = filter_recent(raw)             <span class="comment"># Step 2: Filter</span>
+    <span class="variable">categorized</span> = categorize(recent)       <span class="comment"># Step 3: Categorize</span>
+    <span class="variable">totals</span> = sum_by_category(categorized)  <span class="comment"># Step 4: Aggregate</span>
+    <span class="keyword">return</span> totals                           <span class="comment"># Output!</span></code></pre>
+          </div>
+          <div class="code-caption">
+            <p>
+              <span class="icon">⚡</span>
+              Each function does <strong>one thing well</strong>. The pipeline composes them into a complete workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         ASYNC/AWAIT
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="async">
+      <div class="section-content">
+        <h2 class="fade-in">⏳ Async/Await: Lightning That Waits</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Not all lightning strikes instantly. Sometimes you need to wait for 
+            a network response, a file to load, or a database query to complete. 
+            <strong>async/await</strong> lets you write code that waits efficiently, 
+            without blocking everything else.
+          </p>
+        </div>
+        
+        <div class="cta-box fade-in" style="border-color: var(--accent-lightning);">
+          <h3>🧠 The Key Insight</h3>
+          <p>
+            <strong>Synchronous code</strong> waits for each operation to finish before starting the next.<br>
+            <strong>Asynchronous code</strong> can start an operation, do other things while waiting, 
+            then come back when it's done.
+          </p>
+        </div>
+        
+        <div class="code-block scale-in">
+          <div class="code-header">
+            <span class="code-language">Python</span>
+            <button class="code-copy">Copy</button>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">import</span> asyncio
+<span class="keyword">import</span> aiohttp
+
+<span class="comment"># async function - can pause and resume</span>
+<span class="keyword">async def</span> <span class="function">fetch_data</span>(url):
+    <span class="string">"""Fetch data from a URL asynchronously."""</span>
+    <span class="keyword">async with</span> aiohttp.<span class="function">ClientSession</span>() <span class="keyword">as</span> session:
+        <span class="keyword">async with</span> session.<span class="function">get</span>(url) <span class="keyword">as</span> response:
+            <span class="keyword">return await</span> response.<span class="function">json</span>()
+
+<span class="comment"># await - pause here until the operation completes</span>
+<span class="keyword">async def</span> <span class="function">main</span>():
+    <span class="comment"># These run CONCURRENTLY, not sequentially!</span>
+    <span class="variable">tasks</span> = [
+        fetch_data(<span class="string">"https://api.example.com/users"</span>),
+        fetch_data(<span class="string">"https://api.example.com/posts"</span>),
+        fetch_data(<span class="string">"https://api.example.com/comments"</span>)
+    ]
+    
+    <span class="comment"># Wait for ALL to complete</span>
+    <span class="variable">results</span> = <span class="keyword">await</span> asyncio.<span class="function">gather</span>(*tasks)
+    <span class="keyword">return</span> results
+
+<span class="comment"># Run the async function</span>
+asyncio.<span class="function">run</span>(main())</code></pre>
+          </div>
+          <div class="code-caption">
+            <p>
+              <span class="icon">⚡</span>
+              <strong>Power move:</strong> <code>asyncio.gather()</code> runs multiple async operations 
+              at the same time. 3 API calls that each take 1 second = ~1 second total, not 3!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         QUIZ
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="quiz">
+      <div class="section-content">
+        <div class="quiz-container" data-answer="B">
+          <div class="quiz-header">
+            <span class="quiz-icon">🧠</span>
+            <h3 class="quiz-title">Knowledge Check</h3>
+          </div>
+          
+          <div class="quiz-progress">
+            <div class="quiz-progress-dot active"></div>
+            <div class="quiz-progress-dot"></div>
+          </div>
+          
+          <p class="quiz-question">
+            What makes a function "pure"?
+          </p>
+          
+          <div class="quiz-options">
+            <div class="quiz-option" data-value="A">
+              <span class="quiz-option-letter">A</span>
+              <span>It doesn't take any arguments</span>
+            </div>
+            <div class="quiz-option" data-value="B">
+              <span class="quiz-option-letter">B</span>
+              <span>Same input always produces same output, and no side effects</span>
+            </div>
+            <div class="quiz-option" data-value="C">
+              <span class="quiz-option-letter">C</span>
+              <span>It uses type hints</span>
+            </div>
+            <div class="quiz-option" data-value="D">
+              <span class="quiz-option-letter">D</span>
+              <span>It's defined with the <code>async</code> keyword</span>
+            </div>
+          </div>
+          
+          <div class="quiz-feedback" 
+               data-correct-msg="Exactly! Pure functions are predictable and have no side effects. This makes them easy to test and compose."
+               data-incorrect-msg="A pure function always gives the same output for the same input, and doesn't modify anything outside itself.">
+          </div>
+          
+          <button class="quiz-btn" disabled>Check Answer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         CHAPTER PROJECT
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="section" data-section="project">
+      <div class="section-content">
+        <h2 class="fade-in">🔨 Chapter Project: The Flow Tracker</h2>
+        
+        <div class="story-block fade-in">
+          <p>
+            Build a <strong>Data Pipeline</strong> that transforms messy data into clean insights. 
+            This project reinforces functions, pipelines, and data transformation.
+          </p>
+        </div>
+        
+        <div class="terminal fade-in">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span class="terminal-input">python flow_tracker.py transactions.csv</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">📥 Loading transactions.csv (1,247 records)</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">⚡ Filtering to last 30 days... (328 records)</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">⚡ Categorizing by type...</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">⚡ Aggregating totals...</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">📤 Results:</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ffd54f;">   Food:          $847.23</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ffd54f;">   Transport:     $234.50</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output" style="color: #ffd54f;">   Entertainment: $156.00</span>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="fade-in">Requirements</h3>
+        
+        <div class="concept-grid fade-in">
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">📥</div>
+            <h4>Load Data</h4>
+            <p>Read data from a CSV or JSON file.</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">🔍</div>
+            <h4>Filter</h4>
+            <p>Apply at least one filter (date range, category, amount threshold).</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">🔄</div>
+            <h4>Transform</h4>
+            <p>Map data to new format, categorize, or enrich with calculated fields.</p>
+          </div>
+          
+          <div class="concept-card lightning">
+            <div class="concept-card-icon">📊</div>
+            <h4>Aggregate</h4>
+            <p>Reduce data to summaries (sums, counts, averages).</p>
+          </div>
+        </div>
+        
+        <div class="cta-box fade-in">
+          <h3>📦 Deliverables</h3>
+          <p>
+            Create your work in <code>bparker/ch2-lightning/</code>. Include:<br>
+            • <code>flow_tracker.py</code> — Your pipeline implementation<br>
+            • <code>README.md</code> — Mermaid flowchart of your pipeline<br>
+            • Sample data file to test with
+          </p>
+          <p><strong>Reflection:</strong> How did thinking in "transformations" change your approach?</p>
+          <a href="../ch3-magnetism/index.html" class="cta-btn">
+            <span>Continue to Chapter 3: Magnetism</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="lesson-nav">
+    <button class="nav-btn" onclick="location.href='../ch1-stone/index.html'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Chapter 1: Stone
+    </button>
+    <button class="nav-btn primary" onclick="location.href='../ch3-magnetism/index.html'">
+      Chapter 3: Magnetism
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../../shared/js/lesson.js"></script>
+</body>
+</html>
