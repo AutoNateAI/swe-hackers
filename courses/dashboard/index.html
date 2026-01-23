@@ -337,6 +337,137 @@
           </details>
         </div>
         
+        <!-- Learning Insights Panel (Server-computed analytics) -->
+        <div class="insights-panel" id="insights-panel" style="display: none;">
+          <div class="insights-header">
+            <h3 class="insights-title">🧠 Learning Insights</h3>
+            <span class="data-quality-badge" id="data-quality-badge">
+              <span id="data-quality-icon">📊</span>
+              <span id="data-quality-text">Loading...</span>
+            </span>
+          </div>
+          
+          <div class="insights-grid">
+            <!-- Learning Style Card -->
+            <div class="learning-style-card" id="learning-style-card">
+              <div class="style-header">
+                <span class="style-icon" id="style-icon">🎯</span>
+                <div class="style-info">
+                  <div class="style-primary" id="style-primary">Determining...</div>
+                  <div class="style-secondary" id="style-secondary"></div>
+                </div>
+              </div>
+              <p class="style-description" id="style-description">
+                Complete more activities to determine your learning style.
+              </p>
+              <div class="style-confidence">
+                <div class="confidence-bar">
+                  <div class="confidence-fill" id="confidence-fill" style="width: 0%"></div>
+                </div>
+                <span class="confidence-label" id="confidence-label">0% confidence</span>
+              </div>
+              <div class="style-breakdown" id="style-breakdown" style="display: none;">
+                <div class="breakdown-title">Performance by Activity Type</div>
+                <div class="breakdown-bars" id="breakdown-bars"></div>
+              </div>
+            </div>
+            
+            <!-- Strengths & Growth Areas -->
+            <div class="areas-card">
+              <div class="areas-section">
+                <div class="areas-section-title">
+                  <span class="areas-section-icon">💪</span>
+                  Strength Areas
+                </div>
+                <div class="areas-list" id="strength-areas-list">
+                  <div class="areas-empty">Complete activities to identify strengths</div>
+                </div>
+              </div>
+              
+              <div class="areas-section">
+                <div class="areas-section-title">
+                  <span class="areas-section-icon">🌱</span>
+                  Growth Opportunities
+                </div>
+                <div class="areas-list" id="growth-areas-list">
+                  <div class="areas-empty">No areas needing focus yet</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Engagement Patterns -->
+            <div class="engagement-card">
+              <div class="areas-section-title" style="margin-bottom: var(--space-md);">
+                <span class="areas-section-icon">⏰</span>
+                Engagement Patterns
+              </div>
+              <div class="engagement-grid">
+                <div class="engagement-stat">
+                  <div class="engagement-stat-icon">📅</div>
+                  <div class="engagement-stat-value" id="peak-day">--</div>
+                  <div class="engagement-stat-label">Best Day</div>
+                </div>
+                <div class="engagement-stat">
+                  <div class="engagement-stat-icon">🕐</div>
+                  <div class="engagement-stat-value" id="peak-hour">--</div>
+                  <div class="engagement-stat-label">Peak Hour</div>
+                </div>
+                <div class="engagement-stat">
+                  <div class="engagement-stat-icon">⏱️</div>
+                  <div class="engagement-stat-value" id="avg-session">--</div>
+                  <div class="engagement-stat-label">Avg Session</div>
+                </div>
+                <div class="engagement-stat">
+                  <div class="engagement-stat-icon">📈</div>
+                  <div class="engagement-stat-value" id="consistency-score">--</div>
+                  <div class="engagement-stat-label">Consistency</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Persistence Metrics -->
+            <div class="persistence-card">
+              <div class="areas-section-title" style="margin-bottom: var(--space-md);">
+                <span class="areas-section-icon">🔄</span>
+                Persistence & Growth
+              </div>
+              <div class="persistence-stats">
+                <div class="persistence-stat">
+                  <span class="persistence-icon">🎯</span>
+                  <div class="persistence-info">
+                    <div class="persistence-value" id="overall-accuracy">--%</div>
+                    <div class="persistence-label">Overall Accuracy</div>
+                  </div>
+                </div>
+                <div class="persistence-stat">
+                  <span class="persistence-icon">🔁</span>
+                  <div class="persistence-info">
+                    <div class="persistence-value" id="retry-rate">--%</div>
+                    <div class="persistence-label">Retry After Fail</div>
+                  </div>
+                </div>
+                <div class="persistence-stat">
+                  <span class="persistence-icon">📊</span>
+                  <div class="persistence-info">
+                    <div class="persistence-value" id="improvement-rate">--%</div>
+                    <div class="persistence-label">Improvement Rate</div>
+                  </div>
+                </div>
+                <div class="persistence-stat">
+                  <span class="persistence-icon">✨</span>
+                  <div class="persistence-info">
+                    <div class="persistence-value" id="total-activities">--</div>
+                    <div class="persistence-label">Activities Done</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Recommendations -->
+          <div class="recommendations-list" id="recommendations-list"></div>
+        </div>
+        
         <!-- Visual Stats Grid -->
         <div class="visual-stats-grid">
           
@@ -1033,6 +1164,278 @@
       
       requestAnimationFrame(update);
     }
+    
+    // ═══════════════════════════════════════════════════════════════════════════
+    // LEARNING INSIGHTS PANEL
+    // Renders server-computed analytics from userAnalytics collection
+    // ═══════════════════════════════════════════════════════════════════════════
+    
+    async function loadLearningInsights() {
+      try {
+        const insights = await window.AnalyticsService.getLearningInsights();
+        console.log('🧠 Learning insights loaded:', insights);
+        
+        const panel = document.getElementById('insights-panel');
+        
+        // Only show if we have server analytics or enough local data
+        if (!insights.hasServerAnalytics && insights.lessonsCompleted < 3) {
+          panel.style.display = 'none';
+          return;
+        }
+        
+        panel.style.display = 'block';
+        
+        // Update data quality badge
+        renderDataQuality(insights.dataQuality);
+        
+        // Render learning style
+        renderLearningStyle(insights.learningStyle);
+        
+        // Render strength areas
+        renderStrengthAreas(insights.strengthAreas);
+        
+        // Render growth areas
+        renderGrowthAreas(insights.growthAreas);
+        
+        // Render engagement patterns
+        renderEngagementPatterns(insights.engagementPatterns);
+        
+        // Render persistence metrics
+        renderPersistenceMetrics(insights.persistenceMetrics);
+        
+        // Render recommendations
+        const recommendations = await window.AnalyticsService.getRecommendations();
+        renderRecommendations(recommendations);
+        
+        // Animate panel entrance
+        anime({
+          targets: '.insights-panel',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+          easing: 'easeOutCubic'
+        });
+        
+      } catch (error) {
+        console.error('Error loading learning insights:', error);
+      }
+    }
+    
+    function renderDataQuality(quality) {
+      const badge = document.getElementById('data-quality-badge');
+      const icon = document.getElementById('data-quality-icon');
+      const text = document.getElementById('data-quality-text');
+      
+      if (!quality) {
+        badge.classList.add('low');
+        icon.textContent = '⚠️';
+        text.textContent = 'Limited data';
+        return;
+      }
+      
+      if (quality.hasEnoughData) {
+        badge.classList.remove('low');
+        icon.textContent = '✅';
+        text.textContent = `${quality.activityCount} activities analyzed`;
+      } else {
+        badge.classList.add('low');
+        icon.textContent = '📊';
+        text.textContent = `${quality.activityCount}/10 activities`;
+      }
+    }
+    
+    function renderLearningStyle(learningStyle) {
+      const formatted = window.AnalyticsService.formatLearningStyle(learningStyle);
+      
+      document.getElementById('style-icon').textContent = formatted.primary.icon;
+      document.getElementById('style-primary').textContent = formatted.primary.name + ' Learner';
+      document.getElementById('style-description').textContent = formatted.primary.description;
+      
+      if (formatted.secondary) {
+        document.getElementById('style-secondary').textContent = 
+          `Secondary: ${formatted.secondary.name}`;
+      }
+      
+      // Confidence bar
+      const confidencePercent = Math.round(formatted.confidence * 100);
+      document.getElementById('confidence-fill').style.width = confidencePercent + '%';
+      document.getElementById('confidence-label').textContent = 
+        `${confidencePercent}% confidence (${formatted.dataPoints} activities)`;
+      
+      // Activity type breakdown
+      if (formatted.breakdown && Object.keys(formatted.breakdown).length > 0) {
+        const breakdownSection = document.getElementById('style-breakdown');
+        const barsContainer = document.getElementById('breakdown-bars');
+        
+        breakdownSection.style.display = 'block';
+        barsContainer.innerHTML = '';
+        
+        const activityLabels = {
+          'drag-drop': 'Drag & Drop',
+          'matching': 'Matching',
+          'multiple-choice': 'Multiple Choice',
+          'code-completion': 'Code Completion',
+          'free-response': 'Free Response',
+          'fill-blank': 'Fill Blank'
+        };
+        
+        for (const [type, score] of Object.entries(formatted.breakdown)) {
+          const percent = Math.round(score * 100);
+          const item = document.createElement('div');
+          item.className = 'breakdown-item';
+          item.innerHTML = `
+            <span class="breakdown-item-label">${activityLabels[type] || type}</span>
+            <div class="breakdown-item-bar">
+              <div class="breakdown-item-fill" style="width: ${percent}%"></div>
+            </div>
+            <span class="breakdown-item-value">${percent}%</span>
+          `;
+          barsContainer.appendChild(item);
+        }
+      }
+    }
+    
+    function renderStrengthAreas(areas) {
+      const container = document.getElementById('strength-areas-list');
+      
+      if (!areas || areas.length === 0) {
+        container.innerHTML = '<div class="areas-empty">Complete activities to identify strengths</div>';
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      // Show top 3 strengths
+      areas.slice(0, 3).forEach(area => {
+        const item = document.createElement('div');
+        item.className = 'area-item strength';
+        const scorePercent = Math.round(area.score * 100);
+        item.innerHTML = `
+          <span class="area-topic">${formatTopicName(area.topic)}</span>
+          <span class="area-score high">${scorePercent}%</span>
+        `;
+        container.appendChild(item);
+      });
+    }
+    
+    function renderGrowthAreas(areas) {
+      const container = document.getElementById('growth-areas-list');
+      
+      if (!areas || areas.length === 0) {
+        container.innerHTML = '<div class="areas-empty">No areas needing focus yet</div>';
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      // Show top 3 growth areas
+      areas.slice(0, 3).forEach(area => {
+        const item = document.createElement('div');
+        item.className = 'area-item growth';
+        const scorePercent = Math.round(area.score * 100);
+        
+        let suggestionHtml = '';
+        if (area.suggestedResources && area.suggestedResources.length > 0) {
+          suggestionHtml = `<div class="area-suggestion">📚 Try: ${area.suggestedResources[0].title}</div>`;
+        }
+        
+        item.innerHTML = `
+          <div>
+            <span class="area-topic">${formatTopicName(area.topic)}</span>
+            ${suggestionHtml}
+          </div>
+          <span class="area-score low">${scorePercent}%</span>
+        `;
+        container.appendChild(item);
+      });
+    }
+    
+    function renderEngagementPatterns(patterns) {
+      if (!patterns) return;
+      
+      // Peak day
+      const peakDay = patterns.peakPerformanceDay || '--';
+      document.getElementById('peak-day').textContent = peakDay;
+      
+      // Peak hour
+      const peakHour = patterns.peakPerformanceHour;
+      document.getElementById('peak-hour').textContent = 
+        peakHour !== null && peakHour !== undefined ? `${peakHour}:00` : '--';
+      
+      // Average session length
+      const avgSession = patterns.avgSessionLength || 0;
+      document.getElementById('avg-session').textContent = 
+        avgSession > 0 ? `${avgSession}m` : '--';
+      
+      // Consistency score
+      const consistency = patterns.consistencyScore || 0;
+      document.getElementById('consistency-score').textContent = 
+        `${Math.round(consistency * 100)}%`;
+    }
+    
+    function renderPersistenceMetrics(metrics) {
+      if (!metrics) {
+        document.getElementById('overall-accuracy').textContent = '--%';
+        document.getElementById('retry-rate').textContent = '--%';
+        document.getElementById('improvement-rate').textContent = '--%';
+        document.getElementById('total-activities').textContent = '--';
+        return;
+      }
+      
+      document.getElementById('overall-accuracy').textContent = 
+        `${Math.round(metrics.overallAccuracy * 100)}%`;
+      
+      document.getElementById('retry-rate').textContent = 
+        `${Math.round(metrics.retryAfterFailure * 100)}%`;
+      
+      document.getElementById('improvement-rate').textContent = 
+        metrics.improvementRate > 0 
+          ? `+${Math.round(metrics.improvementRate * 100)}%`
+          : `${Math.round(metrics.improvementRate * 100)}%`;
+      
+      document.getElementById('total-activities').textContent = 
+        metrics.totalAttempts || '--';
+    }
+    
+    function renderRecommendations(recommendations) {
+      const container = document.getElementById('recommendations-list');
+      
+      if (!recommendations || recommendations.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      // Show top 2 recommendations
+      recommendations.slice(0, 2).forEach(rec => {
+        const item = document.createElement('div');
+        item.className = `recommendation-item ${rec.priority}`;
+        item.innerHTML = `
+          <span class="recommendation-icon">${rec.icon}</span>
+          <div class="recommendation-content">
+            <div class="recommendation-title">${rec.title}</div>
+            <div class="recommendation-description">${rec.description}</div>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+    
+    function formatTopicName(topic) {
+      if (!topic) return 'Unknown';
+      return topic
+        .replace(/[-_]/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase());
+    }
+    
+    // Load insights after main analytics
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wait for main analytics to load first
+      setTimeout(() => {
+        loadLearningInsights();
+      }, 500);
+    });
   </script>
 </body>
 </html>

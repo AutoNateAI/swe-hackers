@@ -5,5 +5,10 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "functions": {
+    "source": "firebase-functions",
+    "codebase": "analytics",
+    "runtime": "nodejs20"
   }
 }

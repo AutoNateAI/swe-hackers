@@ -820,6 +820,243 @@ const AnalyticsService = {
   }
 };
 
+// ═══════════════════════════════════════════════════════════════════════════
+  // USER ANALYTICS (from Firestore userAnalytics collection)
+  // Server-computed analytics with learning style, persistence metrics, etc.
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  /**
+   * Fetch the user's computed analytics from Firestore
+   * This data is computed by Cloud Functions and includes:
+   * - Learning style (visual, auditory, kinesthetic, reading)
+   * - Strength and growth areas
+   * - Engagement patterns
+   * - Persistence metrics
+   * 
+   * @returns {Object|null} User analytics document or null if not computed yet
+   */
+  async getUserAnalytics() {
+    const cacheKey = 'user_analytics';
+    const cached = this.getCached(cacheKey);
+    if (cached) return cached;
+    
+    try {
+      const user = firebase.auth().currentUser;
+      if (!user) return null;
+      
+      const doc = await firebase.firestore()
+        .collection('userAnalytics')
+        .doc(user.uid)
+        .get();
+      
+      if (!doc.exists) {
+        console.log('📊 No computed analytics yet - user needs more activity');
+        return null;
+      }
+      
+      const data = doc.data();
+      console.log('📊 Loaded user analytics:', data);
+      
+      this.setCache(cacheKey, data);
+      return data;
+      
+    } catch (error) {
+      console.error('Error fetching user analytics:', error);
+      return null;
+    }
+  },
+  
+  /**
+   * Get learning insights combining client-calculated and server-computed analytics
+   * 
+   * @returns {Object} Combined learning insights
+   */
+  async getLearningInsights() {
+    const cacheKey = 'learning_insights';
+    const cached = this.getCached(cacheKey);
+    if (cached) return cached;
+    
+    try {
+      // Fetch both client-side and server-computed analytics
+      const [dashboardSummary, userAnalytics] = await Promise.all([
+        this.getDashboardSummary(),
+        this.getUserAnalytics()
+      ]);
+      
+      // Start with dashboard summary as base
+      const insights = {
+        ...dashboardSummary,
+        
+        // Add server-computed analytics if available
+        hasServerAnalytics: !!userAnalytics,
+        
+        // Learning style
+        learningStyle: userAnalytics?.learningStyle || null,
+        
+        // Strength areas (server) or fallback to client mastery
+        strengthAreas: userAnalytics?.strengthAreas || [],
+        
+        // Growth areas with suggestions
+        growthAreas: userAnalytics?.growthAreas || [],
+        
+        // Enhanced engagement patterns
+        engagementPatterns: userAnalytics?.engagementPatterns || {
+          preferredTimes: [],
+          avgSessionLength: 0,
+          peakPerformanceDay: null,
+          peakPerformanceHour: null,
+          consistencyScore: 0,
+          streakRecord: dashboardSummary.longestStreak || 0,
+          currentStreak: dashboardSummary.streak || 0
+        },
+        
+        // Persistence metrics (server-only)
+        persistenceMetrics: userAnalytics?.persistenceMetrics || null,
+        
+        // Summary stats
+        summaryStats: userAnalytics?.summaryStats || null,
+        
+        // Data quality indicator
+        dataQuality: userAnalytics?.dataQuality || {
+          hasEnoughData: false,
+          activityCount: 0,
+          daysCovered: 0
+        },
+        
+        // Last computed timestamp
+        lastComputed: userAnalytics?.lastComputed || null
+      };
+      
+      this.setCache(cacheKey, insights);
+      return insights;
+      
+    } catch (error) {
+      console.error('Error getting learning insights:', error);
+      return this.getDashboardSummary();
+    }
+  },
+  
+  /**
+   * Format learning style for display
+   * 
+   * @param {Object} learningStyle - The learning style object
+   * @returns {Object} Formatted learning style with icon and description
+   */
+  formatLearningStyle(learningStyle) {
+    if (!learningStyle || !learningStyle.primary) {
+      return {
+        primary: { name: 'Unknown', icon: '❓', description: 'Complete more activities to determine your learning style' },
+        secondary: null,
+        confidence: 0
+      };
+    }
+    
+    const styleInfo = {
+      visual: {
+        name: 'Visual',
+        icon: '👁️',
+        description: 'You learn best through diagrams, charts, and visual representations'
+      },
+      auditory: {
+        name: 'Auditory',
+        icon: '👂',
+        description: 'You learn best through listening, discussions, and verbal explanations'
+      },
+      kinesthetic: {
+        name: 'Kinesthetic',
+        icon: '✋',
+        description: 'You learn best through hands-on practice and interactive activities'
+      },
+      reading: {
+        name: 'Reading/Writing',
+        icon: '📖',
+        description: 'You learn best through reading text and writing notes'
+      }
+    };
+    
+    return {
+      primary: styleInfo[learningStyle.primary] || styleInfo.reading,
+      secondary: learningStyle.secondary ? styleInfo[learningStyle.secondary] : null,
+      confidence: learningStyle.confidence || 0,
+      dataPoints: learningStyle.dataPoints || 0,
+      breakdown: learningStyle.breakdown || {}
+    };
+  },
+  
+  /**
+   * Get personalized recommendations based on analytics
+   * 
+   * @returns {Array} Array of recommendation objects
+   */
+  async getRecommendations() {
+    const insights = await this.getLearningInsights();
+    const recommendations = [];
+    
+    // Recommend based on growth areas
+    if (insights.growthAreas && insights.growthAreas.length > 0) {
+      const topGrowthArea = insights.growthAreas[0];
+      recommendations.push({
+        type: 'growth',
+        priority: 'high',
+        icon: '🎯',
+        title: `Focus on ${this.formatTopicName(topGrowthArea.topic)}`,
+        description: `Your score in this area is ${Math.round(topGrowthArea.score * 100)}%. Practice more to improve!`,
+        action: topGrowthArea.suggestedResources?.[0] || null
+      });
+    }
+    
+    // Recommend based on streak
+    if (insights.streak === 0 && insights.longestStreak > 0) {
+      recommendations.push({
+        type: 'consistency',
+        priority: 'medium',
+        icon: '🔥',
+        title: 'Restart Your Streak',
+        description: `You've had a ${insights.longestStreak}-day streak before. Complete an activity today!`,
+        action: null
+      });
+    }
+    
+    // Recommend based on learning style
+    if (insights.learningStyle?.primary) {
+      const style = this.formatLearningStyle(insights.learningStyle);
+      recommendations.push({
+        type: 'style',
+        priority: 'low',
+        icon: style.primary.icon,
+        title: `You're a ${style.primary.name} Learner`,
+        description: style.primary.description,
+        action: null
+      });
+    }
+    
+    // Recommend based on engagement patterns
+    if (insights.engagementPatterns?.peakPerformanceDay) {
+      const patterns = insights.engagementPatterns;
+      recommendations.push({
+        type: 'timing',
+        priority: 'low',
+        icon: '⏰',
+        title: 'Optimal Study Time',
+        description: `You perform best on ${patterns.peakPerformanceDay}s around ${patterns.peakPerformanceHour}:00. Schedule your learning then!`,
+        action: null
+      });
+    }
+    
+    return recommendations;
+  },
+  
+  /**
+   * Format topic ID to human-readable name
+   */
+  formatTopicName(topic) {
+    if (!topic) return 'Unknown';
+    return topic
+      .replace(/[-_]/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+};
+
 // Export for global access
 window.AnalyticsService = AnalyticsService;
 

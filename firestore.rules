@@ -108,5 +108,58 @@ service cloud.firestore {
       allow read: if isAuthenticated();
       allow write: if isAdmin();
     }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // USER ANALYTICS (computed by Cloud Functions)
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Users can read their own analytics, only Cloud Functions can write
+    match /userAnalytics/{userId} {
+      allow read: if isOwner(userId);
+      // Write access is restricted to Cloud Functions (via Admin SDK)
+      // Admin SDK bypasses security rules, so this effectively means
+      // no client-side writes are allowed
+      allow write: if false;
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // LEADERBOARDS (computed by Cloud Functions)
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Leaderboards are readable by any authenticated user
+    match /leaderboards/{leaderboardId} {
+      allow read: if isAuthenticated();
+      // Only Cloud Functions can write leaderboard data
+      allow write: if false;
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // CONNECTIONS (peer matching)
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Users can read connections they're part of
+    // Users can create connections where they are the initiator
+    // Users can update connections they're part of (accept/decline)
+    match /connections/{connectionId} {
+      allow read: if isAuthenticated() && 
+                     request.auth.uid in resource.data.participants;
+      allow create: if isAuthenticated() && 
+                       request.auth.uid == request.resource.data.initiatorId;
+      allow update: if isAuthenticated() && 
+                       request.auth.uid in resource.data.participants;
+      allow delete: if false; // Connections are soft-deleted via status
+    }
+    
+    // ══════════════════════════════════════════════════════════════════
+    // ACHIEVEMENTS (earned by users)
+    // ══════════════════════════════════════════════════════════════════
+    
+    // Users can read their own achievements
+    // Only Cloud Functions can create/update achievements
+    match /achievements/{achievementId} {
+      allow read: if isAuthenticated() && 
+                     request.auth.uid == resource.data.userId;
+      allow write: if false; // Only Cloud Functions can write
+    }
   }
 }
