@@ -117,18 +117,22 @@ class TimelineGraph {
     const wrapper = document.createElement('div');
     wrapper.className = 'timeline-graph-wrapper';
     
-    // Calculate height - match sibling (skill radar) or use container height
-    let height = 400; // Default
-    const sibling = this.container.previousElementSibling || this.container.parentElement?.querySelector('#skill-radar-container');
-    if (sibling && sibling.offsetHeight > 100) {
-      height = sibling.offsetHeight;
-    } else if (this.container.parentElement?.offsetHeight > 100) {
-      height = this.container.parentElement.offsetHeight;
+    // Calculate height - use container height, fall back to parent card
+    let height = this.container.offsetHeight;
+    if (!height || height < 100) {
+      const parentCard = this.container.closest('.glass-card');
+      if (parentCard) {
+        // Subtract title height (~50px) and padding (~32px)
+        height = parentCard.offsetHeight - 82;
+      }
     }
+    height = Math.max(200, height || 250); // Minimum height
     
     wrapper.style.cssText = `
       position: relative;
-      height: ${height}px;
+      width: 100%;
+      height: 100%;
+      min-height: ${height}px;
       background: ${this.options.backgroundColor};
       border-radius: 12px;
       overflow: hidden;

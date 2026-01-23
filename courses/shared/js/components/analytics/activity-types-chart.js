@@ -29,8 +29,8 @@ class ActivityTypesChart {
     }
     
     const total = entries.reduce((sum, [_, v]) => sum + v, 0);
-    const height = this.options.height;
-    const chartSize = Math.min(80, height - 20);
+    const containerHeight = this.container.offsetHeight || this.options.height;
+    const chartSize = Math.min(100, containerHeight - 30);
     const cx = chartSize / 2;
     const cy = chartSize / 2;
     const radius = chartSize * 0.45;
@@ -79,7 +79,7 @@ class ActivityTypesChart {
     legend += `</div>`;
     
     this.container.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 1rem; height: 100%;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; height: 100%;">
         ${svg}
         ${legend}
       </div>

@@ -44,9 +44,24 @@ class CourseBreakdownChart {
       'endless-opportunities': '#22d3ee'
     };
     
-    let html = `<div style="display: flex; flex-direction: column; gap: 0.5rem; height: 100%;">`;
+    // Sort by progress and take top 3 with activity
+    const sortedData = [...this.options.data]
+      .filter(item => item.completed > 0 || item.total > 0)
+      .sort((a, b) => {
+        const pctA = a.total > 0 ? a.completed / a.total : 0;
+        const pctB = b.total > 0 ? b.completed / b.total : 0;
+        return pctB - pctA;
+      })
+      .slice(0, 3);
     
-    this.options.data.forEach(item => {
+    if (sortedData.length === 0) {
+      this._renderEmpty();
+      return this;
+    }
+    
+    let html = `<div style="display: flex; flex-direction: column; gap: 0.75rem; height: 100%; justify-content: center;">`;
+    
+    sortedData.forEach(item => {
       const pct = item.total > 0 ? Math.round((item.completed / item.total) * 100) : 0;
       const name = courseNames[item.course] || item.course;
       const color = courseColors[item.course] || this.options.completedColor;
