@@ -1085,23 +1085,27 @@
       section.style.display = 'block';
       
       try {
-        // Try to get server-computed analytics (might not exist yet)
+        // Try to get server-computed analytics
         let analytics = null;
         if (window.AnalyticsServiceV2 && window.QueryService) {
           analytics = await window.AnalyticsServiceV2.getUserAnalytics(user.uid);
         }
         
-        // Render with server data or fallback to mock
+        if (!analytics) {
+          console.log('📊 No analytics data found, showing empty state');
+        }
+        
+        // Render with server data (or null for empty state)
         await renderMetricCards(analytics, user.uid);
         await renderSkillRadar(analytics);
         await renderProgressTimeline(user.uid);
-        await renderRecommendations(user.uid);
+        await renderRecommendations(user.uid, analytics);
         
         console.log('📊 Component analytics rendered successfully');
         
       } catch (error) {
         console.error('📊 Error loading component analytics:', error);
-        renderWithMockData();
+        renderErrorState(error);
       }
     }
     
@@ -1112,17 +1116,20 @@
       container.innerHTML = '';
       metricCards = [];
       
-      // Get values from analytics or use defaults
-      const overallScore = analytics?.summaryStats?.overallScore || 0;
-      const streak = analytics?.engagementPatterns?.currentStreak || 0;
-      const timeMinutes = analytics?.summaryStats?.totalTimeMinutes || 0;
-      const activitiesCompleted = analytics?.summaryStats?.activitiesCompleted || 0;
+      // Check if we have analytics data
+      const hasData = analytics && analytics.summaryStats;
+      
+      // Get values from analytics (0 is valid, only show 0 if we have data)
+      const overallScore = hasData ? (analytics.summaryStats.overallScore || 0) : null;
+      const streak = analytics?.engagementPatterns?.currentStreak ?? null;
+      const timeMinutes = hasData ? (analytics.summaryStats.totalTimeMinutes || 0) : null;
+      const activitiesCompleted = hasData ? (analytics.summaryStats.activitiesCompleted || 0) : null;
       
       const cardConfigs = [
-        { title: 'Overall Score', value: overallScore, icon: '🎯', format: 'number', colorScheme: 'primary' },
-        { title: 'Day Streak', value: streak, icon: '🔥', format: 'number', colorScheme: 'warning' },
-        { title: 'Time Spent', value: Math.round(timeMinutes / 60), icon: '⏱️', format: 'hours', colorScheme: 'info' },
-        { title: 'Activities', value: activitiesCompleted, icon: '✅', format: 'number', colorScheme: 'success' }
+        { title: 'Overall Score', value: overallScore, icon: '🎯', format: 'number', colorScheme: 'primary', noData: overallScore === null },
+        { title: 'Day Streak', value: streak ?? 0, icon: '🔥', format: 'number', colorScheme: 'warning', noData: streak === null },
+        { title: 'Time Spent', value: timeMinutes !== null ? Math.round(timeMinutes / 60) : 0, icon: '⏱️', format: 'hours', colorScheme: 'info', noData: timeMinutes === null },
+        { title: 'Activities', value: activitiesCompleted ?? 0, icon: '✅', format: 'number', colorScheme: 'success', noData: activitiesCompleted === null }
       ];
       
       cardConfigs.forEach(config => {
@@ -1130,9 +1137,21 @@
         cardDiv.className = 'metric-card-wrapper';
         container.appendChild(cardDiv);
         
-        const card = new MetricCard(cardDiv, config);
-        card.render();
-        metricCards.push(card);
+        // If no data, show empty state message
+        if (config.noData) {
+          cardDiv.innerHTML = `
+            <div class="metric-card metric-card--${config.colorScheme}" style="opacity: 0.6">
+              <div class="metric-card__icon">${config.icon}</div>
+              <div class="metric-card__value">--</div>
+              <div class="metric-card__title">${config.title}</div>
+              <div class="metric-card__subtitle" style="font-size: 0.7rem; color: var(--text-secondary)">No data yet</div>
+            </div>
+          `;
+        } else {
+          const card = new MetricCard(cardDiv, config);
+          card.render();
+          metricCards.push(card);
+        }
       });
     }
     
@@ -1142,7 +1161,7 @@
       
       container.innerHTML = '';
       
-      // Build skills object from analytics or use defaults
+      // Build skills object from analytics
       const skills = {};
       
       if (analytics?.strengthAreas) {
@@ -1156,15 +1175,16 @@
         });
       }
       
-      // Fallback to mock skills if empty
+      // Show empty state if no skills data
       if (Object.keys(skills).length === 0) {
-        Object.assign(skills, {
-          variables: 0.85,
-          loops: 0.72,
-          functions: 0.68,
-          recursion: 0.45,
-          arrays: 0.78
-        });
+        container.innerHTML = `
+          <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 280px; color: var(--text-secondary); text-align: center; padding: 1rem;">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem; opacity: 0.5;">📊</div>
+            <div style="font-weight: 500; margin-bottom: 0.25rem;">No Skills Data Yet</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">Complete activities to see your skill breakdown</div>
+          </div>
+        `;
+        return;
       }
       
       skillRadar = new SkillRadar(container, {
@@ -1189,7 +1209,6 @@
       
       try {
         const courses = await window.DataService.getEnrolledCourses();
-        const now = Date.now();
         
         for (const course of courses.slice(0, 3)) {
           if (course.lessons) {
@@ -1211,19 +1230,19 @@
           }
         }
       } catch (error) {
-        console.log('📊 Using mock timeline data');
+        console.log('📊 Error loading timeline data:', error);
       }
       
-      // Fallback to mock data if no real activities
+      // Show empty state if no activities
       if (activities.length === 0 && milestones.length === 0) {
-        const now = Date.now();
-        activities = [
-          { type: 'quiz', title: 'Variables Quiz', timestamp: new Date(now - 2*60*60*1000).toISOString(), score: 0.92 },
-          { type: 'interactive', title: 'Loop Builder', timestamp: new Date(now - 24*60*60*1000).toISOString(), score: 0.78 }
-        ];
-        milestones = [
-          { title: 'Completed Chapter 1', timestamp: new Date(now - 48*60*60*1000).toISOString(), type: 'course-complete' }
-        ];
+        container.innerHTML = `
+          <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; color: var(--text-secondary); text-align: center; padding: 1rem;">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem; opacity: 0.5;">📅</div>
+            <div style="font-weight: 500; margin-bottom: 0.25rem;">No Activity Yet</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">Complete lessons to see your progress timeline</div>
+          </div>
+        `;
+        return;
       }
       
       progressTimeline = new ProgressTimeline(container, {
@@ -1236,45 +1255,33 @@
       progressTimeline.render();
     }
     
-    async function renderRecommendations(userId) {
+    async function renderRecommendations(userId, analytics) {
       const container = document.getElementById('recommendations-container');
       if (!container) return;
       
       container.innerHTML = '';
       
-      // Try to get recommendations from AnalyticsServiceV2 (skip if mock-user)
+      // Try to get recommendations from AnalyticsServiceV2
       let recommendations = [];
       
-      if (userId && userId !== 'mock-user' && window.AnalyticsServiceV2?.getRecommendations) {
+      if (userId && window.AnalyticsServiceV2?.getRecommendations) {
         try {
           recommendations = await window.AnalyticsServiceV2.getRecommendations(userId);
         } catch (error) {
-          console.log('📊 Using mock recommendations');
+          console.log('📊 Error getting recommendations:', error);
         }
       }
       
-      // Fallback to mock recommendations if empty
+      // Show empty state if no recommendations
       if (!recommendations || recommendations.length === 0) {
-        recommendations = [
-          {
-            type: 'growth',
-            priority: 'high',
-            icon: '🎯',
-            title: 'Practice Recursion',
-            reason: 'Strengthen your understanding of recursive functions',
-            estimatedTime: 20,
-            lessonPath: '../apprentice/ch3-magnetism/'
-          },
-          {
-            type: 'streak',
-            priority: 'medium',
-            icon: '🔥',
-            title: 'Keep Your Streak',
-            reason: 'Complete one activity today to maintain momentum',
-            estimatedTime: 10,
-            lessonPath: '../apprentice/ch1-stone/'
-          }
-        ];
+        container.innerHTML = `
+          <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 150px; color: var(--text-secondary); text-align: center; padding: 1rem;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.5;">💡</div>
+            <div style="font-weight: 500; margin-bottom: 0.25rem;">No Recommendations Yet</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">Complete more activities to unlock personalized suggestions</div>
+          </div>
+        `;
+        return;
       }
       
       recommendationList = new RecommendationList(container, {
@@ -1290,35 +1297,31 @@
       recommendationList.render();
     }
     
-    function renderWithMockData() {
-      const mockAnalytics = {
-        summaryStats: {
-          overallScore: 72,
-          activitiesCompleted: 24,
-          totalTimeMinutes: 340
-        },
-        engagementPatterns: {
-          currentStreak: 3
-        },
-        strengthAreas: [
-          { topic: 'variables', score: 0.88 },
-          { topic: 'loops', score: 0.76 }
-        ],
-        growthAreas: [
-          { topic: 'recursion', score: 0.45 },
-          { topic: 'arrays', score: 0.58 }
-        ]
-      };
+    function renderErrorState(error) {
+      const section = document.getElementById('component-analytics-section');
+      if (!section) return;
       
-      const user = window.AuthService?.getUser();
-      const userId = user?.uid || 'mock-user';
+      // Show error in each container
+      const containers = [
+        'metrics-row',
+        'skill-radar-container', 
+        'progress-timeline-container',
+        'recommendations-container'
+      ];
       
-      renderMetricCards(mockAnalytics, userId);
-      renderSkillRadar(mockAnalytics);
-      renderProgressTimeline(userId);
-      renderRecommendations(userId);
+      containers.forEach(id => {
+        const container = document.getElementById(id);
+        if (container) {
+          container.innerHTML = `
+            <div class="error-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; color: var(--text-secondary); text-align: center; padding: 1rem; background: rgba(239, 68, 68, 0.1); border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.2);">
+              <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">⚠️</div>
+              <div style="font-size: 0.85rem;">Unable to load analytics</div>
+            </div>
+          `;
+        }
+      });
       
-      document.getElementById('component-analytics-section').style.display = 'block';
+      console.error('📊 Analytics error state rendered:', error);
     }
   </script>
 </body>
