@@ -29,14 +29,13 @@ class ActivityTypesChart {
     }
     
     const total = entries.reduce((sum, [_, v]) => sum + v, 0);
-    const containerWidth = this.container.offsetWidth || 200;
     const height = this.options.height;
-    const chartSize = Math.min(height - 20, containerWidth * 0.5);
+    const chartSize = Math.min(80, height - 20);
     const cx = chartSize / 2;
     const cy = chartSize / 2;
-    const radius = chartSize * 0.4;
+    const radius = chartSize * 0.45;
     
-    let svg = `<svg width="${chartSize}" height="${chartSize}" style="display: block;">`;
+    let svg = `<svg viewBox="0 0 ${chartSize} ${chartSize}" style="width: ${chartSize}px; height: ${chartSize}px; flex-shrink: 0;">`;
     
     // Draw pie slices
     let startAngle = -Math.PI / 2;
@@ -64,23 +63,23 @@ class ActivityTypesChart {
     
     svg += `</svg>`;
     
-    // Legend on the side
-    let legend = `<div style="display: flex; flex-direction: column; gap: 4px; font-size: 10px; flex: 1;">`;
-    entries.slice(0, 5).forEach(([label, value], i) => {
+    // Legend - percentages on left, labels on right
+    let legend = `<div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px; flex: 1; min-width: 0;">`;
+    entries.slice(0, 4).forEach(([label, value], i) => {
       const color = this.options.colors[i % this.options.colors.length];
       const pct = Math.round(value / total * 100);
       legend += `
-        <div style="display: flex; align-items: center; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--text-primary); font-weight: 600; font-size: 12px; min-width: 32px;">${pct}%</span>
           <div style="width: 8px; height: 8px; border-radius: 2px; background: ${color}; flex-shrink: 0;"></div>
           <span style="color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${label}</span>
-          <span style="color: var(--text-primary); font-weight: 500; margin-left: auto;">${pct}%</span>
         </div>
       `;
     });
     legend += `</div>`;
     
     this.container.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 0.5rem; height: 100%;">
+      <div style="display: flex; align-items: center; gap: 1rem; height: 100%;">
         ${svg}
         ${legend}
       </div>

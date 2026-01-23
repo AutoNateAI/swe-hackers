@@ -59,13 +59,19 @@ class ActivityHeatmap {
     this.element.style.cssText = `
       position: relative;
       width: 100%;
-      overflow-x: auto;
-      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     `;
     
+    // Make SVG responsive
+    const svgWidth = width + 30;
+    const svgHeight = 7 * (cellSize + cellGap) + 5;
+    
     let svg = `
-      <svg width="${width + 30}" height="${height}" class="activity-heatmap__svg">
-        <g transform="translate(25, 15)">
+      <svg viewBox="0 0 ${svgWidth} ${svgHeight}" preserveAspectRatio="xMidYMid meet" 
+           style="width: 100%; max-width: ${svgWidth}px; height: auto;" class="activity-heatmap__svg">
+        <g transform="translate(20, 0)">
     `;
     
     // Day labels
@@ -115,19 +121,20 @@ class ActivityHeatmap {
     
     svg += `</g></svg>`;
     
-    // Legend
+    // Legend - centered below
     const legend = `
       <div class="activity-heatmap__legend" style="
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-        font-size: 11px;
+        justify-content: center;
+        gap: 4px;
+        margin-top: 8px;
+        font-size: 10px;
         color: var(--text-muted);
       ">
         <span>Less</span>
         ${Object.values(this.options.colors).map(c => 
-          `<div style="width: 12px; height: 12px; background: ${c}; border-radius: 2px;"></div>`
+          `<div style="width: 10px; height: 10px; background: ${c}; border-radius: 2px;"></div>`
         ).join('')}
         <span>More</span>
       </div>

@@ -48,9 +48,9 @@ class ProgressChart {
     this.element.className = 'progress-chart';
     this.element.style.cssText = 'position: relative; width: 100%;';
     
-    const padding = { top: 20, right: 20, bottom: 30, left: 45 };
-    const width = this.container.offsetWidth || 400;
-    const height = this.options.height;
+    const padding = { top: 15, right: 15, bottom: 25, left: 35 };
+    const width = this.container.offsetWidth || 300;
+    const height = this.container.offsetHeight || this.options.height;
     const chartWidth = width - padding.left - padding.right;
     const chartHeight = height - padding.top - padding.bottom;
     

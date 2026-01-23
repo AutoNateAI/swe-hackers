@@ -36,17 +36,20 @@ class StreakDisplay {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1.5rem;
+      justify-content: center;
+      height: 100%;
       text-align: center;
+      padding: 0.5rem;
     `;
     
     // Flame icon with animation
-    const flameSize = Math.min(80, 40 + currentStreak * 5);
+    const flameSize = Math.min(48, 32 + currentStreak * 3);
     const flameHTML = `
       <div class="streak-display__flame" style="
         font-size: ${flameSize}px;
-        filter: ${isOnFire ? 'drop-shadow(0 0 20px rgba(251, 146, 60, 0.5))' : 'grayscale(0.5)'};
+        filter: ${isOnFire ? 'drop-shadow(0 0 15px rgba(251, 146, 60, 0.5))' : 'grayscale(0.5)'};
         ${this.options.animate ? 'animation: flame-pulse 1.5s ease-in-out infinite;' : ''}
+        line-height: 1;
       ">
         🔥
       </div>
@@ -55,15 +58,15 @@ class StreakDisplay {
     // Streak count
     const countHTML = `
       <div class="streak-display__count" style="
-        font-size: 3rem;
+        font-size: 2.25rem;
         font-weight: 700;
         color: ${isOnFire ? 'var(--accent-warning, #f59e0b)' : 'var(--text-primary)'};
         line-height: 1;
-        margin: 0.5rem 0;
+        margin: 0.25rem 0;
       ">
         ${currentStreak}
       </div>
-      <div style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+      <div style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.5rem;">
         day streak
       </div>
     `;
@@ -132,8 +135,8 @@ class StreakDisplay {
     return `
       <div style="
         display: flex;
-        gap: 6px;
-        margin-top: 0.5rem;
+        gap: 4px;
+        margin-top: 0.25rem;
       ">
         ${days.slice(-7).map((day, i) => {
           const date = new Date(day.date + 'T12:00:00');
@@ -145,11 +148,11 @@ class StreakDisplay {
               display: flex;
               flex-direction: column;
               align-items: center;
-              gap: 4px;
+              gap: 2px;
             ">
               <div style="
-                width: 28px;
-                height: 28px;
+                width: 22px;
+                height: 22px;
                 border-radius: 50%;
                 background: ${day.active ? 'var(--accent-warning, #f59e0b)' : 'rgba(255,255,255,0.1)'};
                 display: flex;
@@ -160,7 +163,7 @@ class StreakDisplay {
               ">
                 ${day.active ? '✓' : ''}
               </div>
-              <span style="font-size: 10px; color: var(--text-muted);">${dayLabels[dayIndex]}</span>
+              <span style="font-size: 9px; color: var(--text-muted);">${dayLabels[dayIndex]}</span>
             </div>
           `;
         }).join('')}

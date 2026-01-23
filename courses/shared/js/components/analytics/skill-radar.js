@@ -76,18 +76,18 @@ class SkillRadar {
     
     this.element = document.createElement('div');
     this.element.className = 'skill-radar';
-    this.element.style.cssText = 'width: 100%; display: flex; flex-direction: column; align-items: center; overflow: visible;';
+    this.element.style.cssText = 'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;';
     
-    const { size, levels } = this.options;
-    const labelPadding = 80; // Extra space for labels
-    const viewBoxSize = size + (labelPadding * 2);
+    const { levels } = this.options;
+    // Responsive viewBox with labels inside
+    const viewBoxSize = 240;
     const center = viewBoxSize / 2;
-    const radius = (size / 2) - 30; // Radar polygon radius
+    const radius = viewBoxSize * 0.28; // Smaller to fit labels
     const angleStep = (2 * Math.PI) / skills.length;
     
     // Build SVG with expanded viewBox for labels
     let svg = `
-      <svg viewBox="0 0 ${viewBoxSize} ${viewBoxSize}" class="skill-radar__svg" style="width: 100%; max-width: ${viewBoxSize}px; height: auto; overflow: visible;">
+      <svg viewBox="0 0 ${viewBoxSize} ${viewBoxSize}" class="skill-radar__svg" style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="radar-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style="stop-color:var(--accent-primary);stop-opacity:0.8"/>
@@ -185,7 +185,7 @@ class SkillRadar {
       svg += '<g class="skill-radar__labels">';
       skills.forEach(([name, score], i) => {
         const angle = angleStep * i - Math.PI / 2;
-        const labelRadius = radius + 35; // Distance from center to labels
+        const labelRadius = radius + 25; // Distance from center to labels
         const x = center + labelRadius * Math.cos(angle);
         const y = center + labelRadius * Math.sin(angle);
         

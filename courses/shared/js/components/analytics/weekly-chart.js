@@ -38,10 +38,10 @@ class WeeklyChart {
     this.element.style.cssText = `
       display: flex;
       align-items: flex-end;
-      justify-content: space-between;
-      height: ${this.options.height}px;
-      padding: 0 0.5rem;
-      gap: 8px;
+      justify-content: space-around;
+      height: 100%;
+      padding: 0;
+      gap: 4px;
     `;
     
     data.forEach((d, i) => {

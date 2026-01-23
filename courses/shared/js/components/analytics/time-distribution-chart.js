@@ -29,11 +29,12 @@ class TimeDistributionChart {
     }
     
     const total = entries.reduce((sum, [_, v]) => sum + v, 0);
-    const size = Math.min(this.container.offsetWidth || 200, this.options.height);
+    const containerHeight = this.container.offsetHeight || this.options.height;
+    const size = Math.min(this.container.offsetWidth || 120, containerHeight - 30);
     const cx = size / 2;
     const cy = size / 2;
-    const radius = size * 0.35;
-    const innerRadius = radius * 0.6;
+    const radius = size * 0.42;
+    const innerRadius = radius * 0.55;
     
     let svg = `<svg width="${size}" height="${size}" style="display: block; margin: 0 auto;">`;
     
