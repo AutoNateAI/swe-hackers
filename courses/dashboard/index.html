@@ -394,16 +394,16 @@
             <!-- MetricCards rendered here by JS -->
           </div>
           
-          <!-- Insights Grid -->
-          <div class="analytics-insights-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          <!-- Insights Row - Skill Radar and Timeline Graph side by side -->
+          <div class="analytics-insights-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 1.5rem; align-items: start;">
             <!-- Skill Radar -->
             <div id="skill-radar-container">
               <!-- SkillRadar rendered here by JS -->
             </div>
             
-            <!-- Progress Timeline - height synced to radar via JS, scrolls if needed -->
-            <div id="progress-timeline-container" style="overflow-y: auto; padding-right: 0.5rem;">
-              <!-- ProgressTimeline rendered here by JS -->
+            <!-- Interactive Timeline Graph - fixed height, zoomable, selectable nodes -->
+            <div id="progress-timeline-container">
+              <!-- TimelineGraph rendered here by JS -->
             </div>
           </div>
           
@@ -460,6 +460,7 @@
   <script src="../shared/js/components/analytics/metric-card.js"></script>
   <script src="../shared/js/components/analytics/skill-radar.js"></script>
   <script src="../shared/js/components/analytics/progress-timeline.js"></script>
+  <script src="../shared/js/components/analytics/timeline-graph.js"></script>
   <script src="../shared/js/components/analytics/recommendation-card.js"></script>
   
   <script>
@@ -1102,16 +1103,6 @@
         await renderProgressTimeline(user.uid);
         await renderRecommendations(user.uid, analytics);
         
-        // Sync timeline height to match skill radar after render
-        requestAnimationFrame(() => {
-          const radar = document.getElementById('skill-radar-container');
-          const timeline = document.getElementById('progress-timeline-container');
-          if (radar && timeline) {
-            const radarHeight = radar.offsetHeight;
-            timeline.style.maxHeight = radarHeight + 'px';
-          }
-        });
-        
         console.log('📊 Component analytics rendered successfully');
         
       } catch (error) {
@@ -1214,32 +1205,27 @@
       
       container.innerHTML = '';
       
-      // Get recent activities from DataService
-      let activities = [];
+      // Get milestones from enrolled courses
       let milestones = [];
       
       try {
         const courses = await window.DataService.getEnrolledCourses();
         console.log('📊 Timeline: Got courses', courses);
         
-        for (const course of courses.slice(0, 3)) {
+        for (const course of courses) {
           const courseId = course.courseId || course.id;
           if (course.lessons) {
             Object.entries(course.lessons).forEach(([lessonId, lessonData]) => {
-              // Check if lesson is completed
               if (lessonData.completed) {
                 let completedAt = null;
                 
                 // Handle different timestamp formats
                 if (lessonData.completedAt) {
                   if (lessonData.completedAt._seconds) {
-                    // Firestore Timestamp from REST API
                     completedAt = new Date(lessonData.completedAt._seconds * 1000);
                   } else if (lessonData.completedAt.seconds) {
-                    // Firestore Timestamp object
                     completedAt = new Date(lessonData.completedAt.seconds * 1000);
                   } else if (lessonData.completedAt.toDate) {
-                    // Firestore Timestamp with toDate method
                     completedAt = lessonData.completedAt.toDate();
                   } else if (typeof lessonData.completedAt === 'string') {
                     completedAt = new Date(lessonData.completedAt);
@@ -1248,7 +1234,7 @@
                   }
                 }
                 
-                // Use lastViewedAt or course lastActivity as fallback
+                // Fallback timestamps
                 if (!completedAt || isNaN(completedAt.getTime())) {
                   if (lessonData.lastViewedAt) {
                     completedAt = lessonData.lastViewedAt._seconds 
@@ -1259,16 +1245,16 @@
                       ? new Date(course.lastActivity._seconds * 1000)
                       : new Date(course.lastActivity.seconds * 1000);
                   } else {
-                    completedAt = new Date(); // Fallback to now
+                    completedAt = new Date();
                   }
                 }
                 
                 if (completedAt && !isNaN(completedAt.getTime())) {
                   const formattedLesson = lessonId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
                   milestones.push({
-                    title: `Completed ${formattedLesson}`,
+                    title: formattedLesson,
                     timestamp: completedAt.toISOString(),
-                    type: 'course-complete',
+                    type: 'lesson',
                     course: courseId
                   });
                 }
@@ -1283,29 +1269,16 @@
         console.log('📊 Error loading timeline data:', error);
       }
       
-      // Show empty state if no activities
-      if (activities.length === 0 && milestones.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; color: var(--text-secondary); text-align: center; padding: 1rem;">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem; opacity: 0.5;">📅</div>
-            <div style="font-weight: 500; margin-bottom: 0.25rem;">No Activity Yet</div>
-            <div style="font-size: 0.85rem; opacity: 0.8;">Complete lessons to see your progress timeline</div>
-          </div>
-        `;
-        return;
-      }
+      // Sort chronologically (oldest first for timeline graph)
+      milestones.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       
-      // Sort by timestamp descending (most recent first)
-      milestones.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      
-      progressTimeline = new ProgressTimeline(container, {
-        activities: activities,
-        milestones: milestones.slice(0, 8),
-        maxItems: 8,
-        showDates: true,
+      // Use the new TimelineGraph component
+      const timelineGraph = new TimelineGraph(container, {
+        milestones: milestones,
+        height: 320,
         animate: true
       });
-      progressTimeline.render();
+      timelineGraph.render();
     }
     
     async function renderRecommendations(userId, analytics) {
