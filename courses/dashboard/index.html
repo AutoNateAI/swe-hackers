@@ -247,7 +247,7 @@
           <button class="notification-panel-action" id="notification-mark-all">Mark all read</button>
         </div>
         <div class="notification-panel-tools">
-          <button class="notification-panel-test" id="notification-test" style="display: none;">Create sample notifications</button>
+          <button class="notification-panel-test" id="notification-test" style="display: none;">Create sample notifications (Admin)</button>
         </div>
         <div class="notification-tabs">
           <button class="notification-tab active" data-notification-filter="all">All</button>
@@ -589,10 +589,12 @@
       // Setup UI interactions
       setupSidebar();
       setupLogout();
-      if (isAdminUser || isTestEnabled) {
+      const testButton = document.getElementById('notification-test');
+      if (isAdminUser) {
         setupNotificationTest();
-        const testButton = document.getElementById('notification-test');
         if (testButton) testButton.style.display = 'inline-flex';
+      } else if (testButton) {
+        testButton.style.display = 'none';
       }
       
       // Animate stats cards
