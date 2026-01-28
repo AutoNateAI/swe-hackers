@@ -19,10 +19,12 @@ const firebaseConfig = {
   messagingSenderId: "650162209338",
   appId: "1:650162209338:web:cb9626f2e6f9ac3eff6b03",
   measurementId: "G-D7553DEM0Y",
+  // Add your public VAPID key to enable web push
+  vapidKey: ""
 };
 
 // Initialize Firebase
-let app, auth, db;
+let app, auth, db, messaging;
 
 function initFirebase() {
   if (typeof firebase !== "undefined") {
@@ -34,6 +36,9 @@ function initFirebase() {
     }
     auth = firebase.auth();
     db = firebase.firestore();
+    if (firebase.messaging) {
+      messaging = firebase.messaging();
+    }
 
     console.log("🔥 Firebase initialized");
     return true;
@@ -49,4 +54,6 @@ window.FirebaseApp = {
   getAuth: () => auth,
   getDb: () => db,
   getApp: () => app,
+  getMessaging: () => messaging,
+  getVapidKey: () => firebaseConfig.vapidKey
 };

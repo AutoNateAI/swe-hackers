@@ -73,6 +73,17 @@ const DataService = {
       
       // Update overall progress
       await this.recalculateCourseProgress(courseId);
+
+      // Notify user in-app
+      const meta = this.getLessonMeta(courseId, lessonId);
+      await this.createNotification({
+        type: 'lesson_complete',
+        title: 'Lesson complete',
+        body: `${meta?.name || lessonId} is now complete.`,
+        source: 'progress',
+        relatedId: lessonId,
+        link: meta?.link || `../${courseId}/${lessonId}/`
+      });
       
       return { success: true };
     } catch (error) {
@@ -98,6 +109,8 @@ const DataService = {
       
       const data = doc.data();
       const lessons = data.lessons || {};
+      const courseName = data.courseName || courseId;
+      const notificationMilestones = data.notificationMilestones || {};
       
       // Count completed lessons - check both 'completed' flag and 100% viewed
       let completedLessons = 0;
@@ -112,6 +125,22 @@ const DataService = {
       });
       
       const progressPercent = Math.round((completedLessons / 7) * 100);
+
+      const milestonePercents = [25, 50, 75, 100];
+      for (const milestone of milestonePercents) {
+        if (progressPercent >= milestone && !notificationMilestones[milestone]) {
+          await this.createNotification({
+            type: 'course_progress',
+            title: 'Course progress',
+            body: `${courseName} is now ${milestone}% complete.`,
+            source: 'progress',
+            relatedId: courseId,
+            link: `../dashboard/course.html?id=${courseId}`,
+            metadata: { progressPercent: milestone }
+          });
+          notificationMilestones[milestone] = true;
+        }
+      }
       
       console.log('📊 Recalculating course progress:', {
         courseId,
@@ -120,11 +149,12 @@ const DataService = {
         lessonsData: Object.keys(lessons).length
       });
       
-      await progressRef.update({
+      await progressRef.set({
         progressPercent,
         completedLessons,
-        totalLessons: 7 // Fixed for our 7-chapter courses (includes ch0-origins)
-      });
+        totalLessons: 7, // Fixed for our 7-chapter courses (includes ch0-origins)
+        notificationMilestones
+      }, { merge: true });
       
       console.log('📊 Course progress updated:', completedLessons, '/ 7 complete');
     } catch (error) {
@@ -205,10 +235,44 @@ const DataService = {
                          .collection('courseProgress').doc(courseId);
     
     try {
-      await progressRef.set({
+      const doc = await progressRef.get();
+      const progressData = doc.exists ? doc.data() : {};
+      const previousTotal = progressData.totalTimeSpent || 0;
+      const newTotal = previousTotal + seconds;
+      const timeMilestonesNotified = progressData.timeMilestonesNotified || {};
+      const courseName = progressData.courseName || courseId;
+
+      const timeMilestones = [
+        { hours: 1, seconds: 3600 },
+        { hours: 5, seconds: 5 * 3600 },
+        { hours: 10, seconds: 10 * 3600 }
+      ];
+
+      for (const milestone of timeMilestones) {
+        if (newTotal >= milestone.seconds && !timeMilestonesNotified[milestone.seconds]) {
+          await this.createNotification({
+            type: 'time_milestone',
+            title: 'Time milestone',
+            body: `You've spent ${milestone.hours} hour${milestone.hours === 1 ? '' : 's'} learning in ${courseName}.`,
+            source: 'progress',
+            relatedId: courseId,
+            link: `../dashboard/course.html?id=${courseId}`,
+            metadata: { hours: milestone.hours }
+          });
+          timeMilestonesNotified[milestone.seconds] = true;
+        }
+      }
+
+      const updateData = {
         [`lessons.${lessonId}.timeSpent`]: firebase.firestore.FieldValue.increment(seconds),
         totalTimeSpent: firebase.firestore.FieldValue.increment(seconds)
-      }, { merge: true });
+      };
+
+      if (Object.keys(timeMilestonesNotified).length) {
+        updateData.timeMilestonesNotified = timeMilestonesNotified;
+      }
+
+      await progressRef.set(updateData, { merge: true });
     } catch (error) {
       console.error('Error tracking time:', error);
     }
@@ -332,6 +396,14 @@ const DataService = {
     
     try {
       await progressRef.set(enrollmentData);
+      await this.createNotification({
+        type: 'course_enrolled',
+        title: 'Course enrolled',
+        body: `You're enrolled in ${courseData.name}.`,
+        source: 'progress',
+        relatedId: courseId,
+        link: `../dashboard/course.html?id=${courseId}`
+      });
       return { success: true };
     } catch (error) {
       console.error('Error enrolling in course:', error);
@@ -392,6 +464,15 @@ const DataService = {
       
       // Update streak
       await this.updateStreak();
+
+      await this.createNotification({
+        type: 'daily_challenge_complete',
+        title: 'Daily challenge complete',
+        body: 'You completed today\'s challenge. Keep the streak alive.',
+        source: 'challenge',
+        relatedId: challengeId,
+        link: '../challenges.html'
+      });
       
       return { success: true };
     } catch (error) {
@@ -418,6 +499,7 @@ const DataService = {
       today.setHours(0, 0, 0, 0);
       
       let currentStreak = userData.currentStreak || 0;
+      const prevStreak = currentStreak;
       
       if (lastActivity) {
         const lastDate = new Date(lastActivity);
@@ -433,6 +515,16 @@ const DataService = {
         } else {
           // Streak broken
           currentStreak = 1;
+          if (prevStreak >= 3) {
+            await this.createNotification({
+              type: 'streak_broken',
+              title: 'Streak reset',
+              body: `Your ${prevStreak}-day streak ended. Start a new one today.`,
+              source: 'progress',
+              relatedId: String(prevStreak),
+              link: '../dashboard/index.html'
+            });
+          }
         }
       } else {
         currentStreak = 1;
@@ -443,6 +535,18 @@ const DataService = {
         longestStreak: Math.max(currentStreak, userData.longestStreak || 0),
         lastStreakDate: firebase.firestore.Timestamp.now()
       });
+
+      const milestones = new Set([3, 7, 14, 30, 100]);
+      if (currentStreak !== prevStreak && milestones.has(currentStreak)) {
+        await this.createNotification({
+          type: 'streak',
+          title: 'Streak milestone',
+          body: `You reached a ${currentStreak}-day streak.`,
+          source: 'progress',
+          relatedId: String(currentStreak),
+          link: '../dashboard/index.html'
+        });
+      }
     } catch (error) {
       console.error('Error updating streak:', error);
     }
@@ -496,6 +600,15 @@ const DataService = {
     const lessonRef = db.collection('users').doc(user.uid)
                        .collection('courseProgress').doc(courseId)
                        .collection('lessonProgress').doc(lessonId);
+    let wasCompleted = false;
+    let wasHalfwayNotified = false;
+    try {
+      const existing = await lessonRef.get();
+      wasCompleted = existing.exists && existing.data().completed === true;
+      wasHalfwayNotified = existing.exists && existing.data().notifiedHalfway === true;
+    } catch (error) {
+      console.warn('Unable to read existing lesson progress:', error);
+    }
     
     const data = {
       ...progressData,
@@ -513,6 +626,20 @@ const DataService = {
       // Mark lesson as complete if all sections viewed
       const isComplete = progressData.progressPercent >= 100 || 
                         (progressData.viewedSections >= progressData.totalSections);
+
+      if (!wasHalfwayNotified && progressData.progressPercent >= 50 && progressData.progressPercent < 100) {
+        const meta = this.getLessonMeta(courseId, lessonId);
+        await this.createNotification({
+          type: 'lesson_halfway',
+          title: 'Lesson halfway',
+          body: `${meta?.name || lessonId} is halfway complete.`,
+          source: 'progress',
+          relatedId: lessonId,
+          link: meta?.link || `../${courseId}/${lessonId}/`,
+          metadata: { progressPercent: 50 }
+        });
+        data.notifiedHalfway = true;
+      }
       
       const lessonData = {
         progressPercent: progressData.progressPercent,
@@ -562,6 +689,18 @@ const DataService = {
       if (isComplete) {
         console.log('📊 Lesson complete, recalculating course progress...');
         await this.recalculateCourseProgress(courseId);
+
+        if (!wasCompleted) {
+          const meta = this.getLessonMeta(courseId, lessonId);
+          await this.createNotification({
+            type: 'lesson_complete',
+            title: 'Lesson complete',
+            body: `${meta?.name || lessonId} is now complete.`,
+            source: 'progress',
+            relatedId: lessonId,
+            link: meta?.link || `../${courseId}/${lessonId}/`
+          });
+        }
       }
       
       return { success: true };
@@ -723,6 +862,19 @@ const DataService = {
       
       // Update activity stats on course progress
       await this.updateActivityStats(attemptData.courseId, attemptData);
+
+      // Notify on first-try quiz mastery
+      if (attemptData.activityType === 'quiz' && attemptData.attemptNumber === 1 && attemptData.correct) {
+        await this.createNotification({
+          type: 'quiz_mastery',
+          title: 'Quiz mastery',
+          body: `Perfect first try on ${attemptData.activityId}.`,
+          source: 'activity',
+          relatedId: attemptData.activityId,
+          metadata: { score: attemptData.score || 1 },
+          link: `../${attemptData.courseId}/${attemptData.lessonId}/`
+        });
+      }
       
       return { success: true, attemptId: attemptRef.id };
     } catch (error) {
@@ -746,6 +898,7 @@ const DataService = {
       // Get current stats
       const doc = await courseRef.get();
       const currentStats = doc.exists ? (doc.data().activityStats || {}) : {};
+      const prevTotalAttempts = currentStats.totalAttempts || 0;
       
       // Update stats
       const newStats = {
@@ -767,9 +920,79 @@ const DataService = {
       typeStats.avgScore = typeStats.totalScore / typeStats.attempts;
       byType[attemptData.activityType] = typeStats;
       newStats.byType = byType;
+
+      const byActivity = currentStats.byActivity || {};
+      const activityStats = byActivity[attemptData.activityId] || { attempts: 0, bestScore: 0 };
+      const prevActivityAttempts = activityStats.attempts || 0;
+      const prevBestScore = activityStats.bestScore || 0;
+      const normalizedScore = typeof attemptData.score === 'number'
+        ? attemptData.score
+        : (attemptData.correct ? 1 : 0);
+
+      activityStats.attempts = prevActivityAttempts + 1;
+      activityStats.bestScore = Math.max(prevBestScore, normalizedScore);
+      byActivity[attemptData.activityId] = activityStats;
+      newStats.byActivity = byActivity;
+
+      const flags = currentStats.flags || {};
+      const lowMasteryNotified = flags.lowMasteryNotified || {};
+      const highMasteryNotified = flags.highMasteryNotified || {};
+      newStats.flags = flags;
       
       // Calculate overall avg score
       newStats.avgScore = newStats.totalCorrect / newStats.totalAttempts;
+
+      if (prevTotalAttempts === 0) {
+        await this.createNotification({
+          type: 'first_activity',
+          title: 'First activity',
+          body: 'Nice start! Your first activity is complete.',
+          source: 'activity',
+          relatedId: attemptData.activityId,
+          link: `../${attemptData.courseId}/${attemptData.lessonId}/`
+        });
+      }
+
+      if (activityStats.attempts === 3 && !activityStats.retryNotified) {
+        await this.createNotification({
+          type: 'activity_retry',
+          title: 'Keep pushing',
+          body: `Three attempts on ${attemptData.activityId}. Want a hint?`,
+          source: 'activity',
+          relatedId: attemptData.activityId,
+          link: `../${attemptData.courseId}/${attemptData.lessonId}/`
+        });
+        activityStats.retryNotified = true;
+      }
+
+      if (typeStats.attempts >= 5 && typeStats.avgScore < 0.6 && !lowMasteryNotified[attemptData.activityType]) {
+        await this.createNotification({
+          type: 'low_mastery',
+          title: 'Need a boost?',
+          body: `Your recent ${attemptData.activityType} average is below 60%.`,
+          source: 'activity',
+          relatedId: attemptData.activityType,
+          link: `../${attemptData.courseId}/${attemptData.lessonId}/`,
+          metadata: { avgScore: typeStats.avgScore }
+        });
+        lowMasteryNotified[attemptData.activityType] = true;
+      }
+
+      if (typeStats.attempts >= 5 && typeStats.avgScore >= 0.9 && !highMasteryNotified[attemptData.activityType]) {
+        await this.createNotification({
+          type: 'high_mastery',
+          title: 'Strong mastery',
+          body: `You\'re averaging 90%+ on ${attemptData.activityType} activities.`,
+          source: 'activity',
+          relatedId: attemptData.activityType,
+          link: `../${attemptData.courseId}/${attemptData.lessonId}/`,
+          metadata: { avgScore: typeStats.avgScore }
+        });
+        highMasteryNotified[attemptData.activityType] = true;
+      }
+
+      flags.lowMasteryNotified = lowMasteryNotified;
+      flags.highMasteryNotified = highMasteryNotified;
       
       await courseRef.set({
         activityStats: newStats
@@ -1105,6 +1328,225 @@ const DataService = {
     
     console.log('📊 Total completed:', completedCount);
     return completedCount;
+  },
+
+  /**
+   * Get lesson metadata for a course/lesson id
+   */
+  getLessonMeta(courseId, lessonId) {
+    const { lessons } = this.getLessonsStructure(courseId);
+    const lesson = lessons.find(item => item.id === lessonId);
+    if (!lesson) return null;
+    return {
+      id: lesson.id,
+      name: lesson.name,
+      link: `../${courseId}/${lessonId}/`
+    };
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // NOTIFICATIONS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  async getNotificationPrefs() {
+    const user = window.AuthService.getUser();
+    if (!user) return null;
+
+    const db = window.FirebaseApp.getDb();
+    const prefsRef = db.collection('users').doc(user.uid).collection('notificationPrefs').doc('default');
+
+    try {
+      const doc = await prefsRef.get();
+      return doc.exists ? doc.data() : null;
+    } catch (error) {
+      console.error('Error getting notification prefs:', error);
+      return null;
+    }
+  },
+
+  async updateNotificationPrefs(prefs) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const prefsRef = db.collection('users').doc(user.uid).collection('notificationPrefs').doc('default');
+
+    try {
+      await prefsRef.set({
+        ...prefs,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      return { success: true };
+    } catch (error) {
+      console.error('Error updating notification prefs:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async createNotification(notification) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const notificationsRef = db.collection('users').doc(user.uid).collection('notifications').doc();
+
+    const prefs = notification.prefs || await this.getNotificationPrefs();
+    const deliveries = {
+      inApp: true,
+      email: !!prefs?.email,
+      push: !!prefs?.push
+    };
+
+    const data = {
+      id: notificationsRef.id,
+      userId: user.uid,
+      type: notification.type || 'general',
+      title: notification.title || 'Notification',
+      body: notification.body || '',
+      source: notification.source || 'system',
+      relatedId: notification.relatedId || null,
+      link: notification.link || null,
+      read: false,
+      deliveries,
+      metadata: notification.metadata || {},
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    try {
+      await notificationsRef.set(data);
+      return { success: true, id: notificationsRef.id };
+    } catch (error) {
+      console.error('Error creating notification:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async markNotificationRead(notificationId) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const notifRef = db.collection('users').doc(user.uid).collection('notifications').doc(notificationId);
+
+    try {
+      await notifRef.update({
+        read: true,
+        seenAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      return { success: true };
+    } catch (error) {
+      console.error('Error marking notification read:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async markAllNotificationsRead() {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const snapshot = await db.collection('users').doc(user.uid)
+      .collection('notifications')
+      .where('read', '==', false)
+      .get();
+
+    if (snapshot.empty) return { success: true };
+
+    const batch = db.batch();
+    snapshot.docs.forEach(doc => {
+      batch.update(doc.ref, {
+        read: true,
+        seenAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+
+    try {
+      await batch.commit();
+      return { success: true };
+    } catch (error) {
+      console.error('Error marking all notifications read:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async deleteNotification(notificationId) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const notifRef = db.collection('users').doc(user.uid).collection('notifications').doc(notificationId);
+
+    try {
+      await notifRef.delete();
+      return { success: true };
+    } catch (error) {
+      console.error('Error deleting notification:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async deleteReadNotifications() {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const snapshot = await db.collection('users').doc(user.uid)
+      .collection('notifications')
+      .where('read', '==', true)
+      .get();
+
+    if (snapshot.empty) return { success: true };
+
+    const batch = db.batch();
+    snapshot.docs.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+
+    try {
+      await batch.commit();
+      return { success: true };
+    } catch (error) {
+      console.error('Error deleting read notifications:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async saveNotificationToken(token, platform = 'web') {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const tokenRef = db.collection('users').doc(user.uid)
+      .collection('notificationTokens').doc(token);
+
+    try {
+      await tokenRef.set({
+        token,
+        platform,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      return { success: true };
+    } catch (error) {
+      console.error('Error saving notification token:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  async removeNotificationToken(token) {
+    const user = window.AuthService.getUser();
+    if (!user) return { success: false, error: 'Not authenticated' };
+
+    const db = window.FirebaseApp.getDb();
+    const tokenRef = db.collection('users').doc(user.uid)
+      .collection('notificationTokens').doc(token);
+
+    try {
+      await tokenRef.delete();
+      return { success: true };
+    } catch (error) {
+      console.error('Error removing notification token:', error);
+      return { success: false, error: error.message };
+    }
   }
 };
 

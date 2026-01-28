@@ -178,6 +178,8 @@ const AuthService = {
     if (!db) return;
 
     const userRef = db.collection('users').doc(user.uid);
+    const prefsRef = db.collection('users').doc(user.uid)
+      .collection('notificationPrefs').doc('default');
     
     const userData = {
       uid: user.uid,
@@ -196,6 +198,18 @@ const AuthService = {
 
     try {
       await userRef.set(userData, { merge: true });
+      await prefsRef.set({
+        inApp: true,
+        email: false,
+        push: false,
+        frequency: 'daily',
+        topics: {
+          progress: true,
+          streaks: true,
+          admin: true
+        },
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
       console.log('User document created/updated');
     } catch (error) {
       console.error('Error creating user document:', error);

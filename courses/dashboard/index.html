@@ -52,6 +52,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
   
   <!-- Anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -228,13 +229,58 @@
           </div>
           
           <div class="header-actions">
-            <button class="action-btn" title="Notifications">
+            <button class="action-btn" id="notification-btn" title="Notifications">
               🔔
-              <span class="notification-dot"></span>
+              <span class="notification-dot" id="notification-dot"></span>
+              <span class="notification-count" id="notification-count"></span>
             </button>
           </div>
         </div>
       </header>
+
+      <div class="notification-panel" id="notification-panel" aria-hidden="true">
+        <div class="notification-panel-header">
+          <div>
+            <div class="notification-panel-title">Notifications</div>
+            <div class="notification-panel-subtitle">Your latest updates</div>
+          </div>
+          <button class="notification-panel-action" id="notification-mark-all">Mark all read</button>
+        </div>
+        <div class="notification-panel-tools">
+          <button class="notification-panel-test" id="notification-test" style="display: none;">Create sample notifications</button>
+        </div>
+        <div class="notification-tabs">
+          <button class="notification-tab active" data-notification-filter="all">All</button>
+          <button class="notification-tab" data-notification-filter="unread">Unread</button>
+        </div>
+        <div class="notification-list" id="notification-list"></div>
+        <div class="notification-preferences">
+          <div class="notification-pref">
+            <span>In-app</span>
+            <input type="checkbox" checked disabled>
+          </div>
+          <div class="notification-pref">
+            <span>Remove when read</span>
+            <input type="checkbox" id="pref-remove-read">
+          </div>
+          <div class="notification-pref">
+            <span>Email digest</span>
+            <input type="checkbox" id="pref-email">
+          </div>
+          <div class="notification-pref">
+            <span>Push (optional)</span>
+            <input type="checkbox" id="pref-push">
+          </div>
+          <div class="notification-pref">
+            <span>Frequency</span>
+            <select id="pref-frequency">
+              <option value="instant">Instant</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </div>
+        </div>
+      </div>
       
       <!-- Content -->
       <div class="content-area">
@@ -433,6 +479,7 @@
   <script src="../shared/js/rbac.js"></script>
   <script src="../shared/js/data-service.js"></script>
   <script src="../shared/js/analytics-service.js"></script>
+  <script src="../shared/js/notification-service.js"></script>
   
   <!-- Services (Agent 2/3) -->
   <script src="../shared/js/services/cache-service.js"></script>
@@ -519,22 +566,34 @@
       loadingScreen.classList.add('hidden');
       dashboardContent.classList.add('ready');
       
+      let isAdminUser = false;
+      const params = new URLSearchParams(window.location.search);
+      const isTestEnabled = params.has('adminTest');
+
       // Check if user is admin and show admin section
       if (window.RBACService) {
         const isAdmin = await window.RBACService.hasRole('admin');
         if (isAdmin) {
           document.getElementById('admin-section').style.display = 'block';
+          isAdminUser = true;
         }
       }
       
       loadUserInfo(user);
+      window.NotificationService.init();
       await loadUserStats();
       await loadEnrolledCourses();
-      // Note: loadComponentAnalytics() is called via setTimeout at end of script
+      await loadAnalytics();
+      await maybeSeedNotificationTest();
       
       // Setup UI interactions
       setupSidebar();
       setupLogout();
+      if (isAdminUser || isTestEnabled) {
+        setupNotificationTest();
+        const testButton = document.getElementById('notification-test');
+        if (testButton) testButton.style.display = 'inline-flex';
+      }
       
       // Animate stats cards
       anime({
@@ -745,6 +804,121 @@
         e.preventDefault();
         await window.AuthService.logout();
         window.location.href = '../index.html';
+      });
+    }
+
+    function setupNotificationTest() {
+      const testBtn = document.getElementById('notification-test');
+      if (!testBtn) return;
+
+      testBtn.addEventListener('click', async () => {
+        const sampleNotifications = [
+          {
+            type: 'course_progress',
+            title: 'Course progress',
+            body: 'Apprentice is now 50% complete.',
+            source: 'progress',
+            relatedId: 'apprentice',
+            link: '../dashboard/course.html?id=apprentice',
+            metadata: { progressPercent: 50 }
+          },
+          {
+            type: 'lesson_halfway',
+            title: 'Lesson halfway',
+            body: 'The Origins is halfway complete.',
+            source: 'progress',
+            relatedId: 'ch0-origins',
+            link: '../apprentice/ch0-origins/',
+            metadata: { progressPercent: 50 }
+          },
+          {
+            type: 'daily_challenge_complete',
+            title: 'Daily challenge complete',
+            body: 'You completed today\'s challenge. Keep the streak alive.',
+            source: 'challenge',
+            relatedId: 'challenge-1',
+            link: '../challenges.html'
+          },
+          {
+            type: 'streak_broken',
+            title: 'Streak reset',
+            body: 'Your 7-day streak ended. Start a new one today.',
+            source: 'progress',
+            relatedId: '7',
+            link: '../dashboard/index.html'
+          },
+          {
+            type: 'time_milestone',
+            title: 'Time milestone',
+            body: 'You\'ve spent 5 hours learning in Apprentice.',
+            source: 'progress',
+            relatedId: 'apprentice',
+            link: '../dashboard/course.html?id=apprentice',
+            metadata: { hours: 5 }
+          },
+          {
+            type: 'first_activity',
+            title: 'First activity',
+            body: 'Nice start! Your first activity is complete.',
+            source: 'activity',
+            relatedId: 'activity-1',
+            link: '../apprentice/ch0-origins/'
+          },
+          {
+            type: 'activity_retry',
+            title: 'Keep pushing',
+            body: 'Three attempts on activity-1. Want a hint?',
+            source: 'activity',
+            relatedId: 'activity-1',
+            link: '../apprentice/ch0-origins/'
+          },
+          {
+            type: 'low_mastery',
+            title: 'Need a boost?',
+            body: 'Your recent quiz average is below 60%.',
+            source: 'activity',
+            relatedId: 'quiz',
+            link: '../apprentice/ch0-origins/',
+            metadata: { avgScore: 0.55 }
+          },
+          {
+            type: 'high_mastery',
+            title: 'Strong mastery',
+            body: 'You\'re averaging 90%+ on quiz activities.',
+            source: 'activity',
+            relatedId: 'quiz',
+            link: '../apprentice/ch0-origins/',
+            metadata: { avgScore: 0.92 }
+          },
+          {
+            type: 'course_enrolled',
+            title: 'Course enrolled',
+            body: 'You\'re enrolled in Apprentice.',
+            source: 'progress',
+            relatedId: 'apprentice',
+            link: '../dashboard/course.html?id=apprentice'
+          }
+        ];
+
+        for (const notification of sampleNotifications) {
+          await window.DataService.createNotification(notification);
+        }
+      });
+    }
+
+    async function maybeSeedNotificationTest() {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('notifTest')) return;
+
+      const flagKey = `notifTestSeeded_${params.get('notifTest') || '1'}`;
+      if (sessionStorage.getItem(flagKey)) return;
+      sessionStorage.setItem(flagKey, 'true');
+
+      await window.DataService.createNotification({
+        type: 'test',
+        title: 'Notification test',
+        body: 'This is a seeded test notification.',
+        source: 'system'
       });
     }
     

@@ -6,9 +6,14 @@
   "storage": {
     "rules": "storage.rules"
   },
-  "functions": {
-    "source": "firebase-functions",
-    "codebase": "analytics",
-    "runtime": "nodejs20"
-  }
+  "functions": [
+    {
+      "source": "firebase-functions",
+      "codebase": "analytics",
+      "runtime": "nodejs20"
+    },
+    {
+      "source": "functions"
+    }
+  ]
 }
