@@ -1,0 +1,53 @@
+{
+  "pageId": "blog-context-engineering",
+  "stories": [
+    {
+      "id": "context-flow",
+      "diagramId": "context-flow-diagram",
+      "title": "Context Flow",
+      "steps": [
+        {
+          "nodeId": "knowledge",
+          "icon": "🧠",
+          "title": "Your Knowledge",
+          "narration": "You have deep knowledge about your project, your tech stack, and your goals. This is invaluable context that the AI doesn't automatically know.",
+          "connectsTo": null
+        },
+        {
+          "nodeId": "response",
+          "edges": [
+            { "from": "knowledge", "to": "context" },
+            { "from": "context", "to": "response" }
+          ],
+          "icon": "🤖",
+          "title": "AI Response",
+          "narration": "Transfer that knowledge through the context window, and watch the AI transform from generic assistant to expert collaborator!",
+          "connectsTo": "Context Window"
+        }
+      ]
+    },
+    {
+      "id": "before-after",
+      "diagramId": "before-after-diagram",
+      "title": "Before and After Context",
+      "steps": [
+        {
+          "nodeId": "vague",
+          "edges": [{ "from": "vague", "to": "generic" }],
+          "icon": "😫",
+          "title": "Vague Prompts Fail",
+          "narration": "Vague prompts lead to generic, unhelpful responses. The AI has to guess what you want, and it usually guesses wrong.",
+          "connectsTo": "Generic Output"
+        },
+        {
+          "nodeId": "rich",
+          "edges": [{ "from": "rich", "to": "perfect" }],
+          "icon": "✨",
+          "title": "Rich Context Wins",
+          "narration": "But rich context? That produces precise, usable code. Every detail you add eliminates guesswork and guides the AI to exactly what you need!",
+          "connectsTo": "Perfect Code"
+        }
+      ]
+    }
+  ]
+}
