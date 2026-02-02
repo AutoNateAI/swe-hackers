@@ -652,16 +652,30 @@
         }
       }
       
-      loadUserInfo(user);
-      window.NotificationService.init();
-      await loadUserStats();
-      await loadEnrolledCourses();
-      await loadAnalytics();
-      await maybeSeedNotificationTest();
-      
-      // Setup UI interactions
+      // Setup UI interactions immediately so sidebar/nav is responsive
       setupSidebar();
       setupLogout();
+
+      loadUserInfo(user);
+      window.NotificationService.init();
+
+      // Load data — errors here won't block UI interactions
+      try {
+        await loadUserStats();
+      } catch (e) { console.error('Error loading user stats:', e); }
+
+      try {
+        await loadEnrolledCourses();
+      } catch (e) { console.error('Error loading enrolled courses:', e); }
+
+      try {
+        await loadAnalytics();
+      } catch (e) { console.error('Error loading analytics:', e); }
+
+      try {
+        await maybeSeedNotificationTest();
+      } catch (e) { console.error('Error seeding notification test:', e); }
+
       const testButton = document.getElementById('notification-test');
       if (isAdminUser) {
         setupNotificationTest();
