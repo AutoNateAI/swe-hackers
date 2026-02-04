@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard | AutoNateAI Learning Hub</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Critical styles -->
+  <style>
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+    .auth-loading {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <!-- Theme loader (before CSS to prevent flash) -->
+  <script src="../shared/js/theme-loader.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+
+  <style>
+    /* Leaderboard Page Specific Styles */
+
+    /* Your Rank Card */
+    .your-rank-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(121, 134, 203, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .your-rank-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    }
+
+    .your-rank-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .your-rank-content {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .your-rank-position {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .your-rank-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      line-height: 1;
+    }
+
+    .your-rank-change {
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .your-rank-change.up {
+      color: var(--accent-success);
+    }
+
+    .your-rank-change.down {
+      color: var(--accent-error);
+    }
+
+    .your-rank-change.same {
+      color: var(--text-muted);
+    }
+
+    .your-rank-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      border: 3px solid var(--accent-primary);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .your-rank-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .your-rank-info {
+      flex: 1;
+    }
+
+    .your-rank-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .your-rank-stats {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .your-rank-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .your-rank-progress {
+      margin-top: 1rem;
+      max-width: 400px;
+    }
+
+    .your-rank-progress-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .your-rank-progress-bar {
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .your-rank-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    /* Top 3 Podium */
+    .podium-section {
+      margin-bottom: 2rem;
+    }
+
+    .podium-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1rem;
+      padding: 2rem 1rem 0;
+    }
+
+    .podium-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .podium-item.first {
+      order: 2;
+    }
+
+    .podium-item.second {
+      order: 1;
+    }
+
+    .podium-item.third {
+      order: 3;
+    }
+
+    .podium-medal {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .podium-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .podium-item.first .podium-avatar {
+      width: 88px;
+      height: 88px;
+      font-size: 2rem;
+      border: 3px solid #ffd54f;
+      box-shadow: 0 0 20px rgba(255, 213, 79, 0.3);
+    }
+
+    .podium-item.second .podium-avatar {
+      border: 3px solid #e0e0e0;
+    }
+
+    .podium-item.third .podium-avatar {
+      border: 3px solid #ffab91;
+    }
+
+    .podium-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .podium-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      max-width: 120px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .podium-points {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .podium-stand {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .podium-item.first .podium-stand {
+      height: 100px;
+      background: linear-gradient(180deg, #ffd54f, #ffb300);
+      width: 120px;
+    }
+
+    .podium-item.second .podium-stand {
+      height: 70px;
+      background: linear-gradient(180deg, #e0e0e0, #9e9e9e);
+    }
+
+    .podium-item.third .podium-stand {
+      height: 50px;
+      background: linear-gradient(180deg, #ffab91, #ff8a65);
+    }
+
+    /* Filter Tabs */
+    .leaderboard-filters {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .filter-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 0 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+
+    /* Leaderboard Table */
+    .leaderboard-table {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+
+    .leaderboard-header {
+      display: grid;
+      grid-template-columns: 80px 1fr 120px 100px 100px;
+      padding: 1rem 1.25rem;
+      background: var(--bg-tertiary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .leaderboard-body {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .leaderboard-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 120px 100px 100px;
+      padding: 1rem 1.25rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      transition: background 0.2s;
+    }
+
+    .leaderboard-row:last-child {
+      border-bottom: none;
+    }
+
+    .leaderboard-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .leaderboard-row.current-user {
+      background: rgba(121, 134, 203, 0.1);
+      border-left: 3px solid var(--accent-primary);
+    }
+
+    .leaderboard-row.current-user:hover {
+      background: rgba(121, 134, 203, 0.15);
+    }
+
+    .rank-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .rank-number {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .rank-change {
+      font-size: 0.7rem;
+      margin-top: 0.15rem;
+    }
+
+    .rank-change.up {
+      color: var(--accent-success);
+    }
+
+    .rank-change.down {
+      color: var(--accent-error);
+    }
+
+    .rank-change.same {
+      color: var(--text-muted);
+    }
+
+    .user-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .user-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .user-info {
+      min-width: 0;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .points-cell {
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--accent-warning);
+    }
+
+    .streak-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text-secondary);
+    }
+
+    .achievements-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text-secondary);
+    }
+
+    /* Empty State */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .empty-state h3 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+      font-size: 0.95rem;
+      max-width: 300px;
+      line-height: 1.5;
+    }
+
+    .empty-state .cta-btn {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .empty-state .cta-btn:hover {
+      background: var(--accent-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .your-rank-content {
+        flex-wrap: wrap;
+      }
+
+      .your-rank-progress {
+        width: 100%;
+        max-width: none;
+      }
+
+      .leaderboard-header,
+      .leaderboard-row {
+        grid-template-columns: 60px 1fr 100px 80px;
+      }
+
+      .achievements-cell,
+      .leaderboard-header > *:last-child {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .podium-container {
+        gap: 0.5rem;
+        padding: 1.5rem 0.5rem 0;
+      }
+
+      .podium-avatar {
+        width: 56px;
+        height: 56px;
+        font-size: 1.25rem;
+      }
+
+      .podium-item.first .podium-avatar {
+        width: 72px;
+        height: 72px;
+        font-size: 1.5rem;
+      }
+
+      .podium-stand {
+        width: 80px;
+      }
+
+      .podium-item.first .podium-stand {
+        width: 100px;
+        height: 80px;
+      }
+
+      .podium-item.second .podium-stand {
+        height: 56px;
+      }
+
+      .podium-item.third .podium-stand {
+        height: 40px;
+      }
+
+      .podium-name {
+        font-size: 0.85rem;
+        max-width: 90px;
+      }
+
+      .leaderboard-header,
+      .leaderboard-row {
+        grid-template-columns: 50px 1fr 90px;
+      }
+
+      .streak-cell,
+      .leaderboard-header > *:nth-child(4) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .your-rank-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .your-rank-stats {
+        justify-content: center;
+      }
+
+      .filter-divider {
+        display: none;
+      }
+
+      .leaderboard-filters {
+        justify-content: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .podium-item {
+      animation: slideUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .podium-item.second {
+      animation-delay: 0.1s;
+    }
+
+    .podium-item.first {
+      animation-delay: 0.2s;
+    }
+
+    .podium-item.third {
+      animation-delay: 0.3s;
+    }
+
+    .leaderboard-row {
+      animation: slideUp 0.3s ease forwards;
+      opacity: 0;
+    }
+  </style>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">🏅</div>
+      <div class="loading-spinner"></div>
+      <p>Loading leaderboard...</p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="courses.html" class="nav-link">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Course Library</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="challenges.html" class="nav-link">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Daily Challenges</span>
+                <span class="nav-badge">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Learning</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="progress.html" class="nav-link">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">My Progress</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="achievements.html" class="nav-link">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Achievements</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="notes.html" class="nav-link">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Notes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Community</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="nav-link">
+                <span class="nav-icon">💬</span>
+                <span class="nav-text">Discord</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="leaderboard.html" class="nav-link active">
+                <span class="nav-icon">🏅</span>
+                <span class="nav-text">Leaderboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="settings.html" class="nav-link">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak">
+              <span>🔥</span>
+              <span id="user-streak">0</span> day streak
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title">Leaderboard</h1>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="content-area">
+
+        <!-- Your Rank Card -->
+        <div class="your-rank-card" id="your-rank-card">
+          <div class="your-rank-label">Your Ranking</div>
+          <div class="your-rank-content">
+            <div class="your-rank-position">
+              <div class="your-rank-number" id="your-rank-number">#-</div>
+              <div class="your-rank-change same" id="your-rank-change">— 0</div>
+            </div>
+            <div class="your-rank-avatar" id="your-rank-avatar">?</div>
+            <div class="your-rank-info">
+              <div class="your-rank-name" id="your-rank-name">Loading...</div>
+              <div class="your-rank-stats">
+                <span class="your-rank-stat"><span id="your-points">0</span> points</span>
+                <span class="your-rank-stat">•</span>
+                <span class="your-rank-stat" id="your-title">🌱 Newcomer</span>
+                <span class="your-rank-stat">•</span>
+                <span class="your-rank-stat">🔥 <span id="your-streak">0</span> day streak</span>
+              </div>
+              <div class="your-rank-progress" id="your-rank-progress">
+                <div class="your-rank-progress-label" id="progress-label">Loading...</div>
+                <div class="your-rank-progress-bar">
+                  <div class="your-rank-progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top 3 Podium -->
+        <div class="podium-section" id="podium-section">
+          <div class="podium-container" id="podium-container">
+            <!-- Podium items loaded dynamically -->
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="leaderboard-filters">
+          <div class="filter-group">
+            <button class="filter-btn active" data-period="all">All Time</button>
+            <button class="filter-btn" data-period="week">This Week</button>
+            <button class="filter-btn" data-period="month">This Month</button>
+          </div>
+          <div class="filter-divider"></div>
+          <div class="filter-group">
+            <button class="filter-btn active" data-metric="points">By Points</button>
+            <button class="filter-btn" data-metric="streak">By Streak</button>
+          </div>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-table" id="leaderboard-table">
+          <div class="leaderboard-header">
+            <div>Rank</div>
+            <div>User</div>
+            <div>Points</div>
+            <div>Streak</div>
+            <div>Badges</div>
+          </div>
+          <div class="leaderboard-body" id="leaderboard-body">
+            <!-- Rows loaded dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/data-service.js"></script>
+
+  <script>
+    // Rank definitions
+    const RANKS = [
+      { name: 'Newcomer', minPoints: 0, icon: '🌱' },
+      { name: 'Learner', minPoints: 100, icon: '📖' },
+      { name: 'Student', minPoints: 300, icon: '🎓' },
+      { name: 'Rising Star', minPoints: 750, icon: '⭐' },
+      { name: 'Scholar', minPoints: 1500, icon: '🏛️' },
+      { name: 'Expert', minPoints: 3000, icon: '💎' },
+      { name: 'Master', minPoints: 5000, icon: '👑' },
+      { name: 'Legend', minPoints: 10000, icon: '🏆' }
+    ];
+
+    // State
+    let currentUser = null;
+    let allUsers = [];
+    let currentPeriod = 'all';
+    let currentMetric = 'points';
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loadingScreen = document.getElementById('auth-loading');
+      const dashboardContent = document.getElementById('dashboard-content');
+
+      if (!window.FirebaseApp.init()) {
+        console.error('Firebase initialization failed');
+        return;
+      }
+
+      window.AuthService.init();
+
+      const user = await window.AuthService.waitForAuthState();
+
+      if (!user) {
+        window.AuthService.setRedirectUrl(window.location.href);
+        window.location.href = '../auth/login.html';
+        return;
+      }
+
+      currentUser = user;
+
+      loadingScreen.classList.add('hidden');
+      dashboardContent.classList.add('ready');
+
+      loadUserInfo(user);
+      await loadLeaderboard();
+
+      setupFilters();
+      setupSidebar();
+      setupLogout();
+    });
+
+    // Load user info
+    function loadUserInfo(user) {
+      const displayName = user.displayName || user.email.split('@')[0];
+      document.getElementById('user-name').textContent = displayName;
+      document.getElementById('your-rank-name').textContent = displayName;
+
+      const avatar = document.getElementById('user-avatar');
+      const rankAvatar = document.getElementById('your-rank-avatar');
+
+      if (user.photoURL) {
+        avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar" style="width:100%;height:100%;border-radius:50%;">`;
+        rankAvatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
+      } else {
+        const initial = displayName.charAt(0).toUpperCase();
+        avatar.textContent = initial;
+        rankAvatar.textContent = initial;
+      }
+    }
+
+    // Load leaderboard data
+    async function loadLeaderboard() {
+      const db = window.FirebaseApp.getDb();
+
+      try {
+        // Fetch all users
+        const usersSnapshot = await db.collection('users').get();
+
+        // Fetch all gamification and stats data in parallel for speed
+        const userPromises = usersSnapshot.docs.map(async (userDoc) => {
+          const userData = userDoc.data();
+          let stats = { totalPoints: 0, currentStreak: 0, achievementsUnlocked: 0 };
+
+          // Fetch achievements and stats in parallel
+          const [achievementsDoc, statsDoc] = await Promise.all([
+            db.collection('users').doc(userDoc.id)
+              .collection('gamification').doc('achievements').get()
+              .catch(() => null),
+            db.collection('users').doc(userDoc.id)
+              .collection('stats').doc('current').get()
+              .catch(() => null)
+          ]);
+
+          if (achievementsDoc && achievementsDoc.exists) {
+            const data = achievementsDoc.data();
+            stats.totalPoints = data.totalPoints || 0;
+            stats.achievementsUnlocked = Object.keys(data.unlocked || {}).length;
+          }
+
+          if (statsDoc && statsDoc.exists) {
+            stats.currentStreak = statsDoc.data().currentStreak || 0;
+          }
+
+          return {
+            id: userDoc.id,
+            displayName: userData.displayName || userData.email?.split('@')[0] || 'Anonymous',
+            photoURL: userData.photoURL || null,
+            ...stats
+          };
+        });
+
+        // Wait for all user data to be fetched in parallel
+        const allUserData = await Promise.all(userPromises);
+
+        // Filter to only include users with some activity
+        allUsers = allUserData.filter(u => u.totalPoints > 0 || u.currentStreak > 0);
+
+        // Sort by current metric
+        sortUsers();
+
+        // Render everything
+        renderYourRank();
+        renderPodium();
+        renderTable();
+
+      } catch (error) {
+        console.error('Error loading leaderboard:', error);
+        showEmptyState();
+      }
+    }
+
+    // Sort users by current metric
+    function sortUsers() {
+      if (currentMetric === 'points') {
+        allUsers.sort((a, b) => b.totalPoints - a.totalPoints);
+      } else if (currentMetric === 'streak') {
+        allUsers.sort((a, b) => b.currentStreak - a.currentStreak);
+      }
+    }
+
+    // Get rank title for points
+    function getRankTitle(points) {
+      let rank = RANKS[0];
+      for (const r of RANKS) {
+        if (points >= r.minPoints) {
+          rank = r;
+        }
+      }
+      return rank;
+    }
+
+    // Get next rank info
+    function getNextRankInfo(points) {
+      for (let i = 0; i < RANKS.length; i++) {
+        if (points < RANKS[i].minPoints) {
+          return {
+            nextRank: RANKS[i],
+            pointsNeeded: RANKS[i].minPoints - points,
+            progress: i > 0 ? (points - RANKS[i-1].minPoints) / (RANKS[i].minPoints - RANKS[i-1].minPoints) : points / RANKS[i].minPoints
+          };
+        }
+      }
+      return { nextRank: null, pointsNeeded: 0, progress: 1 };
+    }
+
+    // Render your rank card
+    function renderYourRank() {
+      const userIndex = allUsers.findIndex(u => u.id === currentUser.uid);
+
+      if (userIndex === -1) {
+        // User not on leaderboard yet
+        document.getElementById('your-rank-number').textContent = '#-';
+        document.getElementById('your-rank-change').textContent = '— 0';
+        document.getElementById('your-points').textContent = '0';
+        document.getElementById('your-streak').textContent = '0';
+        document.getElementById('your-title').textContent = '🌱 Newcomer';
+        document.getElementById('progress-label').textContent = 'Start learning to appear on the leaderboard!';
+        document.getElementById('progress-fill').style.width = '0%';
+        return;
+      }
+
+      const userData = allUsers[userIndex];
+      const rank = userIndex + 1;
+      const rankTitle = getRankTitle(userData.totalPoints);
+      const nextRankInfo = getNextRankInfo(userData.totalPoints);
+
+      document.getElementById('your-rank-number').textContent = `#${rank}`;
+
+      // Simulate rank change (would need historical data for real implementation)
+      const changeEl = document.getElementById('your-rank-change');
+      changeEl.textContent = '— 0';
+      changeEl.className = 'your-rank-change same';
+
+      document.getElementById('your-points').textContent = userData.totalPoints.toLocaleString();
+      document.getElementById('your-streak').textContent = userData.currentStreak;
+      document.getElementById('user-streak').textContent = userData.currentStreak;
+      document.getElementById('your-title').textContent = `${rankTitle.icon} ${rankTitle.name}`;
+
+      // Progress to next position
+      if (userIndex > 0) {
+        const pointsToNext = allUsers[userIndex - 1].totalPoints - userData.totalPoints;
+        document.getElementById('progress-label').textContent = `${pointsToNext} pts to reach #${rank - 1}`;
+        const progress = Math.max(0, 100 - (pointsToNext / (pointsToNext + 100) * 100));
+        document.getElementById('progress-fill').style.width = `${progress}%`;
+      } else {
+        document.getElementById('progress-label').textContent = "You're #1! Keep going!";
+        document.getElementById('progress-fill').style.width = '100%';
+      }
+    }
+
+    // Render top 3 podium
+    function renderPodium() {
+      const container = document.getElementById('podium-container');
+
+      if (allUsers.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const top3 = allUsers.slice(0, 3);
+      const positions = ['second', 'first', 'third'];
+      const medals = ['🥈', '🥇', '🥉'];
+
+      container.innerHTML = top3.map((user, index) => {
+        const position = positions[index] || 'third';
+        const medal = medals[index] || '🥉';
+        const initial = user.displayName.charAt(0).toUpperCase();
+        const avatarContent = user.photoURL
+          ? `<img src="${user.photoURL}" alt="${user.displayName}">`
+          : initial;
+
+        return `
+          <div class="podium-item ${position}">
+            <div class="podium-medal">${medal}</div>
+            <div class="podium-avatar">${avatarContent}</div>
+            <div class="podium-name">${escapeHtml(user.displayName)}</div>
+            <div class="podium-points">${user.totalPoints.toLocaleString()} pts</div>
+            <div class="podium-stand">${index === 0 ? '2' : index === 1 ? '1' : '3'}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render leaderboard table
+    function renderTable() {
+      const container = document.getElementById('leaderboard-body');
+
+      if (allUsers.length === 0) {
+        showEmptyState();
+        return;
+      }
+
+      // Start from #4 (skip top 3 which are on podium)
+      const tableUsers = allUsers.slice(3);
+
+      if (tableUsers.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="padding: 2rem;">
+            <p>More learners will appear here as they join!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = tableUsers.map((user, index) => {
+        const rank = index + 4;
+        const rankTitle = getRankTitle(user.totalPoints);
+        const isCurrentUser = user.id === currentUser.uid;
+        const initial = user.displayName.charAt(0).toUpperCase();
+        const avatarContent = user.photoURL
+          ? `<img src="${user.photoURL}" alt="${user.displayName}">`
+          : initial;
+
+        return `
+          <div class="leaderboard-row ${isCurrentUser ? 'current-user' : ''}" style="animation-delay: ${index * 0.05}s">
+            <div class="rank-cell">
+              <span class="rank-number">${rank}</span>
+              <span class="rank-change same">— 0</span>
+            </div>
+            <div class="user-cell">
+              <div class="user-avatar">${avatarContent}</div>
+              <div class="user-info">
+                <div class="user-name">${escapeHtml(user.displayName)}${isCurrentUser ? ' (You)' : ''}</div>
+                <div class="user-title">${rankTitle.icon} ${rankTitle.name}</div>
+              </div>
+            </div>
+            <div class="points-cell">${user.totalPoints.toLocaleString()}</div>
+            <div class="streak-cell">🔥 ${user.currentStreak}</div>
+            <div class="achievements-cell">🏆 ${user.achievementsUnlocked}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Show empty state
+    function showEmptyState() {
+      const container = document.getElementById('leaderboard-body');
+      document.getElementById('podium-container').innerHTML = '';
+
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="icon">🏅</div>
+          <h3>Be the first to climb!</h3>
+          <p>Start learning to appear on the leaderboard and compete with other learners.</p>
+          <a href="courses.html" class="cta-btn">Start Learning →</a>
+        </div>
+      `;
+    }
+
+    // Setup filter buttons
+    function setupFilters() {
+      // Period filters
+      document.querySelectorAll('.filter-btn[data-period]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn[data-period]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentPeriod = btn.dataset.period;
+          // For MVP, all periods show the same data
+          // In future, filter by time period
+        });
+      });
+
+      // Metric filters
+      document.querySelectorAll('.filter-btn[data-metric]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn[data-metric]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentMetric = btn.dataset.metric;
+          sortUsers();
+          renderPodium();
+          renderTable();
+        });
+      });
+    }
+
+    // Helper: Escape HTML
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Setup sidebar
+    function setupSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggle = document.getElementById('sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+      });
+
+      if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        sidebar.classList.add('collapsed');
+      }
+
+      mobileBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+      });
+
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+      });
+    }
+
+    // Setup logout
+    function setupLogout() {
+      document.getElementById('logout-link').addEventListener('click', async (e) => {
+        e.preventDefault();
+        await window.AuthService.logout();
+        window.location.href = '../index.html';
+      });
+    }
+  </script>
+</body>
+</html>
