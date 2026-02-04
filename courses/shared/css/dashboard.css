@@ -48,6 +48,19 @@
   --transition-normal: 0.3s ease;
 }
 
+/* Light theme overrides */
+[data-theme="light"] {
+  --bg-primary: #f5f5fa;
+  --bg-secondary: #eeeef4;
+  --bg-tertiary: #e4e4ec;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f0f0f8;
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a5e;
+  --text-muted: #8a8a9e;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

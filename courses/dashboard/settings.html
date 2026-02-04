@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | AutoNateAI Learning Hub</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Critical styles -->
+  <style>
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+    .auth-loading {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <!-- Theme loader (before CSS to prevent flash) -->
+  <script src="../shared/js/theme-loader.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+
+  <!-- Settings Page Styles -->
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       LAYOUT
+       ═══════════════════════════════════════════════════════════════ */
+    .settings-content {
+      padding: var(--space-xl);
+      max-width: 900px;
+    }
+
+    .section-header {
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+    .section-header:first-child { margin-top: 0; }
+    .section-title {
+      font-family: var(--font-display, 'Space Grotesk', sans-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary, #e8e8f0);
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       GLASS CARDS
+       ═══════════════════════════════════════════════════════════════ */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    [data-theme="light"] .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    .glass-card__title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display, 'Space Grotesk', sans-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary, #e8e8f0);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FORM FIELDS
+       ═══════════════════════════════════════════════════════════════ */
+    .settings-field {
+      margin-bottom: 1rem;
+    }
+    .settings-field:last-child { margin-bottom: 0; }
+    .settings-field__label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary, #a0a0b8);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .settings-field__row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .settings-field__input {
+      flex: 1;
+      background: var(--bg-tertiary, #1a1a2e);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      color: var(--text-primary, #e8e8f0);
+      font-size: 0.9rem;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .settings-field__input:focus {
+      border-color: var(--accent-primary, #7986cb);
+    }
+    .settings-field__value {
+      font-size: 0.9rem;
+      color: var(--text-primary, #e8e8f0);
+      padding: 0.6rem 0;
+    }
+    .settings-field__save {
+      padding: 0.55rem 1rem;
+      background: linear-gradient(135deg, var(--accent-primary, #7986cb), #5c6bc0);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .settings-field__save:hover { opacity: 0.9; }
+    .settings-field__action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-secondary, #a0a0b8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body, 'Inter', sans-serif);
+    }
+    .settings-field__action:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary, #e8e8f0);
+    }
+    .settings-field__action.danger {
+      color: var(--accent-error, #ef5350);
+      border-color: rgba(239, 83, 80, 0.2);
+    }
+    .settings-field__action.danger:hover {
+      background: rgba(239, 83, 80, 0.1);
+    }
+
+    /* Detail row (read-only info) */
+    .settings-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .settings-detail:last-child { border-bottom: none; }
+    .settings-detail__label {
+      font-size: 0.85rem;
+      color: var(--text-secondary, #a0a0b8);
+    }
+    .settings-detail__value {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary, #e8e8f0);
+    }
+    .settings-role-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(121, 134, 203, 0.15);
+      color: #b8bfff;
+    }
+    .settings-role-badge.admin {
+      background: rgba(244, 67, 54, 0.15);
+      color: #ef9a9a;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TOGGLES & SELECTS
+       ═══════════════════════════════════════════════════════════════ */
+    .settings-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .settings-toggle-row:last-child { border-bottom: none; }
+    .settings-toggle-label {
+      font-size: 0.9rem;
+      color: var(--text-primary, #e8e8f0);
+    }
+    .settings-toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      cursor: pointer;
+    }
+    .settings-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+    .settings-toggle__slider {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 11px;
+      transition: all 0.3s;
+    }
+    .settings-toggle__slider::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      background: #a0a0b8;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    .settings-toggle input:checked + .settings-toggle__slider {
+      background: var(--accent-primary, #7986cb);
+      border-color: transparent;
+    }
+    .settings-toggle input:checked + .settings-toggle__slider::before {
+      transform: translateX(18px);
+      background: white;
+    }
+
+    .settings-select-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .settings-select {
+      background: var(--bg-tertiary, #1a1a2e);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 0.35rem 0.6rem;
+      color: var(--text-primary, #e8e8f0);
+      font-size: 0.85rem;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      outline: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       APPEARANCE SECTION
+       ═══════════════════════════════════════════════════════════════ */
+    .appearance-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .appearance-row:last-child { border-bottom: none; }
+    .appearance-row__label {
+      font-size: 0.9rem;
+      color: var(--text-primary, #e8e8f0);
+    }
+    .appearance-row__desc {
+      font-size: 0.75rem;
+      color: var(--text-muted, #6a6a80);
+      margin-top: 2px;
+    }
+
+    /* Theme toggle group */
+    .theme-toggle-group {
+      display: flex;
+      background: var(--bg-tertiary, #1a1a2e);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .theme-toggle-btn {
+      padding: 0.4rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary, #a0a0b8);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body, 'Inter', sans-serif);
+    }
+    .theme-toggle-btn.active {
+      background: var(--accent-primary, #7986cb);
+      color: #fff;
+    }
+
+    /* Font size group */
+    .font-size-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .font-size-btn {
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-secondary, #a0a0b8);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body, 'Inter', sans-serif);
+    }
+    .font-size-btn.active {
+      background: var(--accent-primary, #7986cb);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    /* Color swatches */
+    .color-swatch-group {
+      display: flex;
+      gap: 0.6rem;
+    }
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .color-swatch:hover { transform: scale(1.1); }
+    .color-swatch.active {
+      border-color: var(--text-primary, #e8e8f0);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+    }
+    .color-swatch.active::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TOASTS
+       ═══════════════════════════════════════════════════════════════ */
+    .save-toast {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(15, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(102, 187, 106, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      color: var(--text-primary, #e8e8f0);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      z-index: 10003;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transform: translateX(120%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      max-width: 320px;
+    }
+    .save-toast.show { transform: translateX(0); opacity: 1; }
+    .save-toast__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .save-toast__message { font-size: 0.85rem; font-weight: 500; color: #a5d6a7; }
+
+    .coming-soon-toast {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(15, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(121, 134, 203, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      color: var(--text-primary, #e8e8f0);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(121, 134, 203, 0.1);
+      transform: translateX(120%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      max-width: 320px;
+    }
+    .coming-soon-toast.show { transform: translateX(0); opacity: 1; }
+    .coming-soon-toast__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .coming-soon-toast__content { display: flex; flex-direction: column; gap: 0.15rem; }
+    .coming-soon-toast__title { font-weight: 600; font-size: 0.9rem; color: #b8bfff; }
+    .coming-soon-toast__message { font-size: 0.8rem; color: rgba(232, 232, 240, 0.7); }
+
+    .coming-soon-badge {
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, rgba(121, 134, 203, 0.3), rgba(159, 122, 234, 0.3));
+      color: #b8bfff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .settings-content { padding: var(--space-md); }
+      .appearance-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">⚙️</div>
+      <div class="loading-spinner"></div>
+      <p>Loading settings...</p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="courses.html" class="nav-link">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Course Library</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="challenges.html" class="nav-link">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Daily Challenges</span>
+                <span class="nav-badge">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Learning</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="progress.html" class="nav-link">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">My Progress</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="achievements.html" class="nav-link">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Achievements</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link coming-soon-link" data-feature="Notes">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Notes</span>
+                <span class="coming-soon-badge">Soon</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Community</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="nav-link">
+                <span class="nav-icon">💬</span>
+                <span class="nav-text">Discord</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link coming-soon-link" data-feature="Leaderboard">
+                <span class="nav-icon">🏅</span>
+                <span class="nav-text">Leaderboard</span>
+                <span class="coming-soon-badge">Soon</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="settings.html" class="nav-link active">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Admin Section -->
+        <div class="nav-section" id="admin-section" style="display: none;">
+          <span class="nav-section-title" style="color: #f44336;">Admin</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../admin/" class="nav-link">
+                <span class="nav-icon">🛡️</span>
+                <span class="nav-text">Admin Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak">
+              <span>🔥</span>
+              <span id="user-streak">0</span> day streak
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title">Settings</h1>
+        </div>
+      </header>
+
+      <div class="settings-content">
+
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION 1: NOTIFICATION PREFERENCES
+             ══════════════════════════════════════════════════════════ -->
+        <div class="section-header animate-in">
+          <h3 class="section-title">Notification Preferences</h3>
+        </div>
+
+        <div class="glass-card animate-in">
+          <h4 class="glass-card__title"><span>🔔</span> Notifications</h4>
+
+          <div class="settings-toggle-row">
+            <span class="settings-toggle-label">Email Digest</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="pref-email-digest">
+              <span class="settings-toggle__slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-toggle-row">
+            <span class="settings-toggle-label">Push Notifications</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="pref-push-notif">
+              <span class="settings-toggle__slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-select-row">
+            <span class="settings-toggle-label">Frequency</span>
+            <select class="settings-select" id="pref-frequency">
+              <option value="instant">Instant</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </div>
+
+          <div class="settings-toggle-row">
+            <span class="settings-toggle-label">Progress Updates</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="pref-topic-progress">
+              <span class="settings-toggle__slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-toggle-row">
+            <span class="settings-toggle-label">Streak Reminders</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="pref-topic-streaks">
+              <span class="settings-toggle__slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION 3: APPEARANCE
+             ══════════════════════════════════════════════════════════ -->
+        <div class="section-header animate-in">
+          <h3 class="section-title">Appearance</h3>
+        </div>
+
+        <div class="glass-card animate-in">
+          <h4 class="glass-card__title"><span>🎨</span> Look &amp; Feel</h4>
+
+          <div class="appearance-row">
+            <div>
+              <div class="appearance-row__label">Theme</div>
+              <div class="appearance-row__desc">Switch between dark and light mode</div>
+            </div>
+            <div class="theme-toggle-group">
+              <button class="theme-toggle-btn active" data-theme="dark">🌙 Dark</button>
+              <button class="theme-toggle-btn" data-theme="light">☀️ Light</button>
+            </div>
+          </div>
+
+          <div class="appearance-row">
+            <div>
+              <div class="appearance-row__label">Font Size</div>
+              <div class="appearance-row__desc">Adjust text size across the platform</div>
+            </div>
+            <div class="font-size-group">
+              <button class="font-size-btn" data-size="small">Small</button>
+              <button class="font-size-btn active" data-size="medium">Medium</button>
+              <button class="font-size-btn" data-size="large">Large</button>
+            </div>
+          </div>
+
+          <div class="appearance-row">
+            <div>
+              <div class="appearance-row__label">Accent Color</div>
+              <div class="appearance-row__desc">Choose your primary accent color</div>
+            </div>
+            <div class="color-swatch-group">
+              <button class="color-swatch active" data-color="#7986cb" style="background: #7986cb;" title="Purple"></button>
+              <button class="color-swatch" data-color="#4db6ac" style="background: #4db6ac;" title="Teal"></button>
+              <button class="color-swatch" data-color="#5c6bc0" style="background: #5c6bc0;" title="Blue"></button>
+              <button class="color-swatch" data-color="#ff8a65" style="background: #ff8a65;" title="Orange"></button>
+              <button class="color-swatch" data-color="#f48fb1" style="background: #f48fb1;" title="Pink"></button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.settings-content -->
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/rbac.js"></script>
+  <script src="../shared/js/data-service.js"></script>
+  <script src="../shared/js/notification-service.js"></script>
+  <script src="../shared/js/services/cache-service.js"></script>
+  <script src="../shared/js/services/query-service.js"></script>
+  <script src="../shared/js/services/analytics-service.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loadingScreen = document.getElementById('auth-loading');
+      const dashboardContent = document.getElementById('dashboard-content');
+
+      // Initialize Firebase
+      if (!window.FirebaseApp.init()) {
+        console.error('Firebase initialization failed');
+        loadingScreen.innerHTML = '<div class="loading-content"><p>Error loading. Please refresh.</p></div>';
+        return;
+      }
+
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+
+      if (!user) {
+        window.AuthService.setRedirectUrl(window.location.href);
+        window.location.href = '../auth/login.html';
+        return;
+      }
+
+      // Show dashboard
+      loadingScreen.classList.add('hidden');
+      dashboardContent.classList.add('ready');
+
+      // Setup UI immediately
+      setupSidebar();
+      setupLogout();
+      setupComingSoon();
+
+      // Check admin
+      if (window.RBACService) {
+        const isAdmin = await window.RBACService.hasRole('admin');
+        if (isAdmin) {
+          document.getElementById('admin-section').style.display = 'block';
+        }
+      }
+
+      // Load sidebar user info
+      loadSidebarUserInfo(user);
+      window.NotificationService.init();
+
+      // Load all settings data
+      try { await loadNotificationPrefs(); } catch (e) { console.error('Error loading notification prefs:', e); }
+      loadAppearanceSettings();
+
+      // Setup interactions
+      setupNotificationPrefsSave();
+      setupThemeToggle();
+      setupFontSize();
+      setupAccentColor();
+
+      // Animate
+      anime({
+        targets: '.animate-in',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: anime.stagger(100, { start: 200 }),
+        easing: 'easeOutCubic',
+        duration: 600
+      });
+
+      // Auth change listener
+      window.AuthService.onAuthStateChanged((user) => {
+        if (!user) window.location.href = '../auth/login.html';
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // SIDEBAR
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    function loadSidebarUserInfo(user) {
+      const displayName = user.displayName || user.email.split('@')[0];
+      document.getElementById('user-name').textContent = displayName;
+      const avatar = document.getElementById('user-avatar');
+      if (user.photoURL) {
+        avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
+      } else {
+        avatar.textContent = displayName.charAt(0).toUpperCase();
+      }
+    }
+
+    function setupSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggle = document.getElementById('sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+      });
+
+      if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        sidebar.classList.add('collapsed');
+      }
+
+      mobileBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+      });
+
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+      });
+    }
+
+    function setupLogout() {
+      document.getElementById('logout-link').addEventListener('click', async (e) => {
+        e.preventDefault();
+        await window.AuthService.logout();
+        window.location.href = '../index.html';
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // NOTIFICATION PREFERENCES
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    async function loadNotificationPrefs() {
+      if (!window.DataService?.getNotificationPrefs) return;
+
+      const prefs = await window.DataService.getNotificationPrefs();
+      if (!prefs) return;
+
+      document.getElementById('pref-email-digest').checked = prefs.email || false;
+      document.getElementById('pref-push-notif').checked = prefs.push || false;
+      document.getElementById('pref-frequency').value = prefs.frequency || 'daily';
+      document.getElementById('pref-topic-progress').checked = prefs.topics?.progress ?? true;
+      document.getElementById('pref-topic-streaks').checked = prefs.topics?.streaks ?? true;
+    }
+
+    function setupNotificationPrefsSave() {
+      let debounceTimer = null;
+      const inputs = [
+        document.getElementById('pref-email-digest'),
+        document.getElementById('pref-push-notif'),
+        document.getElementById('pref-frequency'),
+        document.getElementById('pref-topic-progress'),
+        document.getElementById('pref-topic-streaks')
+      ];
+
+      inputs.forEach(el => {
+        el.addEventListener('change', () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(async () => {
+            try {
+              const updatedPrefs = {
+                email: document.getElementById('pref-email-digest').checked,
+                push: document.getElementById('pref-push-notif').checked,
+                frequency: document.getElementById('pref-frequency').value,
+                topics: {
+                  progress: document.getElementById('pref-topic-progress').checked,
+                  streaks: document.getElementById('pref-topic-streaks').checked,
+                  admin: true
+                }
+              };
+              if (window.DataService?.updateNotificationPrefs) {
+                await window.DataService.updateNotificationPrefs(updatedPrefs);
+              }
+              showSaveToast('Preferences saved');
+            } catch (e) {
+              console.error('Error saving notification prefs:', e);
+            }
+          }, 500);
+        });
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // APPEARANCE
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    function loadAppearanceSettings() {
+      const theme = localStorage.getItem('theme') || 'dark';
+      const fontSize = localStorage.getItem('fontSize') || 'medium';
+      const accentColor = localStorage.getItem('accentColor') || '#7986cb';
+
+      // Theme buttons
+      document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.theme === theme);
+      });
+
+      // Font size buttons
+      document.querySelectorAll('.font-size-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.size === fontSize);
+      });
+
+      // Color swatches
+      document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.classList.toggle('active', swatch.dataset.color === accentColor);
+      });
+    }
+
+    function setupThemeToggle() {
+      document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const theme = btn.dataset.theme;
+
+          // Update UI
+          document.querySelectorAll('.theme-toggle-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Apply theme
+          if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+
+          // Persist
+          localStorage.setItem('theme', theme);
+          try {
+            const user = firebase.auth().currentUser;
+            if (user) {
+              const db = window.FirebaseApp.getDb();
+              await db.collection('users').doc(user.uid).update({ 'settings.theme': theme });
+            }
+          } catch (e) { console.log('Could not save theme to Firestore:', e); }
+
+          showSaveToast('Theme updated');
+        });
+      });
+    }
+
+    function setupFontSize() {
+      document.querySelectorAll('.font-size-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const size = btn.dataset.size;
+
+          // Update UI
+          document.querySelectorAll('.font-size-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Apply
+          if (size === 'small') {
+            document.documentElement.style.fontSize = '14px';
+          } else if (size === 'large') {
+            document.documentElement.style.fontSize = '18px';
+          } else {
+            document.documentElement.style.fontSize = '';
+          }
+
+          // Persist
+          localStorage.setItem('fontSize', size);
+          try {
+            const user = firebase.auth().currentUser;
+            if (user) {
+              const db = window.FirebaseApp.getDb();
+              await db.collection('users').doc(user.uid).update({ 'settings.fontSize': size });
+            }
+          } catch (e) { console.log('Could not save fontSize to Firestore:', e); }
+
+          showSaveToast('Font size updated');
+        });
+      });
+    }
+
+    function setupAccentColor() {
+      document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', async () => {
+          const color = swatch.dataset.color;
+
+          // Update UI
+          document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+          swatch.classList.add('active');
+
+          // Apply
+          document.documentElement.style.setProperty('--accent-primary', color);
+
+          // Persist
+          localStorage.setItem('accentColor', color);
+          try {
+            const user = firebase.auth().currentUser;
+            if (user) {
+              const db = window.FirebaseApp.getDb();
+              await db.collection('users').doc(user.uid).update({ 'settings.accentColor': color });
+            }
+          } catch (e) { console.log('Could not save accentColor to Firestore:', e); }
+
+          showSaveToast('Accent color updated');
+        });
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // TOASTS
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    function setupComingSoon() {
+      const toast = document.createElement('div');
+      toast.className = 'coming-soon-toast';
+      toast.innerHTML = `
+        <span class="coming-soon-toast__icon">🚧</span>
+        <div class="coming-soon-toast__content">
+          <span class="coming-soon-toast__title">Coming Soon!</span>
+          <span class="coming-soon-toast__message"></span>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      let toastTimeout = null;
+
+      function showComingSoonToast(featureName) {
+        const message = toast.querySelector('.coming-soon-toast__message');
+        message.textContent = `${featureName} is under development. Stay tuned!`;
+        clearTimeout(toastTimeout);
+        toast.classList.remove('show');
+        requestAnimationFrame(() => {
+          toast.classList.add('show');
+          toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        });
+      }
+
+      document.querySelectorAll('.coming-soon-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          showComingSoonToast(link.getAttribute('data-feature') || 'This feature');
+        });
+      });
+    }
+
+    const saveToastEl = document.createElement('div');
+    saveToastEl.className = 'save-toast';
+    saveToastEl.innerHTML = `
+      <span class="save-toast__icon">✅</span>
+      <span class="save-toast__message"></span>
+    `;
+    document.addEventListener('DOMContentLoaded', () => document.body.appendChild(saveToastEl));
+
+    let saveToastTimeout = null;
+    function showSaveToast(message) {
+      saveToastEl.querySelector('.save-toast__message').textContent = message;
+      clearTimeout(saveToastTimeout);
+      saveToastEl.classList.remove('show');
+      requestAnimationFrame(() => {
+        saveToastEl.classList.add('show');
+        saveToastTimeout = setTimeout(() => saveToastEl.classList.remove('show'), 2500);
+      });
+    }
+  </script>
+</body>
+</html>

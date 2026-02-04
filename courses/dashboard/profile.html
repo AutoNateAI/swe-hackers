@@ -42,6 +42,9 @@
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 
+  <!-- Theme loader (before CSS to prevent flash) -->
+  <script src="../shared/js/theme-loader.js"></script>
+
   <!-- Styles -->
   <link rel="stylesheet" href="../shared/css/dashboard.css">
 
@@ -665,6 +668,159 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
+       MODALS
+       ═══════════════════════════════════════════════════════════════ */
+    .profile-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 10002;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .profile-modal-overlay.active { display: flex; }
+    .profile-modal {
+      background: #12121a;
+      border: 1px solid rgba(121, 134, 203, 0.2);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      animation: modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .profile-modal--danger { border-color: rgba(239, 83, 80, 0.3); }
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .profile-modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .profile-modal__title {
+      font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e8e8f0;
+      margin: 0;
+    }
+    .profile-modal__close {
+      background: none; border: none;
+      color: #a0a0b8; font-size: 1.5rem;
+      cursor: pointer; padding: 0; line-height: 1;
+      transition: color 0.2s;
+    }
+    .profile-modal__close:hover { color: #e8e8f0; }
+    .profile-modal__body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .profile-modal__footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .profile-modal__info {
+      background: rgba(121, 134, 203, 0.1);
+      border: 1px solid rgba(121, 134, 203, 0.2);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #b8bfff;
+      line-height: 1.5;
+    }
+    .profile-modal__warning {
+      display: flex; gap: 0.75rem;
+      background: rgba(239, 83, 80, 0.08);
+      border: 1px solid rgba(239, 83, 80, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #ef9a9a;
+      line-height: 1.5;
+    }
+    .profile-modal__warning-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+    .profile-modal__warning p { margin: 0.25rem 0 0; color: #a0a0b8; }
+    .profile-modal__error {
+      font-size: 0.8rem;
+      color: #ef5350;
+      min-height: 1.2em;
+    }
+    .profile-modal__btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      font-family: var(--font-body, 'Inter', sans-serif);
+    }
+    .profile-modal__btn.primary {
+      background: linear-gradient(135deg, #7986cb, #5c6bc0);
+      color: #fff;
+    }
+    .profile-modal__btn.primary:hover { opacity: 0.9; }
+    .profile-modal__btn.primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .profile-modal__btn.secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #a0a0b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .profile-modal__btn.secondary:hover { background: rgba(255, 255, 255, 0.1); color: #e8e8f0; }
+    .profile-modal__btn.danger {
+      background: linear-gradient(135deg, #ef5350, #c62828);
+      color: #fff;
+    }
+    .profile-modal__btn.danger:hover { opacity: 0.9; }
+    .profile-modal__btn.danger:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* Password visibility toggle */
+    .profile-field__input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .profile-field__input-wrap .profile-field__input { flex: 1; padding-right: 2.5rem; }
+    .profile-field__eye {
+      position: absolute; right: 0.5rem;
+      background: none; border: none;
+      cursor: pointer; font-size: 1rem;
+      opacity: 0.5; transition: opacity 0.2s;
+      padding: 0.25rem;
+    }
+    .profile-field__eye:hover { opacity: 0.9; }
+
+    /* Password strength bar */
+    .password-strength {
+      display: flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem;
+    }
+    .password-strength__bar {
+      flex: 1; height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px; overflow: hidden;
+    }
+    .password-strength__fill {
+      display: block; height: 100%; border-radius: 2px;
+      transition: width 0.3s, background 0.3s;
+      width: 0;
+    }
+    .password-strength__text {
+      font-size: 0.7rem; font-weight: 600;
+      min-width: 3rem; text-align: right;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
        RESPONSIVE
        ═══════════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
@@ -770,10 +926,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link coming-soon-link" data-feature="Achievements">
+              <a href="achievements.html" class="nav-link">
                 <span class="nav-icon">🏆</span>
                 <span class="nav-text">Achievements</span>
-                <span class="coming-soon-badge">Soon</span>
               </a>
             </li>
             <li class="nav-item">
@@ -815,10 +970,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link coming-soon-link" data-feature="Settings">
+              <a href="settings.html" class="nav-link">
                 <span class="nav-icon">⚙️</span>
                 <span class="nav-text">Settings</span>
-                <span class="coming-soon-badge">Soon</span>
               </a>
             </li>
             <li class="nav-item">
@@ -1001,64 +1155,105 @@
 
             <div class="profile-field">
               <label class="profile-field__label">Password</label>
-              <button class="profile-field__action coming-soon-trigger" data-feature="Password Change">
-                Change Password
-                <span class="coming-soon-badge">Soon</span>
-              </button>
+              <button class="profile-field__action" id="change-password-btn">Change Password</button>
             </div>
 
             <div class="profile-field">
               <label class="profile-field__label">Account</label>
-              <button class="profile-field__action danger coming-soon-trigger" data-feature="Account Deletion">
-                Delete Account
-                <span class="coming-soon-badge">Soon</span>
-              </button>
+              <button class="profile-field__action danger" id="delete-account-btn">Delete Account</button>
             </div>
           </div>
 
-          <!-- Right: Notification Preferences -->
-          <div class="glass-card profile-notifications-card">
-            <h4 class="glass-card__title"><span>🔔</span> Notification Preferences</h4>
+          <!-- Right: Quick Links -->
+          <div class="glass-card">
+            <h4 class="glass-card__title"><span>⚙️</span> More Settings</h4>
 
-            <div class="profile-toggle-row">
-              <span class="profile-toggle-label">Email Digest</span>
-              <label class="profile-toggle">
-                <input type="checkbox" id="pref-email-digest">
-                <span class="profile-toggle__slider"></span>
-              </label>
+            <div class="profile-field" style="text-align: center; padding: 1.5rem 0;">
+              <p style="color: var(--text-secondary, #a0a0b8); font-size: 0.85rem; margin-bottom: 1rem;">
+                Manage notifications, appearance, and theme preferences
+              </p>
+              <a href="settings.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; background: linear-gradient(135deg, var(--accent-primary, #7986cb), #5c6bc0); color: #fff; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s;">
+                Open Settings &rarr;
+              </a>
             </div>
+          </div>
+        </div>
 
-            <div class="profile-toggle-row">
-              <span class="profile-toggle-label">Push Notifications</span>
-              <label class="profile-toggle">
-                <input type="checkbox" id="pref-push-notif">
-                <span class="profile-toggle__slider"></span>
-              </label>
+        <!-- Change Password Modal -->
+        <div class="profile-modal-overlay" id="password-modal">
+          <div class="profile-modal">
+            <div class="profile-modal__header">
+              <h3 class="profile-modal__title">Change Password</h3>
+              <button class="profile-modal__close" id="password-modal-close">&times;</button>
             </div>
-
-            <div class="profile-select-row">
-              <span class="profile-toggle-label">Frequency</span>
-              <select class="profile-select" id="pref-frequency">
-                <option value="instant">Instant</option>
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-              </select>
+            <div class="profile-modal__body">
+              <div class="profile-modal__info" id="password-provider-info" style="display: none;">
+                You signed in with Google. To set a password, use the "Send Reset Email" option below.
+              </div>
+              <div id="password-fields">
+                <div class="profile-field">
+                  <label class="profile-field__label">Current Password</label>
+                  <div class="profile-field__input-wrap">
+                    <input type="password" class="profile-field__input" id="current-password" placeholder="Enter current password" autocomplete="current-password">
+                    <button class="profile-field__eye" data-target="current-password" aria-label="Toggle visibility">👁</button>
+                  </div>
+                </div>
+                <div class="profile-field">
+                  <label class="profile-field__label">New Password</label>
+                  <div class="profile-field__input-wrap">
+                    <input type="password" class="profile-field__input" id="new-password" placeholder="At least 6 characters" autocomplete="new-password">
+                    <button class="profile-field__eye" data-target="new-password" aria-label="Toggle visibility">👁</button>
+                  </div>
+                  <div class="password-strength" id="password-strength">
+                    <div class="password-strength__bar"><span class="password-strength__fill" id="password-strength-fill"></span></div>
+                    <span class="password-strength__text" id="password-strength-text"></span>
+                  </div>
+                </div>
+                <div class="profile-field">
+                  <label class="profile-field__label">Confirm New Password</label>
+                  <div class="profile-field__input-wrap">
+                    <input type="password" class="profile-field__input" id="confirm-password" placeholder="Re-enter new password" autocomplete="new-password">
+                    <button class="profile-field__eye" data-target="confirm-password" aria-label="Toggle visibility">👁</button>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-modal__error" id="password-error"></div>
             </div>
-
-            <div class="profile-toggle-row">
-              <span class="profile-toggle-label">Progress Updates</span>
-              <label class="profile-toggle">
-                <input type="checkbox" id="pref-topic-progress">
-                <span class="profile-toggle__slider"></span>
-              </label>
+            <div class="profile-modal__footer">
+              <button class="profile-modal__btn secondary" id="password-reset-email-btn">Send Reset Email</button>
+              <button class="profile-modal__btn primary" id="password-save-btn">Update Password</button>
             </div>
+          </div>
+        </div>
 
-            <div class="profile-toggle-row">
-              <span class="profile-toggle-label">Streak Reminders</span>
-              <label class="profile-toggle">
-                <input type="checkbox" id="pref-topic-streaks">
-                <span class="profile-toggle__slider"></span>
-              </label>
+        <!-- Delete Account Modal -->
+        <div class="profile-modal-overlay" id="delete-modal">
+          <div class="profile-modal profile-modal--danger">
+            <div class="profile-modal__header">
+              <h3 class="profile-modal__title">Delete Account</h3>
+              <button class="profile-modal__close" id="delete-modal-close">&times;</button>
+            </div>
+            <div class="profile-modal__body">
+              <div class="profile-modal__warning">
+                <span class="profile-modal__warning-icon">⚠️</span>
+                <div>
+                  <strong>This action is permanent and cannot be undone.</strong>
+                  <p>All your data including course progress, achievements, and settings will be permanently deleted.</p>
+                </div>
+              </div>
+              <div class="profile-field">
+                <label class="profile-field__label">Type your email to confirm</label>
+                <input type="email" class="profile-field__input" id="delete-confirm-email" placeholder="your@email.com" autocomplete="off">
+              </div>
+              <div class="profile-field" id="delete-password-field">
+                <label class="profile-field__label">Enter your password</label>
+                <input type="password" class="profile-field__input" id="delete-confirm-password" placeholder="Your password" autocomplete="current-password">
+              </div>
+              <div class="profile-modal__error" id="delete-error"></div>
+            </div>
+            <div class="profile-modal__footer">
+              <button class="profile-modal__btn secondary" id="delete-cancel-btn">Cancel</button>
+              <button class="profile-modal__btn danger" id="delete-confirm-btn" disabled>Delete My Account</button>
             </div>
           </div>
         </div>
@@ -1226,7 +1421,6 @@
       await Promise.all([
         loadQuickStats(),
         loadLearningOverview(),
-        loadNotificationPrefs(),
         loadInsights()
       ]);
 
@@ -1235,7 +1429,8 @@
       setupLogout();
       setupComingSoon();
       setupDisplayNameEdit();
-      setupNotificationPrefsSave();
+      setupChangePassword();
+      setupDeleteAccount();
 
       // Animate stats
       anime({
@@ -1436,14 +1631,12 @@
           const user = firebase.auth().currentUser;
           await user.updateProfile({ displayName: newName });
 
-          // Update Firestore
           const db = window.FirebaseApp.getDb();
           await db.collection('users').doc(user.uid).update({
             displayName: newName,
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
           });
 
-          // Update all UI references
           document.getElementById('profile-display-name').textContent = newName;
           document.getElementById('user-name').textContent = newName;
 
@@ -1468,53 +1661,217 @@
       });
     }
 
-    // Notification Preferences
-    async function loadNotificationPrefs() {
-      try {
-        if (!window.DataService?.getNotificationPrefs) return;
-        const prefs = await window.DataService.getNotificationPrefs();
-        if (!prefs) return;
+    function setupChangePassword() {
+      const modal = document.getElementById('password-modal');
+      const openBtn = document.getElementById('change-password-btn');
+      const closeBtn = document.getElementById('password-modal-close');
+      const saveBtn = document.getElementById('password-save-btn');
+      const resetEmailBtn = document.getElementById('password-reset-email-btn');
+      const errorEl = document.getElementById('password-error');
+      const providerInfo = document.getElementById('password-provider-info');
+      const fieldsContainer = document.getElementById('password-fields');
+      const newPasswordInput = document.getElementById('new-password');
+      const strengthFill = document.getElementById('password-strength-fill');
+      const strengthText = document.getElementById('password-strength-text');
 
-        document.getElementById('pref-email-digest').checked = prefs.email || false;
-        document.getElementById('pref-push-notif').checked = prefs.push || false;
-        document.getElementById('pref-frequency').value = prefs.frequency || 'daily';
-        document.getElementById('pref-topic-progress').checked = prefs.topics?.progress !== false;
-        document.getElementById('pref-topic-streaks').checked = prefs.topics?.streaks !== false;
-      } catch (e) {
-        console.log('Could not load notification prefs:', e);
+      function openModal() {
+        const user = firebase.auth().currentUser;
+        const hasPassword = user.providerData.some(p => p.providerId === 'password');
+        if (!hasPassword) {
+          providerInfo.style.display = 'block';
+          fieldsContainer.style.display = 'none';
+          saveBtn.style.display = 'none';
+        } else {
+          providerInfo.style.display = 'none';
+          fieldsContainer.style.display = 'block';
+          saveBtn.style.display = 'inline-flex';
+        }
+        errorEl.textContent = '';
+        modal.querySelectorAll('input').forEach(i => i.value = '');
+        strengthFill.style.width = '0';
+        strengthText.textContent = '';
+        modal.classList.add('active');
       }
+
+      function closeModal() { modal.classList.remove('active'); }
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+      // Password strength
+      newPasswordInput.addEventListener('input', () => {
+        const val = newPasswordInput.value;
+        let score = 0;
+        if (val.length >= 6) score++;
+        if (val.length >= 10) score++;
+        if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+
+        const levels = [
+          { width: '0%', color: 'transparent', text: '' },
+          { width: '20%', color: '#ef5350', text: 'Weak' },
+          { width: '40%', color: '#ffa726', text: 'Fair' },
+          { width: '60%', color: '#ffa726', text: 'Fair' },
+          { width: '80%', color: '#66bb6a', text: 'Good' },
+          { width: '100%', color: '#43a047', text: 'Strong' }
+        ];
+
+        const level = val.length === 0 ? levels[0] : levels[Math.min(score, 5)];
+        strengthFill.style.width = level.width;
+        strengthFill.style.background = level.color;
+        strengthText.textContent = level.text;
+        strengthText.style.color = level.color;
+      });
+
+      // Visibility toggles
+      modal.querySelectorAll('.profile-field__eye').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const input = document.getElementById(btn.getAttribute('data-target'));
+          const isPassword = input.type === 'password';
+          input.type = isPassword ? 'text' : 'password';
+          btn.textContent = isPassword ? '🙈' : '👁';
+        });
+      });
+
+      // Send reset email
+      resetEmailBtn.addEventListener('click', async () => {
+        const user = firebase.auth().currentUser;
+        if (!user?.email) return;
+        resetEmailBtn.disabled = true;
+        resetEmailBtn.textContent = 'Sending...';
+        try {
+          await firebase.auth().sendPasswordResetEmail(user.email);
+          showSaveToast('Password reset email sent! Check your inbox.');
+          closeModal();
+        } catch (err) {
+          errorEl.textContent = AuthService.getErrorMessage(err.code);
+        } finally {
+          resetEmailBtn.disabled = false;
+          resetEmailBtn.textContent = 'Send Reset Email';
+        }
+      });
+
+      // Update password
+      saveBtn.addEventListener('click', async () => {
+        errorEl.textContent = '';
+        const currentPw = document.getElementById('current-password').value;
+        const newPw = document.getElementById('new-password').value;
+        const confirmPw = document.getElementById('confirm-password').value;
+
+        if (!currentPw || !newPw || !confirmPw) { errorEl.textContent = 'Please fill in all fields.'; return; }
+        if (newPw.length < 6) { errorEl.textContent = 'New password must be at least 6 characters.'; return; }
+        if (newPw !== confirmPw) { errorEl.textContent = 'New passwords do not match.'; return; }
+
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Updating...';
+
+        try {
+          const user = firebase.auth().currentUser;
+          const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPw);
+          await user.reauthenticateWithCredential(credential);
+          await user.updatePassword(newPw);
+          showSaveToast('Password updated successfully!');
+          closeModal();
+        } catch (err) {
+          errorEl.textContent = err.code === 'auth/wrong-password'
+            ? 'Current password is incorrect.'
+            : AuthService.getErrorMessage(err.code);
+        } finally {
+          saveBtn.disabled = false;
+          saveBtn.textContent = 'Update Password';
+        }
+      });
     }
 
-    function setupNotificationPrefsSave() {
-      let saveTimeout = null;
+    function setupDeleteAccount() {
+      const modal = document.getElementById('delete-modal');
+      const openBtn = document.getElementById('delete-account-btn');
+      const closeBtn = document.getElementById('delete-modal-close');
+      const cancelBtn = document.getElementById('delete-cancel-btn');
+      const confirmBtn = document.getElementById('delete-confirm-btn');
+      const emailInput = document.getElementById('delete-confirm-email');
+      const passwordInput = document.getElementById('delete-confirm-password');
+      const passwordField = document.getElementById('delete-password-field');
+      const errorEl = document.getElementById('delete-error');
 
-      const elements = document.querySelectorAll('.profile-notifications-card input, .profile-notifications-card select');
-      elements.forEach(el => {
-        el.addEventListener('change', () => {
-          // Debounce saves
-          clearTimeout(saveTimeout);
-          saveTimeout = setTimeout(async () => {
-            try {
-              const updatedPrefs = {
-                email: document.getElementById('pref-email-digest').checked,
-                push: document.getElementById('pref-push-notif').checked,
-                frequency: document.getElementById('pref-frequency').value,
-                topics: {
-                  progress: document.getElementById('pref-topic-progress').checked,
-                  streaks: document.getElementById('pref-topic-streaks').checked,
-                  admin: true
-                }
-              };
+      function openModal() {
+        const user = firebase.auth().currentUser;
+        const hasPassword = user.providerData.some(p => p.providerId === 'password');
+        passwordField.style.display = hasPassword ? 'block' : 'none';
+        errorEl.textContent = '';
+        emailInput.value = '';
+        passwordInput.value = '';
+        confirmBtn.disabled = true;
+        modal.classList.add('active');
+      }
 
-              if (window.DataService?.updateNotificationPrefs) {
-                await window.DataService.updateNotificationPrefs(updatedPrefs);
-              }
-              showSaveToast('Preferences saved');
-            } catch (e) {
-              console.error('Error saving notification prefs:', e);
+      function closeModal() { modal.classList.remove('active'); }
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      cancelBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+      emailInput.addEventListener('input', () => {
+        const user = firebase.auth().currentUser;
+        confirmBtn.disabled = emailInput.value.trim().toLowerCase() !== user.email.toLowerCase();
+      });
+
+      confirmBtn.addEventListener('click', async () => {
+        errorEl.textContent = '';
+        const user = firebase.auth().currentUser;
+
+        if (emailInput.value.trim().toLowerCase() !== user.email.toLowerCase()) {
+          errorEl.textContent = 'Email does not match your account.';
+          return;
+        }
+
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = 'Deleting...';
+
+        try {
+          const hasPassword = user.providerData.some(p => p.providerId === 'password');
+          if (hasPassword) {
+            const pw = passwordInput.value;
+            if (!pw) {
+              errorEl.textContent = 'Please enter your password.';
+              confirmBtn.disabled = false;
+              confirmBtn.textContent = 'Delete My Account';
+              return;
             }
-          }, 500);
-        });
+            const credential = firebase.auth.EmailAuthProvider.credential(user.email, pw);
+            await user.reauthenticateWithCredential(credential);
+          } else {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            await user.reauthenticateWithPopup(provider);
+          }
+
+          const db = window.FirebaseApp.getDb();
+          const uid = user.uid;
+          const subcollections = ['courseProgress', 'notificationPrefs', 'notifications'];
+          for (const sub of subcollections) {
+            try {
+              const snap = await db.collection('users').doc(uid).collection(sub).get();
+              const batch = db.batch();
+              snap.docs.forEach(doc => batch.delete(doc.ref));
+              if (snap.docs.length > 0) await batch.commit();
+            } catch (e) { console.log(`Could not delete subcollection ${sub}:`, e); }
+          }
+
+          await db.collection('users').doc(uid).delete();
+          await user.delete();
+          window.location.href = '../index.html';
+        } catch (err) {
+          let msg = 'Failed to delete account. Please try again.';
+          if (err.code === 'auth/wrong-password') msg = 'Incorrect password.';
+          else if (err.code === 'auth/requires-recent-login') msg = 'Session expired. Please log out, log back in, and try again.';
+          else if (err.code === 'auth/popup-closed-by-user') msg = 'Re-authentication cancelled.';
+          errorEl.textContent = msg;
+          confirmBtn.disabled = false;
+          confirmBtn.textContent = 'Delete My Account';
+        }
       });
     }
 
@@ -1782,8 +2139,6 @@
 
       document.getElementById('profile-display-name').textContent = user.displayName;
       document.getElementById('profile-email').textContent = user.email;
-      document.getElementById('edit-display-name').value = user.displayName;
-      document.getElementById('display-email').textContent = user.email;
       document.getElementById('profile-role-badge').textContent = 'User';
       document.getElementById('profile-member-since').textContent = 'January 2025';
     }
