@@ -197,23 +197,31 @@ class BaseActivity {
     this.endTime = null;
     this.result = null;
     this.isComplete = false;
-    
+
     this.container.classList.remove(
       'activity-started',
-      'activity-submitted', 
+      'activity-submitted',
       'activity-completed',
       'activity-error'
     );
-    
+
     // Clear feedback
     const feedbackEl = this.container.querySelector('.activity-feedback');
     if (feedbackEl) {
       feedbackEl.innerHTML = '';
       feedbackEl.classList.remove('visible', 'correct', 'incorrect', 'partial');
     }
-    
+
+    // Clear previous attempt banner (but keep the data for reference)
+    this.clearPreviousAttempt();
+
     // Re-render
     this.render();
+
+    // Re-show previous attempt if we had one (so user still sees their previous answer)
+    if (this.previousAttempt) {
+      this.showPreviousAttempt(this.previousAttempt);
+    }
   }
   
   /**
@@ -339,24 +347,215 @@ class BaseActivity {
   // ============================================
   // PERSISTENCE
   // ============================================
-  
+
   /**
    * Load previous attempt from ActivityTracker (for restoring state)
    */
   async loadPreviousAttempt() {
     if (!window.ActivityTracker) return;
-    
+
+    // Wait for ActivityTracker data to be loaded
+    if (window.ActivityTracker.waitForDataLoaded) {
+      await window.ActivityTracker.waitForDataLoaded();
+    }
+
     // Check if ActivityTracker has previous attempts for this activity
     const attemptCount = window.ActivityTracker.getAttemptCount(this.id);
     if (attemptCount > 0) {
       this.attemptNumber = attemptCount;
-      
-      // If we have a hasCompleted check, use it
-      if (window.ActivityTracker.hasCompleted(this.id)) {
+
+      // Get best and most recent attempts
+      const bestAttempt = window.ActivityTracker.getBestAttempt?.(this.id);
+      const mostRecentAttempt = window.ActivityTracker.getMostRecentAttempt?.(this.id);
+
+      // If the best attempt was correct, mark as complete
+      if (bestAttempt && (bestAttempt.correct || bestAttempt.score >= 1.0)) {
         this.isComplete = true;
         this.container.classList.add('activity-completed');
       }
+
+      // Show the previous attempt (especially if wrong, so user can see what they tried)
+      if (mostRecentAttempt) {
+        this.previousAttempt = mostRecentAttempt;
+        this.showPreviousAttempt(mostRecentAttempt);
+      }
     }
+  }
+
+  /**
+   * Show previous attempt to the user (especially wrong answers)
+   * Override in subclasses for specific display logic
+   * @param {object} attempt - The previous attempt data from Firestore
+   */
+  showPreviousAttempt(attempt) {
+    if (!attempt) return;
+
+    this.previousAttempt = attempt;
+
+    // Add indicator that user has attempted before
+    this.container.classList.add('has-previous-attempt');
+
+    // Create or update previous attempt banner
+    let banner = this.container.querySelector('.previous-attempt-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.className = 'previous-attempt-banner';
+      // Insert at the top of the activity
+      this.container.insertBefore(banner, this.container.firstChild);
+    }
+
+    // Determine the message based on whether it was correct or not
+    const wasCorrect = attempt.correct || attempt.score >= 1.0;
+    const wasPartial = !wasCorrect && attempt.score >= 0.5;
+
+    if (wasCorrect) {
+      banner.innerHTML = `
+        <div class="previous-attempt-content correct">
+          <span class="attempt-icon">✅</span>
+          <span class="attempt-message">You answered this correctly!</span>
+        </div>
+      `;
+      banner.classList.add('correct');
+    } else {
+      // Show the wrong answer so user knows what they tried before
+      const previousAnswer = this.formatPreviousAnswer(attempt);
+      banner.innerHTML = `
+        <div class="previous-attempt-content ${wasPartial ? 'partial' : 'incorrect'}">
+          <span class="attempt-icon">${wasPartial ? '🔄' : '💡'}</span>
+          <span class="attempt-message">
+            ${wasPartial ? 'Partially correct before' : 'You tried this before'}
+            ${previousAnswer ? ` — <span class="previous-answer">${previousAnswer}</span>` : ''}
+          </span>
+          <span class="attempt-hint">Try a different answer!</span>
+        </div>
+      `;
+      banner.classList.add(wasPartial ? 'partial' : 'incorrect');
+    }
+
+    // Add styles if not already present
+    this.addPreviousAttemptStyles();
+  }
+
+  /**
+   * Format the previous answer for display
+   * Override in subclasses for specific formatting
+   * @param {object} attempt - The attempt data
+   * @returns {string} Formatted answer text
+   */
+  formatPreviousAnswer(attempt) {
+    if (!attempt.response) return '';
+
+    // Handle different response structures
+    if (attempt.response.selectedText) {
+      return `"${attempt.response.selectedText}"`;
+    }
+    if (attempt.response.selected !== undefined && attempt.response.selected !== null) {
+      return `Option ${attempt.response.selected + 1}`;
+    }
+    if (attempt.response.userAnswer) {
+      return `"${attempt.response.userAnswer}"`;
+    }
+    if (attempt.response.placements) {
+      // For drag-drop, show placement summary
+      const placementCount = Object.keys(attempt.response.placements).length;
+      const correctCount = attempt.response.correctCount || 0;
+      return `${correctCount}/${placementCount} matched`;
+    }
+    if (attempt.response.text) {
+      // Truncate long text responses
+      const text = attempt.response.text;
+      return text.length > 50 ? `"${text.substring(0, 47)}..."` : `"${text}"`;
+    }
+
+    return '';
+  }
+
+  /**
+   * Add CSS styles for previous attempt banner
+   */
+  addPreviousAttemptStyles() {
+    if (document.getElementById('previous-attempt-styles')) return;
+
+    const style = document.createElement('style');
+    style.id = 'previous-attempt-styles';
+    style.textContent = `
+      .previous-attempt-banner {
+        margin-bottom: 1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        animation: slideIn 0.3s ease;
+      }
+
+      .previous-attempt-banner.correct {
+        background: rgba(77, 182, 172, 0.15);
+        border: 1px solid rgba(77, 182, 172, 0.3);
+      }
+
+      .previous-attempt-banner.partial {
+        background: rgba(255, 183, 77, 0.15);
+        border: 1px solid rgba(255, 183, 77, 0.3);
+      }
+
+      .previous-attempt-banner.incorrect {
+        background: rgba(121, 134, 203, 0.15);
+        border: 1px solid rgba(121, 134, 203, 0.3);
+      }
+
+      .previous-attempt-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .previous-attempt-content .attempt-icon {
+        font-size: 1rem;
+      }
+
+      .previous-attempt-content .attempt-message {
+        color: var(--text-primary, #e8e8f0);
+      }
+
+      .previous-attempt-content .previous-answer {
+        color: var(--accent-stone, #7986cb);
+        font-weight: 500;
+      }
+
+      .previous-attempt-content .attempt-hint {
+        color: var(--text-secondary, #a8a8b8);
+        font-size: 0.8rem;
+        margin-left: auto;
+      }
+
+      .has-previous-attempt .activity-submit-btn {
+        /* Subtle indicator that this can be retried */
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /**
+   * Clear the previous attempt banner (e.g., when resetting)
+   */
+  clearPreviousAttempt() {
+    const banner = this.container.querySelector('.previous-attempt-banner');
+    if (banner) {
+      banner.remove();
+    }
+    this.container.classList.remove('has-previous-attempt');
+    this.previousAttempt = null;
   }
   
   // ============================================

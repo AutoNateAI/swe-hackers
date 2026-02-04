@@ -19,50 +19,95 @@ const ProgressTracker = {
    * @param {string} lessonId - e.g., 'ch0-origins', 'ch1-stone'
    */
   async init(courseId, lessonId) {
-    // Prevent double initialization
+    // Prevent double initialization for the same lesson
     if (this.isInitialized && this.courseId === courseId && this.lessonId === lessonId) {
       console.log('📊 Progress Tracker already initialized for this lesson');
       return;
     }
-    
-    // Reset state for new initialization
+
+    // Check if we're returning to the same lesson (page refresh/navigation back)
+    const isSameLesson = this.courseId === courseId && this.lessonId === lessonId;
+    const hadPreviousProgress = this.sections.length > 0 && this.sections.some(s => s.viewed);
+
+    // Store previous state if returning to same lesson
+    const previousSectionStates = isSameLesson && hadPreviousProgress
+      ? this.sections.map(s => ({ id: s.id, viewed: s.viewed, completed: s.completed, timeSpent: s.timeSpent }))
+      : null;
+
+    // Set course/lesson identifiers
     this.courseId = courseId;
     this.lessonId = lessonId;
-    this.startTime = Date.now();
-    this.sectionTimes = {};
+
+    // Only reset timing if this is a fresh visit (not returning to same lesson)
+    if (!isSameLesson || !hadPreviousProgress) {
+      this.startTime = Date.now();
+      this.sectionTimes = {};
+    }
+
+    // Initialize state
     this.sections = [];
     this.currentSection = null;
     this.isInitialized = false;
     this.completionShown = false;
-    
+
     // Find all sections on the page
     this.discoverSections();
-    
+
     // Only proceed if we found sections
     if (this.sections.length === 0) {
       console.log('📊 No sections found, retrying in 500ms...');
       setTimeout(() => this.init(courseId, lessonId), 500);
       return;
     }
-    
+
+    // Restore previous section states if returning to same lesson
+    if (previousSectionStates) {
+      console.log('📊 Restoring previous section states from memory');
+      previousSectionStates.forEach(prevSection => {
+        const section = this.sections.find(s => s.id === prevSection.id);
+        if (section) {
+          section.viewed = prevSection.viewed;
+          section.completed = prevSection.completed;
+          section.timeSpent = prevSection.timeSpent;
+        }
+      });
+
+      // Check if lesson was already complete
+      const viewedCount = this.sections.filter(s => s.viewed).length;
+      if (viewedCount === this.sections.length) {
+        this.completionShown = true;
+        console.log('📊 Lesson was already complete (from memory)');
+      }
+    }
+
     // Render the tracker UI immediately
     this.renderTracker();
-    
+
     // Set up scroll observer
     this.setupScrollObserver();
-    
+
     // Update UI to show initial state
     this.updateTrackerUI();
-    
-    // Load existing progress (async, don't block)
-    this.loadProgress().catch(err => console.error('Error loading progress:', err));
-    
-    // Set up auto-save
-    this.setupAutoSave();
-    
-    // Track page visibility for accurate time tracking
-    this.setupVisibilityTracking();
-    
+
+    // Load existing progress from Firestore (await to ensure we restore state before user interacts)
+    try {
+      await this.loadProgress();
+    } catch (err) {
+      console.error('Error loading progress:', err);
+    }
+
+    // Set up auto-save (only once)
+    if (!this._autoSaveSetup) {
+      this.setupAutoSave();
+      this._autoSaveSetup = true;
+    }
+
+    // Track page visibility for accurate time tracking (only once)
+    if (!this._visibilitySetup) {
+      this.setupVisibilityTracking();
+      this._visibilitySetup = true;
+    }
+
     this.isInitialized = true;
     console.log('📊 Progress Tracker initialized:', { courseId, lessonId, sections: this.sections.length });
   },

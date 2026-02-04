@@ -80,13 +80,83 @@ class ActivityCarousel {
     this.bindEvents();
     this.updateProgress();
     this.showSlide(0);
-    
+
+    // Listen for ActivityTracker data loaded event to refresh progress
+    this.setupDataLoadedListener();
+
+    // If data is already loaded, refresh immediately
+    if (window.ActivityTracker?.isDataLoaded()) {
+      this.refreshFromLoadedData();
+    }
+
     console.log(`🎠 ActivityCarousel initialized: ${this.containerId}`, {
       type: this.type,
       activities: this.activityConfigs.length
     });
-    
+
     return this;
+  }
+
+  /**
+   * Listen for ActivityTracker data loaded event
+   */
+  setupDataLoadedListener() {
+    this._dataLoadedHandler = (event) => {
+      console.log(`🎠 ActivityCarousel received dataLoaded event: ${this.containerId}`);
+      this.refreshFromLoadedData();
+    };
+    window.addEventListener('activityTrackerDataLoaded', this._dataLoadedHandler);
+  }
+
+  /**
+   * Refresh carousel state from loaded ActivityTracker data
+   */
+  refreshFromLoadedData() {
+    if (!window.ActivityTracker) return;
+
+    // Update each activity's completion state and dot status
+    this.activityInstances.forEach((activity, index) => {
+      if (!activity) return;
+
+      const bestAttempt = window.ActivityTracker.getBestAttempt(activity.id);
+      const mostRecentAttempt = window.ActivityTracker.getMostRecentAttempt(activity.id);
+
+      if (bestAttempt) {
+        // Update activity completion state
+        activity.attemptNumber = window.ActivityTracker.getAttemptCount(activity.id);
+
+        if (bestAttempt.correct || bestAttempt.score >= 1.0) {
+          activity.isComplete = true;
+          activity.container?.classList.add('activity-completed');
+        }
+
+        // Update dot status based on best attempt
+        const dot = this.container.querySelector(`.carousel-dot[data-index="${index}"]`);
+        if (dot) {
+          dot.classList.remove('correct', 'incorrect', 'partial');
+          if (bestAttempt.correct || bestAttempt.score >= 1.0) {
+            dot.classList.add('correct');
+          } else if (bestAttempt.score >= 0.5) {
+            dot.classList.add('partial');
+          } else {
+            dot.classList.add('incorrect');
+          }
+        }
+
+        // Notify activity to show previous attempt (for wrong answer display)
+        if (activity.showPreviousAttempt && mostRecentAttempt) {
+          activity.showPreviousAttempt(mostRecentAttempt);
+        }
+      }
+    });
+
+    // Update progress counter
+    this.updateProgress();
+
+    console.log(`🎠 Carousel refreshed from loaded data: ${this.containerId}`, {
+      completed: this.completedCount,
+      total: this.activityConfigs.length
+    });
   }
   
   /**
@@ -420,6 +490,11 @@ class ActivityCarousel {
    * Destroy carousel and cleanup
    */
   destroy() {
+    // Remove event listener
+    if (this._dataLoadedHandler) {
+      window.removeEventListener('activityTrackerDataLoaded', this._dataLoadedHandler);
+    }
+
     this.activityInstances.forEach(activity => {
       if (activity?.destroy) {
         activity.destroy();

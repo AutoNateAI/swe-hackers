@@ -306,67 +306,121 @@ const DataService = {
 
   /**
    * Get user's enrolled courses
+   * Uses Promise.allSettled for resilience - partial failures won't break the entire load
    */
   async getEnrolledCourses() {
     const user = window.AuthService.getUser();
     if (!user) return [];
-    
+
     const db = window.FirebaseApp.getDb();
     const progressCollection = db.collection('users').doc(user.uid)
                                 .collection('courseProgress');
-    
+
+    // Helper: wrap a promise with a timeout
+    const withTimeout = (promise, timeoutMs = 10000) => {
+      return Promise.race([
+        promise,
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Query timeout')), timeoutMs)
+        )
+      ]);
+    };
+
     try {
-      const snapshot = await progressCollection.get();
-      
-      // For each course, also fetch lesson progress from subcollection
-      const courses = await Promise.all(snapshot.docs.map(async doc => {
-        const courseData = { id: doc.id, ...doc.data() };
-        
-        // If lessons field is empty, fetch from subcollection
-        if (!courseData.lessons || Object.keys(courseData.lessons).length === 0) {
-          console.log('📊 Fetching lessons from subcollection for:', doc.id);
-          const lessonsSnapshot = await db.collection('users').doc(user.uid)
-            .collection('courseProgress').doc(doc.id)
-            .collection('lessonProgress').get();
-          
-          // Build lessons object from subcollection
-          const lessons = {};
-          let completedCount = 0;
-          
-          lessonsSnapshot.docs.forEach(lessonDoc => {
-            const lessonData = lessonDoc.data();
-            lessons[lessonDoc.id] = {
-              completed: lessonData.completed || lessonData.progressPercent >= 100 || 
-                        (lessonData.viewedSections >= lessonData.totalSections),
-              progressPercent: lessonData.progressPercent || 0,
-              viewedSections: lessonData.viewedSections || 0,
-              totalSections: lessonData.totalSections || 0,
-              totalTimeSpent: lessonData.totalTimeSpent || 0
-            };
-            
-            if (lessons[lessonDoc.id].completed) {
-              completedCount++;
+      // Get course list with timeout
+      const snapshot = await withTimeout(progressCollection.get(), 15000);
+
+      // Process each course with individual error handling
+      const coursePromises = snapshot.docs.map(async doc => {
+        try {
+          const courseData = { id: doc.id, ...doc.data() };
+
+          // If lessons field is empty, fetch from subcollection (with timeout)
+          if (!courseData.lessons || Object.keys(courseData.lessons).length === 0) {
+            console.log('📊 Fetching lessons from subcollection for:', doc.id);
+
+            try {
+              const lessonsSnapshot = await withTimeout(
+                db.collection('users').doc(user.uid)
+                  .collection('courseProgress').doc(doc.id)
+                  .collection('lessonProgress').get(),
+                8000
+              );
+
+              // Build lessons object from subcollection
+              const lessons = {};
+              let completedCount = 0;
+
+              lessonsSnapshot.docs.forEach(lessonDoc => {
+                const lessonData = lessonDoc.data();
+                lessons[lessonDoc.id] = {
+                  completed: lessonData.completed || lessonData.progressPercent >= 100 ||
+                            (lessonData.viewedSections >= lessonData.totalSections),
+                  progressPercent: lessonData.progressPercent || 0,
+                  viewedSections: lessonData.viewedSections || 0,
+                  totalSections: lessonData.totalSections || 0,
+                  totalTimeSpent: lessonData.totalTimeSpent || 0
+                };
+
+                if (lessons[lessonDoc.id].completed) {
+                  completedCount++;
+                }
+              });
+
+              courseData.lessons = lessons;
+              courseData.completedLessons = Math.max(courseData.completedLessons || 0, completedCount);
+              courseData.progressPercent = Math.round((completedCount / 7) * 100);
+
+              console.log('📊 Loaded lessons from subcollection:', {
+                courseId: doc.id,
+                lessonCount: Object.keys(lessons).length,
+                completedCount,
+                lessons
+              });
+            } catch (lessonError) {
+              // Lessons subcollection failed, but we can still show the course
+              console.warn('📊 Failed to load lessons for course:', doc.id, lessonError.message);
+              courseData.lessons = courseData.lessons || {};
+              courseData._lessonsLoadFailed = true;
             }
-          });
-          
-          courseData.lessons = lessons;
-          courseData.completedLessons = Math.max(courseData.completedLessons || 0, completedCount);
-          courseData.progressPercent = Math.round((completedCount / 7) * 100);
-          
-          console.log('📊 Loaded lessons from subcollection:', {
-            courseId: doc.id,
-            lessonCount: Object.keys(lessons).length,
-            completedCount,
-            lessons
-          });
+          }
+
+          return { success: true, course: courseData };
+        } catch (courseError) {
+          console.error('📊 Failed to process course:', doc.id, courseError.message);
+          return { success: false, courseId: doc.id, error: courseError.message };
         }
-        
-        return courseData;
-      }));
-      
+      });
+
+      // Use Promise.allSettled to handle partial failures gracefully
+      const results = await Promise.allSettled(coursePromises);
+
+      // Extract successfully loaded courses
+      const courses = [];
+      let failedCount = 0;
+
+      results.forEach((result, index) => {
+        if (result.status === 'fulfilled' && result.value.success) {
+          courses.push(result.value.course);
+        } else {
+          failedCount++;
+          console.warn('📊 Course load failed:', result.status === 'fulfilled'
+            ? result.value.error
+            : result.reason?.message);
+        }
+      });
+
+      if (failedCount > 0) {
+        console.warn(`📊 ${failedCount} course(s) failed to load, showing ${courses.length} courses`);
+      }
+
       return courses;
     } catch (error) {
       console.error('Error getting enrolled courses:', error);
+      // Return empty array on total failure, but log the specific error
+      if (error.message === 'Query timeout') {
+        console.error('📊 Course list query timed out - check network connection');
+      }
       return [];
     }
   },

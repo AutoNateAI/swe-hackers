@@ -312,15 +312,20 @@ function initQuizzes() {
 
 function initDragDrop() {
   const containers = document.querySelectorAll('.drag-drop-container');
-  
+
   containers.forEach(container => {
     const items = container.querySelectorAll('.drag-item');
     const zones = container.querySelectorAll('.drop-zone');
     const itemsContainer = container.querySelector('.drag-items');
+    const submitBtn = container.querySelector('.drag-drop-btn, .activity-btn, .check-btn');
+    const feedback = container.querySelector('.drag-drop-feedback, .quiz-feedback');
+
+    // Track current placements
+    const placements = {};
 
     items.forEach(item => {
       item.draggable = true;
-      
+
       item.addEventListener('dragstart', (e) => {
         item.classList.add('dragging');
         e.dataTransfer.setData('text/plain', item.dataset.value);
@@ -345,19 +350,28 @@ function initDragDrop() {
       zone.addEventListener('drop', (e) => {
         e.preventDefault();
         zone.classList.remove('drag-over');
-        
+
         const value = e.dataTransfer.getData('text/plain');
         const item = container.querySelector(`.drag-item[data-value="${value}"]`);
-        
+
         if (item) {
           const content = zone.querySelector('.drop-zone-content');
           if (content) {
+            // Remove item from previous zone tracking
+            Object.keys(placements).forEach(zoneId => {
+              if (placements[zoneId] === value) {
+                delete placements[zoneId];
+              }
+            });
+
             content.appendChild(item);
-            
-            // Check if correct
-            const correctValues = zone.dataset.accepts?.split(',') || [];
-            const isCorrect = correctValues.includes(value);
-            
+
+            // Track placement
+            const zoneId = zone.dataset.dropzone || zone.dataset.zone || zone.id;
+            if (zoneId) {
+              placements[zoneId] = value;
+            }
+
             // Animate drop
             anime({
               targets: item,
@@ -367,10 +381,8 @@ function initDragDrop() {
               easing: 'easeOutExpo'
             });
 
-            // Visual feedback
-            if (isCorrect) {
-              item.style.background = 'var(--success)';
-            }
+            // Check if all zones filled and enable submit button
+            checkAllZonesFilled();
           }
         }
       });
@@ -386,10 +398,103 @@ function initDragDrop() {
         e.preventDefault();
         const value = e.dataTransfer.getData('text/plain');
         const item = container.querySelector(`.drag-item[data-value="${value}"]`);
-        
+
         if (item) {
+          // Remove from placement tracking
+          Object.keys(placements).forEach(zoneId => {
+            if (placements[zoneId] === value) {
+              delete placements[zoneId];
+            }
+          });
+
           itemsContainer.appendChild(item);
           item.style.background = ''; // Reset color
+          item.classList.remove('correct', 'incorrect');
+          checkAllZonesFilled();
+        }
+      });
+    }
+
+    // Check if all zones are filled
+    function checkAllZonesFilled() {
+      const allFilled = Array.from(zones).every(zone => {
+        const zoneId = zone.dataset.dropzone || zone.dataset.zone || zone.id;
+        return placements[zoneId];
+      });
+
+      if (submitBtn) {
+        submitBtn.disabled = !allFilled;
+      }
+    }
+
+    // Handle submit/check button
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        let correctCount = 0;
+        const totalZones = zones.length;
+
+        // Check each zone and show feedback
+        zones.forEach(zone => {
+          const zoneId = zone.dataset.dropzone || zone.dataset.zone || zone.id;
+          const placedValue = placements[zoneId];
+          const correctValues = (zone.dataset.accepts || zone.dataset.correct || '').split(',').map(v => v.trim());
+          const isCorrect = correctValues.includes(placedValue);
+
+          // Find the item in this zone
+          const item = zone.querySelector('.drag-item');
+
+          if (isCorrect) {
+            correctCount++;
+            zone.classList.add('correct');
+            zone.classList.remove('incorrect');
+            if (item) {
+              item.classList.add('correct');
+              item.classList.remove('incorrect');
+              item.style.background = 'var(--success, #4caf50)';
+            }
+          } else {
+            zone.classList.add('incorrect');
+            zone.classList.remove('correct');
+            if (item) {
+              item.classList.add('incorrect');
+              item.classList.remove('correct');
+              item.style.background = 'var(--error, #ef5350)';
+            }
+          }
+
+          // Disable further dragging
+          zone.style.pointerEvents = 'none';
+        });
+
+        // Disable dragging on all items
+        items.forEach(item => {
+          item.draggable = false;
+          item.style.cursor = 'default';
+        });
+
+        // Show feedback
+        const allCorrect = correctCount === totalZones;
+
+        if (feedback) {
+          feedback.classList.add('show', allCorrect ? 'correct' : 'incorrect');
+          feedback.textContent = allCorrect
+            ? '✓ Perfect! All matches are correct!'
+            : `✗ ${correctCount}/${totalZones} correct. ${feedback.dataset.incorrectMsg || 'Check the highlighted items.'}`;
+        }
+
+        // Update button
+        submitBtn.disabled = true;
+        submitBtn.textContent = allCorrect ? 'Perfect! ✓' : `${correctCount}/${totalZones} Correct`;
+
+        // Animate feedback
+        if (feedback) {
+          anime({
+            targets: feedback,
+            opacity: [0, 1],
+            translateY: [10, 0],
+            duration: 400,
+            easing: 'easeOutExpo'
+          });
         }
       });
     }

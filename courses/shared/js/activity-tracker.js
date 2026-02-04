@@ -9,14 +9,20 @@ const ActivityTracker = {
   courseId: null,
   lessonId: null,
   activities: [],              // Legacy discovered activities
-  registeredActivities: {},    // NEW: BaseActivity instances by ID
-  completedActivities: {},     // NEW: Track completed activity IDs
+  registeredActivities: {},    // BaseActivity instances by ID
+  completedActivities: {},     // Track completed activity IDs
   activityTimers: {},
   correctAnswers: {},          // Cached from Firestore
   attemptCounts: {},
   isInitialized: false,
   lessonProgressThreshold: 0.9, // 90% to mark lesson complete
-  
+
+  // Attempt tracking (populated by loadAttemptCounts)
+  allAttempts: [],             // All attempts from Firestore
+  bestAttempts: {},            // Best attempt per activity
+  mostRecentAttempts: {},      // Most recent attempt per activity
+  _dataLoaded: false,          // Flag for data loaded state
+
   // localStorage keys
   QUEUE_KEY: 'activityTracker_queue',
   CACHE_KEY: 'activityTracker_answerCache',
@@ -32,7 +38,13 @@ const ActivityTracker = {
     this.activities = [];
     this.activityTimers = {};
     this.attemptCounts = {};
-    
+
+    // Reset attempt tracking state
+    this.allAttempts = [];
+    this.bestAttempts = {};
+    this.mostRecentAttempts = {};
+    this._dataLoaded = false;
+
     console.log('🎯 ActivityTracker initializing:', { courseId, lessonId });
     
     // Discover activities on the page
@@ -1353,46 +1365,152 @@ const ActivityTracker = {
   },
   
   /**
-   * Save attempt with offline caching support
+   * Save attempt with offline caching support and timeout handling
    */
   async saveAttemptWithCache(attemptData) {
     // Generate local ID for tracking
     const localId = `local-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     attemptData.localId = localId;
-    
-    // Always cache first (instant)
+
+    // Always cache first (instant) - ensures data is never lost
     this.cacheAttempt(attemptData);
-    
+
+    // Show saving indicator
+    this.showSavingIndicator(true);
+
     try {
-      // Try to save to Firestore
+      // Try to save to Firestore with timeout
       if (window.DataService) {
-        await window.DataService.saveActivityAttempt(attemptData);
+        await this.withTimeout(
+          window.DataService.saveActivityAttempt(attemptData),
+          10000, // 10 second timeout
+          'Save timeout'
+        );
         console.log('🎯 Attempt saved to Firestore:', attemptData.activityId);
-        
+
         // Success! Remove from cache
         this.removeCachedAttempt(localId);
+        this.showSavingIndicator(false);
       }
     } catch (error) {
-      if (this.isOfflineError(error)) {
+      this.showSavingIndicator(false);
+
+      if (this.isOfflineOrTimeoutError(error)) {
         // Queue for later sync
         this.queueForSync(attemptData);
-        this.showToast('📴 Saved offline - will sync when connected');
-        console.log('🎯 Attempt queued for sync:', attemptData.activityId);
+        const isTimeout = error.message?.includes('timeout') || error.message?.includes('Timeout');
+        this.showToast(isTimeout
+          ? '⏱️ Save timed out - will retry when connection improves'
+          : '📴 Saved offline - will sync when connected'
+        );
+        console.log('🎯 Attempt queued for sync:', attemptData.activityId, error.message);
       } else {
         console.error('🎯 Error saving attempt:', error);
-        throw error;
+        // Still keep in cache for retry, but notify user
+        this.showToast('⚠️ Save failed - will retry automatically');
       }
     }
   },
-  
+
   /**
-   * Check if error is due to being offline
+   * Wrap a promise with a timeout
+   * @param {Promise} promise - The promise to wrap
+   * @param {number} timeoutMs - Timeout in milliseconds
+   * @param {string} errorMessage - Error message on timeout
+   */
+  withTimeout(promise, timeoutMs, errorMessage = 'Operation timed out') {
+    return Promise.race([
+      promise,
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error(errorMessage)), timeoutMs)
+      )
+    ]);
+  },
+
+  /**
+   * Check if error is due to being offline or timeout
+   */
+  isOfflineOrTimeoutError(error) {
+    if (!navigator.onLine) return true;
+
+    const errorMessage = error.message?.toLowerCase() || '';
+    const errorCode = error.code?.toLowerCase() || '';
+
+    return (
+      errorCode === 'unavailable' ||
+      errorCode === 'deadline-exceeded' ||
+      errorMessage.includes('network') ||
+      errorMessage.includes('offline') ||
+      errorMessage.includes('timeout') ||
+      errorMessage.includes('timed out') ||
+      errorMessage.includes('failed to fetch') ||
+      errorMessage.includes('network request failed')
+    );
+  },
+
+  /**
+   * Legacy alias for backward compatibility
    */
   isOfflineError(error) {
-    return !navigator.onLine || 
-           error.code === 'unavailable' ||
-           error.message?.includes('network') ||
-           error.message?.includes('offline');
+    return this.isOfflineOrTimeoutError(error);
+  },
+
+  /**
+   * Show/hide saving indicator
+   */
+  showSavingIndicator(show) {
+    let indicator = document.querySelector('.activity-saving-indicator');
+
+    if (show) {
+      if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.className = 'activity-saving-indicator';
+        indicator.innerHTML = '<span class="saving-spinner"></span> Saving...';
+        document.body.appendChild(indicator);
+
+        // Add styles if not present
+        if (!document.getElementById('saving-indicator-styles')) {
+          const style = document.createElement('style');
+          style.id = 'saving-indicator-styles';
+          style.textContent = `
+            .activity-saving-indicator {
+              position: fixed;
+              bottom: 1rem;
+              right: 1rem;
+              background: var(--bg-secondary, #1a1a2e);
+              color: var(--text-secondary, #a8a8b8);
+              padding: 0.75rem 1.25rem;
+              border-radius: 8px;
+              border: 1px solid var(--border-color, #333);
+              font-size: 0.875rem;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              z-index: 9998;
+              animation: fadeIn 0.2s ease;
+            }
+            .saving-spinner {
+              width: 14px;
+              height: 14px;
+              border: 2px solid var(--text-secondary, #a8a8b8);
+              border-top-color: transparent;
+              border-radius: 50%;
+              animation: spin 0.8s linear infinite;
+            }
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      }
+    } else if (indicator) {
+      indicator.remove();
+    }
   },
   
   /**
@@ -1497,56 +1615,142 @@ const ActivityTracker = {
   async loadAttemptCounts() {
     if (!window.DataService) {
       console.log('🎯 DataService not available, skipping load');
+      this._dataLoaded = true;
+      this.emitDataLoaded();
       return;
     }
-    
+
     // Wait for auth state to be ready
     if (window.AuthService?.waitForAuthState) {
       console.log('🎯 Waiting for auth state...');
       await window.AuthService.waitForAuthState();
     }
-    
+
     const user = window.AuthService?.getUser();
     if (!user) {
       console.log('🎯 User not authenticated, skipping load');
+      this._dataLoaded = true;
+      this.emitDataLoaded();
       return;
     }
-    
+
     console.log('🎯 Loading attempts for user:', user.email);
-    
+
     try {
       const attempts = await window.DataService.getActivityAttempts({
         courseId: this.courseId,
         lessonId: this.lessonId
       });
-      
+
       console.log('🎯 Fetched attempts from Firestore:', attempts.length);
-      
-      // Track best attempts per activity for restoration
+
+      // Store all attempts for later access (for showing previous wrong answers)
+      this.allAttempts = attempts;
+
+      // Track best attempts AND most recent attempts per activity
       const bestAttempts = {};
-      
-      // Count attempts per activity and track best scores
+      const mostRecentAttempts = {};
+
+      // Count attempts per activity and track best/recent scores
       attempts.forEach(attempt => {
         const current = this.attemptCounts[attempt.activityId] || 0;
         this.attemptCounts[attempt.activityId] = Math.max(current, attempt.attemptNumber || 1);
-        
+
         // Track best attempt (highest score or correct)
-        if (!bestAttempts[attempt.activityId] || 
+        if (!bestAttempts[attempt.activityId] ||
             attempt.score > bestAttempts[attempt.activityId].score ||
             (attempt.correct && !bestAttempts[attempt.activityId].correct)) {
           bestAttempts[attempt.activityId] = attempt;
         }
+
+        // Track most recent attempt (by createdAt timestamp)
+        const attemptTime = attempt.createdAt?._seconds || 0;
+        const currentRecentTime = mostRecentAttempts[attempt.activityId]?.createdAt?._seconds || 0;
+        if (attemptTime >= currentRecentTime) {
+          mostRecentAttempts[attempt.activityId] = attempt;
+        }
       });
-      
+
+      // Store for access by activities
+      this.bestAttempts = bestAttempts;
+      this.mostRecentAttempts = mostRecentAttempts;
+
       console.log('🎯 Loaded attempt counts:', this.attemptCounts);
       console.log('🎯 Best attempts to restore:', Object.keys(bestAttempts));
-      
+
       // Restore completed activities visual state
       this.restoreCompletedActivities(bestAttempts);
-      
+
+      // Mark data as loaded and notify listeners
+      this._dataLoaded = true;
+      this.emitDataLoaded();
+
     } catch (error) {
       console.error('🎯 Error loading attempt counts:', error);
+      this._dataLoaded = true;
+      this.emitDataLoaded();
     }
+  },
+
+  /**
+   * Emit event when data is loaded (for carousels to refresh)
+   */
+  emitDataLoaded() {
+    console.log('🎯 Emitting dataLoaded event');
+    window.dispatchEvent(new CustomEvent('activityTrackerDataLoaded', {
+      detail: {
+        courseId: this.courseId,
+        lessonId: this.lessonId,
+        attemptCounts: this.attemptCounts,
+        bestAttempts: this.bestAttempts || {},
+        mostRecentAttempts: this.mostRecentAttempts || {}
+      }
+    }));
+  },
+
+  /**
+   * Check if data has been loaded
+   */
+  isDataLoaded() {
+    return this._dataLoaded === true;
+  },
+
+  /**
+   * Wait for data to be loaded (returns immediately if already loaded)
+   */
+  waitForDataLoaded() {
+    if (this._dataLoaded) {
+      return Promise.resolve();
+    }
+    return new Promise(resolve => {
+      const handler = () => {
+        window.removeEventListener('activityTrackerDataLoaded', handler);
+        resolve();
+      };
+      window.addEventListener('activityTrackerDataLoaded', handler);
+    });
+  },
+
+  /**
+   * Get the most recent attempt for an activity (includes wrong answers)
+   */
+  getMostRecentAttempt(activityId) {
+    return this.mostRecentAttempts?.[activityId] || null;
+  },
+
+  /**
+   * Get the best attempt for an activity
+   */
+  getBestAttempt(activityId) {
+    return this.bestAttempts?.[activityId] || null;
+  },
+
+  /**
+   * Get all attempts for an activity
+   */
+  getAttemptsForActivity(activityId) {
+    if (!this.allAttempts) return [];
+    return this.allAttempts.filter(a => a.activityId === activityId);
   },
   
   /**
