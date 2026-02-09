@@ -323,6 +323,14 @@ const RBACService = {
       organizations: ['endless-opportunities'],
       displayName: 'Endless Opportunities AI Bootcamp',
       partnerLogo: '/assets/partners/endless-opportunities-logo.png'
+    },
+
+    // Sports Simulation Tools (organization-specific)
+    'city-high-basketball': {
+      visibility: 'organization',
+      organizations: ['city-high-basketball'],
+      displayName: 'City High Basketball - Play Simulator',
+      description: 'AI-powered basketball play simulation and strategy tool for City High School athletics.'
     }
   },
 

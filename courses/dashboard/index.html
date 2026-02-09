@@ -244,6 +244,19 @@
           </ul>
         </div>
         
+        <!-- Basketball Section (hidden by default, shown for city-high-basketball org or admin) -->
+        <div class="nav-section" id="basketball-section" style="display: none;">
+          <span class="nav-section-title" style="color: #ef4444;">Basketball</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="basketball-sim.html" class="nav-link">
+                <span class="nav-icon">🏀</span>
+                <span class="nav-text">Play Simulator</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <!-- Admin Section (hidden by default, shown for admins) -->
         <div class="nav-section" id="admin-section" style="display: none;">
           <span class="nav-section-title" style="color: #f44336;">Admin</span>
@@ -648,6 +661,12 @@
         if (isAdmin) {
           document.getElementById('admin-section').style.display = 'block';
           isAdminUser = true;
+        }
+
+        // Show basketball section for city-high-basketball org members or admins
+        const hasBasketball = isAdmin || await window.RBACService.belongsToOrganization('city-high-basketball');
+        if (hasBasketball) {
+          document.getElementById('basketball-section').style.display = 'block';
         }
       }
       
