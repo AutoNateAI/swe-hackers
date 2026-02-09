@@ -184,7 +184,7 @@ body {
   justify-content: center;
   padding: calc(var(--nav-height) + 4rem) 2rem 4rem;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .hero-bg {
@@ -1112,7 +1112,15 @@ body {
   .hero {
     padding-top: calc(var(--nav-height) + 2rem);
   }
-  
+
+  .hero-float-1 {
+    right: 10px;
+  }
+
+  .hero-float-2 {
+    left: 10px;
+  }
+
   .hero-title {
     font-size: 2.5rem;
   }
@@ -1196,6 +1204,8 @@ body {
 /* ===== Marketing Diagrams (Interactive Preview) ===== */
 .interactive-preview {
   background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
 }
 
 .interactive-preview::before {
@@ -1282,6 +1292,8 @@ body {
 .marketing-diagram-canvas {
   height: 280px;
   position: relative;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .marketing-caption {
@@ -1369,6 +1381,7 @@ body {
 .marketing-diagram {
   position: relative;
   width: 100%;
+  max-width: 100%;
   min-height: 450px;
   background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(18, 18, 26, 0.95));
   border-radius: var(--radius-lg);

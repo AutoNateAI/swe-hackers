@@ -72,14 +72,28 @@ class PlatformDiagram {
    * Render the diagram SVG
    */
   render() {
-    const width = this.container.clientWidth;
-    const height = this.container.clientHeight || 400;
-    
+    // Calculate bounding box of all nodes so diagram scales to fit any screen
+    const padding = 40;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    this.nodes.forEach(node => {
+      const halfW = (node.width || 140) / 2;
+      const halfH = (node.height || 60) / 2;
+      minX = Math.min(minX, node.x - halfW);
+      minY = Math.min(minY, node.y - halfH);
+      maxX = Math.max(maxX, node.x + halfW);
+      maxY = Math.max(maxY, node.y + halfH);
+    });
+    const vbX = minX - padding;
+    const vbY = minY - padding;
+    const vbW = (maxX - minX) + padding * 2;
+    const vbH = (maxY - minY) + padding * 2;
+
     // Create SVG canvas
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('width', '100%');
     svg.setAttribute('height', '100%');
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.setAttribute('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     svg.classList.add('marketing-diagram-svg');
     
     // Define gradients and filters
