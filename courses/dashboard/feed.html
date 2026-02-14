@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed | AutoNateAI Learning Hub</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Critical styles -->
+  <style>
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+
+    .auth-loading {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <!-- Theme loader -->
+  <script src="../shared/js/theme-loader.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+  <link rel="stylesheet" href="../shared/css/feed.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">📰</div>
+      <div class="loading-spinner"></div>
+      <p>Loading your feed...</p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="courses.html" class="nav-link">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Course Library</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="challenges.html" class="nav-link">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Daily Challenges</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Learning</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="progress.html" class="nav-link">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">My Progress</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="achievements.html" class="nav-link">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Achievements</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="notes.html" class="nav-link">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Notes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Community</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="feed.html" class="nav-link active">
+                <span class="nav-icon">📰</span>
+                <span class="nav-text">Feed</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="nav-link">
+                <span class="nav-icon">💬</span>
+                <span class="nav-text">Discord</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="leaderboard.html" class="nav-link">
+                <span class="nav-icon">🏅</span>
+                <span class="nav-text">Leaderboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="settings.html" class="nav-link">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section" id="admin-section" style="display: none;">
+          <span class="nav-section-title" style="color: #f44336;">Admin</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../admin/" class="nav-link">
+                <span class="nav-icon">🛡️</span>
+                <span class="nav-text">Admin Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak">
+              <span>🔥</span>
+              <span id="user-streak">0</span> day streak
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title">Feed</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-actions">
+            <button class="action-btn" id="notification-btn" title="Notifications">
+              🔔
+              <span class="notification-dot" id="notification-dot"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Feed Layout (3-Column) -->
+      <div class="feed-layout">
+
+        <!-- Left Sidebar -->
+        <div class="feed-left-sidebar">
+
+          <!-- User Mini Profile -->
+          <div class="feed-sidebar-card feed-user-profile">
+            <div class="feed-user-profile__avatar" id="feed-avatar">
+              <span id="feed-avatar-letter">?</span>
+            </div>
+            <div class="feed-user-profile__name" id="feed-display-name">Loading...</div>
+            <div class="feed-user-profile__handle" id="feed-handle">@user</div>
+            <div class="feed-user-profile__stats">
+              <div class="feed-user-stat">
+                <div class="feed-user-stat__value" id="feed-post-count">0</div>
+                <div class="feed-user-stat__label">Posts</div>
+              </div>
+              <div class="feed-user-stat">
+                <div class="feed-user-stat__value" id="feed-follower-count">0</div>
+                <div class="feed-user-stat__label">Followers</div>
+              </div>
+              <div class="feed-user-stat">
+                <div class="feed-user-stat__value" id="feed-following-count">0</div>
+                <div class="feed-user-stat__label">Following</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trending Tags -->
+          <div class="feed-sidebar-card">
+            <div class="feed-sidebar-card__title">Trending Tags</div>
+            <div class="trending-tags" id="trending-tags">
+              <span class="trending-tag">#javascript</span>
+              <span class="trending-tag">#firebase</span>
+              <span class="trending-tag">#react</span>
+              <span class="trending-tag">#ai</span>
+              <span class="trending-tag">#python</span>
+              <span class="trending-tag">#automation</span>
+              <span class="trending-tag">#webdev</span>
+              <span class="trending-tag">#api</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Main Feed Column -->
+        <div class="feed-main">
+
+          <!-- Story Bar -->
+          <div class="story-bar" id="story-bar">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Feed Tabs -->
+          <div class="feed-tabs" id="feed-tabs">
+            <button class="feed-tab active" data-tab="following">Following</button>
+            <button class="feed-tab" data-tab="foryou">For You</button>
+            <button class="feed-tab" data-tab="trending">Trending</button>
+          </div>
+
+          <!-- Post Composer -->
+          <div class="post-composer" id="post-composer">
+            <div class="post-composer__top">
+              <div class="post-composer__avatar" id="composer-avatar">
+                <span id="composer-avatar-letter">?</span>
+              </div>
+              <textarea class="post-composer__input" id="composer-input"
+                placeholder="What are you building?" rows="1"
+                oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px'"></textarea>
+            </div>
+            <div class="post-type-selector" id="post-type-selector" style="display: none;">
+              <span class="post-type-chip active" data-type="status">💬 Status</span>
+              <span class="post-type-chip" data-type="code_snippet">💻 Code</span>
+              <span class="post-type-chip" data-type="project_showcase">🚀 Showcase</span>
+              <span class="post-type-chip" data-type="article">📰 Article</span>
+              <span class="post-type-chip" data-type="automation_template">⚡ Automation</span>
+              <span class="post-type-chip" data-type="collab_request">🤝 Collab</span>
+            </div>
+            <div class="post-composer__actions">
+              <div class="post-composer__tools">
+                <button class="composer-tool-btn" title="Code">💻</button>
+                <button class="composer-tool-btn" title="Image">🖼️</button>
+                <button class="composer-tool-btn" title="Link">🔗</button>
+                <button class="composer-tool-btn" title="Tag">🏷️</button>
+                <button class="composer-tool-btn" title="Automation">⚡</button>
+              </div>
+              <button class="post-composer__submit" id="composer-submit" disabled>Post</button>
+            </div>
+          </div>
+
+          <!-- New Posts Banner (hidden by default) -->
+          <div class="new-posts-banner" id="new-posts-banner">
+            ↑ New posts available
+          </div>
+
+          <!-- Feed Posts Container -->
+          <div id="feed-posts">
+            <!-- Skeleton loaders shown initially -->
+            <div class="skeleton-card" id="skeleton-1">
+              <div class="skeleton-row">
+                <div class="skeleton-circle"></div>
+                <div style="flex:1">
+                  <div class="skeleton-line skeleton-line--short"></div>
+                  <div class="skeleton-line skeleton-line--medium" style="height:8px"></div>
+                </div>
+              </div>
+              <div class="skeleton-line skeleton-line--long"></div>
+              <div class="skeleton-line skeleton-line--full"></div>
+              <div class="skeleton-line skeleton-line--medium"></div>
+            </div>
+            <div class="skeleton-card" id="skeleton-2">
+              <div class="skeleton-row">
+                <div class="skeleton-circle"></div>
+                <div style="flex:1">
+                  <div class="skeleton-line skeleton-line--short"></div>
+                  <div class="skeleton-line skeleton-line--medium" style="height:8px"></div>
+                </div>
+              </div>
+              <div class="skeleton-line skeleton-line--full"></div>
+              <div class="skeleton-line skeleton-line--long"></div>
+            </div>
+            <div class="skeleton-card" id="skeleton-3">
+              <div class="skeleton-row">
+                <div class="skeleton-circle"></div>
+                <div style="flex:1">
+                  <div class="skeleton-line skeleton-line--short"></div>
+                  <div class="skeleton-line skeleton-line--medium" style="height:8px"></div>
+                </div>
+              </div>
+              <div class="skeleton-line skeleton-line--long"></div>
+              <div class="skeleton-line skeleton-line--full"></div>
+              <div class="skeleton-line skeleton-line--medium"></div>
+              <div class="skeleton-line skeleton-line--short"></div>
+            </div>
+          </div>
+
+          <!-- Load More Sentinel -->
+          <div id="load-more-sentinel" style="height: 1px;"></div>
+
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="feed-right-sidebar">
+
+          <!-- Who to Follow -->
+          <div class="feed-sidebar-card">
+            <div class="feed-sidebar-card__title">Who to Follow</div>
+            <div id="follow-suggestions">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Active Challenges -->
+          <div class="feed-sidebar-card">
+            <div class="feed-sidebar-card__title">Active Challenges</div>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem; background: rgba(255,213,79,0.06); border-radius: 8px;">
+                <span style="font-size: 1.2rem;">⚡</span>
+                <div>
+                  <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary, #e8e8f0);">API Puzzle</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted, #6a6a80);">42 participants</div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem; background: rgba(121,134,203,0.06); border-radius: 8px;">
+                <span style="font-size: 1.2rem;">🧩</span>
+                <div>
+                  <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary, #e8e8f0);">Debug Quest</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted, #6a6a80);">28 participants</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Contributors -->
+          <div class="feed-sidebar-card">
+            <div class="feed-sidebar-card__title">Top Contributors</div>
+            <div id="top-contributors" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Story Viewer Overlay -->
+  <div class="story-viewer" id="story-viewer">
+    <div class="story-viewer__container" id="story-viewer-container">
+      <div class="story-viewer__progress" id="story-progress"></div>
+      <div class="story-viewer__header" id="story-header"></div>
+      <div class="story-viewer__content" id="story-content"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/rbac.js"></script>
+  <script src="../shared/js/notification-service.js"></script>
+  <script src="../shared/js/feed-service.js"></script>
+  <script src="../shared/js/follow-service.js"></script>
+  <script src="../shared/js/reaction-service.js"></script>
+  <script src="../shared/js/comment-service.js"></script>
+  <script src="../shared/js/bookmark-service.js"></script>
+  <script src="../shared/js/story-service.js"></script>
+
+  <script>
+    /**
+     * Feed Page Controller
+     * Orchestrates all feed components, demo data, and interactions
+     */
+    const FeedPage = {
+      currentTab: 'following',
+      posts: [],
+      cursor: null,
+      isLoading: false,
+      currentUser: null,
+      activeReactionPicker: null,
+
+      // ── Initialize ────────────────────────────────────────────
+      async init() {
+        const loadingScreen = document.getElementById('auth-loading');
+        const dashboardContent = document.getElementById('dashboard-content');
+
+        // Firebase init
+        if (window.FirebaseApp && window.FirebaseApp.init()) {
+          window.AuthService.init();
+          this.currentUser = await window.AuthService.waitForAuthState();
+        }
+
+        // Show dashboard (demo mode if no auth)
+        loadingScreen.classList.add('hidden');
+        dashboardContent.classList.add('ready');
+
+        // Setup user profile
+        this.setupUserProfile();
+
+        // Setup interactions
+        this.setupSidebar();
+        this.setupComposer();
+        this.setupTabs();
+        this.setupLogout();
+
+        // Load content
+        await Promise.all([
+          this.loadFeed(),
+          this.loadStories(),
+          this.loadSuggestions(),
+          this.loadTopContributors()
+        ]);
+
+        // Setup infinite scroll
+        this.setupInfiniteScroll();
+
+        // Admin check
+        if (window.RBACService) {
+          const isAdmin = await window.RBACService.hasRole('admin');
+          if (isAdmin) {
+            document.getElementById('admin-section').style.display = 'block';
+          }
+        }
+      },
+
+      // ── User Profile ──────────────────────────────────────────
+      setupUserProfile() {
+        const user = this.currentUser;
+        const name = user?.displayName || user?.email?.split('@')[0] || 'Builder';
+        const initial = name.charAt(0).toUpperCase();
+        const handle = '@' + (user?.email?.split('@')[0] || 'builder').toLowerCase();
+
+        // Sidebar user
+        const userNameEl = document.getElementById('user-name');
+        const userAvatarEl = document.getElementById('user-avatar');
+        if (userNameEl) userNameEl.textContent = name;
+        if (userAvatarEl) {
+          if (user?.photoURL) {
+            userAvatarEl.innerHTML = `<img src="${user.photoURL}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+          } else {
+            userAvatarEl.textContent = initial;
+          }
+        }
+
+        // Feed profile card
+        const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+        setEl('feed-display-name', name);
+        setEl('feed-handle', handle);
+        setEl('feed-avatar-letter', initial);
+
+        // Avatar images
+        ['feed-avatar', 'composer-avatar'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el && user?.photoURL) {
+            el.innerHTML = `<img src="${user.photoURL}" alt="${name}">`;
+          }
+        });
+
+        // Demo stats
+        setEl('feed-post-count', '12');
+        setEl('feed-follower-count', '48');
+        setEl('feed-following-count', '31');
+      },
+
+      // ── Sidebar Toggle ────────────────────────────────────────
+      setupSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const toggle = document.getElementById('sidebar-toggle');
+        const overlay = document.getElementById('sidebar-overlay');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+
+        if (toggle) {
+          toggle.addEventListener('click', () => sidebar.classList.toggle('collapsed'));
+        }
+        if (mobileBtn) {
+          mobileBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('mobile-open');
+            overlay.classList.toggle('active');
+          });
+        }
+        if (overlay) {
+          overlay.addEventListener('click', () => {
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('active');
+          });
+        }
+      },
+
+      // ── Post Composer ─────────────────────────────────────────
+      setupComposer() {
+        const input = document.getElementById('composer-input');
+        const submit = document.getElementById('composer-submit');
+        const typeSelector = document.getElementById('post-type-selector');
+
+        if (input) {
+          input.addEventListener('input', () => {
+            submit.disabled = !input.value.trim();
+            typeSelector.style.display = input.value.trim() ? 'flex' : 'none';
+          });
+          input.addEventListener('focus', () => {
+            typeSelector.style.display = input.value.trim() ? 'flex' : 'none';
+          });
+        }
+
+        // Type chip selection
+        document.querySelectorAll('.post-type-chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.post-type-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+          });
+        });
+
+        // Submit post
+        if (submit) {
+          submit.addEventListener('click', async () => {
+            const body = input.value.trim();
+            if (!body) return;
+
+            const activeType = document.querySelector('.post-type-chip.active');
+            const type = activeType?.dataset.type || 'status';
+
+            // Optimistic UI: add post to top
+            const user = this.currentUser;
+            const name = user?.displayName || user?.email?.split('@')[0] || 'You';
+            const newPost = {
+              id: 'new-' + Date.now(),
+              type,
+              authorId: user?.uid || 'demo',
+              authorName: name,
+              authorHandle: '@' + name.toLowerCase().replace(/\s+/g, ''),
+              authorAvatar: user?.photoURL || null,
+              bodyJson: { format: 'plaintext', content: body },
+              tags: [],
+              reactionCount: 0,
+              commentCount: 0,
+              bookmarkCount: 0,
+              createdAt: new Date(),
+              _isNew: true
+            };
+
+            this.posts.unshift(newPost);
+            this.renderPosts();
+
+            // Clear composer
+            input.value = '';
+            input.style.height = 'auto';
+            submit.disabled = true;
+            typeSelector.style.display = 'none';
+
+            // Animate new post
+            const firstCard = document.querySelector('.post-card');
+            if (firstCard && window.anime) {
+              anime({
+                targets: firstCard,
+                opacity: [0, 1],
+                translateY: [-20, 0],
+                duration: 400,
+                easing: 'easeOutCubic'
+              });
+            }
+
+            // Try to save to Firestore
+            if (window.FeedService?.createPost) {
+              await window.FeedService.createPost({
+                type,
+                bodyJson: { format: 'plaintext', content: body },
+                visibility: 'public',
+                tags: []
+              });
+            }
+          });
+        }
+      },
+
+      // ── Feed Tabs ─────────────────────────────────────────────
+      setupTabs() {
+        document.querySelectorAll('.feed-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            document.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            this.currentTab = tab.dataset.tab;
+            this.cursor = null;
+            this.posts = [];
+            this.loadFeed();
+          });
+        });
+      },
+
+      // ── Logout ────────────────────────────────────────────────
+      setupLogout() {
+        const logoutLink = document.getElementById('logout-link');
+        if (logoutLink) {
+          logoutLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (window.AuthService) {
+              await window.AuthService.logout();
+              window.location.href = '../auth/login.html';
+            }
+          });
+        }
+      },
+
+      // ── Load Feed ─────────────────────────────────────────────
+      async loadFeed() {
+        if (this.isLoading) return;
+        this.isLoading = true;
+
+        try {
+          let posts = [];
+
+          // Try Firestore first
+          if (window.FeedService && this.currentUser) {
+            if (this.currentTab === 'following') {
+              const result = await window.FeedService.getTimeline(this.cursor);
+              if (result.success && result.data?.length) {
+                const hydrated = await window.FeedService.hydratePosts(result.data.map(d => d.postId || d.id));
+                posts = hydrated.success ? hydrated.data : [];
+              }
+            } else if (this.currentTab === 'trending') {
+              const result = await window.FeedService.getTrending();
+              if (result.success) posts = result.data || [];
+            } else {
+              const result = await window.FeedService.getGlobalFeed(this.cursor);
+              if (result.success) posts = result.data || [];
+            }
+          }
+
+          // Fall back to demo data
+          if (!posts.length && !this.cursor) {
+            posts = window.FeedService?.getDemoPosts?.() || this.getLocalDemoPosts();
+          }
+
+          if (this.cursor) {
+            this.posts = [...this.posts, ...posts];
+          } else {
+            this.posts = posts;
+          }
+
+          this.renderPosts();
+        } catch (err) {
+          console.error('📰 Error loading feed:', err);
+          if (!this.posts.length) {
+            this.posts = window.FeedService?.getDemoPosts?.() || this.getLocalDemoPosts();
+            this.renderPosts();
+          }
+        } finally {
+          this.isLoading = false;
+        }
+      },
+
+      // ── Render Posts ──────────────────────────────────────────
+      renderPosts() {
+        const container = document.getElementById('feed-posts');
+        if (!container) return;
+
+        if (!this.posts.length) {
+          container.innerHTML = `
+            <div class="feed-empty-state">
+              <div class="feed-empty-state__icon">📭</div>
+              <div class="feed-empty-state__title">Your feed is empty</div>
+              <div class="feed-empty-state__message">Follow some builders or create your first post to get started!</div>
+            </div>`;
+          return;
+        }
+
+        container.innerHTML = this.posts.map(post => this.renderPostCard(post)).join('');
+
+        // Bind post interactions
+        this.bindPostInteractions();
+      },
+
+      // ── Render Single Post Card ───────────────────────────────
+      renderPostCard(post) {
+        const name = post.authorName || post.displayName || 'Unknown';
+        const handle = post.authorHandle || '@user';
+        const initial = name.charAt(0).toUpperCase();
+        const time = this.timeAgo(post.createdAt);
+        const body = post.bodyJson?.content || post.body || '';
+        const type = post.type || 'status';
+        const tags = post.tags || [];
+        const reactions = post.reactionCount || 0;
+        const comments = post.commentCount || 0;
+        const bookmarks = post.bookmarkCount || 0;
+
+        // Avatar
+        const avatarContent = post.authorAvatar
+          ? `<img src="${post.authorAvatar}" alt="${name}">`
+          : initial;
+
+        // Type badge
+        const typeBadges = {
+          status: '', code_snippet: '💻 Code', project_showcase: '🚀 Showcase',
+          article: '📰 Article', automation_template: '⚡ Automation',
+          run_result: '📊 Run Result', project_update: '📦 Update',
+          collab_request: '🤝 Collab', milestone: '🏆 Milestone',
+          challenge_win: '⚡ Challenge Win'
+        };
+        const typeBadge = typeBadges[type] ? `<span class="post-card__type-badge">${typeBadges[type]}</span>` : '';
+
+        // Mentor badge
+        const mentorBadge = post.mentorLevel ? `<span class="post-card__badge">${post.mentorLevel}</span>` : '';
+
+        // Body content with highlighted mentions/hashtags
+        const formattedBody = this.formatBody(body);
+
+        // Code block
+        let codeBlock = '';
+        if (post.codeBlock) {
+          codeBlock = `
+            <div class="post-card__code-block">
+              <div class="post-card__code-header">
+                <span class="post-card__code-lang">${post.codeBlock.language || 'code'}</span>
+                <button class="post-card__code-copy" onclick="FeedPage.copyCode(this)">Copy</button>
+              </div>
+              <pre class="post-card__code-content">${this.escapeHtml(post.codeBlock.code)}</pre>
+            </div>`;
+        }
+
+        // Attachment card (automation, project, run, collab)
+        let attachmentCard = '';
+        if (type === 'automation_template' && post.automationData) {
+          attachmentCard = this.renderAutomationAttachment(post.automationData);
+        } else if (type === 'run_result' && post.runData) {
+          attachmentCard = this.renderRunResultAttachment(post.runData);
+        } else if (type === 'project_update' && post.projectData) {
+          attachmentCard = this.renderProjectUpdateAttachment(post.projectData);
+        } else if (type === 'collab_request' && post.collabData) {
+          attachmentCard = this.renderCollabAttachment(post.collabData);
+        }
+
+        // Milestone special card
+        let milestoneCard = '';
+        if (type === 'milestone' && post.milestone) {
+          milestoneCard = `
+            <div class="milestone-celebration">
+              <div class="milestone-celebration__icon">${post.milestone.icon || '🏆'}</div>
+              <div class="milestone-celebration__title">${post.milestone.title}</div>
+              <div class="milestone-celebration__detail">${post.milestone.detail}</div>
+            </div>`;
+        }
+
+        // Tags
+        const tagsHtml = tags.length ? `
+          <div class="post-card__tags">
+            ${tags.map(t => `<span class="post-tag">#${t}</span>`).join('')}
+          </div>` : '';
+
+        // Reaction summary
+        const reactionEmojis = post.topReactions || ['🔥', '🧠'];
+        const reactionSummary = reactions > 0 ? `
+          <div class="reaction-summary">
+            <span class="reaction-summary__emojis">${reactionEmojis.map(e => `<span>${e}</span>`).join('')}</span>
+            <span>${reactions}</span>
+          </div>` : '';
+
+        // Comment preview
+        const commentPreview = post.topComment ? `
+          <div class="comment-section">
+            <div class="comment-preview">
+              <div class="comment-preview__avatar">${post.topComment.authorName?.charAt(0) || 'U'}</div>
+              <div class="comment-preview__text">
+                <strong>${post.topComment.authorName || 'User'}</strong> ${this.escapeHtml(post.topComment.text || '')}
+              </div>
+            </div>
+            ${comments > 1 ? `<button class="comment-section__view-all">View all ${comments} comments</button>` : ''}
+            <div class="comment-input-row">
+              <div class="comment-input-row__avatar" id="comment-avatar-${post.id}">${this.currentUser?.displayName?.charAt(0) || '?'}</div>
+              <input class="comment-input" placeholder="Add a comment..." data-post-id="${post.id}">
+            </div>
+          </div>` : `
+          <div class="comment-section">
+            <div class="comment-input-row">
+              <div class="comment-input-row__avatar">${this.currentUser?.displayName?.charAt(0) || '?'}</div>
+              <input class="comment-input" placeholder="Add a comment..." data-post-id="${post.id}">
+            </div>
+          </div>`;
+
+        const milestoneClass = type === 'milestone' ? ' post-card--milestone' : '';
+
+        return `
+          <div class="post-card${milestoneClass}" data-post-id="${post.id}">
+            <div class="post-card__header">
+              <div class="post-card__avatar">${avatarContent}</div>
+              <div class="post-card__author-info">
+                <div class="post-card__author-row">
+                  <span class="post-card__author-name">${this.escapeHtml(name)}</span>
+                  <span class="post-card__dot">·</span>
+                  <span class="post-card__author-handle">${this.escapeHtml(handle)}</span>
+                  <span class="post-card__dot">·</span>
+                  <span class="post-card__time">${time}</span>
+                </div>
+                <div class="post-card__meta-row">
+                  ${mentorBadge}${typeBadge}
+                </div>
+              </div>
+              <div class="post-card__menu-wrapper">
+                <button class="post-card__menu-btn" title="More" data-post-id="${post.id}">···</button>
+                <div class="post-card__dropdown" id="dropdown-${post.id}">
+                  ${(post.authorId === this.currentUser?.uid || post.authorId === 'demo') ? `
+                    <button class="post-card__dropdown-item" data-menu-action="edit" data-post-id="${post.id}">
+                      <span class="post-card__dropdown-icon">✏️</span> Edit Post
+                    </button>
+                    <button class="post-card__dropdown-item post-card__dropdown-item--danger" data-menu-action="delete" data-post-id="${post.id}">
+                      <span class="post-card__dropdown-icon">🗑️</span> Delete Post
+                    </button>
+                    <div class="post-card__dropdown-divider"></div>
+                  ` : ''}
+                  <button class="post-card__dropdown-item" data-menu-action="copy-link" data-post-id="${post.id}">
+                    <span class="post-card__dropdown-icon">🔗</span> Copy Link
+                  </button>
+                  <button class="post-card__dropdown-item" data-menu-action="report" data-post-id="${post.id}">
+                    <span class="post-card__dropdown-icon">🚩</span> Report Post
+                  </button>
+                  ${(post.authorId !== this.currentUser?.uid && post.authorId !== 'demo') ? `
+                    <button class="post-card__dropdown-item" data-menu-action="mute" data-post-id="${post.id}">
+                      <span class="post-card__dropdown-icon">🔇</span> Mute Author
+                    </button>
+                  ` : ''}
+                </div>
+              </div>
+            </div>
+
+            ${milestoneCard}
+            <div class="post-card__body">${formattedBody}</div>
+            ${codeBlock}
+            ${attachmentCard}
+            ${tagsHtml}
+
+            ${reactionSummary}
+            <div class="reaction-bar">
+              <button class="reaction-bar__action" data-action="react" data-post-id="${post.id}" style="position:relative;">
+                <span class="emoji">🔥</span>
+                <span class="reaction-bar__count">${reactions || ''}</span>
+                <div class="reaction-picker" id="picker-${post.id}">
+                  <button class="reaction-picker__btn" data-type="fire">🔥</button>
+                  <button class="reaction-picker__btn" data-type="brain">🧠</button>
+                  <button class="reaction-picker__btn" data-type="rocket">🚀</button>
+                  <button class="reaction-picker__btn" data-type="heart">❤️</button>
+                  <button class="reaction-picker__btn" data-type="clap">👏</button>
+                </div>
+              </button>
+              <button class="reaction-bar__action" data-action="comment" data-post-id="${post.id}">
+                <span class="emoji">💬</span>
+                <span class="reaction-bar__count">${comments || ''}</span>
+              </button>
+              <button class="reaction-bar__action" data-action="repost" data-post-id="${post.id}">
+                <span class="emoji">🔄</span>
+              </button>
+              <button class="reaction-bar__action" data-action="bookmark" data-post-id="${post.id}">
+                <span class="emoji">🔖</span>
+                <span class="reaction-bar__count">${bookmarks || ''}</span>
+              </button>
+            </div>
+
+            ${commentPreview}
+          </div>`;
+      },
+
+      // ── Attachment Renderers ───────────────────────────────────
+      renderAutomationAttachment(data) {
+        return `
+          <div class="attachment-card attachment-card--automation">
+            <div class="attachment-card__header">
+              <span class="attachment-card__icon">⚡</span>
+              <span class="attachment-card__label">Automation Template</span>
+            </div>
+            <div class="attachment-card__title">${this.escapeHtml(data.name)}</div>
+            <div class="attachment-card__detail">
+              Triggers: ${data.triggers?.join(' → ') || 'N/A'}<br>
+              Actions: ${data.actions?.join(' → ') || 'N/A'}
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.4rem">
+              Cloned ${data.cloneCount || 0} times
+            </div>
+            <div class="attachment-card__actions">
+              <button class="attachment-card__btn attachment-card__btn--primary">🔄 Clone Template</button>
+              <button class="attachment-card__btn attachment-card__btn--secondary">View Details</button>
+            </div>
+          </div>`;
+      },
+
+      renderRunResultAttachment(data) {
+        const statusClass = data.status === 'success' ? 'success' : data.status === 'failed' ? 'failed' : 'running';
+        const statusIcon = data.status === 'success' ? '✅' : data.status === 'failed' ? '❌' : '⏳';
+        return `
+          <div class="attachment-card attachment-card--run">
+            <div class="attachment-card__header">
+              <span class="attachment-card__icon">📊</span>
+              <span class="attachment-card__label">Run Result</span>
+              <span class="status-badge status-badge--${statusClass}" style="margin-left:auto">${statusIcon} ${data.status}</span>
+              <span style="font-size:0.8rem;color:var(--text-muted)">${data.duration || ''}</span>
+            </div>
+            <div class="attachment-card__title">${this.escapeHtml(data.name)}</div>
+            ${data.metrics ? `
+              <div class="run-metrics">
+                ${Object.entries(data.metrics).map(([k, v]) => `
+                  <div class="run-metric">
+                    <div class="run-metric__value">${v}</div>
+                    <div class="run-metric__label">${k}</div>
+                  </div>`).join('')}
+              </div>` : ''}
+            <div class="attachment-card__actions">
+              <button class="attachment-card__btn attachment-card__btn--secondary">📋 View Logs</button>
+              <button class="attachment-card__btn attachment-card__btn--secondary">▶️ Run Again</button>
+            </div>
+          </div>`;
+      },
+
+      renderProjectUpdateAttachment(data) {
+        return `
+          <div class="attachment-card attachment-card--project">
+            <div class="attachment-card__header">
+              <span class="attachment-card__icon">📦</span>
+              <span class="attachment-card__label">Project Update</span>
+              ${data.version ? `<span style="font-size:0.8rem;color:var(--accent-secondary);margin-left:auto">${data.version}</span>` : ''}
+            </div>
+            <div class="attachment-card__title">${this.escapeHtml(data.name)}</div>
+            ${data.releaseNotes ? `<div class="attachment-card__detail">${this.escapeHtml(data.releaseNotes)}</div>` : ''}
+            <div class="attachment-card__actions">
+              <button class="attachment-card__btn attachment-card__btn--secondary">📂 View Project</button>
+              <button class="attachment-card__btn attachment-card__btn--primary">👁 Follow Project</button>
+            </div>
+          </div>`;
+      },
+
+      renderCollabAttachment(data) {
+        return `
+          <div class="attachment-card attachment-card--collab">
+            <div class="attachment-card__header">
+              <span class="attachment-card__icon">🤝</span>
+              <span class="attachment-card__label">Looking for Collaborators</span>
+            </div>
+            <div class="attachment-card__title">${this.escapeHtml(data.projectName)}</div>
+            ${data.roles?.length ? `
+              <div class="collab-roles">
+                ${data.roles.map(r => `<span class="collab-role">${r}</span>`).join('')}
+              </div>` : ''}
+            ${data.skills?.length ? `
+              <div class="attachment-card__detail">Skills: ${data.skills.join(', ')}</div>` : ''}
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.4rem">
+              ${data.spotsOpen || 0} spots open · ${data.joined || 0} already joined
+            </div>
+            <div class="attachment-card__actions">
+              <button class="attachment-card__btn attachment-card__btn--primary">🙋 Join Project</button>
+              <button class="attachment-card__btn attachment-card__btn--secondary">View Details</button>
+            </div>
+          </div>`;
+      },
+
+      // ── Post Interactions ─────────────────────────────────────
+      bindPostInteractions() {
+        // Reaction buttons
+        document.querySelectorAll('[data-action="react"]').forEach(btn => {
+          let holdTimer;
+
+          btn.addEventListener('click', (e) => {
+            if (e.target.closest('.reaction-picker__btn')) return;
+            this.quickReact(btn.dataset.postId);
+          });
+
+          // Long press for picker
+          btn.addEventListener('mousedown', () => {
+            holdTimer = setTimeout(() => {
+              this.showReactionPicker(btn.dataset.postId);
+            }, 500);
+          });
+
+          btn.addEventListener('mouseup', () => clearTimeout(holdTimer));
+          btn.addEventListener('mouseleave', () => clearTimeout(holdTimer));
+        });
+
+        // Reaction picker buttons
+        document.querySelectorAll('.reaction-picker__btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const postCard = btn.closest('.post-card');
+            const postId = postCard?.dataset.postId;
+            if (postId) this.selectReaction(postId, btn.dataset.type);
+          });
+        });
+
+        // Comment inputs
+        document.querySelectorAll('.comment-input').forEach(input => {
+          input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && input.value.trim()) {
+              this.addComment(input.dataset.postId, input.value.trim());
+              input.value = '';
+            }
+          });
+        });
+
+        // Bookmark buttons
+        document.querySelectorAll('[data-action="bookmark"]').forEach(btn => {
+          btn.addEventListener('click', () => this.toggleBookmark(btn));
+        });
+
+        // 3-dot menu & dropdown actions (delegated so they work for all posts)
+        const feedContainer = document.getElementById('feed-posts');
+        if (feedContainer && !feedContainer._menuDelegated) {
+          feedContainer._menuDelegated = true;
+          feedContainer.addEventListener('click', (e) => {
+            // Handle menu button click
+            const menuBtn = e.target.closest('.post-card__menu-btn');
+            if (menuBtn) {
+              e.stopPropagation();
+              const postId = menuBtn.dataset.postId;
+              const dropdown = document.getElementById(`dropdown-${postId}`);
+              document.querySelectorAll('.post-card__dropdown.show').forEach(d => {
+                if (d !== dropdown) d.classList.remove('show');
+              });
+              dropdown?.classList.toggle('show');
+              return;
+            }
+
+            // Handle dropdown item click
+            const dropdownItem = e.target.closest('.post-card__dropdown-item');
+            if (dropdownItem) {
+              e.stopPropagation();
+              const action = dropdownItem.dataset.menuAction;
+              const postId = dropdownItem.dataset.postId;
+              dropdownItem.closest('.post-card__dropdown')?.classList.remove('show');
+              this.handleMenuAction(action, postId);
+              return;
+            }
+          });
+        }
+
+        // Close reaction picker AND dropdowns on outside click
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.reaction-picker') && !e.target.closest('[data-action="react"]')) {
+            document.querySelectorAll('.reaction-picker').forEach(p => p.classList.remove('show'));
+          }
+          if (!e.target.closest('.post-card__menu-wrapper')) {
+            document.querySelectorAll('.post-card__dropdown.show').forEach(d => d.classList.remove('show'));
+          }
+        });
+      },
+
+      quickReact(postId) {
+        const post = this.posts.find(p => p.id === postId);
+        if (post) {
+          post.reactionCount = (post.reactionCount || 0) + 1;
+          const btn = document.querySelector(`[data-action="react"][data-post-id="${postId}"]`);
+          if (btn) {
+            btn.classList.add('active');
+            const countEl = btn.querySelector('.reaction-bar__count');
+            if (countEl) countEl.textContent = post.reactionCount;
+
+            // Animate
+            if (window.anime) {
+              anime({ targets: btn.querySelector('.emoji'), scale: [1, 1.4, 1], duration: 300, easing: 'easeOutBack' });
+            }
+          }
+        }
+      },
+
+      showReactionPicker(postId) {
+        // Close any open pickers
+        document.querySelectorAll('.reaction-picker').forEach(p => p.classList.remove('show'));
+        const picker = document.getElementById(`picker-${postId}`);
+        if (picker) picker.classList.add('show');
+      },
+
+      selectReaction(postId, type) {
+        const emojiMap = { fire: '🔥', brain: '🧠', rocket: '🚀', heart: '❤️', clap: '👏' };
+        const post = this.posts.find(p => p.id === postId);
+        if (post) {
+          post.reactionCount = (post.reactionCount || 0) + 1;
+        }
+        const btn = document.querySelector(`[data-action="react"][data-post-id="${postId}"]`);
+        if (btn) {
+          btn.classList.add('active');
+          const emoji = btn.querySelector('.emoji');
+          if (emoji) emoji.textContent = emojiMap[type] || '🔥';
+          const countEl = btn.querySelector('.reaction-bar__count');
+          if (countEl && post) countEl.textContent = post.reactionCount;
+
+          if (window.anime) {
+            anime({ targets: emoji, scale: [1, 1.5, 1], duration: 400, easing: 'easeOutBack' });
+          }
+        }
+        // Close picker
+        document.querySelectorAll('.reaction-picker').forEach(p => p.classList.remove('show'));
+      },
+
+      addComment(postId, text) {
+        const post = this.posts.find(p => p.id === postId);
+        if (post) {
+          post.commentCount = (post.commentCount || 0) + 1;
+          post.topComment = {
+            authorName: this.currentUser?.displayName || 'You',
+            text: text
+          };
+          this.renderPosts();
+        }
+      },
+
+      toggleBookmark(btn) {
+        btn.classList.toggle('active');
+        const emoji = btn.querySelector('.emoji');
+        if (btn.classList.contains('active')) {
+          emoji.textContent = '🔖';
+          if (window.anime) {
+            anime({ targets: emoji, scale: [1, 1.3, 1], duration: 300, easing: 'easeOutBack' });
+          }
+        }
+      },
+
+      // ── Stories ───────────────────────────────────────────────
+      async loadStories() {
+        const bar = document.getElementById('story-bar');
+        if (!bar) return;
+
+        let stories = [];
+        if (window.StoryService?.getDemoStories) {
+          stories = window.StoryService.getDemoStories();
+        } else {
+          stories = this.getDemoStories();
+        }
+
+        // Add "Your Story" first
+        const user = this.currentUser;
+        const myName = user?.displayName?.split(' ')[0] || 'You';
+        const myInitial = myName.charAt(0);
+
+        bar.innerHTML = `
+          <div class="story-circle" onclick="FeedPage.createStory()">
+            <div class="story-circle__ring story-circle__ring--add">
+              <div class="story-circle__avatar">${user?.photoURL ? `<img src="${user.photoURL}" alt="${myName}">` : myInitial}</div>
+              <div class="story-circle__add-icon">+</div>
+            </div>
+            <span class="story-circle__name">Your Story</span>
+          </div>
+          ${stories.map(s => `
+            <div class="story-circle" onclick="FeedPage.viewStory('${s.authorId}')">
+              <div class="story-circle__ring${s.seen ? ' story-circle__ring--seen' : ''}">
+                <div class="story-circle__avatar">${s.authorAvatar ? `<img src="${s.authorAvatar}" alt="${s.authorName}">` : s.authorName?.charAt(0) || '?'}</div>
+              </div>
+              <span class="story-circle__name">${s.authorName?.split(' ')[0] || 'User'}</span>
+            </div>`).join('')}`;
+      },
+
+      createStory() {
+        // Placeholder — show toast
+        this.showToast('Stories coming soon! 📸');
+      },
+
+      viewStory(authorId) {
+        const viewer = document.getElementById('story-viewer');
+        const content = document.getElementById('story-content');
+        const header = document.getElementById('story-header');
+        const progress = document.getElementById('story-progress');
+
+        if (!viewer) return;
+
+        // Demo story content
+        const storyContents = {
+          'demo-sarah': { bg: 'linear-gradient(135deg, #7986cb, #4db6ac)', text: 'Just deployed my first Firebase Cloud Function! 🔥', author: 'Sarah Chen' },
+          'demo-marcus': { bg: 'linear-gradient(135deg, #ef5350, #ffd54f)', text: 'Working on a new AI pipeline for code review...', author: 'Marcus Johnson' },
+          'demo-aisha': { bg: 'linear-gradient(135deg, #4db6ac, #66bb6a)', text: 'Hit 100 days on my coding streak! 🏆', author: 'Aisha Patel' },
+          'demo-jordan': { bg: 'linear-gradient(135deg, #ab47bc, #7986cb)', text: 'Automation templates are the future of dev workflows ⚡', author: 'Jordan Kim' },
+          'demo-alex': { bg: 'linear-gradient(135deg, #ffd54f, #ef5350)', text: 'Who wants to collab on an open source project? 🤝', author: 'Alex Rivera' }
+        };
+
+        const story = storyContents[authorId] || storyContents['demo-sarah'];
+
+        const container = document.getElementById('story-viewer-container');
+        container.style.background = story.bg;
+
+        header.innerHTML = `
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;font-weight:600">${story.author.charAt(0)}</div>
+          <div>
+            <div style="font-size:0.9rem;font-weight:600;color:white">${story.author}</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.7)">2h ago</div>
+          </div>
+          <button class="story-viewer__close" onclick="FeedPage.closeStory()">✕</button>`;
+
+        progress.innerHTML = '<div class="story-viewer__progress-bar"><div class="story-viewer__progress-fill" id="story-fill"></div></div>';
+
+        content.textContent = story.text;
+        viewer.classList.add('open');
+
+        // Auto-advance progress
+        let width = 0;
+        const fill = document.getElementById('story-fill');
+        const interval = setInterval(() => {
+          width += 2;
+          if (fill) fill.style.width = width + '%';
+          if (width >= 100) {
+            clearInterval(interval);
+            this.closeStory();
+          }
+        }, 100);
+
+        this._storyInterval = interval;
+
+        // Click to close
+        viewer.addEventListener('click', (e) => {
+          if (e.target === viewer) this.closeStory();
+        });
+      },
+
+      closeStory() {
+        const viewer = document.getElementById('story-viewer');
+        if (viewer) viewer.classList.remove('open');
+        if (this._storyInterval) clearInterval(this._storyInterval);
+      },
+
+      // ── Follow Suggestions ────────────────────────────────────
+      async loadSuggestions() {
+        const container = document.getElementById('follow-suggestions');
+        if (!container) return;
+
+        let suggestions = [];
+        if (window.FollowService?.getDemoSuggestions) {
+          suggestions = window.FollowService.getDemoSuggestions();
+        } else {
+          suggestions = [
+            { name: 'Alex Rivera', reason: 'Similar interests', initial: 'A' },
+            { name: 'Jordan Kim', reason: 'Popular mentor', initial: 'J' },
+            { name: 'Priya Sharma', reason: 'Same courses', initial: 'P' },
+            { name: 'Liam O\'Brien', reason: 'Top contributor', initial: 'L' },
+            { name: 'Nina Park', reason: 'Automation expert', initial: 'N' }
+          ];
+        }
+
+        container.innerHTML = suggestions.map(s => `
+          <div class="follow-suggestion">
+            <div class="follow-suggestion__avatar">${s.initial || s.name?.charAt(0) || '?'}</div>
+            <div class="follow-suggestion__info">
+              <div class="follow-suggestion__name">${this.escapeHtml(s.name)}</div>
+              <div class="follow-suggestion__reason">${this.escapeHtml(s.reason)}</div>
+            </div>
+            <button class="follow-suggestion__btn" onclick="FeedPage.toggleFollow(this)">Follow</button>
+          </div>`).join('');
+      },
+
+      toggleFollow(btn) {
+        if (btn.textContent === 'Follow') {
+          btn.textContent = 'Following';
+          btn.style.background = 'rgba(121,134,203,0.15)';
+          btn.style.borderColor = 'transparent';
+          btn.style.color = 'var(--text-secondary)';
+        } else {
+          btn.textContent = 'Follow';
+          btn.style.background = 'transparent';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }
+      },
+
+      // ── Top Contributors ──────────────────────────────────────
+      async loadTopContributors() {
+        const container = document.getElementById('top-contributors');
+        if (!container) return;
+
+        const contributors = [
+          { name: 'Sarah Chen', score: '🧠 Sage', xp: '2,450 XP' },
+          { name: 'Marcus Johnson', score: '🎯 Mentor', xp: '1,820 XP' },
+          { name: 'Aisha Patel', score: '📚 Guide', xp: '1,340 XP' }
+        ];
+
+        container.innerHTML = contributors.map((c, i) => `
+          <div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;${i > 0 ? 'border-top:1px solid var(--feed-card-border)' : ''}">
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:white">${c.name.charAt(0)}</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">${c.name}</div>
+              <div style="font-size:0.7rem;color:var(--text-muted)">${c.score} · ${c.xp}</div>
+            </div>
+          </div>`).join('');
+      },
+
+      // ── Infinite Scroll ───────────────────────────────────────
+      setupInfiniteScroll() {
+        const sentinel = document.getElementById('load-more-sentinel');
+        if (!sentinel) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !this.isLoading && this.posts.length >= 20) {
+            this.cursor = this.posts[this.posts.length - 1];
+            this.loadFeed();
+          }
+        }, { rootMargin: '200px' });
+
+        observer.observe(sentinel);
+      },
+
+      // ── Utility ───────────────────────────────────────────────
+      formatBody(text) {
+        if (!text) return '';
+        let html = this.escapeHtml(text);
+        // @mentions
+        html = html.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
+        // #hashtags
+        html = html.replace(/#(\w+)/g, '<span class="hashtag">#$1</span>');
+        // URLs
+        html = html.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+        // Newlines
+        html = html.replace(/\n/g, '<br>');
+        return html;
+      },
+
+      escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      },
+
+      timeAgo(date) {
+        if (!date) return 'just now';
+        const now = new Date();
+        const d = date instanceof Date ? date : (date.toDate ? date.toDate() : new Date(date));
+        const diff = Math.floor((now - d) / 1000);
+
+        if (diff < 60) return 'just now';
+        if (diff < 3600) return Math.floor(diff / 60) + 'm';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h';
+        if (diff < 604800) return Math.floor(diff / 86400) + 'd';
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      },
+
+      // ── 3-Dot Menu Actions ──────────────────────────────────
+      handleMenuAction(action, postId) {
+        switch (action) {
+          case 'edit':
+            this.openEditPost(postId);
+            break;
+          case 'delete':
+            this.confirmDeletePost(postId);
+            break;
+          case 'copy-link':
+            navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?post=${postId}`)
+              .then(() => this.showToast('Link copied to clipboard'));
+            break;
+          case 'report':
+            this.showToast('Post reported. We\'ll review it shortly.');
+            break;
+          case 'mute':
+            const post = this.posts.find(p => p.id === postId);
+            if (post) {
+              this.showToast(`Muted ${post.authorName || 'user'}. You won't see their posts.`);
+            }
+            break;
+        }
+      },
+
+      openEditPost(postId) {
+        const post = this.posts.find(p => p.id === postId);
+        if (!post) return;
+        const body = post.bodyJson?.content || post.body || '';
+
+        // Create edit modal if it doesn't exist
+        let overlay = document.getElementById('post-edit-overlay');
+        if (!overlay) {
+          overlay = document.createElement('div');
+          overlay.id = 'post-edit-overlay';
+          overlay.className = 'post-edit-overlay';
+          overlay.innerHTML = `
+            <div class="post-edit-modal">
+              <div class="post-edit-modal__header">
+                <h3 class="post-edit-modal__title">Edit Post</h3>
+                <button class="post-edit-modal__close" id="post-edit-close">&times;</button>
+              </div>
+              <div class="post-edit-modal__body">
+                <textarea class="post-edit-modal__textarea" id="post-edit-textarea"></textarea>
+              </div>
+              <div class="post-edit-modal__footer">
+                <button class="post-edit-modal__btn post-edit-modal__btn--cancel" id="post-edit-cancel">Cancel</button>
+                <button class="post-edit-modal__btn post-edit-modal__btn--save" id="post-edit-save">Save Changes</button>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(overlay);
+
+          // Bind modal events
+          document.getElementById('post-edit-close').addEventListener('click', () => {
+            overlay.classList.remove('active');
+          });
+          document.getElementById('post-edit-cancel').addEventListener('click', () => {
+            overlay.classList.remove('active');
+          });
+          overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.classList.remove('active');
+          });
+        }
+
+        const textarea = document.getElementById('post-edit-textarea');
+        textarea.value = body;
+        overlay.dataset.postId = postId;
+        overlay.classList.add('active');
+        textarea.focus();
+
+        // Rebind save button
+        const saveBtn = document.getElementById('post-edit-save');
+        const newSaveBtn = saveBtn.cloneNode(true);
+        saveBtn.parentNode.replaceChild(newSaveBtn, saveBtn);
+        newSaveBtn.addEventListener('click', async () => {
+          const newBody = textarea.value.trim();
+          if (!newBody) return;
+
+          newSaveBtn.disabled = true;
+          newSaveBtn.textContent = 'Saving...';
+
+          try {
+            // Update in local posts array
+            const post = this.posts.find(p => p.id === postId);
+            if (post) {
+              if (post.bodyJson) {
+                post.bodyJson.content = newBody;
+              } else {
+                post.body = newBody;
+              }
+            }
+
+            // Try to update in Firestore via FeedService
+            if (window.FeedService?.updatePost) {
+              await window.FeedService.updatePost(postId, { bodyJson: { format: 'plaintext', content: newBody } });
+            }
+
+            this.renderPosts();
+            overlay.classList.remove('active');
+            this.showToast('Post updated');
+          } catch (e) {
+            console.error('Error updating post:', e);
+            this.showToast('Error updating post');
+          } finally {
+            newSaveBtn.disabled = false;
+            newSaveBtn.textContent = 'Save Changes';
+          }
+        });
+      },
+
+      confirmDeletePost(postId) {
+        const confirmed = confirm('Are you sure you want to delete this post? This cannot be undone.');
+        if (!confirmed) return;
+
+        // Remove from local array
+        this.posts = this.posts.filter(p => p.id !== postId);
+        this.renderPosts();
+
+        // Try to delete from Firestore
+        if (window.FeedService?.deletePost) {
+          window.FeedService.deletePost(postId).catch(e => {
+            console.error('Error deleting post from Firestore:', e);
+          });
+        }
+
+        this.showToast('Post deleted');
+      },
+
+      copyCode(btn) {
+        const code = btn.closest('.post-card__code-block')?.querySelector('.post-card__code-content')?.textContent;
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+          });
+        }
+      },
+
+      showToast(message) {
+        const toast = document.createElement('div');
+        toast.style.cssText = 'position:fixed;top:1.5rem;right:1.5rem;background:rgba(15,15,25,0.95);border:1px solid rgba(121,134,203,0.3);border-radius:12px;padding:0.8rem 1.2rem;color:#e8e8f0;font-family:Inter,sans-serif;font-size:0.9rem;z-index:10001;transform:translateX(120%);opacity:0;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);backdrop-filter:blur(20px)';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        requestAnimationFrame(() => {
+          toast.style.transform = 'translateX(0)';
+          toast.style.opacity = '1';
+        });
+        setTimeout(() => {
+          toast.style.transform = 'translateX(120%)';
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 400);
+        }, 3000);
+      },
+
+      // ── Demo Data (Inline Fallback) ───────────────────────────
+      getDemoStories() {
+        return [
+          { authorId: 'demo-sarah', authorName: 'Sarah Chen', authorAvatar: null, seen: false },
+          { authorId: 'demo-marcus', authorName: 'Marcus Johnson', authorAvatar: null, seen: false },
+          { authorId: 'demo-aisha', authorName: 'Aisha Patel', authorAvatar: null, seen: true },
+          { authorId: 'demo-jordan', authorName: 'Jordan Kim', authorAvatar: null, seen: false },
+          { authorId: 'demo-alex', authorName: 'Alex Rivera', authorAvatar: null, seen: true }
+        ];
+      },
+
+      getLocalDemoPosts() {
+        const hoursAgo = (h) => new Date(Date.now() - h * 3600000);
+        return [
+          {
+            id: 'demo-1',
+            type: 'status',
+            authorName: 'Sarah Chen',
+            authorHandle: '@sarahchen',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Just finished setting up real-time listeners with Firestore onSnapshot. The way data flows instantly to the UI without polling is incredible. Firebase really shines for social features! #firebase #realtime' },
+            tags: ['firebase', 'realtime', 'javascript'],
+            reactionCount: 24,
+            commentCount: 5,
+            bookmarkCount: 3,
+            topReactions: ['🔥', '🧠'],
+            mentorLevel: 'Sage',
+            topComment: { authorName: 'Marcus', text: 'onSnapshot is amazing once you understand detach patterns. Pro tip: always store the unsubscribe function!' },
+            createdAt: hoursAgo(2)
+          },
+          {
+            id: 'demo-2',
+            type: 'code_snippet',
+            authorName: 'Marcus Johnson',
+            authorHandle: '@marcusj',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Here\'s a clean pattern for cursor-based pagination with Firestore. No more offset queries!' },
+            codeBlock: {
+              language: 'javascript',
+              code: `async function loadNextPage(lastDoc, limit = 20) {\n  let query = db.collection('posts')\n    .orderBy('createdAt', 'desc')\n    .limit(limit);\n\n  if (lastDoc) {\n    query = query.startAfter(lastDoc);\n  }\n\n  const snapshot = await query.get();\n  return {\n    posts: snapshot.docs.map(d => ({ id: d.id, ...d.data() })),\n    cursor: snapshot.docs[snapshot.docs.length - 1]\n  };\n}`
+            },
+            tags: ['javascript', 'firebase', 'pagination'],
+            reactionCount: 31,
+            commentCount: 8,
+            bookmarkCount: 12,
+            topReactions: ['🧠', '🔥', '🚀'],
+            mentorLevel: 'Mentor',
+            topComment: { authorName: 'Aisha', text: 'Bookmarking this! So much cleaner than offset-based pagination.' },
+            createdAt: hoursAgo(4)
+          },
+          {
+            id: 'demo-3',
+            type: 'automation_template',
+            authorName: 'Aisha Patel',
+            authorHandle: '@aishap',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Sharing my auto-deploy pipeline! Push to main → build → test → deploy to Firebase Hosting. Zero manual steps.' },
+            automationData: {
+              name: 'Auto-Deploy to Firebase on Git Push',
+              triggers: ['onGitPush', 'main branch'],
+              actions: ['buildProject', 'runTests', 'deployFirebase'],
+              cloneCount: 47
+            },
+            tags: ['automation', 'firebase', 'devops', 'ci-cd'],
+            reactionCount: 42,
+            commentCount: 11,
+            bookmarkCount: 23,
+            topReactions: ['🚀', '🔥', '🧠'],
+            topComment: { authorName: 'Jordan', text: 'Cloned this immediately. Saved me hours of setup!' },
+            createdAt: hoursAgo(6)
+          },
+          {
+            id: 'demo-4',
+            type: 'milestone',
+            authorName: 'Jordan Kim',
+            authorHandle: '@jordank',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: '' },
+            milestone: {
+              icon: '🏆',
+              title: 'Completed The Apprentice\'s Path!',
+              detail: 'All 7 chapters mastered. From Origins to Architecture.'
+            },
+            tags: ['milestone', 'apprentice'],
+            reactionCount: 56,
+            commentCount: 14,
+            bookmarkCount: 2,
+            topReactions: ['👏', '🔥', '❤️'],
+            topComment: { authorName: 'Sarah', text: 'Congrats Jordan!! The Architect chapter is my favorite.' },
+            createdAt: hoursAgo(8)
+          },
+          {
+            id: 'demo-5',
+            type: 'run_result',
+            authorName: 'Alex Rivera',
+            authorHandle: '@alexr',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Weekly report generator ran flawlessly. 1,247 records processed in under 3 minutes with zero errors.' },
+            runData: {
+              name: 'Weekly Report Generator — Run #142',
+              status: 'success',
+              duration: '2m 34s',
+              metrics: { 'Records': '1,247', 'Errors': '0', 'Output': '3.2 MB' }
+            },
+            tags: ['automation', 'reports'],
+            reactionCount: 18,
+            commentCount: 3,
+            bookmarkCount: 5,
+            topReactions: ['🚀', '🔥'],
+            createdAt: hoursAgo(10)
+          },
+          {
+            id: 'demo-6',
+            type: 'project_showcase',
+            authorName: 'Priya Sharma',
+            authorHandle: '@priyas',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Excited to share my portfolio site built with vanilla JS, CSS Grid, and anime.js for the smooth transitions. Dark theme inspired by AutonateAI. Check it out!' },
+            tags: ['webdev', 'portfolio', 'css', 'javascript'],
+            reactionCount: 35,
+            commentCount: 9,
+            bookmarkCount: 7,
+            topReactions: ['🔥', '❤️', '🚀'],
+            mentorLevel: 'Guide',
+            topComment: { authorName: 'Alex', text: 'The animations are so smooth! Love the glassmorphism cards.' },
+            createdAt: hoursAgo(12)
+          },
+          {
+            id: 'demo-7',
+            type: 'collab_request',
+            authorName: 'Liam O\'Brien',
+            authorHandle: '@liamob',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Looking for collaborators on an AI-powered code review tool. We\'re building it as an open source project. All skill levels welcome!' },
+            collabData: {
+              projectName: 'AI-Powered Code Review Tool',
+              roles: ['🎨 UI Designer', '🔧 Backend Dev', '📊 ML Engineer'],
+              skills: ['Python', 'React', 'TensorFlow'],
+              spotsOpen: 3,
+              joined: 2
+            },
+            tags: ['collab', 'ai', 'opensource', 'python'],
+            reactionCount: 27,
+            commentCount: 16,
+            bookmarkCount: 8,
+            topReactions: ['🚀', '🧠', '❤️'],
+            topComment: { authorName: 'Priya', text: 'I\'d love to help with the UI! Sending you a DM.' },
+            createdAt: hoursAgo(15)
+          },
+          {
+            id: 'demo-8',
+            type: 'project_update',
+            authorName: 'Sarah Chen',
+            authorHandle: '@sarahchen',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'New release for the AutonateAI Dashboard. Big update with real-time collab, mobile fixes, and a brand new template gallery.' },
+            projectData: {
+              name: 'AutonateAI Dashboard',
+              version: 'v2.1.0',
+              releaseNotes: '• Added real-time collaboration\n• Fixed pagination bug on mobile\n• New automation template gallery'
+            },
+            tags: ['release', 'dashboard', 'autonateai'],
+            reactionCount: 44,
+            commentCount: 7,
+            bookmarkCount: 4,
+            topReactions: ['🚀', '🔥', '👏'],
+            mentorLevel: 'Sage',
+            topComment: { authorName: 'Liam', text: 'The template gallery is exactly what we needed!' },
+            createdAt: hoursAgo(18)
+          },
+          {
+            id: 'demo-9',
+            type: 'code_snippet',
+            authorName: 'Aisha Patel',
+            authorHandle: '@aishap',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: 'Quick tip: Use Firestore batch writes for follow/unfollow to keep your social graph consistent. Here\'s the pattern:' },
+            codeBlock: {
+              language: 'javascript',
+              code: `async function followUser(targetId) {\n  const uid = AuthService.getUser().uid;\n  const batch = db.batch();\n\n  batch.set(\n    db.doc(\`users/\${uid}/following/\${targetId}\`),\n    { createdAt: serverTimestamp() }\n  );\n  batch.set(\n    db.doc(\`users/\${targetId}/followers/\${uid}\`),\n    { createdAt: serverTimestamp() }\n  );\n  batch.set(\n    db.doc(\`follows/\${uid}_\${targetId}\`),\n    { followerId: uid, followingId: targetId,\n      createdAt: serverTimestamp() }\n  );\n\n  await batch.commit();\n}`
+            },
+            tags: ['firebase', 'social', 'javascript'],
+            reactionCount: 38,
+            commentCount: 6,
+            bookmarkCount: 15,
+            topReactions: ['🧠', '🔥'],
+            topComment: { authorName: 'Marcus', text: 'Batch writes are the way to go. Never leave your social graph in an inconsistent state!' },
+            createdAt: hoursAgo(22)
+          },
+          {
+            id: 'demo-10',
+            type: 'challenge_win',
+            authorName: 'Marcus Johnson',
+            authorHandle: '@marcusj',
+            authorAvatar: null,
+            bodyJson: { format: 'plaintext', content: '' },
+            milestone: {
+              icon: '⚡',
+              title: 'API Puzzle Challenge — Rank #1!',
+              detail: 'Score: 980/1000 · Time: 4m 22s'
+            },
+            tags: ['challenge', 'api'],
+            reactionCount: 29,
+            commentCount: 4,
+            bookmarkCount: 1,
+            topReactions: ['🔥', '👏', '🚀'],
+            mentorLevel: 'Mentor',
+            topComment: { authorName: 'Jordan', text: '#1?! That\'s insane. What was the trick for the last puzzle?' },
+            createdAt: hoursAgo(26)
+          }
+        ];
+      }
+    };
+
+    // ── Boot ──────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => FeedPage.init());
+  </script>
+
+</body>
+</html>

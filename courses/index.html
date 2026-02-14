@@ -33,6 +33,7 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="shared/css/marketing.css">
+  <link rel="stylesheet" href="shared/css/public-feed.css">
   
   <!-- Anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -42,12 +43,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
   
+  <!-- Firebase (for auth popup) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="shared/js/firebase-config.js"></script>
+  <script src="shared/js/auth.js"></script>
+
   <!-- Shared Components -->
   <script src="shared/js/navbar.js" defer></script>
   <script src="shared/js/footer.js" defer></script>
   <script src="shared/js/interactive/diagram-utils.js" defer></script>
   <script src="shared/js/interactive/marketing-diagram.js" defer></script>
   <script src="shared/js/marketing-diagram.js" defer></script>
+
+  <!-- Public Feed -->
+  <script src="shared/js/public-feed.js" defer></script>
 </head>
 <body>
   
@@ -180,6 +191,28 @@
     </div>
   </section>
   
+  <!-- Community Feed Preview -->
+  <section class="section public-feed-section" id="community-feed">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Live Community</div>
+        <h2 class="section-title">See What Builders Are Sharing</h2>
+        <p class="section-subtitle">
+          Real posts from developers learning, building, and shipping on AutoNateAI.
+          Code snippets, project showcases, challenge wins, and more.
+        </p>
+      </div>
+      <div id="public-feed-container"></div>
+    </div>
+  </section>
+
+  <!-- Floating CTA -->
+  <div class="public-feed-floating-cta" id="public-feed-floating-cta">
+    <span class="pf-floating-text">Join 500+ builders sharing code and projects</span>
+    <button class="pf-btn-primary" style="padding:0.5rem 1.25rem;font-size:0.8rem;">Sign Up Free</button>
+    <button class="pf-floating-dismiss">&times;</button>
+  </div>
+
   <!-- Quick Quiz Section -->
   <section class="section quick-quiz-section">
     <div class="section-container">

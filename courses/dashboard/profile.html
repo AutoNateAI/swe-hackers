@@ -8,31 +8,23 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Critical styles - must load before body renders -->
+  <!-- Critical styles -->
   <style>
     .dashboard { display: none !important; }
     .dashboard.ready { display: flex !important; }
-
     .auth-loading {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: #0a0a0f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       z-index: 9999;
     }
     .auth-loading.hidden { display: none; }
     .loading-content { text-align: center; color: #e8e8f0; }
     .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
     .loading-spinner {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border: 3px solid rgba(121, 134, 203, 0.3);
       border-top-color: #7986cb;
       border-radius: 50%;
@@ -47,12 +39,13 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="../shared/css/dashboard.css">
+  <link rel="stylesheet" href="../shared/css/feed.css">
 
-  <!-- Profile Page Styles -->
+  <!-- Unified Profile Page Styles -->
   <style>
-    /* ═══════════════════════════════════════════════════════════════
+    /* =================================================================
        PROFILE HEADER
-       ═══════════════════════════════════════════════════════════════ */
+       ================================================================= */
     .profile-header {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(20px);
@@ -60,35 +53,31 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       overflow: hidden;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
       position: relative;
     }
     .profile-header::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     }
     .profile-header__banner {
-      height: 120px;
+      height: 140px;
       background: linear-gradient(135deg, var(--accent-primary, #7986cb), var(--accent-secondary, #4db6ac));
       position: relative;
     }
     .profile-header__banner::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 40px;
+      bottom: 0; left: 0; right: 0;
+      height: 50px;
       background: linear-gradient(transparent, rgba(10, 10, 15, 0.6));
     }
     .profile-header__content {
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 1.5rem;
       padding: 0 2rem 1.5rem;
       margin-top: -48px;
@@ -114,23 +103,17 @@
       overflow: hidden;
     }
     .profile-avatar-large img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;
     }
     .profile-avatar-upload {
       position: absolute;
-      bottom: 2px;
-      right: 2px;
-      width: 28px;
-      height: 28px;
+      bottom: 2px; right: 2px;
+      width: 28px; height: 28px;
       border-radius: 50%;
       background: var(--bg-tertiary, #1a1a2e);
       border: 2px solid var(--bg-primary, #0a0a0f);
       color: var(--text-secondary, #a0a0b8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       font-size: 0.75rem;
       transition: var(--transition-fast, 0.15s ease);
@@ -141,25 +124,54 @@
     }
     .profile-header__info {
       flex: 1;
-      padding-bottom: 0.25rem;
+      padding-top: 52px;
+    }
+    .profile-header__top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.25rem;
     }
     .profile-display-name {
       font-family: var(--font-display, 'Space Grotesk', sans-serif);
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--text-primary, #e8e8f0);
-      margin: 0 0 0.25rem;
+      margin: 0;
     }
-    .profile-email {
+    .profile-header__actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .profile-edit-btn {
+      padding: 0.45rem 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
       color: var(--text-secondary, #a0a0b8);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .profile-edit-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary, #e8e8f0);
+    }
+    .profile-handle {
+      color: var(--text-muted, #6a6a80);
       font-size: 0.9rem;
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.35rem;
     }
     .profile-meta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       flex-wrap: wrap;
+      margin-bottom: 0.75rem;
     }
     .profile-role-badge {
       font-size: 0.65rem;
@@ -180,18 +192,121 @@
       color: var(--text-muted, #6a6a80);
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       QUICK STATS DETAIL
-       ═══════════════════════════════════════════════════════════════ */
+    /* Bio */
+    .profile-bio {
+      font-size: 0.9rem;
+      color: var(--text-secondary, #a0a0b8);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .profile-bio-edit {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-tertiary, #1a1a2e);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: var(--text-primary, #e8e8f0);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 60px;
+      max-height: 120px;
+      outline: none;
+      transition: border-color 0.2s;
+      display: none;
+    }
+    .profile-bio-edit:focus {
+      border-color: var(--accent-primary, #7986cb);
+    }
+
+    /* =================================================================
+       SOCIAL STATS BAR
+       ================================================================= */
+    .profile-social-stats {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .profile-social-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: default;
+    }
+    .profile-social-stat__value {
+      font-family: var(--font-display, 'Space Grotesk', sans-serif);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary, #e8e8f0);
+    }
+    .profile-social-stat__label {
+      font-size: 0.85rem;
+      color: var(--text-muted, #6a6a80);
+    }
+
+    /* =================================================================
+       PROFILE TABS
+       ================================================================= */
+    .profile-tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+    .profile-tab {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted, #6a6a80);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      position: relative;
+    }
+    .profile-tab:hover {
+      color: var(--text-secondary, #a0a0b8);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .profile-tab.active {
+      color: var(--accent-primary, #7986cb);
+      background: rgba(121, 134, 203, 0.08);
+    }
+    .profile-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 20%; right: 20%;
+      height: 2px;
+      background: var(--accent-primary, #7986cb);
+      border-radius: 1px;
+    }
+
+    /* Tab content */
+    .profile-tab-content {
+      display: none;
+    }
+    .profile-tab-content.active {
+      display: block;
+    }
+
+    /* =================================================================
+       QUICK STATS (from profile.html)
+       ================================================================= */
     .stat-detail {
       font-size: 0.75rem;
       color: var(--text-muted, #6a6a80);
       margin-top: 0.25rem;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       LEARNING OVERVIEW
-       ═══════════════════════════════════════════════════════════════ */
+    /* =================================================================
+       LEARNING OVERVIEW (from profile.html)
+       ================================================================= */
     .overview-overall {
       margin-bottom: 1.5rem;
     }
@@ -253,171 +368,10 @@
       text-align: right;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       ACCOUNT SETTINGS
-       ═══════════════════════════════════════════════════════════════ */
-    .profile-settings-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .profile-field {
-      margin-bottom: 1.25rem;
-    }
-    .profile-field:last-child {
-      margin-bottom: 0;
-    }
-    .profile-field__label {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted, #6a6a80);
-      margin-bottom: 0.5rem;
-    }
-    .profile-field__row {
-      display: flex;
-      gap: 0.5rem;
-    }
-    .profile-field__input {
-      flex: 1;
-      padding: 0.6rem 0.85rem;
-      background: var(--bg-tertiary, #1a1a2e);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      color: var(--text-primary, #e8e8f0);
-      font-family: var(--font-body, 'Inter', sans-serif);
-      font-size: 0.9rem;
-      transition: border-color 0.2s ease;
-    }
-    .profile-field__input:focus {
-      outline: none;
-      border-color: var(--accent-primary, #7986cb);
-    }
-    .profile-field__save {
-      padding: 0.6rem 1.25rem;
-      background: linear-gradient(135deg, var(--accent-primary, #7986cb), #9575cd);
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-    .profile-field__save:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(121, 134, 203, 0.3);
-    }
-    .profile-field__save:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .profile-field__value {
-      color: var(--text-secondary, #a0a0b8);
-      font-size: 0.9rem;
-      padding: 0.6rem 0;
-    }
-    .profile-field__action {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      color: var(--text-secondary, #a0a0b8);
-      font-family: var(--font-body, 'Inter', sans-serif);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .profile-field__action:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--text-primary, #e8e8f0);
-    }
-    .profile-field__action.danger:hover {
-      border-color: rgba(239, 83, 80, 0.4);
-      color: var(--accent-error, #ef5350);
-    }
 
-    /* Toggle Switches */
-    .profile-toggle-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .profile-toggle-row:last-child {
-      border-bottom: none;
-    }
-    .profile-toggle-label {
-      font-size: 0.85rem;
-      color: var(--text-secondary, #a0a0b8);
-    }
-    .profile-toggle {
-      position: relative;
-      width: 40px;
-      height: 22px;
-      cursor: pointer;
-    }
-    .profile-toggle input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .profile-toggle__slider {
-      position: absolute;
-      inset: 0;
-      background: var(--bg-tertiary, #1a1a2e);
-      border-radius: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-    .profile-toggle__slider::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 16px;
-      height: 16px;
-      background: var(--text-muted, #6a6a80);
-      border-radius: 50%;
-      transition: all 0.3s ease;
-    }
-    .profile-toggle input:checked + .profile-toggle__slider {
-      background: var(--accent-primary, #7986cb);
-      border-color: transparent;
-    }
-    .profile-toggle input:checked + .profile-toggle__slider::before {
-      transform: translateX(18px);
-      background: white;
-    }
-    .profile-select-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .profile-select {
-      padding: 0.35rem 0.65rem;
-      background: var(--bg-tertiary, #1a1a2e);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
-      color: var(--text-primary, #e8e8f0);
-      font-family: var(--font-body, 'Inter', sans-serif);
-      font-size: 0.8rem;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       LEARNING INSIGHTS
-       ═══════════════════════════════════════════════════════════════ */
+    /* =================================================================
+       LEARNING INSIGHTS (from profile.html)
+       ================================================================= */
     .profile-insights-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -431,9 +385,7 @@
       padding: 0.75rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .profile-insight-row:last-child {
-      border-bottom: none;
-    }
+    .profile-insight-row:last-child { border-bottom: none; }
     .profile-insight-label {
       font-size: 0.85rem;
       color: var(--text-secondary, #a0a0b8);
@@ -450,10 +402,7 @@
       gap: 0.5rem;
       flex: 0 0 180px;
     }
-    .profile-insight-bar .progress-bar {
-      flex: 1;
-      height: 6px;
-    }
+    .profile-insight-bar .progress-bar { flex: 1; height: 6px; }
     .profile-insight-percent {
       font-size: 0.8rem;
       color: var(--accent-primary, #7986cb);
@@ -470,18 +419,13 @@
       padding: 0.5rem 0;
     }
     .profile-strength-icon {
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       border-radius: 8px;
       background: rgba(121, 134, 203, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 0.9rem;
     }
-    .profile-strength-info {
-      flex: 1;
-    }
+    .profile-strength-info { flex: 1; }
     .profile-strength-name {
       font-size: 0.85rem;
       font-weight: 500;
@@ -516,8 +460,7 @@
       color: var(--text-secondary, #a0a0b8);
     }
     .profile-milestone-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--accent-primary, #7986cb);
       flex-shrink: 0;
@@ -529,9 +472,9 @@
       white-space: nowrap;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       GLASS CARD (inline for profile page)
-       ═══════════════════════════════════════════════════════════════ */
+    /* =================================================================
+       GLASS CARD (shared)
+       ================================================================= */
     .glass-card {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(20px);
@@ -546,11 +489,13 @@
     .glass-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    }
+    [data-theme="light"] .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.08);
     }
     .glass-card__title {
       font-size: 0.75rem;
@@ -563,13 +508,57 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .glass-card__title span {
-      font-size: 1rem;
-    }
+    .glass-card__title span { font-size: 1rem; }
 
-    /* ═══════════════════════════════════════════════════════════════
-       COMING SOON (reused from index.html)
-       ═══════════════════════════════════════════════════════════════ */
+
+
+    /* =================================================================
+       TOASTS
+       ================================================================= */
+    .save-toast {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      background: rgba(15, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(102, 187, 106, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      color: var(--text-primary, #e8e8f0);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      z-index: 10003;
+      display: flex; align-items: center; gap: 0.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transform: translateX(120%); opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      max-width: 320px;
+    }
+    .save-toast.show { transform: translateX(0); opacity: 1; }
+    .save-toast__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .save-toast__message { font-size: 0.85rem; font-weight: 500; color: #a5d6a7; }
+
+    .coming-soon-toast {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      background: rgba(15, 15, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(121, 134, 203, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      color: var(--text-primary, #e8e8f0);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      z-index: 10000;
+      display: flex; align-items: center; gap: 0.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(121, 134, 203, 0.1);
+      transform: translateX(120%); opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      max-width: 320px;
+    }
+    .coming-soon-toast.show { transform: translateX(0); opacity: 1; }
+    .coming-soon-toast__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .coming-soon-toast__content { display: flex; flex-direction: column; gap: 0.15rem; }
+    .coming-soon-toast__title { font-weight: 600; font-size: 0.9rem; color: #b8bfff; }
+    .coming-soon-toast__message { font-size: 0.8rem; color: rgba(232, 232, 240, 0.7); }
+
     .coming-soon-badge {
       font-size: 0.6rem;
       font-weight: 600;
@@ -579,75 +568,12 @@
       color: #b8bfff;
       padding: 2px 6px;
       border-radius: 4px;
-      white-space: nowrap;
+      margin-left: auto;
     }
-    .coming-soon-link {
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-    .coming-soon-link:hover {
-      opacity: 1;
-    }
-    .coming-soon-toast {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: rgba(15, 15, 25, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(121, 134, 203, 0.3);
-      border-radius: 12px;
-      padding: 1rem 1.5rem;
-      color: #e8e8f0;
-      font-family: var(--font-body, 'Inter', sans-serif);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(121, 134, 203, 0.1);
-      transform: translateX(120%);
-      opacity: 0;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-      max-width: 320px;
-    }
-    .coming-soon-toast.show {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    .coming-soon-toast__icon { font-size: 1.5rem; flex-shrink: 0; }
-    .coming-soon-toast__content { display: flex; flex-direction: column; gap: 0.15rem; }
-    .coming-soon-toast__title { font-weight: 600; font-size: 0.9rem; color: #b8bfff; }
-    .coming-soon-toast__message { font-size: 0.8rem; color: rgba(232, 232, 240, 0.7); }
 
-    /* Save toast (green variant) */
-    .save-toast {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: rgba(15, 15, 25, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(102, 187, 106, 0.3);
-      border-radius: 12px;
-      padding: 1rem 1.5rem;
-      color: #e8e8f0;
-      font-family: var(--font-body, 'Inter', sans-serif);
-      z-index: 10001;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      transform: translateX(120%);
-      opacity: 0;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-      max-width: 320px;
-    }
-    .save-toast.show { transform: translateX(0); opacity: 1; }
-    .save-toast__icon { font-size: 1.5rem; flex-shrink: 0; }
-    .save-toast__message { font-size: 0.85rem; font-weight: 500; color: #a5d6a7; }
-
-    /* ═══════════════════════════════════════════════════════════════
+    /* =================================================================
        EMPTY STATES
-       ═══════════════════════════════════════════════════════════════ */
+       ================================================================= */
     .profile-empty-state {
       display: flex;
       flex-direction: column;
@@ -667,164 +593,76 @@
       opacity: 0.8;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       MODALS
-       ═══════════════════════════════════════════════════════════════ */
-    .profile-modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      z-index: 10002;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+    /* =================================================================
+       POSTS TAB - User's Posts
+       ================================================================= */
+    .profile-posts-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted, #6a6a80);
     }
-    .profile-modal-overlay.active { display: flex; }
-    .profile-modal {
-      background: #12121a;
-      border: 1px solid rgba(121, 134, 203, 0.2);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
-      animation: modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    .profile-posts-empty__icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.4;
     }
-    .profile-modal--danger { border-color: rgba(239, 83, 80, 0.3); }
-    @keyframes modalSlideIn {
-      from { opacity: 0; transform: translateY(20px) scale(0.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .profile-modal__header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .profile-modal__title {
-      font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+    .profile-posts-empty__title {
       font-size: 1.1rem;
       font-weight: 600;
-      color: #e8e8f0;
-      margin: 0;
+      color: var(--text-secondary, #a0a0b8);
+      margin-bottom: 0.35rem;
     }
-    .profile-modal__close {
-      background: none; border: none;
-      color: #a0a0b8; font-size: 1.5rem;
-      cursor: pointer; padding: 0; line-height: 1;
-      transition: color 0.2s;
-    }
-    .profile-modal__close:hover { color: #e8e8f0; }
-    .profile-modal__body {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .profile-modal__footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-      padding: 1rem 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .profile-modal__info {
-      background: rgba(121, 134, 203, 0.1);
-      border: 1px solid rgba(121, 134, 203, 0.2);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
+    .profile-posts-empty__desc {
       font-size: 0.85rem;
-      color: #b8bfff;
-      line-height: 1.5;
     }
-    .profile-modal__warning {
-      display: flex; gap: 0.75rem;
-      background: rgba(239, 83, 80, 0.08);
-      border: 1px solid rgba(239, 83, 80, 0.2);
-      border-radius: 8px;
-      padding: 1rem;
-      font-size: 0.85rem;
-      color: #ef9a9a;
-      line-height: 1.5;
-    }
-    .profile-modal__warning-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
-    .profile-modal__warning p { margin: 0.25rem 0 0; color: #a0a0b8; }
-    .profile-modal__error {
-      font-size: 0.8rem;
-      color: #ef5350;
-      min-height: 1.2em;
-    }
-    .profile-modal__btn {
+    .profile-posts-empty__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
       padding: 0.6rem 1.25rem;
+      background: linear-gradient(135deg, var(--accent-primary, #7986cb), #5c6bc0);
+      color: #fff;
+      border: none;
       border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-      font-family: var(--font-body, 'Inter', sans-serif);
+      text-decoration: none;
+      transition: opacity 0.2s;
     }
-    .profile-modal__btn.primary {
-      background: linear-gradient(135deg, #7986cb, #5c6bc0);
-      color: #fff;
-    }
-    .profile-modal__btn.primary:hover { opacity: 0.9; }
-    .profile-modal__btn.primary:disabled { opacity: 0.4; cursor: not-allowed; }
-    .profile-modal__btn.secondary {
-      background: rgba(255, 255, 255, 0.06);
-      color: #a0a0b8;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .profile-modal__btn.secondary:hover { background: rgba(255, 255, 255, 0.1); color: #e8e8f0; }
-    .profile-modal__btn.danger {
-      background: linear-gradient(135deg, #ef5350, #c62828);
-      color: #fff;
-    }
-    .profile-modal__btn.danger:hover { opacity: 0.9; }
-    .profile-modal__btn.danger:disabled { opacity: 0.4; cursor: not-allowed; }
+    .profile-posts-empty__cta:hover { opacity: 0.9; }
 
-    /* Password visibility toggle */
-    .profile-field__input-wrap {
-      position: relative;
+    /* =================================================================
+       SECTION HEADERS
+       ================================================================= */
+    .section-header {
+      margin-bottom: 1rem;
+      margin-top: 2rem;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
-    .profile-field__input-wrap .profile-field__input { flex: 1; padding-right: 2.5rem; }
-    .profile-field__eye {
-      position: absolute; right: 0.5rem;
-      background: none; border: none;
-      cursor: pointer; font-size: 1rem;
-      opacity: 0.5; transition: opacity 0.2s;
-      padding: 0.25rem;
+    .section-header:first-child { margin-top: 0; }
+    .section-title {
+      font-family: var(--font-display, 'Space Grotesk', sans-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary, #e8e8f0);
     }
-    .profile-field__eye:hover { opacity: 0.9; }
+    .section-action {
+      font-size: 0.8rem;
+      color: var(--accent-primary, #7986cb);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .section-action:hover { opacity: 0.8; }
 
-    /* Password strength bar */
-    .password-strength {
-      display: flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem;
-    }
-    .password-strength__bar {
-      flex: 1; height: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 2px; overflow: hidden;
-    }
-    .password-strength__fill {
-      display: block; height: 100%; border-radius: 2px;
-      transition: width 0.3s, background 0.3s;
-      width: 0;
-    }
-    .password-strength__text {
-      font-size: 0.7rem; font-weight: 600;
-      min-width: 3rem; text-align: right;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
+    /* =================================================================
        RESPONSIVE
-       ═══════════════════════════════════════════════════════════════ */
+       ================================================================= */
     @media (max-width: 1024px) {
-      .profile-settings-grid,
       .profile-insights-grid {
         grid-template-columns: 1fr;
       }
@@ -836,28 +674,29 @@
         text-align: center;
         padding: 0 1.25rem 1.25rem;
       }
-      .profile-meta {
-        justify-content: center;
+      .profile-header__info { padding-top: 0.5rem; }
+      .profile-header__top-row {
+        flex-direction: column;
+        gap: 0.5rem;
       }
-      .profile-insight-bar {
-        flex: 0 0 120px;
-      }
+      .profile-meta { justify-content: center; }
+      .profile-social-stats { justify-content: center; }
+      .profile-insight-bar { flex: 0 0 120px; }
     }
     @media (max-width: 480px) {
       .profile-avatar-large {
-        width: 72px;
-        height: 72px;
-        font-size: 2rem;
+        width: 72px; height: 72px; font-size: 2rem;
       }
-      .profile-display-name {
-        font-size: 1.35rem;
+      .profile-display-name { font-size: 1.35rem; }
+      .profile-header__banner { height: 100px; }
+      .profile-header__content { margin-top: -36px; }
+      .profile-social-stats {
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
       }
-      .profile-header__banner {
-        height: 90px;
-      }
-      .profile-header__content {
-        margin-top: -36px;
-      }
+      .profile-tabs { border-radius: 12px; }
+      .profile-tab { font-size: 0.8rem; padding: 0.7rem 0.5rem; }
     }
   </style>
 
@@ -875,7 +714,7 @@
   <!-- Loading Screen -->
   <div class="auth-loading" id="auth-loading">
     <div class="loading-content">
-      <div class="loading-icon">🏛️</div>
+      <div class="loading-icon">👤</div>
       <div class="loading-spinner"></div>
       <p>Loading your profile...</p>
     </div>
@@ -943,6 +782,12 @@
         <div class="nav-section">
           <span class="nav-section-title">Community</span>
           <ul class="nav-list">
+            <li class="nav-item">
+              <a href="feed.html" class="nav-link">
+                <span class="nav-icon">📰</span>
+                <span class="nav-text">Feed</span>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="nav-link">
                 <span class="nav-icon">💬</span>
@@ -1039,11 +884,11 @@
         </div>
       </header>
 
-      <!-- Content -->
+      <!-- Content Area -->
       <div class="content-area">
 
         <!-- ══════════════════════════════════════════════════════════
-             SECTION 1: PROFILE HEADER
+             PROFILE HEADER (Social Media Style)
              ══════════════════════════════════════════════════════════ -->
         <div class="profile-header">
           <div class="profile-header__banner"></div>
@@ -1055,260 +900,177 @@
               </button>
             </div>
             <div class="profile-header__info">
-              <h2 class="profile-display-name" id="profile-display-name">Loading...</h2>
-              <p class="profile-email" id="profile-email">...</p>
+              <div class="profile-header__top-row">
+                <h2 class="profile-display-name" id="profile-display-name">Loading...</h2>
+                <div class="profile-header__actions">
+                  <button class="profile-edit-btn" id="edit-profile-btn">Edit Profile</button>
+                </div>
+              </div>
+              <p class="profile-handle" id="profile-handle">@user</p>
               <div class="profile-meta">
                 <span class="profile-role-badge" id="profile-role-badge">User</span>
                 <span class="profile-member-since">Member since <span id="profile-member-since">...</span></span>
               </div>
+              <p class="profile-bio" id="profile-bio">No bio yet. Click Edit Profile to add one.</p>
+              <textarea class="profile-bio-edit" id="profile-bio-edit" placeholder="Tell the community about yourself..." maxlength="280"></textarea>
+            </div>
+          </div>
+
+          <!-- Social Stats -->
+          <div class="profile-social-stats">
+            <div class="profile-social-stat">
+              <span class="profile-social-stat__value" id="stat-posts">0</span>
+              <span class="profile-social-stat__label">Posts</span>
+            </div>
+            <div class="profile-social-stat">
+              <span class="profile-social-stat__value" id="stat-followers">0</span>
+              <span class="profile-social-stat__label">Followers</span>
+            </div>
+            <div class="profile-social-stat">
+              <span class="profile-social-stat__value" id="stat-following">0</span>
+              <span class="profile-social-stat__label">Following</span>
+            </div>
+            <div class="profile-social-stat">
+              <span class="profile-social-stat__value" id="stat-courses">0</span>
+              <span class="profile-social-stat__label">Courses</span>
             </div>
           </div>
         </div>
 
         <!-- ══════════════════════════════════════════════════════════
-             SECTION 2: QUICK STATS
+             TAB BAR
              ══════════════════════════════════════════════════════════ -->
-        <div class="stats-grid" id="profile-stats">
-          <div class="stat-card animate-in">
-            <div class="stat-header">
-              <div class="stat-icon streak">🔥</div>
-            </div>
-            <div class="stat-value" id="stat-streak">0</div>
-            <div class="stat-label">Day Streak</div>
-            <div class="stat-detail" id="stat-streak-detail">Best: 0 days</div>
-          </div>
-          <div class="stat-card animate-in">
-            <div class="stat-header">
-              <div class="stat-icon courses">📚</div>
-            </div>
-            <div class="stat-value" id="stat-courses">0</div>
-            <div class="stat-label">Enrolled Courses</div>
-            <div class="stat-detail">&nbsp;</div>
-          </div>
-          <div class="stat-card animate-in">
-            <div class="stat-header">
-              <div class="stat-icon lessons">✅</div>
-            </div>
-            <div class="stat-value" id="stat-lessons">0</div>
-            <div class="stat-label">Completed Lessons</div>
-            <div class="stat-detail">&nbsp;</div>
-          </div>
-          <div class="stat-card animate-in">
-            <div class="stat-header">
-              <div class="stat-icon time">⏱️</div>
-            </div>
-            <div class="stat-value" id="stat-time">0m</div>
-            <div class="stat-label">Time Spent</div>
-            <div class="stat-detail">&nbsp;</div>
-          </div>
+        <div class="profile-tabs" id="profile-tabs">
+          <button class="profile-tab active" data-tab="posts">Posts</button>
+          <button class="profile-tab" data-tab="learning">Learning</button>
         </div>
 
         <!-- ══════════════════════════════════════════════════════════
-             SECTION 3: LEARNING OVERVIEW
+             TAB: POSTS
              ══════════════════════════════════════════════════════════ -->
-        <div class="section-header">
-          <h3 class="section-title">Learning Overview</h3>
-          <a href="progress.html" class="section-action">Full Progress Report &rarr;</a>
-        </div>
-
-        <div class="glass-card" style="margin-bottom: 1.5rem;" id="learning-overview">
-          <div class="overview-overall">
-            <div class="overview-overall__label">
-              <span>Overall Completion</span>
-              <span class="progress-percent" id="overall-percent">0%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" id="overall-progress-fill" style="width: 0%"></div>
-            </div>
-          </div>
-          <div class="course-mini-list" id="overview-courses">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-        <!-- ══════════════════════════════════════════════════════════
-             SECTION 4: ACCOUNT SETTINGS
-             ══════════════════════════════════════════════════════════ -->
-        <div class="section-header">
-          <h3 class="section-title">Account Settings</h3>
-        </div>
-
-        <div class="profile-settings-grid">
-          <!-- Left: Profile Information -->
-          <div class="glass-card">
-            <h4 class="glass-card__title"><span>👤</span> Profile Information</h4>
-
-            <div class="profile-field">
-              <label class="profile-field__label">Display Name</label>
-              <div class="profile-field__row">
-                <input type="text" class="profile-field__input" id="edit-display-name" placeholder="Your name">
-                <button class="profile-field__save" id="save-display-name">Save</button>
-              </div>
-            </div>
-
-            <div class="profile-field">
-              <label class="profile-field__label">Email</label>
-              <div class="profile-field__value" id="display-email">Loading...</div>
-            </div>
-
-            <div class="profile-field">
-              <label class="profile-field__label">Password</label>
-              <button class="profile-field__action" id="change-password-btn">Change Password</button>
-            </div>
-
-            <div class="profile-field">
-              <label class="profile-field__label">Account</label>
-              <button class="profile-field__action danger" id="delete-account-btn">Delete Account</button>
-            </div>
-          </div>
-
-          <!-- Right: Quick Links -->
-          <div class="glass-card">
-            <h4 class="glass-card__title"><span>⚙️</span> More Settings</h4>
-
-            <div class="profile-field" style="text-align: center; padding: 1.5rem 0;">
-              <p style="color: var(--text-secondary, #a0a0b8); font-size: 0.85rem; margin-bottom: 1rem;">
-                Manage notifications, appearance, and theme preferences
-              </p>
-              <a href="settings.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; background: linear-gradient(135deg, var(--accent-primary, #7986cb), #5c6bc0); color: #fff; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s;">
-                Open Settings &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Change Password Modal -->
-        <div class="profile-modal-overlay" id="password-modal">
-          <div class="profile-modal">
-            <div class="profile-modal__header">
-              <h3 class="profile-modal__title">Change Password</h3>
-              <button class="profile-modal__close" id="password-modal-close">&times;</button>
-            </div>
-            <div class="profile-modal__body">
-              <div class="profile-modal__info" id="password-provider-info" style="display: none;">
-                You signed in with Google. To set a password, use the "Send Reset Email" option below.
-              </div>
-              <div id="password-fields">
-                <div class="profile-field">
-                  <label class="profile-field__label">Current Password</label>
-                  <div class="profile-field__input-wrap">
-                    <input type="password" class="profile-field__input" id="current-password" placeholder="Enter current password" autocomplete="current-password">
-                    <button class="profile-field__eye" data-target="current-password" aria-label="Toggle visibility">👁</button>
-                  </div>
-                </div>
-                <div class="profile-field">
-                  <label class="profile-field__label">New Password</label>
-                  <div class="profile-field__input-wrap">
-                    <input type="password" class="profile-field__input" id="new-password" placeholder="At least 6 characters" autocomplete="new-password">
-                    <button class="profile-field__eye" data-target="new-password" aria-label="Toggle visibility">👁</button>
-                  </div>
-                  <div class="password-strength" id="password-strength">
-                    <div class="password-strength__bar"><span class="password-strength__fill" id="password-strength-fill"></span></div>
-                    <span class="password-strength__text" id="password-strength-text"></span>
-                  </div>
-                </div>
-                <div class="profile-field">
-                  <label class="profile-field__label">Confirm New Password</label>
-                  <div class="profile-field__input-wrap">
-                    <input type="password" class="profile-field__input" id="confirm-password" placeholder="Re-enter new password" autocomplete="new-password">
-                    <button class="profile-field__eye" data-target="confirm-password" aria-label="Toggle visibility">👁</button>
-                  </div>
-                </div>
-              </div>
-              <div class="profile-modal__error" id="password-error"></div>
-            </div>
-            <div class="profile-modal__footer">
-              <button class="profile-modal__btn secondary" id="password-reset-email-btn">Send Reset Email</button>
-              <button class="profile-modal__btn primary" id="password-save-btn">Update Password</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Delete Account Modal -->
-        <div class="profile-modal-overlay" id="delete-modal">
-          <div class="profile-modal profile-modal--danger">
-            <div class="profile-modal__header">
-              <h3 class="profile-modal__title">Delete Account</h3>
-              <button class="profile-modal__close" id="delete-modal-close">&times;</button>
-            </div>
-            <div class="profile-modal__body">
-              <div class="profile-modal__warning">
-                <span class="profile-modal__warning-icon">⚠️</span>
-                <div>
-                  <strong>This action is permanent and cannot be undone.</strong>
-                  <p>All your data including course progress, achievements, and settings will be permanently deleted.</p>
-                </div>
-              </div>
-              <div class="profile-field">
-                <label class="profile-field__label">Type your email to confirm</label>
-                <input type="email" class="profile-field__input" id="delete-confirm-email" placeholder="your@email.com" autocomplete="off">
-              </div>
-              <div class="profile-field" id="delete-password-field">
-                <label class="profile-field__label">Enter your password</label>
-                <input type="password" class="profile-field__input" id="delete-confirm-password" placeholder="Your password" autocomplete="current-password">
-              </div>
-              <div class="profile-modal__error" id="delete-error"></div>
-            </div>
-            <div class="profile-modal__footer">
-              <button class="profile-modal__btn secondary" id="delete-cancel-btn">Cancel</button>
-              <button class="profile-modal__btn danger" id="delete-confirm-btn" disabled>Delete My Account</button>
+        <div class="profile-tab-content active" id="tab-posts">
+          <div id="profile-posts-container">
+            <div class="profile-posts-empty">
+              <div class="profile-posts-empty__icon">📝</div>
+              <div class="profile-posts-empty__title">No posts yet</div>
+              <div class="profile-posts-empty__desc">Share your first project, code snippet, or milestone with the community.</div>
+              <a href="feed.html" class="profile-posts-empty__cta">Go to Feed</a>
             </div>
           </div>
         </div>
 
         <!-- ══════════════════════════════════════════════════════════
-             SECTION 5: LEARNING INSIGHTS
+             TAB: LEARNING
              ══════════════════════════════════════════════════════════ -->
-        <div class="section-header">
-          <h3 class="section-title">Learning Insights</h3>
-        </div>
+        <div class="profile-tab-content" id="tab-learning">
 
-        <div class="profile-insights-grid">
-          <!-- Left: Learning Profile -->
-          <div class="glass-card">
-            <h4 class="glass-card__title"><span>🧠</span> Learning Profile</h4>
-
-            <div class="profile-insight-row">
-              <span class="profile-insight-label">Learning Style</span>
-              <span class="profile-insight-value" id="insight-learning-style">--</span>
-            </div>
-            <div class="profile-insight-row">
-              <span class="profile-insight-label">Cognitive Score</span>
-              <span class="profile-insight-value" id="insight-cognitive-score">--</span>
-            </div>
-            <div class="profile-insight-row">
-              <span class="profile-insight-label">Quiz Mastery</span>
-              <div class="profile-insight-bar">
-                <div class="progress-bar" style="height: 6px;">
-                  <div class="progress-fill" id="insight-quiz-bar" style="width: 0%"></div>
-                </div>
-                <span class="profile-insight-percent" id="insight-quiz-percent">--</span>
+          <!-- Quick Stats -->
+          <div class="stats-grid" id="profile-stats">
+            <div class="stat-card animate-in">
+              <div class="stat-header">
+                <div class="stat-icon streak">🔥</div>
               </div>
+              <div class="stat-value" id="stat-streak">0</div>
+              <div class="stat-label">Day Streak</div>
+              <div class="stat-detail" id="stat-streak-detail">Best: 0 days</div>
             </div>
-            <div class="profile-insight-row">
-              <span class="profile-insight-label">Learning Velocity</span>
-              <span class="profile-insight-value" id="insight-velocity">--</span>
+            <div class="stat-card animate-in">
+              <div class="stat-header">
+                <div class="stat-icon courses">📚</div>
+              </div>
+              <div class="stat-value" id="stat-enrolled">0</div>
+              <div class="stat-label">Enrolled Courses</div>
+              <div class="stat-detail">&nbsp;</div>
+            </div>
+            <div class="stat-card animate-in">
+              <div class="stat-header">
+                <div class="stat-icon lessons">✅</div>
+              </div>
+              <div class="stat-value" id="stat-lessons">0</div>
+              <div class="stat-label">Completed Lessons</div>
+              <div class="stat-detail">&nbsp;</div>
+            </div>
+            <div class="stat-card animate-in">
+              <div class="stat-header">
+                <div class="stat-icon time">⏱️</div>
+              </div>
+              <div class="stat-value" id="stat-time">0m</div>
+              <div class="stat-label">Time Spent</div>
+              <div class="stat-detail">&nbsp;</div>
             </div>
           </div>
 
-          <!-- Right: Strengths & Milestones -->
-          <div class="glass-card">
-            <h4 class="glass-card__title"><span>🏆</span> Strengths & Milestones</h4>
+          <!-- Learning Overview -->
+          <div class="section-header">
+            <h3 class="section-title">Learning Overview</h3>
+            <a href="progress.html" class="section-action">Full Progress Report &rarr;</a>
+          </div>
 
-            <div id="profile-strengths">
+          <div class="glass-card" style="margin-bottom: 1.5rem;" id="learning-overview">
+            <div class="overview-overall">
+              <div class="overview-overall__label">
+                <span>Overall Completion</span>
+                <span class="progress-percent" id="overall-percent">0%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="overall-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="course-mini-list" id="overview-courses">
               <!-- Dynamically populated -->
             </div>
+          </div>
 
-            <div class="profile-milestones" id="profile-milestones">
-              <h5 class="profile-milestones__title">Recent Activity</h5>
-              <div id="milestones-list">
+          <!-- Learning Insights -->
+          <div class="section-header">
+            <h3 class="section-title">Learning Insights</h3>
+          </div>
+
+          <div class="profile-insights-grid">
+            <!-- Left: Learning Profile -->
+            <div class="glass-card">
+              <h4 class="glass-card__title"><span>🧠</span> Learning Profile</h4>
+              <div class="profile-insight-row">
+                <span class="profile-insight-label">Learning Style</span>
+                <span class="profile-insight-value" id="insight-learning-style">--</span>
+              </div>
+              <div class="profile-insight-row">
+                <span class="profile-insight-label">Cognitive Score</span>
+                <span class="profile-insight-value" id="insight-cognitive-score">--</span>
+              </div>
+              <div class="profile-insight-row">
+                <span class="profile-insight-label">Quiz Mastery</span>
+                <div class="profile-insight-bar">
+                  <div class="progress-bar" style="height: 6px;">
+                    <div class="progress-fill" id="insight-quiz-bar" style="width: 0%"></div>
+                  </div>
+                  <span class="profile-insight-percent" id="insight-quiz-percent">--</span>
+                </div>
+              </div>
+              <div class="profile-insight-row">
+                <span class="profile-insight-label">Learning Velocity</span>
+                <span class="profile-insight-value" id="insight-velocity">--</span>
+              </div>
+            </div>
+
+            <!-- Right: Strengths & Milestones -->
+            <div class="glass-card">
+              <h4 class="glass-card__title"><span>🏆</span> Strengths & Milestones</h4>
+              <div id="profile-strengths">
                 <!-- Dynamically populated -->
+              </div>
+              <div class="profile-milestones" id="profile-milestones">
+                <h5 class="profile-milestones__title">Recent Activity</h5>
+                <div id="milestones-list">
+                  <!-- Dynamically populated -->
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-      </div>
+
+      </div><!-- /.content-area -->
     </main>
 
   </div>
@@ -1319,16 +1081,19 @@
   <script src="../shared/js/rbac.js"></script>
   <script src="../shared/js/data-service.js"></script>
   <script src="../shared/js/notification-service.js"></script>
-
-  <!-- Services -->
   <script src="../shared/js/services/cache-service.js"></script>
   <script src="../shared/js/services/query-service.js"></script>
   <script src="../shared/js/services/analytics-service.js"></script>
+  <script src="../shared/js/feed-service.js"></script>
+  <script src="../shared/js/follow-service.js"></script>
+  <script src="../shared/js/reaction-service.js"></script>
+  <script src="../shared/js/comment-service.js"></script>
+  <script src="../shared/js/bookmark-service.js"></script>
 
   <script>
-    // ═══════════════════════════════════════════════════════════════════════════
+    // =======================================================================
     // COURSE DEFINITIONS
-    // ═══════════════════════════════════════════════════════════════════════════
+    // =======================================================================
 
     const COURSES = {
       "endless-opportunities": { name: "Endless Opportunities", icon: "🚀" },
@@ -1338,37 +1103,66 @@
       senior: { name: "The Senior Amplifier", icon: "🎯" }
     };
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    // INITIALIZATION
-    // ═══════════════════════════════════════════════════════════════════════════
+    // =======================================================================
+    // UNIFIED PROFILE CONTROLLER
+    // =======================================================================
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      const loadingScreen = document.getElementById('auth-loading');
-      const dashboardContent = document.getElementById('dashboard-content');
+    const ProfilePage = {
+      currentUser: null,
+      isEditMode: false,
 
-      // ── PREVIEW MODE: add ?preview to URL to bypass auth ──
-      const isPreview = new URLSearchParams(window.location.search).has('preview');
+      // ── Initialize ──────────────────────────────────────────
+      async init() {
+        const loadingScreen = document.getElementById('auth-loading');
+        const dashboardContent = document.getElementById('dashboard-content');
 
-      if (isPreview) {
-        console.log('🔓 Preview mode — using mock data');
+        if (!window.FirebaseApp.init()) {
+          console.error('Firebase initialization failed');
+          loadingScreen.innerHTML = '<div class="loading-content"><p>Error loading. Please refresh.</p></div>';
+          return;
+        }
+
+        window.AuthService.init();
+        this.currentUser = await window.AuthService.waitForAuthState();
+
+        if (!this.currentUser) {
+          window.AuthService.setRedirectUrl(window.location.href);
+          window.location.href = '../auth/login.html';
+          return;
+        }
+
+        // Show dashboard
         loadingScreen.classList.add('hidden');
         dashboardContent.classList.add('ready');
 
-        // Mock user data
-        const mockUser = {
-          displayName: 'Brandon Parker',
-          email: 'bparker@autonateai.com',
-          photoURL: null,
-          uid: 'preview-user'
-        };
+        // Setup UI
+        this.setupSidebar();
+        this.setupLogout();
+        this.setupComingSoon();
+        this.setupTabs();
+        this.setupEditProfile();
 
-        loadSidebarUserInfo(mockUser);
-        loadProfileHeaderPreview(mockUser);
-        loadQuickStatsPreview();
-        loadLearningOverviewPreview();
-        loadInsightsPreview();
-        setupSidebar();
-        setupComingSoon();
+        // Check admin
+        if (window.RBACService) {
+          const isAdmin = await window.RBACService.hasRole('admin');
+          if (isAdmin) {
+            document.getElementById('admin-section').style.display = 'block';
+          }
+        }
+
+        // Load profile data
+        this.loadSidebarUserInfo(this.currentUser);
+        this.loadProfileHeader(this.currentUser);
+        window.NotificationService.init();
+
+        // Load all data in parallel
+        await Promise.all([
+          this.loadQuickStats(),
+          this.loadLearningOverview(),
+          this.loadInsights(),
+          this.loadSocialStats(),
+        ]);
+
 
         // Animate
         anime({
@@ -1379,735 +1173,451 @@
           easing: 'easeOutCubic',
           duration: 600
         });
-        return;
-      }
 
-      // ── NORMAL AUTH FLOW ──
-      if (!window.FirebaseApp.init()) {
-        console.error('Firebase initialization failed');
-        loadingScreen.innerHTML = '<div class="loading-content"><p>Error loading. Please refresh.</p></div>';
-        return;
-      }
-
-      window.AuthService.init();
-
-      const user = await window.AuthService.waitForAuthState();
-
-      if (!user) {
-        window.AuthService.setRedirectUrl(window.location.href);
-        window.location.href = '../auth/login.html';
-        return;
-      }
-
-      // Show dashboard
-      loadingScreen.classList.add('hidden');
-      dashboardContent.classList.add('ready');
-
-      // Check admin
-      if (window.RBACService) {
-        const isAdmin = await window.RBACService.hasRole('admin');
-        if (isAdmin) {
-          document.getElementById('admin-section').style.display = 'block';
-        }
-      }
-
-      // Load all profile data
-      loadSidebarUserInfo(user);
-      loadProfileHeader(user);
-      window.NotificationService.init();
-
-      await Promise.all([
-        loadQuickStats(),
-        loadLearningOverview(),
-        loadInsights()
-      ]);
-
-      // Setup UI
-      setupSidebar();
-      setupLogout();
-      setupComingSoon();
-      setupDisplayNameEdit();
-      setupChangePassword();
-      setupDeleteAccount();
-
-      // Animate stats
-      anime({
-        targets: '.animate-in',
-        opacity: [0, 1],
-        translateY: [20, 0],
-        delay: anime.stagger(100, { start: 200 }),
-        easing: 'easeOutCubic',
-        duration: 600
-      });
-
-      // Listen for auth changes
-      window.AuthService.onAuthStateChanged((user) => {
-        if (!user) window.location.href = '../auth/login.html';
-      });
-    });
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SIDEBAR USER INFO
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    function loadSidebarUserInfo(user) {
-      const displayName = user.displayName || user.email.split('@')[0];
-      document.getElementById('user-name').textContent = displayName;
-
-      const avatar = document.getElementById('user-avatar');
-      if (user.photoURL) {
-        avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
-      } else {
-        avatar.textContent = displayName.charAt(0).toUpperCase();
-      }
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SECTION 1: PROFILE HEADER
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    async function loadProfileHeader(user) {
-      const displayName = user.displayName || user.email.split('@')[0];
-
-      // Avatar
-      const profileAvatar = document.getElementById('profile-avatar');
-      if (user.photoURL) {
-        profileAvatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
-      } else {
-        profileAvatar.textContent = displayName.charAt(0).toUpperCase();
-      }
-
-      // Name & email
-      document.getElementById('profile-display-name').textContent = displayName;
-      document.getElementById('profile-email').textContent = user.email;
-      document.getElementById('edit-display-name').value = user.displayName || '';
-      document.getElementById('display-email').textContent = user.email;
-
-      // Role badge
-      try {
-        if (window.RBACService) {
-          const perms = await window.RBACService.getPermissions();
-          const roleBadge = document.getElementById('profile-role-badge');
-          const role = perms?.role || 'user';
-          roleBadge.textContent = role.charAt(0).toUpperCase() + role.slice(1);
-          if (role === 'admin') roleBadge.classList.add('admin');
-        }
-      } catch (e) {
-        console.log('Could not load role:', e);
-      }
-
-      // Member since
-      try {
-        const db = window.FirebaseApp.getDb();
-        const userDoc = await db.collection('users').doc(user.uid).get();
-        if (userDoc.exists) {
-          const data = userDoc.data();
-          if (data.createdAt) {
-            let date;
-            if (data.createdAt._seconds) {
-              date = new Date(data.createdAt._seconds * 1000);
-            } else if (data.createdAt.seconds) {
-              date = new Date(data.createdAt.seconds * 1000);
-            } else if (data.createdAt.toDate) {
-              date = data.createdAt.toDate();
-            } else {
-              date = new Date(data.createdAt);
-            }
-            document.getElementById('profile-member-since').textContent =
-              date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-          }
-        }
-      } catch (e) {
-        console.log('Could not load member since:', e);
-      }
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SECTION 2: QUICK STATS
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    async function loadQuickStats() {
-      try {
-        const stats = await window.DataService.getUserStats();
-        if (!stats) return;
-
-        document.getElementById('stat-streak').textContent = stats.currentStreak || 0;
-        document.getElementById('stat-streak-detail').textContent = `Best: ${stats.longestStreak || 0} days`;
-        document.getElementById('user-streak').textContent = stats.currentStreak || 0;
-        document.getElementById('stat-courses').textContent = stats.enrolledCourses || 0;
-        document.getElementById('stat-lessons').textContent = stats.completedLessons || 0;
-        document.getElementById('stat-time').textContent = formatTime(stats.totalTimeSpent || 0);
-      } catch (e) {
-        console.error('Error loading quick stats:', e);
-      }
-    }
-
-    function formatTime(seconds) {
-      if (seconds < 60) return '< 1m';
-      const hours = Math.floor(seconds / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      if (hours > 0) return `${hours}h ${minutes}m`;
-      return `${minutes}m`;
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SECTION 3: LEARNING OVERVIEW
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    async function loadLearningOverview() {
-      try {
-        const courses = await window.DataService.getEnrolledCourses();
-        const container = document.getElementById('overview-courses');
-
-        if (!courses || courses.length === 0) {
-          container.innerHTML = `
-            <div class="profile-empty-state">
-              <div class="profile-empty-state__icon">📚</div>
-              <div class="profile-empty-state__text">No courses enrolled yet. Start your learning journey!</div>
-            </div>
-          `;
-          return;
-        }
-
-        let totalLessons = 0;
-        let totalCompleted = 0;
-
-        container.innerHTML = '';
-
-        courses.forEach(course => {
-          const courseId = course.courseId || course.id;
-          const courseInfo = COURSES[courseId] || { name: courseId, icon: '📘' };
-          const structure = window.DataService.getLessonsStructure(courseId);
-          const completed = window.DataService.getCompletedLessonsCount(course, courseId);
-          const total = structure.totalLessons;
-          const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
-
-          totalLessons += total;
-          totalCompleted += completed;
-
-          const item = document.createElement('div');
-          item.className = 'course-mini-item';
-          item.innerHTML = `
-            <span class="course-mini-icon">${courseInfo.icon}</span>
-            <div class="course-mini-info">
-              <div class="course-mini-name">${courseInfo.name}</div>
-              <div class="course-mini-bar">
-                <div class="course-mini-fill" style="width: ${percent}%"></div>
-              </div>
-            </div>
-            <span class="course-mini-percent">${percent}%</span>
-          `;
-          container.appendChild(item);
+        // Auth change listener
+        window.AuthService.onAuthStateChanged((user) => {
+          if (!user) window.location.href = '../auth/login.html';
         });
+      },
 
-        // Overall
-        const overallPercent = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
-        document.getElementById('overall-percent').textContent = overallPercent + '%';
-        document.getElementById('overall-progress-fill').style.width = overallPercent + '%';
+      // ── Tabs ────────────────────────────────────────────────
+      setupTabs() {
+        document.querySelectorAll('.profile-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            this.switchTab(tab.dataset.tab);
+          });
+        });
+      },
 
-      } catch (e) {
-        console.error('Error loading learning overview:', e);
-      }
-    }
+      switchTab(tabName) {
+        // Update tab buttons
+        document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+        const activeTab = document.querySelector(`.profile-tab[data-tab="${tabName}"]`);
+        if (activeTab) activeTab.classList.add('active');
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SECTION 4: ACCOUNT SETTINGS
-    // ═══════════════════════════════════════════════════════════════════════════
+        // Update tab content
+        document.querySelectorAll('.profile-tab-content').forEach(c => c.classList.remove('active'));
+        const activeContent = document.getElementById(`tab-${tabName}`);
+        if (activeContent) activeContent.classList.add('active');
 
-    function setupDisplayNameEdit() {
-      const saveBtn = document.getElementById('save-display-name');
-      const input = document.getElementById('edit-display-name');
+        // Update URL hash without scrolling
+        history.replaceState(null, '', `#${tabName}`);
+      },
 
-      saveBtn.addEventListener('click', async () => {
-        const newName = input.value.trim();
-        if (!newName) return;
+      // ── Edit Profile ────────────────────────────────────────
+      setupEditProfile() {
+        const editBtn = document.getElementById('edit-profile-btn');
+        const bioDisplay = document.getElementById('profile-bio');
+        const bioEdit = document.getElementById('profile-bio-edit');
 
-        saveBtn.disabled = true;
-        saveBtn.textContent = 'Saving...';
+        editBtn.addEventListener('click', () => {
+          this.isEditMode = !this.isEditMode;
 
+          if (this.isEditMode) {
+            editBtn.textContent = 'Save Profile';
+            editBtn.style.background = 'linear-gradient(135deg, var(--accent-primary, #7986cb), #5c6bc0)';
+            editBtn.style.color = '#fff';
+            editBtn.style.borderColor = 'transparent';
+            bioDisplay.style.display = 'none';
+            bioEdit.style.display = 'block';
+            bioEdit.value = bioDisplay.textContent === 'No bio yet. Click Edit Profile to add one.' ? '' : bioDisplay.textContent;
+            bioEdit.focus();
+          } else {
+            // Save bio
+            const newBio = bioEdit.value.trim();
+            editBtn.textContent = 'Edit Profile';
+            editBtn.style.background = '';
+            editBtn.style.color = '';
+            editBtn.style.borderColor = '';
+            bioDisplay.style.display = '';
+            bioEdit.style.display = 'none';
+            bioDisplay.textContent = newBio || 'No bio yet. Click Edit Profile to add one.';
+
+            // Save to Firestore
+            this.saveBio(newBio);
+          }
+        });
+      },
+
+      async saveBio(bio) {
         try {
-          const user = firebase.auth().currentUser;
-          await user.updateProfile({ displayName: newName });
-
           const db = window.FirebaseApp.getDb();
-          await db.collection('users').doc(user.uid).update({
-            displayName: newName,
+          await db.collection('users').doc(this.currentUser.uid).update({
+            bio: bio,
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
           });
-
-          document.getElementById('profile-display-name').textContent = newName;
-          document.getElementById('user-name').textContent = newName;
-
-          const sidebarAvatar = document.getElementById('user-avatar');
-          if (!user.photoURL) {
-            sidebarAvatar.textContent = newName.charAt(0).toUpperCase();
-          }
-
-          const profileAvatar = document.getElementById('profile-avatar');
-          if (!user.photoURL) {
-            profileAvatar.textContent = newName.charAt(0).toUpperCase();
-          }
-
-          showSaveToast('Display name updated');
+          showSaveToast('Bio updated');
         } catch (e) {
-          console.error('Error updating display name:', e);
-          showSaveToast('Error updating name');
-        } finally {
-          saveBtn.disabled = false;
-          saveBtn.textContent = 'Save';
+          console.error('Error saving bio:', e);
         }
-      });
-    }
+      },
 
-    function setupChangePassword() {
-      const modal = document.getElementById('password-modal');
-      const openBtn = document.getElementById('change-password-btn');
-      const closeBtn = document.getElementById('password-modal-close');
-      const saveBtn = document.getElementById('password-save-btn');
-      const resetEmailBtn = document.getElementById('password-reset-email-btn');
-      const errorEl = document.getElementById('password-error');
-      const providerInfo = document.getElementById('password-provider-info');
-      const fieldsContainer = document.getElementById('password-fields');
-      const newPasswordInput = document.getElementById('new-password');
-      const strengthFill = document.getElementById('password-strength-fill');
-      const strengthText = document.getElementById('password-strength-text');
-
-      function openModal() {
-        const user = firebase.auth().currentUser;
-        const hasPassword = user.providerData.some(p => p.providerId === 'password');
-        if (!hasPassword) {
-          providerInfo.style.display = 'block';
-          fieldsContainer.style.display = 'none';
-          saveBtn.style.display = 'none';
+      // ── Sidebar ─────────────────────────────────────────────
+      loadSidebarUserInfo(user) {
+        const displayName = user.displayName || user.email.split('@')[0];
+        document.getElementById('user-name').textContent = displayName;
+        const avatar = document.getElementById('user-avatar');
+        if (user.photoURL) {
+          avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
         } else {
-          providerInfo.style.display = 'none';
-          fieldsContainer.style.display = 'block';
-          saveBtn.style.display = 'inline-flex';
+          avatar.textContent = displayName.charAt(0).toUpperCase();
         }
-        errorEl.textContent = '';
-        modal.querySelectorAll('input').forEach(i => i.value = '');
-        strengthFill.style.width = '0';
-        strengthText.textContent = '';
-        modal.classList.add('active');
-      }
+      },
 
-      function closeModal() { modal.classList.remove('active'); }
+      setupSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const toggle = document.getElementById('sidebar-toggle');
+        const overlay = document.getElementById('sidebar-overlay');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
 
-      openBtn.addEventListener('click', openModal);
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-      // Password strength
-      newPasswordInput.addEventListener('input', () => {
-        const val = newPasswordInput.value;
-        let score = 0;
-        if (val.length >= 6) score++;
-        if (val.length >= 10) score++;
-        if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
-        if (/[0-9]/.test(val)) score++;
-        if (/[^A-Za-z0-9]/.test(val)) score++;
-
-        const levels = [
-          { width: '0%', color: 'transparent', text: '' },
-          { width: '20%', color: '#ef5350', text: 'Weak' },
-          { width: '40%', color: '#ffa726', text: 'Fair' },
-          { width: '60%', color: '#ffa726', text: 'Fair' },
-          { width: '80%', color: '#66bb6a', text: 'Good' },
-          { width: '100%', color: '#43a047', text: 'Strong' }
-        ];
-
-        const level = val.length === 0 ? levels[0] : levels[Math.min(score, 5)];
-        strengthFill.style.width = level.width;
-        strengthFill.style.background = level.color;
-        strengthText.textContent = level.text;
-        strengthText.style.color = level.color;
-      });
-
-      // Visibility toggles
-      modal.querySelectorAll('.profile-field__eye').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const input = document.getElementById(btn.getAttribute('data-target'));
-          const isPassword = input.type === 'password';
-          input.type = isPassword ? 'text' : 'password';
-          btn.textContent = isPassword ? '🙈' : '👁';
+        toggle.addEventListener('click', () => {
+          sidebar.classList.toggle('collapsed');
+          localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
         });
-      });
 
-      // Send reset email
-      resetEmailBtn.addEventListener('click', async () => {
-        const user = firebase.auth().currentUser;
-        if (!user?.email) return;
-        resetEmailBtn.disabled = true;
-        resetEmailBtn.textContent = 'Sending...';
-        try {
-          await firebase.auth().sendPasswordResetEmail(user.email);
-          showSaveToast('Password reset email sent! Check your inbox.');
-          closeModal();
-        } catch (err) {
-          errorEl.textContent = AuthService.getErrorMessage(err.code);
-        } finally {
-          resetEmailBtn.disabled = false;
-          resetEmailBtn.textContent = 'Send Reset Email';
-        }
-      });
-
-      // Update password
-      saveBtn.addEventListener('click', async () => {
-        errorEl.textContent = '';
-        const currentPw = document.getElementById('current-password').value;
-        const newPw = document.getElementById('new-password').value;
-        const confirmPw = document.getElementById('confirm-password').value;
-
-        if (!currentPw || !newPw || !confirmPw) { errorEl.textContent = 'Please fill in all fields.'; return; }
-        if (newPw.length < 6) { errorEl.textContent = 'New password must be at least 6 characters.'; return; }
-        if (newPw !== confirmPw) { errorEl.textContent = 'New passwords do not match.'; return; }
-
-        saveBtn.disabled = true;
-        saveBtn.textContent = 'Updating...';
-
-        try {
-          const user = firebase.auth().currentUser;
-          const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPw);
-          await user.reauthenticateWithCredential(credential);
-          await user.updatePassword(newPw);
-          showSaveToast('Password updated successfully!');
-          closeModal();
-        } catch (err) {
-          errorEl.textContent = err.code === 'auth/wrong-password'
-            ? 'Current password is incorrect.'
-            : AuthService.getErrorMessage(err.code);
-        } finally {
-          saveBtn.disabled = false;
-          saveBtn.textContent = 'Update Password';
-        }
-      });
-    }
-
-    function setupDeleteAccount() {
-      const modal = document.getElementById('delete-modal');
-      const openBtn = document.getElementById('delete-account-btn');
-      const closeBtn = document.getElementById('delete-modal-close');
-      const cancelBtn = document.getElementById('delete-cancel-btn');
-      const confirmBtn = document.getElementById('delete-confirm-btn');
-      const emailInput = document.getElementById('delete-confirm-email');
-      const passwordInput = document.getElementById('delete-confirm-password');
-      const passwordField = document.getElementById('delete-password-field');
-      const errorEl = document.getElementById('delete-error');
-
-      function openModal() {
-        const user = firebase.auth().currentUser;
-        const hasPassword = user.providerData.some(p => p.providerId === 'password');
-        passwordField.style.display = hasPassword ? 'block' : 'none';
-        errorEl.textContent = '';
-        emailInput.value = '';
-        passwordInput.value = '';
-        confirmBtn.disabled = true;
-        modal.classList.add('active');
-      }
-
-      function closeModal() { modal.classList.remove('active'); }
-
-      openBtn.addEventListener('click', openModal);
-      closeBtn.addEventListener('click', closeModal);
-      cancelBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-      emailInput.addEventListener('input', () => {
-        const user = firebase.auth().currentUser;
-        confirmBtn.disabled = emailInput.value.trim().toLowerCase() !== user.email.toLowerCase();
-      });
-
-      confirmBtn.addEventListener('click', async () => {
-        errorEl.textContent = '';
-        const user = firebase.auth().currentUser;
-
-        if (emailInput.value.trim().toLowerCase() !== user.email.toLowerCase()) {
-          errorEl.textContent = 'Email does not match your account.';
-          return;
+        if (localStorage.getItem('sidebarCollapsed') === 'true') {
+          sidebar.classList.add('collapsed');
         }
 
-        confirmBtn.disabled = true;
-        confirmBtn.textContent = 'Deleting...';
+        mobileBtn.addEventListener('click', () => {
+          sidebar.classList.add('open');
+        });
 
-        try {
-          const hasPassword = user.providerData.some(p => p.providerId === 'password');
-          if (hasPassword) {
-            const pw = passwordInput.value;
-            if (!pw) {
-              errorEl.textContent = 'Please enter your password.';
-              confirmBtn.disabled = false;
-              confirmBtn.textContent = 'Delete My Account';
-              return;
-            }
-            const credential = firebase.auth.EmailAuthProvider.credential(user.email, pw);
-            await user.reauthenticateWithCredential(credential);
-          } else {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            await user.reauthenticateWithPopup(provider);
-          }
+        overlay.addEventListener('click', () => {
+          sidebar.classList.remove('open');
+        });
+      },
 
-          const db = window.FirebaseApp.getDb();
-          const uid = user.uid;
-          const subcollections = ['courseProgress', 'notificationPrefs', 'notifications'];
-          for (const sub of subcollections) {
-            try {
-              const snap = await db.collection('users').doc(uid).collection(sub).get();
-              const batch = db.batch();
-              snap.docs.forEach(doc => batch.delete(doc.ref));
-              if (snap.docs.length > 0) await batch.commit();
-            } catch (e) { console.log(`Could not delete subcollection ${sub}:`, e); }
-          }
-
-          await db.collection('users').doc(uid).delete();
-          await user.delete();
+      setupLogout() {
+        document.getElementById('logout-link').addEventListener('click', async (e) => {
+          e.preventDefault();
+          await window.AuthService.logout();
           window.location.href = '../index.html';
-        } catch (err) {
-          let msg = 'Failed to delete account. Please try again.';
-          if (err.code === 'auth/wrong-password') msg = 'Incorrect password.';
-          else if (err.code === 'auth/requires-recent-login') msg = 'Session expired. Please log out, log back in, and try again.';
-          else if (err.code === 'auth/popup-closed-by-user') msg = 'Re-authentication cancelled.';
-          errorEl.textContent = msg;
-          confirmBtn.disabled = false;
-          confirmBtn.textContent = 'Delete My Account';
-        }
-      });
-    }
+        });
+      },
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SECTION 5: LEARNING INSIGHTS
-    // ═══════════════════════════════════════════════════════════════════════════
+      // ── Profile Header ─────────────────────────────────────
+      async loadProfileHeader(user) {
+        const displayName = user.displayName || user.email.split('@')[0];
+        const handle = '@' + (user.email?.split('@')[0] || 'user').toLowerCase();
 
-    async function loadInsights() {
-      try {
-        // Load analytics data
-        let analytics = null;
-        if (window.AnalyticsService?.getUserAnalytics) {
-          analytics = await window.AnalyticsService.getUserAnalytics();
+        // Avatar
+        const profileAvatar = document.getElementById('profile-avatar');
+        if (user.photoURL) {
+          profileAvatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
+        } else {
+          profileAvatar.textContent = displayName.charAt(0).toUpperCase();
         }
 
-        // Learning style
-        if (analytics?.learningStyle?.primary) {
-          const styleNames = {
-            kinesthetic: 'Hands-On',
-            visual: 'Visual',
-            auditory: 'Auditory',
-            reading: 'Reading'
-          };
-          document.getElementById('insight-learning-style').textContent =
-            styleNames[analytics.learningStyle.primary] || analytics.learningStyle.primary;
-        }
-
-        // Cognitive score
-        if (analytics?.summaryStats?.overallScore != null) {
-          document.getElementById('insight-cognitive-score').textContent =
-            Math.round(analytics.summaryStats.overallScore);
-        }
-
-        // Quiz mastery
-        if (window.AnalyticsService?.calculateQuizMastery) {
-          const mastery = await window.AnalyticsService.calculateQuizMastery();
-          if (mastery && mastery.mastery != null) {
-            const pct = Math.round(mastery.mastery * 100);
-            document.getElementById('insight-quiz-bar').style.width = pct + '%';
-            document.getElementById('insight-quiz-percent').textContent = pct + '%';
+        // Name, handle, email
+        document.getElementById('profile-display-name').textContent = displayName;
+        document.getElementById('profile-handle').textContent = handle;
+        // Role badge
+        try {
+          if (window.RBACService) {
+            const perms = await window.RBACService.getPermissions();
+            const roleBadge = document.getElementById('profile-role-badge');
+            const role = perms?.role || 'user';
+            roleBadge.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+            if (role === 'admin') roleBadge.classList.add('admin');
           }
+        } catch (e) {
+          console.log('Could not load role:', e);
         }
 
-        // Learning velocity
-        if (window.AnalyticsService?.calculateLearningVelocity) {
-          const velocity = await window.AnalyticsService.calculateLearningVelocity();
-          if (velocity && velocity.velocity != null) {
-            document.getElementById('insight-velocity').textContent =
-              `${velocity.velocity.toFixed(1)} lessons/week`;
+        // Member since + bio
+        try {
+          const db = window.FirebaseApp.getDb();
+          const userDoc = await db.collection('users').doc(user.uid).get();
+          if (userDoc.exists) {
+            const data = userDoc.data();
+
+            // Member since
+            if (data.createdAt) {
+              let date;
+              if (data.createdAt._seconds) date = new Date(data.createdAt._seconds * 1000);
+              else if (data.createdAt.seconds) date = new Date(data.createdAt.seconds * 1000);
+              else if (data.createdAt.toDate) date = data.createdAt.toDate();
+              else date = new Date(data.createdAt);
+              document.getElementById('profile-member-since').textContent =
+                date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            }
+
+            // Bio
+            if (data.bio) {
+              document.getElementById('profile-bio').textContent = data.bio;
+            }
           }
+        } catch (e) {
+          console.log('Could not load user details:', e);
         }
+      },
 
-        // Strength areas
-        const strengthsContainer = document.getElementById('profile-strengths');
-        if (analytics?.strengthAreas?.length > 0) {
-          strengthsContainer.innerHTML = analytics.strengthAreas.slice(0, 3).map(area => `
-            <div class="profile-strength-item">
-              <div class="profile-strength-icon">💪</div>
-              <div class="profile-strength-info">
-                <div class="profile-strength-name">${area.topic}</div>
-                <div class="profile-strength-score">${Math.round(area.score * 100)}% mastery</div>
+      // ── Social Stats ────────────────────────────────────────
+      async loadSocialStats() {
+        // Demo values for now - will wire to FeedService/FollowService when live
+        document.getElementById('stat-posts').textContent = '0';
+        document.getElementById('stat-followers').textContent = '0';
+        document.getElementById('stat-following').textContent = '0';
+
+        try {
+          if (window.FollowService) {
+            const followers = await window.FollowService.getFollowerCount(this.currentUser.uid);
+            if (followers?.success) document.getElementById('stat-followers').textContent = followers.data || 0;
+
+            const following = await window.FollowService.getFollowingCount(this.currentUser.uid);
+            if (following?.success) document.getElementById('stat-following').textContent = following.data || 0;
+          }
+        } catch (e) {
+          console.log('Could not load social stats:', e);
+        }
+      },
+
+      // ── Quick Stats ─────────────────────────────────────────
+      async loadQuickStats() {
+        try {
+          const stats = await window.DataService.getUserStats();
+          if (!stats) return;
+
+          document.getElementById('stat-streak').textContent = stats.currentStreak || 0;
+          document.getElementById('stat-streak-detail').textContent = `Best: ${stats.longestStreak || 0} days`;
+          document.getElementById('user-streak').textContent = stats.currentStreak || 0;
+          document.getElementById('stat-enrolled').textContent = stats.enrolledCourses || 0;
+          document.getElementById('stat-courses').textContent = stats.enrolledCourses || 0;
+          document.getElementById('stat-lessons').textContent = stats.completedLessons || 0;
+          document.getElementById('stat-time').textContent = this.formatTime(stats.totalTimeSpent || 0);
+        } catch (e) {
+          console.error('Error loading quick stats:', e);
+        }
+      },
+
+      formatTime(seconds) {
+        if (seconds < 60) return '< 1m';
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        if (hours > 0) return `${hours}h ${minutes}m`;
+        return `${minutes}m`;
+      },
+
+      // ── Learning Overview ───────────────────────────────────
+      async loadLearningOverview() {
+        try {
+          const courses = await window.DataService.getEnrolledCourses();
+          const container = document.getElementById('overview-courses');
+
+          if (!courses || courses.length === 0) {
+            container.innerHTML = `
+              <div class="profile-empty-state">
+                <div class="profile-empty-state__icon">📚</div>
+                <div class="profile-empty-state__text">No courses enrolled yet. Start your learning journey!</div>
+              </div>`;
+            return;
+          }
+
+          let totalLessons = 0, totalCompleted = 0;
+          container.innerHTML = '';
+
+          courses.forEach(course => {
+            const courseId = course.courseId || course.id;
+            const courseInfo = COURSES[courseId] || { name: courseId, icon: '📘' };
+            const structure = window.DataService.getLessonsStructure(courseId);
+            const completed = window.DataService.getCompletedLessonsCount(course, courseId);
+            const total = structure.totalLessons;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            totalLessons += total;
+            totalCompleted += completed;
+
+            const item = document.createElement('div');
+            item.className = 'course-mini-item';
+            item.innerHTML = `
+              <span class="course-mini-icon">${courseInfo.icon}</span>
+              <div class="course-mini-info">
+                <div class="course-mini-name">${courseInfo.name}</div>
+                <div class="course-mini-bar">
+                  <div class="course-mini-fill" style="width: ${percent}%"></div>
+                </div>
               </div>
+              <span class="course-mini-percent">${percent}%</span>`;
+            container.appendChild(item);
+          });
+
+          const overallPercent = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+          document.getElementById('overall-percent').textContent = overallPercent + '%';
+          document.getElementById('overall-progress-fill').style.width = overallPercent + '%';
+        } catch (e) {
+          console.error('Error loading learning overview:', e);
+        }
+      },
+
+      // ── Learning Insights ───────────────────────────────────
+      async loadInsights() {
+        try {
+          let analytics = null;
+          if (window.AnalyticsService?.getUserAnalytics) {
+            analytics = await window.AnalyticsService.getUserAnalytics();
+          }
+
+          // Learning style
+          if (analytics?.learningStyle?.primary) {
+            const styleNames = { kinesthetic: 'Hands-On', visual: 'Visual', auditory: 'Auditory', reading: 'Reading' };
+            document.getElementById('insight-learning-style').textContent =
+              styleNames[analytics.learningStyle.primary] || analytics.learningStyle.primary;
+          }
+
+          // Cognitive score
+          if (analytics?.summaryStats?.overallScore != null) {
+            document.getElementById('insight-cognitive-score').textContent =
+              Math.round(analytics.summaryStats.overallScore);
+          }
+
+          // Quiz mastery
+          if (window.AnalyticsService?.calculateQuizMastery) {
+            const mastery = await window.AnalyticsService.calculateQuizMastery();
+            if (mastery && mastery.mastery != null) {
+              const pct = Math.round(mastery.mastery * 100);
+              document.getElementById('insight-quiz-bar').style.width = pct + '%';
+              document.getElementById('insight-quiz-percent').textContent = pct + '%';
+            }
+          }
+
+          // Learning velocity
+          if (window.AnalyticsService?.calculateLearningVelocity) {
+            const velocity = await window.AnalyticsService.calculateLearningVelocity();
+            if (velocity && velocity.velocity != null) {
+              document.getElementById('insight-velocity').textContent =
+                `${velocity.velocity.toFixed(1)} lessons/week`;
+            }
+          }
+
+          // Strength areas
+          const strengthsContainer = document.getElementById('profile-strengths');
+          if (analytics?.strengthAreas?.length > 0) {
+            strengthsContainer.innerHTML = analytics.strengthAreas.slice(0, 3).map(area => `
+              <div class="profile-strength-item">
+                <div class="profile-strength-icon">💪</div>
+                <div class="profile-strength-info">
+                  <div class="profile-strength-name">${area.topic}</div>
+                  <div class="profile-strength-score">${Math.round(area.score * 100)}% mastery</div>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            strengthsContainer.innerHTML = `
+              <div class="profile-empty-state" style="padding: 1rem 0;">
+                <div class="profile-empty-state__icon">💪</div>
+                <div class="profile-empty-state__text">Complete more activities to discover your strengths</div>
+              </div>`;
+          }
+
+          // Recent milestones
+          await this.loadRecentMilestones();
+        } catch (e) {
+          console.error('Error loading insights:', e);
+        }
+      },
+
+      async loadRecentMilestones() {
+        const container = document.getElementById('milestones-list');
+        try {
+          const courses = await window.DataService.getEnrolledCourses();
+          const milestones = [];
+
+          courses.forEach(course => {
+            const courseId = course.courseId || course.id;
+            const courseInfo = COURSES[courseId] || { name: courseId, icon: '📘' };
+
+            if (course.lessons) {
+              Object.entries(course.lessons).forEach(([lessonId, lesson]) => {
+                if (lesson.completed) {
+                  let date = null;
+                  const ts = lesson.completedAt || lesson.lastViewedAt;
+                  if (ts) {
+                    if (ts._seconds) date = new Date(ts._seconds * 1000);
+                    else if (ts.seconds) date = new Date(ts.seconds * 1000);
+                    else if (ts.toDate) date = ts.toDate();
+                    else date = new Date(ts);
+                  }
+
+                  if (date && !isNaN(date.getTime())) {
+                    const formattedLesson = lessonId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                    milestones.push({ name: `${courseInfo.icon} ${formattedLesson}`, date });
+                  }
+                }
+              });
+            }
+          });
+
+          milestones.sort((a, b) => b.date - a.date);
+          const recent = milestones.slice(0, 5);
+
+          if (recent.length === 0) {
+            container.innerHTML = `
+              <div class="profile-empty-state" style="padding: 0.5rem 0;">
+                <div class="profile-empty-state__text">No completed lessons yet</div>
+              </div>`;
+            return;
+          }
+
+          container.innerHTML = recent.map(m => `
+            <div class="profile-milestone-item">
+              <span class="profile-milestone-dot"></span>
+              <span>${m.name}</span>
+              <span class="profile-milestone-date">${this.formatRelativeDate(m.date)}</span>
             </div>
           `).join('');
-        } else {
-          strengthsContainer.innerHTML = `
-            <div class="profile-empty-state" style="padding: 1rem 0;">
-              <div class="profile-empty-state__icon">💪</div>
-              <div class="profile-empty-state__text">Complete more activities to discover your strengths</div>
-            </div>
-          `;
+        } catch (e) {
+          console.log('Could not load milestones:', e);
+          container.innerHTML = '';
         }
+      },
 
-        // Recent milestones
-        await loadRecentMilestones();
+      formatRelativeDate(date) {
+        const now = new Date();
+        const diffMs = now - date;
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        if (diffDays === 0) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        if (diffDays < 7) return `${diffDays}d ago`;
+        if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      },
 
-      } catch (e) {
-        console.error('Error loading insights:', e);
-      }
-    }
-
-    async function loadRecentMilestones() {
-      const container = document.getElementById('milestones-list');
-
-      try {
-        const courses = await window.DataService.getEnrolledCourses();
-        const milestones = [];
-
-        courses.forEach(course => {
-          const courseId = course.courseId || course.id;
-          const courseInfo = COURSES[courseId] || { name: courseId, icon: '📘' };
-
-          if (course.lessons) {
-            Object.entries(course.lessons).forEach(([lessonId, lesson]) => {
-              if (lesson.completed) {
-                let date = null;
-                const ts = lesson.completedAt || lesson.lastViewedAt;
-                if (ts) {
-                  if (ts._seconds) date = new Date(ts._seconds * 1000);
-                  else if (ts.seconds) date = new Date(ts.seconds * 1000);
-                  else if (ts.toDate) date = ts.toDate();
-                  else date = new Date(ts);
-                }
-
-                if (date && !isNaN(date.getTime())) {
-                  const formattedLesson = lessonId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-                  milestones.push({
-                    name: `${courseInfo.icon} ${formattedLesson}`,
-                    date: date
-                  });
-                }
-              }
-            });
-          }
-        });
-
-        // Sort by most recent first, take top 5
-        milestones.sort((a, b) => b.date - a.date);
-        const recent = milestones.slice(0, 5);
-
-        if (recent.length === 0) {
-          container.innerHTML = `
-            <div class="profile-empty-state" style="padding: 0.5rem 0;">
-              <div class="profile-empty-state__text">No completed lessons yet</div>
-            </div>
-          `;
-          return;
-        }
-
-        container.innerHTML = recent.map(m => `
-          <div class="profile-milestone-item">
-            <span class="profile-milestone-dot"></span>
-            <span>${m.name}</span>
-            <span class="profile-milestone-date">${formatRelativeDate(m.date)}</span>
+      // ── Coming Soon Toast ───────────────────────────────────
+      setupComingSoon() {
+        const toast = document.createElement('div');
+        toast.className = 'coming-soon-toast';
+        toast.innerHTML = `
+          <span class="coming-soon-toast__icon">🚧</span>
+          <div class="coming-soon-toast__content">
+            <span class="coming-soon-toast__title">Coming Soon!</span>
+            <span class="coming-soon-toast__message"></span>
           </div>
-        `).join('');
+        `;
+        document.body.appendChild(toast);
+        let toastTimeout = null;
 
-      } catch (e) {
-        console.log('Could not load milestones:', e);
-        container.innerHTML = '';
-      }
-    }
-
-    function formatRelativeDate(date) {
-      const now = new Date();
-      const diffMs = now - date;
-      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-      if (diffDays === 0) return 'Today';
-      if (diffDays === 1) return 'Yesterday';
-      if (diffDays < 7) return `${diffDays}d ago`;
-      if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // UI SETUP
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    function setupSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const toggle = document.getElementById('sidebar-toggle');
-      const overlay = document.getElementById('sidebar-overlay');
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-
-      toggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
-      });
-
-      if (localStorage.getItem('sidebarCollapsed') === 'true') {
-        sidebar.classList.add('collapsed');
-      }
-
-      mobileBtn.addEventListener('click', () => {
-        sidebar.classList.add('open');
-      });
-
-      overlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-      });
-    }
-
-    function setupLogout() {
-      document.getElementById('logout-link').addEventListener('click', async (e) => {
-        e.preventDefault();
-        await window.AuthService.logout();
-        window.location.href = '../index.html';
-      });
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // TOASTS
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    function setupComingSoon() {
-      const toast = document.createElement('div');
-      toast.className = 'coming-soon-toast';
-      toast.innerHTML = `
-        <span class="coming-soon-toast__icon">🚧</span>
-        <div class="coming-soon-toast__content">
-          <span class="coming-soon-toast__title">Coming Soon!</span>
-          <span class="coming-soon-toast__message"></span>
-        </div>
-      `;
-      document.body.appendChild(toast);
-
-      let toastTimeout = null;
-
-      function showComingSoonToast(featureName) {
-        const message = toast.querySelector('.coming-soon-toast__message');
-        message.textContent = `${featureName} is under development. Stay tuned!`;
-        clearTimeout(toastTimeout);
-        toast.classList.remove('show');
-        requestAnimationFrame(() => {
-          toast.classList.add('show');
-          toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        document.querySelectorAll('.coming-soon-trigger').forEach(trigger => {
+          trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const featureName = trigger.getAttribute('data-feature') || 'This feature';
+            const message = toast.querySelector('.coming-soon-toast__message');
+            message.textContent = `${featureName} is under development. Stay tuned!`;
+            clearTimeout(toastTimeout);
+            toast.classList.remove('show');
+            requestAnimationFrame(() => {
+              toast.classList.add('show');
+              toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+            });
+          });
         });
       }
+    };
 
-      // coming-soon-link (sidebar)
-      document.querySelectorAll('.coming-soon-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          showComingSoonToast(link.getAttribute('data-feature') || 'This feature');
-        });
-      });
+    // =======================================================================
+    // GLOBAL TOAST
+    // =======================================================================
 
-      // coming-soon-trigger (in-page buttons)
-      document.querySelectorAll('.coming-soon-trigger').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          showComingSoonToast(btn.getAttribute('data-feature') || 'This feature');
-        });
-      });
-    }
-
-    // Save toast
     const saveToastEl = document.createElement('div');
     saveToastEl.className = 'save-toast';
     saveToastEl.innerHTML = `
@@ -2127,123 +1637,10 @@
       });
     }
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    // PREVIEW MODE — Mock data functions (remove before production)
-    // ═══════════════════════════════════════════════════════════════════════════
-
-    function loadProfileHeaderPreview(user) {
-      const profileAvatar = document.getElementById('profile-avatar');
-      profileAvatar.textContent = user.displayName.charAt(0).toUpperCase();
-
-      document.getElementById('profile-display-name').textContent = user.displayName;
-      document.getElementById('profile-email').textContent = user.email;
-      document.getElementById('profile-role-badge').textContent = 'User';
-      document.getElementById('profile-member-since').textContent = 'January 2025';
-    }
-
-    function loadQuickStatsPreview() {
-      document.getElementById('stat-streak').textContent = '7';
-      document.getElementById('stat-streak-detail').textContent = 'Best: 14 days';
-      document.getElementById('user-streak').textContent = '7';
-      document.getElementById('stat-courses').textContent = '3';
-      document.getElementById('stat-lessons').textContent = '12';
-      document.getElementById('stat-time').textContent = '8h 24m';
-    }
-
-    function loadLearningOverviewPreview() {
-      const courses = [
-        { icon: '🌟', name: "The Apprentice's Path", percent: 85 },
-        { icon: '🚀', name: 'The Junior Accelerator', percent: 42 },
-        { icon: '🎯', name: 'The Senior Amplifier', percent: 15 }
-      ];
-
-      const container = document.getElementById('overview-courses');
-      container.innerHTML = '';
-
-      let totalPercent = 0;
-      courses.forEach(c => {
-        totalPercent += c.percent;
-        const item = document.createElement('div');
-        item.className = 'course-mini-item';
-        item.innerHTML = `
-          <span class="course-mini-icon">${c.icon}</span>
-          <div class="course-mini-info">
-            <div class="course-mini-name">${c.name}</div>
-            <div class="course-mini-bar">
-              <div class="course-mini-fill" style="width: ${c.percent}%"></div>
-            </div>
-          </div>
-          <span class="course-mini-percent">${c.percent}%</span>
-        `;
-        container.appendChild(item);
-      });
-
-      const overall = Math.round(totalPercent / courses.length);
-      document.getElementById('overall-percent').textContent = overall + '%';
-      document.getElementById('overall-progress-fill').style.width = overall + '%';
-    }
-
-    function loadInsightsPreview() {
-      document.getElementById('insight-learning-style').textContent = 'Hands-On';
-      document.getElementById('insight-cognitive-score').textContent = '72';
-      document.getElementById('insight-quiz-bar').style.width = '78%';
-      document.getElementById('insight-quiz-percent').textContent = '78%';
-      document.getElementById('insight-velocity').textContent = '2.3 lessons/week';
-
-      // Strengths
-      document.getElementById('profile-strengths').innerHTML = `
-        <div class="profile-strength-item">
-          <div class="profile-strength-icon">💪</div>
-          <div class="profile-strength-info">
-            <div class="profile-strength-name">Problem Solving</div>
-            <div class="profile-strength-score">92% mastery</div>
-          </div>
-        </div>
-        <div class="profile-strength-item">
-          <div class="profile-strength-icon">💪</div>
-          <div class="profile-strength-info">
-            <div class="profile-strength-name">Architecture</div>
-            <div class="profile-strength-score">85% mastery</div>
-          </div>
-        </div>
-        <div class="profile-strength-item">
-          <div class="profile-strength-icon">💪</div>
-          <div class="profile-strength-info">
-            <div class="profile-strength-name">Code Review</div>
-            <div class="profile-strength-score">78% mastery</div>
-          </div>
-        </div>
-      `;
-
-      // Milestones
-      document.getElementById('milestones-list').innerHTML = `
-        <div class="profile-milestone-item">
-          <span class="profile-milestone-dot"></span>
-          <span>🌟 Ch4 Stone</span>
-          <span class="profile-milestone-date">Today</span>
-        </div>
-        <div class="profile-milestone-item">
-          <span class="profile-milestone-dot"></span>
-          <span>🌟 Ch3 Iron</span>
-          <span class="profile-milestone-date">Yesterday</span>
-        </div>
-        <div class="profile-milestone-item">
-          <span class="profile-milestone-dot"></span>
-          <span>🚀 Ch1 Origins</span>
-          <span class="profile-milestone-date">3d ago</span>
-        </div>
-        <div class="profile-milestone-item">
-          <span class="profile-milestone-dot"></span>
-          <span>🌟 Ch2 Wood</span>
-          <span class="profile-milestone-date">5d ago</span>
-        </div>
-        <div class="profile-milestone-item">
-          <span class="profile-milestone-dot"></span>
-          <span>🎯 Ch0 Origins</span>
-          <span class="profile-milestone-date">1w ago</span>
-        </div>
-      `;
-    }
+    // =======================================================================
+    // INIT
+    // =======================================================================
+    document.addEventListener('DOMContentLoaded', () => ProfilePage.init());
   </script>
 </body>
 </html>
