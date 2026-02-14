@@ -156,6 +156,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
     }
     .profile-edit-btn:hover {
       background: rgba(255, 255, 255, 0.1);
@@ -193,12 +195,6 @@
     }
 
     /* Bio */
-    .profile-bio {
-      font-size: 0.9rem;
-      color: var(--text-secondary, #a0a0b8);
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
-    }
     .profile-bio-edit {
       width: 100%;
       padding: 0.5rem 0.75rem;
@@ -213,7 +209,6 @@
       max-height: 120px;
       outline: none;
       transition: border-color 0.2s;
-      display: none;
     }
     .profile-bio-edit:focus {
       border-color: var(--accent-primary, #7986cb);
@@ -903,7 +898,7 @@
               <div class="profile-header__top-row">
                 <h2 class="profile-display-name" id="profile-display-name">Loading...</h2>
                 <div class="profile-header__actions">
-                  <button class="profile-edit-btn" id="edit-profile-btn">Edit Profile</button>
+                  <a href="settings.html" class="profile-edit-btn" id="edit-profile-btn">Edit Profile</a>
                 </div>
               </div>
               <p class="profile-handle" id="profile-handle">@user</p>
@@ -911,7 +906,6 @@
                 <span class="profile-role-badge" id="profile-role-badge">User</span>
                 <span class="profile-member-since">Member since <span id="profile-member-since">...</span></span>
               </div>
-              <p class="profile-bio" id="profile-bio">No bio yet. Click Edit Profile to add one.</p>
               <textarea class="profile-bio-edit" id="profile-bio-edit" placeholder="Tell the community about yourself..." maxlength="280"></textarea>
             </div>
           </div>
@@ -1140,7 +1134,7 @@
         this.setupLogout();
         this.setupComingSoon();
         this.setupTabs();
-        this.setupEditProfile();
+        this.setupBioStatus();
 
         // Check admin
         if (window.RBACService) {
@@ -1204,38 +1198,16 @@
         history.replaceState(null, '', `#${tabName}`);
       },
 
-      // ── Edit Profile ────────────────────────────────────────
-      setupEditProfile() {
-        const editBtn = document.getElementById('edit-profile-btn');
-        const bioDisplay = document.getElementById('profile-bio');
+      // ── Bio Status (always visible, auto-save) ─────────────
+      setupBioStatus() {
         const bioEdit = document.getElementById('profile-bio-edit');
+        let saveTimeout;
 
-        editBtn.addEventListener('click', () => {
-          this.isEditMode = !this.isEditMode;
-
-          if (this.isEditMode) {
-            editBtn.textContent = 'Save Profile';
-            editBtn.style.background = 'linear-gradient(135deg, var(--accent-primary, #7986cb), #5c6bc0)';
-            editBtn.style.color = '#fff';
-            editBtn.style.borderColor = 'transparent';
-            bioDisplay.style.display = 'none';
-            bioEdit.style.display = 'block';
-            bioEdit.value = bioDisplay.textContent === 'No bio yet. Click Edit Profile to add one.' ? '' : bioDisplay.textContent;
-            bioEdit.focus();
-          } else {
-            // Save bio
-            const newBio = bioEdit.value.trim();
-            editBtn.textContent = 'Edit Profile';
-            editBtn.style.background = '';
-            editBtn.style.color = '';
-            editBtn.style.borderColor = '';
-            bioDisplay.style.display = '';
-            bioEdit.style.display = 'none';
-            bioDisplay.textContent = newBio || 'No bio yet. Click Edit Profile to add one.';
-
-            // Save to Firestore
-            this.saveBio(newBio);
-          }
+        bioEdit.addEventListener('input', () => {
+          clearTimeout(saveTimeout);
+          saveTimeout = setTimeout(() => {
+            this.saveBio(bioEdit.value.trim());
+          }, 800);
         });
       },
 
@@ -1345,7 +1317,7 @@
 
             // Bio
             if (data.bio) {
-              document.getElementById('profile-bio').textContent = data.bio;
+              document.getElementById('profile-bio-edit').value = data.bio;
             }
           }
         } catch (e) {
