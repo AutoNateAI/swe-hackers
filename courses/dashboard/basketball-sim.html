@@ -76,20 +76,70 @@
           <ul class="nav-list">
             <li class="nav-item">
               <a href="index.html" class="nav-link">
-                <span class="nav-icon">&#127968;</span>
+                <span class="nav-icon">🏠</span>
                 <span class="nav-text">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="courses.html" class="nav-link">
-                <span class="nav-icon">&#128218;</span>
+                <span class="nav-icon">📚</span>
                 <span class="nav-text">Course Library</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="challenges.html" class="nav-link">
-                <span class="nav-icon">&#9889;</span>
+                <span class="nav-icon">⚡</span>
                 <span class="nav-text">Daily Challenges</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Learning Section (admin only) -->
+        <div class="nav-section" id="learning-section" style="display: none;">
+          <span class="nav-section-title">Learning</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="progress.html" class="nav-link">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">My Progress</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="achievements.html" class="nav-link">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Achievements</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="notes.html" class="nav-link">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Notes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Community Section (admin only) -->
+        <div class="nav-section" id="community-section" style="display: none;">
+          <span class="nav-section-title">Community</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="feed.html" class="nav-link">
+                <span class="nav-icon">📰</span>
+                <span class="nav-text">Feed</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://discord.gg/Me5N8tCdkC" target="_blank" class="nav-link">
+                <span class="nav-icon">💬</span>
+                <span class="nav-text">Discord</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="leaderboard.html" class="nav-link">
+                <span class="nav-icon">🏅</span>
+                <span class="nav-text">Leaderboard</span>
               </a>
             </li>
           </ul>
@@ -100,7 +150,7 @@
           <ul class="nav-list">
             <li class="nav-item">
               <a href="basketball-sim.html" class="nav-link active">
-                <span class="nav-icon">&#127936;</span>
+                <span class="nav-icon">🏀</span>
                 <span class="nav-text">Play Simulator</span>
               </a>
             </li>
@@ -112,32 +162,32 @@
           <ul class="nav-list">
             <li class="nav-item">
               <a href="profile.html" class="nav-link">
-                <span class="nav-icon">&#128100;</span>
+                <span class="nav-icon">👤</span>
                 <span class="nav-text">Profile</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="settings.html" class="nav-link">
-                <span class="nav-icon">&#9881;</span>
+                <span class="nav-icon">⚙️</span>
                 <span class="nav-text">Settings</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" id="logout-link">
-                <span class="nav-icon">&#128682;</span>
+                <span class="nav-icon">🚪</span>
                 <span class="nav-text">Sign Out</span>
               </a>
             </li>
           </ul>
         </div>
 
-        <!-- Admin Section -->
+        <!-- Admin Section (admin only) -->
         <div class="nav-section" id="admin-section" style="display: none;">
           <span class="nav-section-title" style="color: #f44336;">Admin</span>
           <ul class="nav-list">
             <li class="nav-item">
               <a href="../admin/" class="nav-link">
-                <span class="nav-icon">&#128737;</span>
+                <span class="nav-icon">🛡️</span>
                 <span class="nav-text">Admin Dashboard</span>
               </a>
             </li>
@@ -377,8 +427,10 @@
         return;
       }
 
-      // Show admin section if admin
+      // Show full nav sections for admins
       if (isAdmin) {
+        document.getElementById('learning-section').style.display = '';
+        document.getElementById('community-section').style.display = '';
         document.getElementById('admin-section').style.display = 'block';
       }
 
