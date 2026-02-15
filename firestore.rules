@@ -184,5 +184,60 @@ service cloud.firestore {
       // Only Cloud Functions can write (via Admin SDK)
       allow write: if false;
     }
+
+    // ══════════════════════════════════════════════════════════════════
+    // FEED POSTS (AI-generated content feed)
+    // ══════════════════════════════════════════════════════════════════
+
+    match /feedPosts/{postId} {
+      // Anyone authenticated can read published posts
+      allow read: if isAuthenticated() && resource.data.status == 'published';
+      // Admins can read any status
+      allow read: if isAdmin();
+      // Only admin/Cloud Functions can create/update/delete posts
+      allow write: if isAdmin();
+
+      // Comments subcollection
+      match /comments/{commentId} {
+        // Authenticated users can read comments
+        allow read: if isAuthenticated();
+        // Users can create comments with their own userId
+        allow create: if isAuthenticated() &&
+                         request.resource.data.userId == request.auth.uid;
+        // Users can update/delete their own comments
+        allow update, delete: if isAuthenticated() &&
+                                 resource.data.userId == request.auth.uid;
+      }
+
+      // Likes subcollection (userId as doc ID)
+      match /likes/{userId} {
+        // Authenticated users can read likes
+        allow read: if isAuthenticated();
+        // Users can only create/delete their own like
+        allow create, delete: if isAuthenticated() && userId == request.auth.uid;
+      }
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // PERSONAS (AI content creators)
+    // ══════════════════════════════════════════════════════════════════
+
+    match /personas/{personaId} {
+      // Authenticated users can read personas
+      allow read: if isAuthenticated();
+      // Only admin/Cloud Functions can write
+      allow write: if isAdmin();
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // SCRAPED DATA (pipeline source content)
+    // ══════════════════════════════════════════════════════════════════
+
+    match /scrapedData/{docId} {
+      // Only admins can read scraped data
+      allow read: if isAdmin();
+      // Only admin/Cloud Functions can write
+      allow write: if isAdmin();
+    }
   }
 }

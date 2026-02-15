@@ -58,6 +58,10 @@
 
   <!-- Anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <!-- Cytoscape & Chart.js (defer so they don't block page load) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -196,6 +200,9 @@
           <!-- Feed cards rendered by JS -->
         </div>
 
+        <!-- Pagination -->
+        <button class="feed-load-more" id="load-more-btn" style="display:none;">Load More</button>
+
       </div>
     </main>
 
@@ -208,174 +215,299 @@
   <script src="../shared/js/whop-service.js"></script>
 
   <script>
-    // =========================================================================
-    // FEED DATA (hardcoded initial set)
-    // =========================================================================
-    const FEED_POSTS = [
-      {
-        id: 'post-1',
-        category: 'strategies',
-        title: 'How I Built a $5K/mo Automation Agency in 90 Days',
-        content: 'The key was niching down hard into real estate follow-ups. I used a simple Make.com + OpenAI pipeline to generate personalized follow-up emails for realtors. Started with 3 free trials, converted 2, then scaled through referrals. The secret? Charging for outcomes, not hours.',
-        author: 'Marcus Chen',
-        authorInitial: 'M',
-        date: 'Feb 12, 2026',
-        tags: ['automation', 'agency', 'real-estate'],
-        premium: false
-      },
-      {
-        id: 'post-2',
-        category: 'results',
-        title: 'Client Case Study: 340% ROI on AI Chatbot Deployment',
-        content: 'Deployed a custom RAG chatbot for an e-commerce store. It handles 78% of support tickets autonomously. Setup cost was $2,400, and the client saves $8,200/month in support staff costs. Full breakdown of the tech stack and prompting strategy inside.',
-        author: 'Aisha Patel',
-        authorInitial: 'A',
-        date: 'Feb 11, 2026',
-        tags: ['case-study', 'chatbot', 'ROI'],
-        premium: true
-      },
-      {
-        id: 'post-3',
-        category: 'tips',
-        title: '5 Prompt Engineering Patterns That Actually Work in Production',
-        content: 'After shipping 40+ AI features, these are the patterns I keep coming back to: 1) Chain of Thought with guardrails, 2) Few-shot with dynamic example selection, 3) Role-based system prompts with constraints, 4) Output schema enforcement, 5) Confidence scoring with fallbacks.',
-        author: 'Jordan Rivera',
-        authorInitial: 'J',
-        date: 'Feb 10, 2026',
-        tags: ['prompt-engineering', 'production', 'patterns'],
-        premium: false
-      },
-      {
-        id: 'post-4',
-        category: 'jobs',
-        title: 'Hiring: AI Automation Specialist - Remote, $120-150K',
-        content: 'We are looking for someone to build and maintain our internal AI automation suite. You will work on document processing pipelines, customer service AI, and data enrichment flows. Must have experience with LangChain, Make.com or n8n, and at least one vector database.',
-        author: 'TechCorp Recruiting',
-        authorInitial: 'T',
-        date: 'Feb 10, 2026',
-        tags: ['remote', 'full-time', 'AI-automation'],
-        premium: false
-      },
-      {
-        id: 'post-5',
-        category: 'keywords',
-        title: 'Trending Keywords This Week: "AI Agent Framework" +280%',
-        content: 'Search volume analysis for the AI tools space: "AI agent framework" is up 280%, "vibe coding" up 190%, "MCP servers" up 340%, "cursor rules" up 150%. These signal where demand is heading. Build tools targeting these terms now.',
-        author: 'AutoNateAI Research',
-        authorInitial: 'A',
-        date: 'Feb 9, 2026',
-        tags: ['SEO', 'trends', 'market-intel'],
-        premium: true
-      },
-      {
-        id: 'post-6',
-        category: 'strategies',
-        title: 'The "Productized Service" Model for AI Freelancers',
-        content: 'Stop trading time for money. Package your AI skills into fixed-scope offerings: "AI Email Responder Setup - $997" or "Custom GPT Training - $1,500". I went from $50/hr freelancing to $12K/mo with just 3 productized offerings. Here is the exact playbook.',
-        author: 'Damon Wright',
-        authorInitial: 'D',
-        date: 'Feb 8, 2026',
-        tags: ['freelancing', 'pricing', 'productized'],
-        premium: false
-      },
-      {
-        id: 'post-7',
-        category: 'results',
-        title: 'Monthly Revenue Report: AutoNateAI Tool Sellers (Jan 2026)',
-        content: 'Aggregate data from our top 50 sellers: Average revenue $3,400/mo, median $1,800/mo. Top category: Workflow automation templates. Fastest growing: AI agent starter kits. Best conversion rates on tools priced $29-$49. Full data and charts available.',
-        author: 'AutoNateAI Analytics',
-        authorInitial: 'A',
-        date: 'Feb 7, 2026',
-        tags: ['revenue', 'analytics', 'marketplace'],
-        premium: true
-      },
-      {
-        id: 'post-8',
-        category: 'tips',
-        title: 'How to Structure Your AI Tool README for Maximum Sales',
-        content: 'Your README is your sales page. After A/B testing 20+ listings, this structure wins: 1) One-line value prop, 2) 30-second demo GIF, 3) "What you get" bullet list, 4) Setup in 3 steps, 5) Before/after comparison, 6) FAQ addressing objections. Template included.',
-        author: 'Priya Sharma',
-        authorInitial: 'P',
-        date: 'Feb 6, 2026',
-        tags: ['copywriting', 'conversion', 'selling'],
-        premium: false
-      },
-      {
-        id: 'post-9',
-        category: 'jobs',
-        title: 'Contract: Build a Multi-Agent System for Legal Research',
-        content: 'Law firm needs a multi-agent AI system that can analyze case law, summarize depositions, and draft initial briefs. 3-month contract, $15K budget. Must have experience with multi-agent orchestration and legal domain knowledge preferred.',
-        author: 'LegalTech Solutions',
-        authorInitial: 'L',
-        date: 'Feb 5, 2026',
-        tags: ['contract', 'multi-agent', 'legal'],
-        premium: false
-      },
-      {
-        id: 'post-10',
-        category: 'keywords',
-        title: 'Underserved Niches: AI Tools Nobody Is Building Yet',
-        content: 'After analyzing 10K+ search queries with zero or low-competition results: AI-powered inventory forecasting for small retailers, automated grant writing for nonprofits, AI meal prep planners with grocery API integration, and pet health monitoring AI. Each has 1K+ monthly searches.',
-        author: 'AutoNateAI Research',
-        authorInitial: 'A',
-        date: 'Feb 4, 2026',
-        tags: ['niches', 'opportunity', 'research'],
-        premium: true
-      }
-    ];
-
     let hasPremiumAccess = false;
+    let currentCategory = 'all';
+    let lastVisibleDoc = null;
+    let noMorePosts = false;
+    let feedDb = null;
+    const POSTS_PER_PAGE = 10;
+
+    // =========================================================================
+    // FIRESTORE QUERIES
+    // =========================================================================
+
+    async function loadFeedPosts(category = 'all', lastDoc = null, limit = POSTS_PER_PAGE) {
+      const feedRef = feedDb.collection('feedPosts');
+      let query = feedRef.where('status', '==', 'published').orderBy('createdAt', 'desc').limit(limit);
+      if (category !== 'all') {
+        query = feedRef.where('status', '==', 'published').where('category', '==', category).orderBy('createdAt', 'desc').limit(limit);
+      }
+      if (lastDoc) {
+        query = query.startAfter(lastDoc);
+      }
+      const snapshot = await query.get();
+      return snapshot;
+    }
+
+    // =========================================================================
+    // LIKE FUNCTIONALITY
+    // =========================================================================
+
+    async function toggleLike(postId) {
+      const uid = firebase.auth().currentUser.uid;
+      const likeRef = feedDb.collection('feedPosts').doc(postId).collection('likes').doc(uid);
+      const likeDoc = await likeRef.get();
+      if (likeDoc.exists) {
+        await likeRef.delete();
+        await feedDb.collection('feedPosts').doc(postId).update({ likes: firebase.firestore.FieldValue.increment(-1) });
+      } else {
+        await likeRef.set({ userId: uid, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        await feedDb.collection('feedPosts').doc(postId).update({ likes: firebase.firestore.FieldValue.increment(1) });
+      }
+      // Update UI
+      const btn = document.querySelector(`[data-like-btn="${postId}"]`);
+      const countEl = document.querySelector(`[data-like-count="${postId}"]`);
+      if (btn) btn.classList.toggle('liked');
+      if (countEl) {
+        const current = parseInt(countEl.textContent) || 0;
+        countEl.textContent = btn.classList.contains('liked') ? current + 1 : Math.max(0, current - 1);
+      }
+    }
+
+    // =========================================================================
+    // COMMENT FUNCTIONALITY
+    // =========================================================================
+
+    async function loadComments(postId) {
+      const snapshot = await feedDb.collection('feedPosts').doc(postId).collection('comments').orderBy('createdAt', 'asc').get();
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+
+    async function addComment(postId, content) {
+      const user = firebase.auth().currentUser;
+      await feedDb.collection('feedPosts').doc(postId).collection('comments').add({
+        userId: user.uid,
+        displayName: user.displayName || 'Anonymous',
+        content: content,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      await feedDb.collection('feedPosts').doc(postId).update({ commentCount: firebase.firestore.FieldValue.increment(1) });
+    }
+
+    function toggleComments(postId) {
+      const section = document.querySelector(`[data-comments="${postId}"]`);
+      if (!section) return;
+      const isOpen = section.classList.toggle('open');
+      if (isOpen && !section.dataset.loaded) {
+        section.dataset.loaded = 'true';
+        refreshComments(postId);
+      }
+    }
+
+    async function refreshComments(postId) {
+      const list = document.querySelector(`[data-comments-list="${postId}"]`);
+      if (!list) return;
+      const comments = await loadComments(postId);
+      list.innerHTML = comments.map(c => `
+        <div class="feed-card__comment">
+          <div class="feed-card__comment-author">${escapeHtml(c.displayName)}</div>
+          <div class="feed-card__comment-text">${escapeHtml(c.content)}</div>
+        </div>
+      `).join('') || '<div class="feed-card__comment"><div class="feed-card__comment-text">No comments yet.</div></div>';
+    }
+
+    async function handleCommentSubmit(postId) {
+      const input = document.querySelector(`[data-comment-input="${postId}"]`);
+      if (!input) return;
+      const content = input.value.trim();
+      if (!content) return;
+      input.value = '';
+      await addComment(postId, content);
+      await refreshComments(postId);
+      // Update comment count in UI
+      const countEl = document.querySelector(`[data-comment-count="${postId}"]`);
+      if (countEl) countEl.textContent = parseInt(countEl.textContent || '0') + 1;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
 
     // =========================================================================
     // RENDER
     // =========================================================================
 
-    function renderFeed(category = 'all') {
-      const container = document.getElementById('feed-container');
-      const filtered = category === 'all'
-        ? FEED_POSTS
-        : FEED_POSTS.filter(p => p.category === category);
+    function formatDate(timestamp) {
+      if (!timestamp) return '';
+      const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
 
-      container.innerHTML = filtered.map(post => {
-        const isPremiumLocked = post.premium && !hasPremiumAccess;
-        return `
-          <div class="feed-card ${isPremiumLocked ? 'feed-card--premium' : ''}" data-category="${post.category}">
-            <div class="feed-card__header">
-              <span class="feed-card__category feed-card__category--${post.category}">${post.category}</span>
-              ${post.premium ? '<span class="feed-card__premium-badge">&#9733; Premium</span>' : ''}
-            </div>
-            <h3 class="feed-card__title">${post.title}</h3>
-            <div class="feed-card__content">
-              <p>${post.content}</p>
-            </div>
-            ${isPremiumLocked ? `
-              <button class="feed-card__unlock" onclick="handleUnlock()">
-                &#128274; Unlock Premium Content
-              </button>
-            ` : ''}
-            <div class="feed-card__tags">
-              ${post.tags.map(t => `<span class="feed-tag">#${t}</span>`).join('')}
-            </div>
-            <div class="feed-card__author">
-              <div class="feed-card__avatar">${post.authorInitial}</div>
-              <div class="feed-card__author-info">
-                <span class="feed-card__author-name">${post.author}</span>
-                <span class="feed-card__date">${post.date}</span>
-              </div>
+    function renderPostCard(post) {
+      const isPremiumLocked = post.premium && !hasPremiumAccess;
+      const tags = post.tags || [];
+      const likeCount = post.likes || 0;
+      const commentCount = post.commentCount || 0;
+      const authorInitial = post.authorInitial || (post.author ? post.author.charAt(0) : '?');
+
+      let interactiveHtml = '';
+      if (post.contentType === 'interactive' && post.interactiveData) {
+        interactiveHtml = `<div class="feed-card__interactive" data-interactive="${post.id}" data-interactive-type="cytoscape"></div>`;
+      } else if (post.contentType === 'chart' && post.interactiveData) {
+        interactiveHtml = `<div class="feed-card__interactive" data-interactive="${post.id}" data-interactive-type="chart"><canvas id="chart-${post.id}"></canvas></div>`;
+      }
+
+      return `
+        <div class="feed-card ${isPremiumLocked ? 'feed-card--premium' : ''}" data-category="${post.category}" data-post-id="${post.id}">
+          <div class="feed-card__header">
+            <span class="feed-card__category feed-card__category--${post.category}">${post.category}</span>
+            ${post.premium ? '<span class="feed-card__premium-badge">&#9733; Premium</span>' : ''}
+          </div>
+          <h3 class="feed-card__title">${escapeHtml(post.title)}</h3>
+          <div class="feed-card__content">
+            <p>${escapeHtml(post.content)}</p>
+          </div>
+          ${interactiveHtml}
+          ${isPremiumLocked ? `
+            <button class="feed-card__unlock" onclick="handleUnlock()">
+              &#128274; Unlock Premium Content
+            </button>
+          ` : ''}
+          <div class="feed-card__tags">
+            ${tags.map(t => `<span class="feed-tag">#${escapeHtml(t)}</span>`).join('')}
+          </div>
+          <div class="feed-card__author">
+            <div class="feed-card__avatar">${escapeHtml(authorInitial)}</div>
+            <div class="feed-card__author-info">
+              <span class="feed-card__author-name">${escapeHtml(post.author || 'Unknown')}</span>
+              <span class="feed-card__date">${formatDate(post.createdAt)}</span>
             </div>
           </div>
-        `;
-      }).join('');
+          <div class="feed-card__actions">
+            <button class="feed-card__action-btn" data-like-btn="${post.id}" onclick="toggleLike('${post.id}')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span data-like-count="${post.id}">${likeCount}</span>
+            </button>
+            <button class="feed-card__action-btn" onclick="toggleComments('${post.id}')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span data-comment-count="${post.id}">${commentCount}</span>
+            </button>
+          </div>
+          <div class="feed-card__comments" data-comments="${post.id}">
+            <div class="feed-card__comments-list" data-comments-list="${post.id}"></div>
+            <div class="feed-card__comment-form">
+              <input class="feed-card__comment-input" data-comment-input="${post.id}" type="text" placeholder="Write a comment..." onkeydown="if(event.key==='Enter')handleCommentSubmit('${post.id}')">
+              <button class="feed-card__comment-submit" onclick="handleCommentSubmit('${post.id}')">Post</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
-      // Animate cards in
-      anime({
-        targets: '.feed-card',
-        opacity: [0, 1],
-        translateY: [20, 0],
-        delay: anime.stagger(80),
-        easing: 'easeOutCubic',
-        duration: 500
+    function initInteractives() {
+      // Initialize Cytoscape instances
+      document.querySelectorAll('[data-interactive-type="cytoscape"]').forEach(el => {
+        const postId = el.dataset.interactive;
+        try {
+          const card = el.closest('.feed-card');
+          const postData = card?.__postData;
+          if (postData?.interactiveData) {
+            cytoscape({
+              container: el,
+              elements: postData.interactiveData.elements || [],
+              style: postData.interactiveData.style || [{ selector: 'node', style: { 'background-color': '#7986cb', 'label': 'data(label)', 'color': '#fff' } }, { selector: 'edge', style: { 'line-color': '#5c6bc0', 'target-arrow-color': '#5c6bc0', 'target-arrow-shape': 'triangle' } }],
+              layout: postData.interactiveData.layout || { name: 'cose' }
+            });
+          }
+        } catch (e) {
+          console.warn('Failed to init Cytoscape for post', postId, e);
+        }
       });
+
+      // Initialize Chart.js instances
+      document.querySelectorAll('[data-interactive-type="chart"]').forEach(el => {
+        const postId = el.dataset.interactive;
+        try {
+          const card = el.closest('.feed-card');
+          const postData = card?.__postData;
+          const canvas = document.getElementById(`chart-${postId}`);
+          if (postData?.interactiveData && canvas) {
+            new Chart(canvas.getContext('2d'), postData.interactiveData);
+          }
+        } catch (e) {
+          console.warn('Failed to init Chart.js for post', postId, e);
+        }
+      });
+    }
+
+    async function checkUserLikes(postIds) {
+      const uid = firebase.auth().currentUser?.uid;
+      if (!uid || postIds.length === 0) return;
+      const checks = postIds.map(id => feedDb.collection('feedPosts').doc(id).collection('likes').doc(uid).get());
+      const results = await Promise.all(checks);
+      results.forEach((doc, i) => {
+        if (doc.exists) {
+          const btn = document.querySelector(`[data-like-btn="${postIds[i]}"]`);
+          if (btn) btn.classList.add('liked');
+        }
+      });
+    }
+
+    async function renderFeed(category = 'all', append = false) {
+      const container = document.getElementById('feed-container');
+      const loadMoreBtn = document.getElementById('load-more-btn');
+
+      if (!append) {
+        container.innerHTML = '';
+        lastVisibleDoc = null;
+        noMorePosts = false;
+      }
+
+      try {
+        const snapshot = await loadFeedPosts(category, lastVisibleDoc);
+        const docs = snapshot.docs;
+
+        if (docs.length < POSTS_PER_PAGE) {
+          noMorePosts = true;
+        }
+
+        if (docs.length > 0) {
+          lastVisibleDoc = docs[docs.length - 1];
+        }
+
+        const postIds = [];
+        docs.forEach(doc => {
+          const post = { id: doc.id, ...doc.data() };
+          postIds.push(doc.id);
+          const cardHtml = renderPostCard(post);
+          container.insertAdjacentHTML('beforeend', cardHtml);
+          // Store post data on the card element for interactive init
+          const cardEl = container.querySelector(`[data-post-id="${doc.id}"]`);
+          if (cardEl) cardEl.__postData = post;
+        });
+
+        // Show/hide load more
+        loadMoreBtn.style.display = noMorePosts ? 'none' : 'block';
+
+        // Animate new cards in
+        const selector = append ? '.feed-card:not(.animated)' : '.feed-card';
+        anime({
+          targets: selector,
+          opacity: [0, 1],
+          translateY: [20, 0],
+          delay: anime.stagger(80),
+          easing: 'easeOutCubic',
+          duration: 500,
+          complete: () => {
+            document.querySelectorAll('.feed-card').forEach(c => c.classList.add('animated'));
+          }
+        });
+
+        // Init interactive elements
+        initInteractives();
+
+        // Check which posts the current user has liked
+        checkUserLikes(postIds);
+
+      } catch (e) {
+        console.error('Error loading feed posts:', e);
+        if (!append) {
+          container.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.5);padding:2rem;">Could not load feed. Please try again later.</p>';
+        }
+        loadMoreBtn.style.display = 'none';
+      }
     }
 
     function handleUnlock() {
@@ -392,7 +524,8 @@
         pill.addEventListener('click', () => {
           pills.forEach(p => p.classList.remove('active'));
           pill.classList.add('active');
-          renderFeed(pill.dataset.category);
+          currentCategory = pill.dataset.category;
+          renderFeed(currentCategory);
         });
       });
     }
@@ -405,17 +538,34 @@
       const loadingScreen = document.getElementById('auth-loading');
       const dashboardContent = document.getElementById('dashboard-content');
 
+      try {
+      console.log('[Feed] DOMContentLoaded fired');
+
       // Initialize Firebase
       if (!window.FirebaseApp.init()) {
-        console.error('Firebase initialization failed');
+        console.error('[Feed] Firebase initialization failed');
         loadingScreen.innerHTML = '<div class="loading-content"><p>Error loading. Please refresh.</p></div>';
         return;
       }
+      console.log('[Feed] Firebase initialized');
+
+      feedDb = firebase.firestore();
 
       window.AuthService.init();
+      console.log('[Feed] AuthService initialized, waiting for auth state...');
 
-      // Wait for auth state
-      const user = await window.AuthService.waitForAuthState();
+      // Wait for auth state with a safety timeout
+      const user = await Promise.race([
+        window.AuthService.waitForAuthState(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Auth timeout')), 8000))
+      ]).catch(err => {
+        if (err.message === 'Auth timeout') {
+          console.warn('[Feed] Auth state timed out, treating as unauthenticated');
+          return null;
+        }
+        throw err;
+      });
+      console.log('[Feed] Auth state resolved:', user ? user.email : 'null');
 
       if (!user) {
         window.AuthService.setRedirectUrl(window.location.href);
@@ -453,12 +603,22 @@
       renderFeed();
       setupFilters();
 
+      // Load More button
+      document.getElementById('load-more-btn').addEventListener('click', () => {
+        renderFeed(currentCategory, true);
+      });
+
       // Listen for auth changes
       window.AuthService.onAuthStateChanged((user) => {
         if (!user) {
           window.location.href = '../auth/login.html';
         }
       });
+
+      } catch (err) {
+        console.error('Feed init error:', err);
+        loadingScreen.innerHTML = '<div class="loading-content"><p>Error: ' + err.message + '</p></div>';
+      }
     });
 
     function loadUserInfo(user) {

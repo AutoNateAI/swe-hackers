@@ -1,0 +1,26 @@
+{
+  "cron": {
+    "expression": "0 7,13,19 * * *",
+    "timezone": "America/New_York",
+    "description": "Run 3x daily at 7am, 1pm, 7pm ET"
+  },
+  "pipeline": {
+    "scrapeTimeoutMs": 120000,
+    "ingestBatchSize": 50,
+    "postsPerRun": 3,
+    "maxPostsPerDay": 10,
+    "cooldownMinutes": 30
+  },
+  "generation": {
+    "stage1Model": "gpt-4o-mini",
+    "stage2Model": "gpt-4o",
+    "temperature": {
+      "stage1": 0.3,
+      "stage2": 0.7
+    },
+    "maxTokens": {
+      "stage1": 1000,
+      "stage2": 2000
+    }
+  }
+}

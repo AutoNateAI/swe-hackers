@@ -1,0 +1,23 @@
+{
+  "name": "autonateai-content-pipeline",
+  "version": "1.0.0",
+  "description": "AI-powered content pipeline for AutoNateAI Feed",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "scrape": "node scrapers/apify-scraper.mjs",
+    "ingest": "node ingest/firestore-writer.mjs",
+    "generate": "node generators/content-generator.mjs",
+    "publish": "node publisher/feed-publisher.mjs",
+    "pipeline": "bash scheduler/orchestrator.sh",
+    "seed:personas": "node scripts/seed-personas.mjs",
+    "seed:posts": "node scripts/seed-existing-posts.mjs"
+  },
+  "dependencies": {
+    "apify-client": "^2.9.0",
+    "firebase-admin": "^12.0.0",
+    "openai": "^4.0.0"
+  }
+}

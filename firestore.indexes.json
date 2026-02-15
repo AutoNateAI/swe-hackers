@@ -23,6 +23,48 @@
         { "fieldPath": "summaryStats.averageScore", "order": "DESCENDING" },
         { "fieldPath": "lastComputed", "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "feedPosts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "feedPosts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "category", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "feedPosts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "personaId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "scrapedData",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "scrapedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "scrapedData",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "source", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "scrapedAt", "order": "DESCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []

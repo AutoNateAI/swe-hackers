@@ -1,0 +1,29 @@
+{
+  "reddit": {
+    "subreddits": [
+      { "name": "artificial", "sort": "hot", "limit": 10, "category": "strategies" },
+      { "name": "MachineLearning", "sort": "hot", "limit": 10, "category": "tips" },
+      { "name": "ChatGPT", "sort": "hot", "limit": 10, "category": "tips" },
+      { "name": "LocalLLaMA", "sort": "hot", "limit": 5, "category": "tips" },
+      { "name": "Entrepreneur", "sort": "hot", "limit": 5, "category": "strategies" },
+      { "name": "SideProject", "sort": "hot", "limit": 5, "category": "results" },
+      { "name": "freelance", "sort": "hot", "limit": 5, "category": "strategies" }
+    ],
+    "minScore": 10
+  },
+  "youtube": {
+    "searches": [
+      { "query": "AI automation business 2026", "category": "strategies", "limit": 5, "uploadDate": "month" },
+      { "query": "AI agent tutorial", "category": "tips", "limit": 5, "uploadDate": "month" },
+      { "query": "make money with AI tools", "category": "results", "limit": 5, "uploadDate": "month" },
+      { "query": "prompt engineering tutorial", "category": "tips", "limit": 5, "uploadDate": "month" }
+    ]
+  },
+  "linkedin": {
+    "searches": [
+      { "query": "AI automation agency", "type": "posts", "category": "strategies", "limit": 10 },
+      { "query": "AI freelancer revenue", "type": "posts", "category": "results", "limit": 10 },
+      { "query": "prompt engineering tips", "type": "posts", "category": "tips", "limit": 5 }
+    ]
+  }
+}
