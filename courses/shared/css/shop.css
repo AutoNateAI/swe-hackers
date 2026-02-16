@@ -1220,6 +1220,19 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+
+/* Drop product image (actual shirt mockup) */
+.drop-product-img {
+  position: relative;
+  width: 340px;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 30px rgba(79, 195, 247, 0.4)) drop-shadow(0 0 60px rgba(79, 195, 247, 0.15));
+  z-index: 1;
+  border-radius: 12px;
+  animation: dropLogoFloat 6s ease-in-out infinite;
+}
 .drop-collection-label {
   position: relative;
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
@@ -2064,6 +2077,7 @@
   }
   .shop-hero-image { display: none; }
   .drop-logo-img { width: 200px; }
+  .drop-product-img { width: 260px; max-height: 320px; }
   .members-logo-img { width: 140px; }
   .shop-hero-ctas { justify-content: center; }
   .trust-badges { justify-content: center; }
