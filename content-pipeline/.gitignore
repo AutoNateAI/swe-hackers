@@ -4,3 +4,4 @@ data/*.json
 logs/*.log
 !logs/.gitkeep
 .env
+config/linkedin-cookies.json

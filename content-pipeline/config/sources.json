@@ -1,29 +1,40 @@
 {
   "reddit": {
     "subreddits": [
-      { "name": "artificial", "sort": "hot", "limit": 10, "category": "strategies" },
-      { "name": "MachineLearning", "sort": "hot", "limit": 10, "category": "tips" },
-      { "name": "ChatGPT", "sort": "hot", "limit": 10, "category": "tips" },
-      { "name": "LocalLLaMA", "sort": "hot", "limit": 5, "category": "tips" },
-      { "name": "Entrepreneur", "sort": "hot", "limit": 5, "category": "strategies" },
-      { "name": "SideProject", "sort": "hot", "limit": 5, "category": "results" },
-      { "name": "freelance", "sort": "hot", "limit": 5, "category": "strategies" }
+      { "name": "grandrapids", "sort": "hot", "limit": 25, "category": "primary" },
+      { "name": "Michigan", "sort": "hot", "limit": 10, "category": "state" }
     ],
-    "minScore": 10
+    "minScore": 5
   },
   "youtube": {
     "searches": [
-      { "query": "AI automation business 2026", "category": "strategies", "limit": 5, "uploadDate": "month" },
-      { "query": "AI agent tutorial", "category": "tips", "limit": 5, "uploadDate": "month" },
-      { "query": "make money with AI tools", "category": "results", "limit": 5, "uploadDate": "month" },
-      { "query": "prompt engineering tutorial", "category": "tips", "limit": 5, "uploadDate": "month" }
+      { "query": "Grand Rapids Michigan news", "category": "environment", "limit": 5 },
+      { "query": "Grand Rapids housing market", "category": "environment", "limit": 5 },
+      { "query": "Grand Rapids jobs careers", "category": "environment", "limit": 5 },
+      { "query": "Grand Rapids tech industry", "category": "strategies", "limit": 5 },
+      { "query": "Grand Rapids small business", "category": "strategies", "limit": 5 },
+      { "query": "Grand Rapids community development", "category": "environment", "limit": 5 },
+      { "query": "Michigan economy 2026", "category": "environment", "limit": 5 },
+      { "query": "career development tips", "category": "tips", "limit": 5 }
     ]
   },
   "linkedin": {
-    "searches": [
-      { "query": "AI automation agency", "type": "posts", "category": "strategies", "limit": 10 },
-      { "query": "AI freelancer revenue", "type": "posts", "category": "results", "limit": 10 },
-      { "query": "prompt engineering tips", "type": "posts", "category": "tips", "limit": 5 }
+    "peopleSearches": [
+      { "group": "C-Suite / Executives", "keywords": "(CEO OR CFO OR COO OR CTO OR CMO) AND \"Grand Rapids\"", "category": "executives" },
+      { "group": "Presidents / Founders", "keywords": "(President OR Founder OR \"Managing Director\" OR \"Executive Director\") AND \"Grand Rapids\"", "category": "executives" },
+      { "group": "VP / Directors", "keywords": "(VP OR \"Vice President\" OR Director) AND \"Grand Rapids\"", "category": "management" },
+      { "group": "Mid-Level Management", "keywords": "(\"Senior Manager\" OR \"General Manager\" OR \"Operations Manager\" OR \"Project Manager\") AND \"Grand Rapids\"", "category": "management" },
+      { "group": "Engineers / Tech", "keywords": "(\"Software Engineer\" OR \"Data Engineer\" OR DevOps OR \"Full Stack\" OR \"Data Scientist\") AND \"Grand Rapids\"", "category": "tech" },
+      { "group": "IT Leadership", "keywords": "(\"IT Manager\" OR \"Cloud Architect\" OR Cybersecurity OR \"Systems Engineer\") AND \"Grand Rapids\"", "category": "tech" },
+      { "group": "Finance / Accounting", "keywords": "(CPA OR \"Financial Analyst\" OR Controller OR \"Finance Manager\" OR Auditor) AND \"Grand Rapids\"", "category": "finance" },
+      { "group": "Healthcare Leaders", "keywords": "(\"Medical Director\" OR Physician OR \"Healthcare Administrator\" OR \"Nurse Practitioner\") AND \"Grand Rapids\"", "category": "healthcare" },
+      { "group": "Healthcare Professionals", "keywords": "(\"Registered Nurse\" OR Pharmacist OR \"Physical Therapist\" OR Surgeon) AND \"Grand Rapids\"", "category": "healthcare" },
+      { "group": "Sales / Biz Dev", "keywords": "(\"Account Executive\" OR \"Sales Manager\" OR \"Business Development\" OR \"Sales Director\") AND \"Grand Rapids\"", "category": "sales" },
+      { "group": "Marketing / Creative", "keywords": "(\"Marketing Manager\" OR \"Creative Director\" OR \"Brand Manager\" OR \"Digital Marketing\" OR \"UX Designer\") AND \"Grand Rapids\"", "category": "marketing" },
+      { "group": "Legal", "keywords": "(Attorney OR Lawyer OR \"Legal Counsel\" OR \"Compliance Officer\" OR Paralegal) AND \"Grand Rapids\"", "category": "legal" },
+      { "group": "Education", "keywords": "(Professor OR Principal OR \"Training Manager\" OR \"Instructional Designer\") AND \"Grand Rapids\"", "category": "education" },
+      { "group": "Real Estate / Construction", "keywords": "(Realtor OR \"Real Estate\" OR \"Property Manager\" OR Contractor OR Architect) AND \"Grand Rapids\"", "category": "real-estate" },
+      { "group": "Nonprofit / Government", "keywords": "(\"Executive Director\" OR \"Program Director\" OR \"City Manager\" OR \"Public Policy\") AND \"Grand Rapids\"", "category": "nonprofit" }
     ]
   }
 }
