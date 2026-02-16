@@ -7,33 +7,61 @@ import { createLogger } from '../lib/logger.mjs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const log = createLogger('persona-engine');
 
-let personas = null;
+let personaCache = {
+  personas: null,
+  lastFetched: null,
+  ttl: 5 * 60 * 1000  // 5 minutes
+};
 
-export function loadPersonas() {
-  if (personas) return personas;
+export async function loadPersonas() {
+  // Return cached if still valid
+  if (personaCache.personas && personaCache.lastFetched &&
+      (Date.now() - personaCache.lastFetched) < personaCache.ttl) {
+    return personaCache.personas;
+  }
+
+  try {
+    const db = getDb();
+    const snapshot = await db.collection('personas')
+      .where('active', '==', true)
+      .get();
+
+    if (!snapshot.empty) {
+      personaCache.personas = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      personaCache.lastFetched = Date.now();
+      log.info(`Loaded ${personaCache.personas.length} active personas from Firestore`);
+      return personaCache.personas;
+    }
+  } catch (err) {
+    log.warn('Failed to load from Firestore, falling back to JSON', { error: err.message });
+  }
+
+  // Fallback to JSON file
   const data = JSON.parse(readFileSync(resolve(__dirname, '../config/personas.json'), 'utf-8'));
-  personas = data.personas.filter(p => p.active);
-  return personas;
+  personaCache.personas = data.personas.filter(p => p.active);
+  personaCache.lastFetched = Date.now();
+  log.info(`Loaded ${personaCache.personas.length} personas from JSON fallback`);
+  return personaCache.personas;
 }
 
-export function getPersonasForCategory(category) {
-  const all = loadPersonas();
+export async function getPersonasForCategory(category) {
+  const all = await loadPersonas();
   return all.filter(p => p.categories.includes(category));
 }
 
-export function selectPersona(category, excludeIds = []) {
-  const candidates = getPersonasForCategory(category).filter(p => !excludeIds.includes(p.id));
+export async function selectPersona(category, excludeIds = []) {
+  const candidates = (await getPersonasForCategory(category)).filter(p => !excludeIds.includes(p.id));
   if (candidates.length === 0) {
     log.warn(`No available personas for category: ${category}, falling back to all`);
-    const all = loadPersonas().filter(p => !excludeIds.includes(p.id));
-    if (all.length === 0) return loadPersonas()[0];
+    const all = (await loadPersonas()).filter(p => !excludeIds.includes(p.id));
+    if (all.length === 0) return (await loadPersonas())[0];
     return all[Math.floor(Math.random() * all.length)];
   }
   return candidates[Math.floor(Math.random() * candidates.length)];
 }
 
 export async function selectPersonaRoundRobin(category) {
-  const candidates = getPersonasForCategory(category);
+  const candidates = await getPersonasForCategory(category);
   if (candidates.length === 0) return selectPersona(category);
 
   try {

@@ -39,6 +39,16 @@ async function fetchNewScrapedData(limit = 20) {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 }
 
+async function fetchScrapedDataBySource(limit = 20) {
+  const items = await fetchNewScrapedData(limit);
+
+  const reddit = items.filter(i => i.source === 'reddit');
+  const youtube = items.filter(i => i.source === 'youtube');
+  const other = items.filter(i => !['reddit', 'youtube'].includes(i.source));
+
+  return { all: items, reddit, youtube, other };
+}
+
 function pickCategory(scrapedItems) {
   const sourceCounts = {};
   for (const item of scrapedItems) {
@@ -63,7 +73,11 @@ function pickCategory(scrapedItems) {
 async function stage1Analysis(scrapedItems, category) {
   log.info(`Stage 1: Analyzing ${scrapedItems.length} items for category "${category}"`);
 
-  const summaries = scrapedItems.slice(0, 10).map(item => ({
+  const redditItems = scrapedItems.filter(i => i.source === 'reddit');
+  const youtubeItems = scrapedItems.filter(i => i.source === 'youtube');
+  const otherItems = scrapedItems.filter(i => !['reddit', 'youtube'].includes(i.source));
+
+  const formatItems = (items) => items.slice(0, 5).map(item => ({
     source: item.source,
     title: item.title,
     body: item.body?.slice(0, 500),
@@ -71,19 +85,27 @@ async function stage1Analysis(scrapedItems, category) {
     metadata: item.metadata
   }));
 
-  const prompt = `You are a content analyst for an AI automation community marketplace called AutoNateAI.
+  const prompt = `You are a content analyst for a Grand Rapids, Michigan professional community.
 
-Analyze the following scraped content and extract insights for a "${category}" post.
+Analyze the following content from multiple sources and extract insights for a "${category}" post.
 
-SCRAPED CONTENT:
-${JSON.stringify(summaries, null, 2)}
+LOCAL CONTEXT (Reddit - what Grand Rapids residents are discussing):
+${JSON.stringify(formatItems(redditItems), null, 2)}
+
+EDUCATIONAL CATALYST (YouTube - broader insights and trends):
+${JSON.stringify(formatItems(youtubeItems), null, 2)}
+
+OTHER SOURCES:
+${JSON.stringify(formatItems(otherItems), null, 2)}
 
 Respond with JSON:
 {
   "themes": ["list of 3-5 key themes found"],
   "insights": ["list of 3-5 specific insights, stats, or takeaways"],
+  "localContext": ["2-3 Grand Rapids specific talking points from Reddit"],
+  "professionalContext": ["2-3 professional/industry insights from YouTube and other sources"],
   "suggestedCategory": "${category}",
-  "suggestedTags": ["5 tags"],
+  "suggestedTags": ["5 tags - always include grand-rapids"],
   "interactiveOpportunity": "none" or "chart" or "cytoscape",
   "interactiveReason": "why a visual would work here (if applicable)",
   "keyStats": ["any specific numbers or percentages found"],
@@ -116,7 +138,7 @@ async function stage2Generation(analysis, persona, category) {
   const result = await chatCompletion({
     model: scheduleConfig.generation.stage2Model,
     messages: [
-      { role: 'system', content: buildSystemPrompt(persona) },
+      { role: 'system', content: buildSystemPrompt(persona) + '\n\nYou are speaking as a Grand Rapids, Michigan professional. Reference local context when relevant — mention specific GR neighborhoods, employers, events, or community topics when they naturally fit. Your audience is other Grand Rapids professionals.' },
       { role: 'user', content: userPrompt }
     ],
     temperature: scheduleConfig.generation.temperature.stage2,
