@@ -197,6 +197,25 @@ const WhopService = {
       platformIcon: '👕'
     },
     {
+      id: 'women-tech-tee-2',
+      type: 'merch',
+      category: 'women-in-tech',
+      name: 'Women in Tech Tee V2',
+      description: 'Promoting women in tech — featuring a futuristic cyborg design with the AutoNateAI brand.',
+      price: 29.99,
+      originalPrice: null,
+      rating: 4.9,
+      reviewCount: 38,
+      badge: 'new',
+      image: 'assets/shop/women-in-tech-tee-2.png',
+      sizes: ['S', 'M', 'L', 'XL', '2XL'],
+      tags: ['tee', 'women', 'tech', 'promoting'],
+      featured: false,
+      whopProductId: 'prod_MERCH_010',
+      platform: 'merch',
+      platformIcon: '👕'
+    },
+    {
       id: 'ai-syntax-mug',
       type: 'merch',
       category: 'accessories',
