@@ -20,4 +20,10 @@
   if (accentColor) {
     document.documentElement.style.setProperty('--accent-primary', accentColor);
   }
+
+  var language = localStorage.getItem('language') || 'en';
+  document.documentElement.setAttribute('data-language', language);
+  if (language === 'ar') {
+    document.documentElement.setAttribute('dir', 'rtl');
+  }
 })();

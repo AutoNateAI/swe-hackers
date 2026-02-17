@@ -673,6 +673,42 @@ const WhopService = {
   },
 
   /**
+   * Get user's order/purchase history from Firestore
+   * @param {string} userId - The user's UID
+   * @returns {Promise<Array>} Array of purchase records enriched with product data
+   */
+  async getOrders(userId) {
+    if (!userId) return [];
+
+    try {
+      const db = window.FirebaseApp.getDb();
+      if (!db) return [];
+
+      const snapshot = await db
+        .collection('purchases')
+        .where('userId', '==', userId)
+        .orderBy('createdAt', 'desc')
+        .get();
+
+      const orders = [];
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const product = this.getProduct(data.productId);
+        orders.push({
+          id: doc.id,
+          ...data,
+          product: product
+        });
+      });
+
+      return orders;
+    } catch (error) {
+      console.error('WhopService: Error fetching orders:', error);
+      return [];
+    }
+  },
+
+  /**
    * Detect base URL for building return URLs
    * @private
    */

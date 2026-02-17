@@ -34,6 +34,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="shared/css/marketing.css">
   <link rel="stylesheet" href="shared/css/shop.css">
+  <link rel="stylesheet" href="shared/css/i18n.css">
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -61,19 +62,26 @@
   <nav class="shop-subnav" id="shop-subnav">
     <div class="shop-subnav-container">
       <div class="shop-subnav-categories" id="subnav-categories">
-        <button class="shop-subnav-item active" data-category="all">All</button>
-        <button class="shop-subnav-item" data-category="ai-tees">AI Tees</button>
-        <button class="shop-subnav-item" data-category="developer-hoodies">Developer Hoodies</button>
-        <button class="shop-subnav-item" data-category="women-in-tech">Women in Tech</button>
-        <button class="shop-subnav-item" data-category="limited-drops">Limited Drops</button>
-        <button class="shop-subnav-item" data-category="starter-packs">Starter Packs</button>
-        <button class="shop-subnav-item" data-category="accessories">Accessories</button>
-        <button class="shop-subnav-item" data-category="courses">Courses</button>
+        <button class="shop-subnav-item active" data-category="all" data-i18n="shop.tab_all">All</button>
+        <button class="shop-subnav-item" data-category="ai-tees" data-i18n="shop.tab_ai_tees">AI Tees</button>
+        <button class="shop-subnav-item" data-category="developer-hoodies" data-i18n="shop.tab_hoodies">Developer Hoodies</button>
+        <button class="shop-subnav-item" data-category="women-in-tech" data-i18n="shop.tab_women">Women in Tech</button>
+        <button class="shop-subnav-item" data-category="limited-drops" data-i18n="shop.tab_limited">Limited Drops</button>
+        <button class="shop-subnav-item" data-category="starter-packs" data-i18n="shop.tab_starters">Starter Packs</button>
+        <button class="shop-subnav-item" data-category="accessories" data-i18n="shop.tab_accessories">Accessories</button>
+        <button class="shop-subnav-item" data-category="courses" data-i18n="shop.tab_courses">Courses</button>
       </div>
       <div class="shop-subnav-actions">
+        <div class="lang-selector" id="lang-selector">
+          <button class="action-btn lang-btn" id="lang-btn" title="Language">
+            <span class="lang-flag" id="lang-flag">🇺🇸</span>
+            <span class="lang-code" id="lang-code">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown"></div>
+        </div>
         <div class="shop-search-bar" id="search-toggle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <span class="shop-search-placeholder">Search products, courses...</span>
+          <span class="shop-search-placeholder" data-i18n="shop.search_placeholder">Search products, courses...</span>
           <kbd class="shop-search-key">/</kbd>
         </div>
         <button class="shop-cart-btn" id="cart-toggle" aria-label="Shopping cart">
@@ -81,6 +89,10 @@
           <span class="cart-badge" id="cart-badge">0</span>
         </button>
       </div>
+    </div>
+    <!-- Hover preview dropdown -->
+    <div class="subnav-preview" id="subnav-preview">
+      <div class="subnav-preview-inner" id="subnav-preview-inner"></div>
     </div>
   </nav>
 
@@ -97,15 +109,15 @@
       </div>
       <div class="manifesto-glow"></div>
       <div class="manifesto-container">
-        <p class="manifesto-lead">We Don't Follow The Future.</p>
-        <h2 class="manifesto-headline">We Build It.</h2>
+        <p class="manifesto-lead" data-i18n="shop.manifesto_lead">We Don't Follow The Future.</p>
+        <h2 class="manifesto-headline" data-i18n="shop.manifesto_headline">We Build It.</h2>
         <div class="manifesto-body">
-          <p>AI isn't hype. It's power.</p>
-          <p>For the coders. The creators.<br>The women rewriting the rules.<br>The builders who stay up when others log off.</p>
-          <p>AutoNateAI is more than apparel.<br>It's a uniform for the next era.</p>
-          <p>You don't just wear it. <span class="manifesto-bold">You represent it.</span></p>
+          <p data-i18n="shop.manifesto_p1">AI isn't hype. It's power.</p>
+          <p data-i18n-html="shop.manifesto_p2">For the coders. The creators.<br>The women rewriting the rules.<br>The builders who stay up when others log off.</p>
+          <p data-i18n-html="shop.manifesto_p3">AutoNateAI is more than apparel.<br>It's a uniform for the next era.</p>
+          <p data-i18n-html="shop.manifesto_p4">You don't just wear it. <span class="manifesto-bold">You represent it.</span></p>
         </div>
-        <p class="manifesto-tagline">We Bot Dat Life.</p>
+        <p class="manifesto-tagline" data-i18n="shop.manifesto_tagline">We Bot Dat Life.</p>
       </div>
     </section>
 
@@ -119,26 +131,26 @@
       <div class="shop-hero-container">
         <div class="shop-hero-text">
           <h1 class="shop-hero-title">
-            ENGINEER YOUR FUTURE.<br>
-            <span class="hero-accent">WEAR THE CODE.</span>
+            <span data-i18n="shop.hero_line1">ENGINEER YOUR FUTURE.</span><br>
+            <span class="hero-accent" data-i18n="shop.hero_line2">WEAR THE CODE.</span>
           </h1>
-          <p class="shop-hero-subtitle">Premium AI-inspired streetwear for builders and innovators.</p>
+          <p class="shop-hero-subtitle" data-i18n="shop.hero_subtitle">Premium AI-inspired streetwear for builders and innovators.</p>
           <div class="shop-hero-ctas">
-            <a href="#products" class="btn btn-primary btn-lg">SHOP NOW</a>
-            <a href="#courses" class="btn btn-secondary btn-lg">EXPLORE COLLECTIONS</a>
+            <a href="#products" class="btn btn-primary btn-lg" data-i18n="shop.shop_now">SHOP NOW</a>
+            <a href="#courses" class="btn btn-secondary btn-lg" data-i18n="shop.explore_collections">EXPLORE COLLECTIONS</a>
           </div>
           <div class="trust-badges">
             <div class="trust-badge">
               <span class="trust-icon">&#9733;</span>
-              <span>4.8 Rating</span>
+              <span data-i18n="shop.rating">4.8 Rating</span>
             </div>
             <div class="trust-badge">
               <span class="trust-icon">&#128666;</span>
-              <span>Free Shipping $50+</span>
+              <span data-i18n="shop.free_ship_50">Free Shipping $50+</span>
             </div>
             <div class="trust-badge">
               <span class="trust-icon">&#8635;</span>
-              <span>30 Day Returns</span>
+              <span data-i18n="shop.returns_30">30 Day Returns</span>
             </div>
           </div>
         </div>
@@ -154,9 +166,9 @@
   <!-- ==================== PRODUCT GRID ==================== -->
   <section class="shop-products" id="products">
     <div class="shop-products-header">
-      <h2 class="shop-products-title">Shop All</h2>
+      <h2 class="shop-products-title" data-i18n="shop.shop_all">Shop All</h2>
       <div class="shop-sort-wrapper">
-        <label for="sort-select" class="sort-label">Sort by:</label>
+        <label for="sort-select" class="sort-label" data-i18n="shop.sort_by">Sort by:</label>
         <select id="sort-select" class="sort-select">
           <option value="featured">Featured</option>
           <option value="price-asc">Price: Low to High</option>
@@ -176,7 +188,7 @@
   <!-- ==================== FREQUENTLY BOUGHT TOGETHER ==================== -->
   <section class="fbt-section" id="fbt">
     <div class="fbt-wrapper">
-      <h2 class="section-title-sm">Frequently Bought Together</h2>
+      <h2 class="section-title-sm" data-i18n="shop.fbt_title">Frequently Bought Together</h2>
       <div class="fbt-container" id="fbt-container">
         <!-- Rendered by JS -->
       </div>
@@ -187,15 +199,15 @@
   <section class="courses-section" id="courses">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-badge">LEARN &amp; BUILD</span>
-        <h2 class="section-title">Level Up Your Skills</h2>
-        <p class="section-subtitle">From complete beginner to senior engineer. AI-augmented courses with real-world projects.</p>
+        <span class="section-badge" data-i18n="shop.learn_build">LEARN &amp; BUILD</span>
+        <h2 class="section-title" data-i18n="shop.level_up">Level Up Your Skills</h2>
+        <p class="section-subtitle" data-i18n="shop.level_up_desc">From complete beginner to senior engineer. AI-augmented courses with real-world projects.</p>
       </div>
 
       <!-- Featured Courses Carousel -->
       <div class="courses-carousel-wrapper">
         <div class="subsection-header">
-          <h3 class="subsection-title">Featured Courses</h3>
+          <h3 class="subsection-title" data-i18n="shop.featured_courses">Featured Courses</h3>
           <div class="carousel-nav">
             <button class="carousel-btn carousel-prev" id="courses-prev" aria-label="Previous">&#8249;</button>
             <button class="carousel-btn carousel-next" id="courses-next" aria-label="Next">&#8250;</button>
@@ -208,31 +220,31 @@
 
       <!-- Learning Paths -->
       <div class="learning-paths">
-        <h3 class="subsection-title">Learning Paths</h3>
+        <h3 class="subsection-title" data-i18n="shop.learning_paths">Learning Paths</h3>
         <div class="paths-grid">
           <div class="path-card">
             <div class="path-icon">&#127891;</div>
             <div class="path-info">
-              <h4>Zero to Developer</h4>
+              <h4 data-i18n="shop.zero_to_dev">Zero to Developer</h4>
               <p>2 courses &bull; 12 weeks &bull; Certificate</p>
             </div>
-            <a href="course/apprentice.html" class="path-cta">Start Path &#8594;</a>
+            <a href="course/apprentice.html" class="path-cta" data-i18n="shop.start_path">Start Path &#8594;</a>
           </div>
           <div class="path-card">
             <div class="path-icon">&#9889;</div>
             <div class="path-info">
-              <h4>AI-Augmented Engineering</h4>
+              <h4 data-i18n="shop.ai_engineering">AI-Augmented Engineering</h4>
               <p>2 courses &bull; 8-16 weeks &bull; Certificate</p>
             </div>
-            <a href="course/junior.html" class="path-cta">Start Path &#8594;</a>
+            <a href="course/junior.html" class="path-cta" data-i18n="shop.start_path">Start Path &#8594;</a>
           </div>
           <div class="path-card">
             <div class="path-icon">&#128640;</div>
             <div class="path-info">
-              <h4>The Full Stack</h4>
+              <h4 data-i18n="shop.full_stack">The Full Stack</h4>
               <p>All courses &bull; 24 weeks &bull; Master Certificate</p>
             </div>
-            <a href="#" class="path-cta">Start Path &#8594;</a>
+            <a href="#" class="path-cta" data-i18n="shop.start_path">Start Path &#8594;</a>
           </div>
         </div>
       </div>
@@ -240,10 +252,10 @@
       <!-- Enterprise Banner -->
       <div class="enterprise-banner">
         <div class="enterprise-text">
-          <h3>AutoNateAI for Teams</h3>
-          <p>Custom learning paths for your engineering team. Bulk pricing available.</p>
+          <h3 data-i18n="shop.teams_title">AutoNateAI for Teams</h3>
+          <p data-i18n="shop.teams_desc">Custom learning paths for your engineering team. Bulk pricing available.</p>
         </div>
-        <a href="enterprise.html" class="btn btn-secondary">Contact Sales</a>
+        <a href="enterprise.html" class="btn btn-secondary" data-i18n="shop.contact_sales">Contact Sales</a>
       </div>
     </div>
   </section>
@@ -252,48 +264,48 @@
   <section class="drop-section" id="drop">
     <div class="drop-container">
       <div class="drop-info">
-        <span class="drop-label">DROP OF THE MONTH</span>
-        <h2 class="drop-title">DROP 01 &mdash; <span class="hero-accent">AI ORIGIN</span></h2>
+        <span class="drop-label" data-i18n="shop.drop_label">DROP OF THE MONTH</span>
+        <h2 class="drop-title" data-i18n-html="shop.drop_title_html">DROP 01 &mdash; <span class="hero-accent">AI ORIGIN</span></h2>
         <div class="countdown" id="drop-countdown">
           <div class="countdown-unit">
             <span class="countdown-value" id="cd-days">00</span>
-            <span class="countdown-label">Days</span>
+            <span class="countdown-label" data-i18n="shop.cd_days">Days</span>
           </div>
           <span class="countdown-sep">:</span>
           <div class="countdown-unit">
             <span class="countdown-value" id="cd-hours">00</span>
-            <span class="countdown-label">Hours</span>
+            <span class="countdown-label" data-i18n="shop.cd_hours">Hours</span>
           </div>
           <span class="countdown-sep">:</span>
           <div class="countdown-unit">
             <span class="countdown-value" id="cd-mins">00</span>
-            <span class="countdown-label">Min</span>
+            <span class="countdown-label" data-i18n="shop.cd_min">Min</span>
           </div>
           <span class="countdown-sep">:</span>
           <div class="countdown-unit">
             <span class="countdown-value" id="cd-secs">00</span>
-            <span class="countdown-label">Sec</span>
+            <span class="countdown-label" data-i18n="shop.cd_sec">Sec</span>
           </div>
         </div>
-        <p class="drop-desc">Pre-order the first limited-edition AutoNateAI drop engineered for AI visionaries.</p>
-        <p class="drop-includes">Set incl. Tee, Free coaster, Matrix Dev Hoodie.</p>
-        <button class="btn btn-secondary btn-glow">Reserve Your Spot</button>
+        <p class="drop-desc" data-i18n="shop.drop_desc">Pre-order the first limited-edition AutoNateAI drop engineered for AI visionaries.</p>
+        <p class="drop-includes" data-i18n="shop.drop_includes">Set incl. Tee, Free coaster, Matrix Dev Hoodie.</p>
+        <button class="btn btn-secondary btn-glow" data-i18n="shop.reserve">Reserve Your Spot</button>
       </div>
       <div class="drop-image">
         <div class="drop-glow"></div>
         <img src="assets/shop/ai-origin-drop-tee.png" alt="AI Origin Collection" class="drop-product-img">
-        <span class="drop-collection-label">AI ORIGIN COLLECTION</span>
+        <span class="drop-collection-label" data-i18n="shop.drop_collection">AI ORIGIN COLLECTION</span>
       </div>
     </div>
     <!-- Built for Builders alongside drop -->
     <div class="brand-story-card">
-      <h3 class="brand-story-title">Built for Builders</h3>
+      <h3 class="brand-story-title" data-i18n="shop.built_for">Built for Builders</h3>
       <ul class="brand-values-list">
-        <li><span class="check-icon">&#10003;</span> Designed by Devs for Devs</li>
-        <li><span class="check-icon">&#10003;</span> Premium, Sustainable Fabrics</li>
-        <li><span class="check-icon">&#10003;</span> Supports the Tech Community</li>
+        <li><span class="check-icon">&#10003;</span> <span data-i18n="shop.designed_devs">Designed by Devs for Devs</span></li>
+        <li><span class="check-icon">&#10003;</span> <span data-i18n="shop.premium_fab">Premium, Sustainable Fabrics</span></li>
+        <li><span class="check-icon">&#10003;</span> <span data-i18n="shop.supports_tech">Supports the Tech Community</span></li>
       </ul>
-      <a href="about.html" class="btn btn-secondary">Learn More</a>
+      <a href="about.html" class="btn btn-secondary" data-i18n="shop.learn_more">Learn More</a>
     </div>
   </section>
 
@@ -301,20 +313,20 @@
   <section class="social-proof-strip">
     <div class="social-proof-content">
       <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote class="testimonial-quote">"Finally, gear that speaks our language."</blockquote>
-      <cite class="testimonial-author">&mdash; Jay, Software Engineer</cite>
+      <blockquote class="testimonial-quote" data-i18n="shop.testimonial_quote">"Finally, gear that speaks our language."</blockquote>
+      <cite class="testimonial-author" data-i18n="shop.testimonial_author">&mdash; Jay, Software Engineer</cite>
       <div class="proof-stats">
         <div class="proof-stat">
           <span class="proof-stat-value">4,200+</span>
-          <span class="proof-stat-label">Community Members</span>
+          <span class="proof-stat-label" data-i18n="shop.stat_members">Community Members</span>
         </div>
         <div class="proof-stat">
           <span class="proof-stat-value">500+</span>
-          <span class="proof-stat-label">Products Sold</span>
+          <span class="proof-stat-label" data-i18n="shop.stat_sold">Products Sold</span>
         </div>
         <div class="proof-stat">
           <span class="proof-stat-value">4.8/5</span>
-          <span class="proof-stat-label">Average Rating</span>
+          <span class="proof-stat-label" data-i18n="shop.stat_rating">Average Rating</span>
         </div>
       </div>
     </div>
@@ -323,8 +335,8 @@
   <!-- ==================== COMMUNITY GALLERY ==================== -->
   <section class="community-gallery" id="lookbook">
     <div class="gallery-header">
-      <h2 class="section-title">#WeBotDatLife</h2>
-      <p class="section-subtitle">The community repping AutoNateAI</p>
+      <h2 class="section-title" data-i18n="shop.gallery_title">#WeBotDatLife</h2>
+      <p class="section-subtitle" data-i18n="shop.community">The community repping AutoNateAI</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item">
@@ -332,42 +344,42 @@
           <img src="assets/shop/logo-glow.png" alt="AI Tees" class="gallery-logo-img" loading="lazy">
           <span class="gallery-label">AI Tees</span>
         </div>
-        <div class="gallery-overlay"><span>Shop this look &#8594;</span></div>
+        <div class="gallery-overlay"><span data-i18n="shop.shop_this_look">Shop this look &#8594;</span></div>
       </div>
       <div class="gallery-item">
         <div class="gallery-placeholder">
           <img src="assets/shop/logo-glow.png" alt="Dev Hoodies" class="gallery-logo-img" loading="lazy">
           <span class="gallery-label">Dev Hoodies</span>
         </div>
-        <div class="gallery-overlay"><span>Shop this look &#8594;</span></div>
+        <div class="gallery-overlay"><span data-i18n="shop.shop_this_look">Shop this look &#8594;</span></div>
       </div>
       <div class="gallery-item">
         <div class="gallery-placeholder">
           <img src="assets/shop/logo-glow.png" alt="Community" class="gallery-logo-img" loading="lazy">
           <span class="gallery-label">Community</span>
         </div>
-        <div class="gallery-overlay"><span>Shop this look &#8594;</span></div>
+        <div class="gallery-overlay"><span data-i18n="shop.shop_this_look">Shop this look &#8594;</span></div>
       </div>
       <div class="gallery-item">
         <div class="gallery-placeholder">
           <img src="assets/shop/logo-glow.png" alt="Starter Packs" class="gallery-logo-img" loading="lazy">
           <span class="gallery-label">Starter Packs</span>
         </div>
-        <div class="gallery-overlay"><span>Shop this look &#8594;</span></div>
+        <div class="gallery-overlay"><span data-i18n="shop.shop_this_look">Shop this look &#8594;</span></div>
       </div>
       <div class="gallery-item">
         <div class="gallery-placeholder">
           <img src="assets/shop/logo-glow.png" alt="Limited Drops" class="gallery-logo-img" loading="lazy">
           <span class="gallery-label">Limited Drops</span>
         </div>
-        <div class="gallery-overlay"><span>Shop this look &#8594;</span></div>
+        <div class="gallery-overlay"><span data-i18n="shop.shop_this_look">Shop this look &#8594;</span></div>
       </div>
       <div class="gallery-item">
         <div class="gallery-placeholder">
           <img src="assets/shop/logo-glow.png" alt="Accessories" class="gallery-logo-img" loading="lazy">
           <span class="gallery-label">Accessories</span>
         </div>
-        <div class="gallery-overlay"><span>Shop this look &#8594;</span></div>
+        <div class="gallery-overlay"><span data-i18n="shop.shop_this_look">Shop this look &#8594;</span></div>
       </div>
     </div>
   </section>
@@ -376,18 +388,18 @@
   <section class="members-section" id="members">
     <div class="members-container">
       <div class="members-text">
-        <span class="section-badge">MEMBERSHIP</span>
-        <h2 class="section-title">AutoNateAI Members Get More</h2>
+        <span class="section-badge" data-i18n="shop.membership">MEMBERSHIP</span>
+        <h2 class="section-title" data-i18n="shop.members_more">AutoNateAI Members Get More</h2>
         <ul class="members-perks">
-          <li><span class="perk-icon">&#9889;</span> Early access to limited drops</li>
-          <li><span class="perk-icon">&#128176;</span> Member-exclusive discounts</li>
-          <li><span class="perk-icon">&#128666;</span> Free shipping on all orders</li>
-          <li><span class="perk-icon">&#127891;</span> Priority course enrollment</li>
-          <li><span class="perk-icon">&#128172;</span> Community feed access</li>
+          <li><span class="perk-icon">&#9889;</span> <span data-i18n="shop.early_access">Early access to limited drops</span></li>
+          <li><span class="perk-icon">&#128176;</span> <span data-i18n="shop.member_disc">Member-exclusive discounts</span></li>
+          <li><span class="perk-icon">&#128666;</span> <span data-i18n="shop.free_shipping">Free shipping on all orders</span></li>
+          <li><span class="perk-icon">&#127891;</span> <span data-i18n="shop.priority_enroll">Priority course enrollment</span></li>
+          <li><span class="perk-icon">&#128172;</span> <span data-i18n="shop.community_feed">Community feed access</span></li>
         </ul>
         <div class="members-ctas" id="members-ctas">
-          <a href="auth/register.html" class="btn btn-primary">Join Free</a>
-          <a href="auth/login.html" class="btn btn-secondary">Sign In</a>
+          <a href="auth/register.html" class="btn btn-primary" data-i18n="shop.join_free">Join Free</a>
+          <a href="auth/login.html" class="btn btn-secondary" data-i18n="shop.sign_in">Sign In</a>
         </div>
       </div>
       <div class="members-visual">
@@ -401,11 +413,11 @@
 
   <!-- ==================== FINAL CTA ==================== -->
   <section class="cta-section">
-    <h2 class="cta-title">Gear Up. Stand Out. Build Different.</h2>
-    <p class="cta-subtitle">Join the community of builders repping AutoNateAI. New drops every month.</p>
+    <h2 class="cta-title" data-i18n="shop.gear_up">Gear Up. Stand Out. Build Different.</h2>
+    <p class="cta-subtitle" data-i18n="shop.gear_up_desc">Join the community of builders repping AutoNateAI. New drops every month.</p>
     <div class="cta-buttons">
-      <a href="#products" class="btn btn-primary">Shop All Products <span>&#8594;</span></a>
-      <a href="dashboard/feed.html" class="btn btn-secondary">Join the Community</a>
+      <a href="#products" class="btn btn-primary" data-i18n="shop.shop_all_products">Shop All Products <span>&#8594;</span></a>
+      <a href="dashboard/feed.html" class="btn btn-secondary" data-i18n="shop.join_community">Join the Community</a>
     </div>
   </section>
 
@@ -422,19 +434,19 @@
     <div class="cart-drawer-items" id="cart-items"></div>
     <div class="cart-drawer-empty" id="cart-empty">
       <span class="empty-cart-icon">&#128722;</span>
-      <p>Your cart is empty</p>
-      <a href="#products" class="btn btn-primary btn-sm" id="start-shopping-btn">Start Shopping</a>
+      <p data-i18n="shop.cart_empty">Your cart is empty</p>
+      <a href="#products" class="btn btn-primary btn-sm" id="start-shopping-btn" data-i18n="shop.start_shopping">Start Shopping</a>
     </div>
     <div class="cart-upsell" id="cart-upsell">
-      <h4>You might also like</h4>
+      <h4 data-i18n="shop.you_might_like">You might also like</h4>
       <div class="cart-upsell-items" id="cart-upsell-items"></div>
     </div>
     <div class="cart-drawer-footer" id="cart-footer">
       <div class="cart-subtotal">
-        <span>Subtotal:</span>
+        <span data-i18n="shop.subtotal">Subtotal:</span>
         <span class="cart-total-price" id="cart-total-price">$0.00</span>
       </div>
-      <p class="cart-shipping-note">Shipping calculated at checkout</p>
+      <p class="cart-shipping-note" data-i18n="shop.shipping_note">Shipping calculated at checkout</p>
       <button class="btn btn-primary btn-full cart-checkout-btn" id="cart-checkout">Checkout <span>&#8594;</span></button>
     </div>
   </div>
@@ -444,7 +456,7 @@
     <div class="search-modal">
       <div class="search-input-wrapper">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="search-input" placeholder="Search tees, hoodies, courses, accessories..." autocomplete="off">
+        <input type="text" id="search-input" placeholder="Search tees, hoodies, courses, accessories..." data-i18n-placeholder="shop.search_placeholder" autocomplete="off">
         <kbd class="search-shortcut" id="search-shortcut">/</kbd>
         <button class="search-close" id="search-close" aria-label="Close search">&times;</button>
       </div>
@@ -459,7 +471,7 @@
       <div class="search-results" id="search-results"></div>
       <div class="search-footer" id="search-footer">
         <span class="search-result-count" id="search-count"></span>
-        <span class="search-hint">Press <kbd>ESC</kbd> to close</span>
+        <span class="search-hint" data-i18n="shop.search_hint">Press ESC to close</span>
       </div>
     </div>
   </div>
@@ -503,6 +515,16 @@
 
       // Entry animations
       runEntryAnimations();
+
+      // Re-render dynamic content when language changes
+      if (window.I18n && window.I18n.onChange) {
+        window.I18n.onChange(function() {
+          renderProducts();
+          renderFBT();
+          renderCoursesCarousel();
+          if (typeof CartService !== 'undefined') CartService.renderDrawer();
+        });
+      }
     });
 
     /* ---- PRODUCT LOADING ---- */
@@ -530,7 +552,8 @@
       grid.innerHTML = '';
 
       if (filtered.length === 0) {
-        grid.innerHTML = '<div class="no-results">No products found for this category.</div>';
+        const _t = window.I18n ? window.I18n.t : function(k) { return k; };
+        grid.innerHTML = '<div class="no-results">' + _t('shop.no_products') + '</div>';
         status.textContent = '';
         return;
       }
@@ -552,6 +575,19 @@
       });
     }
 
+    /* ---- TRANSLATE PRODUCT HELPER ---- */
+    function tp(product, field) {
+      var key = 'product.' + product.id + '.' + (field === 'description' ? 'desc' : field);
+      if (window.I18n) {
+        var val = window.I18n.t(key);
+        if (val !== key) return val;
+      }
+      return product[field];
+    }
+    function fp(amount) {
+      return window.I18n ? window.I18n.formatPrice(amount) : '$' + amount.toFixed(2);
+    }
+
     /* ---- CREATE PRODUCT CARD ---- */
     function createProductCard(product) {
       const card = document.createElement('div');
@@ -559,6 +595,9 @@
       card.dataset.category = product.category;
       card.dataset.type = product.type || 'merch';
       card.dataset.productId = product.id;
+
+      const _t = window.I18n ? window.I18n.t : function(k) { return k; };
+      const pName = tp(product, 'name');
 
       // Badge
       const badgeHtml = product.badge
@@ -568,15 +607,15 @@
       // Stars
       const starPercent = ((product.rating || 0) / 5) * 100;
       const reviewText = product.type === 'course'
-        ? `(${(product.reviewCount || 0).toLocaleString()} students)`
+        ? `(${(product.reviewCount || 0).toLocaleString()} ${_t('shop.students')})`
         : `(${(product.reviewCount || 0).toLocaleString()})`;
 
-      // Price
+      // Price — localized currency
       const originalPriceHtml = product.originalPrice
-        ? `<span class="product-price-original">$${product.originalPrice.toFixed(2)}</span>`
+        ? `<span class="product-price-original">${fp(product.originalPrice)}</span>`
         : '';
       const discountHtml = product.originalPrice
-        ? `<span class="discount-badge">${Math.round((1 - product.price / product.originalPrice) * 100)}% OFF</span>`
+        ? `<span class="discount-badge">${Math.round((1 - product.price / product.originalPrice) * 100)}% ${_t('shop.off')}</span>`
         : '';
 
       // Level badge (courses)
@@ -592,8 +631,8 @@
       // Course meta
       const courseMetaHtml = product.chapters
         ? `<div class="course-meta-row">
-            <span>&#128218; ${product.chapters} Chapters</span>
-            ${product.capstones ? `<span>&#127919; ${product.capstones} Capstones</span>` : ''}
+            <span>&#128218; ${product.chapters} ${_t('shop.chapters')}</span>
+            ${product.capstones ? `<span>&#127919; ${product.capstones} ${_t('shop.capstones')}</span>` : ''}
            </div>`
         : '';
 
@@ -606,22 +645,22 @@
       const bundleHtml = product.type === 'bundle' && product.bundleContents
         ? `<p class="bundle-contents">${product.bundleContents}</p>
            <div class="bundle-savings">
-             <span class="savings-label">You save:</span>
-             <span class="savings-amount">$${(product.savings || 0).toFixed(2)} (${product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0}%)</span>
+             <span class="savings-label">${_t('shop.you_save')}</span>
+             <span class="savings-amount">${fp(product.savings || 0)} (${product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0}%)</span>
            </div>`
         : '';
 
       // CTA text
-      const ctaText = product.type === 'course' ? 'Enroll Now' : product.type === 'bundle' ? 'Add Bundle to Cart' : 'Add to Cart';
+      const ctaText = product.type === 'course' ? _t('shop.enroll_now') : product.type === 'bundle' ? _t('shop.add_bundle') : _t('shop.add_to_cart');
       const ctaIcon = product.type === 'course' ? '&#8594;' : '&#128722;';
       const ctaClass = product.type === 'course' ? 'btn-enroll' : product.type === 'bundle' ? 'btn-bundle' : '';
 
       // Image
       const imageHtml = product.image
-        ? `<img src="${product.image}" alt="${product.name}" loading="lazy">`
+        ? `<img src="${product.image}" alt="${pName}" loading="lazy">`
         : `<div class="product-placeholder-img">
-            <img src="assets/shop/logo-glow.png" alt="${product.name}" class="placeholder-logo-img" loading="lazy">
-            <span class="placeholder-product-label">${product.name}</span>
+            <img src="assets/shop/logo-glow.png" alt="${pName}" class="placeholder-logo-img" loading="lazy">
+            <span class="placeholder-product-label">${pName}</span>
           </div>`;
 
       card.innerHTML = `
@@ -629,11 +668,11 @@
           ${badgeHtml}
           ${imageHtml}
           ${durationHtml}
-          <button class="quick-view-trigger" aria-label="Quick view ${product.name}">Quick View</button>
+          <button class="quick-view-trigger" aria-label="Quick view ${pName}">${_t('shop.quick_view')}</button>
         </div>
         <div class="product-card-info">
           ${levelHtml}
-          <h3 class="product-name">${product.name}</h3>
+          <h3 class="product-name">${pName}</h3>
           ${instructorHtml}
           <div class="product-rating-row">
             <div class="star-rating" aria-label="${product.rating} out of 5 stars">
@@ -645,7 +684,7 @@
           ${courseMetaHtml}
           ${bundleHtml}
           <div class="product-price-row">
-            <span class="product-price">$${product.price.toFixed(2)}</span>
+            <span class="product-price">${fp(product.price)}</span>
             ${originalPriceHtml}
             ${discountHtml}
           </div>
@@ -685,7 +724,14 @@
     /* ---- SUBNAV FILTERS ---- */
     function setupSubnavFilters() {
       const container = document.getElementById('subnav-categories');
+      const preview = document.getElementById('subnav-preview');
+      const previewInner = document.getElementById('subnav-preview-inner');
+      let hoverTimeout = null;
+      let hideTimeout = null;
+
       if (!container) return;
+
+      // Click — switch tab
       container.addEventListener('click', (e) => {
         const btn = e.target.closest('.shop-subnav-item');
         if (!btn) return;
@@ -693,17 +739,98 @@
         btn.classList.add('active');
         currentFilter = btn.dataset.category;
 
-        // Update title
         const title = document.querySelector('.shop-products-title');
         if (title) {
-          title.textContent = currentFilter === 'all' ? 'Shop All' : btn.textContent;
+          const _t = window.I18n ? window.I18n.t : function(k) { return k; };
+          title.textContent = currentFilter === 'all' ? _t('shop.shop_all') : btn.textContent;
         }
 
         renderProducts();
-
-        // Scroll to products
+        hidePreview();
         document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
+
+      // Hover — show preview for all tabs
+      container.addEventListener('mouseover', (e) => {
+        const btn = e.target.closest('.shop-subnav-item');
+        if (!btn) { return; }
+        clearTimeout(hideTimeout);
+        hoverTimeout = setTimeout(() => showPreview(btn), 200);
+      });
+
+      container.addEventListener('mouseout', (e) => {
+        clearTimeout(hoverTimeout);
+        const related = e.relatedTarget;
+        if (related && (preview.contains(related) || container.contains(related))) return;
+        hideTimeout = setTimeout(hidePreview, 300);
+      });
+
+      preview.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+      preview.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(hidePreview, 200);
+      });
+
+      function showPreview(btn) {
+        const category = btn.dataset.category;
+        const items = allProducts.filter(p => {
+          if (category === 'all') return true;
+          if (category === 'courses') return p.type === 'course';
+          return p.category === category;
+        });
+
+        if (items.length === 0) { hidePreview(); return; }
+
+        // Position preview under the hovered tab
+        const btnRect = btn.getBoundingClientRect();
+        const navRect = document.getElementById('shop-subnav').getBoundingClientRect();
+        preview.style.left = Math.max(8, btnRect.left - navRect.left - 20) + 'px';
+
+        previewInner.innerHTML = items.slice(0, 8).map(p => `
+            <div class="preview-item" data-id="${p.id}" data-category="${p.category}">
+              <span class="preview-item-name">${tp(p, 'name')}</span>
+            </div>`
+        ).join('') + `
+          <div class="preview-view-all" data-category="${category}">
+            ${window.I18n ? window.I18n.t('shop.view_all') : 'View All'} ${btn.textContent} &#8594;
+          </div>`;
+
+        // Click item → scroll to it
+        previewInner.querySelectorAll('.preview-item').forEach(item => {
+          item.addEventListener('click', () => {
+            // Switch tab
+            container.querySelectorAll('.shop-subnav-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = category;
+            const title = document.querySelector('.shop-products-title');
+            if (title) title.textContent = currentFilter === 'all' ? (window.I18n ? window.I18n.t('shop.shop_all') : 'Shop All') : btn.textContent;
+            renderProducts();
+            hidePreview();
+            setTimeout(() => {
+              const card = document.querySelector(`[data-product-id="${item.dataset.id}"]`);
+              if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.classList.add('search-highlight');
+                setTimeout(() => card.classList.remove('search-highlight'), 2000);
+              }
+            }, 100);
+          });
+        });
+
+        // View all link
+        const viewAll = previewInner.querySelector('.preview-view-all');
+        if (viewAll) {
+          viewAll.addEventListener('click', () => {
+            btn.click();
+            hidePreview();
+          });
+        }
+
+        preview.classList.add('active');
+      }
+
+      function hidePreview() {
+        preview.classList.remove('active');
+      }
     }
 
     /* ---- SORT DROPDOWN ---- */
@@ -791,15 +918,15 @@
         ${i > 0 ? '<span class="fbt-plus">+</span>' : ''}
         <div class="fbt-item">
           ${item.image
-            ? `<img src="${item.image}" alt="${item.name}" loading="lazy">`
-            : `<div class="fbt-placeholder"><img src="assets/shop/logo-glow.png" alt="${item.name}" class="fbt-logo-img" loading="lazy"></div>`}
-          <p>${item.name}</p>
-          <span>$${item.price.toFixed(2)}</span>
+            ? `<img src="${item.image}" alt="${tp(item, 'name')}" loading="lazy">`
+            : `<div class="fbt-placeholder"><img src="assets/shop/logo-glow.png" alt="${tp(item, 'name')}" class="fbt-logo-img" loading="lazy"></div>`}
+          <p>${tp(item, 'name')}</p>
+          <span>${fp(item.price)}</span>
         </div>
       `).join('') + `
         <div class="fbt-total">
-          <p>Total: <span class="fbt-combined-price">$${discounted.toFixed(2)}</span> <span class="fbt-original">$${combined.toFixed(2)}</span></p>
-          <button class="btn btn-primary btn-sm fbt-add-all">Add All 3 to Cart</button>
+          <p>Total: <span class="fbt-combined-price">${fp(discounted)}</span> <span class="fbt-original">${fp(combined)}</span></p>
+          <button class="btn btn-primary btn-sm fbt-add-all">${window.I18n ? window.I18n.t('shop.fbt_add_all') : 'Add All 3 to Cart'}</button>
         </div>
       `;
 
@@ -825,30 +952,31 @@
 
       carousel.innerHTML = courses.map(course => {
         const starPercent = ((course.rating || 0) / 5) * 100;
+        const _t = window.I18n ? window.I18n.t : function(k) { return k; };
         return `
           <div class="carousel-course-card">
             <div class="carousel-course-img">
               ${course.image
-                ? `<img src="${course.image}" alt="${course.name}" loading="lazy">`
-                : `<div class="product-placeholder-img"><img src="assets/shop/logo-glow.png" alt="${course.name}" class="placeholder-logo-img" loading="lazy"></div>`}
+                ? `<img src="${course.image}" alt="${tp(course, 'name')}" loading="lazy">`
+                : `<div class="product-placeholder-img"><img src="assets/shop/logo-glow.png" alt="${tp(course, 'name')}" class="placeholder-logo-img" loading="lazy"></div>`}
               ${course.duration ? `<span class="course-duration-badge">${course.duration}</span>` : ''}
             </div>
             <div class="carousel-course-info">
               ${course.level ? `<span class="course-level level-${course.level}">${course.level.charAt(0).toUpperCase() + course.level.slice(1)}</span>` : ''}
-              <h4>${course.name}</h4>
+              <h4>${tp(course, 'name')}</h4>
               <p class="course-instructor">${course.instructor || 'AutoNateAI Team'}</p>
               <div class="product-rating-row">
                 <div class="star-rating">
                   <span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                   <span class="stars-filled" style="width:${starPercent}%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                 </div>
-                <span class="review-count">(${(course.reviewCount || 0).toLocaleString()} students)</span>
+                <span class="review-count">(${(course.reviewCount || 0).toLocaleString()} ${_t('shop.students')})</span>
               </div>
               <div class="product-price-row">
-                <span class="product-price">$${course.price.toFixed(2)}</span>
-                ${course.originalPrice ? `<span class="product-price-original">$${course.originalPrice.toFixed(2)}</span>` : ''}
+                <span class="product-price">${fp(course.price)}</span>
+                ${course.originalPrice ? `<span class="product-price-original">${fp(course.originalPrice)}</span>` : ''}
               </div>
-              <a href="${course.courseUrl || '#'}" class="btn btn-primary btn-sm">Enroll Now &#8594;</a>
+              <a href="${course.courseUrl || '#'}" class="btn btn-primary btn-sm">${window.I18n ? window.I18n.t('shop.enroll_now') : 'Enroll Now'} &#8594;</a>
             </div>
           </div>
         `;
@@ -877,7 +1005,8 @@
         const diff = dropDate.getTime() - now;
 
         if (diff <= 0) {
-          document.getElementById('drop-countdown').innerHTML = '<span class="drop-live">DROP IS LIVE &#128293;</span>';
+          const _t = window.I18n ? window.I18n.t : function(k) { return k; };
+          document.getElementById('drop-countdown').innerHTML = '<span class="drop-live">' + _t('shop.drop_live') + ' &#128293;</span>';
           return;
         }
 
@@ -1002,7 +1131,7 @@
                 <div class="search-result-name">${highlightMatch(p.name, query)}</div>
                 <span class="search-result-category">${typeIcon} ${categoryLabel}</span>
               </div>
-              <div class="search-result-price">$${p.price.toFixed(2)}</div>
+              <div class="search-result-price">${fp(p.price)}</div>
             </div>`;
         }).join('');
 
@@ -1018,7 +1147,7 @@
               subnavBtn.classList.add('active');
               currentFilter = subnavBtn.dataset.category;
               const title = document.querySelector('.shop-products-title');
-              if (title) title.textContent = currentFilter === 'all' ? 'Shop All' : subnavBtn.textContent;
+              if (title) title.textContent = currentFilter === 'all' ? (window.I18n ? window.I18n.t('shop.shop_all') : 'Shop All') : subnavBtn.textContent;
               renderProducts();
             }
             closeSearch();
@@ -1054,9 +1183,11 @@
         firebase.auth().onAuthStateChanged(user => {
           const ctas = document.getElementById('members-ctas');
           if (ctas && user) {
+            const _t = window.I18n ? window.I18n.t : function(k) { return k; };
             ctas.innerHTML = `
-              <a href="dashboard/index.html" class="btn btn-primary">Go to Dashboard</a>
-              <a href="dashboard/library.html" class="btn btn-secondary">My Library</a>
+              <a href="dashboard/index.html" class="btn btn-primary">${_t('shop.go_dashboard')}</a>
+              <a href="dashboard/library.html" class="btn btn-secondary">${_t('shop.my_library')}</a>
+              <a href="dashboard/orders.html" class="btn btn-secondary">${_t('nav.orders')}</a>
             `;
           }
         });
@@ -1188,14 +1319,15 @@
 
       const overlay = document.createElement('div');
       overlay.className = 'email-modal-overlay';
+      const _t = window.I18n ? window.I18n.t : function(k) { return k; };
       overlay.innerHTML = `
         <div class="email-modal">
-          <h3>Complete Your Purchase</h3>
-          <p>Enter your email to purchase <strong>${product.name}</strong> for $${product.price.toFixed(2)}.</p>
+          <h3>${_t('shop.complete_purchase')}</h3>
+          <p>${_t('shop.enter_email')} <strong>${tp(product, 'name')}</strong> for ${fp(product.price)}.</p>
           <input type="email" id="checkout-email" placeholder="your@email.com" autocomplete="email">
           <div class="email-modal-actions">
-            <button class="btn-cancel" id="modal-cancel">Cancel</button>
-            <button class="btn-buy" id="modal-confirm">Continue to Checkout <span>&#8594;</span></button>
+            <button class="btn-cancel" id="modal-cancel">${_t('shop.cancel')}</button>
+            <button class="btn-buy" id="modal-confirm">${_t('shop.continue_checkout')} <span>&#8594;</span></button>
           </div>
         </div>
       `;
@@ -1220,14 +1352,15 @@
 
     /* ---- PURCHASE TOAST ---- */
     function showPurchaseToast(result) {
-      const name = result.product?.name || 'your product';
+      const name = result.product ? tp(result.product, 'name') : 'your product';
       const toast = document.createElement('div');
       toast.className = 'purchase-toast';
+      const _t = window.I18n ? window.I18n.t : function(k) { return k; };
       toast.innerHTML = `
         <span class="purchase-toast-icon">&#9989;</span>
         <div class="purchase-toast-text">
-          <span class="purchase-toast-title">Purchase Successful!</span>
-          <span class="purchase-toast-desc">You now have access to ${name}.</span>
+          <span class="purchase-toast-title">${_t('shop.purchase_success')}</span>
+          <span class="purchase-toast-desc">${_t('shop.purchase_access')} ${name}.</span>
         </div>
         <button class="purchase-toast-close" aria-label="Close">&times;</button>
       `;
@@ -1236,5 +1369,6 @@
       setTimeout(() => { if (toast.parentNode) toast.remove(); }, 6000);
     }
   </script>
+  <script src="shared/js/i18n.js"></script>
 </body>
 </html>
