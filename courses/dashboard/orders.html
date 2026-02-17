@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders & Returns | AutoNateAI</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Critical styles - must load before body renders -->
+  <style>
+    /* Hide content until auth is confirmed */
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+
+    /* Loading screen - shown immediately */
+    .auth-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <!-- Theme loader (before CSS to prevent flash) -->
+  <script src="../shared/js/theme-loader.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+  <link rel="stylesheet" href="../shared/css/orders.css">
+  <link rel="stylesheet" href="../shared/css/i18n.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">🛍️</div>
+      <div class="loading-spinner"></div>
+      <p>Loading your orders...</p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="feed.html" class="nav-link">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Feed</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="library.html" class="nav-link">
+                <span class="nav-icon">🔧</span>
+                <span class="nav-text">Tools Library</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="orders.html" class="nav-link active">
+                <span class="nav-icon">🛍️</span>
+                <span class="nav-text">Orders & Returns</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Basketball Section (hidden by default) -->
+        <div class="nav-section" id="basketball-section" style="display: none;">
+          <span class="nav-section-title" style="color: #ef4444;">Basketball</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="basketball-sim.html" class="nav-link">
+                <span class="nav-icon">🏀</span>
+                <span class="nav-text">Play Simulator</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Admin Section (hidden by default) -->
+        <div class="nav-section" id="admin-section" style="display: none;">
+          <span class="nav-section-title" style="color: #f44336;">Admin</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../admin/" class="nav-link">
+                <span class="nav-icon">🛡️</span>
+                <span class="nav-text">Admin Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak">
+              <span>🔥</span>
+              <span id="user-streak">0</span> day streak
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title" data-i18n="orders.title">Orders &amp; Returns</h1>
+        </div>
+        <div class="header-right">
+          <div class="lang-selector" id="lang-selector">
+            <button class="action-btn lang-btn" id="lang-btn" title="Language">
+              <span class="lang-flag" id="lang-flag">🇺🇸</span>
+              <span class="lang-code" id="lang-code">EN</span>
+            </button>
+            <div class="lang-dropdown" id="lang-dropdown"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="content-area">
+
+        <!-- Tab Switcher -->
+        <div class="orders-tabs">
+          <button class="orders-tab active" data-tab="orders">Orders</button>
+          <button class="orders-tab" data-tab="returns">Returns</button>
+        </div>
+
+        <!-- Orders Tab -->
+        <div class="orders-tab-content active" id="tab-orders">
+
+          <!-- Search & Filter Bar -->
+          <div class="order-search-bar">
+            <div class="order-search-bar__input-wrap">
+              <span class="order-search-bar__icon">&#128269;</span>
+              <input type="text" class="order-search-bar__input" id="order-search-input" data-i18n-placeholder="orders.search_placeholder" placeholder="Search orders...">
+            </div>
+            <select class="order-search-bar__filter" id="order-date-filter">
+              <option value="all" data-i18n="orders.filter_all">All Orders</option>
+              <option value="30" data-i18n="orders.filter_30d">Last 30 Days</option>
+              <option value="90" data-i18n="orders.filter_3m">Past 3 Months</option>
+              <option value="180" data-i18n="orders.filter_6m">Past 6 Months</option>
+            </select>
+          </div>
+
+          <div id="orders-list">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Returns Tab -->
+        <div class="orders-tab-content" id="tab-returns">
+
+          <!-- Multi-Step Return Form -->
+          <div class="return-form-card" id="return-form-card">
+            <h3 class="return-form-title" data-i18n="orders.return_title">Request a Return</h3>
+
+            <!-- Step Progress Indicator -->
+            <div class="return-steps-indicator" id="return-steps-indicator">
+              <div class="return-steps-indicator__step active" data-step="1">
+                <div class="return-steps-indicator__number">1</div>
+                <span class="return-steps-indicator__text" data-i18n="orders.step_select_order">Select Order</span>
+              </div>
+              <div class="return-steps-indicator__line"></div>
+              <div class="return-steps-indicator__step" data-step="2">
+                <div class="return-steps-indicator__number">2</div>
+                <span class="return-steps-indicator__text" data-i18n="orders.step_select_reason">Reason</span>
+              </div>
+              <div class="return-steps-indicator__line"></div>
+              <div class="return-steps-indicator__step" data-step="3">
+                <div class="return-steps-indicator__number">3</div>
+                <span class="return-steps-indicator__text" data-i18n="orders.step_comments">Comments</span>
+              </div>
+              <div class="return-steps-indicator__line"></div>
+              <div class="return-steps-indicator__step" data-step="4">
+                <div class="return-steps-indicator__number">4</div>
+                <span class="return-steps-indicator__text" data-i18n="orders.step_confirm">Confirm</span>
+              </div>
+            </div>
+
+            <form id="return-form">
+              <!-- Step 1: Select Order -->
+              <div class="return-step active" id="return-step-1">
+                <div class="form-group">
+                  <label for="return-order-select" data-i18n="orders.return_select">Select Order</label>
+                  <select id="return-order-select">
+                    <option value="">-- Choose an order --</option>
+                  </select>
+                </div>
+                <div class="return-step-buttons">
+                  <button type="button" class="return-step-btn return-step-btn--next" id="return-next-1" disabled data-i18n="orders.next_step">Next</button>
+                </div>
+              </div>
+
+              <!-- Step 2: Select Reason -->
+              <div class="return-step" id="return-step-2">
+                <div class="form-group">
+                  <label data-i18n="orders.return_reason">Select a Reason</label>
+                  <div class="return-reason-options" id="return-reason-options">
+                    <label class="return-reason-option" data-reason="wrong">
+                      <input type="radio" name="return-reason-radio" value="wrong">
+                      <div class="return-reason-option__radio"></div>
+                      <span class="return-reason-option__text" data-i18n="orders.reason_wrong">Wrong item received</span>
+                    </label>
+                    <label class="return-reason-option" data-reason="damaged">
+                      <input type="radio" name="return-reason-radio" value="damaged">
+                      <div class="return-reason-option__radio"></div>
+                      <span class="return-reason-option__text" data-i18n="orders.reason_damaged">Item damaged or defective</span>
+                    </label>
+                    <label class="return-reason-option" data-reason="not_described">
+                      <input type="radio" name="return-reason-radio" value="not_described">
+                      <div class="return-reason-option__radio"></div>
+                      <span class="return-reason-option__text" data-i18n="orders.reason_not_described">Item not as described</span>
+                    </label>
+                    <label class="return-reason-option" data-reason="not_needed">
+                      <input type="radio" name="return-reason-radio" value="not_needed">
+                      <div class="return-reason-option__radio"></div>
+                      <span class="return-reason-option__text" data-i18n="orders.reason_not_needed">No longer needed</span>
+                    </label>
+                    <label class="return-reason-option" data-reason="quality">
+                      <input type="radio" name="return-reason-radio" value="quality">
+                      <div class="return-reason-option__radio"></div>
+                      <span class="return-reason-option__text" data-i18n="orders.reason_quality">Quality not as expected</span>
+                    </label>
+                    <label class="return-reason-option" data-reason="other">
+                      <input type="radio" name="return-reason-radio" value="other">
+                      <div class="return-reason-option__radio"></div>
+                      <span class="return-reason-option__text" data-i18n="orders.reason_other">Other (please describe)</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="return-step-buttons">
+                  <button type="button" class="return-step-btn return-step-btn--back" id="return-back-2" data-i18n="orders.back">Back</button>
+                  <button type="button" class="return-step-btn return-step-btn--next" id="return-next-2" disabled data-i18n="orders.next_step">Next</button>
+                </div>
+              </div>
+
+              <!-- Step 3: Additional Comments -->
+              <div class="return-step" id="return-step-3">
+                <div class="form-group">
+                  <label for="return-comments" data-i18n="orders.step_comments">Additional Comments</label>
+                  <textarea id="return-comments" rows="4" placeholder="Any additional details..." data-i18n-placeholder="orders.comments_placeholder"></textarea>
+                </div>
+                <div class="return-step-buttons">
+                  <button type="button" class="return-step-btn return-step-btn--back" id="return-back-3" data-i18n="orders.back">Back</button>
+                  <button type="button" class="return-step-btn return-step-btn--next" id="return-next-3" data-i18n="orders.next_step">Next</button>
+                </div>
+              </div>
+
+              <!-- Step 4: Confirmation -->
+              <div class="return-step" id="return-step-4">
+                <div class="return-confirm-summary" id="return-confirm-summary">
+                  <!-- Populated by JS -->
+                </div>
+                <div class="return-step-buttons">
+                  <button type="button" class="return-step-btn return-step-btn--back" id="return-back-4" data-i18n="orders.back">Back</button>
+                  <button type="submit" class="return-submit-btn" id="return-submit-btn" data-i18n="orders.return_submit">Submit Return Request</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Existing Returns -->
+          <div class="returns-section">
+            <h3 class="returns-section-title" data-i18n="orders.return_list_title">Your Return Requests</h3>
+            <div id="returns-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/rbac.js"></script>
+  <script src="../shared/js/whop-service.js"></script>
+  <script src="../shared/js/orders.js"></script>
+  <script src="../shared/js/i18n.js"></script>
+</body>
+</html>

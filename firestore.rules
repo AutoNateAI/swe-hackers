@@ -186,6 +186,21 @@ service cloud.firestore {
     }
 
     // ══════════════════════════════════════════════════════════════════
+    // RETURNS (customer return requests)
+    // ══════════════════════════════════════════════════════════════════
+
+    match /returns/{returnId} {
+      // Users can read their own returns
+      allow read: if isAuthenticated() &&
+                     resource.data.userId == request.auth.uid;
+      // Users can create returns with their own userId
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      // Only admins/Cloud Functions can update or delete returns
+      allow update, delete: if isAdmin();
+    }
+
+    // ══════════════════════════════════════════════════════════════════
     // FEED POSTS (AI-generated content feed)
     // ══════════════════════════════════════════════════════════════════
 

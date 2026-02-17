@@ -132,6 +132,29 @@ body {
   gap: 1rem;
 }
 
+.nav-orders-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-orders-link:hover {
+  color: var(--accent-primary);
+  background: rgba(121, 134, 203, 0.08);
+}
+
+.nav-orders-link svg {
+  flex-shrink: 0;
+}
+
 .nav-btn {
   padding: 0.6rem 1.25rem;
   border-radius: var(--radius-md);
