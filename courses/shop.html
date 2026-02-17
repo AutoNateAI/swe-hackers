@@ -82,45 +82,72 @@
     </div>
   </nav>
 
-  <!-- ==================== HERO BANNER ==================== -->
-  <section class="shop-hero-banner" id="hero">
-    <div class="shop-hero-bg">
-      <div class="hero-particles"></div>
-      <div class="hero-light-streak"></div>
-      <div class="hero-light-streak streak-2"></div>
-    </div>
-    <div class="shop-hero-container">
-      <div class="shop-hero-text">
-        <h1 class="shop-hero-title">
-          ENGINEER YOUR FUTURE.<br>
-          <span class="hero-accent">WEAR THE CODE.</span>
-        </h1>
-        <p class="shop-hero-subtitle">Premium AI-inspired streetwear for builders and innovators.</p>
-        <div class="shop-hero-ctas">
-          <a href="#products" class="btn btn-primary btn-lg">SHOP NOW</a>
-          <a href="#courses" class="btn btn-secondary btn-lg">EXPLORE COLLECTIONS</a>
+  <!-- ==================== HERO STAGE (Manifesto ↔ Hero) ==================== -->
+  <div class="hero-stage" id="hero-stage">
+
+    <!-- Layer 1: Manifesto -->
+    <section class="manifesto-section manifesto-layer" id="manifesto">
+      <div class="manifesto-bg">
+        <div class="manifesto-particles"></div>
+        <div class="manifesto-streak"></div>
+        <div class="manifesto-streak streak-2"></div>
+        <div class="manifesto-streak streak-3"></div>
+      </div>
+      <div class="manifesto-glow"></div>
+      <div class="manifesto-container">
+        <p class="manifesto-lead">We Don't Follow The Future.</p>
+        <h2 class="manifesto-headline">We Build It.</h2>
+        <div class="manifesto-body">
+          <p>AI isn't hype. It's power.</p>
+          <p>For the coders. The creators.<br>The women rewriting the rules.<br>The builders who stay up when others log off.</p>
+          <p>AutoNateAI is more than apparel.<br>It's a uniform for the next era.</p>
+          <p>You don't just wear it. <span class="manifesto-bold">You represent it.</span></p>
         </div>
-        <div class="trust-badges">
-          <div class="trust-badge">
-            <span class="trust-icon">&#9733;</span>
-            <span>4.8 Rating</span>
+        <p class="manifesto-tagline">We Bot Dat Life.</p>
+      </div>
+    </section>
+
+    <!-- Layer 2: Hero Banner -->
+    <section class="shop-hero-banner hero-layer" id="hero">
+      <div class="shop-hero-bg">
+        <div class="hero-particles"></div>
+        <div class="hero-light-streak"></div>
+        <div class="hero-light-streak streak-2"></div>
+      </div>
+      <div class="shop-hero-container">
+        <div class="shop-hero-text">
+          <h1 class="shop-hero-title">
+            ENGINEER YOUR FUTURE.<br>
+            <span class="hero-accent">WEAR THE CODE.</span>
+          </h1>
+          <p class="shop-hero-subtitle">Premium AI-inspired streetwear for builders and innovators.</p>
+          <div class="shop-hero-ctas">
+            <a href="#products" class="btn btn-primary btn-lg">SHOP NOW</a>
+            <a href="#courses" class="btn btn-secondary btn-lg">EXPLORE COLLECTIONS</a>
           </div>
-          <div class="trust-badge">
-            <span class="trust-icon">&#128666;</span>
-            <span>Free Shipping $50+</span>
+          <div class="trust-badges">
+            <div class="trust-badge">
+              <span class="trust-icon">&#9733;</span>
+              <span>4.8 Rating</span>
+            </div>
+            <div class="trust-badge">
+              <span class="trust-icon">&#128666;</span>
+              <span>Free Shipping $50+</span>
+            </div>
+            <div class="trust-badge">
+              <span class="trust-icon">&#8635;</span>
+              <span>30 Day Returns</span>
+            </div>
           </div>
-          <div class="trust-badge">
-            <span class="trust-icon">&#8635;</span>
-            <span>30 Day Returns</span>
-          </div>
+        </div>
+        <div class="shop-hero-image">
+          <div class="hero-glow"></div>
+          <img src="assets/shop/logo-glow.png" alt="AutoNateAI" class="hero-logo-img">
         </div>
       </div>
-      <div class="shop-hero-image">
-        <div class="hero-glow"></div>
-        <img src="assets/shop/logo-glow.png" alt="AutoNateAI" class="hero-logo-img">
-      </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
 
   <!-- ==================== PRODUCT GRID ==================== -->
   <section class="shop-products" id="products">
@@ -935,12 +962,76 @@
 
     /* ---- ENTRY ANIMATIONS ---- */
     function runEntryAnimations() {
-      // Hero
+      const manifestoLayer = document.querySelector('.manifesto-layer');
+      const heroLayer = document.querySelector('.hero-layer');
+
+      // Manifesto — staggered reveal
+      anime({
+        targets: '.manifesto-lead',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800,
+        delay: 100,
+        easing: 'easeOutCubic'
+      });
+
+      anime({
+        targets: '.manifesto-headline',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        duration: 900,
+        delay: 400,
+        easing: 'easeOutCubic'
+      });
+
+      anime({
+        targets: '.manifesto-body p',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: anime.stagger(200, { start: 700 }),
+        duration: 700,
+        easing: 'easeOutCubic'
+      });
+
+      anime({
+        targets: '.manifesto-tagline',
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        duration: 800,
+        delay: 1800,
+        easing: 'easeOutCubic'
+      });
+
+      // Looping crossfade between manifesto ↔ hero
+      let showingManifesto = true;
+      const crossfadeDelay = 3500;  // time each layer is visible
+      const cycleDuration = 6000;   // full cycle time
+
+      function crossfade() {
+        if (showingManifesto) {
+          manifestoLayer.classList.add('fade-out');
+          heroLayer.classList.add('fade-in');
+        } else {
+          manifestoLayer.classList.remove('fade-out');
+          heroLayer.classList.remove('fade-in');
+        }
+        showingManifesto = !showingManifesto;
+      }
+
+      // First crossfade after manifesto text finishes
+      setTimeout(() => {
+        crossfade();
+        // Then loop
+        setInterval(crossfade, cycleDuration);
+      }, crossfadeDelay);
+
+      // Hero content — keep visible (no delayed fade, it loops)
       anime({
         targets: '.shop-hero-text',
         opacity: [0, 1],
         translateY: [40, 0],
         duration: 900,
+        delay: 4200,
         easing: 'easeOutCubic'
       });
 
@@ -949,7 +1040,7 @@
         opacity: [0, 1],
         translateX: [60, 0],
         duration: 900,
-        delay: 200,
+        delay: 4400,
         easing: 'easeOutCubic'
       });
 
@@ -958,7 +1049,7 @@
         opacity: [0, 1],
         translateY: [20, 0],
         duration: 600,
-        delay: 500,
+        delay: 4700,
         easing: 'easeOutCubic'
       });
 

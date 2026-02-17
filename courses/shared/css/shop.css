@@ -1346,6 +1346,224 @@
   margin-top: 0.15rem;
 }
 
+/* ===== 7B. HERO STAGE (Manifesto ↔ Hero) ===== */
+.hero-stage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Both layers stack on top of each other */
+.manifesto-layer,
+.hero-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+/* Manifesto visible first */
+.manifesto-layer {
+  z-index: 2;
+  opacity: 1;
+}
+.manifesto-layer.fade-out {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+/* Hero hidden initially */
+.hero-layer {
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.97);
+}
+.hero-layer.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Manifesto styles */
+.manifesto-section {
+  position: relative;
+  padding: calc(var(--nav-height, 64px) + 2.5rem) 2rem 2.5rem;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #07070c 0%, #0a0a14 40%, #0d0b18 70%, #0a0a10 100%);
+}
+
+/* Manifesto textured background */
+.manifesto-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.manifesto-particles {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 60%, rgba(79, 195, 247, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 75% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(79, 195, 247, 0.06) 0%, transparent 40%);
+}
+/* Star-field for manifesto */
+.manifesto-particles::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 8% 15%, rgba(139,92,246,0.5), transparent),
+    radial-gradient(1px 1px at 92% 25%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 45% 8%, rgba(79,195,247,0.4), transparent),
+    radial-gradient(1px 1px at 22% 75%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 78% 85%, rgba(139,92,246,0.35), transparent),
+    radial-gradient(1px 1px at 88% 55%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 12% 45%, rgba(79,195,247,0.3), transparent),
+    radial-gradient(1px 1px at 55% 92%, rgba(139,92,246,0.25), transparent),
+    radial-gradient(1px 1px at 35% 35%, rgba(255,255,255,0.15), transparent),
+    radial-gradient(1px 1px at 65% 18%, rgba(79,195,247,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 5% 88%, rgba(139,92,246,0.3), transparent),
+    radial-gradient(1px 1px at 95% 72%, rgba(255,255,255,0.2), transparent);
+  opacity: 0.9;
+  animation: manifestoTwinkle 4s ease-in-out infinite alternate;
+}
+@keyframes manifestoTwinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Light streaks — purple/blue theme */
+.manifesto-streak {
+  position: absolute;
+  width: 200%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 15%, rgba(139,92,246,0.4), rgba(79,195,247,0.5), rgba(139,92,246,0.4), transparent 85%);
+  top: 35%;
+  left: -50%;
+  transform: rotate(-6deg);
+  animation: lightStreak 9s linear infinite;
+  opacity: 0.6;
+}
+.manifesto-streak.streak-2 {
+  top: 65%;
+  height: 1px;
+  animation-delay: 3s;
+  animation-duration: 12s;
+  opacity: 0.35;
+  transform: rotate(-3deg);
+  background: linear-gradient(90deg, transparent 20%, rgba(79,195,247,0.3), rgba(139,92,246,0.5), rgba(79,195,247,0.3), transparent 80%);
+}
+.manifesto-streak.streak-3 {
+  top: 50%;
+  height: 1px;
+  animation-delay: 6s;
+  animation-duration: 14s;
+  opacity: 0.25;
+  transform: rotate(2deg);
+  background: linear-gradient(90deg, transparent 25%, rgba(139,92,246,0.3), rgba(179,136,255,0.4), rgba(139,92,246,0.3), transparent 75%);
+}
+
+.manifesto-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(79, 195, 247, 0.04) 40%, transparent 70%);
+  pointer-events: none;
+  animation: manifestoGlowPulse 6s ease-in-out infinite;
+}
+@keyframes manifestoGlowPulse {
+  0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+.manifesto-container {
+  position: relative;
+  max-width: 620px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.manifesto-lead {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.25rem;
+}
+.manifesto-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 5.5vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #fff 0%, #4fc3f7 50%, #b388ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+.manifesto-body {
+  margin-bottom: 1.8rem;
+}
+.manifesto-body p {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.8rem;
+}
+.manifesto-body p:last-child {
+  margin-bottom: 0;
+}
+.manifesto-body .manifesto-bold {
+  color: #fff;
+  font-weight: 600;
+}
+.manifesto-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: linear-gradient(90deg, #4fc3f7, #b388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .manifesto-section {
+    padding: calc(var(--nav-height, 64px) + 1.5rem) 1rem 2rem;
+  }
+  .manifesto-container {
+    max-width: 380px;
+  }
+  .manifesto-lead {
+    font-size: 0.8rem;
+  }
+  .manifesto-body p {
+    font-size: 0.95rem;
+  }
+  .manifesto-tagline {
+    font-size: 1.25rem;
+  }
+}
+
 /* ===== 8. COMMUNITY GALLERY ===== */
 .community-gallery {
   padding: var(--section-pad);
