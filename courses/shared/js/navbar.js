@@ -27,6 +27,10 @@ const NavbarComponent = {
         </div>
 
         <div class="nav-cta">
+          <a href="{{baseUrl}}dashboard/orders.html" class="nav-orders-link" data-auth-only="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+            <span>Orders & Returns</span>
+          </a>
           <a href="{{baseUrl}}auth/login.html" class="nav-btn secondary">Sign In</a>
           <a href="{{baseUrl}}shop.html" class="nav-btn primary">Browse Tools</a>
         </div>
@@ -38,6 +42,7 @@ const NavbarComponent = {
         <a href="{{baseUrl}}shop.html">Shop</a>
         <a href="{{baseUrl}}about.html">About</a>
         <a href="{{baseUrl}}contact.html">Contact</a>
+        <a href="{{baseUrl}}dashboard/orders.html" class="mobile-orders-link" data-auth-only="true">Orders & Returns</a>
         <div class="mobile-divider"></div>
         <div class="mobile-cta">
           <a href="{{baseUrl}}auth/login.html" class="nav-btn secondary">Sign In</a>
@@ -72,6 +77,9 @@ const NavbarComponent = {
         new RegExp(`href="${baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}auth/login\\.html" class="nav-btn secondary">Sign In</`, 'g'),
         `href="${feedUrl}" class="nav-btn secondary">My Feed</`
       );
+    } else {
+      // Hide auth-only elements when not logged in (cached state)
+      html = html.replace(/data-auth-only="true"/g, 'data-auth-only="true" style="display:none"');
     }
 
     container.innerHTML = html;
@@ -103,11 +111,19 @@ const NavbarComponent = {
         btn.href = feedUrl;
         btn.textContent = 'My Feed';
       });
+      // Show orders link when logged in
+      document.querySelectorAll('[data-auth-only]').forEach(el => {
+        el.style.display = '';
+      });
     } else {
       localStorage.removeItem('navAuthState');
       document.querySelectorAll('.nav-cta a.secondary, .mobile-cta a.secondary').forEach(btn => {
         btn.href = baseUrl + 'auth/login.html';
         btn.textContent = 'Sign In';
+      });
+      // Hide orders link when logged out
+      document.querySelectorAll('[data-auth-only]').forEach(el => {
+        el.style.display = 'none';
       });
     }
   },

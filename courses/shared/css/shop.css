@@ -130,7 +130,8 @@
 }
 
 .shop-search-btn,
-.shop-cart-btn {
+.shop-cart-btn,
+.shop-orders-btn {
   background: none;
   border: none;
   color: var(--text-secondary, #aaa);
@@ -141,10 +142,24 @@
   justify-content: center;
   transition: color 0.2s ease;
   position: relative;
+  text-decoration: none;
 }
 .shop-search-btn:hover,
-.shop-cart-btn:hover {
+.shop-cart-btn:hover,
+.shop-orders-btn:hover {
   color: var(--brand-ice);
+}
+
+.shop-orders-btn {
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  white-space: nowrap;
+}
+
+.shop-orders-label {
+  display: inline;
 }
 
 .cart-badge {
@@ -2612,6 +2627,9 @@
   .shop-subnav-actions {
     max-width: none;
     flex: 0;
+  }
+  .shop-orders-label {
+    display: none;
   }
 
   .shop-hero-banner {

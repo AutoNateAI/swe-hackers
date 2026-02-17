@@ -47,6 +47,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="../shared/css/dashboard.css">
+  <link rel="stylesheet" href="../shared/css/i18n.css">
 
   <!-- Profile Page Styles -->
   <style>
@@ -892,18 +893,18 @@
 
       <nav class="sidebar-nav">
         <div class="nav-section">
-          <span class="nav-section-title">Main</span>
+          <span class="nav-section-title" data-i18n="nav.main">Main</span>
           <ul class="nav-list">
             <li class="nav-item">
               <a href="feed.html" class="nav-link">
                 <span class="nav-icon">🏠</span>
-                <span class="nav-text">Feed</span>
+                <span class="nav-text" data-i18n="nav.feed">Feed</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="library.html" class="nav-link">
                 <span class="nav-icon">📚</span>
-                <span class="nav-text">Tools Library</span>
+                <span class="nav-text" data-i18n="nav.library">Tools Library</span>
               </a>
             </li>
           </ul>
@@ -911,12 +912,18 @@
 
 
         <div class="nav-section">
-          <span class="nav-section-title">Account</span>
+          <span class="nav-section-title" data-i18n="nav.account">Account</span>
           <ul class="nav-list">
             <li class="nav-item">
               <a href="profile.html" class="nav-link active">
                 <span class="nav-icon">👤</span>
-                <span class="nav-text">Profile</span>
+                <span class="nav-text" data-i18n="nav.profile">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="orders.html" class="nav-link">
+                <span class="nav-icon">🛍️</span>
+                <span class="nav-text" data-i18n="nav.orders">Orders & Returns</span>
               </a>
             </li>
             <li class="nav-item">
