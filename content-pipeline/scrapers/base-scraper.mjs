@@ -44,7 +44,7 @@ export function saveResults(source, items) {
   return filepath;
 }
 
-export function formatScrapedItem({ source, sourceUrl, sourceId, title, body, metadata = {}, tags = [] }) {
+export function formatScrapedItem({ source, sourceUrl, sourceId, title, body, metadata = {}, tags = [], comments = [] }) {
   return {
     source,
     sourceUrl,
@@ -54,6 +54,7 @@ export function formatScrapedItem({ source, sourceUrl, sourceId, title, body, me
     body: body?.slice(0, 5000) || '',
     metadata,
     tags,
+    comments: comments || metadata.comments || [],
     scrapedAt: new Date().toISOString(),
     status: 'new'
   };

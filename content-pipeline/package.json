@@ -10,8 +10,11 @@
     "scrape": "node scrapers/apify-scraper.mjs",
     "ingest": "node ingest/firestore-writer.mjs",
     "generate": "node generators/content-generator.mjs",
+    "generate:carousel": "node generators/carousel-generator.mjs",
+    "generate:comments": "node generators/comment-generator.mjs",
     "publish": "node publisher/feed-publisher.mjs",
     "pipeline": "bash scheduler/orchestrator.sh",
+    "clear:posts": "node scripts/clear-feed-posts.mjs",
     "seed:personas": "node scripts/seed-personas.mjs",
     "seed:posts": "node scripts/seed-existing-posts.mjs"
   },

@@ -219,6 +219,17 @@ service cloud.firestore {
     }
 
     // ══════════════════════════════════════════════════════════════════
+    // COMMENT THREADS (AI-generated conversation threads)
+    // ══════════════════════════════════════════════════════════════════
+
+    match /commentThreads/{threadId} {
+      // Authenticated users can read comment threads
+      allow read: if isAuthenticated();
+      // Only admin/Cloud Functions can write
+      allow write: if isAdmin();
+    }
+
+    // ══════════════════════════════════════════════════════════════════
     // PERSONAS (AI content creators)
     // ══════════════════════════════════════════════════════════════════
 

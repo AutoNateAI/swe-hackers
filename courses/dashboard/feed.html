@@ -50,6 +50,10 @@
   <!-- Styles -->
   <link rel="stylesheet" href="../shared/css/dashboard.css">
   <link rel="stylesheet" href="../shared/css/feed.css">
+  <style>
+    /* Widen the feed container for carousel posts */
+    .feed-container { max-width: 900px; }
+  </style>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -228,8 +232,12 @@
 
     async function loadFeedPosts(category = 'all', lastDoc = null, limit = POSTS_PER_PAGE) {
       const feedRef = feedDb.collection('feedPosts');
-      let query = feedRef.where('status', '==', 'published').orderBy('createdAt', 'desc').limit(limit);
-      if (category !== 'all') {
+      let query;
+      if (category === 'all') {
+        query = feedRef.where('status', '==', 'published').orderBy('createdAt', 'desc').limit(limit);
+      } else if (category === 'carousel') {
+        query = feedRef.where('status', '==', 'published').where('contentType', '==', 'carousel').orderBy('createdAt', 'desc').limit(limit);
+      } else {
         query = feedRef.where('status', '==', 'published').where('category', '==', category).orderBy('createdAt', 'desc').limit(limit);
       }
       if (lastDoc) {
@@ -335,7 +343,258 @@
       return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     }
 
+    // =========================================================================
+    // CAROUSEL RENDERING
+    // =========================================================================
+
+    function renderCarouselCard(post) {
+      const slides = post.slides || [];
+      const authorInitial = post.authorInitial || (post.author ? post.author.charAt(0) : '?');
+      const avatarColor = post.avatarColor || '#7986cb';
+      const likeCount = post.likes || 0;
+      const commentCount = post.commentCount || 0;
+
+      const slidesHtml = slides.map((slide, i) => {
+        if (slide.imageUrl) {
+          return `<div class="carousel-slide ${i === 0 ? 'active' : ''}" data-slide="${i}">
+            <img src="${slide.imageUrl}" alt="Slide ${slide.slideNumber}" loading="lazy">
+          </div>`;
+        }
+        return `<div class="carousel-slide carousel-slide--placeholder ${i === 0 ? 'active' : ''}" data-slide="${i}">
+          <div>${slide.type === 'question' ? escapeHtml(post.question) : 'Image ' + slide.slideNumber}</div>
+        </div>`;
+      }).join('');
+
+      const dotsHtml = slides.map((_, i) =>
+        `<button class="carousel-dot ${i === 0 ? 'active' : ''}" data-dot="${i}" onclick="goToSlide('${post.id}', ${i})"></button>`
+      ).join('');
+
+      return `
+        <div class="feed-card feed-card--carousel" data-post-id="${post.id}" data-content-type="carousel">
+          <div class="carousel-layout">
+
+            <!-- Carousel Side -->
+            <div class="carousel-side">
+              <div class="carousel-author-overlay">
+                <div class="feed-card__avatar" style="background:${avatarColor}">${escapeHtml(authorInitial)}</div>
+                <div class="feed-card__author-info">
+                  <span class="feed-card__author-name">${escapeHtml(post.author || 'Unknown')}</span>
+                  <span class="feed-card__date">${formatDate(post.createdAt)}</span>
+                </div>
+              </div>
+
+              <div class="carousel-slides" data-carousel="${post.id}">
+                ${slidesHtml}
+              </div>
+
+              <div class="carousel-nav">
+                <button class="carousel-btn" onclick="prevSlide('${post.id}')">&#8249;</button>
+                <div class="carousel-dots" data-dots="${post.id}">
+                  ${dotsHtml}
+                </div>
+                <button class="carousel-btn" onclick="nextSlide('${post.id}')">&#8250;</button>
+              </div>
+            </div>
+
+            <!-- Comments Side -->
+            <div class="comments-side">
+              <div class="comments-side__header">
+                <span class="comments-side__title">Conversation</span>
+                <span class="comments-side__count" data-thread-count="${post.id}">Loading...</span>
+              </div>
+
+              <div class="comments-side__thread" data-thread="${post.id}">
+                <!-- AI comments animate in here -->
+              </div>
+
+              <button class="comments-side__summary-btn" onclick="generateSummary('${post.id}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Summarize Thread
+              </button>
+
+              <div class="comments-side__input-area">
+                <input class="comments-side__input" data-thread-input="${post.id}" type="text" placeholder="Reply to the conversation..." onkeydown="if(event.key==='Enter')handleThreadReply('${post.id}')">
+                <button class="comments-side__send" onclick="handleThreadReply('${post.id}')">Send</button>
+              </div>
+
+              <div class="feed-card__actions">
+                <button class="feed-card__action-btn" data-like-btn="${post.id}" onclick="toggleLike('${post.id}')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  <span data-like-count="${post.id}">${likeCount}</span>
+                </button>
+                <button class="feed-card__action-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  <span data-comment-count="${post.id}">${commentCount}</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+    }
+
+    // Carousel navigation
+    const carouselStates = {};
+
+    function goToSlide(postId, index) {
+      const container = document.querySelector(`[data-carousel="${postId}"]`);
+      const dotsContainer = document.querySelector(`[data-dots="${postId}"]`);
+      if (!container) return;
+
+      const slides = container.querySelectorAll('.carousel-slide');
+      const dots = dotsContainer?.querySelectorAll('.carousel-dot');
+
+      slides.forEach(s => s.classList.remove('active'));
+      dots?.forEach(d => d.classList.remove('active'));
+
+      if (slides[index]) slides[index].classList.add('active');
+      if (dots?.[index]) dots[index].classList.add('active');
+
+      carouselStates[postId] = index;
+    }
+
+    function nextSlide(postId) {
+      const container = document.querySelector(`[data-carousel="${postId}"]`);
+      if (!container) return;
+      const total = container.querySelectorAll('.carousel-slide').length;
+      const current = carouselStates[postId] || 0;
+      goToSlide(postId, (current + 1) % total);
+    }
+
+    function prevSlide(postId) {
+      const container = document.querySelector(`[data-carousel="${postId}"]`);
+      if (!container) return;
+      const total = container.querySelectorAll('.carousel-slide').length;
+      const current = carouselStates[postId] || 0;
+      goToSlide(postId, (current - 1 + total) % total);
+    }
+
+    // =========================================================================
+    // ANIMATED COMMENT THREADS
+    // =========================================================================
+
+    function renderComment(comment, delay = 0) {
+      const avatarColor = comment.avatar?.color || '#7986cb';
+      const initial = comment.avatar?.initial || comment.authorName?.charAt(0) || '?';
+      const role = comment.authorRole || comment.avatar?.role || '';
+      const sentiment = comment.sentiment || '';
+
+      let repliesHtml = '';
+      if (comment.replies && comment.replies.length > 0) {
+        repliesHtml = `<div class="thread-replies">
+          ${comment.replies.map((r, i) => renderComment(r, delay + 200 + (i * 150))).join('')}
+        </div>`;
+      }
+
+      return `
+        <div class="thread-comment" style="animation-delay: ${delay}ms">
+          <div class="thread-comment__main">
+            <div class="thread-comment__avatar" style="background:${avatarColor}">${escapeHtml(initial)}</div>
+            <div class="thread-comment__body">
+              <div class="thread-comment__author">
+                ${escapeHtml(comment.authorName || 'Agent')}
+                <span class="thread-comment__role">${escapeHtml(role)}</span>
+              </div>
+              <div class="thread-comment__text">${escapeHtml(comment.text || '')}</div>
+              ${sentiment ? `<span class="thread-comment__sentiment thread-comment__sentiment--${sentiment}">${sentiment}</span>` : ''}
+            </div>
+          </div>
+          ${repliesHtml}
+        </div>
+      `;
+    }
+
+    async function loadCommentThread(postId) {
+      const threadContainer = document.querySelector(`[data-thread="${postId}"]`);
+      const countEl = document.querySelector(`[data-thread-count="${postId}"]`);
+      if (!threadContainer) return;
+
+      try {
+        // Load from commentThreads collection
+        const snapshot = await feedDb.collection('commentThreads')
+          .where('postId', '==', postId)
+          .limit(1)
+          .get();
+
+        if (snapshot.empty) {
+          // Fallback: load from regular comments subcollection
+          const commentsSnapshot = await feedDb.collection('feedPosts').doc(postId).collection('comments').orderBy('createdAt', 'asc').get();
+          if (commentsSnapshot.empty) {
+            threadContainer.innerHTML = '<div style="padding:1rem;color:rgba(255,255,255,0.4);font-size:0.85rem;text-align:center;">Conversation starting soon...</div>';
+            if (countEl) countEl.textContent = '0 comments';
+            return;
+          }
+          const comments = commentsSnapshot.docs.map(d => d.data());
+          threadContainer.innerHTML = comments.map((c, i) => renderComment(c, i * 200)).join('');
+          if (countEl) countEl.textContent = `${comments.length} comments`;
+          return;
+        }
+
+        const threadData = snapshot.docs[0].data();
+        const comments = threadData.comments || [];
+        const totalComments = threadData.totalComments || comments.length;
+
+        if (countEl) countEl.textContent = `${totalComments} comments`;
+
+        // Render comments with staggered animation delays
+        let html = '';
+        comments.forEach((comment, i) => {
+          html += renderComment(comment, i * 300);
+        });
+        threadContainer.innerHTML = html;
+
+      } catch (err) {
+        console.error('Error loading thread for post', postId, err);
+        threadContainer.innerHTML = '<div style="padding:1rem;color:rgba(255,255,255,0.3);font-size:0.8rem;">Could not load conversation.</div>';
+      }
+    }
+
+    function generateSummary(postId) {
+      alert('Thread summary generation coming soon! This will use AI to summarize the entire conversation.');
+    }
+
+    async function handleThreadReply(postId) {
+      const input = document.querySelector(`[data-thread-input="${postId}"]`);
+      if (!input) return;
+      const content = input.value.trim();
+      if (!content) return;
+      input.value = '';
+
+      const user = firebase.auth().currentUser;
+      await feedDb.collection('feedPosts').doc(postId).collection('comments').add({
+        userId: user.uid,
+        displayName: user.displayName || 'Anonymous',
+        authorName: user.displayName || 'Anonymous',
+        text: content,
+        content: content,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      await feedDb.collection('feedPosts').doc(postId).update({ commentCount: firebase.firestore.FieldValue.increment(1) });
+
+      // Add the comment to the thread UI
+      const threadContainer = document.querySelector(`[data-thread="${postId}"]`);
+      if (threadContainer) {
+        const commentHtml = renderComment({
+          authorName: user.displayName || 'You',
+          text: content,
+          avatar: { initial: (user.displayName || 'Y').charAt(0), color: '#3b82f6' }
+        }, 0);
+        threadContainer.insertAdjacentHTML('beforeend', commentHtml);
+        threadContainer.scrollTop = threadContainer.scrollHeight;
+      }
+    }
+
+    // =========================================================================
+    // RENDER POST CARD (handles both text and carousel)
+    // =========================================================================
+
     function renderPostCard(post) {
+      // Route to carousel renderer if carousel type
+      if (post.contentType === 'carousel') {
+        return renderCarouselCard(post);
+      }
+
       const isPremiumLocked = post.premium && !hasPremiumAccess;
       const tags = post.tags || [];
       const likeCount = post.likes || 0;
@@ -355,9 +614,9 @@
             <span class="feed-card__category feed-card__category--${post.category}">${post.category}</span>
             ${post.premium ? '<span class="feed-card__premium-badge">&#9733; Premium</span>' : ''}
           </div>
-          <h3 class="feed-card__title">${escapeHtml(post.title)}</h3>
+          <h3 class="feed-card__title">${escapeHtml(post.title || '')}</h3>
           <div class="feed-card__content">
-            <p>${escapeHtml(post.content)}</p>
+            <p>${escapeHtml(post.content || '')}</p>
           </div>
           ${interactiveHtml}
           ${isPremiumLocked ? `
@@ -497,6 +756,12 @@
 
         // Init interactive elements
         initInteractives();
+
+        // Load comment threads for carousel posts
+        document.querySelectorAll('[data-content-type="carousel"]').forEach(card => {
+          const postId = card.dataset.postId;
+          if (postId) loadCommentThread(postId);
+        });
 
         // Check which posts the current user has liked
         checkUserLikes(postIds);

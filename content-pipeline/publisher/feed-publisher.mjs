@@ -8,7 +8,7 @@ import { createLogger } from '../lib/logger.mjs';
 const logger = createLogger('feed-publisher');
 
 const VALID_CATEGORIES = new Set(['strategies', 'results', 'tips', 'jobs', 'keywords']);
-const VALID_CONTENT_TYPES = new Set(['text', 'interactive', 'chart']);
+const VALID_CONTENT_TYPES = new Set(['text', 'interactive', 'chart', 'carousel']);
 const MAX_BATCH_OPS = 500;
 
 /**
@@ -27,7 +27,7 @@ async function findGeneratedPostFiles() {
   }
 
   return files
-    .filter(f => f.startsWith('generated-posts-') && f.endsWith('.json'))
+    .filter(f => (f.startsWith('generated-posts-') || f.startsWith('generated-carousels-')) && f.endsWith('.json'))
     .map(f => join(dataDir, f));
 }
 
@@ -35,6 +35,20 @@ async function findGeneratedPostFiles() {
  * Validate a single post object. Returns an error string or null if valid.
  */
 function validatePost(post, index) {
+  // Carousel posts use 'question' instead of 'title'/'content'
+  if (post.contentType === 'carousel') {
+    const required = ['question', 'author', 'personaId'];
+    for (const field of required) {
+      if (!post[field]) {
+        return `Carousel ${index}: missing required field "${field}"`;
+      }
+    }
+    if (!post.slides || !Array.isArray(post.slides)) {
+      return `Carousel ${index}: missing slides array`;
+    }
+    return null;
+  }
+
   const required = ['title', 'content', 'category', 'author', 'personaId'];
   for (const field of required) {
     if (!post[field]) {
@@ -136,37 +150,69 @@ export async function publishPosts() {
         ? post.contentType
         : 'text';
 
-      const feedPostData = {
-        id: feedPostRef.id,
-        category: post.category,
-        title: post.title,
-        content: post.content,
-        contentType,
-        interactiveData: post.interactiveData || null,
-        author: post.author,
-        authorInitial: post.author.charAt(0),
-        personaId: post.personaId,
-        date: now,
-        tags: Array.isArray(post.tags) ? post.tags : [],
-        premium: Boolean(post.premium),
-        sourceIds,
-        status: 'published',
-        likes: 0,
-        commentCount: 0,
-        createdAt: now,
-        updatedAt: now,
-      };
+      let feedPostData;
+
+      if (contentType === 'carousel') {
+        feedPostData = {
+          id: feedPostRef.id,
+          contentType: 'carousel',
+          question: post.question,
+          questionContext: post.questionContext || '',
+          themes: post.themes || [],
+          keywords: post.keywords || [],
+          slides: (post.slides || []).map(s => ({
+            slideNumber: s.slideNumber,
+            type: s.type,
+            hasImage: s.hasImage,
+            imageUrl: s.imageUrl || null,
+          })),
+          carouselStyle: post.carouselStyle || '',
+          author: post.author,
+          authorInitial: post.author.charAt(0),
+          avatarColor: post.avatarColor || '#4db6ac',
+          personaId: post.personaId,
+          date: now,
+          tags: post.keywords || [],
+          sourceIds,
+          status: 'published',
+          likes: 0,
+          commentCount: 0,
+          createdAt: now,
+          updatedAt: now,
+        };
+      } else {
+        feedPostData = {
+          id: feedPostRef.id,
+          category: post.category,
+          title: post.title,
+          content: post.content,
+          contentType,
+          interactiveData: post.interactiveData || null,
+          author: post.author,
+          authorInitial: post.author.charAt(0),
+          personaId: post.personaId,
+          date: now,
+          tags: Array.isArray(post.tags) ? post.tags : [],
+          premium: Boolean(post.premium),
+          sourceIds,
+          status: 'published',
+          likes: 0,
+          commentCount: 0,
+          createdAt: now,
+          updatedAt: now,
+        };
+      }
 
       batch.set(feedPostRef, feedPostData);
       batchOps++;
 
-      // 2. Update each scrapedData source doc
+      // 2. Update each scrapedData source doc (use set+merge so missing docs don't kill the batch)
       for (const sourceId of sourceIds) {
         const sourceRef = db.collection('scrapedData').doc(sourceId);
-        batch.update(sourceRef, {
+        batch.set(sourceRef, {
           usedInPosts: FieldValue.arrayUnion(feedPostRef.id),
           status: 'used',
-        });
+        }, { merge: true });
         batchOps++;
       }
 
@@ -222,16 +268,82 @@ export async function publishPosts() {
   return { published: totalPublished, errors: totalErrors };
 }
 
+/**
+ * Publish generated comment threads to Firestore.
+ * Threads are stored in a `commentThreads` subcollection under feedPosts.
+ */
+export async function publishThreads() {
+  const db = getDb();
+  const __dirname = fileURLToPath(new URL('.', import.meta.url));
+  const dataDir = resolve(__dirname, '..', 'data');
+
+  let files;
+  try {
+    files = await readdir(dataDir);
+  } catch {
+    logger.info('No data directory found for threads');
+    return { published: 0 };
+  }
+
+  const threadFiles = files
+    .filter(f => f.startsWith('generated-threads-') && f.endsWith('.json'))
+    .map(f => join(dataDir, f));
+
+  if (threadFiles.length === 0) {
+    logger.info('No thread files found to publish');
+    return { published: 0 };
+  }
+
+  let totalPublished = 0;
+
+  for (const filePath of threadFiles) {
+    try {
+      const raw = await readFile(filePath, 'utf-8');
+      const data = JSON.parse(raw);
+      const threads = data.threads || [];
+
+      for (const thread of threads) {
+        // Write each thread as a document in the comments collection
+        const threadRef = db.collection('commentThreads').doc();
+        await threadRef.set({
+          id: threadRef.id,
+          postId: thread.postId,
+          question: thread.question,
+          comments: thread.comments,
+          totalComments: thread.totalComments,
+          generatedAt: thread.generatedAt,
+          publishedAt: Timestamp.now(),
+        });
+        totalPublished++;
+      }
+
+      await rename(filePath, filePath + '.published');
+      logger.info(`Published ${threads.length} threads from ${filePath}`);
+    } catch (err) {
+      logger.error('Failed to publish threads', { filePath, error: err.message });
+    }
+  }
+
+  return { published: totalPublished };
+}
+
 // --- CLI entry point ---
 const isMainModule = process.argv[1] &&
   resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 if (isMainModule) {
-  publishPosts()
-    .then(({ published, errors }) => {
-      logger.info('Publish run complete', { published, errors });
-      console.log(`Done: ${published} posts published, ${errors} errors`);
-      process.exit(errors > 0 ? 1 : 0);
+  Promise.all([
+    publishPosts(),
+    publishThreads()
+  ])
+    .then(([postResult, threadResult]) => {
+      logger.info('Publish run complete', {
+        postsPublished: postResult.published,
+        postErrors: postResult.errors,
+        threadsPublished: threadResult.published,
+      });
+      console.log(`Done: ${postResult.published} posts published (${postResult.errors} errors), ${threadResult.published} threads published`);
+      process.exit(postResult.errors > 0 ? 1 : 0);
     })
     .catch(err => {
       logger.error('Fatal error in publish run', { error: err.message, stack: err.stack });

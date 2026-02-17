@@ -53,6 +53,50 @@ async function redditGet(path, params = {}) {
   return res.json();
 }
 
+/**
+ * Fetch comments for a specific Reddit post.
+ * Returns top-level comments with up to 1 level of replies.
+ */
+async function fetchPostComments(permalink, maxComments = 20) {
+  try {
+    const data = await redditGet(`${permalink}`, { limit: String(maxComments), raw_json: '1', sort: 'best' });
+
+    // Reddit returns [postListing, commentListing]
+    const commentListing = Array.isArray(data) ? data[1] : null;
+    if (!commentListing?.data?.children) return [];
+
+    const comments = [];
+    for (const { data: comment } of commentListing.data.children) {
+      if (comment.body === '[deleted]' || comment.body === '[removed]') continue;
+      if (!comment.body) continue;
+
+      const replies = [];
+      if (comment.replies?.data?.children) {
+        for (const { data: reply } of comment.replies.data.children.slice(0, 5)) {
+          if (!reply.body || reply.body === '[deleted]' || reply.body === '[removed]') continue;
+          replies.push({
+            body: reply.body?.slice(0, 500),
+            score: reply.score || 0,
+            author: reply.author || '[deleted]',
+          });
+        }
+      }
+
+      comments.push({
+        body: comment.body?.slice(0, 800),
+        score: comment.score || 0,
+        author: comment.author || '[deleted]',
+        replies,
+      });
+    }
+
+    return comments;
+  } catch (err) {
+    log.warn(`Failed to fetch comments for ${permalink}`, { error: err.message });
+    return [];
+  }
+}
+
 async function scrapeSubreddit(sub) {
   log.info(`Scraping r/${sub.name} (${sub.sort}, limit ${sub.limit})`);
 
@@ -70,24 +114,32 @@ async function scrapeSubreddit(sub) {
     if (!isWithinDays(new Date(post.created_utc * 1000).toISOString(), config.maxAgeDays)) continue;
     if (post.over_18 || post.removed_by_category) continue;
 
+    // Fetch comments for posts with enough engagement
+    let comments = [];
+    if (post.num_comments >= 3) {
+      comments = await fetchPostComments(post.permalink, 20);
+      await sleep(500); // Rate limit between comment fetches
+    }
+
     items.push(formatScrapedItem({
       source: 'reddit',
       sourceUrl: `https://reddit.com${post.permalink}`,
       sourceId: post.id,
       title: post.title,
       body: post.selftext || '',
+      comments,
       metadata: {
         subreddit: sub.name,
         score: post.score,
         numComments: post.num_comments,
         author: post.author || '[deleted]',
-        flair: post.link_flair_text || null
+        flair: post.link_flair_text || null,
       },
       tags: [sub.name, post.link_flair_text].filter(Boolean)
     }));
   }
 
-  log.info(`r/${sub.name}: ${items.length} posts collected`);
+  log.info(`r/${sub.name}: ${items.length} posts collected (with comments)`);
   return items;
 }
 

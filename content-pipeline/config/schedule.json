@@ -14,6 +14,8 @@
   "generation": {
     "stage1Model": "gpt-4o-mini",
     "stage2Model": "gpt-4o",
+    "commentModel": "gpt-4o-mini",
+    "imageModel": "gpt-image-1",
     "temperature": {
       "stage1": 0.3,
       "stage2": 0.7
@@ -22,5 +24,22 @@
       "stage1": 1000,
       "stage2": 2000
     }
+  },
+  "carousel": {
+    "postsPerRun": 1,
+    "concurrency": 5,
+    "minSlides": 7,
+    "maxSlides": 9,
+    "imageSize": "1024x1024",
+    "imageQuality": "medium"
+  },
+  "comments": {
+    "level1Count": 9,
+    "level2Count": 6,
+    "level3Count": 3,
+    "posterReplyThreshold": 0.35,
+    "agentReplyThreshold": 0.45,
+    "animationDelayMs": 800,
+    "topLevelAnimationRate": 1200
   }
 }
