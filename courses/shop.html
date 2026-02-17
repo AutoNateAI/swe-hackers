@@ -71,9 +71,11 @@
         <button class="shop-subnav-item" data-category="courses">Courses</button>
       </div>
       <div class="shop-subnav-actions">
-        <button class="shop-search-btn" id="search-toggle" aria-label="Search products">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </button>
+        <div class="shop-search-bar" id="search-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span class="shop-search-placeholder">Search products, courses...</span>
+          <kbd class="shop-search-key">/</kbd>
+        </div>
         <button class="shop-cart-btn" id="cart-toggle" aria-label="Shopping cart">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <span class="cart-badge" id="cart-badge">0</span>
@@ -442,10 +444,23 @@
     <div class="search-modal">
       <div class="search-input-wrapper">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="search-input" placeholder="Search products, courses..." autocomplete="off">
+        <input type="text" id="search-input" placeholder="Search tees, hoodies, courses, accessories..." autocomplete="off">
+        <kbd class="search-shortcut" id="search-shortcut">/</kbd>
         <button class="search-close" id="search-close" aria-label="Close search">&times;</button>
       </div>
+      <div class="search-filter-chips" id="search-chips">
+        <button class="search-chip active" data-filter="all">All</button>
+        <button class="search-chip" data-filter="ai-tees">Tees</button>
+        <button class="search-chip" data-filter="developer-hoodies">Hoodies</button>
+        <button class="search-chip" data-filter="women-in-tech">Women in Tech</button>
+        <button class="search-chip" data-filter="accessories">Accessories</button>
+        <button class="search-chip" data-filter="courses">Courses</button>
+      </div>
       <div class="search-results" id="search-results"></div>
+      <div class="search-footer" id="search-footer">
+        <span class="search-result-count" id="search-count"></span>
+        <span class="search-hint">Press <kbd>ESC</kbd> to close</span>
+      </div>
     </div>
   </div>
 
@@ -891,57 +906,145 @@
       const close = document.getElementById('search-close');
       const input = document.getElementById('search-input');
       const results = document.getElementById('search-results');
+      const countEl = document.getElementById('search-count');
+      const chipsContainer = document.getElementById('search-chips');
+      let searchFilter = 'all';
 
       if (!toggle || !overlay) return;
 
-      toggle.addEventListener('click', () => {
+      function openSearch() {
         overlay.classList.add('active');
         setTimeout(() => input.focus(), 200);
-      });
+      }
 
-      close.addEventListener('click', () => overlay.classList.remove('active'));
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) overlay.classList.remove('active');
-      });
+      function closeSearch() {
+        overlay.classList.remove('active');
+        input.value = '';
+        results.innerHTML = '';
+        if (countEl) countEl.textContent = '';
+        searchFilter = 'all';
+        chipsContainer.querySelectorAll('.search-chip').forEach(c => c.classList.remove('active'));
+        chipsContainer.querySelector('[data-filter="all"]').classList.add('active');
+      }
 
-      input.addEventListener('input', () => {
-        const query = input.value.trim().toLowerCase();
-        if (query.length < 2) { results.innerHTML = ''; return; }
+      toggle.addEventListener('click', openSearch);
+      close.addEventListener('click', closeSearch);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
 
-        const matches = allProducts.filter(p =>
-          p.name.toLowerCase().includes(query) ||
-          (p.tags && p.tags.some(t => t.toLowerCase().includes(query))) ||
-          (p.category && p.category.toLowerCase().includes(query))
-        ).slice(0, 8);
-
-        results.innerHTML = matches.length === 0
-          ? '<p class="search-no-results">No products found</p>'
-          : matches.map(p => `
-            <div class="search-result-item" data-id="${p.id}">
-              <div class="search-result-name">${p.name}</div>
-              <div class="search-result-price">$${p.price.toFixed(2)}</div>
-            </div>
-          `).join('');
-
-        // Click handler for results
-        results.querySelectorAll('.search-result-item').forEach(item => {
-          item.addEventListener('click', () => {
-            overlay.classList.remove('active');
-            input.value = '';
-            results.innerHTML = '';
-            // Scroll to product in grid
-            const card = document.querySelector(`[data-product-id="${item.dataset.id}"]`);
-            if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          });
-        });
-      });
-
-      // ESC to close
+      // Keyboard shortcut: "/" to open search
       document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && !overlay.classList.contains('active') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          e.preventDefault();
+          openSearch();
+        }
         if (e.key === 'Escape' && overlay.classList.contains('active')) {
-          overlay.classList.remove('active');
+          closeSearch();
         }
       });
+
+      // Filter chips
+      chipsContainer.addEventListener('click', (e) => {
+        const chip = e.target.closest('.search-chip');
+        if (!chip) return;
+        chipsContainer.querySelectorAll('.search-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        searchFilter = chip.dataset.filter;
+        runSearch();
+      });
+
+      // Search input
+      input.addEventListener('input', runSearch);
+
+      function runSearch() {
+        const query = input.value.trim().toLowerCase();
+        if (query.length < 1) {
+          results.innerHTML = '';
+          if (countEl) countEl.textContent = '';
+          return;
+        }
+
+        let matches = allProducts.filter(p => {
+          const matchesQuery =
+            p.name.toLowerCase().includes(query) ||
+            (p.description && p.description.toLowerCase().includes(query)) ||
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(query))) ||
+            (p.category && p.category.toLowerCase().includes(query));
+
+          if (!matchesQuery) return false;
+
+          if (searchFilter === 'all') return true;
+          if (searchFilter === 'courses') return p.type === 'course';
+          return p.category === searchFilter;
+        });
+
+        if (countEl) countEl.textContent = `${matches.length} result${matches.length !== 1 ? 's' : ''}`;
+
+        if (matches.length === 0) {
+          results.innerHTML = `
+            <div class="search-empty">
+              <span class="search-empty-icon">&#128269;</span>
+              <p>No results for "<strong>${query}</strong>"</p>
+              <span class="search-empty-hint">Try searching for "hoodie", "tee", or "course"</span>
+            </div>`;
+          return;
+        }
+
+        results.innerHTML = matches.slice(0, 10).map(p => {
+          const categoryLabel = formatCategory(p.category);
+          const typeIcon = p.type === 'course' ? '&#127891;' : p.type === 'bundle' ? '&#127873;' : '&#128722;';
+          const imageHtml = p.image
+            ? `<img src="${p.image}" alt="${p.name}" class="search-result-img">`
+            : `<div class="search-result-img search-result-placeholder"><img src="assets/shop/logo-glow.png" alt="" class="search-placeholder-logo"></div>`;
+          return `
+            <div class="search-result-item" data-id="${p.id}" data-category="${p.category}">
+              ${imageHtml}
+              <div class="search-result-info">
+                <div class="search-result-name">${highlightMatch(p.name, query)}</div>
+                <span class="search-result-category">${typeIcon} ${categoryLabel}</span>
+              </div>
+              <div class="search-result-price">$${p.price.toFixed(2)}</div>
+            </div>`;
+        }).join('');
+
+        // Click result → switch to tab + scroll to product
+        results.querySelectorAll('.search-result-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const category = item.dataset.category;
+            // Switch subnav tab
+            const subnavBtn = document.querySelector(`.shop-subnav-item[data-category="${category}"]`)
+              || document.querySelector('.shop-subnav-item[data-category="all"]');
+            if (subnavBtn) {
+              document.querySelectorAll('.shop-subnav-item').forEach(b => b.classList.remove('active'));
+              subnavBtn.classList.add('active');
+              currentFilter = subnavBtn.dataset.category;
+              const title = document.querySelector('.shop-products-title');
+              if (title) title.textContent = currentFilter === 'all' ? 'Shop All' : subnavBtn.textContent;
+              renderProducts();
+            }
+            closeSearch();
+            // Scroll to card after render
+            setTimeout(() => {
+              const card = document.querySelector(`[data-product-id="${item.dataset.id}"]`);
+              if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.classList.add('search-highlight');
+                setTimeout(() => card.classList.remove('search-highlight'), 2000);
+              }
+            }, 100);
+          });
+        });
+      }
+
+      function formatCategory(cat) {
+        if (!cat) return '';
+        return cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      }
+
+      function highlightMatch(text, query) {
+        const idx = text.toLowerCase().indexOf(query);
+        if (idx === -1) return text;
+        return text.slice(0, idx) + '<mark class="search-highlight-text">' + text.slice(idx, idx + query.length) + '</mark>' + text.slice(idx + query.length);
+      }
     }
 
     /* ---- MEMBERS AUTH ---- */

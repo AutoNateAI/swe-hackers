@@ -82,9 +82,50 @@
 
 .shop-subnav-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   align-items: center;
   margin-left: 1rem;
+  flex: 1;
+  max-width: 360px;
+}
+
+/* Full-width search bar trigger */
+.shop-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.shop-search-bar:hover {
+  background: rgba(79, 195, 247, 0.06);
+  border-color: rgba(79, 195, 247, 0.2);
+}
+.shop-search-bar svg {
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+.shop-search-placeholder {
+  flex: 1;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shop-search-key {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.25);
+  font-family: monospace;
   flex-shrink: 0;
 }
 
@@ -2028,13 +2069,14 @@
 .search-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 2000;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 15vh;
+  padding-top: 12vh;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -2045,21 +2087,32 @@
 }
 
 .search-modal {
-  width: 90%;
-  max-width: 600px;
+  width: 92%;
+  max-width: 640px;
+  animation: searchSlideIn 0.3s ease;
+}
+@keyframes searchSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .search-input-wrapper {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: var(--bg-card, #1a1a2e);
+  background: linear-gradient(135deg, rgba(26,26,46,0.95), rgba(15,15,30,0.95));
   border: 1px solid rgba(79, 195, 247, 0.2);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1rem 1.25rem;
+  box-shadow: 0 0 30px rgba(79, 195, 247, 0.08), 0 4px 20px rgba(0,0,0,0.4);
+  transition: border-color 0.3s;
+}
+.search-input-wrapper:focus-within {
+  border-color: rgba(79, 195, 247, 0.45);
+  box-shadow: 0 0 40px rgba(79, 195, 247, 0.12), 0 4px 20px rgba(0,0,0,0.4);
 }
 .search-input-wrapper svg {
-  color: var(--brand-ice);
+  color: var(--brand-ice, #4fc3f7);
   flex-shrink: 0;
 }
 .search-input-wrapper input {
@@ -2068,56 +2121,196 @@
   border: none;
   color: var(--text-primary, #fff);
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   outline: none;
 }
 .search-input-wrapper input::placeholder {
-  color: var(--text-muted, #666);
+  color: rgba(255,255,255,0.3);
 }
+.search-shortcut {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  font-family: monospace;
+  flex-shrink: 0;
+}
+.search-overlay.active .search-shortcut { display: none; }
 .search-close {
   background: none;
   border: none;
-  color: var(--text-muted, #666);
+  color: rgba(255,255,255,0.35);
   font-size: 1.5rem;
   cursor: pointer;
   transition: color 0.2s;
+  flex-shrink: 0;
 }
-.search-close:hover { color: var(--text-primary, #fff); }
+.search-close:hover { color: #fff; }
 
-.search-results {
-  margin-top: 0.75rem;
-  background: var(--bg-card, #1a1a2e);
-  border-radius: 12px;
-  overflow: hidden;
+/* Search filter chips */
+.search-filter-chips {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.search-filter-chips::-webkit-scrollbar { display: none; }
+.search-chip {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+.search-chip:hover {
+  background: rgba(79, 195, 247, 0.08);
+  color: rgba(255,255,255,0.7);
+}
+.search-chip.active {
+  background: rgba(79, 195, 247, 0.15);
+  border-color: rgba(79, 195, 247, 0.3);
+  color: var(--brand-ice, #4fc3f7);
+}
+
+/* Search results */
+.search-results {
+  margin-top: 0.25rem;
+  background: linear-gradient(135deg, rgba(26,26,46,0.95), rgba(15,15,30,0.95));
+  border: 1px solid rgba(79, 195, 247, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79,195,247,0.2) transparent;
+}
+.search-results::-webkit-scrollbar { width: 4px; }
+.search-results::-webkit-scrollbar-thumb { background: rgba(79,195,247,0.2); border-radius: 4px; }
+
 .search-result-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.85rem 1.25rem;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
   cursor: pointer;
   transition: background 0.2s;
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .search-result-item:hover {
-  background: rgba(79, 195, 247, 0.06);
+  background: rgba(79, 195, 247, 0.07);
 }
 .search-result-item:last-child { border-bottom: none; }
+
+.search-result-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.04);
+}
+.search-result-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-placeholder-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
 .search-result-name {
-  font-size: 0.9rem;
-  color: var(--text-primary, #fff);
+  font-size: 0.88rem;
+  color: #fff;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-result-category {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 0.15rem;
+  display: block;
 }
 .search-result-price {
-  font-size: 0.85rem;
-  color: var(--brand-ice);
+  font-size: 0.88rem;
+  color: var(--brand-ice, #4fc3f7);
   font-weight: 600;
+  flex-shrink: 0;
 }
-.search-no-results {
-  padding: 2rem;
+.search-highlight-text {
+  background: rgba(79, 195, 247, 0.25);
+  color: #fff;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Search empty state */
+.search-empty {
+  padding: 2.5rem 1.5rem;
   text-align: center;
-  color: var(--text-muted, #666);
+}
+.search-empty-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.search-empty p {
+  color: rgba(255,255,255,0.6);
   font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+.search-empty-hint {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+}
+
+/* Search footer */
+.search-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.25rem;
+}
+.search-result-count {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+.search-hint {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.2);
+}
+.search-hint kbd {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.68rem;
+  font-family: monospace;
+}
+
+/* Highlight card when navigated from search */
+@keyframes searchCardPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79,195,247,0); }
+  50% { box-shadow: 0 0 20px 4px rgba(79,195,247,0.3); }
+}
+.product-card.search-highlight {
+  animation: searchCardPulse 0.8s ease 2;
 }
 
 /* ===== EMAIL MODAL (fallback) ===== */
@@ -2338,6 +2531,22 @@
 
   .shop-subnav-container {
     padding: 0 1rem;
+  }
+  .shop-search-placeholder {
+    display: none;
+  }
+  .shop-search-bar {
+    max-width: 44px;
+    padding: 0.5rem;
+    justify-content: center;
+    flex: 0;
+  }
+  .shop-search-key {
+    display: none;
+  }
+  .shop-subnav-actions {
+    max-width: none;
+    flex: 0;
   }
 
   .shop-hero-banner {
