@@ -114,7 +114,7 @@
     <div class="hero-content" id="hero-content">
       <p class="hero-subtitle">Scroll Courses built from real pros. Digital tools. Tech gear.</p>
       <div class="hero-ctas">
-        <a href="#courses" class="btn btn-primary btn-lg">START SCROLLING</a>
+        <a href="dashboard/feed.html" class="btn btn-primary btn-lg" id="start-scrolling-btn">START SCROLLING</a>
         <a href="#products" class="btn btn-secondary btn-lg">BROWSE THE SHOP</a>
       </div>
     </div>
@@ -1135,7 +1135,7 @@
 
     /* ---- MEMBERS AUTH ---- */
     function setupMembersAuth() {
-      // Check auth state and hide join CTAs if logged in
+      // Check auth state and update CTAs accordingly
       if (typeof firebase !== 'undefined' && firebase.auth) {
         firebase.auth().onAuthStateChanged(user => {
           const ctas = document.getElementById('members-ctas');
@@ -1146,6 +1146,19 @@
               <a href="dashboard/library.html" class="btn btn-secondary">${_t('shop.my_library')}</a>
               <a href="dashboard/orders.html" class="btn btn-secondary">${_t('nav.orders')}</a>
             `;
+          }
+
+          // Start Scrolling button — feed if logged in, login (then redirect to feed) if not
+          const scrollBtn = document.getElementById('start-scrolling-btn');
+          if (scrollBtn) {
+            if (user) {
+              scrollBtn.href = 'dashboard/feed.html';
+            } else {
+              scrollBtn.href = 'auth/login.html';
+              scrollBtn.addEventListener('click', function() {
+                sessionStorage.setItem('redirectAfterLogin', '../dashboard/feed.html');
+              });
+            }
           }
         });
       }
