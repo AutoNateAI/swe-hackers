@@ -67,10 +67,39 @@
       pointer-events: none;
     }
 
+    /* Hero glow that pulses behind the title */
+    .workshop-hero-glow {
+      position: absolute;
+      top: 40%; left: 50%;
+      width: 600px; height: 600px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(121, 134, 203, 0.08) 0%, rgba(77, 182, 172, 0.04) 40%, transparent 70%);
+      pointer-events: none;
+      animation: heroGlowPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+    }
+
+    /* Hero elements start hidden for animation */
+    .workshop-hero h1,
+    .hero-badge,
+    .hero-subtitle,
+    .hero-cta-group,
+    .hero-meta {
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
     .workshop-hero-content {
       position: relative;
       max-width: 800px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-badge {
@@ -421,6 +450,7 @@
 
   <!-- Hero -->
   <section class="workshop-hero">
+    <div class="workshop-hero-glow"></div>
     <div class="workshop-hero-content">
       <div class="hero-badge">Live Workshop — Saturdays 10AM-2PM</div>
       <h1>Vibe Coding for Production</h1>
@@ -638,13 +668,43 @@
       NavbarComponent.inject('navbar-container');
       FooterComponent.inject('footer-container');
 
-      anime({
-        targets: '.workshop-hero-content',
-        opacity: [0, 1],
-        translateY: [30, 0],
-        duration: 800,
-        easing: 'easeOutCubic'
-      });
+      // Staggered hero entrance: badge, title scales in big, subtitle, CTAs, meta
+      anime.timeline()
+        .add({
+          targets: '.hero-badge',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+          easing: 'easeOutCubic'
+        })
+        .add({
+          targets: '.workshop-hero h1',
+          opacity: [0, 1],
+          scale: [2.5, 1],
+          duration: 1200,
+          easing: 'easeOutExpo'
+        }, '-=200')
+        .add({
+          targets: '.hero-subtitle',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 700,
+          easing: 'easeOutCubic'
+        }, '-=400')
+        .add({
+          targets: '.hero-cta-group',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+          easing: 'easeOutCubic'
+        }, '-=200')
+        .add({
+          targets: '.hero-meta',
+          opacity: [0, 1],
+          translateY: [15, 0],
+          duration: 500,
+          easing: 'easeOutCubic'
+        }, '-=200');
     });
 
     // Intersection Observer for scroll animations
