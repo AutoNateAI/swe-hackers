@@ -123,13 +123,9 @@
     .about-avatar-large {
       width: 140px;
       height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       border-radius: 50%;
-      font-size: 3.5rem;
-      color: white;
+      overflow: hidden;
+      object-fit: cover;
       font-family: var(--font-display);
       font-weight: 700;
       margin: 0 auto 2rem;
@@ -256,7 +252,7 @@
   <!-- About Hero -->
   <section class="about-hero">
     <div class="about-hero-content">
-      <div class="about-avatar-large">NB</div>
+      <img src="assets/nathan-baker.jpg" alt="Nathan Baker" class="about-avatar-large">
       <h1>Meet Your Instructor</h1>
       <div class="hero-name">Nathan Baker</div>
       <p>

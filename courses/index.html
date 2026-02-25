@@ -329,16 +329,10 @@
     .instructor-avatar {
       width: 90px;
       height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       border-radius: 50%;
-      font-size: 2.25rem;
+      overflow: hidden;
       flex-shrink: 0;
-      color: white;
-      font-family: var(--font-display);
-      font-weight: 700;
+      object-fit: cover;
     }
 
     .instructor-info h3 {
@@ -618,7 +612,7 @@
       </div>
 
       <div class="instructor-preview">
-        <div class="instructor-avatar">NB</div>
+        <img src="assets/nathan-baker.jpg" alt="Nathan Baker" class="instructor-avatar">
         <div class="instructor-info">
           <h3>Nathan Baker</h3>
           <div class="instructor-role">Software Engineer & Founder, AutoNateAI</div>
