@@ -137,7 +137,12 @@
   gap: 0.5rem;
 }
 
-/* Hero children start hidden for staggered scale-in animation */
+/* Hero block container is immediately visible — children animate in via JS */
+.hero-block.blog-block {
+  opacity: 1;
+  transform: none;
+}
+
 .hero-block .category-badge,
 .hero-block .article-title,
 .hero-block .article-meta {
