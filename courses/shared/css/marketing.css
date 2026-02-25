@@ -838,12 +838,24 @@ body {
 }
 
 .blog-image {
-  height: 180px;
+  height: 200px;
   background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  overflow: hidden;
+}
+
+.blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-image img {
+  transform: scale(1.05);
 }
 
 .blog-content {

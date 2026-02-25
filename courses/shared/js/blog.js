@@ -406,7 +406,15 @@ function initHeroAnimation() {
       translateY: [15, 0],
       duration: 500,
       easing: 'easeOutCubic'
-    }, '-=400');
+    }, '-=400')
+    .add({
+      targets: '.hero-block .hero-image',
+      opacity: [0, 1],
+      translateY: [30, 0],
+      scale: [0.95, 1],
+      duration: 800,
+      easing: 'easeOutCubic'
+    }, '-=200');
 }
 
 // Run hero animation on load

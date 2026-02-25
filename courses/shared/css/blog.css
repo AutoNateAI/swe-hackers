@@ -145,9 +145,25 @@
 
 .hero-block .category-badge,
 .hero-block .article-title,
-.hero-block .article-meta {
+.hero-block .article-meta,
+.hero-block .hero-image {
   opacity: 0;
   will-change: transform, opacity;
+}
+
+.hero-block .hero-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.hero-block .hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hero-block .hero-visual {
