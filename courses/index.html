@@ -466,6 +466,7 @@
        ================================================================ */
     .framework-section {
       position: relative;
+      overflow: hidden;
     }
 
     .framework-section::before {
@@ -490,71 +491,182 @@
     }
 
     .module-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(22, 22, 42, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      transition: all 0.35s ease;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .module-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(121, 134, 203, 0.3);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, 0.3);
     }
+
+    /* Per-card hover border color */
+    .module-card:nth-child(1):hover { border-color: rgba(121, 134, 203, 0.4); }
+    .module-card:nth-child(2):hover { border-color: rgba(77, 182, 172, 0.4); }
+    .module-card:nth-child(3):hover { border-color: rgba(255, 213, 79, 0.35); }
+    .module-card:nth-child(4):hover { border-color: rgba(255, 183, 77, 0.35); }
+    .module-card:nth-child(5):hover { border-color: rgba(102, 187, 106, 0.4); }
+    .module-card:nth-child(6):hover { border-color: rgba(171, 71, 188, 0.35); }
 
     .module-card-image {
       width: 100%;
       height: 140px;
       overflow: hidden;
+      position: relative;
     }
 
     .module-card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.6) saturate(0.8);
+      filter: brightness(0.55) saturate(0.8);
       transition: all 0.4s ease;
     }
 
     .module-card:hover .module-card-image img {
       filter: brightness(0.75) saturate(1);
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
+    /* Per-card gradient overlay on images */
+    .module-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    .module-card:nth-child(1) .module-card-image::after { background: linear-gradient(135deg, rgba(121, 134, 203, 0.4), transparent 70%); }
+    .module-card:nth-child(2) .module-card-image::after { background: linear-gradient(135deg, rgba(77, 182, 172, 0.4), transparent 70%); }
+    .module-card:nth-child(3) .module-card-image::after { background: linear-gradient(135deg, rgba(255, 213, 79, 0.3), transparent 70%); }
+    .module-card:nth-child(4) .module-card-image::after { background: linear-gradient(135deg, rgba(255, 183, 77, 0.3), transparent 70%); }
+    .module-card:nth-child(5) .module-card-image::after { background: linear-gradient(135deg, rgba(102, 187, 106, 0.3), transparent 70%); }
+    .module-card:nth-child(6) .module-card-image::after { background: linear-gradient(135deg, rgba(171, 71, 188, 0.3), transparent 70%); }
+
+    /* Floating letter badge — overlaps image and body */
     .module-card-body {
       padding: 1.5rem;
+      position: relative;
     }
 
     .module-letter {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      border-radius: var(--radius-md);
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 800;
       color: white;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
+      position: relative;
+      top: -36px;
+      margin-bottom: -20px;
+      border: 3px solid rgba(22, 22, 42, 0.9);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 2;
+    }
+
+    .module-card:hover .module-letter {
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    /* Per-card letter gradients and glows */
+    .module-card:nth-child(1) .module-letter {
+      background: linear-gradient(135deg, var(--accent-primary), #5c6bc0);
+      box-shadow: 0 4px 18px rgba(121, 134, 203, 0.35);
+    }
+    .module-card:nth-child(1):hover .module-letter { box-shadow: 0 6px 26px rgba(121, 134, 203, 0.55); }
+
+    .module-card:nth-child(2) .module-letter {
+      background: linear-gradient(135deg, var(--accent-secondary), #26a69a);
+      box-shadow: 0 4px 18px rgba(77, 182, 172, 0.35);
+    }
+    .module-card:nth-child(2):hover .module-letter { box-shadow: 0 6px 26px rgba(77, 182, 172, 0.55); }
+
+    .module-card:nth-child(3) .module-letter {
+      background: linear-gradient(135deg, rgba(255, 213, 79, 0.95), #ffb300);
+      box-shadow: 0 4px 18px rgba(255, 213, 79, 0.3);
+    }
+    .module-card:nth-child(3):hover .module-letter { box-shadow: 0 6px 26px rgba(255, 213, 79, 0.5); }
+
+    .module-card:nth-child(4) .module-letter {
+      background: linear-gradient(135deg, #ffb74d, var(--accent-secondary));
+      box-shadow: 0 4px 18px rgba(255, 183, 77, 0.3);
+    }
+    .module-card:nth-child(4):hover .module-letter { box-shadow: 0 6px 26px rgba(255, 183, 77, 0.5); }
+
+    .module-card:nth-child(5) .module-letter {
+      background: linear-gradient(135deg, var(--accent-success), #388e3c);
+      box-shadow: 0 4px 18px rgba(102, 187, 106, 0.3);
+    }
+    .module-card:nth-child(5):hover .module-letter { box-shadow: 0 6px 26px rgba(102, 187, 106, 0.5); }
+
+    .module-card:nth-child(6) .module-letter {
+      background: linear-gradient(135deg, #ab47bc, #7b1fa2);
+      box-shadow: 0 4px 18px rgba(171, 71, 188, 0.3);
+    }
+    .module-card:nth-child(6):hover .module-letter { box-shadow: 0 6px 26px rgba(171, 71, 188, 0.5); }
+
+    /* Watermark letter behind card content */
+    .module-watermark {
+      position: absolute;
+      bottom: -12px;
+      right: 4px;
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      font-weight: 900;
+      opacity: 0.035;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .module-card h3 {
       font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-size: 1.08rem;
+      font-weight: 700;
       margin-bottom: 0.5rem;
       color: var(--text-primary);
+      position: relative;
+      z-index: 1;
     }
 
     .module-card p {
       font-size: 0.88rem;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Step number badge on image */
+    .module-step-num {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+      z-index: 2;
     }
 
     /* ================================================================
@@ -788,11 +900,17 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
-    .instructor-photo-wrapper img {
+    .instructor-photo-wrapper .instructor-avatar-circle {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      font-size: 2.5rem;
+      color: white;
+      font-family: var(--font-display);
+      font-weight: 700;
     }
 
     .instructor-info h3 {
@@ -1193,67 +1311,79 @@
       <div class="module-grid">
         <div class="module-card">
           <div class="module-card-image">
+            <span class="module-step-num">01</span>
             <img src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?w=500&q=80" alt="Code structure navigation" loading="lazy">
           </div>
           <div class="module-card-body">
             <div class="module-letter">M</div>
             <h3>Map</h3>
             <p>Map the codebase manually using VS Code's Peek References, Call Hierarchy, and Outline view. Understand before you change.</p>
+            <div class="module-watermark">M</div>
           </div>
         </div>
 
         <div class="module-card">
           <div class="module-card-image">
+            <span class="module-step-num">02</span>
             <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80" alt="Developer analyzing at dual monitors" loading="lazy">
           </div>
           <div class="module-card-body">
             <div class="module-letter">A</div>
             <h3>Analyze</h3>
             <p>Analyze contracts and blast radius. Classify changes and estimate impact before writing a single line of code.</p>
+            <div class="module-watermark">A</div>
           </div>
         </div>
 
         <div class="module-card">
           <div class="module-card-image">
+            <span class="module-step-num">03</span>
             <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80" alt="AI neural network interface" loading="lazy">
           </div>
           <div class="module-card-body">
             <div class="module-letter">P</div>
             <h3>Prompt</h3>
             <p>Prompt Claude Code with architectural context — constraints, dependencies, and scope boundaries that prevent hallucinations.</p>
+            <div class="module-watermark">P</div>
           </div>
         </div>
 
         <div class="module-card">
           <div class="module-card-image">
+            <span class="module-step-num">04</span>
             <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=500&q=80" alt="GitHub code review interface" loading="lazy">
           </div>
           <div class="module-card-body">
             <div class="module-letter">P</div>
             <h3>Preview</h3>
             <p>Preview every change visually in Fork. See exactly what the AI modified, line by line, before anything gets committed.</p>
+            <div class="module-watermark">P</div>
           </div>
         </div>
 
         <div class="module-card">
           <div class="module-card-image">
+            <span class="module-step-num">05</span>
             <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=500&q=80" alt="Terminal running tests" loading="lazy">
           </div>
           <div class="module-card-body">
             <div class="module-letter">E</div>
             <h3>Execute</h3>
             <p>Execute with confidence. Run tests, validate contracts, and verify that the change matches your intent.</p>
+            <div class="module-watermark">E</div>
           </div>
         </div>
 
         <div class="module-card">
           <div class="module-card-image">
+            <span class="module-step-num">06</span>
             <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500&q=80" alt="Collaborative code review" loading="lazy">
           </div>
           <div class="module-card-body">
             <div class="module-letter">R</div>
             <h3>Review</h3>
             <p>Review and commit. Use Fork's staging tools to craft clean, atomic commits that tell a story.</p>
+            <div class="module-watermark">R</div>
           </div>
         </div>
       </div>
@@ -1367,7 +1497,7 @@
 
       <div class="instructor-card">
         <div class="instructor-photo-wrapper">
-          <img src="assets/nathan-baker.jpg" alt="Nathan Baker">
+          <div class="instructor-avatar-circle">NB</div>
         </div>
         <div class="instructor-info">
           <h3>Nathan Baker</h3>
