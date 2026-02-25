@@ -47,79 +47,407 @@
   <script src="shared/js/whop-service.js" defer></script>
 
   <style>
+    /* ================================================================
+       KEYFRAME ANIMATIONS
+       ================================================================ */
+    @keyframes gradientMesh {
+      0%, 100% {
+        background:
+          radial-gradient(ellipse at 20% 30%, rgba(121, 134, 203, 0.18) 0%, transparent 55%),
+          radial-gradient(ellipse at 80% 70%, rgba(77, 182, 172, 0.12) 0%, transparent 55%),
+          radial-gradient(ellipse at 50% 50%, rgba(255, 213, 79, 0.05) 0%, transparent 40%);
+      }
+      33% {
+        background:
+          radial-gradient(ellipse at 40% 60%, rgba(121, 134, 203, 0.2) 0%, transparent 55%),
+          radial-gradient(ellipse at 60% 30%, rgba(77, 182, 172, 0.14) 0%, transparent 55%),
+          radial-gradient(ellipse at 30% 80%, rgba(255, 213, 79, 0.06) 0%, transparent 40%);
+      }
+      66% {
+        background:
+          radial-gradient(ellipse at 70% 40%, rgba(121, 134, 203, 0.16) 0%, transparent 55%),
+          radial-gradient(ellipse at 30% 80%, rgba(77, 182, 172, 0.1) 0%, transparent 55%),
+          radial-gradient(ellipse at 60% 20%, rgba(255, 213, 79, 0.07) 0%, transparent 40%);
+      }
+    }
+
+    @keyframes gridDrift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(60px, 60px); }
+    }
+
+    @keyframes ctaGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes shimmer {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ================================================================
+       STICKY SECTION NAVIGATION
+       ================================================================ */
+    .section-nav {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .section-nav.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .section-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
+    }
+
+    .section-nav-link {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .section-nav-link:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .section-nav-link.active {
+      color: var(--accent-primary);
+      background: rgba(121, 134, 203, 0.12);
+    }
+
+    /* ================================================================
+       HERO SECTION — SIDE-BY-SIDE LAYOUT
+       ================================================================ */
     .book-hero {
-      padding: calc(var(--nav-height) + 4rem) 2rem 3rem;
-      text-align: center;
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height) + 3rem) 2rem 4rem;
       overflow: hidden;
     }
 
+    /* Animated gradient mesh background */
     .book-hero::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse at 40% 30%, rgba(121, 134, 203, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 60% 70%, rgba(77, 182, 172, 0.08) 0%, transparent 50%);
+        radial-gradient(ellipse at 20% 30%, rgba(121, 134, 203, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(77, 182, 172, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(255, 213, 79, 0.05) 0%, transparent 40%);
+      animation: gradientMesh 14s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Background photo overlay */
+    .book-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&q=80') center/cover no-repeat;
+      opacity: 0.06;
       pointer-events: none;
     }
 
-    .book-hero-content {
-      position: relative;
-      max-width: 700px;
-      margin: 0 auto;
+    /* Drifting grid overlay */
+    .hero-grid-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(121, 134, 203, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(121, 134, 203, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridDrift 25s linear infinite;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .book-hero h1 {
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* Hero elements hidden for entrance animation */
+    .hero-badge-pill,
+    .hero-text h1,
+    .hero-text .hero-subtitle,
+    .hero-date-pill,
+    .hero-cta-group,
+    .hero-showcase {
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.15rem;
+      background: rgba(121, 134, 203, 0.12);
+      border: 1px solid rgba(121, 134, 203, 0.25);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--accent-primary);
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-secondary);
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    .hero-text h1 {
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: 3.75rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
       background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 50%, var(--accent-secondary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .book-hero p {
-      font-size: 1.1rem;
+    .hero-text .hero-subtitle {
+      font-size: 1.15rem;
       color: var(--text-secondary);
-      line-height: 1.7;
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 0 1.5rem;
     }
 
-    .book-date {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1.25rem;
-      background: rgba(121, 134, 203, 0.15);
-      border: 1px solid rgba(121, 134, 203, 0.3);
+    .hero-date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 999px;
-      font-size: 0.9rem;
-      color: var(--accent-primary);
-      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
     }
 
-    /* Includes Grid */
+    .hero-date-pill strong {
+      color: var(--text-primary);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(12px);
+      animation: ctaGlow 3s ease-in-out infinite;
+    }
+
+    /* Hero Showcase Image — right column */
+    .hero-showcase {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(121, 134, 203, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ================================================================
+       WHAT'S INCLUDED — VERTICAL GLASS CARDS (3-column)
+       ================================================================ */
+    .includes-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .includes-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1600&q=60') center/cover no-repeat;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
     .includes-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      max-width: 700px;
+      max-width: 960px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .include-item {
       display: flex;
-      gap: 0.75rem;
-      padding: 1.25rem;
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0;
+      background: rgba(22, 22, 42, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-lg);
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
     }
 
+    /* Gradient header band */
+    .include-item-header {
+      width: 100%;
+      height: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Per-card color accents via nth-child */
+    .include-item:nth-child(1) .include-item-header { background: linear-gradient(135deg, rgba(121, 134, 203, 0.25), rgba(77, 182, 172, 0.15)); }
+    .include-item:nth-child(2) .include-item-header { background: linear-gradient(135deg, rgba(77, 182, 172, 0.25), rgba(121, 134, 203, 0.15)); }
+    .include-item:nth-child(3) .include-item-header { background: linear-gradient(135deg, rgba(255, 213, 79, 0.18), rgba(121, 134, 203, 0.15)); }
+    .include-item:nth-child(4) .include-item-header { background: linear-gradient(135deg, rgba(102, 187, 106, 0.2), rgba(77, 182, 172, 0.15)); }
+    .include-item:nth-child(5) .include-item-header { background: linear-gradient(135deg, rgba(121, 134, 203, 0.2), rgba(255, 213, 79, 0.15)); }
+    .include-item:nth-child(6) .include-item-header { background: linear-gradient(135deg, rgba(239, 83, 80, 0.15), rgba(121, 134, 203, 0.2)); }
+
+    /* Animated mesh inside header */
+    .include-item-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+
+    .include-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(121, 134, 203, 0.3);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 24px rgba(121, 134, 203, 0.08);
+    }
+
+    /* Shimmer sweep on hover */
+    .include-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: none;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .include-item:hover::after {
+      animation: shimmer 0.8s ease forwards;
+    }
+
+    /* Floating icon — overlaps header and body */
     .include-icon {
-      font-size: 1.25rem;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: var(--radius-md);
+      font-size: 1.3rem;
       flex-shrink: 0;
+      margin-top: -24px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 6px 20px rgba(121, 134, 203, 0.3);
+      transition: all 0.35s ease;
+    }
+
+    .include-item:hover .include-icon {
+      transform: scale(1.12) translateY(-2px);
+      box-shadow: 0 8px 28px rgba(121, 134, 203, 0.45);
+    }
+
+    .include-item-body {
+      padding: 0.75rem 1.25rem 1.5rem;
     }
 
     .include-item h4 {
@@ -127,62 +455,281 @@
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
     }
 
     .include-item p {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    /* Quick Facts */
+    /* ================================================================
+       QUICK FACTS — STAT SHOWCASE CARDS
+       ================================================================ */
     .facts-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
-      max-width: 800px;
+      max-width: 950px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    /* Connecting line behind cards */
+    .facts-grid::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(121, 134, 203, 0.15), rgba(77, 182, 172, 0.15), transparent);
+      transform: translateY(-50%);
+      z-index: 0;
     }
 
     .fact-card {
       text-align: center;
-      padding: 1.5rem 1rem;
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 2.25rem 1rem 1.75rem;
+      background: rgba(22, 22, 42, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-lg);
+      transition: all 0.35s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      opacity: 0;
     }
 
+    .fact-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(121, 134, 203, 0.3);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 24px rgba(121, 134, 203, 0.08);
+    }
+
+    /* Shimmer sweep on hover */
+    .fact-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: none;
+      pointer-events: none;
+    }
+
+    .fact-card:hover::after {
+      animation: shimmer 0.8s ease forwards;
+    }
+
+    /* Per-card accent color on bottom border */
+    .fact-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 20%; right: 20%;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .fact-card:nth-child(1)::before { background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); }
+    .fact-card:nth-child(2)::before { background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary)); }
+    .fact-card:nth-child(3)::before { background: linear-gradient(90deg, rgba(255, 213, 79, 0.8), var(--accent-primary)); }
+    .fact-card:nth-child(4)::before { background: linear-gradient(90deg, var(--accent-primary), rgba(102, 187, 106, 0.8)); }
+
+    .fact-card:hover::before {
+      opacity: 1;
+      left: 10%;
+      right: 10%;
+    }
+
+    /* Circular gradient ring around icon */
     .fact-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      margin: 0 auto 1rem;
+      position: relative;
+      background: rgba(22, 22, 42, 0.9);
+      transition: all 0.35s ease;
+    }
+
+    /* Gradient ring */
+    .fact-icon::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .fact-card:hover .fact-icon::before {
+      opacity: 1;
+    }
+
+    .fact-card:hover .fact-icon {
+      box-shadow: 0 0 20px rgba(121, 134, 203, 0.2);
+      transform: scale(1.08);
     }
 
     .fact-card h4 {
       font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.25rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .fact-card p {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
+      line-height: 1.5;
     }
 
-    /* Pricing Card */
-    .pricing-wrapper {
-      max-width: 500px;
+    /* ================================================================
+       PRICING — PREMIUM SPLIT LAYOUT
+       ================================================================ */
+    .pricing-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1591115765373-5f9f3c37a5d3?w=1920&q=80') center/cover no-repeat;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .pricing-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      max-width: 1050px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-card-wrapper {
+      position: relative;
     }
 
     .pricing-card {
-      padding: 3rem;
-      background: var(--bg-card);
-      border: 2px solid rgba(121, 134, 203, 0.3);
+      padding: 0;
+      background: rgba(22, 22, 42, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid transparent;
       border-radius: var(--radius-xl);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    /* Animated gradient border ring using inset mask */
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), rgba(255, 213, 79, 0.6), var(--accent-primary));
+      background-size: 300% 300%;
+      border-radius: inherit;
+      z-index: -2;
+      animation: pricingBorderRotate 6s linear infinite;
+    }
+
+    /* Inner fill to create the ring effect */
+    .pricing-card::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: rgba(22, 22, 42, 0.95);
+      border-radius: calc(var(--radius-xl) - 2px);
+      z-index: -1;
+    }
+
+    @keyframes pricingBorderRotate {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Outer ambient glow */
+    .pricing-card-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: calc(var(--radius-xl) + 4px);
+      opacity: 0.12;
+      filter: blur(16px);
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    .pricing-card-wrapper:hover::before {
+      opacity: 0.2;
+    }
+
+    /* Popular ribbon */
+    .pricing-popular-badge {
+      position: absolute;
+      top: 18px;
+      right: -32px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 2.5rem;
+      transform: rotate(45deg);
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(121, 134, 203, 0.3);
+    }
+
+    /* Gradient header band inside pricing card */
+    .pricing-card-header {
+      padding: 2.5rem 3rem 0;
+      position: relative;
+    }
+
+    .pricing-card-header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 2px;
+      margin: 1.25rem auto 0;
+    }
+
+    .pricing-card-body {
+      padding: 1.25rem 3rem 2.5rem;
     }
 
     .pricing-label {
@@ -196,45 +743,62 @@
 
     .pricing-amount {
       font-family: var(--font-display);
-      font-size: 4rem;
+      font-size: 4.5rem;
       font-weight: 700;
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.25rem;
+      line-height: 1;
     }
 
     .pricing-per {
       font-size: 0.9rem;
       color: var(--text-secondary);
-      margin-bottom: 1.5rem;
     }
 
     .pricing-includes {
       text-align: left;
       margin-bottom: 2rem;
-      padding: 0 1rem;
+      padding: 0;
     }
 
     .pricing-includes li {
-      padding: 0.4rem 0;
+      padding: 0.5rem 0;
       font-size: 0.9rem;
       color: var(--text-secondary);
       list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .pricing-includes li:last-child {
+      border-bottom: none;
     }
 
     .pricing-includes li::before {
-      content: '\2713';
-      color: var(--accent-secondary);
-      margin-right: 0.75rem;
-      font-weight: 700;
+      content: '';
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(77, 182, 172, 0.2), rgba(121, 134, 203, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image:
+        linear-gradient(135deg, rgba(77, 182, 172, 0.25), rgba(121, 134, 203, 0.25)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z' fill='%234db6ac'/%3E%3C/svg%3E");
+      background-size: cover;
     }
 
     .pricing-cta {
       display: block;
       width: 100%;
-      padding: 1rem;
+      padding: 1.1rem;
       font-size: 1.1rem;
       font-weight: 600;
       font-family: var(--font-display);
@@ -246,64 +810,418 @@
       transition: all var(--transition-normal);
       text-decoration: none;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-cta::after {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(12px);
+      animation: ctaGlow 3s ease-in-out infinite;
     }
 
     .pricing-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(121, 134, 203, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(121, 134, 203, 0.35);
     }
 
-    /* Trust Signals */
+    /* Trust badges as pills */
     .trust-strip {
       display: flex;
-      gap: 2rem;
+      gap: 0.75rem;
       justify-content: center;
       flex-wrap: wrap;
-      max-width: 700px;
-      margin: 2rem auto 0;
+      margin-top: 1.5rem;
     }
 
-    .trust-item {
-      display: flex;
+    .trust-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      transition: all 0.25s ease;
     }
 
-    /* FAQ */
-    .book-faq {
-      max-width: 700px;
+    .trust-pill:hover {
+      border-color: rgba(121, 134, 203, 0.2);
+      color: var(--text-secondary);
+    }
+
+    /* Value highlights — right column "Reason Cards" */
+    .pricing-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .value-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1.25rem 1.25rem;
+      border-radius: var(--radius-lg);
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Per-card unique gradient tint backgrounds */
+    .value-card:nth-child(1) { background: linear-gradient(160deg, rgba(121, 134, 203, 0.15) 0%, rgba(22, 22, 42, 0.7) 60%); }
+    .value-card:nth-child(2) { background: linear-gradient(160deg, rgba(77, 182, 172, 0.15) 0%, rgba(22, 22, 42, 0.7) 60%); }
+    .value-card:nth-child(3) { background: linear-gradient(160deg, rgba(255, 213, 79, 0.1) 0%, rgba(22, 22, 42, 0.7) 60%); }
+    .value-card:nth-child(4) { background: linear-gradient(160deg, rgba(102, 187, 106, 0.12) 0%, rgba(22, 22, 42, 0.7) 60%); }
+
+    /* Large watermark number */
+    .value-card .value-watermark {
+      position: absolute;
+      top: -8px;
+      right: 8px;
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1;
+      opacity: 0.06;
+      pointer-events: none;
+      color: white;
+      transition: opacity 0.3s ease;
+    }
+
+    .value-card:hover .value-watermark {
+      opacity: 0.1;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3), 0 0 20px rgba(121, 134, 203, 0.06);
+    }
+
+    .value-card:nth-child(1):hover { border-color: rgba(121, 134, 203, 0.35); }
+    .value-card:nth-child(2):hover { border-color: rgba(77, 182, 172, 0.35); }
+    .value-card:nth-child(3):hover { border-color: rgba(255, 213, 79, 0.3); }
+    .value-card:nth-child(4):hover { border-color: rgba(102, 187, 106, 0.3); }
+
+    /* Shimmer sweep on value cards */
+    .value-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: none;
+      pointer-events: none;
+    }
+
+    .value-card:hover::after {
+      animation: shimmer 0.8s ease forwards;
+    }
+
+    /* Big scannable stat/keyword */
+    .value-stat {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .value-card:nth-child(1) .value-stat { color: var(--accent-primary); }
+    .value-card:nth-child(2) .value-stat { color: var(--accent-secondary); }
+    .value-card:nth-child(3) .value-stat { color: var(--accent-warning); }
+    .value-card:nth-child(4) .value-stat { color: var(--accent-success); }
+
+    .value-card p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ================================================================
+       FAQ — INTERACTIVE ACCORDION
+       ================================================================ */
+    .faq-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=60') center/cover no-repeat;
+      opacity: 0.025;
+      pointer-events: none;
+    }
+
+    .faq-list {
+      max-width: 750px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .book-faq-item {
-      padding: 1.25rem 1.5rem;
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+    .faq-item {
+      padding: 0;
+      background: rgba(22, 22, 42, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.35s ease;
+      opacity: 0;
+      position: relative;
     }
 
-    .book-faq-item h3 {
+    /* Always-visible left accent border — makes each item pop with color */
+    .faq-item::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 4px;
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+      z-index: 2;
+      opacity: 0.5;
+      transition: opacity 0.3s ease, width 0.3s ease;
+    }
+
+    .faq-item:nth-child(1)::before { background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary)); }
+    .faq-item:nth-child(2)::before { background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary)); }
+    .faq-item:nth-child(3)::before { background: linear-gradient(180deg, rgba(255, 213, 79, 0.85), var(--accent-primary)); }
+    .faq-item:nth-child(4)::before { background: linear-gradient(180deg, rgba(102, 187, 106, 0.85), var(--accent-secondary)); }
+
+    .faq-item.active::before,
+    .faq-item:hover::before {
+      opacity: 1;
+      width: 5px;
+    }
+
+    /* Per-item gradient tint on active */
+    .faq-item.active:nth-child(1) { background: linear-gradient(135deg, rgba(121, 134, 203, 0.1) 0%, rgba(22, 22, 42, 0.7) 50%); }
+    .faq-item.active:nth-child(2) { background: linear-gradient(135deg, rgba(77, 182, 172, 0.1) 0%, rgba(22, 22, 42, 0.7) 50%); }
+    .faq-item.active:nth-child(3) { background: linear-gradient(135deg, rgba(255, 213, 79, 0.07) 0%, rgba(22, 22, 42, 0.7) 50%); }
+    .faq-item.active:nth-child(4) { background: linear-gradient(135deg, rgba(102, 187, 106, 0.08) 0%, rgba(22, 22, 42, 0.7) 50%); }
+
+    .faq-item.active {
+      border-color: rgba(121, 134, 203, 0.25);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2), 0 0 20px rgba(121, 134, 203, 0.06);
+    }
+
+    .faq-item:hover:not(.active) {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(22, 22, 42, 0.75);
+      transform: translateX(4px);
+    }
+
+    /* Shimmer on hover */
+    .faq-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.04) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .faq-item:hover::after {
+      animation: shimmer 0.8s ease forwards;
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.35rem 1.75rem 1.35rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .faq-question h3 {
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
       color: var(--text-primary);
+      margin: 0;
+      flex: 1;
+      transition: color 0.2s ease;
     }
 
-    .book-faq-item p {
+    .faq-item:hover .faq-question h3 {
+      color: #fff;
+    }
+
+    /* Chevron in a circle */
+    .faq-chevron-wrap {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active .faq-chevron-wrap {
+      background: rgba(121, 134, 203, 0.15);
+      border-color: rgba(121, 134, 203, 0.35);
+      box-shadow: 0 0 12px rgba(121, 134, 203, 0.15);
+    }
+
+    .faq-item:hover:not(.active) .faq-chevron-wrap {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .faq-chevron {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, color 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--accent-primary);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.75rem 1.5rem 1.5rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+    }
+
+    /* Accent bar above answer text */
+    .faq-answer-inner::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      border-radius: 1px;
+      margin-bottom: 0.85rem;
+      opacity: 0.6;
+    }
+
+    .faq-item:nth-child(1) .faq-answer-inner::before { background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); }
+    .faq-item:nth-child(2) .faq-answer-inner::before { background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary)); }
+    .faq-item:nth-child(3) .faq-answer-inner::before { background: linear-gradient(90deg, rgba(255, 213, 79, 0.8), var(--accent-primary)); }
+    .faq-item:nth-child(4) .faq-answer-inner::before { background: linear-gradient(90deg, rgba(102, 187, 106, 0.8), var(--accent-secondary)); }
+
+    .faq-answer p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ================================================================
+       CTA SECTION — ENHANCED
+       ================================================================ */
+    .cta-section-enhanced {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section-enhanced::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1920&q=80') center/cover no-repeat;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .cta-urgency-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(255, 213, 79, 0.12);
+      border: 1px solid rgba(255, 213, 79, 0.3);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--accent-warning);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-secondary-link {
+      display: inline-block;
+      margin-top: 1rem;
       font-size: 0.9rem;
       color: var(--text-secondary);
-      line-height: 1.6;
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
+    .cta-secondary-link:hover {
+      color: var(--accent-primary);
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
     @media (max-width: 768px) {
-      .book-hero h1 {
-        font-size: 2rem;
+      .book-hero {
+        min-height: auto;
+        padding: calc(var(--nav-height) + 2rem) 1.5rem 3rem;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-text {
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-text .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-cta-group {
+        justify-content: center;
       }
 
       .includes-grid {
@@ -314,8 +1232,31 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .pricing-split {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-values {
+        grid-template-columns: 1fr;
+      }
+
       .pricing-amount {
         font-size: 3rem;
+      }
+
+      .section-nav-inner {
+        justify-content: flex-start;
+        padding: 0.4rem 0.75rem;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-text h1 {
+        font-size: 2.75rem;
+      }
+
+      .includes-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -325,20 +1266,50 @@
   <!-- Navigation (injected) -->
   <div id="navbar-container"></div>
 
-  <!-- Hero -->
-  <section class="book-hero">
-    <div class="book-hero-content">
-      <h1>Book Your Spot</h1>
-      <p>
-        Vibe Coding for Production: Engineering Discipline in the Age of AI.
-        Limited to 75 students for maximum interaction.
-      </p>
-      <div class="book-date">Next session: Saturday 10AM - 2PM</div>
+  <!-- Sticky Section Navigation -->
+  <nav class="section-nav" id="sectionNav">
+    <div class="section-nav-inner">
+      <a href="#included" class="section-nav-link" data-nav-target="included">Included</a>
+      <a href="#facts" class="section-nav-link" data-nav-target="facts">At a Glance</a>
+      <a href="#pricing" class="section-nav-link" data-nav-target="pricing">Pricing</a>
+      <a href="#faq" class="section-nav-link" data-nav-target="faq">FAQ</a>
+    </div>
+  </nav>
+
+  <!-- Hero — Side-by-Side Layout -->
+  <section class="book-hero" id="heroSection">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge-pill">
+          <span class="hero-badge-dot"></span>
+          Limited Seats — 75 Max
+        </div>
+        <h1>Book Your<br>Spot</h1>
+        <p class="hero-subtitle">
+          Vibe Coding for Production: Engineering Discipline in the Age of AI.
+          Limited to 75 students for maximum interaction.
+        </p>
+        <div class="hero-date-pill">
+          <strong>Next session:</strong> Saturday 10AM - 2PM
+        </div>
+        <div class="hero-cta-group">
+          <button class="btn btn-primary btn-glow" id="hero-book-btn">
+            Secure Your Seat <span>&#x2192;</span>
+          </button>
+          <a href="workshop.html" class="btn btn-secondary">
+            View Curriculum
+          </a>
+        </div>
+      </div>
+      <div class="hero-showcase">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Diverse group collaborating at a workshop table" loading="eager">
+      </div>
     </div>
   </section>
 
   <!-- What's Included -->
-  <section class="section">
+  <section class="section includes-section" id="included" data-nav-section="included">
     <div class="section-container">
       <div class="section-header">
         <div class="section-badge">What's Included</div>
@@ -347,45 +1318,51 @@
 
       <div class="includes-grid">
         <div class="include-item">
+          <div class="include-item-header"></div>
           <div class="include-icon">&#x1F4CB;</div>
-          <div>
+          <div class="include-item-body">
             <h4>Blast Radius Checklist</h4>
             <p>Estimate impact before any change</p>
           </div>
         </div>
         <div class="include-item">
+          <div class="include-item-header"></div>
           <div class="include-icon">&#x1F4DD;</div>
-          <div>
+          <div class="include-item-body">
             <h4>Prompt Framework Template</h4>
             <p>Structured prompts for Claude Code</p>
           </div>
         </div>
         <div class="include-item">
+          <div class="include-item-header"></div>
           <div class="include-icon">&#x1F5FA;</div>
-          <div>
+          <div class="include-item-body">
             <h4>Architecture Mapping Template</h4>
             <p>Document contracts and dependencies</p>
           </div>
         </div>
         <div class="include-item">
+          <div class="include-item-header"></div>
           <div class="include-icon">&#x2705;</div>
-          <div>
+          <div class="include-item-body">
             <h4>Production Change Preflight</h4>
             <p>Final verification before every commit</p>
           </div>
         </div>
         <div class="include-item">
+          <div class="include-item-header"></div>
           <div class="include-icon">&#x1F4C2;</div>
-          <div>
+          <div class="include-item-body">
             <h4>Demo Repository Access</h4>
             <p>Practice the full workflow on your own</p>
           </div>
         </div>
         <div class="include-item">
+          <div class="include-item-header"></div>
           <div class="include-icon">&#x1F3AF;</div>
-          <div>
+          <div class="include-item-body">
             <h4>Live Instructor Support</h4>
-            <p>Real-time Q&A with Nathan Baker</p>
+            <p>Real-time Q&amp;A with Nathan Baker</p>
           </div>
         </div>
       </div>
@@ -393,7 +1370,7 @@
   </section>
 
   <!-- Quick Facts -->
-  <section class="section" style="background: var(--bg-secondary);">
+  <section class="section" id="facts" data-nav-section="facts" style="background: var(--bg-secondary);">
     <div class="section-container">
       <div class="section-header">
         <div class="section-badge">Quick Facts</div>
@@ -404,7 +1381,7 @@
         <div class="fact-card">
           <div class="fact-icon">&#x23F1;</div>
           <h4>4 Hours</h4>
-          <p>Live & hands-on session</p>
+          <p>Live &amp; hands-on session</p>
         </div>
         <div class="fact-card">
           <div class="fact-icon">&#x1F465;</div>
@@ -425,64 +1402,149 @@
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section class="section">
+  <!-- Pricing — Premium Split Layout -->
+  <section class="section pricing-section" id="pricing" data-nav-section="pricing">
     <div class="section-container">
-      <div class="pricing-wrapper">
-        <div class="pricing-card">
-          <div class="pricing-label">Workshop Seat</div>
-          <div class="pricing-amount">$450</div>
-          <div class="pricing-per">One-time payment per seat</div>
+      <div class="section-header">
+        <div class="section-badge">Pricing</div>
+        <h2 class="section-title">Invest in Your Craft</h2>
+      </div>
 
-          <ul class="pricing-includes">
-            <li>4-hour live workshop (Saturday 10AM-2PM)</li>
-            <li>Hands-on exercises with real codebases</li>
-            <li>All 5 take-home deliverables</li>
-            <li>Demo repository access</li>
-            <li>Direct instructor Q&A</li>
-          </ul>
+      <div class="pricing-split">
+        <div class="pricing-card-wrapper">
+          <div class="pricing-card">
+            <div class="pricing-popular-badge">Best Value</div>
+            <div class="pricing-card-header">
+              <div class="pricing-label">Workshop Seat</div>
+              <div class="pricing-amount">$450</div>
+              <div class="pricing-per">One-time payment per seat</div>
+            </div>
+            <div class="pricing-card-body">
+              <ul class="pricing-includes">
+                <li>4-hour live workshop (Saturday 10AM-2PM)</li>
+                <li>Hands-on exercises with real codebases</li>
+                <li>All 5 take-home deliverables</li>
+                <li>Demo repository access</li>
+                <li>Direct instructor Q&amp;A</li>
+              </ul>
 
-          <button class="pricing-cta" id="book-now-btn">
-            Book Your Spot &#x2192;
-          </button>
+              <button class="pricing-cta" id="book-now-btn">
+                Secure Your Seat &#x2192;
+              </button>
+            </div>
+          </div>
+
+          <div class="trust-strip">
+            <span class="trust-pill">&#x1F512; Secure checkout</span>
+            <span class="trust-pill">&#x1F4B0; 48h refund policy</span>
+            <span class="trust-pill">&#x26A1; Instant confirmation</span>
+          </div>
         </div>
 
-        <div class="trust-strip">
-          <div class="trust-item">&#x1F512; Secure checkout via Whop</div>
-          <div class="trust-item">&#x1F3A4; Live & interactive</div>
-          <div class="trust-item">&#x1F4B0; Full refund up to 48h before</div>
+        <div class="pricing-values">
+          <div class="value-card">
+            <span class="value-watermark">01</span>
+            <div class="value-stat">100% Live</div>
+            <p>Not a recording. Real-time exercises, direct feedback, and instructor Q&amp;A throughout.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-watermark">02</span>
+            <div class="value-stat">5 Deliverables</div>
+            <p>Checklists, templates, and a demo repo you take home and keep forever.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-watermark">03</span>
+            <div class="value-stat">75 Seat Cap</div>
+            <p>Small cohort so every question gets answered and every exercise gets reviewed.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-watermark">04</span>
+            <div class="value-stat">Zero Risk</div>
+            <p>Full refund up to 48 hours before the workshop. No questions asked.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section" style="background: var(--bg-secondary);">
+  <!-- FAQ — Interactive Accordion -->
+  <section class="section faq-section" id="faq" data-nav-section="faq" style="background: var(--bg-secondary);">
     <div class="section-container">
       <div class="section-header">
         <div class="section-badge">FAQ</div>
-        <h2 class="section-title">Payment & Logistics</h2>
+        <h2 class="section-title">Payment &amp; Logistics</h2>
       </div>
 
-      <div class="book-faq">
-        <div class="book-faq-item">
-          <h3>How does payment work?</h3>
-          <p>Clicking "Book Your Spot" redirects you to Whop.com for secure payment processing. You'll receive a confirmation email with workshop details and setup instructions.</p>
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <h3>How does payment work?</h3>
+            <div class="faq-chevron-wrap">
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Clicking "Secure Your Seat" redirects you to Whop.com for secure payment processing. You'll receive a confirmation email with workshop details and setup instructions.</p>
+            </div>
+          </div>
         </div>
-        <div class="book-faq-item">
-          <h3>What do I need to prepare?</h3>
-          <p>Install VS Code, Claude Code (CLI), and Fork before the session. We'll send detailed setup instructions a few days before the workshop.</p>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What do I need to prepare?</h3>
+            <div class="faq-chevron-wrap">
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Install VS Code, Claude Code (CLI), and Fork before the session. We'll send detailed setup instructions a few days before the workshop.</p>
+            </div>
+          </div>
         </div>
-        <div class="book-faq-item">
-          <h3>What's the refund policy?</h3>
-          <p>Full refund up to 48 hours before the workshop. After that, you can transfer your seat to someone else. Contact us via the email on your booking confirmation.</p>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What's the refund policy?</h3>
+            <div class="faq-chevron-wrap">
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Full refund up to 48 hours before the workshop. After that, you can transfer your seat to someone else. Contact us via the email on your booking confirmation.</p>
+            </div>
+          </div>
         </div>
-        <div class="book-faq-item">
-          <h3>Can I attend remotely?</h3>
-          <p>Yes. The workshop is conducted live online. You'll receive a link to the session after booking.</p>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I attend remotely?</h3>
+            <div class="faq-chevron-wrap">
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Yes. The workshop is conducted live online. You'll receive a link to the session after booking.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta-section cta-section-enhanced">
+    <div class="cta-urgency-badge">Limited to 75 seats per session</div>
+    <h2 class="cta-title">Ready to Level Up?</h2>
+    <p class="cta-subtitle">
+      75 seats, one Saturday, and a framework that changes how you work with AI forever.
+    </p>
+    <div class="cta-buttons">
+      <button class="btn btn-primary btn-glow" id="cta-book-btn">
+        Secure Your Seat <span>&#x2192;</span>
+      </button>
+    </div>
+    <a href="workshop.html" class="cta-secondary-link">View full workshop details &#x2192;</a>
   </section>
 
   <!-- Footer (injected) -->
@@ -494,43 +1556,219 @@
       NavbarComponent.inject('navbar-container');
       FooterComponent.inject('footer-container');
 
-      anime({
-        targets: '.book-hero-content',
-        opacity: [0, 1],
-        translateY: [30, 0],
-        duration: 800,
-        easing: 'easeOutCubic'
-      });
+      // ===== Hero Staggered Entrance =====
+      const heroTimeline = anime.timeline({ easing: 'easeOutCubic' });
 
-      // Book Now button — redirect to Whop checkout
-      const bookBtn = document.getElementById('book-now-btn');
-      if (bookBtn) {
-        bookBtn.addEventListener('click', () => {
-          if (window.WhopService) {
-            WhopService.createCheckout('workshop-vibe-coding');
+      heroTimeline
+        .add({
+          targets: '.hero-badge-pill',
+          opacity: [0, 1],
+          translateX: [-30, 0],
+          duration: 600,
+        })
+        .add({
+          targets: '.hero-text h1',
+          opacity: [0, 1],
+          translateX: [-30, 0],
+          duration: 700,
+        }, '-=300')
+        .add({
+          targets: '.hero-text .hero-subtitle',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+        }, '-=400')
+        .add({
+          targets: '.hero-date-pill',
+          opacity: [0, 1],
+          translateY: [15, 0],
+          duration: 500,
+        }, '-=300')
+        .add({
+          targets: '.hero-cta-group',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+        }, '-=200')
+        .add({
+          targets: '.hero-showcase',
+          opacity: [0, 1],
+          translateX: [40, 0],
+          duration: 800,
+          easing: 'easeOutQuart'
+        }, '-=600');
+
+      // ===== Sticky Section Nav =====
+      const sectionNav = document.getElementById('sectionNav');
+      const heroSection = document.getElementById('heroSection');
+      const navLinks = document.querySelectorAll('.section-nav-link');
+      const sections = document.querySelectorAll('[data-nav-section]');
+
+      // Show/hide section nav based on hero visibility
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            sectionNav.classList.remove('visible');
+          } else {
+            sectionNav.classList.add('visible');
           }
         });
-      }
-    });
+      }, { threshold: 0.1 });
+      heroObserver.observe(heroSection);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+      // Active section highlighting
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.getAttribute('data-nav-section');
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('data-nav-target') === sectionId);
+            });
+          }
+        });
+      }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+
+      sections.forEach(section => sectionObserver.observe(section));
+
+      // Smooth scroll for nav links
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.getElementById(link.getAttribute('data-nav-target'));
+          if (target) {
+            const offset = 70 + 44; // nav height + section nav height
+            const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // ===== FAQ Accordion =====
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const item = question.closest('.faq-item');
+          const isActive = item.classList.contains('active');
+
+          // Close all others
+          document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+            activeItem.classList.remove('active');
+          });
+
+          // Toggle clicked (only open if it wasn't already active)
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // ===== Whop Checkout — All Book Buttons =====
+      function handleBookClick() {
+        if (window.WhopService) {
+          WhopService.createCheckout('workshop-vibe-coding');
+        }
+      }
+
+      document.getElementById('hero-book-btn')?.addEventListener('click', handleBookClick);
+      document.getElementById('book-now-btn')?.addEventListener('click', handleBookClick);
+      document.getElementById('cta-book-btn')?.addEventListener('click', handleBookClick);
+
+      // ===== Section-Specific Scroll Animations =====
+      const animateOnScroll = (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const section = entry.target;
+
+          // Included — scale in with easeOutBack stagger
+          const includes = section.querySelectorAll('.include-item');
+          if (includes.length) {
+            anime({
+              targets: includes,
+              opacity: [0, 1],
+              scale: [0.85, 1],
+              delay: anime.stagger(80),
+              duration: 700,
+              easing: 'easeOutBack'
+            });
+          }
+
+          // Facts — slide up with stagger
+          const facts = section.querySelectorAll('.fact-card');
+          if (facts.length) {
+            anime({
+              targets: facts,
+              opacity: [0, 1],
+              translateY: [25, 0],
+              delay: anime.stagger(100),
+              duration: 600,
+              easing: 'easeOutCubic'
+            });
+          }
+
+          // Pricing card — scale in
+          const pricingCard = section.querySelectorAll('.pricing-card');
+          if (pricingCard.length) {
+            anime({
+              targets: pricingCard,
+              opacity: [0, 1],
+              scale: [0.9, 1],
+              duration: 700,
+              easing: 'easeOutBack'
+            });
+          }
+
+          // Value cards — stagger from right
+          const valueCards = section.querySelectorAll('.value-card');
+          if (valueCards.length) {
+            anime({
+              targets: valueCards,
+              opacity: [0, 1],
+              translateX: [30, 0],
+              delay: anime.stagger(100),
+              duration: 600,
+              easing: 'easeOutCubic'
+            });
+          }
+
+          // FAQ — cascade down
+          const faqs = section.querySelectorAll('.faq-item');
+          if (faqs.length) {
+            anime({
+              targets: faqs,
+              opacity: [0, 1],
+              translateY: [15, 0],
+              delay: anime.stagger(60),
+              duration: 500,
+              easing: 'easeOutCubic'
+            });
+          }
+
+          observer.unobserve(section);
+        });
+      };
+
+      const scrollObserver = new IntersectionObserver(animateOnScroll, { threshold: 0.1 });
+      document.querySelectorAll('.section-container').forEach(section => {
+        scrollObserver.observe(section);
+      });
+
+      // CTA section — fade in with translateY
+      const ctaObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
           anime({
-            targets: entry.target.querySelectorAll('.include-item, .fact-card, .pricing-card, .book-faq-item'),
+            targets: entry.target.querySelectorAll('.cta-urgency-badge, .cta-title, .cta-subtitle, .cta-buttons, .cta-secondary-link'),
             opacity: [0, 1],
             translateY: [20, 0],
-            delay: anime.stagger(80),
+            delay: anime.stagger(100),
             duration: 600,
             easing: 'easeOutCubic'
           });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
 
-    document.querySelectorAll('.section-container').forEach(section => {
-      observer.observe(section);
+      const ctaSection = document.querySelector('.cta-section-enhanced');
+      if (ctaSection) ctaObserver.observe(ctaSection);
     });
   </script>
 </body>
