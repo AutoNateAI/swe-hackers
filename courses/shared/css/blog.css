@@ -71,15 +71,29 @@
 .hero-block {
   position: relative;
   min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
   align-items: center;
-  text-align: center;
-  padding: 4rem 2rem;
+  align-content: center;
+  gap: 0 3rem;
+  text-align: left;
+  padding: 6rem 3rem 4rem;
   margin-bottom: 4rem;
   overflow: hidden;
   background: linear-gradient(180deg, var(--blog-surface) 0%, var(--blog-bg) 100%);
+}
+
+/* Place text elements in left column */
+.hero-block .category-badge { grid-column: 1; grid-row: 1; justify-self: start; }
+.hero-block .article-title  { grid-column: 1; grid-row: 2; }
+.hero-block .article-meta   { grid-column: 1; grid-row: 3; }
+
+/* Image spans all rows on the right */
+.hero-block .hero-image {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
 }
 
 .hero-block::before {
@@ -125,7 +139,7 @@
 .hero-block .article-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
   font-size: 0.9rem;
   color: var(--text-muted);
@@ -145,7 +159,11 @@
 
 .hero-block .category-badge,
 .hero-block .article-title,
-.hero-block .article-meta,
+.hero-block .article-meta {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
 .hero-block .hero-image {
   opacity: 0;
   will-change: transform, opacity;
@@ -153,8 +171,6 @@
 
 .hero-block .hero-image {
   width: 100%;
-  max-width: 900px;
-  margin: 2rem auto 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -162,7 +178,8 @@
 
 .hero-block .hero-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -1178,15 +1195,33 @@
   }
   
   .hero-block {
-    min-height: 50vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    text-align: center;
+    min-height: auto;
     padding: 3rem 1.5rem;
+    gap: 1.5rem 0;
   }
-  
+
+  .hero-block .category-badge,
+  .hero-block .article-title,
+  .hero-block .article-meta {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: auto;
+  }
+
+  .hero-block .hero-image {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .hero-block .article-title {
     font-size: 2rem;
   }
-  
+
   .hero-block .article-meta {
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
   }

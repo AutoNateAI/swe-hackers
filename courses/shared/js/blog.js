@@ -396,10 +396,10 @@ function initHeroAnimation() {
     .add({
       targets: '.hero-block .article-title',
       opacity: [0, 1],
-      scale: [2.5, 1],
-      duration: 1200,
+      translateX: [-40, 0],
+      duration: 900,
       easing: 'easeOutExpo'
-    }, '-=200')
+    }, '-=250')
     .add({
       targets: '.hero-block .article-meta',
       opacity: [0, 1],
@@ -410,11 +410,11 @@ function initHeroAnimation() {
     .add({
       targets: '.hero-block .hero-image',
       opacity: [0, 1],
-      translateY: [30, 0],
-      scale: [0.95, 1],
-      duration: 800,
+      translateX: [50, 0],
+      scale: [0.93, 1],
+      duration: 900,
       easing: 'easeOutCubic'
-    }, '-=200');
+    }, '-=500');
 }
 
 // Run hero animation on load
