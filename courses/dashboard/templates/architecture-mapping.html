@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Mapping Template | AutoNateAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="../../shared/js/theme-loader.js"></script>
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <style>
+    body { background: #0a0a0f; color: #e8e8f0; font-family: 'Inter', sans-serif; min-height: 100vh; }
+    .auth-loading { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0a0f; display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    .auth-loading.hidden { display: none; }
+    .loading-spinner { width: 40px; height: 40px; border: 3px solid rgba(77,182,172,0.3); border-top-color: #4db6ac; border-radius: 50%; margin: 1rem auto; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .page-shell { display: none; min-height: 100vh; flex-direction: column; }
+    .page-shell.ready { display: flex; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: #0d0d14; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar__back { display: flex; align-items: center; gap: 0.5rem; color: #a0a0b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .topbar__back:hover { color: #e8e8f0; }
+    .topbar__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: #e8e8f0; }
+    .topbar__actions { display: flex; gap: 0.75rem; }
+    .topbar__btn {
+      font-size: 0.8rem; font-weight: 500; padding: 0.4rem 0.9rem;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05); color: #a0a0b8; cursor: pointer; transition: all 0.2s;
+    }
+    .topbar__btn.primary { background: rgba(77,182,172,0.15); border-color: rgba(77,182,172,0.3); color: #4db6ac; }
+    .topbar__btn.primary:hover { background: rgba(77,182,172,0.25); }
+
+    .template-page { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; width: 100%; }
+
+    .tmpl-header { margin-bottom: 2rem; }
+    .tmpl-header__icon-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .tmpl-header__icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(77,182,172,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; border: 1px solid rgba(77,182,172,0.2); }
+    .tmpl-header__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #4db6ac; margin-bottom: 0.25rem; }
+    .tmpl-header__name { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #e8e8f0; }
+    .tmpl-header__desc { color: #a0a0b8; font-size: 0.95rem; line-height: 1.7; }
+
+    .section-card {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem;
+      border-left: 3px solid #4db6ac;
+    }
+    .section-card__header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; cursor: pointer; }
+    .section-card__icon { font-size: 1.3rem; width: 36px; text-align: center; }
+    .section-card__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: #e8e8f0; flex: 1; }
+    .section-card__toggle { font-size: 0.8rem; color: #6a6a80; transition: transform 0.2s; }
+    .section-card.collapsed .section-card__toggle { transform: rotate(-90deg); }
+    .section-card__body { }
+    .section-card.collapsed .section-card__body { display: none; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 600; color: #a0a0b8; margin-bottom: 0.4rem; letter-spacing: 0.04em; }
+    .form-label .hint { color: #6a6a80; font-weight: 400; font-size: 0.7rem; margin-left: 0.4rem; }
+    .form-input, .form-textarea {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.75rem 1rem; color: #e8e8f0; font-family: 'Inter', sans-serif;
+      font-size: 0.875rem; outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(77,182,172,0.5); }
+    .form-textarea { resize: vertical; line-height: 1.6; }
+    .form-textarea.code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+    .form-input::placeholder, .form-textarea::placeholder { color: #6a6a80; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* File tree builder */
+    .tree-builder { margin-bottom: 1.25rem; }
+    .tree-node {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px; padding: 0.6rem 0.75rem; margin-bottom: 0.5rem;
+    }
+    .tree-node__indent { color: #6a6a80; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; min-width: 24px; }
+    .tree-node__input {
+      flex: 1; background: transparent; border: none; outline: none;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #4db6ac;
+    }
+    .tree-node__input::placeholder { color: #6a6a80; }
+    .tree-node__desc {
+      flex: 2; background: transparent; border: none; outline: none;
+      font-size: 0.78rem; color: #a0a0b8;
+    }
+    .tree-node__desc::placeholder { color: #6a6a80; }
+    .tree-node__remove { color: #6a6a80; cursor: pointer; font-size: 0.8rem; transition: color 0.2s; flex-shrink: 0; }
+    .tree-node__remove:hover { color: #ef5350; }
+    .add-node-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; color: #4db6ac; cursor: pointer; padding: 0.4rem 0.75rem;
+      border: 1px dashed rgba(77,182,172,0.3); border-radius: 6px;
+      background: rgba(77,182,172,0.04); transition: all 0.2s; margin-top: 0.25rem;
+    }
+    .add-node-btn:hover { border-color: rgba(77,182,172,0.5); background: rgba(77,182,172,0.08); }
+
+    /* Dependency matrix */
+    .dep-item {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .dep-arrow { color: #4db6ac; font-size: 0.8rem; text-align: center; }
+    .dep-remove { color: #6a6a80; cursor: pointer; font-size: 0.75rem; padding: 0.25rem; transition: color 0.2s; }
+    .dep-remove:hover { color: #ef5350; }
+
+    /* Output */
+    .output-section { margin-top: 2rem; }
+    .output-card {
+      background: #0d0d14; border: 1px solid rgba(77,182,172,0.3);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .output-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .output-card__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; color: #4db6ac; }
+    .output-card__copy { font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 6px; background: rgba(77,182,172,0.15); border: 1px solid rgba(77,182,172,0.3); color: #4db6ac; cursor: pointer; transition: all 0.2s; }
+    .output-pre { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #a0a0b8; line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+
+    .generate-btn {
+      display: block; width: 100%; padding: 0.875rem; border-radius: 12px;
+      background: rgba(77,182,172,0.15); border: 1px solid rgba(77,182,172,0.3);
+      color: #4db6ac; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1.5rem;
+    }
+    .generate-btn:hover { background: rgba(77,182,172,0.25); transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+
+  <div class="auth-loading" id="auth-loading">
+    <div style="text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">🗺️</div>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <div class="page-shell" id="page-shell">
+    <div class="topbar">
+      <a href="../templates.html" class="topbar__back">← Template Library</a>
+      <span class="topbar__title">🗺️ Architecture Mapping</span>
+      <div class="topbar__actions">
+        <button class="topbar__btn" onclick="resetAll()">Reset</button>
+        <button class="topbar__btn primary" onclick="copyMap()">Copy Map</button>
+      </div>
+    </div>
+
+    <div class="template-page">
+
+      <div class="tmpl-header">
+        <div class="tmpl-header__icon-row">
+          <div class="tmpl-header__icon">🗺️</div>
+          <div>
+            <div class="tmpl-header__label">Architecture Mapping Template</div>
+            <div class="tmpl-header__name">Map Before You Prompt</div>
+          </div>
+        </div>
+        <p class="tmpl-header__desc">
+          Document the codebase before writing a single prompt. This is the M in M.A.P.P.E.R.
+          A mapped codebase gets 10x better AI output. Fill this once per project — update as it grows.
+        </p>
+      </div>
+
+      <!-- Project Overview -->
+      <div class="section-card" id="sec-overview">
+        <div class="section-card__header" onclick="toggleSection('sec-overview')">
+          <span class="section-card__icon">📌</span>
+          <span class="section-card__title">Project Overview</span>
+          <span class="section-card__toggle">▼</span>
+        </div>
+        <div class="section-card__body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Project Name</label>
+              <input type="text" class="form-input" id="p-name" placeholder="e.g. NBA AI Prediction Bot">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tech Stack</label>
+              <input type="text" class="form-input" id="p-stack" placeholder="e.g. Python, FastAPI, OpenAI, PostgreSQL">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What does this project do? <span class="hint">(2-3 sentences, plain English)</span></label>
+            <textarea class="form-textarea" id="p-purpose" rows="3" placeholder="e.g. An API that uses LLMs to predict NBA game outcomes. Takes game stats, player data, and betting lines as input, runs them through GPT-4 with structured prompts, and returns a prediction with confidence score."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Entry point(s)</label>
+            <input type="text" class="form-input" id="p-entry" placeholder="e.g. main.py → app.py → /api/predict">
+          </div>
+        </div>
+      </div>
+
+      <!-- File Tree -->
+      <div class="section-card" id="sec-tree">
+        <div class="section-card__header" onclick="toggleSection('sec-tree')">
+          <span class="section-card__icon">📁</span>
+          <span class="section-card__title">File Structure</span>
+          <span class="section-card__toggle">▼</span>
+        </div>
+        <div class="section-card__body">
+          <p style="font-size:0.8rem; color:#6a6a80; margin-bottom:1rem;">Document each key file and what it does. Skip boilerplate (config, __init__, etc).</p>
+          <div id="tree-nodes"></div>
+          <div class="add-node-btn" onclick="addTreeNode()">+ Add file</div>
+        </div>
+      </div>
+
+      <!-- Contracts / Interfaces -->
+      <div class="section-card" id="sec-contracts">
+        <div class="section-card__header" onclick="toggleSection('sec-contracts')">
+          <span class="section-card__icon">📋</span>
+          <span class="section-card__title">Contracts & Interfaces</span>
+          <span class="section-card__toggle">▼</span>
+        </div>
+        <div class="section-card__body">
+          <div class="form-group">
+            <label class="form-label">Key function signatures <span class="hint">(the public API of your code)</span></label>
+            <textarea class="form-textarea code" id="c-sigs" rows="6" placeholder="def predict(game_id: str, odds: OddsData) -> Prediction&#10;def fetch_player_stats(player_id: int, season: str) -> PlayerStats&#10;class Prediction(BaseModel):&#10;    winner: str&#10;    confidence: float&#10;    reasoning: str"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Data models / types</label>
+            <textarea class="form-textarea code" id="c-types" rows="4" placeholder="OddsData: { home_spread, away_spread, over_under, moneyline }&#10;PlayerStats: { points_avg, rebounds_avg, last_5_games[] }"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">External API contracts <span class="hint">(what you call and what you expect back)</span></label>
+            <textarea class="form-textarea" id="c-external" rows="3" placeholder="Ball Don't Lie API → GET /games/:id → returns game object with teams, scores, status&#10;OpenAI API → POST /chat/completions → structured output with function calling"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dependencies -->
+      <div class="section-card" id="sec-deps">
+        <div class="section-card__header" onclick="toggleSection('sec-deps')">
+          <span class="section-card__icon">🔗</span>
+          <span class="section-card__title">Dependency Map</span>
+          <span class="section-card__toggle">▼</span>
+        </div>
+        <div class="section-card__body">
+          <p style="font-size:0.8rem; color:#6a6a80; margin-bottom:1rem;">Who calls who? Map the important relationships — this is what prevents you from breaking things accidentally.</p>
+          <div id="dep-list"></div>
+          <div class="add-node-btn" onclick="addDep()">+ Add dependency</div>
+        </div>
+      </div>
+
+      <!-- Data Flow -->
+      <div class="section-card" id="sec-flow">
+        <div class="section-card__header" onclick="toggleSection('sec-flow')">
+          <span class="section-card__icon">🌊</span>
+          <span class="section-card__title">Data Flow</span>
+          <span class="section-card__toggle">▼</span>
+        </div>
+        <div class="section-card__body">
+          <div class="form-group">
+            <label class="form-label">Happy path — request to response</label>
+            <textarea class="form-textarea" id="f-happy" rows="4" placeholder="1. User calls POST /predict with game_id + odds&#10;2. Fetches player stats from Ball Don't Lie API&#10;3. Builds structured prompt with context&#10;4. Calls OpenAI with function calling enabled&#10;5. Parses structured output → Prediction object&#10;6. Returns JSON response with 200"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Error paths <span class="hint">(what can go wrong?)</span></label>
+            <textarea class="form-textarea" id="f-errors" rows="3" placeholder="- Ball Don't Lie API timeout → return 503&#10;- OpenAI rate limit → exponential backoff (3 retries)&#10;- Invalid game_id → 404 with clear message"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="section-card" id="sec-notes">
+        <div class="section-card__header" onclick="toggleSection('sec-notes')">
+          <span class="section-card__icon">📝</span>
+          <span class="section-card__title">Gotchas & Notes</span>
+          <span class="section-card__toggle">▼</span>
+        </div>
+        <div class="section-card__body">
+          <div class="form-group">
+            <label class="form-label">Things that are non-obvious or will bite you</label>
+            <textarea class="form-textarea" id="n-gotchas" rows="4" placeholder="- The data_fetcher caches results — changes to the model don't invalidate the cache&#10;- OpenAI function calling schema MUST match exactly or you get a generic error&#10;- Rate limits are per-minute, not per-hour — builds up fast during testing"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What to fix / improve next</label>
+            <textarea class="form-textarea" id="n-todo" rows="3" placeholder="- Add input validation (currently trusts caller)&#10;- Move API keys to environment variables&#10;- Add structured logging"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generate Map Button -->
+      <button class="generate-btn" onclick="renderOutput()">Generate Architecture Map →</button>
+
+      <!-- Output -->
+      <div class="output-section" id="output-section" style="display:none;">
+        <div class="output-card">
+          <div class="output-card__header">
+            <span class="output-card__title">Architecture Map — Ready to Paste</span>
+            <button class="output-card__copy" onclick="copyMap()">Copy</button>
+          </div>
+          <pre class="output-pre" id="output-pre"></pre>
+        </div>
+        <p style="font-size:0.78rem; color:#6a6a80; margin-top:0.75rem; text-align:center;">
+          Paste this at the top of any prompt to give your AI agent full architectural context.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+
+  <script>
+    const STORAGE_KEY = 'arch-map-v1';
+
+    function toggleSection(id) {
+      document.getElementById(id).classList.toggle('collapsed');
+    }
+
+    function addTreeNode(path='', desc='') {
+      const container = document.getElementById('tree-nodes');
+      const idx = container.children.length;
+      const div = document.createElement('div');
+      div.className = 'tree-node';
+      div.innerHTML = `
+        <span class="tree-node__indent">├─</span>
+        <input type="text" class="tree-node__input" placeholder="path/to/file.py" value="${path}" oninput="saveState()">
+        <input type="text" class="tree-node__desc" placeholder="what it does..." value="${desc}" oninput="saveState()">
+        <span class="tree-node__remove" onclick="this.closest('.tree-node').remove(); saveState();">✕</span>`;
+      container.appendChild(div);
+    }
+
+    function addDep(from='', to='') {
+      const container = document.getElementById('dep-list');
+      const div = document.createElement('div');
+      div.className = 'dep-item';
+      div.innerHTML = `
+        <input type="text" class="form-input" placeholder="caller (e.g. main.py)" value="${from}" oninput="saveState()">
+        <span class="dep-arrow">→ calls →</span>
+        <input type="text" class="form-input" placeholder="callee (e.g. predictor.py)" value="${to}" oninput="saveState()">
+        <span class="dep-remove" onclick="this.closest('.dep-item').remove(); saveState();">✕</span>`;
+      container.appendChild(div);
+    }
+
+    const TEXT_FIELDS = ['p-name','p-stack','p-purpose','p-entry','c-sigs','c-types','c-external','f-happy','f-errors','n-gotchas','n-todo'];
+
+    function saveState() {
+      const state = { fields: {}, tree: [], deps: [] };
+      TEXT_FIELDS.forEach(id => { state.fields[id] = document.getElementById(id)?.value || ''; });
+      document.querySelectorAll('#tree-nodes .tree-node').forEach(n => {
+        state.tree.push({ path: n.querySelectorAll('input')[0].value, desc: n.querySelectorAll('input')[1].value });
+      });
+      document.querySelectorAll('#dep-list .dep-item').forEach(d => {
+        const inputs = d.querySelectorAll('input');
+        state.deps.push({ from: inputs[0].value, to: inputs[1].value });
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+    }
+
+    function renderOutput() {
+      const f = id => document.getElementById(id)?.value?.trim() || '';
+      let map = '# ARCHITECTURE MAP\n';
+      if (f('p-name')) map += `# ${f('p-name')}\n`;
+      map += `${'─'.repeat(50)}\n\n`;
+
+      if (f('p-purpose')) map += `## What It Does\n${f('p-purpose')}\n\n`;
+      if (f('p-stack')) map += `## Stack\n${f('p-stack')}\n\n`;
+      if (f('p-entry')) map += `## Entry Point\n${f('p-entry')}\n\n`;
+
+      const treeNodes = document.querySelectorAll('#tree-nodes .tree-node');
+      if (treeNodes.length) {
+        map += '## File Structure\n';
+        treeNodes.forEach(n => {
+          const path = n.querySelectorAll('input')[0].value;
+          const desc = n.querySelectorAll('input')[1].value;
+          if (path) map += `├─ ${path}${desc ? '  → ' + desc : ''}\n`;
+        });
+        map += '\n';
+      }
+
+      if (f('c-sigs')) map += `## Key Signatures\n${f('c-sigs')}\n\n`;
+      if (f('c-types')) map += `## Data Models\n${f('c-types')}\n\n`;
+      if (f('c-external')) map += `## External APIs\n${f('c-external')}\n\n`;
+
+      const deps = document.querySelectorAll('#dep-list .dep-item');
+      if (deps.length) {
+        map += '## Dependencies\n';
+        deps.forEach(d => {
+          const ins = d.querySelectorAll('input');
+          if (ins[0].value || ins[1].value) map += `${ins[0].value} → ${ins[1].value}\n`;
+        });
+        map += '\n';
+      }
+
+      if (f('f-happy')) map += `## Data Flow (Happy Path)\n${f('f-happy')}\n\n`;
+      if (f('f-errors')) map += `## Error Paths\n${f('f-errors')}\n\n`;
+      if (f('n-gotchas')) map += `## Gotchas\n${f('n-gotchas')}\n\n`;
+      if (f('n-todo')) map += `## TODO\n${f('n-todo')}`;
+
+      document.getElementById('output-pre').textContent = map.trim();
+      const section = document.getElementById('output-section');
+      section.style.display = 'block';
+      anime({ targets: '#output-section', opacity: [0,1], translateY: [16,0], easing: 'easeOutCubic', duration: 400 });
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function copyMap() {
+      const text = document.getElementById('output-pre')?.textContent;
+      if (!text || text.trim() === '') { renderOutput(); setTimeout(copyMap, 100); return; }
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.topbar__btn.primary');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Map', 2000);
+      });
+    }
+
+    function resetAll() {
+      if (!confirm('Reset this template?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      TEXT_FIELDS.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+      document.getElementById('tree-nodes').innerHTML = '';
+      document.getElementById('dep-list').innerHTML = '';
+      document.getElementById('output-section').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loading = document.getElementById('auth-loading');
+      const shell = document.getElementById('page-shell');
+
+      window.FirebaseApp.init();
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+      if (!user) { window.location.href = '../../auth/login.html'; return; }
+
+      loading.classList.add('hidden');
+      shell.classList.add('ready');
+
+      const state = loadState();
+      if (state.fields) TEXT_FIELDS.forEach(id => { const el = document.getElementById(id); if (el && state.fields[id]) el.value = state.fields[id]; });
+      if (state.tree?.length) state.tree.forEach(n => addTreeNode(n.path, n.desc));
+      else { addTreeNode('main.py', 'entry point'); addTreeNode('predictor.py', 'LLM prediction logic'); addTreeNode('data_fetcher.py', 'external data APIs'); }
+      if (state.deps?.length) state.deps.forEach(d => addDep(d.from, d.to));
+      else addDep('main.py', 'predictor.py');
+
+      TEXT_FIELDS.forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', saveState); });
+
+      anime({ targets: '.section-card', opacity: [0,1], translateY: [12,0], delay: anime.stagger(60), easing: 'easeOutCubic', duration: 350 });
+    });
+  </script>
+</body>
+</html>

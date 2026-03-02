@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Preflight | AutoNateAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="../../shared/js/theme-loader.js"></script>
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <style>
+    body { background: #0a0a0f; color: #e8e8f0; font-family: 'Inter', sans-serif; min-height: 100vh; }
+    .auth-loading { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0a0f; display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    .auth-loading.hidden { display: none; }
+    .loading-spinner { width: 40px; height: 40px; border: 3px solid rgba(102,187,106,0.3); border-top-color: #66bb6a; border-radius: 50%; margin: 1rem auto; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .page-shell { display: none; min-height: 100vh; flex-direction: column; }
+    .page-shell.ready { display: flex; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: #0d0d14; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar__back { display: flex; align-items: center; gap: 0.5rem; color: #a0a0b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .topbar__back:hover { color: #e8e8f0; }
+    .topbar__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: #e8e8f0; }
+    .topbar__actions { display: flex; gap: 0.75rem; align-items: center; }
+    .topbar__btn {
+      font-size: 0.8rem; font-weight: 500; padding: 0.4rem 0.9rem;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05); color: #a0a0b8; cursor: pointer; transition: all 0.2s;
+    }
+    .topbar__progress { font-size: 0.8rem; color: #6a6a80; font-family: 'Space Grotesk', sans-serif; }
+    .topbar__progress strong { color: #66bb6a; }
+
+    .template-page { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; width: 100%; }
+
+    .tmpl-header { margin-bottom: 2.5rem; }
+    .tmpl-header__icon-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .tmpl-header__icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(102,187,106,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; border: 1px solid rgba(102,187,106,0.2); }
+    .tmpl-header__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #66bb6a; margin-bottom: 0.25rem; }
+    .tmpl-header__name { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #e8e8f0; }
+    .tmpl-header__desc { color: #a0a0b8; font-size: 0.95rem; line-height: 1.7; }
+    .tmpl-header__progress-wrap { margin-top: 1.25rem; display: flex; align-items: center; gap: 1rem; }
+    .tmpl-header__bar { flex: 1; height: 8px; background: rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; }
+    .tmpl-header__fill { height: 100%; background: linear-gradient(90deg, #4caf50, #66bb6a); border-radius: 4px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+    .tmpl-header__label-txt { font-size: 0.75rem; color: #6a6a80; white-space: nowrap; }
+
+    /* Commit info */
+    .commit-card {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .commit-field label { display: block; font-size: 0.72rem; color: #6a6a80; margin-bottom: 0.35rem; }
+    .commit-field input {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.6rem 0.85rem; color: #e8e8f0; font-size: 0.875rem;
+      font-family: 'JetBrains Mono', monospace; outline: none; transition: border-color 0.2s;
+    }
+    .commit-field input:focus { border-color: rgba(102,187,106,0.5); }
+
+    /* Phase header */
+    .phase-header {
+      display: flex; align-items: center; gap: 0.75rem; margin: 2rem 0 0.75rem;
+    }
+    .phase-header__num {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(102,187,106,0.12); border: 1px solid rgba(102,187,106,0.2);
+      color: #66bb6a; font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    .phase-header__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: #a0a0b8; text-transform: uppercase; letter-spacing: 0.08em; }
+    .phase-header__count { font-size: 0.7rem; color: #6a6a80; margin-left: auto; }
+
+    /* Check items */
+    .check-item {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; margin-bottom: 0.5rem; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .check-item:hover { border-color: rgba(102,187,106,0.2); }
+    .check-item.checked { border-color: rgba(102,187,106,0.25); background: rgba(102,187,106,0.03); }
+    .check-item.blocked { border-color: rgba(239,83,80,0.25); background: rgba(239,83,80,0.04); }
+
+    .check-main { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.25rem; cursor: pointer; }
+    .check-box {
+      width: 22px; height: 22px; border-radius: 6px;
+      border: 2px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .check-item.checked .check-box { background: #66bb6a; border-color: #66bb6a; }
+    .check-item.blocked .check-box { background: #ef5350; border-color: #ef5350; }
+    .check-box__mark { color: #fff; font-size: 0.7rem; opacity: 0; transition: opacity 0.15s; }
+    .check-item.checked .check-box__mark, .check-item.blocked .check-box__mark { opacity: 1; }
+
+    .check-body { }
+    .check-title { font-size: 0.9rem; font-weight: 500; color: #e8e8f0; margin-bottom: 0.15rem; }
+    .check-item.checked .check-title { color: #6a6a80; text-decoration: line-through; }
+    .check-hint { font-size: 0.78rem; color: #6a6a80; line-height: 1.5; }
+    .check-tag {
+      font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 5px; font-weight: 600;
+      border: 1px solid; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+    }
+    .tag-required { background: rgba(239,83,80,0.1); border-color: rgba(239,83,80,0.25); color: #ef5350; }
+    .tag-recommended { background: rgba(255,213,79,0.08); border-color: rgba(255,213,79,0.2); color: #ffd54f; }
+    .tag-optional { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: #6a6a80; }
+
+    .check-detail { display: none; padding: 0 1.25rem 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .check-item.expanded .check-detail { display: block; }
+    .check-detail textarea {
+      width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 0.6rem; color: #e8e8f0; font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace; resize: vertical; min-height: 50px;
+      outline: none; margin-top: 0.75rem; transition: border-color 0.2s;
+    }
+    .check-detail textarea:focus { border-color: rgba(102,187,106,0.4); }
+    .block-btn {
+      font-size: 0.72rem; padding: 0.3rem 0.7rem; border-radius: 6px; margin-top: 0.6rem;
+      background: rgba(239,83,80,0.1); border: 1px solid rgba(239,83,80,0.2);
+      color: #ef5350; cursor: pointer; transition: all 0.2s;
+    }
+    .block-btn:hover { background: rgba(239,83,80,0.2); }
+
+    /* Final state */
+    .clearance-card {
+      margin-top: 2.5rem; border-radius: 20px; padding: 2.5rem; text-align: center;
+      display: none; animation: pop-in 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes pop-in { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .clearance-card.cleared { background: linear-gradient(135deg, rgba(102,187,106,0.12), rgba(77,182,172,0.08)); border: 1px solid rgba(102,187,106,0.3); display: block; }
+    .clearance-card.blocked-state { background: linear-gradient(135deg, rgba(239,83,80,0.1), rgba(255,152,0,0.06)); border: 1px solid rgba(239,83,80,0.3); display: block; }
+    .clearance-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .clearance-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: #e8e8f0; margin-bottom: 0.5rem; }
+    .clearance-sub { color: #a0a0b8; font-size: 0.9rem; line-height: 1.6; max-width: 420px; margin: 0 auto 1.5rem; }
+    .clearance-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.875rem; font-weight: 600;
+      cursor: pointer; text-decoration: none; transition: all 0.2s; border: none;
+    }
+    .clearance-btn.go { background: #66bb6a; color: #0a0a0f; }
+    .clearance-btn.go:hover { background: #57a75b; transform: translateY(-1px); }
+    .clearance-btn.reset { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: #a0a0b8; margin-left: 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <div class="auth-loading" id="auth-loading">
+    <div style="text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">✅</div>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <div class="page-shell" id="page-shell">
+    <div class="topbar">
+      <a href="../templates.html" class="topbar__back">← Template Library</a>
+      <span class="topbar__title">✅ Production Preflight</span>
+      <div class="topbar__actions">
+        <span class="topbar__progress" id="topbar-progress">0 / 0</span>
+        <button class="topbar__btn" onclick="resetAll()">New Check</button>
+      </div>
+    </div>
+
+    <div class="template-page">
+
+      <div class="tmpl-header">
+        <div class="tmpl-header__icon-row">
+          <div class="tmpl-header__icon">✅</div>
+          <div>
+            <div class="tmpl-header__label">Production Preflight</div>
+            <div class="tmpl-header__name">Run Before Every Commit</div>
+          </div>
+        </div>
+        <p class="tmpl-header__desc">
+          The final verification checklist. Run this before every non-trivial commit.
+          Required items must pass. Flag anything blocked and investigate before shipping.
+        </p>
+        <div class="tmpl-header__progress-wrap">
+          <div class="tmpl-header__bar">
+            <div class="tmpl-header__fill" id="progress-fill"></div>
+          </div>
+          <span class="tmpl-header__label-txt" id="progress-text">0 / 0</span>
+        </div>
+      </div>
+
+      <!-- Commit Info -->
+      <div class="commit-card">
+        <div class="commit-field">
+          <label>What are you committing?</label>
+          <input type="text" id="commit-desc" placeholder="e.g. Add Prediction dataclass + error handling">
+        </div>
+        <div class="commit-field">
+          <label>Branch</label>
+          <input type="text" id="commit-branch" placeholder="e.g. feat/prediction-model">
+        </div>
+      </div>
+
+      <!-- Checklist -->
+      <div id="checklist"></div>
+
+      <!-- Clearance / Block card -->
+      <div id="clearance-cleared" class="clearance-card cleared" style="display:none;">
+        <div class="clearance-icon">🚀</div>
+        <div class="clearance-title">Cleared for Production</div>
+        <p class="clearance-sub">All required checks passed. You're good to commit, push, and ship with confidence.</p>
+        <button class="clearance-btn go" onclick="copyReport()">Copy Preflight Report</button>
+        <button class="clearance-btn reset" onclick="resetAll()">Run Again</button>
+      </div>
+
+      <div id="clearance-blocked" class="clearance-card blocked-state" style="display:none;">
+        <div class="clearance-icon">🚧</div>
+        <div class="clearance-title">Blocked Items Detected</div>
+        <p class="clearance-sub">One or more required checks are blocked. Resolve them before shipping — document what you find.</p>
+        <button class="clearance-btn reset" onclick="scrollToBlocked()">See Blocked Items</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+
+  <script>
+    const STORAGE_KEY = 'preflight-v1';
+
+    const PHASES = [
+      {
+        title: 'Code Quality', items: [
+          { id: 'q1', title: 'Code does exactly what the task asked — nothing more', hint: 'Over-engineering is a ship risk. Scope creep introduces bugs. One task, one diff.', tag: 'required' },
+          { id: 'q2', title: 'No debug code, console.logs, or TODO comments left in', hint: 'grep for "console.log\|TODO\|FIXME\|debugger" before committing.', tag: 'required' },
+          { id: 'q3', title: 'Variable names are clear and self-documenting', hint: 'If someone reads this in 3 months with zero context, will they know what it does?', tag: 'required' },
+          { id: 'q4', title: 'Complex logic has a brief comment explaining WHY', hint: 'Comments explain intent, not what the code does — the code does that.', tag: 'recommended' },
+        ]
+      },
+      {
+        title: 'Test Coverage', items: [
+          { id: 't1', title: 'Existing tests pass locally', hint: 'Run your full test suite. Zero failures = cleared. Any failure = blocked.', tag: 'required' },
+          { id: 't2', title: 'New behavior has test coverage', hint: 'New function = new test. If you can\'t test it, question whether you should build it.', tag: 'required' },
+          { id: 't3', title: 'Edge cases are handled and tested', hint: 'Empty inputs, null values, max/min boundaries, concurrent calls — what happens?', tag: 'recommended' },
+        ]
+      },
+      {
+        title: 'Security & Config', items: [
+          { id: 's1', title: 'No API keys, secrets, or credentials in the diff', hint: 'Run: git diff | grep -i "api_key\|secret\|password\|token" — must be clean.', tag: 'required' },
+          { id: 's2', title: 'All sensitive config is in environment variables', hint: 'Hardcoded values in source code = security incident waiting to happen.', tag: 'required' },
+          { id: 's3', title: 'Input from external sources is validated', hint: 'Never trust request bodies, URL params, or third-party API responses without validation.', tag: 'required' },
+        ]
+      },
+      {
+        title: 'Dependencies & Blast Radius', items: [
+          { id: 'd1', title: 'Blast Radius Checklist has been run', hint: 'Open the Blast Radius Checklist. Map what could break. Do this before the preflight.', tag: 'required' },
+          { id: 'd2', title: 'Callers of changed functions have been updated or verified', hint: 'If you changed a function signature, find every caller and check it still works.', tag: 'required' },
+          { id: 'd3', title: 'No new packages added without team awareness', hint: 'Every new dependency is a supply chain risk + maintenance burden. Is it necessary?', tag: 'recommended' },
+        ]
+      },
+      {
+        title: 'Rollback & Observability', items: [
+          { id: 'r1', title: 'Rollback plan is defined', hint: 'Can you revert the deploy in under 5 minutes? Is there a feature flag? Document it.', tag: 'required' },
+          { id: 'r2', title: 'Errors surface with useful context', hint: 'Silent failures and generic "something went wrong" messages make debugging a nightmare.', tag: 'recommended' },
+          { id: 'r3', title: 'Critical paths have monitoring / alerting', hint: 'If this breaks in production, will you know immediately — or find out from a user?', tag: 'recommended' },
+        ]
+      },
+    ];
+
+    function buildChecklist() {
+      const container = document.getElementById('checklist');
+      const state = loadState();
+
+      PHASES.forEach((phase, pi) => {
+        const done = phase.items.filter(i => state.checked?.[i.id]).length;
+        const blocked = phase.items.filter(i => state.blocked?.[i.id]).length;
+        const phEl = document.createElement('div');
+        phEl.innerHTML = `
+          <div class="phase-header">
+            <div class="phase-header__num">${pi + 1}</div>
+            <div class="phase-header__title">${phase.title}</div>
+            <span class="phase-header__count" id="phase-count-${pi}">${done}/${phase.items.length}${blocked ? ` · ${blocked} blocked` : ''}</span>
+          </div>`;
+        container.appendChild(phEl);
+
+        phase.items.forEach(item => {
+          const isChecked = !!state.checked?.[item.id];
+          const isBlocked = !!state.blocked?.[item.id];
+          const note = state.notes?.[item.id] || '';
+          const tagClass = item.tag === 'required' ? 'tag-required' : item.tag === 'recommended' ? 'tag-recommended' : 'tag-optional';
+          const div = document.createElement('div');
+          div.id = `item-${item.id}`;
+          div.className = `check-item${isChecked ? ' checked' : ''}${isBlocked ? ' blocked' : ''}`;
+          div.innerHTML = `
+            <div class="check-main" onclick="toggleCheck('${item.id}')">
+              <div class="check-box"><span class="check-box__mark">${isBlocked ? '✕' : '✓'}</span></div>
+              <div class="check-body">
+                <div class="check-title">${item.title}</div>
+                <div class="check-hint">${item.hint}</div>
+              </div>
+              <span class="check-tag ${tagClass}">${item.tag}</span>
+            </div>
+            <div class="check-detail">
+              <textarea placeholder="Notes for this check..." oninput="saveNote('${item.id}', this.value)">${note}</textarea>
+              ${item.tag === 'required' ? `<button class="block-btn" onclick="toggleBlock('${item.id}', event)">⚠ Mark as Blocked</button>` : ''}
+            </div>`;
+          // Expand on check
+          div.querySelector('.check-main').addEventListener('click', () => {
+            div.classList.toggle('expanded');
+          });
+          container.appendChild(div);
+        });
+      });
+    }
+
+    function toggleCheck(id) {
+      const el = document.getElementById(`item-${id}`);
+      const wasBlocked = el.classList.contains('blocked');
+      el.classList.remove('blocked');
+      el.classList.toggle('checked');
+      const box = el.querySelector('.check-box__mark');
+      if (box) box.textContent = '✓';
+      saveState();
+      updateProgress();
+    }
+
+    function toggleBlock(id, e) {
+      e.stopPropagation();
+      const el = document.getElementById(`item-${id}`);
+      el.classList.remove('checked');
+      el.classList.toggle('blocked');
+      const box = el.querySelector('.check-box__mark');
+      if (box) box.textContent = el.classList.contains('blocked') ? '✕' : '✓';
+      saveState();
+      updateProgress();
+    }
+
+    function saveNote(id, val) {
+      const state = loadState();
+      if (!state.notes) state.notes = {};
+      state.notes[id] = val;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function saveState() {
+      const state = loadState();
+      state.checked = {}; state.blocked = {};
+      document.querySelectorAll('.check-item.checked').forEach(el => { state.checked[el.id.replace('item-','')] = true; });
+      document.querySelectorAll('.check-item.blocked').forEach(el => { state.blocked[el.id.replace('item-','')] = true; });
+      state.commitDesc = document.getElementById('commit-desc')?.value || '';
+      state.commitBranch = document.getElementById('commit-branch')?.value || '';
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+    }
+
+    function updateProgress() {
+      const allRequired = [];
+      PHASES.forEach(p => p.items.forEach(i => { if (i.tag === 'required') allRequired.push(i.id); }));
+      const total = document.querySelectorAll('.check-item').length;
+      const checked = document.querySelectorAll('.check-item.checked').length;
+      const blockedRequired = allRequired.filter(id => document.getElementById(`item-${id}`)?.classList.contains('blocked'));
+      const requiredPassed = allRequired.filter(id => document.getElementById(`item-${id}`)?.classList.contains('checked'));
+      const allRequiredPassed = requiredPassed.length === allRequired.length;
+      const hasBlocked = blockedRequired.length > 0;
+
+      const pct = total ? (checked / total) * 100 : 0;
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-text').textContent = `${checked} / ${total}`;
+      document.getElementById('topbar-progress').innerHTML = `<strong>${checked} / ${total}</strong>`;
+
+      // Update phase counts
+      PHASES.forEach((phase, pi) => {
+        const done = phase.items.filter(i => document.getElementById(`item-${i.id}`)?.classList.contains('checked')).length;
+        const blk = phase.items.filter(i => document.getElementById(`item-${i.id}`)?.classList.contains('blocked')).length;
+        const el = document.getElementById(`phase-count-${pi}`);
+        if (el) el.textContent = `${done}/${phase.items.length}${blk ? ` · ${blk} blocked` : ''}`;
+      });
+
+      const clearedCard = document.getElementById('clearance-cleared');
+      const blockedCard = document.getElementById('clearance-blocked');
+      clearedCard.style.display = 'none'; blockedCard.style.display = 'none';
+
+      if (allRequiredPassed && !hasBlocked && checked > 0) {
+        clearedCard.style.display = 'block';
+        clearedCard.classList.add('cleared');
+        anime({ targets: '#clearance-cleared', opacity: [0,1], scale: [0.95,1], easing: 'easeOutBack', duration: 400 });
+      } else if (hasBlocked) {
+        blockedCard.style.display = 'block';
+      }
+      saveState();
+    }
+
+    function scrollToBlocked() {
+      const el = document.querySelector('.check-item.blocked');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function copyReport() {
+      const state = loadState();
+      let report = `PRODUCTION PREFLIGHT REPORT — AutoNateAI\n${'='.repeat(44)}\n`;
+      if (state.commitDesc) report += `\nCommit: ${state.commitDesc}`;
+      if (state.commitBranch) report += `\nBranch: ${state.commitBranch}`;
+      report += `\nDate: ${new Date().toLocaleString()}\n\n`;
+      PHASES.forEach(phase => {
+        report += `[${phase.title}]\n`;
+        phase.items.forEach(item => {
+          const el = document.getElementById(`item-${item.id}`);
+          let status = '○';
+          if (el?.classList.contains('checked')) status = '✓';
+          if (el?.classList.contains('blocked')) status = '⚠ BLOCKED';
+          report += `  ${status} ${item.title}\n`;
+          if (state.notes?.[item.id]) report += `    Note: ${state.notes[item.id]}\n`;
+        });
+        report += '\n';
+      });
+      const allRequired = PHASES.flatMap(p => p.items.filter(i => i.tag === 'required').map(i => i.id));
+      const passed = allRequired.filter(id => state.checked?.[id]).length;
+      report += `RESULT: ${passed}/${allRequired.length} required items passed`;
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.querySelector('.clearance-btn.go');
+        if (btn) { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy Preflight Report', 2000); }
+      });
+    }
+
+    function resetAll() {
+      if (!confirm('Reset preflight? All checks will be cleared.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      document.getElementById('checklist').innerHTML = '';
+      document.getElementById('commit-desc').value = '';
+      document.getElementById('commit-branch').value = '';
+      buildChecklist();
+      updateProgress();
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loading = document.getElementById('auth-loading');
+      const shell = document.getElementById('page-shell');
+
+      window.FirebaseApp.init();
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+      if (!user) { window.location.href = '../../auth/login.html'; return; }
+
+      loading.classList.add('hidden');
+      shell.classList.add('ready');
+
+      buildChecklist();
+
+      const state = loadState();
+      if (state.commitDesc) document.getElementById('commit-desc').value = state.commitDesc;
+      if (state.commitBranch) document.getElementById('commit-branch').value = state.commitBranch;
+
+      document.getElementById('commit-desc').addEventListener('input', saveState);
+      document.getElementById('commit-branch').addEventListener('input', saveState);
+
+      updateProgress();
+
+      anime({
+        targets: '.check-item',
+        opacity: [0,1], translateY: [8,0],
+        delay: anime.stagger(30), easing: 'easeOutCubic', duration: 300
+      });
+    });
+  </script>
+</body>
+</html>

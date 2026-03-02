@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Library | AutoNateAI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+    .auth-loading {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f; display: flex; align-items: center;
+      justify-content: center; z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb; border-radius: 50%;
+      margin: 0 auto 1rem; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <script src="../shared/js/theme-loader.js"></script>
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+
+  <style>
+    /* ── Template Library Styles ── */
+    .tl-hero {
+      margin-bottom: 2.5rem;
+    }
+    .tl-hero__badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(121, 134, 203, 0.15); border: 1px solid rgba(121, 134, 203, 0.3);
+      color: #7986cb; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .tl-hero__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700; color: #e8e8f0;
+      margin-bottom: 0.5rem;
+    }
+    .tl-hero__subtitle {
+      color: #a0a0b8; font-size: 1rem; max-width: 520px; line-height: 1.6;
+    }
+    .tl-mapper {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem;
+    }
+    .tl-mapper__letter {
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 0.6rem 1rem; min-width: 70px;
+      transition: all 0.2s;
+    }
+    .tl-mapper__letter:hover {
+      background: rgba(121,134,203,0.1); border-color: rgba(121,134,203,0.3);
+      transform: translateY(-2px);
+    }
+    .tl-mapper__char {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem; font-weight: 700; color: #7986cb;
+    }
+    .tl-mapper__word { font-size: 0.65rem; color: #6a6a80; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .tl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .tl-card {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.75rem; cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; overflow: hidden; text-decoration: none;
+      display: block;
+    }
+    .tl-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--card-accent, #7986cb); opacity: 0; transition: opacity 0.25s;
+    }
+    .tl-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+    .tl-card:hover::before { opacity: 1; }
+
+    .tl-card__header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+    .tl-card__icon-wrap {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; background: var(--card-icon-bg, rgba(121,134,203,0.15));
+    }
+    .tl-card__badge {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.25rem 0.6rem; border-radius: 6px;
+      background: rgba(102, 187, 106, 0.15); color: #66bb6a;
+      border: 1px solid rgba(102,187,106,0.25);
+    }
+    .tl-card__badge.locked {
+      background: rgba(255,213,79,0.1); color: #ffd54f;
+      border-color: rgba(255,213,79,0.25);
+    }
+    .tl-card__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600; color: #e8e8f0; margin-bottom: 0.5rem;
+    }
+    .tl-card__desc { font-size: 0.875rem; color: #a0a0b8; line-height: 1.6; margin-bottom: 1.25rem; }
+    .tl-card__footer { display: flex; align-items: center; justify-content: space-between; }
+    .tl-card__meta { font-size: 0.75rem; color: #6a6a80; }
+    .tl-card__arrow {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,0.06); display: flex; align-items: center;
+      justify-content: center; color: #a0a0b8; font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .tl-card:hover .tl-card__arrow {
+      background: var(--card-accent, #7986cb);
+      color: #fff; transform: translateX(2px);
+    }
+
+    .tl-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #6a6a80; margin-bottom: 1rem;
+    }
+
+    .tl-demo-card {
+      background: linear-gradient(135deg, rgba(77,182,172,0.08), rgba(121,134,203,0.08));
+      border: 1px dashed rgba(77,182,172,0.3);
+    }
+    .tl-demo-card:hover { border-color: rgba(77,182,172,0.5); }
+    .tl-demo-card .tl-card__arrow { background: rgba(77,182,172,0.15); color: #4db6ac; }
+    .tl-demo-card:hover .tl-card__arrow { background: #4db6ac; color: #fff; }
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">📋</div>
+      <div class="loading-spinner"></div>
+      <p>Loading your templates...</p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="templates.html" class="nav-link active">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Template Library</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="workshop.html" class="nav-link">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Workshop</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section" id="admin-section" style="display: none;">
+          <span class="nav-section-title" style="color: #f44336;">Admin</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../admin/" class="nav-link">
+                <span class="nav-icon">🛡️</span>
+                <span class="nav-text">Admin Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak" style="font-size:0.75rem; color: #6a6a80;">Workshop Member</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title">Template Library</h1>
+        </div>
+      </header>
+
+      <div class="content-area">
+
+        <!-- Hero / M.A.P.P.E.R. -->
+        <div class="tl-hero">
+          <div class="tl-hero__badge">✦ Workshop Toolkit</div>
+          <h2 class="tl-hero__title">Your M.A.P.P.E.R. Toolkit</h2>
+          <p class="tl-hero__subtitle">
+            Four battle-tested templates to keep you thinking like a principal engineer —
+            use them before, during, and after every session.
+          </p>
+          <div class="tl-mapper">
+            <div class="tl-mapper__letter"><span class="tl-mapper__char">M</span><span class="tl-mapper__word">Map</span></div>
+            <div class="tl-mapper__letter"><span class="tl-mapper__char">A</span><span class="tl-mapper__word">Analyze</span></div>
+            <div class="tl-mapper__letter"><span class="tl-mapper__char">P</span><span class="tl-mapper__word">Prompt</span></div>
+            <div class="tl-mapper__letter"><span class="tl-mapper__char">P</span><span class="tl-mapper__word">Preview</span></div>
+            <div class="tl-mapper__letter"><span class="tl-mapper__char">E</span><span class="tl-mapper__word">Execute</span></div>
+            <div class="tl-mapper__letter"><span class="tl-mapper__char">R</span><span class="tl-mapper__word">Review</span></div>
+          </div>
+        </div>
+
+        <!-- Templates Grid -->
+        <p class="tl-section-title">Your Templates — Available Now</p>
+        <div class="tl-grid" id="tl-grid">
+
+          <a href="templates/blast-radius.html" class="tl-card"
+             style="--card-accent: #ef5350; --card-icon-bg: rgba(239,83,80,0.12);">
+            <div class="tl-card__header">
+              <div class="tl-card__icon-wrap">💥</div>
+              <span class="tl-card__badge">Active</span>
+            </div>
+            <div class="tl-card__title">Blast Radius Checklist</div>
+            <div class="tl-card__desc">
+              Estimate the blast radius of any change before you make it.
+              Know what breaks, what to test, and how to roll back — every time.
+            </div>
+            <div class="tl-card__footer">
+              <span class="tl-card__meta">Checklist · 8 steps</span>
+              <div class="tl-card__arrow">→</div>
+            </div>
+          </a>
+
+          <a href="templates/prompt-framework.html" class="tl-card"
+             style="--card-accent: #7986cb; --card-icon-bg: rgba(121,134,203,0.12);">
+            <div class="tl-card__header">
+              <div class="tl-card__icon-wrap">🧠</div>
+              <span class="tl-card__badge">Active</span>
+            </div>
+            <div class="tl-card__title">Prompt Framework Template</div>
+            <div class="tl-card__desc">
+              The structured prompt template used in the workshop.
+              Fill it in, copy it, and paste straight into Claude Code or any AI agent.
+            </div>
+            <div class="tl-card__footer">
+              <span class="tl-card__meta">Template · M.A.P.P.E.R.</span>
+              <div class="tl-card__arrow">→</div>
+            </div>
+          </a>
+
+          <a href="templates/architecture-mapping.html" class="tl-card"
+             style="--card-accent: #4db6ac; --card-icon-bg: rgba(77,182,172,0.12);">
+            <div class="tl-card__header">
+              <div class="tl-card__icon-wrap">🗺️</div>
+              <span class="tl-card__badge">Active</span>
+            </div>
+            <div class="tl-card__title">Architecture Mapping Template</div>
+            <div class="tl-card__desc">
+              Document codebase structure, contracts, and dependency chains
+              before you write a single prompt. The M in M.A.P.P.E.R.
+            </div>
+            <div class="tl-card__footer">
+              <span class="tl-card__meta">Worksheet · Fillable</span>
+              <div class="tl-card__arrow">→</div>
+            </div>
+          </a>
+
+          <a href="templates/production-preflight.html" class="tl-card"
+             style="--card-accent: #66bb6a; --card-icon-bg: rgba(102,187,106,0.12);">
+            <div class="tl-card__header">
+              <div class="tl-card__icon-wrap">✅</div>
+              <span class="tl-card__badge">Active</span>
+            </div>
+            <div class="tl-card__title">Production Change Preflight</div>
+            <div class="tl-card__desc">
+              Run this before every commit. The final verification checklist
+              that catches issues early and keeps your code production-ready.
+            </div>
+            <div class="tl-card__footer">
+              <span class="tl-card__meta">Checklist · Pre-commit</span>
+              <div class="tl-card__arrow">→</div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Demo Repo Section -->
+        <p class="tl-section-title" style="margin-top: 2.5rem;">Workshop Resources</p>
+        <div class="tl-grid">
+          <a href="workshop.html" class="tl-card tl-demo-card"
+             style="--card-accent: #4db6ac;">
+            <div class="tl-card__header">
+              <div class="tl-card__icon-wrap" style="background: rgba(77,182,172,0.12);">⚡</div>
+              <span class="tl-card__badge" id="workshop-badge">Workshop Day</span>
+            </div>
+            <div class="tl-card__title">Workshop Modules</div>
+            <div class="tl-card__desc">
+              The full 4-hour session breakdown — live coding modules, activities,
+              and the NBA AI Prediction Bot build. Unlocks 24 hours before we go live.
+            </div>
+            <div class="tl-card__footer">
+              <span class="tl-card__meta">7 modules · 4 hours</span>
+              <div class="tl-card__arrow">→</div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/rbac.js"></script>
+
+  <script>
+    // Workshop date — update this for each workshop
+    const WORKSHOP_DATE = new Date('2026-03-21T10:00:00-05:00');
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loadingScreen = document.getElementById('auth-loading');
+      const dashboardContent = document.getElementById('dashboard-content');
+
+      if (!window.FirebaseApp.init()) {
+        loadingScreen.innerHTML = '<div class="loading-content"><p>Error loading. Please refresh.</p></div>';
+        return;
+      }
+
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+
+      if (!user) {
+        window.AuthService.setRedirectUrl(window.location.href);
+        window.location.href = '../auth/login.html';
+        return;
+      }
+
+      loadingScreen.classList.add('hidden');
+      dashboardContent.classList.add('ready');
+
+      setupSidebar();
+      setupLogout();
+      loadUserInfo(user);
+
+      if (window.RBACService) {
+        const isAdmin = await window.RBACService.hasRole('admin');
+        if (isAdmin) document.getElementById('admin-section').style.display = 'block';
+      }
+
+      // Update workshop badge
+      const now = new Date();
+      const msUntil = WORKSHOP_DATE - now;
+      const badge = document.getElementById('workshop-badge');
+      if (msUntil > 24 * 60 * 60 * 1000) {
+        badge.textContent = 'Locked';
+        badge.className = 'tl-card__badge locked';
+      } else {
+        badge.textContent = msUntil > 0 ? 'Unlocks Soon' : 'Live Now';
+      }
+
+      // Animate cards in
+      anime({
+        targets: '.tl-card, .tl-mapper__letter',
+        opacity: [0, 1],
+        translateY: [16, 0],
+        delay: anime.stagger(60),
+        easing: 'easeOutCubic',
+        duration: 400
+      });
+
+      window.AuthService.onAuthStateChanged((u) => {
+        if (!u) window.location.href = '../auth/login.html';
+      });
+    });
+
+    function loadUserInfo(user) {
+      const displayName = user.displayName || user.email.split('@')[0];
+      document.getElementById('user-name').textContent = displayName;
+      const avatar = document.getElementById('user-avatar');
+      if (user.photoURL) {
+        avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
+      } else {
+        avatar.textContent = displayName.charAt(0).toUpperCase();
+      }
+    }
+
+    function setupSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggle = document.getElementById('sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+      });
+      if (localStorage.getItem('sidebarCollapsed') === 'true') sidebar.classList.add('collapsed');
+      mobileBtn.addEventListener('click', () => sidebar.classList.add('open'));
+      overlay.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+
+    function setupLogout() {
+      document.getElementById('logout-link').addEventListener('click', async (e) => {
+        e.preventDefault();
+        await window.AuthService.logout();
+        window.location.href = '../index.html';
+      });
+    }
+  </script>
+</body>
+</html>

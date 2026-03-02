@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blast Radius Checklist | AutoNateAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="../../shared/js/theme-loader.js"></script>
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <style>
+    body { background: #0a0a0f; color: #e8e8f0; font-family: 'Inter', sans-serif; min-height: 100vh; }
+    .auth-loading {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f; display: flex; align-items: center; justify-content: center; z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; }
+    .loading-spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(239,83,80,0.3);
+      border-top-color: #ef5350; border-radius: 50%; margin: 1rem auto; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .page-shell { display: none; min-height: 100vh; flex-direction: column; }
+    .page-shell.ready { display: flex; }
+
+    /* Top Bar */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: #0d0d14; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar__back {
+      display: flex; align-items: center; gap: 0.5rem; color: #a0a0b8;
+      text-decoration: none; font-size: 0.875rem; transition: color 0.2s;
+    }
+    .topbar__back:hover { color: #e8e8f0; }
+    .topbar__title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: #e8e8f0;
+    }
+    .topbar__actions { display: flex; gap: 0.75rem; }
+    .topbar__btn {
+      font-size: 0.8rem; font-weight: 500; padding: 0.4rem 0.9rem;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05); color: #a0a0b8; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .topbar__btn:hover { border-color: rgba(239,83,80,0.4); color: #ef5350; }
+    .topbar__btn.primary {
+      background: rgba(239,83,80,0.15); border-color: rgba(239,83,80,0.3); color: #ef5350;
+    }
+
+    /* Page Content */
+    .template-page { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; width: 100%; }
+
+    /* Header */
+    .tmpl-header { margin-bottom: 2.5rem; }
+    .tmpl-header__icon-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .tmpl-header__icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: rgba(239,83,80,0.12); display: flex; align-items: center;
+      justify-content: center; font-size: 1.75rem; border: 1px solid rgba(239,83,80,0.2);
+    }
+    .tmpl-header__label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #ef5350; margin-bottom: 0.25rem;
+    }
+    .tmpl-header__name {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #e8e8f0;
+    }
+    .tmpl-header__desc { color: #a0a0b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+    .tmpl-header__progress-bar-wrap {
+      display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem;
+    }
+    .tmpl-header__progress-bar {
+      flex: 1; height: 6px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden;
+    }
+    .tmpl-header__progress-fill {
+      height: 100%; background: #ef5350; border-radius: 3px;
+      transition: width 0.4s cubic-bezier(0.4,0,0.2,1); width: 0%;
+    }
+    .tmpl-header__progress-text { font-size: 0.75rem; color: #6a6a80; white-space: nowrap; }
+
+    /* Context input */
+    .context-card {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 1.5rem; margin-bottom: 2rem;
+    }
+    .context-card__label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #6a6a80; margin-bottom: 0.75rem;
+    }
+    .context-input {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.75rem 1rem; color: #e8e8f0; font-size: 0.9rem;
+      font-family: 'Inter', sans-serif; resize: vertical; min-height: 80px;
+      transition: border-color 0.2s; outline: none;
+    }
+    .context-input:focus { border-color: rgba(239,83,80,0.4); }
+    .context-input::placeholder { color: #6a6a80; }
+    .context-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .context-field label { display: block; font-size: 0.75rem; color: #6a6a80; margin-bottom: 0.35rem; }
+    .context-field input {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.6rem 0.85rem; color: #e8e8f0; font-size: 0.875rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .context-field input:focus { border-color: rgba(239,83,80,0.4); }
+
+    /* Risk meter */
+    .risk-meter { margin-top: 1rem; }
+    .risk-meter label { display: block; font-size: 0.75rem; color: #6a6a80; margin-bottom: 0.5rem; }
+    .risk-options { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .risk-option {
+      flex: 1; min-width: 60px; text-align: center; padding: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      cursor: pointer; font-size: 0.8rem; font-weight: 500; color: #6a6a80;
+      transition: all 0.2s; background: rgba(255,255,255,0.02);
+    }
+    .risk-option.selected { border-color: var(--risk-color); color: var(--risk-color); background: var(--risk-bg); }
+    .risk-1 { --risk-color: #66bb6a; --risk-bg: rgba(102,187,106,0.1); }
+    .risk-2 { --risk-color: #aed581; --risk-bg: rgba(174,213,129,0.1); }
+    .risk-3 { --risk-color: #ffd54f; --risk-bg: rgba(255,213,79,0.1); }
+    .risk-4 { --risk-color: #ff8a65; --risk-bg: rgba(255,138,101,0.1); }
+    .risk-5 { --risk-color: #ef5350; --risk-bg: rgba(239,83,80,0.1); }
+
+    /* Checklist */
+    .checklist-section { margin-bottom: 1.5rem; }
+    .checklist-section__title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #6a6a80;
+      margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .checklist-section__count {
+      background: rgba(255,255,255,0.07); border-radius: 10px;
+      padding: 0.15rem 0.5rem; font-size: 0.65rem;
+    }
+
+    .check-item {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.625rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 1rem;
+      align-items: start; cursor: pointer; transition: all 0.2s;
+    }
+    .check-item:hover { border-color: rgba(239,83,80,0.2); }
+    .check-item.checked { border-color: rgba(239,83,80,0.25); background: rgba(239,83,80,0.04); }
+    .check-box {
+      width: 22px; height: 22px; border-radius: 6px;
+      border: 2px solid rgba(255,255,255,0.2); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; margin-top: 1px;
+    }
+    .check-item.checked .check-box {
+      background: #ef5350; border-color: #ef5350;
+    }
+    .check-box__mark { color: #fff; font-size: 0.75rem; opacity: 0; transition: opacity 0.15s; }
+    .check-item.checked .check-box__mark { opacity: 1; }
+    .check-content { }
+    .check-title { font-size: 0.9rem; font-weight: 500; color: #e8e8f0; margin-bottom: 0.25rem; }
+    .check-item.checked .check-title { color: #6a6a80; text-decoration: line-through; }
+    .check-hint { font-size: 0.78rem; color: #6a6a80; line-height: 1.5; }
+    .check-notes {
+      display: none; margin-top: 0.75rem;
+    }
+    .check-item.expanded .check-notes { display: block; }
+    .check-notes textarea {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      padding: 0.6rem; color: #e8e8f0; font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace; resize: vertical; min-height: 60px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .check-notes textarea:focus { border-color: rgba(239,83,80,0.4); }
+    .check-expand {
+      font-size: 0.7rem; color: #6a6a80; margin-top: 0.3rem; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.3rem;
+    }
+    .check-expand:hover { color: #ef5350; }
+
+    /* Summary */
+    .summary-card {
+      background: linear-gradient(135deg, rgba(239,83,80,0.08), rgba(121,134,203,0.05));
+      border: 1px solid rgba(239,83,80,0.2); border-radius: 16px; padding: 1.5rem;
+      margin-top: 2rem; display: none;
+    }
+    .summary-card.show { display: block; }
+    .summary-card__title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600;
+      color: #e8e8f0; margin-bottom: 1rem;
+    }
+    .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .summary-stat { text-align: center; }
+    .summary-stat__num {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; font-weight: 700; color: #ef5350;
+    }
+    .summary-stat__label { font-size: 0.72rem; color: #6a6a80; }
+  </style>
+</head>
+<body>
+
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">💥</div>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <div class="page-shell" id="page-shell">
+    <div class="topbar">
+      <a href="../templates.html" class="topbar__back">← Template Library</a>
+      <span class="topbar__title">💥 Blast Radius Checklist</span>
+      <div class="topbar__actions">
+        <button class="topbar__btn" onclick="resetAll()">Reset</button>
+        <button class="topbar__btn primary" onclick="copyReport()">Copy Report</button>
+      </div>
+    </div>
+
+    <div class="template-page">
+
+      <div class="tmpl-header">
+        <div class="tmpl-header__icon-row">
+          <div class="tmpl-header__icon">💥</div>
+          <div>
+            <div class="tmpl-header__label">Blast Radius Checklist</div>
+            <div class="tmpl-header__name">Before You Ship</div>
+          </div>
+        </div>
+        <p class="tmpl-header__desc">
+          Estimate the blast radius of any change before you make it.
+          A senior engineer doesn't wonder what could break — they map it.
+          Fill this out before every non-trivial change. Every time.
+        </p>
+        <div class="tmpl-header__progress-bar-wrap">
+          <div class="tmpl-header__progress-bar">
+            <div class="tmpl-header__progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="tmpl-header__progress-text" id="progress-text">0 / 8 checked</span>
+        </div>
+      </div>
+
+      <!-- Context -->
+      <div class="context-card">
+        <div class="context-card__label">What are you changing?</div>
+        <textarea class="context-input" id="ctx-change" placeholder="Describe the change in one or two sentences. e.g. 'Refactoring the auth middleware to extract token validation into its own module.'" rows="3"></textarea>
+        <div class="context-row">
+          <div class="context-field">
+            <label>Primary file / module affected</label>
+            <input type="text" id="ctx-file" placeholder="e.g. src/middleware/auth.js">
+          </div>
+          <div class="context-field">
+            <label>Branch / PR name</label>
+            <input type="text" id="ctx-branch" placeholder="e.g. feat/auth-refactor">
+          </div>
+        </div>
+        <div class="risk-meter">
+          <label>Risk level (your gut)</label>
+          <div class="risk-options">
+            <div class="risk-option risk-1" onclick="selectRisk(1, this)">1<br><span style="font-size:0.65rem;">Minimal</span></div>
+            <div class="risk-option risk-2" onclick="selectRisk(2, this)">2<br><span style="font-size:0.65rem;">Low</span></div>
+            <div class="risk-option risk-3" onclick="selectRisk(3, this)">3<br><span style="font-size:0.65rem;">Medium</span></div>
+            <div class="risk-option risk-4" onclick="selectRisk(4, this)">4<br><span style="font-size:0.65rem;">High</span></div>
+            <div class="risk-option risk-5" onclick="selectRisk(5, this)">5<br><span style="font-size:0.65rem;">Critical</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist Sections -->
+      <div id="checklist-container"></div>
+
+      <!-- Summary -->
+      <div class="summary-card" id="summary-card">
+        <div class="summary-card__title">✅ Blast radius assessed. You're cleared to proceed.</div>
+        <div class="summary-grid">
+          <div class="summary-stat">
+            <div class="summary-stat__num" id="sum-checked">0</div>
+            <div class="summary-stat__label">Items checked</div>
+          </div>
+          <div class="summary-stat">
+            <div class="summary-stat__num" id="sum-risk">—</div>
+            <div class="summary-stat__label">Risk level</div>
+          </div>
+          <div class="summary-stat">
+            <div class="summary-stat__num" id="sum-notes">0</div>
+            <div class="summary-stat__label">Notes added</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+
+  <script>
+    const STORAGE_KEY = 'blast-radius-v1';
+    let selectedRisk = null;
+
+    const SECTIONS = [
+      {
+        title: 'Scope', items: [
+          { id: 'scope-1', title: 'What files are directly modified?', hint: 'List every file you\'re touching. If it\'s more than 5, consider splitting the PR.' },
+          { id: 'scope-2', title: 'What functions/classes are changing?', hint: 'Name the specific exports, methods, or interfaces you\'re modifying.' },
+        ]
+      },
+      {
+        title: 'Downstream Impact', items: [
+          { id: 'down-1', title: 'What imports or depends on the changed modules?', hint: 'Run: grep -r "from \'./auth\'" --include="*.ts" src/ — or use your IDE\'s "Find usages".' },
+          { id: 'down-2', title: 'Will the public API (function signatures, types) change?', hint: 'If yes — this is a breaking change. Every caller needs to be updated.' },
+          { id: 'down-3', title: 'Are there DB queries or external API calls affected?', hint: 'Check if you\'re changing how data is read/written or if any external contracts shift.' },
+        ]
+      },
+      {
+        title: 'Test Coverage', items: [
+          { id: 'test-1', title: 'What existing tests cover this area?', hint: 'Run your test suite filtered to this module. If coverage is < 60%, flag it.' },
+          { id: 'test-2', title: 'Do you need to add or update tests?', hint: 'New behavior = new test. If you\'re removing a test, document why.' },
+        ]
+      },
+      {
+        title: 'Rollback', items: [
+          { id: 'rb-1', title: 'What\'s the rollback plan if this breaks production?', hint: 'Can you revert the deploy? Is there a feature flag? Does data need migration to roll back?' },
+        ]
+      },
+    ];
+
+    function selectRisk(n, el) {
+      selectedRisk = n;
+      document.querySelectorAll('.risk-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      saveState();
+    }
+
+    function buildChecklist() {
+      const container = document.getElementById('checklist-container');
+      const state = loadState();
+      let allItems = [];
+
+      SECTIONS.forEach(section => {
+        const completedCount = section.items.filter(i => state.checked?.[i.id]).length;
+        const sectionEl = document.createElement('div');
+        sectionEl.className = 'checklist-section';
+        sectionEl.innerHTML = `
+          <div class="checklist-section__title">
+            ${section.title}
+            <span class="checklist-section__count">${completedCount}/${section.items.length}</span>
+          </div>
+        `;
+        section.items.forEach(item => {
+          allItems.push(item.id);
+          const isChecked = !!state.checked?.[item.id];
+          const notes = state.notes?.[item.id] || '';
+          const div = document.createElement('div');
+          div.className = `check-item${isChecked ? ' checked' : ''}`;
+          div.id = `item-${item.id}`;
+          div.innerHTML = `
+            <div class="check-box" onclick="toggleCheck('${item.id}', event)">
+              <span class="check-box__mark">✓</span>
+            </div>
+            <div class="check-content">
+              <div class="check-title">${item.title}</div>
+              <div class="check-hint">${item.hint}</div>
+              <span class="check-expand" onclick="toggleExpand('${item.id}', event)">✎ Add notes</span>
+              <div class="check-notes">
+                <textarea placeholder="Your notes..." oninput="saveNote('${item.id}', this.value)">${notes}</textarea>
+              </div>
+            </div>`;
+          sectionEl.appendChild(div);
+        });
+        container.appendChild(sectionEl);
+      });
+    }
+
+    function toggleCheck(id, e) {
+      e.stopPropagation();
+      const el = document.getElementById(`item-${id}`);
+      el.classList.toggle('checked');
+      saveState();
+      updateProgress();
+    }
+
+    function toggleExpand(id, e) {
+      e.stopPropagation();
+      document.getElementById(`item-${id}`).classList.toggle('expanded');
+    }
+
+    function saveNote(id, val) {
+      const state = loadState();
+      if (!state.notes) state.notes = {};
+      state.notes[id] = val;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function saveState() {
+      const state = loadState();
+      state.checked = {};
+      document.querySelectorAll('.check-item.checked').forEach(el => {
+        const id = el.id.replace('item-', '');
+        state.checked[id] = true;
+      });
+      state.risk = selectedRisk;
+      state.ctx = {
+        change: document.getElementById('ctx-change')?.value || '',
+        file: document.getElementById('ctx-file')?.value || '',
+        branch: document.getElementById('ctx-branch')?.value || '',
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+    }
+
+    function updateProgress() {
+      const total = document.querySelectorAll('.check-item').length;
+      const checked = document.querySelectorAll('.check-item.checked').length;
+      const pct = total ? (checked / total) * 100 : 0;
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-text').textContent = `${checked} / ${total} checked`;
+
+      // Update section counts
+      document.querySelectorAll('.checklist-section').forEach((section, i) => {
+        const items = section.querySelectorAll('.check-item');
+        const done = section.querySelectorAll('.check-item.checked').length;
+        const countEl = section.querySelector('.checklist-section__count');
+        if (countEl) countEl.textContent = `${done}/${items.length}`;
+      });
+
+      const card = document.getElementById('summary-card');
+      if (checked === total && total > 0) {
+        card.classList.add('show');
+        document.getElementById('sum-checked').textContent = checked;
+        document.getElementById('sum-risk').textContent = selectedRisk ? `${selectedRisk}/5` : '—';
+        const notes = document.querySelectorAll('.check-notes textarea');
+        let noteCount = 0;
+        notes.forEach(n => { if (n.value.trim()) noteCount++; });
+        document.getElementById('sum-notes').textContent = noteCount;
+        anime({ targets: '#summary-card', opacity: [0,1], translateY: [16,0], easing: 'easeOutCubic', duration: 400 });
+      } else {
+        card.classList.remove('show');
+      }
+      saveState();
+    }
+
+    function resetAll() {
+      if (!confirm('Reset this checklist? All notes will be cleared.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      document.getElementById('checklist-container').innerHTML = '';
+      selectedRisk = null;
+      buildChecklist();
+      updateProgress();
+    }
+
+    function copyReport() {
+      const state = loadState();
+      const ctx = state.ctx || {};
+      const checked = state.checked || {};
+      const notes = state.notes || {};
+      let report = `BLAST RADIUS CHECKLIST — AutoNateAI\n${'='.repeat(40)}\n`;
+      if (ctx.change) report += `\nChange: ${ctx.change}`;
+      if (ctx.file) report += `\nFile: ${ctx.file}`;
+      if (ctx.branch) report += `\nBranch: ${ctx.branch}`;
+      if (state.risk) report += `\nRisk Level: ${state.risk}/5`;
+      report += '\n\n';
+      SECTIONS.forEach(s => {
+        report += `[${s.title}]\n`;
+        s.items.forEach(item => {
+          const done = checked[item.id] ? '✓' : '○';
+          report += `  ${done} ${item.title}\n`;
+          if (notes[item.id]) report += `    Notes: ${notes[item.id]}\n`;
+        });
+        report += '\n';
+      });
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.querySelector('.topbar__btn.primary');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Report', 2000);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loading = document.getElementById('auth-loading');
+      const shell = document.getElementById('page-shell');
+
+      window.FirebaseApp.init();
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+      if (!user) { window.location.href = '../../auth/login.html'; return; }
+
+      loading.classList.add('hidden');
+      shell.classList.add('ready');
+
+      buildChecklist();
+
+      // Restore state
+      const state = loadState();
+      if (state.ctx) {
+        if (state.ctx.change) document.getElementById('ctx-change').value = state.ctx.change;
+        if (state.ctx.file) document.getElementById('ctx-file').value = state.ctx.file;
+        if (state.ctx.branch) document.getElementById('ctx-branch').value = state.ctx.branch;
+      }
+      if (state.risk) {
+        selectedRisk = state.risk;
+        const el = document.querySelector(`.risk-${state.risk}`);
+        if (el) el.classList.add('selected');
+      }
+
+      updateProgress();
+
+      // Auto-save on any input
+      document.querySelectorAll('.context-input, .context-field input').forEach(el => {
+        el.addEventListener('input', saveState);
+      });
+
+      anime({
+        targets: '.check-item',
+        opacity: [0, 1], translateY: [8, 0],
+        delay: anime.stagger(40), easing: 'easeOutCubic', duration: 300
+      });
+    });
+  </script>
+</body>
+</html>

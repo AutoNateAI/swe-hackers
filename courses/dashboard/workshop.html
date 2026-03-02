@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop | AutoNateAI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .dashboard { display: none !important; }
+    .dashboard.ready { display: flex !important; }
+    .auth-loading {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f; display: flex; align-items: center;
+      justify-content: center; z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-content { text-align: center; color: #e8e8f0; }
+    .loading-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(121, 134, 203, 0.3);
+      border-top-color: #7986cb; border-radius: 50%;
+      margin: 0 auto 1rem; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <script src="../shared/js/theme-loader.js"></script>
+  <link rel="stylesheet" href="../shared/css/dashboard.css">
+
+  <style>
+    /* ── Workshop Page Styles ── */
+
+    /* --- Locked State --- */
+    .ws-locked {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center;
+      min-height: 60vh; padding: 3rem 1rem;
+    }
+    .ws-locked__icon {
+      font-size: 4rem; margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .ws-locked__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem; font-weight: 700; color: #e8e8f0; margin-bottom: 0.75rem;
+    }
+    .ws-locked__subtitle {
+      color: #a0a0b8; font-size: 1rem; max-width: 440px; line-height: 1.6; margin-bottom: 2rem;
+    }
+    .ws-countdown {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem;
+    }
+    .ws-countdown__unit {
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1rem 1.5rem; min-width: 90px;
+    }
+    .ws-countdown__num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem; font-weight: 700; color: #7986cb;
+      line-height: 1; margin-bottom: 0.25rem;
+    }
+    .ws-countdown__label {
+      font-size: 0.65rem; color: #6a6a80; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .ws-locked__date {
+      font-size: 0.85rem; color: #6a6a80;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 0.5rem 1.25rem;
+    }
+    .ws-locked__date strong { color: #a0a0b8; }
+
+    /* --- Unlocked State --- */
+    .ws-header {
+      margin-bottom: 2rem;
+    }
+    .ws-header__badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(102,187,106,0.12); border: 1px solid rgba(102,187,106,0.25);
+      color: #66bb6a; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .ws-header__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem; font-weight: 700; color: #e8e8f0; margin-bottom: 0.5rem;
+    }
+    .ws-header__subtitle { color: #a0a0b8; font-size: 0.95rem; max-width: 520px; line-height: 1.6; }
+    .ws-header__meta { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .ws-header__meta-item { font-size: 0.8rem; color: #6a6a80; display: flex; align-items: center; gap: 0.35rem; }
+    .ws-header__meta-item strong { color: #a0a0b8; }
+
+    /* Module list */
+    .ws-modules { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ws-module {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 1.25rem 1.5rem;
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 1rem; align-items: center;
+      cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
+    }
+    .ws-module::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--mod-color, #7986cb); opacity: 0; transition: opacity 0.2s;
+    }
+    .ws-module:hover { border-color: rgba(255,255,255,0.14); transform: translateX(3px); }
+    .ws-module:hover::before { opacity: 1; }
+    .ws-module.break-module {
+      background: rgba(255,255,255,0.02); border-style: dashed;
+      cursor: default; opacity: 0.6;
+    }
+    .ws-module.break-module:hover { transform: none; border-color: rgba(255,255,255,0.07); }
+
+    .ws-module__num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--mod-bg, rgba(121,134,203,0.1));
+      color: var(--mod-color, #7986cb);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 700;
+    }
+    .ws-module__body { }
+    .ws-module__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem; font-weight: 600; color: #e8e8f0; margin-bottom: 0.2rem;
+    }
+    .ws-module__time { font-size: 0.75rem; color: #6a6a80; }
+    .ws-module__right { text-align: right; }
+    .ws-module__duration {
+      font-size: 0.75rem; color: #a0a0b8;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 0.2rem 0.5rem; white-space: nowrap;
+    }
+    .ws-module__icon { font-size: 0.9rem; margin-top: 0.4rem; display: block; }
+
+    .ws-module__expand {
+      display: none; grid-column: 1 / -1; padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06); margin-top: 0.5rem;
+      color: #a0a0b8; font-size: 0.875rem; line-height: 1.6;
+    }
+    .ws-module.expanded .ws-module__expand { display: block; }
+    .ws-module__activities {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;
+    }
+    .ws-module__activity {
+      font-size: 0.72rem; color: #7986cb;
+      background: rgba(121,134,203,0.1); border: 1px solid rgba(121,134,203,0.2);
+      border-radius: 6px; padding: 0.2rem 0.6rem;
+    }
+
+    .ws-repo-card {
+      margin-top: 2rem;
+      background: linear-gradient(135deg, rgba(77,182,172,0.08), rgba(121,134,203,0.05));
+      border: 1px solid rgba(77,182,172,0.25); border-radius: 16px; padding: 1.5rem;
+      display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+    }
+    .ws-repo-card__icon { font-size: 2.5rem; }
+    .ws-repo-card__body { flex: 1; min-width: 200px; }
+    .ws-repo-card__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600; color: #e8e8f0; margin-bottom: 0.25rem;
+    }
+    .ws-repo-card__desc { font-size: 0.85rem; color: #a0a0b8; }
+    .ws-repo-card__link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #4db6ac; color: #0a0a0f; font-size: 0.85rem; font-weight: 600;
+      padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .ws-repo-card__link:hover { opacity: 0.85; }
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <div class="auth-loading" id="auth-loading">
+    <div class="loading-content">
+      <div class="loading-icon">⚡</div>
+      <div class="loading-spinner"></div>
+      <p>Loading workshop...</p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <div class="logo-icon">🏛️</div>
+        <span class="logo-text">AutoNateAI</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="templates.html" class="nav-link">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Template Library</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="workshop.html" class="nav-link active">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Workshop</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Account</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="logout-link">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section" id="admin-section" style="display: none;">
+          <span class="nav-section-title" style="color: #f44336;">Admin</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../admin/" class="nav-link">
+                <span class="nav-icon">🛡️</span>
+                <span class="nav-text">Admin Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-card" id="user-card">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Loading...</div>
+            <div class="user-streak" style="font-size:0.75rem; color: #6a6a80;">Workshop Member</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <h1 class="page-title">Workshop</h1>
+        </div>
+      </header>
+
+      <div class="content-area" id="workshop-content">
+        <!-- Rendered by JS -->
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="../shared/js/auth.js"></script>
+  <script src="../shared/js/rbac.js"></script>
+
+  <script>
+    // ── CONFIGURE THIS FOR EACH WORKSHOP ──────────────────────────────────────
+    const WORKSHOP_DATE = new Date('2026-03-21T10:00:00-05:00');
+    const WORKSHOP_TITLE = 'NBA AI Prediction Bot — Full Stack Build';
+    const UNLOCK_HOURS_BEFORE = 24;
+    // Emails that always see the unlocked workshop view (instructors/admins)
+    const PREVIEW_EMAILS = ['autonate.ai@gmail.com', 'autonateai@gmail.com'];
+    // ─────────────────────────────────────────────────────────────────────────
+
+    const MODULES = [
+      {
+        num: '01', time: '10:00 – 10:30 AM', duration: '30 min',
+        title: 'Problem Framing & Entry Strategy',
+        icon: '🎯', color: '#7986cb', bg: 'rgba(121,134,203,0.1)',
+        desc: 'We open the repo together. You\'ll learn how a principal engineer enters an unknown codebase — without guessing. We use Architecture Mapping Template live.',
+        activities: ['Architecture Mapping Template', 'Define your blast radius', 'Identify entry points']
+      },
+      {
+        num: '02', time: '10:30 – 11:15 AM', duration: '45 min',
+        title: 'Manual Mapping with VS Code',
+        icon: '🗺️', color: '#4db6ac', bg: 'rgba(77,182,172,0.1)',
+        desc: 'Before prompting, you document. Walk the file tree, trace the contracts, note the dependencies. This is the M in M.A.P.P.E.R. — and it changes everything.',
+        activities: ['Fill Architecture Mapping Template', 'VS Code navigation patterns', 'Dependency tracing exercise']
+      },
+      {
+        num: '–', time: '11:15 – 11:25 AM', duration: '10 min',
+        title: 'Break',
+        icon: '☕', color: '#6a6a80', bg: 'rgba(106,106,128,0.08)',
+        isBreak: true,
+        desc: '', activities: []
+      },
+      {
+        num: '03', time: '11:25 AM – 12:15 PM', duration: '50 min',
+        title: 'Prompting with Architectural Context',
+        icon: '🧠', color: '#ab47bc', bg: 'rgba(171,71,188,0.1)',
+        desc: 'Now we prompt — but with full context loaded. You\'ll use the Prompt Framework Template to build structured prompts that get production-grade output on the first try.',
+        activities: ['Prompt Framework Template', 'Context loading strategy', 'Live prompt iteration with Claude Code']
+      },
+      {
+        num: '04', time: '12:15 – 1:00 PM', duration: '45 min',
+        title: 'Fork — Visual Verification & AI Code Review',
+        icon: '🔱', color: '#ffd54f', bg: 'rgba(255,213,79,0.1)',
+        desc: 'Your AI wrote code. Now review it like a senior. We run the Blast Radius Checklist, do visual verification, and learn to catch AI errors before they ship.',
+        activities: ['Blast Radius Checklist', 'AI code review patterns', 'Visual diff verification']
+      },
+      {
+        num: '05', time: '1:00 – 1:40 PM', duration: '40 min',
+        title: 'Final Integration Simulation',
+        icon: '🚀', color: '#ef5350', bg: 'rgba(239,83,80,0.1)',
+        desc: 'We integrate everything into the repo and simulate a production deployment. Production Change Preflight Checklist runs here — every step, every time.',
+        activities: ['Production Change Preflight', 'Integration testing', 'Simulation run-through']
+      },
+      {
+        num: '06', time: '1:40 – 2:00 PM', duration: '20 min',
+        title: 'Debrief & Cognitive Upgrade',
+        icon: '⬆️', color: '#66bb6a', bg: 'rgba(102,187,106,0.1)',
+        desc: 'We close the loop. What you built, why it works, and how to apply the M.A.P.P.E.R. framework to any project from here on. You leave with a complete bot and a new mental model.',
+        activities: ['M.A.P.P.E.R. debrief', 'Q&A', 'Next steps & resources']
+      }
+    ];
+
+    function renderLocked(msUntil) {
+      const totalSecs = Math.floor(msUntil / 1000);
+      const days = Math.floor(totalSecs / 86400);
+      const hours = Math.floor((totalSecs % 86400) / 3600);
+      const mins = Math.floor((totalSecs % 3600) / 60);
+      const secs = totalSecs % 60;
+
+      const dateStr = WORKSHOP_DATE.toLocaleDateString('en-US', {
+        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+      });
+
+      document.getElementById('workshop-content').innerHTML = `
+        <div class="ws-locked">
+          <div class="ws-locked__icon">🔒</div>
+          <h2 class="ws-locked__title">Workshop modules unlock soon</h2>
+          <p class="ws-locked__subtitle">
+            The full workshop curriculum unlocks 24 hours before we go live.
+            In the meantime, get familiar with your Template Library — we'll use every one of them on the day.
+          </p>
+          <div class="ws-countdown">
+            <div class="ws-countdown__unit">
+              <span class="ws-countdown__num" id="cd-days">${String(days).padStart(2,'0')}</span>
+              <span class="ws-countdown__label">Days</span>
+            </div>
+            <div class="ws-countdown__unit">
+              <span class="ws-countdown__num" id="cd-hours">${String(hours).padStart(2,'0')}</span>
+              <span class="ws-countdown__label">Hours</span>
+            </div>
+            <div class="ws-countdown__unit">
+              <span class="ws-countdown__num" id="cd-mins">${String(mins).padStart(2,'0')}</span>
+              <span class="ws-countdown__label">Minutes</span>
+            </div>
+            <div class="ws-countdown__unit">
+              <span class="ws-countdown__num" id="cd-secs">${String(secs).padStart(2,'0')}</span>
+              <span class="ws-countdown__label">Seconds</span>
+            </div>
+          </div>
+          <div class="ws-locked__date">Workshop: <strong>${dateStr}</strong></div>
+          <div style="margin-top: 1.5rem;">
+            <a href="templates.html" style="
+              display: inline-flex; align-items: center; gap: 0.5rem;
+              background: rgba(121,134,203,0.15); border: 1px solid rgba(121,134,203,0.3);
+              color: #7986cb; padding: 0.6rem 1.25rem; border-radius: 8px;
+              text-decoration: none; font-size: 0.875rem; font-weight: 500;
+              transition: all 0.2s;
+            ">← Back to Template Library</a>
+          </div>
+        </div>
+      `;
+
+      // Live countdown
+      const interval = setInterval(() => {
+        const now2 = new Date();
+        const ms2 = WORKSHOP_DATE - now2;
+        if (ms2 <= 0) { clearInterval(interval); location.reload(); return; }
+        // If unlocked, reload
+        if (ms2 <= UNLOCK_HOURS_BEFORE * 3600 * 1000) { clearInterval(interval); location.reload(); return; }
+        const s2 = Math.floor(ms2 / 1000);
+        document.getElementById('cd-days').textContent = String(Math.floor(s2 / 86400)).padStart(2,'0');
+        document.getElementById('cd-hours').textContent = String(Math.floor((s2 % 86400) / 3600)).padStart(2,'0');
+        document.getElementById('cd-mins').textContent = String(Math.floor((s2 % 3600) / 60)).padStart(2,'0');
+        document.getElementById('cd-secs').textContent = String(s2 % 60).padStart(2,'0');
+      }, 1000);
+
+      anime({
+        targets: '.ws-countdown__unit',
+        opacity: [0, 1], translateY: [20, 0],
+        delay: anime.stagger(80), easing: 'easeOutCubic', duration: 400
+      });
+    }
+
+    function renderUnlocked() {
+      const now = new Date();
+      const isPast = now >= WORKSHOP_DATE;
+      const badgeText = isPast ? '🔴 Live Now' : '🟡 Unlocks Today';
+      const badgeColor = isPast ? '#ef5350' : '#ffd54f';
+
+      const modulesHtml = MODULES.map(m => {
+        if (m.isBreak) {
+          return `
+            <div class="ws-module break-module" style="--mod-color:${m.color}; --mod-bg:${m.bg};">
+              <div class="ws-module__num" style="background:${m.bg}; color:${m.color};">${m.icon}</div>
+              <div class="ws-module__body">
+                <div class="ws-module__title" style="color: #6a6a80;">${m.title}</div>
+                <div class="ws-module__time">${m.time}</div>
+              </div>
+              <div class="ws-module__right">
+                <div class="ws-module__duration">${m.duration}</div>
+              </div>
+            </div>`;
+        }
+        return `
+          <div class="ws-module" style="--mod-color:${m.color}; --mod-bg:${m.bg};"
+               onclick="this.classList.toggle('expanded')">
+            <div class="ws-module__num" style="background:${m.bg}; color:${m.color};">${m.num}</div>
+            <div class="ws-module__body">
+              <div class="ws-module__title">${m.title}</div>
+              <div class="ws-module__time">${m.time}</div>
+            </div>
+            <div class="ws-module__right">
+              <div class="ws-module__duration">${m.duration}</div>
+              <span class="ws-module__icon">${m.icon}</span>
+            </div>
+            <div class="ws-module__expand">
+              <p>${m.desc}</p>
+              ${m.activities.length ? `
+                <div class="ws-module__activities">
+                  ${m.activities.map(a => `<span class="ws-module__activity">✦ ${a}</span>`).join('')}
+                </div>` : ''}
+            </div>
+          </div>`;
+      }).join('');
+
+      document.getElementById('workshop-content').innerHTML = `
+        <div class="ws-header">
+          <div class="ws-header__badge" style="background: rgba(102,187,106,0.12); border-color: rgba(102,187,106,0.25); color: #66bb6a;">
+            ✦ Unlocked
+          </div>
+          <h2 class="ws-header__title">${WORKSHOP_TITLE}</h2>
+          <p class="ws-header__subtitle">
+            4 hours. One repo. You leave with a production-ready NBA AI prediction bot —
+            and a framework for building anything at this level.
+          </p>
+          <div class="ws-header__meta">
+            <span class="ws-header__meta-item">📅 <strong>${WORKSHOP_DATE.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</strong></span>
+            <span class="ws-header__meta-item">⏱ <strong>4 Hours</strong></span>
+            <span class="ws-header__meta-item">🔧 <strong>M.A.P.P.E.R. Framework</strong></span>
+            <span class="ws-header__meta-item">🏀 <strong>NBA Prediction Bot</strong></span>
+          </div>
+        </div>
+
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6a80; margin-bottom: 1rem;">
+          Session Schedule
+        </p>
+
+        <div class="ws-modules">${modulesHtml}</div>
+
+        <div class="ws-repo-card">
+          <div class="ws-repo-card__icon">📦</div>
+          <div class="ws-repo-card__body">
+            <div class="ws-repo-card__title">Demo Repository — LLM Sports Betting</div>
+            <div class="ws-repo-card__desc">
+              The starting repo we'll transform into a full-stack production app.
+              3 files in. Full-stack out. Clone it, explore it with your Architecture Mapping Template.
+            </div>
+          </div>
+          <a href="https://github.com/gneeraj2001/LLM_Sports_betting" target="_blank" rel="noopener" class="ws-repo-card__link">
+            View Repo →
+          </a>
+        </div>
+      `;
+
+      anime({
+        targets: '.ws-module',
+        opacity: [0, 1], translateX: [-16, 0],
+        delay: anime.stagger(60), easing: 'easeOutCubic', duration: 350
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loadingScreen = document.getElementById('auth-loading');
+      const dashboardContent = document.getElementById('dashboard-content');
+
+      if (!window.FirebaseApp.init()) {
+        loadingScreen.innerHTML = '<div class="loading-content"><p>Error loading. Please refresh.</p></div>';
+        return;
+      }
+
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+
+      if (!user) {
+        window.AuthService.setRedirectUrl(window.location.href);
+        window.location.href = '../auth/login.html';
+        return;
+      }
+
+      loadingScreen.classList.add('hidden');
+      dashboardContent.classList.add('ready');
+
+      setupSidebar();
+      setupLogout();
+      loadUserInfo(user);
+
+      if (window.RBACService) {
+        const isAdmin = await window.RBACService.hasRole('admin');
+        if (isAdmin) document.getElementById('admin-section').style.display = 'block';
+      }
+
+      const now = new Date();
+      const msUntil = WORKSHOP_DATE - now;
+      const unlockMs = UNLOCK_HOURS_BEFORE * 60 * 60 * 1000;
+      const isPreviewUser = user.email && PREVIEW_EMAILS.includes(user.email.toLowerCase());
+
+      if (!isPreviewUser && msUntil > unlockMs) {
+        renderLocked(msUntil);
+      } else {
+        renderUnlocked();
+      }
+
+      window.AuthService.onAuthStateChanged((u) => {
+        if (!u) window.location.href = '../auth/login.html';
+      });
+    });
+
+    function loadUserInfo(user) {
+      const displayName = user.displayName || user.email.split('@')[0];
+      document.getElementById('user-name').textContent = displayName;
+      const avatar = document.getElementById('user-avatar');
+      if (user.photoURL) {
+        avatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
+      } else {
+        avatar.textContent = displayName.charAt(0).toUpperCase();
+      }
+    }
+
+    function setupSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggle = document.getElementById('sidebar-toggle');
+      const overlay = document.getElementById('sidebar-overlay');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+      });
+      if (localStorage.getItem('sidebarCollapsed') === 'true') sidebar.classList.add('collapsed');
+      mobileBtn.addEventListener('click', () => sidebar.classList.add('open'));
+      overlay.addEventListener('click', () => sidebar.classList.remove('open'));
+    }
+
+    function setupLogout() {
+      document.getElementById('logout-link').addEventListener('click', async (e) => {
+        e.preventDefault();
+        await window.AuthService.logout();
+        window.location.href = '../index.html';
+      });
+    }
+  </script>
+</body>
+</html>

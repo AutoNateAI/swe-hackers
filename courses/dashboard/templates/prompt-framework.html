@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Framework Template | AutoNateAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="../../shared/js/theme-loader.js"></script>
+  <link rel="stylesheet" href="../../shared/css/dashboard.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <style>
+    body { background: #0a0a0f; color: #e8e8f0; font-family: 'Inter', sans-serif; min-height: 100vh; }
+    .auth-loading {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0a0f; display: flex; align-items: center; justify-content: center; z-index: 9999;
+    }
+    .auth-loading.hidden { display: none; }
+    .loading-spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(121,134,203,0.3);
+      border-top-color: #7986cb; border-radius: 50%; margin: 1rem auto; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .page-shell { display: none; min-height: 100vh; flex-direction: column; }
+    .page-shell.ready { display: flex; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: #0d0d14; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar__back { display: flex; align-items: center; gap: 0.5rem; color: #a0a0b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .topbar__back:hover { color: #e8e8f0; }
+    .topbar__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: #e8e8f0; }
+    .topbar__actions { display: flex; gap: 0.75rem; }
+    .topbar__btn {
+      font-size: 0.8rem; font-weight: 500; padding: 0.4rem 0.9rem;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05); color: #a0a0b8; cursor: pointer; transition: all 0.2s;
+    }
+    .topbar__btn.primary { background: rgba(121,134,203,0.15); border-color: rgba(121,134,203,0.3); color: #7986cb; }
+    .topbar__btn.primary:hover { background: rgba(121,134,203,0.25); }
+
+    .template-page { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; width: 100%; }
+
+    /* Header */
+    .tmpl-header { margin-bottom: 2.5rem; }
+    .tmpl-header__icon-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .tmpl-header__icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: rgba(121,134,203,0.12); display: flex; align-items: center;
+      justify-content: center; font-size: 1.75rem; border: 1px solid rgba(121,134,203,0.2);
+    }
+    .tmpl-header__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #7986cb; margin-bottom: 0.25rem; }
+    .tmpl-header__name { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #e8e8f0; }
+    .tmpl-header__desc { color: #a0a0b8; font-size: 0.95rem; line-height: 1.7; }
+
+    /* MAPPER Steps */
+    .mapper-steps { display: flex; gap: 0; margin-bottom: 2.5rem; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); }
+    .mapper-step {
+      flex: 1; padding: 0.75rem 0.5rem; text-align: center;
+      background: rgba(255,255,255,0.02); cursor: pointer;
+      border-right: 1px solid rgba(255,255,255,0.07); transition: all 0.2s;
+      position: relative;
+    }
+    .mapper-step:last-child { border-right: none; }
+    .mapper-step.active { background: rgba(121,134,203,0.12); }
+    .mapper-step.filled::after {
+      content: '✓'; position: absolute; top: 4px; right: 6px;
+      font-size: 0.6rem; color: #7986cb;
+    }
+    .mapper-step__char { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: #7986cb; }
+    .mapper-step__word { font-size: 0.6rem; color: #6a6a80; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
+
+    /* Panels */
+    .mapper-panel { display: none; }
+    .mapper-panel.active { display: block; }
+    .panel-card {
+      background: #16162a; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.75rem; margin-bottom: 1.25rem;
+      border-top: 3px solid #7986cb;
+    }
+    .panel-card__header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .panel-card__icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(121,134,203,0.12); display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem;
+    }
+    .panel-card__title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: #e8e8f0; }
+    .panel-card__subtitle { font-size: 0.78rem; color: #6a6a80; margin-top: 0.1rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 600; color: #a0a0b8; margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+    .form-label span { color: #6a6a80; font-weight: 400; }
+    .form-input, .form-textarea {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.75rem 1rem; color: #e8e8f0; font-family: 'Inter', sans-serif;
+      font-size: 0.875rem; outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(121,134,203,0.5); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .form-textarea.code { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .form-input::placeholder, .form-textarea::placeholder { color: #6a6a80; }
+
+    .form-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .form-chip {
+      font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 6px;
+      background: rgba(121,134,203,0.1); border: 1px solid rgba(121,134,203,0.2);
+      color: #7986cb; cursor: pointer; transition: all 0.15s;
+    }
+    .form-chip:hover, .form-chip.selected { background: rgba(121,134,203,0.25); border-color: rgba(121,134,203,0.5); }
+
+    .step-nav { display: flex; justify-content: space-between; margin-top: 2rem; }
+    .step-btn {
+      padding: 0.65rem 1.5rem; border-radius: 10px; font-size: 0.875rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s; border: none;
+    }
+    .step-btn.prev { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #a0a0b8; }
+    .step-btn.prev:hover { color: #e8e8f0; }
+    .step-btn.next { background: #7986cb; color: #fff; }
+    .step-btn.next:hover { background: #6978bc; }
+
+    /* Output panel */
+    .output-card {
+      background: #0d0d14; border: 1px solid rgba(121,134,203,0.3);
+      border-radius: 16px; padding: 1.5rem; margin-top: 1.5rem;
+    }
+    .output-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .output-card__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7986cb; }
+    .output-card__copy {
+      font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 6px;
+      background: rgba(121,134,203,0.15); border: 1px solid rgba(121,134,203,0.3);
+      color: #7986cb; cursor: pointer; transition: all 0.2s;
+    }
+    .output-card__copy:hover { background: rgba(121,134,203,0.3); }
+    .output-pre {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #a0a0b8;
+      line-height: 1.7; white-space: pre-wrap; word-break: break-word;
+    }
+    .output-pre .key { color: #7986cb; font-weight: 500; }
+    .output-pre .value { color: #e8e8f0; }
+  </style>
+</head>
+<body>
+
+  <div class="auth-loading" id="auth-loading">
+    <div style="text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">🧠</div>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <div class="page-shell" id="page-shell">
+    <div class="topbar">
+      <a href="../templates.html" class="topbar__back">← Template Library</a>
+      <span class="topbar__title">🧠 Prompt Framework Template</span>
+      <div class="topbar__actions">
+        <button class="topbar__btn" onclick="resetForm()">Reset</button>
+        <button class="topbar__btn primary" onclick="copyPrompt()">Copy Prompt</button>
+      </div>
+    </div>
+
+    <div class="template-page">
+
+      <div class="tmpl-header">
+        <div class="tmpl-header__icon-row">
+          <div class="tmpl-header__icon">🧠</div>
+          <div>
+            <div class="tmpl-header__label">Prompt Framework Template</div>
+            <div class="tmpl-header__name">M.A.P.P.E.R. Prompt Builder</div>
+          </div>
+        </div>
+        <p class="tmpl-header__desc">
+          Build a production-grade prompt in 6 structured steps.
+          Fill each section, then copy the complete prompt directly into Claude Code or any AI agent.
+        </p>
+      </div>
+
+      <!-- Step tabs -->
+      <div class="mapper-steps" id="mapper-steps">
+        <div class="mapper-step active" id="tab-0" onclick="goTo(0)">
+          <div class="mapper-step__char">M</div>
+          <div class="mapper-step__word">Map</div>
+        </div>
+        <div class="mapper-step" id="tab-1" onclick="goTo(1)">
+          <div class="mapper-step__char">A</div>
+          <div class="mapper-step__word">Analyze</div>
+        </div>
+        <div class="mapper-step" id="tab-2" onclick="goTo(2)">
+          <div class="mapper-step__char">P</div>
+          <div class="mapper-step__word">Prompt</div>
+        </div>
+        <div class="mapper-step" id="tab-3" onclick="goTo(3)">
+          <div class="mapper-step__char">P</div>
+          <div class="mapper-step__word">Preview</div>
+        </div>
+        <div class="mapper-step" id="tab-4" onclick="goTo(4)">
+          <div class="mapper-step__char">E</div>
+          <div class="mapper-step__word">Execute</div>
+        </div>
+        <div class="mapper-step" id="tab-5" onclick="goTo(5)">
+          <div class="mapper-step__char">R</div>
+          <div class="mapper-step__word">Review</div>
+        </div>
+      </div>
+
+      <!-- Panel 0: Map -->
+      <div class="mapper-panel active" id="panel-0">
+        <div class="panel-card">
+          <div class="panel-card__header">
+            <div class="panel-card__icon">🗺️</div>
+            <div>
+              <div class="panel-card__title">Map — Codebase Context</div>
+              <div class="panel-card__subtitle">Tell the AI where it is and what it's working with</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What is this codebase / project? <span>(tech stack, purpose)</span></label>
+            <textarea class="form-textarea" id="m-project" placeholder="e.g. A Next.js 14 full-stack app with Prisma + PostgreSQL. Sports betting prediction API using LLMs (GPT-4, Claude). The repo has 3 files: main.py, predictor.py, data_fetcher.py"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Which files are in scope?</label>
+            <textarea class="form-textarea code" id="m-files" placeholder="src/api/predict.py&#10;src/models/game_model.py&#10;src/utils/data_fetcher.py" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Key dependencies / constraints</label>
+            <textarea class="form-textarea" id="m-deps" placeholder="e.g. Uses openai SDK v1.x. Data from Ball Don't Lie API. Must stay under 1000ms response time." rows="3"></textarea>
+          </div>
+        </div>
+        <div class="step-nav">
+          <span></span>
+          <button class="step-btn next" onclick="goTo(1)">Next: Analyze →</button>
+        </div>
+      </div>
+
+      <!-- Panel 1: Analyze -->
+      <div class="mapper-panel" id="panel-1">
+        <div class="panel-card">
+          <div class="panel-card__header">
+            <div class="panel-card__icon">🔍</div>
+            <div>
+              <div class="panel-card__title">Analyze — What Needs to Happen</div>
+              <div class="panel-card__subtitle">Define the problem clearly before writing a single prompt</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What is the current behavior?</label>
+            <textarea class="form-textarea" id="a-current" placeholder="e.g. The predictor returns raw LLM output as a string. There's no structured data model, no error handling, and no caching."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What is the desired behavior?</label>
+            <textarea class="form-textarea" id="a-desired" placeholder="e.g. Return a typed Prediction object with confidence score, reasoning, and metadata. Add Redis caching with 1hr TTL."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What constraints must be respected?</label>
+            <textarea class="form-textarea" id="a-constraints" placeholder="e.g. Don't break the existing API signature. Must be backwards-compatible. No new external packages." rows="3"></textarea>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn prev" onclick="goTo(0)">← Map</button>
+          <button class="step-btn next" onclick="goTo(2)">Next: Prompt →</button>
+        </div>
+      </div>
+
+      <!-- Panel 2: Prompt -->
+      <div class="mapper-panel" id="panel-2">
+        <div class="panel-card">
+          <div class="panel-card__header">
+            <div class="panel-card__icon">💬</div>
+            <div>
+              <div class="panel-card__title">Prompt — The Task Instruction</div>
+              <div class="panel-card__subtitle">Write the core ask — specific, unambiguous, scoped</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">The main instruction <span>(what to build/change/fix)</span></label>
+            <textarea class="form-textarea" id="p-instruction" placeholder="e.g. Refactor the predict() function in predictor.py to return a typed Prediction dataclass. Add error handling for API timeouts. Include a docstring." rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Output format / type <span>(what should the response look like?)</span></label>
+            <div class="form-chips" id="format-chips">
+              <span class="form-chip" onclick="selectChip(this, 'p-format')">Working code</span>
+              <span class="form-chip" onclick="selectChip(this, 'p-format')">Diff only</span>
+              <span class="form-chip" onclick="selectChip(this, 'p-format')">Code + explanation</span>
+              <span class="form-chip" onclick="selectChip(this, 'p-format')">Step-by-step plan first</span>
+            </div>
+            <input class="form-input" id="p-format" placeholder="e.g. Return the full updated file" style="margin-top:0.75rem;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Style / tone</label>
+            <div class="form-chips">
+              <span class="form-chip" onclick="selectChip(this, 'p-style')">Senior engineer</span>
+              <span class="form-chip" onclick="selectChip(this, 'p-style')">Production-ready</span>
+              <span class="form-chip" onclick="selectChip(this, 'p-style')">Minimal, no fluff</span>
+              <span class="form-chip" onclick="selectChip(this, 'p-style')">Explain as you go</span>
+            </div>
+            <input class="form-input" id="p-style" placeholder="e.g. Write as a principal engineer would" style="margin-top:0.75rem;">
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn prev" onclick="goTo(1)">← Analyze</button>
+          <button class="step-btn next" onclick="goTo(3)">Next: Preview →</button>
+        </div>
+      </div>
+
+      <!-- Panel 3: Preview -->
+      <div class="mapper-panel" id="panel-3">
+        <div class="panel-card">
+          <div class="panel-card__header">
+            <div class="panel-card__icon">👁️</div>
+            <div>
+              <div class="panel-card__title">Preview — Review Before Sending</div>
+              <div class="panel-card__subtitle">Your assembled prompt — read it before you execute</div>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:#a0a0b8; margin-bottom:1rem;">
+            Review your complete prompt below. Make sure it includes all the context the AI needs.
+            A vague prompt gets vague code. A precise prompt gets production code.
+          </p>
+          <div id="preview-content"></div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn prev" onclick="goTo(2)">← Prompt</button>
+          <button class="step-btn next" onclick="goTo(4)">Execute →</button>
+        </div>
+      </div>
+
+      <!-- Panel 4: Execute -->
+      <div class="mapper-panel" id="panel-4">
+        <div class="panel-card">
+          <div class="panel-card__header">
+            <div class="panel-card__icon">🚀</div>
+            <div>
+              <div class="panel-card__title">Execute — Send It</div>
+              <div class="panel-card__subtitle">Copy your prompt and paste it into your AI agent</div>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:#a0a0b8; margin-bottom:1.5rem;">
+            Copy the prompt below, open Claude Code (or your agent of choice), and paste.
+            The M.A.P.P.E.R. context you built ensures the AI has everything it needs.
+          </p>
+          <div class="output-card">
+            <div class="output-card__header">
+              <span class="output-card__title">Your Complete Prompt</span>
+              <button class="output-card__copy" onclick="copyPrompt()">Copy to clipboard</button>
+            </div>
+            <pre class="output-pre" id="execute-output"></pre>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn prev" onclick="goTo(3)">← Preview</button>
+          <button class="step-btn next" onclick="goTo(5)">Review →</button>
+        </div>
+      </div>
+
+      <!-- Panel 5: Review -->
+      <div class="mapper-panel" id="panel-5">
+        <div class="panel-card">
+          <div class="panel-card__header">
+            <div class="panel-card__icon">✅</div>
+            <div>
+              <div class="panel-card__title">Review — Verify the Output</div>
+              <div class="panel-card__subtitle">Did the AI do what you asked? Did it break anything?</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Does the output match what was asked?</label>
+            <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+              <button class="form-chip" onclick="setReview('match', true, this)" style="padding:0.5rem 1.25rem;">✓ Yes</button>
+              <button class="form-chip" onclick="setReview('match', false, this)" style="padding:0.5rem 1.25rem;">✗ No — needs revision</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Does it pass the blast radius check? <span>(would you run the Blast Radius Checklist on this change?)</span></label>
+            <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+              <button class="form-chip" onclick="setReview('blast', true, this)" style="padding:0.5rem 1.25rem;">✓ Cleared</button>
+              <button class="form-chip" onclick="setReview('blast', false, this)" style="padding:0.5rem 1.25rem;">⚠ Not yet</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notes / lessons learned</label>
+            <textarea class="form-textarea" id="r-notes" placeholder="What worked? What would you change about the prompt next time? Document it — this is how you get better."></textarea>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem; padding:1.25rem; background:rgba(121,134,203,0.06); border:1px solid rgba(121,134,203,0.2); border-radius:12px;">
+          <p style="font-size:0.875rem; color:#a0a0b8; line-height:1.6;">
+            <strong style="color:#7986cb;">Loop complete.</strong>
+            Save the prompt you built, run the Production Preflight before committing, and iterate.
+            Each loop through M.A.P.P.E.R. makes the next one faster.
+          </p>
+          <div style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <a href="production-preflight.html" style="font-size:0.8rem; padding:0.5rem 1rem; border-radius:8px; background:rgba(102,187,106,0.12); border:1px solid rgba(102,187,106,0.25); color:#66bb6a; text-decoration:none;">→ Run Production Preflight</a>
+            <a href="blast-radius.html" style="font-size:0.8rem; padding:0.5rem 1rem; border-radius:8px; background:rgba(239,83,80,0.1); border:1px solid rgba(239,83,80,0.2); color:#ef5350; text-decoration:none;">→ Blast Radius Check</a>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn prev" onclick="goTo(4)">← Execute</button>
+          <button class="step-btn next" onclick="resetForm()" style="background:rgba(121,134,203,0.15); border:1px solid rgba(121,134,203,0.3); color:#7986cb;">Start New Prompt</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../shared/js/firebase-config.js"></script>
+  <script src="../../shared/js/auth.js"></script>
+
+  <script>
+    const STORAGE_KEY = 'prompt-framework-v1';
+    let currentStep = 0;
+    const reviewState = {};
+
+    const FIELDS = ['m-project','m-files','m-deps','a-current','a-desired','a-constraints','p-instruction','p-format','p-style','r-notes'];
+
+    function goTo(step) {
+      saveAll();
+      document.querySelectorAll('.mapper-panel').forEach((p,i) => p.classList.toggle('active', i === step));
+      document.querySelectorAll('.mapper-step').forEach((t,i) => t.classList.toggle('active', i === step));
+      currentStep = step;
+      if (step === 3 || step === 4) renderOutput();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function selectChip(el, targetId) {
+      el.closest('.form-chips').querySelectorAll('.form-chip').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById(targetId).value = el.textContent;
+      saveAll();
+    }
+
+    function setReview(key, val, el) {
+      reviewState[key] = val;
+      el.closest('.form-group').querySelectorAll('.form-chip').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function getVal(id) { return (document.getElementById(id)?.value || '').trim(); }
+
+    function buildPrompt() {
+      const project = getVal('m-project');
+      const files = getVal('m-files');
+      const deps = getVal('m-deps');
+      const current = getVal('a-current');
+      const desired = getVal('a-desired');
+      const constraints = getVal('a-constraints');
+      const instruction = getVal('p-instruction');
+      const format = getVal('p-format');
+      const style = getVal('p-style');
+
+      let prompt = '';
+      if (project) prompt += `## Codebase Context\n${project}\n\n`;
+      if (files) prompt += `## Files In Scope\n${files}\n\n`;
+      if (deps) prompt += `## Key Dependencies / Constraints\n${deps}\n\n`;
+      if (current) prompt += `## Current Behavior\n${current}\n\n`;
+      if (desired) prompt += `## Desired Behavior\n${desired}\n\n`;
+      if (constraints) prompt += `## Must Respect\n${constraints}\n\n`;
+      if (instruction) prompt += `## Task\n${instruction}\n\n`;
+      if (format) prompt += `## Output Format\n${format}\n\n`;
+      if (style) prompt += `## Style\n${style}`;
+      return prompt.trim() || 'Fill in the M.A.P.P.E.R. steps above to generate your prompt.';
+    }
+
+    function renderOutput() {
+      const prompt = buildPrompt();
+      const escaped = prompt.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      // Preview
+      const previewEl = document.getElementById('preview-content');
+      if (previewEl) {
+        previewEl.innerHTML = `
+          <div class="output-card">
+            <div class="output-card__header">
+              <span class="output-card__title">Assembled Prompt</span>
+              <button class="output-card__copy" onclick="copyPrompt()">Copy</button>
+            </div>
+            <pre class="output-pre">${escaped}</pre>
+          </div>`;
+      }
+
+      // Execute
+      const execEl = document.getElementById('execute-output');
+      if (execEl) execEl.textContent = prompt;
+    }
+
+    function copyPrompt() {
+      const prompt = buildPrompt();
+      navigator.clipboard.writeText(prompt).then(() => {
+        document.querySelectorAll('.output-card__copy, .topbar__btn.primary').forEach(b => {
+          b.textContent = 'Copied!';
+          setTimeout(() => { b.textContent = b.classList.contains('primary') ? 'Copy Prompt' : 'Copy'; }, 2000);
+        });
+      });
+    }
+
+    function saveAll() {
+      const state = {};
+      FIELDS.forEach(id => { state[id] = getVal(id); });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      // Mark filled tabs
+      const fillMap = {0:['m-project'], 1:['a-current'], 2:['p-instruction'], 3:[], 4:[], 5:['r-notes']};
+      Object.entries(fillMap).forEach(([i, ids]) => {
+        const filled = ids.length === 0 || ids.some(id => state[id]);
+        document.getElementById(`tab-${i}`)?.classList.toggle('filled', filled);
+      });
+    }
+
+    function resetForm() {
+      if (!confirm('Reset this template? All data will be cleared.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      FIELDS.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+      document.querySelectorAll('.form-chip').forEach(c => c.classList.remove('selected'));
+      goTo(0);
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loading = document.getElementById('auth-loading');
+      const shell = document.getElementById('page-shell');
+
+      window.FirebaseApp.init();
+      window.AuthService.init();
+      const user = await window.AuthService.waitForAuthState();
+      if (!user) { window.location.href = '../../auth/login.html'; return; }
+
+      loading.classList.add('hidden');
+      shell.classList.add('ready');
+
+      // Restore saved state
+      try {
+        const state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        FIELDS.forEach(id => { const el = document.getElementById(id); if (el && state[id]) el.value = state[id]; });
+      } catch {}
+
+      // Auto-save
+      FIELDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', saveAll);
+      });
+
+      anime({ targets: '.mapper-step, .panel-card', opacity: [0,1], translateY: [10,0], delay: anime.stagger(50), easing: 'easeOutCubic', duration: 300 });
+    });
+  </script>
+</body>
+</html>
