@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connecting the Dots | AutoNateAI Workshop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="../../shared/js/theme-loader.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --bg2: #12121a; --bg3: #16162a;
+      --text: #e8e8f0; --text2: #a0a0b8; --muted: #6a6a80;
+      --purple: #ab47bc; --blue: #7986cb; --teal: #4db6ac;
+      --green: #66bb6a; --yellow: #ffd54f; --red: #ef5350; --orange: #ff8a65;
+    }
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+
+    #auth-loading { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 9999; flex-direction: column; gap: 1rem; }
+    #auth-loading.hidden { display: none; }
+    .spin { width: 36px; height: 36px; border: 3px solid rgba(255,213,79,0.3); border-top-color: var(--yellow); border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #lecture-shell { display: none; height: 100vh; flex-direction: column; }
+    #lecture-shell.ready { display: flex; }
+
+    .lec-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; background: rgba(10,10,15,0.95); border-bottom: 1px solid rgba(255,255,255,0.07); flex-shrink: 0; backdrop-filter: blur(8px); }
+    .lec-bar__back { color: var(--text2); text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 0.4rem; transition: color .2s; }
+    .lec-bar__back:hover { color: var(--text); }
+    .lec-bar__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .lec-bar__right { display: flex; align-items: center; gap: 1rem; }
+    .lec-bar__section { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .lec-bar__count { font-size: 0.8rem; color: var(--text2); font-family: 'Space Grotesk', sans-serif; }
+
+    .lec-progress { height: 3px; background: rgba(255,255,255,0.07); flex-shrink: 0; }
+    .lec-progress__fill { height: 100%; background: linear-gradient(90deg, var(--yellow), var(--orange)); transition: width .4s cubic-bezier(.4,0,.2,1); }
+
+    .lec-stage { flex: 1; overflow: hidden; position: relative; }
+    #slide-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+
+    .lec-nav { display: flex; align-items: center; justify-content: center; gap: 1.5rem; padding: 1rem 1.5rem; flex-shrink: 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .lec-nav__btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; border-radius: 10px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: var(--text2); transition: all .2s; }
+    .lec-nav__btn:hover { color: var(--text); border-color: rgba(255,255,255,0.22); }
+    .lec-nav__btn.primary { background: var(--yellow); border-color: var(--yellow); color: #0a0a0f; }
+    .lec-nav__btn.primary:hover { opacity: .85; }
+    .lec-nav__btn:disabled { opacity: .3; cursor: default; }
+    .lec-nav__dots { display: flex; gap: 0.4rem; align-items: center; }
+    .lec-nav__dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.15); cursor: pointer; transition: all .2s; }
+    .lec-nav__dot.active { background: var(--yellow); transform: scale(1.3); }
+    .lec-nav__dot.done { background: rgba(255,213,79,0.4); }
+
+    .slide { max-width: 820px; width: 100%; }
+
+    /* Title */
+    .slide--title { text-align: center; }
+    .eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.5rem; }
+    .big-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; color: var(--text); line-height: 1.1; margin-bottom: 0.75rem; }
+    .subtitle { font-size: 1rem; color: var(--text2); margin-bottom: 2.5rem; }
+    .mapper-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .mapper-pill { padding: 0.5rem 1rem; border-radius: 8px; background: rgba(255,213,79,0.08); border: 1px solid rgba(255,213,79,0.2); }
+    .mapper-pill__char { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--yellow); display: block; text-align: center; }
+    .mapper-pill__word { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; display: block; text-align: center; }
+
+    /* Pattern (3-col) */
+    .slide--pattern .headline { font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--text); margin-bottom: 1.25rem; }
+    .pattern-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.875rem; }
+    .pattern-col { background: var(--bg3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.1rem; }
+    .pattern-col__title { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--teal); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: .06em; }
+    .pattern-col__letter { font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: .06em; color: var(--yellow); margin-top: 0.5rem; margin-bottom: 0.2rem; }
+    .pattern-col__item { font-size: 0.76rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.3rem; padding-left: 0.75rem; border-left: 2px solid rgba(255,255,255,0.07); }
+
+    /* Velocity */
+    .slide--velocity .headline { font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .slide--velocity .sub { font-size: 0.88rem; color: var(--text2); margin-bottom: 1.5rem; }
+    .velocity-steps { display: flex; flex-direction: column; gap: 0.875rem; }
+    .velocity-step { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 1.25rem; background: var(--bg3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; }
+    .velocity-step.active { border-color: rgba(255,213,79,0.3); background: rgba(255,213,79,0.04); }
+    .velocity-step__badge { font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; font-weight: 700; color: var(--yellow); background: rgba(255,213,79,0.1); border: 1px solid rgba(255,213,79,0.2); border-radius: 6px; padding: 0.2rem 0.5rem; flex-shrink: 0; white-space: nowrap; }
+    .velocity-step__text { font-size: 0.875rem; color: var(--text2); line-height: 1.6; }
+    .velocity-step__text strong { color: var(--text); }
+
+    /* Quiz (reflection) */
+    .activity-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(121,134,203,0.12); border: 1px solid rgba(121,134,203,0.25); color: var(--blue); font-size: 0.68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 0.28rem 0.7rem; border-radius: 5px; margin-bottom: 0.75rem; }
+    .activity-headline { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .activity-instruction { font-size: 0.875rem; color: var(--text2); line-height: 1.6; margin-bottom: 0; }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.625rem; margin-top: 1.25rem; }
+    .quiz-opt { background: var(--bg3); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.875rem 1.1rem; cursor: pointer; font-size: 0.875rem; color: var(--text2); transition: all .2s; display: flex; align-items: center; gap: 0.75rem; }
+    .quiz-opt:hover:not(.locked) { border-color: rgba(255,255,255,0.18); color: var(--text); }
+    .quiz-opt__radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); flex-shrink: 0; transition: all .2s; }
+    .quiz-opt.selected { border-color: var(--yellow); background: rgba(255,213,79,0.06); color: var(--text); }
+    .quiz-opt.selected .quiz-opt__radio { border-color: var(--yellow); background: var(--yellow); }
+    .quiz-explanation { margin-top: 1rem; padding: 0.875rem 1rem; background: rgba(255,213,79,0.06); border: 1px solid rgba(255,213,79,0.2); border-radius: 10px; font-size: 0.82rem; color: var(--text2); line-height: 1.6; display: none; }
+    .quiz-explanation.show { display: block; }
+
+    /* Bridge */
+    .slide--bridge { text-align: center; }
+    .bridge-big { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 0.4rem; }
+    .bridge-sub { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 700; color: var(--yellow); margin-bottom: 1.75rem; }
+    .bridge-note { font-size: 0.95rem; color: var(--text2); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+    .recap-pills { display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; margin-bottom: 2rem; }
+    .recap-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.4rem 0.875rem; font-size: 0.8rem; color: var(--text2); }
+    .recap-pill.done { border-color: rgba(102,187,106,0.3); color: var(--green); background: rgba(102,187,106,0.06); }
+    .recap-pill.next { border-color: rgba(255,213,79,0.35); color: var(--yellow); background: rgba(255,213,79,0.06); }
+    .bridge-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--yellow); color: #0a0a0f; padding: 0.875rem 2rem; border-radius: 12px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: opacity .2s; }
+    .bridge-cta:hover { opacity: .85; }
+  </style>
+</head>
+<body>
+
+<div id="auth-loading">
+  <div style="font-size:2rem;margin-bottom:.5rem;">💡</div>
+  <div class="spin"></div>
+</div>
+
+<div id="lecture-shell">
+  <div class="lec-bar">
+    <a href="../workshop.html" class="lec-bar__back">← Workshop</a>
+    <span class="lec-bar__title">Module 05 — Connecting the Dots</span>
+    <div class="lec-bar__right">
+      <span class="lec-bar__section" id="bar-section"></span>
+      <span class="lec-bar__count" id="bar-count">1 / 5</span>
+    </div>
+  </div>
+  <div class="lec-progress"><div class="lec-progress__fill" id="progress-fill"></div></div>
+  <div class="lec-stage"><div id="slide-wrap"></div></div>
+  <nav class="lec-nav">
+    <button class="lec-nav__btn" id="btn-prev" onclick="go(-1)">← Prev</button>
+    <div class="lec-nav__dots" id="nav-dots"></div>
+    <button class="lec-nav__btn primary" id="btn-next" onclick="go(1)">Next →</button>
+  </nav>
+</div>
+
+<script src="../../shared/js/firebase-config.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script>
+
+const REFLECTIONS = [
+  "Loading the right context is the hardest part of prompting. As you do this more, you'll build a mental model for what to load first. The Architecture Mapping template is your shortcut — use it every time.",
+  "Long diffs are a feature, not a bug. The AI is thorough. Your job is to be selective. Start scanning from the top: does the first changed function match what you asked? If yes, keep going. If no, stop there.",
+  "Specificity in prompting is a skill. You get sharper by doing it. The M.A.P.P.E.R. framework is your prompt outline — every P (Prompt) section you fill out is practice. It will feel faster every time.",
+  "Unexpected changes are the Fork problem. The AI will scope-creep. Catching it before it hits your codebase is the whole game. You caught it this session — that's the skill in action."
+];
+
+const SLIDES = [
+  {
+    id: 's01', type: 'title', section: null,
+    data: {
+      eyebrow: 'Module 05 · Mid-Session Mini-Lecture',
+      title: 'Connecting\nthe Dots.',
+      subtitle: "You've been running M.A.P.P.E.R. for 90 minutes. Let's see what you built.",
+      mapper: [
+        {char:'M',word:'Map'},{char:'A',word:'Analyze'},{char:'P',word:'Prompt'},
+        {char:'P',word:'Preview'},{char:'E',word:'Execute'},{char:'R',word:'Review'}
+      ]
+    }
+  },
+  {
+    id: 's02', type: 'pattern', section: 'The Pattern',
+    data: {
+      headline: 'Three builds. Same loop. Every time.',
+      cols: [
+        {
+          title: 'BUILD 01 — Map the Repo',
+          items: [
+            {letter:'M', text:'Mapped nba_bot.py — 3 classes, 1 entry point'},
+            {letter:'A', text:'Found fetch_today_games() hardcoded — target #1'},
+            {letter:'P', text:'Architecture context loaded into Claude prompt'},
+            {letter:'P', text:'Reviewed files touched before accepting'},
+            {letter:'E', text:'Applied only what was scoped'},
+            {letter:'R', text:'Ran Blast Radius Checklist'},
+          ]
+        },
+        {
+          title: 'BUILD 02 — API Server',
+          items: [
+            {letter:'M', text:'Project file structure planned before prompting'},
+            {letter:'A', text:'Endpoint contracts written first'},
+            {letter:'P', text:'Context-loaded scaffold prompt with M.A.P.P.E.R.'},
+            {letter:'P', text:'Fork checked every diff line by line'},
+            {letter:'E', text:'Applied scaffold, no extras'},
+            {letter:'R', text:'Tested with curl, ran Production Preflight'},
+          ]
+        },
+        {
+          title: 'BUILD 03 — Intelligence',
+          items: [
+            {letter:'M', text:'Predictor architecture mapped before SDK swap'},
+            {letter:'A', text:'Identified: AskNews → Anthropic SDK replacement'},
+            {letter:'P', text:'Structured output prompt with Pydantic model'},
+            {letter:'P', text:'Validated Prediction object before wiring'},
+            {letter:'E', text:'Wired the new predictor cleanly'},
+            {letter:'R', text:'Tested confidence + reasoning — iterated'},
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 's03', type: 'velocity', section: 'The Loop',
+    data: {
+      headline: 'The loop accelerates with repetition.',
+      sub: 'This is what skill internalization looks like.',
+      steps: [
+        { badge: 'First run', text: '<strong>You were learning the motion.</strong> Mapping felt slow. Prompts took iteration. You weren\'t sure what context to load. That\'s exactly right — that\'s what first reps feel like.' },
+        { badge: 'Second run', text: '<strong>You knew the pattern.</strong> Context loading got faster. You already had your architecture map from Build 1. Prompts got tighter. The fork check was already a habit.' },
+        { badge: 'Third run', text: '<strong>You were thinking in the framework before you opened the file.</strong> That\'s internalization. You weren\'t following steps anymore — you were running the loop.', active: true },
+      ]
+    }
+  },
+  {
+    id: 'r01', type: 'reflection', section: 'Reflection',
+    data: {
+      headline: 'Quick reflection — be honest.',
+      question: 'What slowed you down the most in the last 90 minutes?',
+      options: [
+        { text: 'Knowing what context to load before prompting', idx: 0 },
+        { text: 'Reviewing AI output — the diffs were long', idx: 1 },
+        { text: 'Knowing exactly what to ask for', idx: 2 },
+        { text: 'Debugging something unexpected that changed', idx: 3 },
+      ]
+    }
+  },
+  {
+    id: 's04', type: 'bridge', section: null,
+    data: {
+      big: 'One more build.',
+      sub: 'Frontend + Deploy.',
+      note: "You have the API. You have Claude predictions. Now make it visible — and ship it. One hour from now you'll have a live URL.",
+      pills: [
+        { text: 'FastAPI ✓', done: true },
+        { text: 'Anthropic ✓', done: true },
+        { text: 'Odds API ✓', done: true },
+        { text: 'Frontend →', next: true },
+        { text: 'Live URL →', next: true },
+      ]
+    }
+  }
+];
+
+let current = 0;
+
+function renderSlide(idx) {
+  const s = SLIDES[idx];
+  document.getElementById('slide-wrap').innerHTML = slideHTML(s);
+  updateBar(idx);
+  anime({
+    targets: '#slide-wrap > .slide > *',
+    opacity: [0, 1], translateY: [18, 0],
+    delay: anime.stagger(70), easing: 'easeOutCubic', duration: 380
+  });
+}
+
+function slideHTML(s) {
+  switch (s.type) {
+    case 'title':      return titleHTML(s.data);
+    case 'pattern':    return patternHTML(s.data);
+    case 'velocity':   return velocityHTML(s.data);
+    case 'reflection': return reflectionHTML(s.data);
+    case 'bridge':     return bridgeHTML(s.data);
+    default: return `<div class="slide"><p>${s.id}</p></div>`;
+  }
+}
+
+function titleHTML(d) {
+  const pills = d.mapper.map(m => `
+    <div class="mapper-pill">
+      <span class="mapper-pill__char">${m.char}</span>
+      <span class="mapper-pill__word">${m.word}</span>
+    </div>`).join('');
+  const lines = d.title.split('\n').join('<br>');
+  return `<div class="slide slide--title">
+    <div class="eyebrow">${d.eyebrow}</div>
+    <div class="big-title">${lines}</div>
+    <div class="subtitle">${d.subtitle}</div>
+    <div class="mapper-row">${pills}</div>
+  </div>`;
+}
+
+function patternHTML(d) {
+  const cols = d.cols.map(c => {
+    const items = c.items.map(i => `
+      <div class="pattern-col__letter">${i.letter}</div>
+      <div class="pattern-col__item">${i.text}</div>`).join('');
+    return `<div class="pattern-col">
+      <div class="pattern-col__title">${c.title}</div>
+      ${items}
+    </div>`;
+  }).join('');
+  return `<div class="slide slide--pattern">
+    <div class="headline">${d.headline}</div>
+    <div class="pattern-grid">${cols}</div>
+  </div>`;
+}
+
+function velocityHTML(d) {
+  const steps = d.steps.map(s => `
+    <div class="velocity-step${s.active ? ' active' : ''}">
+      <div class="velocity-step__badge">${s.badge}</div>
+      <div class="velocity-step__text">${s.text}</div>
+    </div>`).join('');
+  return `<div class="slide slide--velocity">
+    <div class="headline">${d.headline}</div>
+    <div class="sub">${d.sub}</div>
+    <div class="velocity-steps">${steps}</div>
+  </div>`;
+}
+
+function reflectionHTML(d) {
+  const opts = d.options.map(o => `
+    <div class="quiz-opt" data-idx="${o.idx}" onclick="selectReflection(this)">
+      <div class="quiz-opt__radio"></div>
+      <span>${o.text}</span>
+    </div>`).join('');
+  return `<div class="slide slide--activity">
+    <div class="activity-badge">✦ Reflection</div>
+    <div class="activity-headline">${d.headline}</div>
+    <div class="activity-instruction">${d.question}</div>
+    <div class="quiz-options">${opts}</div>
+    <div class="quiz-explanation" id="quiz-explanation"></div>
+  </div>`;
+}
+
+function selectReflection(el) {
+  if (el.classList.contains('locked')) return;
+  document.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.querySelectorAll('.quiz-opt').forEach(o => o.classList.add('locked'));
+  const exp = document.getElementById('quiz-explanation');
+  exp.textContent = REFLECTIONS[parseInt(el.dataset.idx)];
+  exp.classList.add('show');
+}
+
+function bridgeHTML(d) {
+  const pills = d.pills.map(p => {
+    const cls = p.done ? 'done' : p.next ? 'next' : '';
+    return `<span class="recap-pill ${cls}">${p.text}</span>`;
+  }).join('');
+  return `<div class="slide slide--bridge">
+    <div class="bridge-big">${d.big}</div>
+    <div class="bridge-sub">${d.sub}</div>
+    <div class="bridge-note">${d.note}</div>
+    <div class="recap-pills">${pills}</div>
+    <a href="../workshop.html" class="bridge-cta">Go to Module 06 →</a>
+  </div>`;
+}
+
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= SLIDES.length) return;
+  anime({
+    targets: '#slide-wrap > .slide',
+    opacity: [1, 0], translateX: [0, dir * -40],
+    easing: 'easeInCubic', duration: 200,
+    complete() {
+      current = next;
+      renderSlide(current);
+      anime({ targets: '#slide-wrap > .slide', opacity: [0, 1], translateX: [dir * 40, 0], easing: 'easeOutCubic', duration: 280 });
+    }
+  });
+}
+
+function updateBar(idx) {
+  const s = SLIDES[idx];
+  document.getElementById('progress-fill').style.width = ((idx + 1) / SLIDES.length * 100) + '%';
+  document.getElementById('bar-count').textContent = `${idx + 1} / ${SLIDES.length}`;
+  document.getElementById('bar-section').textContent = s.section || '';
+  document.getElementById('btn-prev').disabled = idx === 0;
+  document.getElementById('btn-next').textContent = idx === SLIDES.length - 1 ? 'Back to Workshop' : 'Next →';
+  if (idx === SLIDES.length - 1) {
+    document.getElementById('btn-next').onclick = () => { window.location.href = '../workshop.html'; };
+  } else {
+    document.getElementById('btn-next').onclick = () => go(1);
+  }
+  document.getElementById('nav-dots').innerHTML = SLIDES.map((_, i) => {
+    const cls = i === idx ? 'active' : i < idx ? 'done' : '';
+    return `<div class="lec-nav__dot ${cls}" onclick="goTo(${i})" title="Slide ${i+1}"></div>`;
+  }).join('');
+}
+
+function goTo(idx) { if (idx !== current) { current = idx; renderSlide(current); } }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+  window.FirebaseApp.init();
+  window.AuthService.init();
+  const user = await window.AuthService.waitForAuthState();
+  if (!user) { window.location.href = '../../auth/login.html'; return; }
+  document.getElementById('auth-loading').classList.add('hidden');
+  document.getElementById('lecture-shell').classList.add('ready');
+  renderSlide(0);
+});
+</script>
+</body>
+</html>
